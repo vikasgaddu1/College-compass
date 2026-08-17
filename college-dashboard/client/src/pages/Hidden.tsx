@@ -4,7 +4,7 @@ import { useHidden } from "@/lib/hidden";
 import { HideButton, FitBadge, AbetBadge } from "@/components/SchoolBits";
 import { RotateCcw, EyeOff, Bot, AlertTriangle, Target } from "lucide-react";
 import { useApplicantProfile, useOddsThresholds } from "@/lib/applicantProfile";
-import { buildRoboticsFocus, DEFAULT_FOCUS_SPEC, TIER_LABEL } from "@/lib/focusPreset";
+import { buildRoboticsFocus, DEFAULT_FOCUS_SPEC, MIN_ROBOTICS_CURRICULUM, TIER_LABEL } from "@/lib/focusPreset";
 import { Link } from "wouter";
 
 export default function HiddenPage() {
@@ -143,6 +143,20 @@ export default function HiddenPage() {
             <strong className="text-[hsl(var(--foreground))]">Excluded from auto-pick:</strong>{" "}
             {focus.excluded.map(e => `${e.school.short} — ${e.why}`).join("; ")}.
             These stay available to select manually.
+          </div>
+        )}
+
+        {focus.belowBar.length > 0 && (
+          <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-2.5 leading-relaxed">
+            <strong className="text-[hsl(var(--foreground))]">
+              Below the robotics bar ({MIN_ROBOTICS_CURRICULUM}/5 curriculum), so never auto-picked:
+            </strong>{" "}
+            {focus.belowBar
+              .sort((a, b) => (b.robotics_curriculum ?? 0) - (a.robotics_curriculum ?? 0))
+              .map(b => `${b.school.short} (${b.why})`)
+              .join("; ")}.
+            A tier quota is not evidence — these would otherwise be picked just for sitting at the
+            right admit rate. Several are excellent for AI and remain worth selecting by hand.
           </div>
         )}
       </div>
