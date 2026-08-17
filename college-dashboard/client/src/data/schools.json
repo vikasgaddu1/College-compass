@@ -10058,6 +10058,14 @@
     "lab_or_course": "RIT Launch Initiative sounding-rocket program",
     "url": "https://www.rit.edu/news/rit-launch-initiative-team-soars-first-competition-win-spaceport-america-cup-2023"
    }
+  },
+  "robotics_pathway_risk": {
+   "severity": "accreditation",
+   "affects": "BS Robotics & Manufacturing Engineering Technology / BS Mechatronics Engineering Technology",
+   "note": "RIT's two robotics-named bachelor's degrees sit in the College of Engineering Technology and are accredited by ETAC/ABET as engineering technology, not EAC/ABET engineering. RIT's Kate Gleason College of Engineering separately holds EAC accreditation for Mechanical, Electrical, Computer and Industrial Engineering, so an EAC route into robotics exists — it just is not the robotics-titled degree.",
+   "url": "https://www.rit.edu/engineeringtechnology/robotics-and-manufacturing-engineering-technology-accreditation",
+   "verify_with": "RIT admissions — ask which college the intended major sits in",
+   "undermines_robotics_score": false
   }
  },
  {
