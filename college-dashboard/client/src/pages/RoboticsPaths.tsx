@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
-import { NoteButton } from "@/components/SchoolBits";
+import { NoteButton, AbetBadge } from "@/components/SchoolBits";
 import roboticsPaths from "@/data/robotics_paths.json";
 import { Bot, ExternalLink, Search, Filter, Cog, Cpu, Wrench, Trophy, Download, Building2, AlertTriangle, ShieldCheck, HelpCircle } from "lucide-react";
 
@@ -389,6 +389,9 @@ export default function RoboticsPathsPage() {
         </div>
       </div>
 
+      {/* Accreditation of robotics-titled credentials */}
+      <AccreditationPanel />
+
       {/* Robotics subdomain coverage matrix */}
       <DomainMatrix />
 
@@ -444,6 +447,7 @@ function RoboticsPathCard({ school, data }: { school: typeof schools[number]; da
       <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
         <div className="flex items-baseline gap-2 flex-wrap">
           <h3 className="serif text-[16.5px] font-semibold">{school.short}</h3>
+          <AbetBadge credential={school.robotics_credential} />
           <div className="text-[11.5px] text-[hsl(var(--muted-foreground))]">{school.city_state}</div>
           <NoteButton slug={school.slug}/>
         </div>
@@ -960,6 +964,89 @@ function DomainMatrix() {
         work in that area. Several pages blocked automated reading (MIT robotics, UF's Machine Intelligence Lab), so
         equivalent first-party evidence was substituted; those substitutions are noted in the research files.
         Virginia Tech's robotics coverage reflects an option that stops accepting new declarations after January 2026.
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * EAC vs ETAC: what kind of degree the robotics-titled credential is.
+ * ------------------------------------------------------------------ */
+
+function AccreditationPanel() {
+  const { hidden } = useHidden();
+  const rows = useMemo(() => schools
+    .filter(s => !hidden.has(s.slug) && s.robotics_credential)
+    .map(s => ({ s, c: s.robotics_credential! })), [hidden]);
+
+  if (!rows.length) return null;
+  const of = (k: string) => rows.filter(r => r.c.abet_commission === k);
+  const eac = of("EAC"), etac = of("ETAC"), none = of("NOT_ABET_ACCREDITED");
+
+  const Group = ({ title, items, tone, children }: {
+    title: string; items: typeof rows; tone: string; children: React.ReactNode;
+  }) => items.length === 0 ? null : (
+    <div className="rounded-md border p-3"
+      style={{ borderColor: `hsl(${tone} / 0.35)`, background: `hsl(${tone} / 0.06)` }}>
+      <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1"
+        style={{ color: `hsl(${tone})` }}>
+        {title} · {items.length}
+      </div>
+      <div className="text-[12px] leading-snug mb-2">{children}</div>
+      <div className="flex flex-wrap gap-1">
+        {items.map(({ s, c }) => (
+          <a key={s.slug} href={c.abet_source_url ?? "#"} target="_blank" rel="noreferrer"
+            className="chip chip-outline text-[10.5px] py-0 hover:underline"
+            title={`${c.program_name}${c.notes ? ` — ${c.notes}` : ""}`}>
+            {s.short}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="card p-5">
+      <div className="flex items-baseline gap-2 text-[hsl(var(--accent))]">
+        <ShieldCheck size={15}/>
+        <div className="text-[11px] tracking-wider uppercase">Degree type &amp; accreditation</div>
+      </div>
+      <h3 className="serif text-[19px] font-semibold mt-1">
+        A robotics degree is not always an engineering degree
+      </h3>
+      <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-1.5 leading-relaxed max-w-[860px]">
+        ABET accredits through two separate commissions, and the degree title does not tell you which
+        one applies. <strong className="text-[hsl(var(--foreground))]">EAC</strong> covers engineering
+        degrees (theory and calculus-heavy). <strong className="text-[hsl(var(--foreground))]">ETAC</strong>{" "}
+        covers engineering technology (applied and hands-on). Purdue's "Robotics Engineering
+        Technology" and RIT's "Robotics and Manufacturing Engineering Technology" both contain the word
+        engineering and are both ETAC. Every entry below was checked against the school's own
+        accreditation page or catalog — click a school to open its source.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+        <Group title="ABET EAC — engineering" items={eac} tone="var(--fit-strong)">
+          The robotics-titled credential is a full engineering degree. Cleanest route to engineering
+          graduate school and to PE licensure.
+        </Group>
+        <Group title="ABET ETAC — engineering technology" items={etac} tone="var(--fit-lower)">
+          Applied rather than theory-heavy. Can mean catch-up coursework for engineering graduate
+          school, and licensure rules vary by state. Each of these schools also offers EAC engineering
+          degrees you could take instead.
+        </Group>
+        <Group title="No ABET accreditation" items={none} tone="var(--fit-top)">
+          Not the same as engineering technology. These curricula are still theory-heavy, so graduate
+          school is unaffected; they simply are not a PE licensure route. Michigan's bulletin notes
+          accreditation is under departmental discussion.
+        </Group>
+      </div>
+
+      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
+        Only schools with a robotics or mechatronics-titled credential appear here; schools where
+        robotics is a track inside a conventional engineering degree inherit that degree's
+        accreditation. For robotics and AI careers specifically, PE licensure is rarely relevant — it
+        matters most in civil, structural and building-systems work — so the graduate-school angle is
+        usually the one worth weighing.
       </div>
     </div>
   );
