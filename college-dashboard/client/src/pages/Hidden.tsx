@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
-import { HideButton, FitBadge } from "@/components/SchoolBits";
+import { HideButton, FitBadge, AbetBadge } from "@/components/SchoolBits";
 import { RotateCcw, EyeOff, Bot, AlertTriangle, Target } from "lucide-react";
 import { useApplicantProfile, useOddsThresholds } from "@/lib/applicantProfile";
 import { buildRoboticsFocus, DEFAULT_FOCUS_SPEC, TIER_LABEL } from "@/lib/focusPreset";
@@ -84,7 +84,10 @@ export default function HiddenPage() {
                     <div key={p.school.slug}
                       className="rounded border border-[hsl(var(--border))] px-2.5 py-2 text-[12px]">
                       <div className="flex items-baseline justify-between gap-2">
-                        <span className="serif text-[13.5px] font-medium">{p.school.short}</span>
+                        <span className="serif text-[13.5px] font-medium">
+                          {p.school.short}{" "}
+                          <AbetBadge credential={p.school.robotics_credential} compact />
+                        </span>
                         <span className="num text-[11px] text-[hsl(var(--muted-foreground))]">
                           robotics {(p.school.axes.robotics_curriculum ?? 0).toFixed(0)}/{(p.school.axes.robotics_access ?? 0).toFixed(0)}
                           {p.rate != null && <> · {(p.rate*100).toFixed(1)}%</>}
@@ -114,6 +117,17 @@ export default function HiddenPage() {
             <Target size={12}/> Focus on these {focus.picks.length}
           </button>
         </div>
+
+        {focus.runnersUp.length > 0 && (
+          <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] mt-2.5 leading-relaxed">
+            <strong className="text-[hsl(var(--foreground))]">Just missed the cut:</strong>{" "}
+            {focus.runnersUp.map(r =>
+              `${r.pick.school.short} (${TIER_LABEL[r.tier].toLowerCase()}, ${r.gapFromLastPick <= 0.05 ? "effectively tied" : `−${r.gapFromLastPick.toFixed(2)}`})`
+            ).join(", ")}.
+            Gaps under about 0.05 are noise rather than a real difference — treat those as
+            interchangeable with the last pick in the same tier and choose on other grounds.
+          </div>
+        )}
 
         {focus.shortfalls.length > 0 && (
           <div className="text-[11.5px] text-[hsl(var(--fit-lower))] mt-2.5">
