@@ -17,15 +17,26 @@ create table if not exists workspaces (
 );
 
 create table if not exists workspace_members (
+  id uuid primary key default gen_random_uuid(),
   workspace_id uuid not null references workspaces(id) on delete cascade,
   user_id uuid references auth.users(id) on delete cascade, -- nullable until invite is claimed
   invited_email text,                                        -- filled on invite, cleared on claim
   role text not null check (role in ('owner','editor','viewer')),
   display_name text,                                         -- shown next to notes
   created_at timestamptz default now(),
-  primary key (workspace_id, coalesce(user_id::text, invited_email))
+  check (user_id is not null or invited_email is not null)    -- must identify someone
 );
--- Note: primary key uses coalesce trick so pending invites (user_id null) can co-exist with claimed rows.
+
+-- Postgres does not allow expressions in a table-level PRIMARY KEY, so uniqueness
+-- is enforced with two partial unique indexes instead: one for claimed members
+-- (user_id set) and one for pending invites (invited_email set, user_id null).
+create unique index if not exists workspace_members_user_uniq
+  on workspace_members (workspace_id, user_id)
+  where user_id is not null;
+
+create unique index if not exists workspace_members_invite_uniq
+  on workspace_members (workspace_id, lower(invited_email))
+  where user_id is null and invited_email is not null;
 
 create table if not exists school_notes (
   id uuid primary key default gen_random_uuid(),
@@ -271,8 +282,8 @@ set search_path = public
 as $$
 begin
   insert into workspace_members (workspace_id, user_id, role, display_name)
-  values (new.id, new.owner_id, 'owner', coalesce((new.name), 'Owner'))
-  on conflict do nothing;
+  values (new.id, new.owner_id, 'owner', 'Owner')
+  on conflict (workspace_id, user_id) where user_id is not null do nothing;
   return new;
 end;
 $$;
