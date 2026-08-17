@@ -190,36 +190,42 @@ export function SourceLinks({ urls }: { urls: string[] }) {
 
 /* ------------------------------------------------------------------ *
  * ABET accreditation badge for robotics-titled credentials.
- * EAC = engineering (theory track, cleanest path to grad school / PE).
- * ETAC = engineering technology (applied; grad-school and licensure friction).
- * CAC = computing. NOT_ABET_ACCREDITED is common and fine at strong CS schools.
+ *
+ * This is neutral background, deliberately styled as such. Robotics and AI are
+ * unlicensed fields — no certificate or licence depends on which ABET
+ * commission accredited the degree, and employers and CS/robotics graduate
+ * programs do not filter on it. The commission still tells you something real
+ * about the flavour of the coursework (theory-heavy vs applied), so it is worth
+ * recording; it is not worth flagging in red. The one case where it genuinely
+ * bites — PE licensure — belongs to civil, structural and building-systems
+ * work, not to this applicant's path.
  * ------------------------------------------------------------------ */
 
 const ABET_META: Record<string, { label: string; hue: string; blurb: string }> = {
   EAC: {
     label: "ABET EAC — engineering",
     hue: "var(--fit-strong)",
-    blurb: "Accredited as an engineering degree: theory and calculus-heavy, the cleanest route to engineering graduate school and PE licensure.",
+    blurb: "Accredited as an engineering degree: theory and calculus-heavy. Also the cleanest route to PE licensure, which robotics and AI work does not require.",
   },
   ETAC: {
     label: "ABET ETAC — engineering technology",
-    hue: "var(--fit-lower)",
-    blurb: "Accredited as engineering technology: applied and hands-on rather than theory-heavy. Can mean catch-up coursework for engineering graduate school, and PE licensure rules vary by state.",
+    hue: "var(--score-unk)",
+    blurb: "Accredited as engineering technology: applied and hands-on rather than theory-heavy. Not a factor for robotics or AI roles — it matters mainly for PE licensure or a traditional engineering master's, where it can mean some catch-up coursework.",
   },
   CAC: {
     label: "ABET CAC — computing",
-    hue: "var(--fit-top)",
-    blurb: "Accredited as a computing program rather than an engineering one. Fine for software and AI paths; not an engineering-licensure route.",
+    hue: "var(--fit-strong)",
+    blurb: "Accredited as a computing program rather than an engineering one. Well matched to software and AI paths; not an engineering-licensure route.",
   },
   NOT_ABET_ACCREDITED: {
     label: "No ABET accreditation",
-    hue: "var(--fit-top)",
-    blurb: "This degree has not sought ABET accreditation. Materially different from engineering technology: the curriculum is still theory-heavy, so engineering graduate school is unaffected. The one real consequence is that it is not a route to PE licensure.",
+    hue: "var(--score-unk)",
+    blurb: "This degree has not sought ABET accreditation, which is common and unremarkable at strong CS schools. The curriculum is still theory-heavy, and robotics and AI hiring and graduate admissions do not look at ABET. The only real consequence is that it is not a PE licensure route.",
   },
   "n.a.": {
     label: "Accreditation unverified",
     hue: "var(--score-unk)",
-    blurb: "No first-party accreditation statement was found for this credential. Confirm with the department before relying on it.",
+    blurb: "No first-party accreditation statement was found for this credential. Rarely consequential for a robotics or AI path, but confirm with the department if you care about licensure.",
   },
 };
 

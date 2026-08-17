@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { HideButton, FitBadge, AbetBadge } from "@/components/SchoolBits";
-import { RotateCcw, EyeOff, Bot, AlertTriangle, Target } from "lucide-react";
+import { RotateCcw, EyeOff, Bot, AlertTriangle, Info, Target } from "lucide-react";
 import { useApplicantProfile, useOddsThresholds } from "@/lib/applicantProfile";
 import { buildRoboticsFocus, DEFAULT_FOCUS_SPEC, MIN_ROBOTICS_CURRICULUM, TIER_LABEL } from "@/lib/focusPreset";
 import { Link } from "wouter";
@@ -96,10 +96,19 @@ export default function HiddenPage() {
                       <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">
                         {p.context !== "overall" ? p.context : "overall admit rate"}
                       </div>
+                      {/* A real obstacle to getting in keeps the alert treatment. */}
                       {p.caveat && (
-                        <div className="text-[11px] mt-1 flex gap-1 text-[hsl(var(--fit-lower))]">
+                        <div className="text-[11px] mt-1 flex gap-1 text-[hsl(var(--fit-conditional))]">
                           <AlertTriangle size={11} className="shrink-0 mt-0.5"/>
                           <span>{p.caveat}</span>
+                        </div>
+                      )}
+                      {/* Accreditation is background, not a warning — robotics and AI
+                          are unlicensed, so no ABET commission gates the career. */}
+                      {p.accreditation && (
+                        <div className="text-[11px] mt-1 flex gap-1 text-[hsl(var(--muted-foreground))]">
+                          <Info size={11} className="shrink-0 mt-0.5 opacity-70"/>
+                          <span>{p.accreditation}</span>
                         </div>
                       )}
                     </div>
