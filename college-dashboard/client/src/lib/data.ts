@@ -49,6 +49,16 @@ export interface School {
     /** Whether an undergraduate can get into robotics research/labs/teams (1-5). */
     robotics_access?: number | null;
   };
+  /** Researched caveat on a school's robotics route, when one exists. */
+  robotics_pathway_risk?: {
+    severity: "closed" | "internal_gate" | "accreditation" | "not_freshman";
+    affects: string;
+    note: string;
+    url: string;
+    verify_with?: string;
+    /** True when the school's robotics score depends on this route. */
+    undermines_robotics_score?: boolean;
+  };
   /** Per-subdomain robotics coverage, researched per school. */
   robotics_domains?: Record<string, {
     coverage: "strong" | "present" | "none";
