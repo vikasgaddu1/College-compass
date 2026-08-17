@@ -49,6 +49,22 @@ export interface School {
     /** Whether an undergraduate can get into robotics research/labs/teams (1-5). */
     robotics_access?: number | null;
   };
+  /**
+   * Verified ABET accreditation for the school's robotics/mechatronics-titled
+   * credential. EAC = engineering, ETAC = engineering technology (applied; carries
+   * a graduate-school and PE-licensure trade-off), CAC = computing.
+   */
+  robotics_credential?: {
+    program_name: string;
+    credential_type: "degree" | "concentration_within_degree" | "minor" | "certificate" | "none";
+    parent_degree?: string | null;
+    abet_commission: "EAC" | "ETAC" | "CAC" | "NOT_ABET_ACCREDITED" | "n.a.";
+    abet_evidence_quote?: string | null;
+    abet_source_url?: string | null;
+    eac_alternative?: string | null;
+    eac_alternative_url?: string | null;
+    notes?: string | null;
+  };
   /** Researched caveat on a school's robotics route, when one exists. */
   robotics_pathway_risk?: {
     severity: "closed" | "internal_gate" | "accreditation" | "not_freshman";
