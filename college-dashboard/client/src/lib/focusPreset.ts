@@ -47,9 +47,32 @@ export interface FocusResult {
   shortfalls: { tier: OddsTier; wanted: number; got: number }[];
   /** Schools excluded because their robotics route is closed or not open to freshmen. */
   excluded: { school: School; why: string }[];
+  /**
+   * Schools that qualify on admissions odds but do not clear the robotics
+   * evidence bar, so they are never auto-picked. Surfaced rather than hidden:
+   * several are excellent for AI and remain worth selecting by hand.
+   */
+  belowBar: { school: School; tier: OddsTier; robotics_curriculum: number | null; why: string }[];
 }
 
 const DOMAIN_MAX = 20; // 10 domains x 2 points for "strong"
+
+/**
+ * Minimum researched robotics-curriculum score for a school to be auto-picked
+ * onto a *robotics* shortlist.
+ *
+ * Without this, the preset fills each tier's quota with whatever is available at
+ * that admit rate, whether or not the school teaches robotics. UIUC was the case
+ * that exposed it: three undergraduate robotics courses, no robotics minor,
+ * concentration, degree or capstone, yet auto-picked because it was one of only
+ * two schools in the REACH band. A quota is not evidence.
+ *
+ * 4 is the level at which the research notes show real robotics coursework —
+ * roughly eight or more undergraduate courses, usually with a credential or a
+ * capstone attached. Schools below the bar stay fully available to select by
+ * hand, and are listed with the reason.
+ */
+export const MIN_ROBOTICS_CURRICULUM = 4;
 
 /**
  * Composite robotics + AI strength, 0-5.
@@ -110,6 +133,7 @@ export function buildRoboticsFocus(
   pool: School[] = schools,
 ): FocusResult {
   const excluded: FocusResult["excluded"] = [];
+  const belowBar: FocusResult["belowBar"] = [];
   const scored: FocusPick[] = [];
 
   for (const s of pool) {
@@ -120,6 +144,21 @@ export function buildRoboticsFocus(
     }
     const r = classify((s as any).admissions, (s as any).nc_applicant_note, profile, thresholds);
     if (r.tier === "NEEDS_DATA") continue; // never recommend on absent data
+
+    // Odds alone must not put a school on a robotics shortlist.
+    const rc = s.axes.robotics_curriculum ?? 0;
+    if (rc < MIN_ROBOTICS_CURRICULUM) {
+      const courses = s.robotics_curriculum_detail?.course_count_undergrad;
+      belowBar.push({
+        school: s,
+        tier: r.tier,
+        robotics_curriculum: s.axes.robotics_curriculum ?? null,
+        why: `robotics curriculum ${rc}/5${courses != null ? `, ${courses} undergraduate robotics course${courses === 1 ? "" : "s"}` : ""}`
+          + `${s.robotics_credential ? "" : ", no robotics degree, minor or concentration"}`,
+      });
+      continue;
+    }
+
     scored.push({
       school: s,
       tier: r.tier,
@@ -161,7 +200,7 @@ export function buildRoboticsFocus(
     }
   }
 
-  return { picks, runnersUp, shortfalls, excluded };
+  return { picks, runnersUp, shortfalls, excluded, belowBar };
 }
 
 /**
