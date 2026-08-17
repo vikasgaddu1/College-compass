@@ -166,6 +166,8 @@ export default function OddsPage() {
                     <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div></td>
                     <td className="text-[11.5px] leading-snug">{result.reason}
                       {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>gated CS downgrade</span>}
+                      {!result.gated_downgrade_applied && result.cs_gate === "mild" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 55% 48%)" }}>mild CS gate</span>}
+                      {result.cs_gate === "none" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(145 50% 35%)" }}>no CS gate</span>}
                     </td>
                   </tr>
                 );
@@ -178,7 +180,8 @@ export default function OddsPage() {
       <div className="card p-3 text-[11px] text-[hsl(var(--muted-foreground))] flex items-start gap-1.5">
         <Info size={11} className="mt-0.5 flex-shrink-0"/>
         <div>
-          <strong>How this works:</strong> Admit rate is pulled from each school's Common Data Set (see <code>admissions.overall_admit_rate</code> field). For NC applicant, the classifier picks OOS rate when published (all publics except UNC/NCSU) or in-state rate at UNC-CH + NC State. SAT modifier uses CDS C9 mid-50; only applies when you're submitting scores. Gated CS downgrade fires when a school's <code>major_admit_context</code> mentions direct-admit, gated, restricted, or separately-admitted status. Turn any of that off in Settings.
+          <strong>How this works.</strong> Admit rates come from each school's Common Data Set. Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the 3 NC schools (UNC-CH 37.0%, NC State 48.9%, Duke has no residency preference) and the <em>out-of-state</em> rate at the 10 other publics that publish one (Georgia Tech 10.1%, UIUC 29.0%, Purdue 43.6%, UW 39.0%, and so on). Schools with no published split fall back to the overall rate. The SAT modifier uses CDS C9 mid-50 and only applies when you're submitting scores. The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> — 16 schools where CS sits behind a separate admission or a hard internal gate — and never on schools that explicitly state they have no major-level gate. Every threshold is adjustable above.
+          <div className="mt-1.5"><strong>Known gaps:</strong> Kettering publishes no Common Data Set at all, so it shows as Needs data. Virginia Tech's CDS URLs returned 404 during research, so its C7 grid and test-score fields are empty. UC Berkeley, UT Austin, Texas A&amp;M and Michigan publish no residency split, so those use the overall rate and understate the out-of-state difficulty.</div>
         </div>
       </div>
     </div>

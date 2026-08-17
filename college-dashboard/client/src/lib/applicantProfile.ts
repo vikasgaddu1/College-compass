@@ -78,35 +78,57 @@ export type OddsTier = "LIKELY" | "TARGET" | "REACH" | "HIGH_REACH" | "NEEDS_DAT
 export interface OddsResult {
   tier: OddsTier;
   reason: string;             // one-sentence explanation
-  effective_admit_rate: number | null;   // NC-adjusted for publics
-  admit_rate_context: string; // "OOS" | "in-state" | "overall"
+  effective_admit_rate: number | null;   // residency-adjusted for publics
+  admit_rate_context: string; // "in-state (NC resident)" | "out-of-state (from NC)" | "overall"
   used_test_score: boolean;
   gated_downgrade_applied: boolean;
+  cs_gate: string | null;     // none | mild | strong | unknown
+}
+
+/** Defensive coercion: data may arrive as a decimal (0.11), a percentage (11.07),
+ *  or a CDS-count object. Never let a value above 1 reach the UI as a rate. */
+export function coerceRate(v: any): number | null {
+  if (v === null || v === undefined || typeof v === "boolean") return null;
+  if (typeof v === "object") {
+    const applied = Number((v as any).applied);
+    const admitted = Number((v as any).admitted);
+    if (Number.isFinite(applied) && Number.isFinite(admitted) && applied > 0) {
+      return admitted / applied;
+    }
+    const pct = (v as any).value_pct ?? (v as any).pct ?? (v as any).value;
+    return coerceRate(pct);
+  }
+  const n = Number(v);
+  if (!Number.isFinite(n) || n < 0) return null;
+  const r = n > 1 ? n / 100 : n;
+  return r > 1 ? null : r;   // still nonsense after scaling -> reject
 }
 
 export function classify(admissions: any, nc_note: string | undefined, profile: ApplicantProfile, t: OddsThresholds): OddsResult {
-  if (!admissions || typeof admissions.overall_admit_rate !== "number") {
-    return { tier: "NEEDS_DATA", reason: "This school has not published a sourced overall admit rate.", effective_admit_rate: null, admit_rate_context: "n/a", used_test_score: false, gated_downgrade_applied: false };
+  const overall = coerceRate(admissions?.overall_admit_rate);
+  if (overall === null) {
+    return { tier: "NEEDS_DATA", reason: "No sourced overall admit rate published for this school.", effective_admit_rate: null, admit_rate_context: "n/a", used_test_score: false, gated_downgrade_applied: false, cs_gate: admissions?.cs_gate ?? null };
   }
 
-  // Pick the effective admit rate. For a NC applicant:
-  //  - If the school is NC (UNC-CH, NC State, Duke) and admissions.admit_rate_note contains "in-state" — use in-state
-  //  - If publics and OOS rate is available in admit_rate_note or nc_applicant_note, prefer OOS
-  //  - Otherwise fall back to overall.
-  let rate = admissions.overall_admit_rate as number;
+  // Effective admit rate comes from VERIFIED structured fields extracted and
+  // hand-checked from each school's CDS prose — not from regex-reading sentences
+  // in the browser, which previously mis-parsed the residency splits.
+  //   school in applicant's home state -> in-state rate
+  //   otherwise                        -> out-of-state rate when published
+  //   neither published                -> overall
+  let rate = overall;
   let ctx = "overall";
 
-  const note = (admissions.admit_rate_note || "") + " " + (nc_note || "");
-  const ncMatch = note.match(/NC[^0-9]{0,20}(\d{1,2}(?:\.\d+)?)\s*%/i);
-  const oosMatch = note.match(/OOS[^0-9]{0,20}(\d{1,2}(?:\.\d+)?)\s*%/i);
-  const majorAdvantage = /MAJOR ADVANTAGE|friendliest/i.test(nc_note || "");
+  const inState = coerceRate(admissions.in_state_admit_rate);
+  const oosRate = coerceRate(admissions.oos_admit_rate);
+  const inHomeState = profile.home_state === "NC" && Boolean(admissions.is_home_state_nc);
 
-  if (majorAdvantage && ncMatch) {
-    rate = parseFloat(ncMatch[1]) / 100;
-    ctx = "in-state (NC)";
-  } else if (oosMatch) {
-    rate = parseFloat(oosMatch[1]) / 100;
-    ctx = "out-of-state (from NC)";
+  if (inHomeState && inState !== null) {
+    rate = inState;
+    ctx = `in-state (${profile.home_state} resident)`;
+  } else if (!inHomeState && oosRate !== null) {
+    rate = oosRate;
+    ctx = `out-of-state (from ${profile.home_state})`;
   }
 
   // Determine tier by admit rate
@@ -131,25 +153,20 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     }
   }
 
-  // Gated major downgrade
+  // Gated-major downgrade, driven by the researched `cs_gate` enum rather than
+  // keyword-matching prose. The old regex was negation-blind and penalised WPI,
+  // RPI and Florida for explicitly NOT having a major-level gate.
   let gated_downgrade_applied = false;
-  if (t.gated_downgrade) {
-    const ctxTxt = (admissions.major_admit_context || "").toLowerCase();
-    const gatedSignal =
-      /direct[- ]admit/.test(ctxTxt) ||
-      /gated|restricted|competitive|separately admitted|closed to/.test(ctxTxt) ||
-      /cs \d.*%/.test(ctxTxt) ||
-      /separately/.test(ctxTxt);
-    if (gatedSignal && tier !== "HIGH_REACH") {
-      const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH"];
-      const idx = order.indexOf(tier);
-      if (idx >= 0 && idx < order.length - 1) {
-        tier = order[idx + 1];
-        gated_downgrade_applied = true;
-        reason += " Downgraded one tier: this school flags a gated/competitive CS admit (see major_admit_context).";
-      }
+  const gate: string | undefined = admissions.cs_gate;
+  if (t.gated_downgrade && gate === "strong" && tier !== "HIGH_REACH") {
+    const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH"];
+    const idx = order.indexOf(tier);
+    if (idx >= 0 && idx < order.length - 1) {
+      tier = order[idx + 1];
+      gated_downgrade_applied = true;
+      reason += " Downgraded one tier: CS/AI sits behind a strong separate admission or internal gate here.";
     }
   }
 
-  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied };
+  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null };
 }

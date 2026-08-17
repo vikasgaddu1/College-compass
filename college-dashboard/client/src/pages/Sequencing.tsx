@@ -4,7 +4,14 @@ import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 
 type PlanKind = "ED I" | "ED II" | "EA" | "RD";
-interface Event { slug: string; short: string; plan: PlanKind; deadline: string; notify: string | null; cite?: string; }
+interface Event {
+  slug: string; short: string; plan: PlanKind;
+  deadline: string;            // ISO
+  notify: string | null;       // ISO
+  deadlineText?: string;       // original prose, for tooltips
+  notifyText?: string;
+  approx?: boolean;            // date was fuzzy ("mid-December") and got snapped
+}
 
 // FRC bands (approx US High-School FIRST Robotics season)
 const FRC_BANDS = [
@@ -34,14 +41,25 @@ export default function SequencingPage() {
     visible.forEach(s => {
       const dd = (s as any).admissions?.decision_dates;
       if (!dd) return;
-      const pairs: [PlanKind, string, string][] = [
-        ["ED I", dd.ed1_deadline, dd.ed1_notify],
-        ["ED II", dd.ed2_deadline, dd.ed2_notify],
-        ["EA", dd.ea_deadline, dd.ea_notify],
-        ["RD", dd.rd_deadline, dd.rd_notify],
+      // Use the normalized *_iso fields; the raw fields are prose
+      // ("November 1 [MIT-S4]", "mid-December 2026") and are kept for tooltips.
+      const plans: [PlanKind, string, string][] = [
+        ["ED I",  "ed1", "ed1"],
+        ["ED II", "ed2", "ed2"],
+        ["EA",    "ea",  "ea"],
+        ["RD",    "rd",  "rd"],
       ];
-      pairs.forEach(([plan, deadline, notify]) => {
-        if (deadline) out.push({ slug: s.slug, short: s.short, plan, deadline, notify: notify || null });
+      plans.forEach(([plan, dk]) => {
+        const iso = dd[`${dk}_deadline_iso`];
+        if (!iso) return;
+        out.push({
+          slug: s.slug, short: s.short, plan,
+          deadline: iso,
+          notify: dd[`${dk}_notify_iso`] || null,
+          deadlineText: dd[`${dk}_deadline`],
+          notifyText: dd[`${dk}_notify`],
+          approx: Boolean(dd[`${dk}_deadline_approx`] || dd[`${dk}_notify_approx`]),
+        });
       });
     });
     return out.sort((a, b) => a.deadline.localeCompare(b.deadline));
@@ -73,6 +91,16 @@ export default function SequencingPage() {
       ed2.forEach(b => {
         if (a.slug !== b.slug && b.deadline < a.notify!) {
           out.push(`${a.short} ED I notifies ${a.notify} — AFTER ${b.short} ED II deadline ${b.deadline}. If ED I is a deny, you may miss ED II here.`);
+        }
+      });
+    });
+    // RD deadlines that land before an ED I notification (same risk, different plan)
+    const rd = events.filter(e => e.plan === "RD");
+    ed1.forEach(a => {
+      if (!a.notify) return;
+      rd.forEach(b => {
+        if (a.slug !== b.slug && b.deadline < a.notify!) {
+          out.push(`${a.short} ED I notifies ${a.notify} — AFTER ${b.short} RD deadline ${b.deadline}. You must submit that RD application before knowing the ED I outcome.`);
         }
       });
     });
@@ -156,14 +184,15 @@ export default function SequencingPage() {
                   <div className="absolute h-[2px] rounded" style={{ top: 8, left: `${xd}%`, width: `${xn - xd}%`, background: PLAN_COLORS[ev.plan], opacity: 0.4 }}/>
                 )}
                 {/* deadline dot */}
-                <div className="absolute w-2 h-2 rounded-full" style={{ top: 7, left: `calc(${xd}% - 4px)`, background: PLAN_COLORS[ev.plan] }} title={`${ev.short} ${ev.plan} deadline: ${ev.deadline}`}/>
+                <div className="absolute w-2 h-2 rounded-full" style={{ top: 7, left: `calc(${xd}% - 4px)`, background: PLAN_COLORS[ev.plan] }} title={`${ev.short} ${ev.plan} deadline: ${ev.deadlineText || ev.deadline}`}/>
                 {/* notify triangle */}
                 {xn !== null && (
-                  <div className="absolute w-0 h-0" style={{ top: 5, left: `calc(${xn}% - 4px)`, borderTop: "4px solid transparent", borderBottom: "4px solid transparent", borderRightWidth: 8, borderRightStyle: "solid", borderRightColor: PLAN_COLORS[ev.plan] }} title={`${ev.short} ${ev.plan} notify: ${ev.notify}`}/>
+                  <div className="absolute w-0 h-0" style={{ top: 5, left: `calc(${xn}% - 4px)`, borderTop: "4px solid transparent", borderBottom: "4px solid transparent", borderRightWidth: 8, borderRightStyle: "solid", borderRightColor: PLAN_COLORS[ev.plan] }} title={`${ev.short} ${ev.plan} notify: ${ev.notifyText || ev.notify}`}/>
                 )}
                 {/* label */}
-                <div className="absolute text-[10.5px] font-medium whitespace-nowrap" style={{ top: 1, left: `min(calc(${xd}% + 6px), calc(100% - 140px))`, color: PLAN_COLORS[ev.plan] }}>
+                <div className="absolute text-[10.5px] font-medium whitespace-nowrap" style={{ top: 1, left: `min(calc(${xd}% + 6px), calc(100% - 150px))`, color: PLAN_COLORS[ev.plan] }}>
                   {ev.short} <span className="opacity-70">{ev.plan}</span>
+                  {ev.approx && <span className="opacity-60" title="School publishes an approximate window (e.g. 'mid-December'); date snapped for plotting"> ~</span>}
                 </div>
               </div>
             );
