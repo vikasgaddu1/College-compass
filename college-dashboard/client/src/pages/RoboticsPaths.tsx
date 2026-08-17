@@ -3,7 +3,7 @@ import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { NoteButton, AbetBadge } from "@/components/SchoolBits";
 import roboticsPaths from "@/data/robotics_paths.json";
-import { Bot, ExternalLink, Search, Filter, Cog, Cpu, Wrench, Trophy, Download, Building2, AlertTriangle, ShieldCheck, HelpCircle } from "lucide-react";
+import { Bot, ExternalLink, Search, Filter, Cog, Cpu, Wrench, Trophy, Download, Building2, AlertTriangle, Info, ShieldCheck, HelpCircle } from "lucide-react";
 
 type Row = typeof roboticsPaths.schools[keyof typeof roboticsPaths.schools];
 
@@ -301,8 +301,14 @@ export default function RoboticsPathsPage() {
             </div>
           </div>
           <div className="mt-3 text-[11.5px] text-[hsl(var(--muted-foreground))] italic">
-            <AlertTriangle size={10} className="inline text-[hsl(var(--fit-lower))] mr-1"/>
-            <strong>Watch out:</strong> Virginia Tech's Robotics and Mechatronics major was CLOSED to new declarations in January 2026 — do not apply expecting this route. UW Seattle's Mechatronics option requires a junior-year competitive application (not guaranteed after ME admission). Penn State EMET and TAMU MXET are Engineering Technology (ETAC/ABET), which can matter for PE licensure and some grad admissions.
+            <AlertTriangle size={10} className="inline text-[hsl(var(--fit-conditional))] mr-1"/>
+            <strong>Watch out:</strong> Virginia Tech's Robotics and Mechatronics major was CLOSED to new declarations in January 2026 — do not apply expecting this route. UW Seattle's Mechatronics option requires a junior-year competitive application (not guaranteed after ME admission).
+          </div>
+          <div className="mt-1.5 text-[11.5px] text-[hsl(var(--muted-foreground))]">
+            <Info size={10} className="inline mr-1 opacity-70"/>
+            For reference: Penn State EMET and TAMU MXET are Engineering Technology (ETAC/ABET) rather
+            than EAC. That shapes how applied the coursework is, but nothing in a robotics or AI career
+            turns on it — see the accreditation panel below.
           </div>
         </div>
 
@@ -1015,9 +1021,12 @@ function AccreditationPanel() {
         A robotics degree is not always an engineering degree
       </h3>
       <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-1.5 leading-relaxed max-w-[860px]">
-        ABET accredits through two separate commissions, and the degree title does not tell you which
-        one applies. <strong className="text-[hsl(var(--foreground))]">EAC</strong> covers engineering
-        degrees (theory and calculus-heavy). <strong className="text-[hsl(var(--foreground))]">ETAC</strong>{" "}
+        <strong className="text-[hsl(var(--foreground))]">Read this as background, not as a
+        ranking.</strong> Robotics and AI are unlicensed fields: no certificate or licence depends on
+        which ABET commission accredited a degree, and employers and CS and robotics graduate programs
+        do not filter on it. What the commission does tell you is the flavour of the coursework.{" "}
+        <strong className="text-[hsl(var(--foreground))]">EAC</strong> covers engineering degrees
+        (theory and calculus-heavy). <strong className="text-[hsl(var(--foreground))]">ETAC</strong>{" "}
         covers engineering technology (applied and hands-on). Purdue's "Robotics Engineering
         Technology" and RIT's "Robotics and Manufacturing Engineering Technology" both contain the word
         engineering and are both ETAC. Every entry below was checked against the school's own
@@ -1026,27 +1035,27 @@ function AccreditationPanel() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
         <Group title="ABET EAC — engineering" items={eac} tone="var(--fit-strong)">
-          The robotics-titled credential is a full engineering degree. Cleanest route to engineering
-          graduate school and to PE licensure.
+          The robotics-titled credential is a full engineering degree: theory-heavy, and the cleanest
+          route to PE licensure if you ever want it.
         </Group>
-        <Group title="ABET ETAC — engineering technology" items={etac} tone="var(--fit-lower)">
-          Applied rather than theory-heavy. Can mean catch-up coursework for engineering graduate
-          school, and licensure rules vary by state. Each of these schools also offers EAC engineering
-          degrees you could take instead.
+        <Group title="ABET ETAC — engineering technology" items={etac} tone="var(--score-unk)">
+          Applied rather than theory-heavy. Not a factor for robotics or AI roles; it matters mainly
+          for PE licensure or a traditional engineering master's, where it can mean some catch-up
+          coursework. Each of these schools also offers EAC engineering degrees.
         </Group>
-        <Group title="No ABET accreditation" items={none} tone="var(--fit-top)">
-          Not the same as engineering technology. These curricula are still theory-heavy, so graduate
-          school is unaffected; they simply are not a PE licensure route. Michigan's bulletin notes
-          accreditation is under departmental discussion.
+        <Group title="No ABET accreditation" items={none} tone="var(--score-unk)">
+          Common and unremarkable at strong CS schools, and not the same as engineering technology:
+          these curricula are still theory-heavy. Robotics and AI hiring and graduate admissions do
+          not look at ABET. Michigan's bulletin notes accreditation is under departmental discussion.
         </Group>
       </div>
 
       <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
         Only schools with a robotics or mechatronics-titled credential appear here; schools where
         robotics is a track inside a conventional engineering degree inherit that degree's
-        accreditation. For robotics and AI careers specifically, PE licensure is rarely relevant — it
-        matters most in civil, structural and building-systems work — so the graduate-school angle is
-        usually the one worth weighing.
+        accreditation. None of this should move a school up or down your list on its own: PE licensure
+        matters most in civil, structural and building-systems work, so for a robotics and AI path the
+        practical question is just whether the coursework leans theoretical or applied.
       </div>
     </div>
   );

@@ -31,6 +31,8 @@ export interface FocusPick {
   reason: string;
   /** Set when the school carries a researched robotics pathway caveat. */
   caveat: string | null;
+  /** ABET background on the robotics credential. Context, not a warning. */
+  accreditation: string | null;
 }
 
 export interface FocusResult {
@@ -126,6 +128,7 @@ export function buildRoboticsFocus(
       context: r.admit_rate_context,
       reason: r.reason,
       caveat: buildCaveat(s),
+      accreditation: buildAccreditationNote(s),
     });
   }
 
@@ -161,26 +164,39 @@ export function buildRoboticsFocus(
   return { picks, runnersUp, shortfalls, excluded };
 }
 
-/** Surface the accreditation trade-off and any pathway caveat as one string. */
-function buildCaveat(s: School): string | null {
-  const parts: string[] = [];
+/**
+ * Accreditation background — informational, not a warning. Robotics and AI work
+ * is unlicensed: there is no certificate or licence that ABET commission gates,
+ * and employers and CS/robotics graduate programs do not filter on it. It is
+ * recorded because it shapes the flavour of the coursework, not because it is a
+ * reason to avoid a school.
+ */
+function buildAccreditationNote(s: School): string | null {
   const cred = s.robotics_credential;
   if (cred?.abet_commission === "ETAC") {
-    parts.push(
-      `${cred.program_name} is ABET engineering technology (ETAC), not an engineering (EAC) degree — ` +
-      `applied rather than theory-heavy, which can mean catch-up coursework for engineering grad school.` +
-      (cred.eac_alternative ? ` EAC alternative here: ${cred.eac_alternative}` : ""),
-    );
-  } else if (cred?.abet_commission === "NOT_ABET_ACCREDITED") {
-    parts.push(
-      `${cred.program_name} carries no ABET accreditation. Not a concern for graduate school at this ` +
-      `school, but it is not a route to PE licensure.`,
+    return (
+      `${cred.program_name} is ABET engineering technology (ETAC) rather than engineering (EAC) — ` +
+      `applied and hands-on rather than theory-heavy. Not a factor for robotics or AI roles; it ` +
+      `matters mainly for PE licensure or a traditional engineering master's.` +
+      (cred.eac_alternative ? ` EAC alternative here: ${cred.eac_alternative}` : "")
     );
   }
+  if (cred?.abet_commission === "NOT_ABET_ACCREDITED") {
+    return (
+      `${cred.program_name} is not ABET-accredited. The curriculum is still theory-heavy, and ` +
+      `robotics and AI hiring and graduate admissions do not look at ABET — the only real ` +
+      `consequence is that it is not a PE licensure route.`
+    );
+  }
+  return null;
+}
+
+/** A genuine obstacle to actually getting into the robotics route. */
+function buildCaveat(s: School): string | null {
   if (s.robotics_pathway_risk?.severity === "internal_gate") {
-    parts.push(`${s.robotics_pathway_risk.affects}: ${s.robotics_pathway_risk.note}`);
+    return `${s.robotics_pathway_risk.affects}: ${s.robotics_pathway_risk.note}`;
   }
-  return parts.length ? parts.join(" ") : null;
+  return null;
 }
 
 export const TIER_LABEL: Record<OddsTier, string> = {
