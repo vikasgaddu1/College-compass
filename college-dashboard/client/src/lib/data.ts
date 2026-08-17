@@ -13,6 +13,12 @@ export interface School {
   institution_type: string;
   is_public: boolean;
   undergrad_enrollment: number | null;
+  /** Source-log tag for the enrollment figure, e.g. "[NCSU-S12]". */
+  undergrad_enrollment_cite?: string;
+  /** Term the enrollment figure describes, e.g. "Fall 2025". */
+  undergrad_enrollment_asof?: string;
+  /** What was verified, and against what — including any correction made. */
+  undergrad_enrollment_note?: string;
   size_bucket: "very-small" | "small" | "medium" | "large" | "unknown";
   degree_name: string;
   degree_type: string;
