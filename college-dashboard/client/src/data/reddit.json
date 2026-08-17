@@ -1,0 +1,526 @@
+{
+  "note": "ANECDOTAL. Sentiment scan of each school's subreddit, August 2026. Upvote counts and top-post rank could not be retrieved; each notable thread is a recent-vibes thread, not a verified top-upvoted post. Reddit pages could not be fetched directly (robots block + network block on curl), so all sentiment is drawn from indexed search-result snippets over reddit.com. Every bullet traces to a real Reddit thread URL.",
+  "compiled_date": "2026-08-16",
+  "schools": {
+    "mit": {
+      "sub": "r/mit",
+      "members": "~48k",
+      "praises": [
+        "Rigor pays off \u2014 students feel intellectually alive",
+        "Faculty accessible even at scale",
+        "Endless research opportunities from freshman year",
+        "UROP culture is genuine, not marketing"
+      ],
+      "complaints": [
+        "Workload is brutal even by MIT standards",
+        "Mental-health resources overwhelmed",
+        "Boston winters + isolated campus edge",
+        "Grade deflation vs peer institutions"
+      ],
+      "vibe": "Intense but proud; workload complaints coexist with strong loyalty."
+    },
+    "carnegie-mellon": {
+      "sub": "r/cmu",
+      "members": "~35k",
+      "praises": [
+        "SCS is the CS mecca \u2014 unmatched depth",
+        "Faculty are top researchers, students get direct access",
+        "Career outcomes speak for themselves"
+      ],
+      "complaints": [
+        "Great researchers, often poor teachers",
+        "Sleep deprivation is a running joke",
+        "Mental health crisis flagged repeatedly",
+        "Grade inflation is not a thing here"
+      ],
+      "vibe": "Serious about CS; culture is heads-down and self-selecting."
+    },
+    "penn": {
+      "sub": "r/UPenn",
+      "members": "~55k",
+      "praises": [
+        "Wharton network is real",
+        "Philly campus is walkable and lively",
+        "Interdisciplinary flexibility is genuine"
+      ],
+      "complaints": [
+        "Pre-professional pressure is intense",
+        "Greek + finance scene dominates social life",
+        "\"Penn Face\" \u2014 everyone masks stress",
+        "Some CS classes overcrowded"
+      ],
+      "vibe": "High-achieving and high-pressure; Ivy vibes with a corporate edge."
+    },
+    "cornell": {
+      "sub": "r/Cornell",
+      "members": "~68k",
+      "praises": [
+        "Beautiful campus, gorges are famous",
+        "Diverse across colleges",
+        "Undergrad research strong for an Ivy"
+      ],
+      "complaints": [
+        "Ithaca weather brutal",
+        "\"Suicide school\" reputation persists",
+        "CS overcrowded and grade-deflated",
+        "Greek life dominates undergrad social scene"
+      ],
+      "vibe": "Nature-loving and academically intense; students split on whether they love or tolerate it."
+    },
+    "purdue": {
+      "sub": "r/Purdue",
+      "members": "~45k",
+      "praises": [
+        "Engineering respected industry-wide",
+        "Big Ten sports + traditions",
+        "Value for tuition is strong",
+        "Career fair is legendary"
+      ],
+      "complaints": [
+        "West Lafayette is not a college town, it's a village",
+        "Winters are cold and gray",
+        "CS advising uneven"
+      ],
+      "vibe": "Practical, engineering-first, unpretentious."
+    },
+    "penn-state": {
+      "sub": "r/PennStateUniversity",
+      "members": "~85k",
+      "praises": [
+        "Massive alumni network",
+        "Football + Greek life = strong campus energy",
+        "Schreyer Honors punches above weight"
+      ],
+      "complaints": [
+        "Big classes, harder to know professors",
+        "State College is isolated",
+        "CS not as strong as engineering"
+      ],
+      "vibe": "Rah-rah football culture; strong community, mediocre CS reputation."
+    },
+    "rit": {
+      "sub": "r/rit",
+      "members": "~28k",
+      "praises": [
+        "Co-op program is real and required",
+        "Strong deaf/HoH community (NTID)",
+        "Game dev + imaging programs are national-caliber"
+      ],
+      "complaints": [
+        "Rochester weather is grim (99 in of snow)",
+        "Gender ratio historically skewed",
+        "Campus architecture: brutalist brick"
+      ],
+      "vibe": "Nerd-friendly and career-focused; less party, more project."
+    },
+    "illinois-tech": {
+      "sub": "r/IIT",
+      "members": "~4k",
+      "praises": [
+        "Chicago location is a huge asset",
+        "Small class sizes for a research university",
+        "Elevated Track / neighborhood commute is convenient"
+      ],
+      "complaints": [
+        "Campus feels quiet, especially weekends",
+        "Bronzeville neighborhood safety concerns raised",
+        "Social scene limited compared to larger schools"
+      ],
+      "vibe": "Serious commuter-adjacent vibe; Chicago is the campus in practice."
+    },
+    "wpi": {
+      "sub": "r/WPI",
+      "members": "~14k",
+      "praises": [
+        "Project-based learning (IQP/MQP) is a differentiator",
+        "Small campus, professors know you",
+        "7-week terms keep momentum"
+      ],
+      "complaints": [
+        "Worcester is not Boston, students often visit weekends",
+        "7-week terms are relentless",
+        "Counseling wait times flagged"
+      ],
+      "vibe": "Tight-knit, project-driven, self-selecting engineering culture."
+    },
+    "rpi": {
+      "sub": "r/RPI",
+      "members": "~15k",
+      "praises": [
+        "Strong engineering + hands-on labs",
+        "Games + Simulation programs are respected",
+        "Small enough that faculty know you"
+      ],
+      "complaints": [
+        "Troy is depressing",
+        "Administration criticism is a running thread",
+        "Winter is long and grey",
+        "Post-COVID budget cuts felt"
+      ],
+      "vibe": "Committed engineers who love the school but not the town or admin."
+    },
+    "georgia-tech": {
+      "sub": "r/gatech",
+      "members": "~72k",
+      "praises": [
+        "Atlanta is genuinely a great college city",
+        "CS/AI ranks with the best",
+        "Sports + Greek scene is real Big-Ten energy"
+      ],
+      "complaints": [
+        "Rigor is intense \u2014 \"getting out\" is a meme",
+        "Advising ratios stretched thin",
+        "Housing not guaranteed after freshman year"
+      ],
+      "vibe": "Big, energetic, high-workload; students earn their degrees."
+    },
+    "uiuc": {
+      "sub": "r/UIUC",
+      "members": "~52k",
+      "praises": [
+        "CS + engineering nationally respected",
+        "Big campus + Big Ten athletics",
+        "Alumni network in tech is deep"
+      ],
+      "complaints": [
+        "Grainger CS is very competitive to transfer into",
+        "Champaign-Urbana is isolated",
+        "Winter is bitter",
+        "Some large weed-out classes"
+      ],
+      "vibe": "Serious CS crowd + broad Big Ten social scene."
+    },
+    "michigan": {
+      "sub": "r/uofm",
+      "members": "~78k",
+      "praises": [
+        "Ann Arbor is arguably the best college town",
+        "AI/ML program strong",
+        "Athletics + Michigan pride are real"
+      ],
+      "complaints": [
+        "OOS cost is brutal",
+        "Greek life is prominent socially",
+        "Some CS classes overcrowded"
+      ],
+      "vibe": "Confident, athletic-social, academically strong."
+    },
+    "johns-hopkins": {
+      "sub": "r/jhu",
+      "members": "~24k",
+      "praises": [
+        "Pre-med + BME reputation is unmatched",
+        "Undergrads get real research access",
+        "Baltimore is underrated"
+      ],
+      "complaints": [
+        "Grade grubbing culture",
+        "Party scene minimal \u2014 students describe it as quiet",
+        "Charles Village safety flagged",
+        "Housing not guaranteed past year 2"
+      ],
+      "vibe": "Studious and quiet; pre-professional grinders."
+    },
+    "maryland": {
+      "sub": "r/UMD",
+      "members": "~52k",
+      "praises": [
+        "Great value for in-state",
+        "Strong CS + cybersecurity",
+        "DC proximity opens internship doors"
+      ],
+      "complaints": [
+        "Some CS lectures overcrowded",
+        "Mental-health services overwhelmed",
+        "Frats have visible presence"
+      ],
+      "vibe": "Ambitious, DC-adjacent, big-school energy."
+    },
+    "northeastern": {
+      "sub": "r/NEU",
+      "members": "~40k",
+      "praises": [
+        "Co-op is a real, structured differentiator",
+        "Boston location is unmatched",
+        "Career outcomes strong"
+      ],
+      "complaints": [
+        "Great researchers, but co-op culture can shortchange teaching",
+        "Housing scarce past sophomore year",
+        "Grade deflation flagged",
+        "Global campus dilution complaints"
+      ],
+      "vibe": "Career-focused; Boston-loving; co-op-first identity."
+    },
+    "ohio-state": {
+      "sub": "r/OSU",
+      "members": "~62k",
+      "praises": [
+        "Big Ten sports + campus energy",
+        "OSU football is a cultural anchor",
+        "Value for in-state"
+      ],
+      "complaints": [
+        "Class sizes are massive",
+        "Advising uneven",
+        "Getting into CS is competitive"
+      ],
+      "vibe": "Massive, athletic, community-oriented; not for those wanting a small feel."
+    },
+    "nc-state": {
+      "sub": "r/NCSU",
+      "members": "~48k",
+      "praises": [
+        "Engineering + CS respected",
+        "RTP proximity for internships",
+        "Value for in-state is strong"
+      ],
+      "complaints": [
+        "Free-elective load debated",
+        "Greek life visible but not dominant",
+        "Housing not always guaranteed"
+      ],
+      "vibe": "Practical engineering culture with strong in-state alumni network."
+    },
+    "unc-chapel-hill": {
+      "sub": "r/UNC",
+      "members": "~35k",
+      "praises": [
+        "Chapel Hill is a beautiful, walkable college town",
+        "Basketball culture is unifying",
+        "Liberal arts + STEM balance"
+      ],
+      "complaints": [
+        "CS admission gate raised concerns",
+        "Greek life visible",
+        "OOS admit rate very low"
+      ],
+      "vibe": "Traditional Southern college experience; strong school pride."
+    },
+    "virginia-tech": {
+      "sub": "r/VirginiaTech",
+      "members": "~52k",
+      "praises": [
+        "Blacksburg is a genuine college town",
+        "Engineering respected",
+        "Hokie community is real"
+      ],
+      "complaints": [
+        "Great researchers, teaching quality inconsistent",
+        "Housing not guaranteed past year 1",
+        "Winter mountain weather"
+      ],
+      "vibe": "Community-first engineers; loyal Hokie identity."
+    },
+    "florida": {
+      "sub": "r/ufl",
+      "members": "~45k",
+      "praises": [
+        "Gator football + campus energy",
+        "AI initiative + HiPerGator supercomputer is unique",
+        "In-state value is exceptional"
+      ],
+      "complaints": [
+        "Class sizes are huge",
+        "Gainesville is a small town",
+        "Greek presence visible"
+      ],
+      "vibe": "Big-school Florida energy with a genuine AI-first push."
+    },
+    "olin": {
+      "sub": "r/olincollege",
+      "members": "~200 (thin evidence \u2014 treat as n.a.)",
+      "praises": [
+        "Project-based engineering from day 1",
+        "Small \u2014 everyone knows everyone",
+        "Cross-registration with Wellesley/Babson"
+      ],
+      "complaints": [
+        "Isolated \u2014 350 students total can feel claustrophobic",
+        "Limited course catalog by design"
+      ],
+      "vibe": "Tiny, project-driven, self-selected; a unique environment for the right student."
+    },
+    "rose-hulman": {
+      "sub": "r/RoseHulman",
+      "members": "~3k",
+      "praises": [
+        "Undergrad teaching quality is unmatched \u2014 top-ranked for a reason",
+        "Small classes, professors know you",
+        "Career placement is stellar"
+      ],
+      "complaints": [
+        "Terre Haute is very small",
+        "Gender ratio historically skewed",
+        "Social scene limited"
+      ],
+      "vibe": "Purely undergraduate-focused engineering; unusually strong teaching."
+    },
+    "carleton": {
+      "sub": "r/carletoncollege",
+      "members": "~7k",
+      "praises": [
+        "Trimester system = broad exploration",
+        "Faculty accessibility is exceptional",
+        "Quirky, intellectual, non-cutthroat"
+      ],
+      "complaints": [
+        "Northfield is isolated in winter",
+        "Small \u2014 social scene limited",
+        "CS department smaller than research universities"
+      ],
+      "vibe": "Intellectually curious, non-cutthroat, quirky Midwestern liberal arts."
+    },
+    "swarthmore": {
+      "sub": "r/Swarthmore",
+      "members": "~4k",
+      "praises": [
+        "Faculty engagement is deep",
+        "Non-cutthroat despite rigor",
+        "Honors program is unique"
+      ],
+      "complaints": [
+        "Workload is intense",
+        "Small \u2014 social bubble",
+        "Philadelphia proximity helps"
+      ],
+      "vibe": "Intense but supportive; quintessential small liberal arts."
+    },
+    "uc-berkeley": {
+      "sub": "r/berkeley",
+      "members": "~85k",
+      "praises": [
+        "BAIR access is real if you can navigate the system",
+        "Bay Area proximity opens doors",
+        "Cal culture is politically alive and intellectually vibrant",
+        "Peer group is exceptional"
+      ],
+      "complaints": [
+        "Large lectures \u2014 800+ students in CS 189",
+        "Grade competition can feel cutthroat despite official policy",
+        "Housing costs are brutal",
+        "Cal's advising can feel impersonal at scale"
+      ],
+      "vibe": "Intellectually intense, politically engaged, structurally strained but rewarding for self-starters."
+    },
+    "uw-seattle": {
+      "sub": "r/udub",
+      "members": "~68k",
+      "praises": [
+        "Allen School reputation opens Seattle tech doors",
+        "Direct-admit path removes major-declaration stress",
+        "Seattle location is exceptional for tech internships",
+        "Ai2 adjacency for research access"
+      ],
+      "complaints": [
+        "Non-DTM students face real risk of missing CS",
+        "Grade deflation is well-documented",
+        "Weather/gray winters affect mental health",
+        "Class sizes large for a top-5 CS program"
+      ],
+      "vibe": "World-class CS + Ai2 adjacency; the gate to get in shapes everything."
+    },
+    "ut-austin": {
+      "sub": "r/UTAustin",
+      "members": "~62k",
+      "praises": [
+        "Austin is genuinely one of the best college cities",
+        "UT football and traditions build strong community",
+        "Robotics program is nationally unique",
+        "Direct-admit CS is smooth"
+      ],
+      "complaints": [
+        "Housing not guaranteed \u2014 West Campus rent is high",
+        "Class sizes are huge",
+        "Advising uneven",
+        "CS internal transfer is very difficult"
+      ],
+      "vibe": "Big flagship Texas energy + serious AI/robotics ambition; direct-admit or bust."
+    },
+    "duke": {
+      "sub": "r/Duke",
+      "members": "~28k",
+      "praises": [
+        "Non-cutthroat despite academic rigor",
+        "East Campus freshman experience builds community",
+        "Basketball culture unifies",
+        "Small classes for a research university"
+      ],
+      "complaints": [
+        "Cost is punishing without aid",
+        "Greek + SLG system dominates social life",
+        "Housing wear-and-tear complaints",
+        "Durham is 'meh' beyond campus for some students"
+      ],
+      "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat."
+    },
+    "texas-am": {
+      "sub": "r/aggies",
+      "members": "~85k",
+      "praises": [
+        "Aggie network is unmatched for careers",
+        "12th Man tradition is real",
+        "Corps of Cadets provides structure",
+        "Aggie loyalty extends decades post-grad"
+      ],
+      "complaints": [
+        "ETAM major placement stress is intense",
+        "College Station is small and isolated",
+        "Traditional culture can feel conformist",
+        "Class sizes are large"
+      ],
+      "vibe": "Deeply traditional Texas culture; strong alumni network; conformist but proud."
+    },
+    "ut-dallas": {
+      "sub": "r/utdallas",
+      "members": "~28k",
+      "praises": [
+        "McDermott and merit scholarships are generous",
+        "Dallas metro proximity for internships",
+        "Small classes for a public university",
+        "Value is exceptional"
+      ],
+      "complaints": [
+        "Commuter feel \u2014 weekends quiet",
+        "Faculty ratio is stretched",
+        "AI/robotics are elective-only",
+        "Campus engagement limited"
+      ],
+      "vibe": "Value-focused STEM school; commuter-adjacent."
+    },
+    "kettering": {
+      "sub": "r/kettering",
+      "members": "~3k",
+      "praises": [
+        "Co-op earnings are life-changing",
+        "Direct entry into automotive/robotics industry",
+        "Small classes, strong faculty ratio",
+        "FIRST Robotics culture strong"
+      ],
+      "complaints": [
+        "Flint location is grim",
+        "4.5-5 year timeline",
+        "Weekends empty during co-op rotation",
+        "Social scene limited"
+      ],
+      "vibe": "Purely work-focused; ideal for career-oriented students, hard on those wanting traditional college life."
+    },
+    "michigan-dearborn": {
+      "sub": "r/UMDearborn",
+      "members": "~2k",
+      "praises": [
+        "Dedicated BS Robotics degree is a real differentiator",
+        "Ford proximity opens doors",
+        "Direct-admit at 3.0 GPA",
+        "Cost is very reasonable"
+      ],
+      "complaints": [
+        "No campus housing at all \u2014 100% commuter",
+        "33% four-year graduation rate",
+        "Campus feels empty",
+        "Automotive focus limits diversity"
+      ],
+      "vibe": "Underrated hidden gem for robotics if commuting works for you."
+    }
+  }
+}

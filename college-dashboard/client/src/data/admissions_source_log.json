@@ -1,0 +1,647 @@
+{
+  "WPI-S1": {
+    "url": "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
+    "title": "WPI Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S2": {
+    "url": "https://www.wpi.edu/sites/default/files/2025-02/WPI_CDS_2024-2025_2-27-25.pdf",
+    "title": "WPI Common Data Set 2024-2025",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S3": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply",
+    "title": "Apply \u2014 WPI Undergraduate Admissions (deadlines and notification windows)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S4": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to",
+    "title": "How to Apply \u2014 WPI ($70 fee; 'WPI is a test-optional institution')",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S5": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/what-we-look-for",
+    "title": "What We Look For \u2014 WPI (avg GPA 3.92, top 9% rank, course requirements)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S6": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to/test-optional-admissions",
+    "title": "Test-Optional Admissions \u2014 WPI",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S7": {
+    "url": "https://wpi.cleancatalog.net/sites/default/files/pdf/academic_page/admission-to-wpi.pdf",
+    "title": "Admission to WPI \u2014 WPI academic catalog (PDF)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S8": {
+    "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/robotics-scholarships",
+    "title": "Robotics Scholarships \u2014 WPI (FIRST/VEX scholarship terms)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S9": {
+    "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit",
+    "title": "WPI Merit Scholarships (Robotics Engineering Scholars; 1996 inaugural FIRST scholarship)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S10": {
+    "url": "https://www.wpi.edu/academics/departments/robotics-engineering",
+    "title": "Robotics Engineering \u2014 WPI department page",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S11": {
+    "url": "https://www.wpi.edu/academics/departments/robotics-engineering/academics/major-project",
+    "title": "Major Qualifying Project \u2014 WPI Robotics Engineering",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S12": {
+    "url": "https://wp.wpi.edu/journal/articles/practicepoint-on-the-cutting-edge/",
+    "title": "PracticePoint: On the Cutting Edge \u2014 WPI Journal",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S13": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply/international-students",
+    "title": "International Students \u2014 WPI (InitialView/Vericant interviews)",
+    "fetched": "2026-08-16"
+  },
+  "WPI-S14": {
+    "url": "https://www.wpi.edu/sites/default/files/2024-11/cap-test-blind-nov-13-2024.pptx.pdf",
+    "title": "WPI Committee on Academic Policy motion on test-blind policy (Nov 13, 2024)",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S1": {
+    "url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf",
+    "title": "Carnegie Mellon University Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S2": {
+    "url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+    "title": "Application Plans and Deadlines \u2014 CMU Undergraduate Admission",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S3": {
+    "url": "https://www.cmu.edu/admission/admission/preparing-for-college/common-admission-terms",
+    "title": "Common Admission Terms \u2014 CMU (no interviews, no demonstrated interest, no early action)",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S4": {
+    "url": "https://www.cmu.edu/admission/admission/standardized-testing",
+    "title": "Standardized Testing \u2014 CMU Undergraduate Admission (by-college policy)",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S5": {
+    "url": "https://www.cs.cmu.edu/link/meeting-demand",
+    "title": "Meeting Demand \u2014 The Link, CMU School of Computer Science (SCS admit rate <5.2% vs 19%)",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S6": {
+    "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements",
+    "title": "Undergraduate Admission Requirements \u2014 CMU (three short-answer questions)",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S7": {
+    "url": "https://www.cmu.edu/sfs/financial-aid/types/scholarships-and-grants/index.html",
+    "title": "Scholarships and Grants \u2014 CMU Student Financial Services",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S8": {
+    "url": "https://www.ri.cmu.edu/about/",
+    "title": "About \u2014 Carnegie Mellon Robotics Institute",
+    "fetched": "2026-08-16"
+  },
+  "CMU-S9": {
+    "url": "https://www.cmu.edu/leadership/the-provost/campus-comms/2024/2024-08-29.html",
+    "title": "Provost campus communication on standardized testing policy (Aug 29, 2024)",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S1": {
+    "url": "https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf",
+    "title": "University of Michigan Ann Arbor Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S2": {
+    "url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+    "title": "First-Year Application Plans \u2014 U-M Office of Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S3": {
+    "url": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/PrintArticle?ID=7497",
+    "title": "U-M admissions knowledge base: 2027 application availability and deadlines",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S4": {
+    "url": "https://admissions.umich.edu/apply/first-year-applicants/requirements-deadlines/application-changes",
+    "title": "Application Changes \u2014 U-M (new Early Decision; test-optional for 2026 cycle; essay requirements)",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S5": {
+    "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions",
+    "title": "Essay Questions \u2014 U-M Office of Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S6": {
+    "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/",
+    "title": "Undergraduate Admissions \u2014 U-M Computer Science and Engineering (CS capacity selection policy)",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S7": {
+    "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/cs-advance-selection-for-incoming-students/",
+    "title": "CS Advance Selection for Incoming Students \u2014 U-M CSE",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S8": {
+    "url": "https://robotics.umich.edu/about/",
+    "title": "About \u2014 U-M Robotics Department",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S9": {
+    "url": "https://robotics.umich.edu/news/2021/michigan-ford-open-world-class-robotics-complex/",
+    "title": "Michigan and Ford open world-class robotics complex \u2014 U-M Robotics",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S10": {
+    "url": "https://scholarships.engin.umich.edu/undergraduate/new-students/",
+    "title": "Scholarships for New Students \u2014 U-M College of Engineering",
+    "fetched": "2026-08-16"
+  },
+  "UMICH-S11": {
+    "url": "https://admissions.umich.edu/costs-aid/financial-aid",
+    "title": "Financial Aid \u2014 U-M (May 1 enrollment deposit deadline)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S1": {
+    "url": "https://www.olin.edu/sites/default/files/2024-05/CDS_2023_2024%20(2).pdf",
+    "title": "Olin College of Engineering Common Data Set 2023-2024 (most recent public CDS)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S2": {
+    "url": "https://www.olin.edu/admission/apply/admission-process",
+    "title": "Admission Process \u2014 Olin College (Fall 2027 deadlines, Candidates' Weekend 2027 dates)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S3": {
+    "url": "https://www.olin.edu/admission-financial-aid-apply/what-we-are-looking",
+    "title": "What We Are Looking For \u2014 Olin College (275-300 CW invitations, virtual interviews)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S4": {
+    "url": "https://www.olin.edu/admission/faq",
+    "title": "Admission FAQ \u2014 Olin College (testing requirement suspended through the 2026-27 cycle)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S5": {
+    "url": "https://www.olin.edu/admission/profile-class-2028",
+    "title": "Profile of the Class of 2028 \u2014 Olin College",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S6": {
+    "url": "https://www.olin.edu/blogs/ins-and-outs-college-supplemental-essay",
+    "title": "The Ins and Outs of the College Supplemental Essay \u2014 Olin admissions blog",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S7": {
+    "url": "https://www.olin.edu/admission-financial-aid-connect/counselor-resources",
+    "title": "Counselor Resources \u2014 Olin College (single deadline, no early plans)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S8": {
+    "url": "https://www.olin.edu/admission-financial-aid-afford/aid-scholarships",
+    "title": "Understanding Your Aid \u2014 Olin College (Olin Tuition Scholarship $10,000/year)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S9": {
+    "url": "https://www.olin.edu/about",
+    "title": "About \u2014 Olin College (E:Robo concentration; 2024 Grand Prize and 2026 drone award)",
+    "fetched": "2026-08-16"
+  },
+  "OLIN-S10": {
+    "url": "https://www.olin.edu/sites/default/files/2024-11/OlinCollege_AnnualReport2024.pdf",
+    "title": "Olin College Annual Report 2023-2024 (merit scholarship reduction beginning class of 2030)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S1": {
+    "url": "https://www.kettering.edu/apply",
+    "title": "Apply \u2014 Kettering University (priority dates, required coursework, test-optional, personal essays)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S2": {
+    "url": "https://www.kettering.edu/admissions-aid/financial-aid-affordability/financial-aid/types-of-aid/scholarships",
+    "title": "Scholarships \u2014 Kettering University (robotics scholarship up to $5,000/year, February 15 deadline)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S3": {
+    "url": "https://www.kettering.edu/robotics/first-at-kettering",
+    "title": "FIRST Robotics \u2014 Kettering University ($5.5 million in robotics scholarships since 1999)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S4": {
+    "url": "https://www.kettering.edu/admissions-aid",
+    "title": "Admissions & Aid \u2014 Kettering University (100% of first-year students receive a scholarship)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S5": {
+    "url": "https://www.kettering.edu/transfer-faqs",
+    "title": "Transfer FAQs \u2014 Kettering University ('Kettering University is test-optional for all students')",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S6": {
+    "url": "https://www.kettering.edu/new-student-orientation",
+    "title": "New Student Orientation \u2014 Kettering University (A-section / B-section calendar)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S7": {
+    "url": "https://www.kettering.edu/admissions-aid/international-students",
+    "title": "International Students \u2014 Kettering University (Duolingo spoken interview requirement)",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S8": {
+    "url": "https://www.kettering.edu/kettering-university-robotics-center-awarded-20000-gm-community-impact-grant",
+    "title": "Kettering University Robotics Center Awarded $20,000 GM Community Impact Grant",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S9": {
+    "url": "https://www.kettering.edu/kettering-university-receives-155000-denso-foundation-grant-expand-industrial-robotic-cell",
+    "title": "Kettering University Receives $155,000 DENSO Foundation Grant to Expand Industrial Robotic Cell",
+    "fetched": "2026-08-16"
+  },
+  "KETT-S10": {
+    "url": "https://www.kettering.edu/who-we-are/news-events/kettering-news/kettering-universitygmi-alumni-association-awards-30000-sponsorships-high-school-robotics-teams",
+    "title": "Kettering University/GMI Alumni Association Awards $30,000 in Sponsorships to High School Robotics Teams",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S1": {
+    "url": "https://www.rit.edu/institutionalresearch/sites/rit.edu.institutionalresearch/files/documents/Common%20Data%20Set%20PDFs/RIT_CDS_2025_26_FINAL_20260603.pdf",
+    "title": "RIT Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S2": {
+    "url": "https://www.rit.edu/admissions/first-year/early-decision",
+    "title": "Early Decision \u2014 RIT Admissions and Aid",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S3": {
+    "url": "https://www.rit.edu/marketing/sites/rit.edu.marketing/files/docs/pdfs/Academic_Profile.pdf",
+    "title": "RIT Academic Profile (timelines, test-optional statement, course expectations)",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S4": {
+    "url": "https://www.rit.edu/admissions/accepted-undergraduate-students",
+    "title": "Accepted Undergraduate Students \u2014 RIT (deposit deadlines by plan)",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S5": {
+    "url": "https://www.rit.edu/admissions/aid/merit-based-scholarships",
+    "title": "Merit-Based Scholarships \u2014 RIT (RIT/FIRST Scholarship $14,000/year, not stackable)",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S6": {
+    "url": "https://www.rit.edu/first-scholarship",
+    "title": "FIRST Scholarship Application \u2014 RIT (redirects to join.rit.edu application form; Fall 2027 term option)",
+    "fetched": "2026-08-16"
+  },
+  "RIT-S7": {
+    "url": "https://www.rit.edu/ntid/admissions/first-year-application",
+    "title": "First-Year Application checklist \u2014 RIT/NTID (essay description, $65 fee, test-optional for all programs, ACT Science recommendation for STEM)",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S1": {
+    "url": "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf",
+    "title": "Rose-Hulman Institute of Technology Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S2": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+    "title": "First-year Application & Deadlines \u2014 Rose-Hulman",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S3": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+    "title": "Admission Requirements \u2014 Rose-Hulman (course expectations, test policy)",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S4": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html",
+    "title": "Rose-Hulman Scholarships (FIRST Robotics Scholarship, Competition Teams Scholarship, Provost Scholarship)",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S5": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/international-students.html",
+    "title": "International Students \u2014 Rose-Hulman (InitialView interviews)",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S6": {
+    "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-ranked-no-1-for-27th-consecutive-year-as-nations-best-undergraduate-engineering-college-in-u-s-news-and-world-report.html",
+    "title": "Rose-Hulman Ranked No. 1 for 27th Consecutive Year \u2014 Rose-Hulman news",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S7": {
+    "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-launches-unified-computer-science-major-with-new-ai-cybersecurity-and-data-science-specializations.html",
+    "title": "Rose-Hulman Launches Unified Computer Science Major with New AI, Cybersecurity and Data Science Specializations",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S8": {
+    "url": "https://www.rose-hulman.edu/visit/preview-rose/seniors/admissions.html",
+    "title": "Admissions Next Steps \u2014 Preview Rose (apply by Nov. 1 for maximum scholarship consideration)",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S9": {
+    "url": "https://www.rose-hulman.edu/academics/educational-outreach/student-resources/first-robotics.html",
+    "title": "First Robotics \u2014 Rose-Hulman educational outreach",
+    "fetched": "2026-08-16"
+  },
+  "RHIT-S10": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/financial-aid-basics/cost-and-financial-aid/index.html",
+    "title": "Cost and Financial Aid / Rose-Hulman Ventures \u2014 Rose-Hulman",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S1": {
+    "url": "https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2024-25.v3.pdf",
+    "title": "NC State University Common Data Set 2024-2025 (most recent posted)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S2": {
+    "url": "https://admissions.ncsu.edu/apply/deadlines/",
+    "title": "Dates and Deadlines \u2014 NC State Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S3": {
+    "url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+    "title": "Admission Updates for 2027 First-Year Applicants \u2014 NC State Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S4": {
+    "url": "https://admissions.ncsu.edu/apply/first-year/",
+    "title": "First-Year Applicants \u2014 NC State Undergraduate Admissions (required short answer question)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S5": {
+    "url": "https://admissions.ncsu.edu/apply/first-year/application-review/",
+    "title": "First-Year Application Review \u2014 NC State ('What We Look For')",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S6": {
+    "url": "https://engr.ncsu.edu/admissions/",
+    "title": "Admissions \u2014 NC State College of Engineering (Engineering First Year Program; intended major has no effect)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S7": {
+    "url": "https://www.northcarolina.edu/apps/policy/doc.php?id=789",
+    "title": "UNC Policy Manual 700.1.3 \u2014 nonresident undergraduate enrollment caps (18% for NC State)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S8": {
+    "url": "https://engr.ncsu.edu/robotics/",
+    "title": "Robotics at NC State \u2014 College of Engineering",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S9": {
+    "url": "https://studentservices.ncsu.edu/finances/scholarships-and-financial-aid/apply-for-scholarships-and-financial-aid/",
+    "title": "Apply for Scholarships and Financial Aid \u2014 NC State Student Services Center (PackASSIST, February 15 priority)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S10": {
+    "url": "https://park.ncsu.edu/apply/",
+    "title": "Apply \u2014 NC State Park Scholarships (reviews NC State's short-answer and optional short-answer essays)",
+    "fetched": "2026-08-16"
+  },
+  "NCSU-S11": {
+    "url": "https://engr.ncsu.edu/",
+    "title": "NC State College of Engineering home page (robotics framing)",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S1": {
+    "url": "https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf",
+    "title": "UNC-Chapel Hill Common Data Set 2025-2026",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S2": {
+    "url": "https://admissions.unc.edu/apply/types-of-applications/first-year/",
+    "title": "First-Year Application \u2014 UNC Undergraduate Admissions (deadlines, two short answers, 2026-27 test policy)",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S3": {
+    "url": "https://admissions.unc.edu/apply/decisions/",
+    "title": "Decisions \u2014 UNC Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S4": {
+    "url": "https://www.unc.edu/posts/2025/07/23/carolina-moves-up-admissions-decision-notifications-for-nc-early-applicants/",
+    "title": "Carolina moves up admissions decision notifications for NC early applicants \u2014 UNC-Chapel Hill",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S5": {
+    "url": "https://www.unc.edu/posts/2025/12/18/carolina-delivers-first-nc-admissions-decisions-a-month-sooner/",
+    "title": "Carolina delivers first in-state admissions decisions a month sooner \u2014 UNC-Chapel Hill",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S6": {
+    "url": "https://www.northcarolina.edu/apps/policy/doc.php?id=789",
+    "title": "UNC Policy Manual 700.1.3 \u2014 nonresident undergraduate enrollment caps (18% for UNC-Chapel Hill)",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S7": {
+    "url": "https://admissions.unc.edu/application-prompts-for-2024-2025/",
+    "title": "Application Prompts for 2024-2025 \u2014 UNC Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S8": {
+    "url": "https://admissionslawsuit.unc.edu/about/admissions/",
+    "title": "About Admissions \u2014 UNC-Chapel Hill admissions lawsuit site (43.1% in-state vs 8.2% out-of-state)",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S9": {
+    "url": "https://www.unc.edu/posts/2026/07/01/collaboration-is-key-for-carolinas-newest-school/",
+    "title": "Collaboration is key for Carolina's newest school \u2014 UNC School of Data and Information Sciences launch",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S10": {
+    "url": "https://robotics.cs.unc.edu/",
+    "title": "Computational Robotics Research Group \u2014 UNC Computer Science",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S11": {
+    "url": "https://catalog.unc.edu/undergraduate/programs-study/applied-sciences-engineering-minor/",
+    "title": "Applied Sciences and Engineering Minor \u2014 UNC Catalog (COMP 581 Introduction to Robotics)",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S12": {
+    "url": "https://admissions.unc.edu/apply/special-opportunities/",
+    "title": "Special Opportunities \u2014 UNC Undergraduate Admissions",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S13": {
+    "url": "https://studentaid.unc.edu/faq/when-will-i-be-notified-if-i-will-be-receiving-a-non-need-basedmerit-scholarship-from-unc-chapel-hill/",
+    "title": "Academic scholarship notification \u2014 UNC Office of Scholarships and Student Aid",
+    "fetched": "2026-08-16"
+  },
+  "UNC-S14": {
+    "url": "https://www.unc.edu/posts/2024/03/01/undergraduate-data-science-degree-programs-approved/",
+    "title": "Undergraduate data science degree programs approved \u2014 UNC-Chapel Hill",
+    "fetched": "2026-08-16"
+  },
+  "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) \u2014 https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
+  "DUKE-S2": "Duke University Common Data Set 2024-2025 (PDF) \u2014 https://ir.provost.duke.edu/sites/default/files/CDS-2024-25-Final-2.pdf",
+  "DUKE-S3": "Duke Undergraduate Admissions, 'Apply' (deadlines, essays, testing, interviews) \u2014 https://admissions.duke.edu/apply/",
+  "DUKE-S4": "Duke Pratt School of Engineering, Undergraduate Research \u2014 https://pratt.duke.edu/academics/undergrad/research/",
+  "DUKE-S5": "Duke Bass Connections, Student FAQ \u2014 https://bassconnections.duke.edu/get-involved/students/student-faq/",
+  "DUKE-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "DUKE-S7": "Duke Robotics (Pratt), Students page \u2014 https://robotics.pratt.duke.edu/students",
+  "DUKE-S8": "Duke Bass Connections, Project Teams \u2014 https://bassconnections.duke.edu/project-teams/",
+  "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) \u2014 https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
+  "CORNELL-S2": "Cornell Undergraduate Admissions, First-Year Applicants \u2014 https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+  "CORNELL-S3": "Cornell Admissions, First-Year Duffield Engineering Applicants \u2014 https://admissions.cornell.edu/first-year-duffield-engineering-applicants (see also https://www.duffield.cornell.edu/admissions/first-year-applicants/)",
+  "CORNELL-S4": "Cornell Admissions, First-Year Arts & Sciences Applicants \u2014 https://admissions.cornell.edu/first-year-arts-sciences-applicants",
+  "CORNELL-S5": "Robotics @ Cornell \u2014 https://robotics.cornell.edu/",
+  "CORNELL-S6": "Cornell Bowers CIS, Computer Science Research Areas \u2014 https://www.cs.cornell.edu/research",
+  "CORNELL-S7": "EmPRISE Lab, Cornell CS \u2014 http://emprise.cs.cornell.edu/",
+  "CORNELL-S8": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "CORNELL-S9": "Cornell School of Electrical and Computer Engineering, Research Groups \u2014 https://www.duffield.cornell.edu/ece/research-groups/",
+  "JHU-S1": "Johns Hopkins University Common Data Set 2025-2026 (PDF) \u2014 https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
+  "JHU-S2": "JHU Undergraduate Admissions, Application Deadlines & Requirements \u2014 https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+  "JHU-S3": "JHU Admissions (Hopkins Insider), 'Advice For Crafting Your Supplemental Essay' \u2014 2026-2027 Hopkins Supplemental Essay Prompt \u2014 https://apply.jhu.edu/hopkins-insider/advice-for-crafting-your-supplemental-essay/",
+  "JHU-S4": "Laboratory for Computational Sensing and Robotics, About \u2014 https://lcsr.jhu.edu/about/",
+  "JHU-S5": "LCSR, Lab Links \u2014 https://lcsr.jhu.edu/lab-links/",
+  "JHU-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "JHU-S7": "JHU Whiting School of Engineering, Russell Taylor faculty profile \u2014 https://engineering.jhu.edu/faculty/russell-taylor/",
+  "JHU-S8": "LCSR, Faculty \u2014 https://lcsr.jhu.edu/faculty/ ; LCSR archived news (Krieger/IMERSE, Iordachita/AMIRo) \u2014 https://lcsr.jhu.edu/archived-news/",
+  "NEU-S1": "Northeastern University Common Data Set 2024-2025 (PDF) \u2014 https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
+  "NEU-S2": "Northeastern Undergraduate Admissions, Required Materials \u2014 https://admissions.northeastern.edu/application-information/required-materials/",
+  "NEU-S3": "Northeastern Undergraduate Admissions, Admissions Deadlines & Decisions \u2014 https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+  "NEU-S4": "Northeastern College of Engineering, Undergraduate Co-op \u2014 https://coe.northeastern.edu/academics-experiential-learning/co-op-experiential-learning/co-op/undergraduate-co-op/",
+  "NEU-S5": "Northeastern College of Engineering, Institute for Experiential Robotics \u2014 https://coe.northeastern.edu/coe-research/research-centers-institutes/institute-for-experiential-robotics/",
+  "NEU-S6": "Northeastern Global News, 'Inside the Institute for Experiential Robotics' New Lab in EXP' \u2014 https://news.northeastern.edu/2023/11/27/experiential-robotics-institute-exp/",
+  "NEU-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "NEU-S8": "Northeastern Co-op Undergraduate Student Handbook (PDF) \u2014 https://www.northeastern.edu/wp-content/uploads/Co-op-Undergrad-Student-Handbook-2026.pdf",
+  "NEU-S9": "Institute for Experiential Robotics \u2014 https://robotics.northeastern.edu/home-3/",
+  "SWAT-S1": "Swarthmore College Common Data Set 2025-2026 (PDF) \u2014 https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
+  "SWAT-S2": "Swarthmore Admissions, Apply as a First-Year Student (2026-2027 supplemental prompts) \u2014 https://www.swarthmore.edu/admissions-aid/apply-a-first-year-student",
+  "SWAT-S3": "Swarthmore Admissions, Application Materials & Deadlines \u2014 https://www.swarthmore.edu/admissions-aid/application-materials-deadlines",
+  "SWAT-S4": "Swarthmore Engineering, ABET Accreditation \u2014 https://www.swarthmore.edu/engineering/abet-accreditation",
+  "SWAT-S5": "Swarthmore Engineering, FAQs \u2014 https://www.swarthmore.edu/engineering/faqs",
+  "SWAT-S6": "Swarthmore Engineering, Engineering and Liberal Arts \u2014 https://www.swarthmore.edu/engineering/engineering-and-liberal-arts",
+  "SWAT-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) \u2014 https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
+  "CARL-S2": "Carleton Admissions, Application Materials & Steps \u2014 https://www.carleton.edu/admissions/apply/steps/materials/",
+  "CARL-S3": "Carleton Academic Catalog, Admissions \u2014 https://www.carleton.edu/catalog/current/admissions/",
+  "CARL-S4": "Carleton Computer Science, Requirements for the CS major \u2014 https://www.carleton.edu/computer-science/major/requirements/",
+  "CARL-S5": "Carleton Academic Catalog 2025-26, Computer Science (courses incl. CS 294/394 Directed Research) \u2014 https://www.carleton.edu/catalog/current/departments/cs/",
+  "CARL-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "CARL-S7": "Carleton 3-2 Engineering Program, Sample Course Schedule with Computer Science Major \u2014 https://www.carleton.edu/engineering/course-schedules/computer-science/",
+  "PENN-S1": "University of Pennsylvania Common Data Set 2025-2026 (via Penn IRA, Box-hosted PDF, dated 23 June 2026) \u2014 https://ira.upenn.edu/penn-numbers/common-data-set",
+  "PENN-S2": "Penn Undergraduate Admissions, First-Year Applicants (Fall 2027 entry deadlines) \u2014 https://admissions.upenn.edu/how-to-apply/first-year-applicants",
+  "PENN-S3": "Penn Undergraduate Admissions, Testing \u2014 https://admissions.upenn.edu/how-to-apply/preparing-your-application/testing",
+  "PENN-S4": "Penn Undergraduate Admissions, Writing \u2014 '2026-27 Short Answer and Essay Prompts' \u2014 https://admissions.upenn.edu/how-to-apply/preparing-your-application/writing",
+  "PENN-S5": "GRASP Lab Facilities (faculty/student counts, subgroups, undergraduate involvement) \u2014 https://www.grasp.upenn.edu/about/facilities/",
+  "PENN-S6": "Penn Engineering, 'NATO Explores the Future of Robotics at Penn's GRASP Lab' \u2014 https://www.engineering.upenn.edu/stories/nato-explores-the-future-of-robotics-at-penns-grasp-lab/",
+  "PENN-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "PENN-S8": "GRASP Lab, Undergraduate Research \u2014 https://www.grasp.upenn.edu/academics/undergraduate-research/",
+  "PENN-S9": "GRASP Lab, History \u2014 https://www.grasp.upenn.edu/about/history/",
+  "MIT-S1": "MIT Institutional Research, 2025-26 Common Data Set \u2014 https://ir.mit.edu/projects/2025-26-common-data-set/",
+  "MIT-S2": "MIT Admissions, Admissions Statistics (Class of 2029) \u2014 https://mitadmissions.org/apply/process/stats/",
+  "MIT-S3": "MIT Admissions, Essays, Activities & Academics \u2014 https://mitadmissions.org/apply/firstyear/essays-activities-academics/",
+  "MIT-S4": "MIT Admissions, Deadlines & Requirements \u2014 https://mitadmissions.org/apply/firstyear/deadlines-requirements/",
+  "MIT-S5": "MIT Admissions, Interview \u2014 https://mitadmissions.org/apply/firstyear/interview/",
+  "MIT-S6": "MIT UROP, About (participation statistics) \u2014 https://urop.mit.edu/about/",
+  "MIT-S7": "MIT Course Catalog, Undergraduate Research Opportunities Program \u2014 https://catalog.mit.edu/mit/undergraduate-education/academic-research-options/undergraduate-research-opportunities-program/",
+  "MIT-S8": "MIT CSAIL Alliances, CSAIL by the Numbers \u2014 https://cap.csail.mit.edu/engage/why-csail-alliances/csail-numbers",
+  "MIT-S9": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
+  "MIT-S10": "MIT Department of Mechanical Engineering, '2.007 Forever!' \u2014 https://meche.mit.edu/news-media/2007-forever",
+  "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) \u2014 https://web.mit.edu/webcast/2.007/",
+  "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
+  "GT-S2": "Georgia Tech Institutional Research CDS index - https://irp.gatech.edu/common-data-set",
+  "GT-S3": "Georgia Tech Undergraduate Admission, First-Year Deadlines (2026-2027 Important Dates) - https://admission.gatech.edu/first-year/deadlines",
+  "GT-S4": "Georgia Tech Undergraduate Admission, Standardized Tests - https://admission.gatech.edu/first-year/standardized-tests",
+  "GT-S5": "Georgia Tech Undergraduate Admission, Personal Essays (2026-27) - https://admission.gatech.edu/first-year/personal-essays",
+  "GT-S6": "Georgia Tech Undergraduate Admission, Interview - https://admission.gatech.edu/first-year/interview",
+  "GT-S7": "Georgia Tech College of Computing, Prospective Undergraduate FAQ - https://www.cc.gatech.edu/prospective-undergraduate-faq",
+  "GT-S8": "Georgia Tech College of Computing, 2025 Enrollment Roundup - https://www.cc.gatech.edu/news/2025-enrollment-roundup-undergraduate-enrollment-in-computing-remains-popular",
+  "GT-S9": "Georgia Tech 2026 First-Year Admitted Profile (PDF) - https://admission.gatech.edu/images/pdf/2026/2026-First-year-admitted-profile.pdf",
+  "GT-S10": "Georgia Tech 2025 First-Year Admitted Profile, full (PDF) - https://admission.gatech.edu/images/pdf/2025/FY-admitted-profile-full-2025.pdf",
+  "GT-S11": "Georgia Tech Enrollment Management news, Final Decision Release Completes Fall 2025 First-Year Class - https://news.em.gatech.edu/2025/03/31/final-decision-release-fall-2025-first-year/",
+  "GT-S12": "Georgia Tech Research, Robotics / Institute for Robotics and Intelligent Machines - https://research.gatech.edu/robotics",
+  "GT-S13": "FIRST scholarship portal (Pearson Futures), Georgia Institute of Technology - FIRST - https://futures.pearson.com/scholarships/df4dc455-3dd6-416a-97f6-707518e4e321",
+  "UIUC-S1": "University of Illinois Urbana-Champaign Common Data Set 2025-2026 (XLSX) - https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
+  "UIUC-S2": "UIUC Division of Management Information, student enrollment / CDS index - https://www.dmi.illinois.edu/stuenr/",
+  "UIUC-S3": "UIUC Undergraduate Admissions, First-Year Admit Rates (2025) - https://www.admissions.illinois.edu/admit-rates/",
+  "UIUC-S4": "UIUC Undergraduate Admissions, Essays - https://www.admissions.illinois.edu/essays/",
+  "UIUC-S5": "UIUC Undergraduate Admissions, First-Year Apply FAQ - https://www.admissions.illinois.edu/first-year-apply-faq/",
+  "UIUC-S6": "UIUC Undergraduate Admissions, First-Year Requirements - https://www.admissions.illinois.edu/first-year-requirements/",
+  "UIUC-S7": "Grainger College of Engineering, Changing Majors - https://grainger.illinois.edu/academics/undergraduate/changing-majors",
+  "UIUC-S8": "Coordinated Science Laboratory (CSL), University of Illinois - https://csl.illinois.edu/",
+  "UIUC-S9": "FIRST Scholarship Program portal index (searched for a UIUC provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
+  "PU-S1": "Purdue University West Lafayette Common Data Set 2025-2026 (XLSX) - https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
+  "PU-S2": "Purdue Institutional Data Analytics + Assessment, Common Data Set index - https://www.purdue.edu/idata/products-services/common-data-set/",
+  "PU-S3": "Purdue Admissions, Guide to Becoming a Boilermaker (application guide) - https://admissions.purdue.edu/become-student/guide/",
+  "PU-S4": "Purdue Admissions, Essay prompts - https://admission.purdue.edu/apply/essay.php",
+  "PU-S5": "Purdue School of Engineering Education, First-Year Engineering Transition to Major (T2M) - https://engineering.purdue.edu/ENE/Academics/Undergrad/FYE/T2M",
+  "PU-S6": "Purdue Department of Computer Science, CODO requirements - https://www.cs.purdue.edu/undergraduate/codo-requirements.html",
+  "PU-S7": "FIRST scholarship portal (Pearson Futures), Purdue University - FIRST - https://futures.pearson.com/scholarships/56bd102a-d7bb-47ce-b50e-8aa744e314ba",
+  "PU-S8": "Purdue School of Aeronautics and Astronautics, About Us - https://engineering.purdue.edu/AAE/aboutus",
+  "PU-S9": "Purdue Robotics Accelerator, About - https://www.purdue.edu/robotics/about.html",
+  "PU-S10": "Purdue Robotics Accelerator, Education / robotics-related courses - https://www.purdue.edu/robotics/education.html",
+  "UMD-S1": "University of Maryland Common Data Set 2025-2026 (XLSX; URL verified HTTP 200 on 2026-08-16) - https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
+  "UMD-S2": "UMD Institutional Research, Planning & Assessment, Common Data Set index - https://www.irpa.umd.edu/InstitutionalData/cds.html",
+  "UMD-S3": "UMD Admissions, Freshman Applicants - https://admissions.umd.edu/apply/freshman-applicants",
+  "UMD-S4": "UMD Admissions, Essay Questions - https://admissions.umd.edu/apply/essay-questions",
+  "UMD-S5": "UMD Admissions, Limited Enrollment Programs - https://admissions.umd.edu/academics/limited-enrollment-programs",
+  "UMD-S6": "UMD Department of Computer Science, Internal Transfer Applicants (LEP gateway requirements) - https://undergrad.cs.umd.edu/internal-transfer-applicants",
+  "UMD-S7": "UMD Admissions, Freshman Application FAQs - https://admissions.umd.edu/apply/freshman-application-faqs",
+  "UMD-S8": "Maryland Robotics Center - https://robotics.umd.edu/",
+  "UMD-S9": "Institute for Systems Research, About - https://isr.umd.edu/about",
+  "UMD-S10": "Clark School of Engineering FIRST Scholarship detail sheet hosted by FIRST (2021-2022 cycle) - https://www.firstinspires.org/sites/default/files/uploads/scholarships/details/university-of-maryland-first-scholarship.pdf",
+  "UMD-S11": "UMD Admissions, How to Apply - https://admissions.umd.edu/how-to-apply",
+  "OSU-S1": "The Ohio State University Common Data Set 2025-2026, Columbus campus (PDF; C7/C8 grids read from page images) - https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
+  "OSU-S2": "Ohio State Institutional Research and Planning, institutional data and reports - https://irp.osu.edu/institutional-data-and-reports",
+  "OSU-S3": "Ohio State Undergraduate Admissions, Apply step-by-step, Columbus first-years (Autumn 2027 dates) - https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+  "OSU-S4": "Ohio State Undergraduate Admissions, The Common Application - https://undergrad.osu.edu/apply/freshmen-columbus/common-app",
+  "OSU-S5": "Ohio State News, Ohio State shares decision on test requirements - https://news.osu.edu/ohio-state-shares-decision-on-test-requirements/",
+  "OSU-S6": "Ohio State Engineering Advising, Admission to Major / Applying to your major (Space Available and Limited Space program lists, criteria, essays) - https://advising.engineering.osu.edu/current-students/applying-your-major",
+  "OSU-S7": "Ohio State Engineering Advising, Enroll in an Engineering or Computer and Information Science Program - https://advising.engineering.osu.edu/enroll-engineering-program",
+  "OSU-S8": "Ohio State Computer Science and Engineering, Admission to the major (pre-major structure) - https://cse.osu.edu/prospective-students/undergrad/admission-major",
+  "OSU-S9": "Ohio State Center for Automotive Research (home) - https://car.osu.edu/",
+  "OSU-S10": "Ohio State Center for Automotive Research, About - https://car.osu.edu/about",
+  "OSU-S11": "FIRST Scholarship Program portal index (searched for an Ohio State provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
+  "PSU-S1": "Penn State University Park Common Data Set 2025-2026 (PDF) - https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf",
+  "PSU-S2": "Penn State Office of Planning, Assessment and Institutional Research, Common Data Set index - https://opair.psu.edu/institutional-research/projects/cds/",
+  "PSU-S3": "Penn State, First-Year Students Deadlines - https://www.psu.edu/resources/first-year-students/deadlines",
+  "PSU-S4": "Penn State News, Early Action deadline moved to Nov. 15 - https://www.psu.edu/news/administration/story/early-action-deadline-moved-nov-15",
+  "PSU-S5": "Penn State Undergraduate Admissions, How to Apply (test-optional policy) - https://www.psu.edu/admission/undergraduate/how-to-apply",
+  "PSU-S6": "Penn State, Steps to Apply for First-Year Students (STARS record, campus choices, summer-start question) - https://www.psu.edu/resources/first-year-students/steps-to-apply",
+  "PSU-S7": "Penn State Undergraduate Bulletin, Computer Science, B.S. (Engineering) - enrollment controls and 3.20 ETM GPA - https://bulletins.psu.edu/undergraduate/colleges/engineering/computer-science-bs/",
+  "PSU-S8": "Penn State Undergraduate Bulletin, Mechanical Engineering, B.S. (Engineering) - enrollment controls and 3.20 ETM GPA - https://bulletins.psu.edu/undergraduate/colleges/engineering/mechanical-engineering-bs/",
+  "PSU-S9": "Penn State College of Engineering Advising, Entrance-to-Major Requirements (new/re-enrolling summer 2020 or later) - https://advising.engr.psu.edu/advising/entrance-to-major/new-reenrolling-summer-2020-or-later.aspx",
+  "PSU-S10": "Penn State College of Engineering, FIRST Scholarship - https://www.engr.psu.edu/academics/first-scholarship.aspx",
+  "PSU-S11": "FIRST scholarship portal (Pearson Futures), Pennsylvania State University - FIRST - https://futures.pearson.com/scholarships/aba70e5f-08f1-4dd6-8a8b-6e3c40fac631",
+  "PSU-S12": "Penn State Applied Research Laboratory, About - https://www.arl.psu.edu/about",
+  "VT-S1": "Virginia Tech Analytics and Institutional Effectiveness, Common Data Set page (JavaScript-rendered; all underlying file paths returned HTTP 404 on 2026-08-16, so no VT CDS could be retrieved) - https://aie.vt.edu/analytics-and-ai/common-data-set.html",
+  "VT-S2": "Virginia Tech Undergraduate Admissions, Dates and Deadlines - https://www.vt.edu/admissions/undergraduate/apply/dates-and-deadlines.html",
+  "VT-S3": "Virginia Tech Undergraduate Admissions, Decision Plans - https://www.vt.edu/admissions/undergraduate/apply/decision-plans.html",
+  "VT-S4": "Virginia Tech Admissions FAQ, Test-Optional - https://www.vt.edu/admissions/frequently-asked-questions/test-optional.html",
+  "VT-S5": "Virginia Tech Undergraduate Admissions, Policies - https://www.vt.edu/admissions/undergraduate/apply/policies.html",
+  "VT-S6": "Virginia Tech Undergraduate Admissions, Ut Prosim Profile 2025-2026 Short Answer Questions - https://www.vt.edu/admissions/undergraduate/apply/ut-prosim-short-answer-questions.html",
+  "VT-S7": "Virginia Tech News, Strong retention rate highlights fall enrollment census (fall 2025 first-year applicant/offer counts) - https://news.vt.edu/articles/2025/10/cm-fallcensus.html",
+  "VT-S8": "Virginia Tech College of Engineering, Change of Major/Minor (restricted degrees and minors list) - https://eng.vt.edu/undergraduate/resources-support/change-of-major.html",
+  "VT-S9": "Virginia Tech College of Engineering, Change of Major Policies and Deadlines - restricted majors (GPA minimum 2.0, guarantees 3.0/3.5, AE and ME exception) - https://eng.vt.edu/undergraduate/resources-support/change-of-major/restricted.html",
+  "VT-S10": "Virginia Tech Department of Computer Science, Change or add major/minor (freshmen enter General Engineering) - https://students.cs.vt.edu/undergraduate-programs/future-students/change-or-add-major-minor.html",
+  "VT-S11": "Virginia Tech Department of Engineering Education, General Engineering program - https://enge.vt.edu/undergraduate/generalengineering.html",
+  "VT-S12": "Autonomy and Robotics at Virginia Tech - https://autonomyandrobotics.centers.vt.edu/index.html",
+  "VT-S13": "Virginia Tech Transportation Institute, About - https://www.vtti.vt.edu/about/index.html",
+  "VT-S14": "Virginia Tech College of Engineering, Change of Major FAQs (three cycles per year, concentration changes effective January 2026) - https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
+  "VT-S15": "FIRST Scholarship Program portal index (searched for a Virginia Tech provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
+  "IIT-S1": "Illinois Institute of Technology Common Data Set 2023-2024 (PDF; latest published edition) - https://www.iit.edu/sites/default/files/2024-07/Full-2023-2024-Common-Data-Set.pdf",
+  "IIT-S2": "Illinois Tech Office of Institutional Insights, Common Data Set index (returns HTTP 403 to programmatic fetch) - https://www.iit.edu/oii/common-data-set",
+  "IIT-S3": "Illinois Tech Undergraduate Admission, Application Dates and Deadlines - https://www.iit.edu/admissions-aid/undergraduate-admission/application-dates-and-deadlines",
+  "IIT-S4": "Illinois Tech Undergraduate Admission, First-Year Students (test policy, personal statement, recommendations) - https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students",
+  "IIT-S5": "Illinois Tech Undergraduate Admission, Recommended Admission Guidelines (GPA ranges by track) - https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students/recommended-admission-guidelines",
+  "IIT-S6": "Illinois Tech, Illinois Tech FIRST Scholarship - https://www.iit.edu/admissions-aid/tuition-and-aid/scholarships/first-year-student-scholarships/illinois-tech-first-scholarship",
+  "IIT-S7": "Illinois Tech, Admitted to an Alternate Major (reconsideration, B-or-higher math/science expectation) - https://www.iit.edu/resources-admitted-students/undergraduate/whats-next/admitted-alternate-major",
+  "IIT-S8": "Illinois Tech Elevate Experiences, Employers - https://elevate.iit.edu/companies/",
+  "RPI-S1": "Rensselaer Polytechnic Institute Common Data Set 2025-2026 (hosted on RPI's Box account, linked as '2025 - 2026' from the Provost's Institutional Research and Assessment page) - https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
+  "RPI-S2": "RPI Office of the Provost, Institutional Research and Assessment (CDS index page) - https://provost.rpi.edu/institutional-research-and-assessment",
+  "RPI-S3": "RPI Undergraduate Admissions FAQ, Fall 2027 admission cycle testing policy - https://undergrad.admissions.rpi.edu/prospective-students/prospective-students-frequently-asked-questions/fall-2027-admission-cycle-test",
+  "RPI-S4": "RPI Undergraduate Admissions, Apply (Fall 2027 plan table, program essays, GLIMPSE video, fees) - https://undergrad.admissions.rpi.edu/apply",
+  "RPI-S5": "RPI School of Engineering, B.S. in Robotics Engineering - https://eng.rpi.edu/bs-robotics-engineering",
+  "RPI-S6": "FIRST scholarship portal (Pearson Futures), Rensselaer Polytechnic Institute - FIRST - https://futures.pearson.com/scholarships/276a7624-4636-40db-90c0-9ae15e1e7837",
+  "RPI-S7": "RPI Financial Aid, Scholarships (no FIRST award listed) - https://financialaid.rpi.edu/types-aid/scholarships",
+  "RPI-S8": "RPI Undergraduate Admissions, First-year application FAQs (self-reported scores, official document handling) - https://undergrad.admissions.rpi.edu/apply/first-year-applicants/application-frequently-asked-questions"
+}

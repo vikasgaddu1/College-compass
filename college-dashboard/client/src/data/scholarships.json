@@ -1,0 +1,753 @@
+{
+  "note": "Merit and named-award data compiled from each school's official financial-aid / scholarships / honors-college pages, July-August 2026. Every value below has an inline source. Need-based aid lives on the Aid & Outcomes tab.",
+  "compiled_date": "2026-08-16",
+  "schools": {
+    "mit": {
+      "offers_merit": "None",
+      "flagship": null,
+      "flagship_amount": null,
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [],
+      "generosity": "None (need-only)",
+      "note": "MIT aid is 100% need-based. \"Our scholarships are awarded based solely on financial need.\"",
+      "sources": [
+        {
+          "label": "MIT SFS",
+          "url": "https://sfs.mit.edu/undergraduate-students/types-of-aid/mit-scholarships-grants/"
+        }
+      ]
+    },
+    "carnegie-mellon": {
+      "offers_merit": "Very limited",
+      "flagship": "Carnegie Scholarship (middle-income)",
+      "flagship_amount": "Unpublished",
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [
+        "Endowed funding in Drama/Music only"
+      ],
+      "generosity": "Minimal",
+      "note": "Presidential Scholarship discontinued for incoming students from 2019-20. FAFSA + CSS, no separate app, 8 semesters. CMU is essentially need-based.",
+      "sources": [
+        {
+          "label": "CMU scholarships",
+          "url": "https://www.cmu.edu/sfs/financial-aid/types/scholarships-and-grants/university.html"
+        },
+        {
+          "label": "CMU FAQ",
+          "url": "https://www.cmu.edu/sfs/faq/index.html"
+        }
+      ]
+    },
+    "penn": {
+      "offers_merit": "None",
+      "flagship": null,
+      "flagship_amount": null,
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [],
+      "generosity": "None (need-only)",
+      "note": "\"Penn undergraduate aid is entirely need-based.\"",
+      "sources": [
+        {
+          "label": "Penn FAQ",
+          "url": "https://ask.admissions.upenn.edu/hc/en-us/articles/360036047391-Does-Penn-award-merit-aid-or-merit-scholarships"
+        }
+      ]
+    },
+    "cornell": {
+      "offers_merit": "None",
+      "flagship": null,
+      "flagship_amount": null,
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [],
+      "generosity": "None (need-only)",
+      "note": "\"No merit aid or athletic scholarships are awarded at Cornell.\"",
+      "sources": [
+        {
+          "label": "Cornell Financial Aid",
+          "url": "https://finaid.cornell.edu/grants-and-scholarships"
+        }
+      ]
+    },
+    "purdue": {
+      "offers_merit": "Yes",
+      "flagship": "Beering Scholarship",
+      "flagship_amount": "Full COA for BS + master's/MBA/doctoral + one study abroad",
+      "ed_specific": null,
+      "auto_criteria": "Trustees $16k/yr nonres / $10k res; Presidential $10k nonres / $4k res; automatic, no separate app; Nov 1 deadline; renew 3.00 GPA. About 15% of applicants get merit.",
+      "oos_specific": "Trustees & Presidential explicitly larger for out-of-state students.",
+      "named_awards": [
+        "Lilly Scholars \u2014 full tuition",
+        "Indy Scholars \u2014 $10,000/yr min",
+        "National Recognition \u2014 $1,000/yr"
+      ],
+      "generosity": "Generous",
+      "note": "Beering is invite-only via Honors College Nov 1 application; Trustees & Presidential are automatic.",
+      "sources": [
+        {
+          "label": "Purdue Admissions",
+          "url": "https://admissions.purdue.edu/cost-financial-aid/scholarships/"
+        },
+        {
+          "label": "Beering Scholars",
+          "url": "https://honors.purdue.edu/scholarship/beering-scholars.php"
+        }
+      ]
+    },
+    "penn-state": {
+      "offers_merit": "Yes, modest",
+      "flagship": "Schreyer Academic Excellence Scholarship",
+      "flagship_amount": "$5,300/yr for 8 semesters",
+      "ed_specific": null,
+      "auto_criteria": "Provost Academic Award (non-PA) / Penn State Academic Award (PA) $1,500-$3,200/yr \u2014 awarded automatically. Roughly 1 in 4 undergrads get a University scholarship.",
+      "oos_specific": "Provost Academic Award is for non-PA residents at University Park.",
+      "named_awards": [
+        "Bunton-Waller Scholars (amount unverified)",
+        "College-specific awards"
+      ],
+      "generosity": "Modest",
+      "note": "Schreyer merit award is only for admitted Schreyer Honors Scholars; Schreyer admission is separate and highly selective.",
+      "sources": [
+        {
+          "label": "PSU Aid",
+          "url": "https://www.psu.edu/costs-aid/types-of-aid/scholarships"
+        },
+        {
+          "label": "Schreyer",
+          "url": "https://www.shc.psu.edu/admissions/cost-aid/"
+        }
+      ]
+    },
+    "rit": {
+      "offers_merit": "Yes",
+      "flagship": "RIT Institutional Merit Scholarship",
+      "flagship_amount": "$14,000-$27,000/yr ($56k-$108k total, 4 yrs)",
+      "ed_specific": null,
+      "auto_criteria": "No separate app; automatic; auto-renewable. 100% of students receive merit funding. ED1/EA 11/1, ED2 1/1, RD 1/15.",
+      "oos_specific": null,
+      "named_awards": [
+        "High School Awards \u2014 $24,000/yr",
+        "IB Diploma \u2014 $24,000/yr",
+        "RIT/FIRST \u2014 $14,000/yr (~20 awarded/yr)"
+      ],
+      "generosity": "Very generous",
+      "note": "One of the most broadly generous merit programs on the list. 100% receive some merit award.",
+      "sources": [
+        {
+          "label": "RIT Aid Guide PDF",
+          "url": "https://www.rit.edu/admissions/sites/rit.edu.admissions/files/docs/Guide-Financial-Aid-Scholarships.pdf"
+        },
+        {
+          "label": "RIT merit",
+          "url": "https://www.rit.edu/admissions/aid/merit-based-scholarships"
+        }
+      ]
+    },
+    "illinois-tech": {
+      "offers_merit": "Yes",
+      "flagship": "Camras Scholars (also Crown, Duchossois, Leadership Academy)",
+      "flagship_amount": "Full tuition, up to 4 yrs (5 for Arch)",
+      "ed_specific": "Camras deadline Nov 15 \u2014 must apply ED or EA. Full-tuition scholars \u22484-5% of class.",
+      "auto_criteria": "Heald Scholarship $80,000-$120,000 total \u2014 all domestic first-years auto-considered, no application.",
+      "oos_specific": null,
+      "named_awards": [
+        "Crown \u2014 full tuition",
+        "Duchossois Leadership \u2014 full tuition",
+        "Illinois Tech Purpose \u2014 zero-tuition (IL residents, AGI \u2264$75k)"
+      ],
+      "generosity": "Very generous",
+      "note": "Multiple full-tuition pathways with published deadlines. Camras is the marquee award but Heald covers most others automatically.",
+      "sources": [
+        {
+          "label": "Illinois Tech Scholarships",
+          "url": "https://www.iit.edu/admissions-aid/tuition-and-aid/scholarships/first-year-student-scholarships"
+        },
+        {
+          "label": "Camras Scholars",
+          "url": "https://www.iit.edu/admissions-aid/tuition-and-aid/scholarships/first-year-student-scholarships/camras-scholars-program"
+        }
+      ]
+    },
+    "wpi": {
+      "offers_merit": "Yes",
+      "flagship": "Presidential Scholarship",
+      "flagship_amount": "Varies; min $25,000/yr guaranteed for IB Diploma \u226540 (4 yrs)",
+      "ed_specific": "All ED admits from fall 2026 onward receive min $25,000/yr merit ($100k over 4 yrs). Not combinable with the Innovation Award.",
+      "auto_criteria": "Presidential is automatic with application (no extra app except FIRST/VEX/REC).",
+      "oos_specific": null,
+      "named_awards": [
+        "BizTech Emerging Leaders \u2014 $10k-$25k/yr",
+        "Robotics Engineering Scholars \u2014 $10k-$25k/yr",
+        "NCSSS \u2014 $15,000/yr"
+      ],
+      "generosity": "Very generous",
+      "note": "The ED-only $25k+ minimum is unusually generous. Applying ED at WPI has a very real financial upside.",
+      "sources": [
+        {
+          "label": "WPI Merit",
+          "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit"
+        },
+        {
+          "label": "WPI ED FAQ",
+          "url": "https://www.wpi.edu/faq/are-merit-scholarships-offered-early-decision-candidates"
+        }
+      ]
+    },
+    "rpi": {
+      "offers_merit": "Yes",
+      "flagship": "Rensselaer Medal",
+      "flagship_amount": "$40,000/yr, $160,000 total, 4 yrs (5 for B.Arch)",
+      "ed_specific": null,
+      "auto_criteria": "No student application \u2014 high school nominates one junior; nominations due May 1.",
+      "oos_specific": null,
+      "named_awards": [
+        "Rensselaer Leadership Award",
+        "Garnet Baltimore Award",
+        "2024 Bicentennial Award (amounts unpublished)"
+      ],
+      "generosity": "Generous",
+      "note": "The Medal requires a school nomination in junior year \u2014 talk to your counselor early.",
+      "sources": [
+        {
+          "label": "Rensselaer Medal",
+          "url": "https://financialaid.rpi.edu/types-aid/scholarships/rensselaer-medal"
+        },
+        {
+          "label": "RPI Scholarships",
+          "url": "https://financialaid.rpi.edu/types-aid/scholarships"
+        }
+      ]
+    },
+    "georgia-tech": {
+      "offers_merit": "Very limited",
+      "flagship": "Stamps President's Scholarship",
+      "flagship_amount": "Full ride + $12,000 enrichment (4 yrs) + $1,100 laptop",
+      "ed_specific": null,
+      "auto_criteria": "Apply by Early Action; no separate app; semifinalist interviews late Jan, Stamps Weekend mid-March.",
+      "oos_specific": "OOS Stamps recipients get a tuition waiver to the in-state rate.",
+      "named_awards": [
+        "No other significant merit programs published with amounts"
+      ],
+      "generosity": "Minimal breadth, extraordinary for selectees",
+      "note": "Georgia Tech is otherwise essentially need-only. Stamps is a needle-mover if you win it.",
+      "sources": [
+        {
+          "label": "Stamps FAQ",
+          "url": "https://stampsps.gatech.edu/apply/frequently-asked-questions"
+        },
+        {
+          "label": "GT Catalog",
+          "url": "https://catalog.gatech.edu/academics/special-academic-programs/stamps-presidents-scholarship-program/"
+        }
+      ]
+    },
+    "uiuc": {
+      "offers_merit": "Yes",
+      "flagship": "Stamps Scholarship",
+      "flagship_amount": "Up to full COA, 4 yrs (3.0 GPA)",
+      "ed_specific": null,
+      "auto_criteria": "Illinois application serves as the scholarship application. No separate app.",
+      "oos_specific": "Illinois Achievement Scholarship \u2014 $10,000 for non-resident freshmen with need.",
+      "named_awards": [
+        "Provost Scholarship \u2014 full tuition",
+        "Anthony & Blackshear \u2014 full tuition + fees (IL only)",
+        "President's Award \u2014 up to $5,000",
+        "PAP Honors \u2014 up to $10,000"
+      ],
+      "generosity": "Generous",
+      "note": "Multiple pathways to full tuition. Even OOS students have a $10k safety net if need-eligible.",
+      "sources": [
+        {
+          "label": "UIUC Merit",
+          "url": "https://www.osfa.illinois.edu/types-of-aid/scholarships/merit-based-scholarships/"
+        }
+      ]
+    },
+    "michigan": {
+      "offers_merit": "Very limited",
+      "flagship": "Stamps + LSA merit (Shipman, Bentley)",
+      "flagship_amount": "LSA up to $15k/yr in-state, $25k/yr OOS; Stamps $20k/yr (18 freshmen/yr)",
+      "ed_specific": null,
+      "auto_criteria": "Only ~40 LSA merit awards/yr; automatic from LSA application; Nov 1 EA gives best consideration.",
+      "oos_specific": "LSA merit is higher for OOS ($25k vs $15k/yr).",
+      "named_awards": [
+        "Stamps \u2014 $20,000/yr, 18 freshmen/yr",
+        "Shipman (amount unpublished)",
+        "Bentley (amount unpublished)"
+      ],
+      "generosity": "Minimal",
+      "note": "For OOS students especially: Michigan is not a merit-aid destination. Apply for financial reasons only if you meet need thresholds.",
+      "sources": [
+        {
+          "label": "LSA Prospective",
+          "url": "https://lsa.umich.edu/scholarships/prospective-students.html"
+        },
+        {
+          "label": "LSA Merit",
+          "url": "https://lsa.umich.edu/scholarships/prospective-students/merit-scholarships.html"
+        }
+      ]
+    },
+    "johns-hopkins": {
+      "offers_merit": "Very limited",
+      "flagship": "Hodson Trust Scholarship",
+      "flagship_amount": "~2/3 of tuition (English page: \"significant portion of annual tuition\")",
+      "ed_specific": null,
+      "auto_criteria": "Less than 20 freshmen each year; all applicants auto-considered, no app; notified with admission; renew 3.0 GPA.",
+      "oos_specific": null,
+      "named_awards": [
+        "Charles R. Westgate Engineering Scholarship (4 yrs, Whiting School)",
+        "Hodson-Gilliam Success Scholarship (need-based)"
+      ],
+      "generosity": "Minimal",
+      "note": "JHU is essentially need-only for most students. Hodson goes to fewer than 20 freshmen a year.",
+      "sources": [
+        {
+          "label": "JHU Merit",
+          "url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/merit-scholarships/"
+        },
+        {
+          "label": "JHU SFS",
+          "url": "https://sfs.jhu.edu/types-of-aid/scholarships/"
+        }
+      ]
+    },
+    "maryland": {
+      "offers_merit": "Yes",
+      "flagship": "Banneker/Key Scholarship",
+      "flagship_amount": "Up to full tuition, fees, housing, food + book allowance",
+      "ed_specific": "Nov 1 EA required for Banneker/Key consideration.",
+      "auto_criteria": "President's $2,000-$20,000/yr for 4 yrs (in- and out-of-state); Dean's $1,500 or $4,500/yr for 2 yrs (in-state only, ~400/yr, not renewable).",
+      "oos_specific": "President's open to OOS students; Dean's is in-state only.",
+      "named_awards": [
+        "President's Scholarship \u2014 $2k-$20k/yr, 4 yrs",
+        "Dean's Scholarship \u2014 $1.5k or $4.5k/yr, 2 yrs (in-state only)",
+        "Honors College admission via Banneker/Key"
+      ],
+      "generosity": "Generous",
+      "note": "EA deadline is a hard gate \u2014 miss it and you're out for merit.",
+      "sources": [
+        {
+          "label": "UMD Merit",
+          "url": "https://admissions.umd.edu/tuition/freshman-merit-scholarships"
+        },
+        {
+          "label": "Banneker/Key",
+          "url": "https://admissions.umd.edu/page/bkscholarship"
+        }
+      ]
+    },
+    "northeastern": {
+      "offers_merit": "Yes",
+      "flagship": "Stamps Scholars at Northeastern",
+      "flagship_amount": "Full COA + research/travel/project stipend",
+      "ed_specific": null,
+      "auto_criteria": "General merit considers all applicants meeting RD deadline Jan 1, no separate app. No dollar amounts published.",
+      "oos_specific": null,
+      "named_awards": [
+        "Torch Scholars (full tuition/fees/housing/meals + Summer Immersion; requires non-family nomination)",
+        "Oakland Opportunity (full tuition/housing/meals, \u226410/yr)",
+        "National Merit & National Recognition awards"
+      ],
+      "generosity": "Generous (breadth confirmed, amounts unpublished)",
+      "note": "Third-party sources put general merit in the $10k-$30k/yr range, but that's not on Northeastern's official page.",
+      "sources": [
+        {
+          "label": "Northeastern Merit",
+          "url": "https://admissions.northeastern.edu/cost-financial-aid/merit-scholarships/"
+        }
+      ]
+    },
+    "ohio-state": {
+      "offers_merit": "Yes",
+      "flagship": "Stamps Eminence Scholarship",
+      "flagship_amount": "Full COA + up to $5,000 enrichment, 8 semesters",
+      "ed_specific": null,
+      "auto_criteria": "Separate app: admission by Nov 1, scholarship by Nov 9; essay + video; renew 3.4/3.5. National Buckeye (non-Ohio) up to $13,500/yr; Maximus/Provost/Trustees $1k-$3k/yr auto-awarded.",
+      "oos_specific": "National Buckeye is OOS-specific ($13,500/yr = $54k total).",
+      "named_awards": [
+        "President's Ohio (full COA + $5k; ACT 36 or SAT 1600 single sitting, Ohio residents, automatic)",
+        "Morrill Scholarship Program tiers",
+        "Land Grant Opportunity (full COA, 88 Ohio students/yr)"
+      ],
+      "generosity": "Very generous",
+      "note": "For OOS students: National Buckeye is essentially automatic and materially reduces cost.",
+      "sources": [
+        {
+          "label": "OSU Merit",
+          "url": "https://undergrad.osu.edu/cost-and-aid/merit-based-scholarships"
+        },
+        {
+          "label": "OSU Aid Renewal",
+          "url": "https://sfa.osu.edu/incoming-freshmen/accept-aid/view-your-aid/accept-scholarships"
+        }
+      ]
+    },
+    "nc-state": {
+      "offers_merit": "Yes",
+      "flagship": "Park Scholarship",
+      "flagship_amount": "\u2248$129k in-state / \u2248$244k OOS over 4 yrs (tuition, fees, room/board, books, travel, computer, enrichment)",
+      "ed_specific": null,
+      "auto_criteria": "~38/yr, any discipline; semifinalists get guaranteed University Honors Program invitation.",
+      "oos_specific": "Park value is scaled up for OOS (\u2248$244k).",
+      "named_awards": [
+        "Goodnight Scholarships \u2014 $25,000/yr \u00d7 4 (NC residents, STEM, AGI \u2264$120k)"
+      ],
+      "generosity": "Generous",
+      "note": "Park is extremely selective but comprehensive. Goodnight is a strong NC-STEM alternative.",
+      "sources": [
+        {
+          "label": "Park Scholarship",
+          "url": "https://park.ncsu.edu/about/"
+        },
+        {
+          "label": "Goodnight",
+          "url": "https://goodnight.ncsu.edu/first-year/"
+        }
+      ]
+    },
+    "unc-chapel-hill": {
+      "offers_merit": "Yes",
+      "flagship": "Morehead-Cain Scholarship",
+      "flagship_amount": "Fully funded 4-year + internships, summers, travel",
+      "ed_specific": null,
+      "auto_criteria": "68 new scholars for the Class of 2030; separate nomination/application. UNC Academic Scholarships ($3k up to full COA) auto-considered.",
+      "oos_specific": "Non-residents receiving a full tuition/fees/housing/meals scholarship are charged tuition at the NC resident rate.",
+      "named_awards": [
+        "Robertson Scholars (8 semesters full tuition, room & board, most fees + 3 summers, study abroad)",
+        "UNC Academic Scholarships"
+      ],
+      "generosity": "Generous",
+      "note": "Morehead-Cain and Robertson are marquee scholarships nationally. Non-residents pay in-state tuition if awarded.",
+      "sources": [
+        {
+          "label": "UNC Aid",
+          "url": "https://studentaid.unc.edu/incoming/what-aid-is-available/academic-scholarships/"
+        },
+        {
+          "label": "Robertson",
+          "url": "https://registrar.unc.edu/robertson-scholars/"
+        },
+        {
+          "label": "Morehead-Cain 2030",
+          "url": "https://www.unc.edu/posts/2026/05/11/morehead-cain-announces-its-68-newest-scholars/"
+        }
+      ]
+    },
+    "virginia-tech": {
+      "offers_merit": "Yes",
+      "flagship": "Stamps Scholarship (Honors College)",
+      "flagship_amount": "Estimated cost of attendance for 4 yrs, filling in after other scholarships",
+      "ed_specific": "Requires Nov 15 EA application (later applicants ineligible); recruitment apps Sept 15-Jan 7 via Scholarship Central (66656).",
+      "auto_criteria": null,
+      "oos_specific": "Presidential Scholarship Initiative is Virginia-resident only; Pamplin Leadership limited to Virginia public high schools.",
+      "named_awards": [
+        "Pamplin Leadership Award $5,000 (\u226440 Virginia public-HS students, \u22653.8 GPA)",
+        "Calhoun / McNamara / Alumni Presidential / Townsend-Crews / Spratley (amounts unpublished)",
+        "Presidential Campus Enrichment Grant $5,000/yr \u00d7 4"
+      ],
+      "generosity": "Modest broadly, generous for Honors/Stamps selectees",
+      "note": "Nov 15 EA is a hard gate. For non-Virginia residents, Stamps is essentially the only big-dollar route.",
+      "sources": [
+        {
+          "label": "VT Honors",
+          "url": "https://honorscollege.vt.edu/Scholarships/recruitment.html"
+        },
+        {
+          "label": "VT Aid",
+          "url": "https://finaid.vt.edu/undergraduate/typesofaid/grants/presidential-supplemental-enrichment-initiative.html"
+        }
+      ]
+    },
+    "florida": {
+      "offers_merit": "Yes",
+      "flagship": "Presidential Platinum Scholarship",
+      "flagship_amount": "$10,000/yr, $40,000 over 4 yrs",
+      "ed_specific": null,
+      "auto_criteria": "Automatic, no separate app, no extra materials. Presidential $5k/yr, Gold $8k/yr, Platinum $10k/yr \u2014 awarded automatically to ~10% of admits. No pre-set criteria.",
+      "oos_specific": "OOS tuition waivers: Alumni up to $8k/yr, Sunshine up to $16k/yr, Gator Nation $20k/yr. Voided if residency becomes in-state.",
+      "named_awards": [
+        "Benacquisto (state; covers COA minus Bright Futures + qualifying National Merit; UF's $500/yr NM Scholarship qualifies if UF named first choice by May 31)",
+        "Machen Florida Opportunity Scholars (full package, first-gen, income <$55k)"
+      ],
+      "generosity": "Generous (esp. OOS)",
+      "note": "For OOS applicants: Sunshine + Gator Nation waivers can materially close the gap with in-state tuition.",
+      "sources": [
+        {
+          "label": "UF Scholarships",
+          "url": "https://admissions.ufl.edu/cost-and-aid/scholarships"
+        }
+      ]
+    },
+    "olin": {
+      "offers_merit": "Yes \u2014 every admit",
+      "flagship": "Olin Tuition Scholarship",
+      "flagship_amount": "$10,000/yr, up to 8 semesters (every admit)",
+      "ed_specific": null,
+      "auto_criteria": "Awarded to all students; no separate app.",
+      "oos_specific": null,
+      "named_awards": [
+        "Phoenix Award \u2014 $7k-$17k/yr, 4 yrs (middle-income preference)",
+        "Iris Shanyue Tang \u2014 up to $10,000/yr",
+        "Olin National Merit Scholars \u2014 $1,000/yr \u00d7 4"
+      ],
+      "generosity": "Generous",
+      "note": "Every Olin admit gets the base $10k/yr Olin Tuition Scholarship \u2014 no exceptions. (Reference \"half tuition\" is outdated.)",
+      "sources": [
+        {
+          "label": "Olin Aid",
+          "url": "https://www.olin.edu/admission-financial-aid-afford/aid-scholarships"
+        }
+      ]
+    },
+    "rose-hulman": {
+      "offers_merit": "Yes",
+      "flagship": "Noblitt Scholars Program",
+      "flagship_amount": "Up to full tuition, 4 yrs (invitation-only)",
+      "ed_specific": null,
+      "auto_criteria": "Rose-Hulman Merit Scholarship \u2014 all admits auto-considered (amount unpublished), renewable 4 yrs with no GPA requirement.",
+      "oos_specific": null,
+      "named_awards": [
+        "Provost Scholarship $10k-$20k (bio/chem/biochem, Nov 1 EA)",
+        "FIRST Robotics \u2014 2 \u00d7 $10k/yr up to $40k",
+        "VEX \u2014 $10k/yr up to $40k",
+        "ROSE-BUD \u2014 max $10k/yr"
+      ],
+      "generosity": "Generous",
+      "note": "Robotics scholarships are unusually generous \u2014 if applicant is on a FIRST or VEX team, worth verifying eligibility.",
+      "sources": [
+        {
+          "label": "Rose-Hulman Scholarships",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html"
+        },
+        {
+          "label": "Aid FAQ",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/financial-aid-basics/financial-aid-faqs.html"
+        }
+      ]
+    },
+    "carleton": {
+      "offers_merit": "Very limited",
+      "flagship": "Fritch Scholarships",
+      "flagship_amount": "$10,000/yr ($40,000 total, renewable 3 more yrs)",
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [
+        "Strong Scholarship \u2014 $10,000/yr ($40k, middle-income urban)",
+        "Fritch Scholarships (donor-defined income/geography)"
+      ],
+      "generosity": "Minimal",
+      "note": "\"The vast majority of our grants and scholarship are need-based.\" Merit is small and eligibility-based.",
+      "sources": [
+        {
+          "label": "Carleton Aid",
+          "url": "https://www.carleton.edu/financial-aid/types-of-aid/grant-and-scholarships/"
+        }
+      ]
+    },
+    "swarthmore": {
+      "offers_merit": "Yes (not need-only)",
+      "flagship": "National and Regional McCabe Scholarships",
+      "flagship_amount": "Minimum annual grant of full tuition",
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [
+        "Philip Evans Scholars (merit + one-time computer allowance up to $1,500 + annual opportunity grant; may rise to full tuition, fees, room and board with need)"
+      ],
+      "generosity": "Modest (few awards, each at full-tuition level)",
+      "note": "Swarthmore is often reported as need-only, but McCabe is genuinely merit-based and full-tuition. Selection details not published on the fetched page.",
+      "sources": [
+        {
+          "label": "Swarthmore Aid",
+          "url": "https://www.swarthmore.edu/financial-aid/scholarships-grants"
+        }
+      ]
+    },
+    "uc-berkeley": {
+      "offers_merit": "Very limited",
+      "flagship": "Regents' and Chancellor's Scholarship",
+      "flagship_amount": "$2,500-$8,750/yr (unpublished exact figures)",
+      "ed_specific": null,
+      "auto_criteria": "Regents' and Chancellor's Scholarship is Berkeley's most prestigious merit scholarship, automatically considered from the UC application. Amount varies with financial need.",
+      "oos_specific": "Blue and Gold Opportunity Plan is California-residents-only.",
+      "named_awards": [
+        "Cal Opportunity Scholarship (need-based)",
+        "Alumni Leadership Scholarship (competitive)",
+        "Fiat Lux Scholarship (undocumented / DACA students)"
+      ],
+      "generosity": "Minimal",
+      "note": "Berkeley is essentially need-only for OOS students. The Regents' Scholarship offers small merit amounts but no full-ride equivalent. No ED bonus (Berkeley has no ED).",
+      "sources": [
+        {
+          "label": "Berkeley Scholarships",
+          "url": "https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/"
+        }
+      ]
+    },
+    "uw-seattle": {
+      "offers_merit": "Very limited",
+      "flagship": "Purple & Gold Scholarship",
+      "flagship_amount": "Amount unpublished",
+      "ed_specific": null,
+      "auto_criteria": "Purple & Gold Scholarship auto-considered from admission application; renewable for 4 years.",
+      "oos_specific": "Husky Promise (in-state Washington residents only) covers full tuition + fees for Pell-eligible families.",
+      "named_awards": [
+        "UW Presidential Scholarship (highly competitive)",
+        "Ronald E. McNair Scholarship"
+      ],
+      "generosity": "Minimal",
+      "note": "UW meets only 74% of demonstrated need for OOS students \u2014 merit is scarce and financially not decisive for a NC family.",
+      "sources": [
+        {
+          "label": "UW Financial Aid",
+          "url": "https://www.washington.edu/financialaid/types-of-aid/scholarships/"
+        }
+      ]
+    },
+    "ut-austin": {
+      "offers_merit": "Yes",
+      "flagship": "Forty Acres Scholars Program",
+      "flagship_amount": "$128,000 total over 4 yrs (essentially full ride) + enrichment funding",
+      "ed_specific": null,
+      "auto_criteria": "Automatic consideration for all applicants who complete the ApplyTexas/Common App by Dec 1 deadline; separate scholarship essay required for Forty Acres.",
+      "oos_specific": "Forty Acres is OOS-eligible; Texas Advance Commitment is Texas-residents-only.",
+      "named_awards": [
+        "Forty Acres Scholars Program \u2014 $128k / 4 yrs",
+        "Distinguished College Scholarships",
+        "President's Achievement Scholarship"
+      ],
+      "generosity": "Modest broadly, generous for Forty Acres selectees",
+      "note": "For OOS students, Forty Acres is essentially the only big-dollar path. Very competitive \u2014 a few dozen per year.",
+      "sources": [
+        {
+          "label": "Forty Acres Scholars",
+          "url": "https://supportstudents.giving.utexas.edu/where-to-give/forty-acres-scholars-program/"
+        },
+        {
+          "label": "UT Scholarships",
+          "url": "https://financialaid.utexas.edu/types-of-aid/scholarships/"
+        }
+      ]
+    },
+    "duke": {
+      "offers_merit": "Yes",
+      "flagship": "A.B. Duke Scholarship",
+      "flagship_amount": "\u2248$315,000 over 4 yrs (full tuition + summer stipends + enrichment)",
+      "ed_specific": null,
+      "auto_criteria": "No separate application for Duke-administered merit \u2014 all admits are auto-considered for A.B. Duke, Robertson, and Benjamin N. Duke Scholarships.",
+      "oos_specific": null,
+      "named_awards": [
+        "Robertson Scholars \u2014 full-ride across Duke AND UNC (joint program)",
+        "A.B. Duke Scholarship \u2014 ~$315k / 4 yrs",
+        "Benjamin N. Duke Scholarship (Carolinas students, full tuition + stipends)"
+      ],
+      "generosity": "Generous",
+      "note": "Robertson is a marquee scholarship nationally \u2014 the only cross-institutional full-ride between Duke and UNC. A.B. Duke has no separate application.",
+      "sources": [
+        {
+          "label": "Duke Merit Scholarships",
+          "url": "https://ousf.duke.edu/scholarships"
+        },
+        {
+          "label": "Robertson Scholars",
+          "url": "https://registrar.unc.edu/robertson-scholars/"
+        }
+      ]
+    },
+    "texas-am": {
+      "offers_merit": "Yes",
+      "flagship": "President's Endowed Scholarship",
+      "flagship_amount": "$3,000/yr for 4 yrs",
+      "ed_specific": null,
+      "auto_criteria": "Multiple auto-award tiers via TAMU application; Regents' Scholars covers full COA for first-gen",
+      "oos_specific": "Terry Scholarship & Regents' available for Texas residents; OOS limited",
+      "named_awards": [
+        "Regents' Scholars \u2014 full COA (Texas first-gen)",
+        "Craig and Galen Brown Foundation",
+        "Zachry Fellowship"
+      ],
+      "generosity": "Modest",
+      "note": "Aggie network scholarships are strong for in-state; OOS students have limited merit.",
+      "sources": [
+        {
+          "label": "TAMU Scholarships",
+          "url": "https://scholarships.tamu.edu/"
+        }
+      ]
+    },
+    "ut-dallas": {
+      "offers_merit": "Yes",
+      "flagship": "Eugene McDermott Scholars Program",
+      "flagship_amount": "~$310,000 total for non-Texas students (full COA + enrichment)",
+      "ed_specific": null,
+      "auto_criteria": "Academic Excellence Scholarship (AES) auto-awarded; 976 no-need first-years got merit averaging $10,636",
+      "oos_specific": "McDermott is OOS-eligible; AES/NMS also open",
+      "named_awards": [
+        "McDermott Scholars ~$310k",
+        "Academic Excellence Scholarship",
+        "National Merit Scholarship",
+        "Terry Scholarship"
+      ],
+      "generosity": "Very generous",
+      "note": "UTD is one of the best value picks in Texas \u2014 merit is auto-considered and generous for OOS.",
+      "sources": [
+        {
+          "label": "UTD Freshman Scholarships",
+          "url": "https://enroll.utdallas.edu/affordability/freshman-scholarships/"
+        }
+      ]
+    },
+    "kettering": {
+      "offers_merit": "Yes",
+      "flagship": "Robotics Scholarship",
+      "flagship_amount": "$5,000/yr renewable",
+      "ed_specific": null,
+      "auto_criteria": "Robotics competition applicants get $5k/yr with Feb 15 deadline; GM STEM Opportunity covers remaining tuition",
+      "oos_specific": null,
+      "named_awards": [
+        "Robotics Scholarship $5k/yr",
+        "GM STEM Opportunity",
+        "Piston Group",
+        "PHINIA Co-op Award"
+      ],
+      "generosity": "Generous",
+      "note": "Co-op earnings (up to $70k) + robotics scholarship stack meaningfully \u2014 Kettering is a real value.",
+      "sources": [
+        {
+          "label": "Kettering Scholarships",
+          "url": "https://www.kettering.edu/admissions-aid/financial-aid-affordability/financial-aid/types-of-aid/scholarships"
+        }
+      ]
+    },
+    "michigan-dearborn": {
+      "offers_merit": "Yes",
+      "flagship": "Non-Resident Merit Scholarship",
+      "flagship_amount": "Up to $12,500/yr ($50,000 total)",
+      "ed_specific": null,
+      "auto_criteria": "Automatic non-resident merit up to $12,500/yr; Tuition Differential award ($17,232) requires Michigan address",
+      "oos_specific": "Non-resident merit is auto-considered; Tuition Differential is in-state only",
+      "named_awards": [
+        "Non-Resident Merit Scholarship",
+        "Chancellor's Scholarship",
+        "Difference Maker Scholarship"
+      ],
+      "generosity": "Modest",
+      "note": "Auto-merit for OOS partially offsets the $50k+ OOS COA.",
+      "sources": [
+        {
+          "label": "UM-Dearborn Scholarships",
+          "url": "https://umdearborn.edu/financial-aid/scholarships"
+        }
+      ]
+    }
+  }
+}

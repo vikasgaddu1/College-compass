@@ -1,0 +1,337 @@
+{
+  "note": "Compiled from NOAA climate normals (1991-2020) for the nearest major-city station to each campus, plus Google Flights typical round-trip fare bands from RDU 2025-2026 (labeled band, not exact price). Values here supplement primary evidence and should be treated as CONTEXT, not admissions decision drivers.",
+  "compiled_from": "NOAA NCEI 1991-2020 climate normals + Google Flights typical roundtrip bands RDU->airport, sampled July 2026",
+  "compiled_date": "2026-07-29",
+  "cities": {
+    "MIT": {
+      "campus_city": "Cambridge, MA",
+      "nearest_airport": "BOS",
+      "temp_low_jan_f": 22,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 49,
+      "days_below_freezing": 100,
+      "flight_from_rdu_band": "$180-$320",
+      "drive_hours_from_rdu": 12.5
+    },
+    "carnegie-mellon": {
+      "campus_city": "Pittsburgh, PA",
+      "nearest_airport": "PIT",
+      "temp_low_jan_f": 21,
+      "temp_high_jul_f": 84,
+      "snow_inches_annual": 44,
+      "days_below_freezing": 117,
+      "flight_from_rdu_band": "$180-$280",
+      "drive_hours_from_rdu": 7.5
+    },
+    "penn": {
+      "campus_city": "Philadelphia, PA",
+      "nearest_airport": "PHL",
+      "temp_low_jan_f": 26,
+      "temp_high_jul_f": 88,
+      "snow_inches_annual": 22,
+      "days_below_freezing": 91,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 6.5
+    },
+    "cornell": {
+      "campus_city": "Ithaca, NY",
+      "nearest_airport": "ITH",
+      "temp_low_jan_f": 14,
+      "temp_high_jul_f": 80,
+      "snow_inches_annual": 66,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$280-$500 (connections)",
+      "drive_hours_from_rdu": 11.0
+    },
+    "purdue": {
+      "campus_city": "West Lafayette, IN",
+      "nearest_airport": "IND",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 85,
+      "snow_inches_annual": 24,
+      "days_below_freezing": 118,
+      "flight_from_rdu_band": "$220-$420 (connections)",
+      "drive_hours_from_rdu": 12.5
+    },
+    "penn-state": {
+      "campus_city": "State College, PA",
+      "nearest_airport": "UNV",
+      "temp_low_jan_f": 21,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 42,
+      "days_below_freezing": 115,
+      "flight_from_rdu_band": "$320-$550 (connections)",
+      "drive_hours_from_rdu": 8.5
+    },
+    "rit": {
+      "campus_city": "Rochester, NY",
+      "nearest_airport": "ROC",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 99,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$180-$320",
+      "drive_hours_from_rdu": 12.5
+    },
+    "illinois-tech": {
+      "campus_city": "Chicago, IL",
+      "nearest_airport": "MDW/ORD",
+      "temp_low_jan_f": 20,
+      "temp_high_jul_f": 85,
+      "snow_inches_annual": 36,
+      "days_below_freezing": 118,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 13.0
+    },
+    "wpi": {
+      "campus_city": "Worcester, MA",
+      "nearest_airport": "BOS",
+      "temp_low_jan_f": 15,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 64,
+      "days_below_freezing": 133,
+      "flight_from_rdu_band": "$180-$320",
+      "drive_hours_from_rdu": 12.5
+    },
+    "rpi": {
+      "campus_city": "Troy, NY",
+      "nearest_airport": "ALB",
+      "temp_low_jan_f": 13,
+      "temp_high_jul_f": 83,
+      "snow_inches_annual": 63,
+      "days_below_freezing": 145,
+      "flight_from_rdu_band": "$220-$400 (connections)",
+      "drive_hours_from_rdu": 12.0
+    },
+    "georgia-tech": {
+      "campus_city": "Atlanta, GA",
+      "nearest_airport": "ATL",
+      "temp_low_jan_f": 35,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 2,
+      "days_below_freezing": 41,
+      "flight_from_rdu_band": "$120-$220",
+      "drive_hours_from_rdu": 6.5
+    },
+    "uiuc": {
+      "campus_city": "Champaign, IL",
+      "nearest_airport": "CMI/ORD",
+      "temp_low_jan_f": 17,
+      "temp_high_jul_f": 86,
+      "snow_inches_annual": 21,
+      "days_below_freezing": 116,
+      "flight_from_rdu_band": "$220-$400 (connections)",
+      "drive_hours_from_rdu": 13.0
+    },
+    "michigan": {
+      "campus_city": "Ann Arbor, MI",
+      "nearest_airport": "DTW",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 84,
+      "snow_inches_annual": 42,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 12.0
+    },
+    "johns-hopkins": {
+      "campus_city": "Baltimore, MD",
+      "nearest_airport": "BWI",
+      "temp_low_jan_f": 26,
+      "temp_high_jul_f": 88,
+      "snow_inches_annual": 20,
+      "days_below_freezing": 82,
+      "flight_from_rdu_band": "$100-$200",
+      "drive_hours_from_rdu": 5.0
+    },
+    "maryland": {
+      "campus_city": "College Park, MD",
+      "nearest_airport": "DCA/BWI",
+      "temp_low_jan_f": 27,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 19,
+      "days_below_freezing": 71,
+      "flight_from_rdu_band": "$100-$220",
+      "drive_hours_from_rdu": 4.5
+    },
+    "northeastern": {
+      "campus_city": "Boston, MA",
+      "nearest_airport": "BOS",
+      "temp_low_jan_f": 22,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 49,
+      "days_below_freezing": 96,
+      "flight_from_rdu_band": "$140-$280",
+      "drive_hours_from_rdu": 12.5
+    },
+    "ohio-state": {
+      "campus_city": "Columbus, OH",
+      "nearest_airport": "CMH",
+      "temp_low_jan_f": 22,
+      "temp_high_jul_f": 85,
+      "snow_inches_annual": 22,
+      "days_below_freezing": 111,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 9.0
+    },
+    "nc-state": {
+      "campus_city": "Raleigh, NC",
+      "nearest_airport": "RDU",
+      "temp_low_jan_f": 32,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 4,
+      "days_below_freezing": 69,
+      "flight_from_rdu_band": "N/A (home)",
+      "drive_hours_from_rdu": 0.3
+    },
+    "unc-chapel-hill": {
+      "campus_city": "Chapel Hill, NC",
+      "nearest_airport": "RDU",
+      "temp_low_jan_f": 32,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 4,
+      "days_below_freezing": 69,
+      "flight_from_rdu_band": "N/A (home)",
+      "drive_hours_from_rdu": 0.5
+    },
+    "virginia-tech": {
+      "campus_city": "Blacksburg, VA",
+      "nearest_airport": "ROA",
+      "temp_low_jan_f": 24,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 22,
+      "days_below_freezing": 97,
+      "flight_from_rdu_band": "$260-$500 (connections)",
+      "drive_hours_from_rdu": 3.5
+    },
+    "florida": {
+      "campus_city": "Gainesville, FL",
+      "nearest_airport": "GNV",
+      "temp_low_jan_f": 44,
+      "temp_high_jul_f": 91,
+      "snow_inches_annual": 0,
+      "days_below_freezing": 15,
+      "flight_from_rdu_band": "$180-$380 (connections)",
+      "drive_hours_from_rdu": 8.5
+    },
+    "olin": {
+      "campus_city": "Needham, MA",
+      "nearest_airport": "BOS",
+      "temp_low_jan_f": 22,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 49,
+      "days_below_freezing": 100,
+      "flight_from_rdu_band": "$180-$320",
+      "drive_hours_from_rdu": 12.0
+    },
+    "rose-hulman": {
+      "campus_city": "Terre Haute, IN",
+      "nearest_airport": "IND",
+      "temp_low_jan_f": 21,
+      "temp_high_jul_f": 87,
+      "snow_inches_annual": 22,
+      "days_below_freezing": 105,
+      "flight_from_rdu_band": "$220-$420 (connections)",
+      "drive_hours_from_rdu": 12.0
+    },
+    "carleton": {
+      "campus_city": "Northfield, MN",
+      "nearest_airport": "MSP",
+      "temp_low_jan_f": 6,
+      "temp_high_jul_f": 84,
+      "snow_inches_annual": 51,
+      "days_below_freezing": 158,
+      "flight_from_rdu_band": "$180-$340",
+      "drive_hours_from_rdu": 18.0
+    },
+    "swarthmore": {
+      "campus_city": "Swarthmore, PA",
+      "nearest_airport": "PHL",
+      "temp_low_jan_f": 25,
+      "temp_high_jul_f": 87,
+      "snow_inches_annual": 23,
+      "days_below_freezing": 92,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 6.5
+    },
+    "uc-berkeley": {
+      "campus_city": "Berkeley, CA",
+      "nearest_airport": "SFO/OAK",
+      "temp_low_jan_f": 45,
+      "temp_high_jul_f": 73,
+      "snow_inches_annual": 0,
+      "days_below_freezing": 3,
+      "flight_from_rdu_band": "$280-$500 nonstop",
+      "drive_hours_from_rdu": 40.0
+    },
+    "uw-seattle": {
+      "campus_city": "Seattle, WA",
+      "nearest_airport": "SEA",
+      "temp_low_jan_f": 38,
+      "temp_high_jul_f": 77,
+      "snow_inches_annual": 6,
+      "days_below_freezing": 25,
+      "flight_from_rdu_band": "$290-$500 nonstop",
+      "drive_hours_from_rdu": 40.0
+    },
+    "ut-austin": {
+      "campus_city": "Austin, TX",
+      "nearest_airport": "AUS",
+      "temp_low_jan_f": 42,
+      "temp_high_jul_f": 96,
+      "snow_inches_annual": 0,
+      "days_below_freezing": 12,
+      "flight_from_rdu_band": "$260-$450 nonstop",
+      "drive_hours_from_rdu": 19.0
+    },
+    "duke": {
+      "campus_city": "Durham, NC",
+      "nearest_airport": "RDU",
+      "temp_low_jan_f": 32,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 4,
+      "days_below_freezing": 69,
+      "flight_from_rdu_band": "N/A (home)",
+      "drive_hours_from_rdu": 0.3
+    },
+    "texas-am": {
+      "campus_city": "College Station, TX",
+      "nearest_airport": "CLL/IAH",
+      "temp_low_jan_f": 42,
+      "temp_high_jul_f": 95,
+      "snow_inches_annual": 0,
+      "days_below_freezing": 10,
+      "flight_from_rdu_band": "$280-$500 (connections via IAH)",
+      "drive_hours_from_rdu": 18.0
+    },
+    "ut-dallas": {
+      "campus_city": "Richardson, TX",
+      "nearest_airport": "DFW",
+      "temp_low_jan_f": 36,
+      "temp_high_jul_f": 96,
+      "snow_inches_annual": 2,
+      "days_below_freezing": 29,
+      "flight_from_rdu_band": "$260-$450 nonstop",
+      "drive_hours_from_rdu": 17.3
+    },
+    "kettering": {
+      "campus_city": "Flint, MI",
+      "nearest_airport": "FNT/DTW",
+      "temp_low_jan_f": 16,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 42,
+      "days_below_freezing": 135,
+      "flight_from_rdu_band": "$220-$450 (connections)",
+      "drive_hours_from_rdu": 12.0
+    },
+    "michigan-dearborn": {
+      "campus_city": "Dearborn, MI",
+      "nearest_airport": "DTW",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 83,
+      "snow_inches_annual": 32,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$140-$280 nonstop",
+      "drive_hours_from_rdu": 12.0
+    }
+  }
+}

@@ -1,0 +1,467 @@
+{
+  "note": "LinkedIn's per-school people pages return an authwall for automated fetches, so exact alumni counts at each company are not obtainable. Values below are qualitative bands assembled from College Transitions' LinkedIn-derived tech-feeder counts, Resume Genius's Nov 2025 LinkedIn Alumni analysis, workforce.ai's OpenAI alma-mater ranking, and school-published first-destination reports. All values are relative to the 25 schools in this study, not the whole U.S. college population.",
+  "compiled_date": "2026-08-16",
+  "band_scale": [
+    {
+      "band": "Very high",
+      "description": "Top-tier national feeder (likely thousands of alumni at this company)"
+    },
+    {
+      "band": "High",
+      "description": "Source documents 500+/900+/\"hundreds\""
+    },
+    {
+      "band": "Moderate",
+      "description": "Named significant employer, mid-pack (low hundreds)"
+    },
+    {
+      "band": "Low",
+      "description": "Small documented footprint (roughly <100)"
+    },
+    {
+      "band": "n.a.",
+      "description": "No evidence \u2014 not guessed"
+    }
+  ],
+  "companies": [
+    "Google",
+    "Meta",
+    "Amazon",
+    "Microsoft",
+    "Apple",
+    "Nvidia",
+    "OpenAI",
+    "Anthropic"
+  ],
+  "schools": {
+    "mit": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "High",
+        "Nvidia": "High",
+        "OpenAI": "Very high",
+        "Anthropic": "Very high"
+      },
+      "note": "#3 by combined OpenAI+Anthropic alumni (300), behind Stanford (589) and Berkeley (520)"
+    },
+    "carnegie-mellon": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "Very high",
+        "Nvidia": "Very high",
+        "OpenAI": "Very high",
+        "Anthropic": "Very high"
+      },
+      "note": "#1 feeder by alumni share at Google (2.62%), Meta (1.36%), Apple (1.15%), Nvidia (0.55%); #4 at OpenAI+Anthropic (255)"
+    },
+    "penn": {
+      "bands": {
+        "Google": "High",
+        "Meta": "High",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Moderate",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Top-20 feeder (186 alumni); no top-5 finishes at any single company"
+    },
+    "cornell": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "High",
+        "Nvidia": "Moderate",
+        "OpenAI": "High",
+        "Anthropic": "Moderate"
+      },
+      "note": "#9 feeder (403); named in workforce.ai's OpenAI top-10"
+    },
+    "purdue": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Moderate",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Moderate",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "#16 feeder (277); Microsoft and Amazon are Purdue's #1/#2 tech employers"
+    },
+    "penn-state": {
+      "bands": {
+        "Google": "High",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Amazon, Google, and Microsoft each employ 500+ Penn State alumni"
+    },
+    "rit": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "High",
+        "Apple": "High",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "n.a."
+      },
+      "note": "#25 feeder (168); Microsoft and Apple are RIT's #2/#3 employers"
+    },
+    "illinois-tech": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Low",
+        "Apple": "Low",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "Green-card sponsors: Amazon 14, Apple 11, Microsoft 5, Meta 3"
+    },
+    "wpi": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "\"Hundreds\" at Google and Microsoft; defense/industrial employers dominate WPI's outcomes"
+    },
+    "rpi": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "83 recent tech hires; Amazon/Microsoft top two"
+    },
+    "georgia-tech": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "Very high",
+        "Nvidia": "Very high",
+        "OpenAI": "Moderate",
+        "Anthropic": "Moderate"
+      },
+      "note": "#2 overall by MANGO alumni share (3.48%); top-5 at all five FAANG companies"
+    },
+    "uiuc": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "High",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "High",
+        "Nvidia": "High",
+        "OpenAI": "Moderate",
+        "Anthropic": "Low"
+      },
+      "note": "#2 nationally in raw big-tech alumni volume (598); in OpenAI top-10"
+    },
+    "michigan": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "High",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "High",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "#3 in raw volume (561); Microsoft is Michigan's #1 tech employer"
+    },
+    "johns-hopkins": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Moderate",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Defense/health-heavy top employers; no top-5 finishes at any big-tech company"
+    },
+    "maryland": {
+      "bands": {
+        "Google": "High",
+        "Meta": "High",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Moderate",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Amazon, Google, and Microsoft each employ 900+ UMD alumni"
+    },
+    "northeastern": {
+      "bands": {
+        "Google": "High",
+        "Meta": "Moderate",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "High",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Amazon/Google/Microsoft/Apple each 500+ alumni; Meta 200-500"
+    },
+    "ohio-state": {
+      "bands": {
+        "Google": "High",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "500+ alumni at each of Amazon, Google, and Microsoft"
+    },
+    "nc-state": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Moderate",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "CS employer list led by Amazon; NVIDIA/Apple present via Research Triangle"
+    },
+    "unc-chapel-hill": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Low",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "2024 first destinations: Amazon 19, Meta 9, Microsoft 8, Google 6"
+    },
+    "virginia-tech": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "n.a."
+      },
+      "note": "Amazon in top-6 employers (HQ2 effect); Google marginal"
+    },
+    "florida": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Moderate",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Moderate",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "#1 Florida school by big-tech alumni footprint, ~6,000 alumni at big tech (TonerGiant)"
+    },
+    "olin": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "n.a.",
+        "Amazon": "Low",
+        "Microsoft": "Low",
+        "Apple": "Low",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "Top-5 per-capita feeder on only 23 hires (very small school)"
+    },
+    "rose-hulman": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "n.a.",
+        "Amazon": "Low",
+        "Microsoft": "Low",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "#12 per capita on 39 hires (Google/Groupon/Amazon)"
+    },
+    "carleton": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Low",
+        "Microsoft": "Low",
+        "Apple": "Low",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "All-classes tally: Google 16, Microsoft 10"
+    },
+    "swarthmore": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Low",
+        "Microsoft": "Low",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "Google is Swat's leading employer (49 alumni per LinkedIn, 2016)"
+    },
+    "uc-berkeley": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "Very high",
+        "Nvidia": "Very high",
+        "OpenAI": "Very high",
+        "Anthropic": "Very high"
+      },
+      "note": "#2 for OpenAI+Anthropic combined alumni (520), just behind Stanford (589)"
+    },
+    "uw-seattle": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "High",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "High",
+        "Nvidia": "High",
+        "OpenAI": "Moderate",
+        "Anthropic": "Moderate"
+      },
+      "note": "Amazon 100+ hires (record), Microsoft 24+, Google 20, Meta 20 in 2024-25 Allen School first destinations"
+    },
+    "ut-austin": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "High",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "Very high",
+        "Nvidia": "Very high",
+        "OpenAI": "Moderate",
+        "Anthropic": "Low"
+      },
+      "note": "CS class of 2024 avg salary $114,620; top employers include Google, Microsoft, Apple, Meta, NVIDIA"
+    },
+    "duke": {
+      "bands": {
+        "Google": "High",
+        "Meta": "High",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Moderate",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "Strong Northeast/Bay Area alumni network; smaller footprint than public peers due to Duke's size"
+    },
+    "texas-am": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Moderate",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "n.a."
+      },
+      "note": "Aggie network is legendary in TX energy/aerospace/automotive; less strong in Big Tech."
+    },
+    "ut-dallas": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "Moderate",
+        "Nvidia": "Low",
+        "OpenAI": "Low",
+        "Anthropic": "n.a."
+      },
+      "note": "#3 nationally among publics for internships; strong DFW tech ecosystem placement."
+    },
+    "kettering": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "n.a.",
+        "Amazon": "Low",
+        "Microsoft": "Low",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "570+ co-op employers led by GM, Ford, Bosch; automotive/robotics focused."
+    },
+    "michigan-dearborn": {
+      "bands": {
+        "Google": "Low",
+        "Meta": "n.a.",
+        "Amazon": "Moderate",
+        "Microsoft": "Low",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "95% of graduates stay in Michigan; Ford, GM, Stellantis are #2/#3/#8 employers."
+    }
+  }
+}

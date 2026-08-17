@@ -1,0 +1,579 @@
+{
+  "note": "Application requirements compiled from each school's official admissions pages (Fall 2027 = 2026-27 cycle). Prompt text lives in the Common App member section for some schools and is n.a. here.",
+  "compiled_date": "2026-08-16",
+  "schools": {
+    "mit": {
+      "cycle": "2026-27",
+      "platform": "MIT's own MyMIT portal (not Common App)",
+      "supp_essay_count": 4,
+      "prompts": "Short answers: fields of study & what led there; time you did something unexpected; problems you'd tackle at MIT; how you handled an unexpected challenge.",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes (Secondary School Report)",
+      "interview": "Optional (alumni Educational Council; waived without penalty)",
+      "fee": "$75 (waivers on request)",
+      "special": "Optional SlideRoom creative portfolios; MIT activities form replaces a resume",
+      "sources": [
+        {
+          "label": "MIT essays",
+          "url": "https://mitadmissions.org/apply/firstyear/essays-activities-academics/"
+        },
+        {
+          "label": "MIT interview",
+          "url": "https://mitadmissions.org/apply/firstyear/interview/"
+        }
+      ]
+    },
+    "carnegie-mellon": {
+      "cycle": "2026-27",
+      "platform": "Common App only",
+      "supp_essay_count": 3,
+      "prompts": "Passion behind your major; how you define a successful college experience; anything else to emphasize.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes (Counselor Evaluation)",
+      "interview": "Not offered generally (CFA programs interview/audition)",
+      "fee": "$75",
+      "special": "CFA portfolio/audition/pre-screen for Architecture, Art, Design, Drama, Music; Drama/Music RD Dec 1",
+      "sources": [
+        {
+          "label": "CMU requirements",
+          "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements"
+        }
+      ]
+    },
+    "penn": {
+      "cycle": "2026-27",
+      "platform": "Common App, Coalition, QuestBridge",
+      "supp_essay_count": 3,
+      "prompts": "Thank-you note to someone not yet thanked (50-200 w); how you'll explore community at Penn (50-200 w); one undergraduate-school-specific prompt.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes + School Report",
+      "interview": "Alumni only",
+      "fee": "$75",
+      "special": "Extra essays for coordinated dual-degree programs",
+      "sources": [
+        {
+          "label": "Penn requirements",
+          "url": "https://admissions.upenn.edu/how-to-apply/first-year-applicants/application-requirements"
+        }
+      ]
+    },
+    "cornell": {
+      "cycle": "2026-27",
+      "platform": "Common App (QuestBridge finalists via portal)",
+      "supp_essay_count": "1-6 (varies by college)",
+      "prompts": "Engineering is heaviest at 6 essays (2\u00d7200w + 4\u00d7100w). A&S: passion for learning + College alignment (3000ch). CALS: why this major + why CALS (2500ch). AAP: interests \u2192 major, creative project for B.Arch.",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$85",
+      "special": "Portfolio/design supplement for some programs; optional music supplement",
+      "sources": [
+        {
+          "label": "Cornell first-year",
+          "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants"
+        },
+        {
+          "label": "Cornell Engineering",
+          "url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/"
+        }
+      ]
+    },
+    "purdue": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": 2,
+      "prompts": "How Purdue supports your interests, in and out of the classroom (\u2264250 w); your reasons for pursuing the major you selected (\u2264250 w).",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$60",
+      "special": "Honors College adds 4 essays",
+      "sources": [
+        {
+          "label": "Purdue essay",
+          "url": "https://admission.purdue.edu/apply/essay.php"
+        }
+      ]
+    },
+    "penn-state": {
+      "cycle": "2026-27",
+      "platform": "MyPennState or Common App",
+      "supp_essay_count": "Personal statement encouraged; count not stated",
+      "prompts": "n.a. \u2014 prompts on the Common App member section",
+      "teacher_recs": "0 (required for Schreyer Honors & Millennium Scholars)",
+      "counselor_rec": "No",
+      "interview": "Not offered generally (Schreyer optional interview before Nov 1)",
+      "fee": "$65 domestic / $75 intl",
+      "special": "STARS record via MyPennState; arts auditions/Evidence of Creative Work",
+      "sources": [
+        {
+          "label": "PSU requirements",
+          "url": "https://www.psu.edu/resources/first-year-students/requirements"
+        }
+      ]
+    },
+    "rit": {
+      "cycle": "2026-27",
+      "platform": "Common App or RIT Application",
+      "supp_essay_count": "Embedded; count not stated",
+      "prompts": "n.a.",
+      "teacher_recs": "1 min (3-5 max suggested)",
+      "counselor_rec": "Recommended (preferred)",
+      "interview": "Not offered",
+      "fee": "$65 (waived for deaf/HoH & ASL-EI prospects who visit)",
+      "special": "Art portfolio for Art/Design/Film & Animation; audiogram for deaf/HoH applicants",
+      "sources": [
+        {
+          "label": "RIT admissions overview",
+          "url": "https://www.rit.edu/ntid/sites/rit.edu.ntid/files/admissions/Admissions%20Overview-2026.pdf"
+        }
+      ]
+    },
+    "illinois-tech": {
+      "cycle": "2025-26 (latest published)",
+      "platform": "Common App",
+      "supp_essay_count": "Some Illinois Tech questions optional; count unspecified",
+      "prompts": "n.a.",
+      "teacher_recs": "Optional (up to 3)",
+      "counselor_rec": "No (optional)",
+      "interview": "Not offered",
+      "fee": "Free",
+      "special": "Architecture scholarship applicants: one-page essay on studying architecture at Illinois Tech",
+      "sources": [
+        {
+          "label": "Illinois Tech first-year",
+          "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students"
+        }
+      ]
+    },
+    "wpi": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": "None school-specific stated",
+      "prompts": "n.a.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$70",
+      "special": "Early Decision Agreement if ED",
+      "sources": [
+        {
+          "label": "WPI how to apply",
+          "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to"
+        }
+      ]
+    },
+    "rpi": {
+      "cycle": "2026-27",
+      "platform": "Common App or RPI Application",
+      "supp_essay_count": "0 general; program-specific for some majors",
+      "prompts": "B.S./M.D.: reasons for pursuing medicine. Architecture: why architecture. Electronic Arts/GSAS/Music: interests, goals, and portfolio.",
+      "teacher_recs": "n.a.",
+      "counselor_rec": "n.a.",
+      "interview": "Not offered domestically (InitialView for intl; optional GLIMPSE video)",
+      "fee": "$70",
+      "special": "Architecture portfolio required; GSAS/Electronic Arts/Music portfolios; optional 60-90s GLIMPSE video",
+      "sources": [
+        {
+          "label": "RPI apply",
+          "url": "https://undergrad.admissions.rpi.edu/apply"
+        }
+      ]
+    },
+    "georgia-tech": {
+      "cycle": "2026-27",
+      "platform": "Common App only",
+      "supp_essay_count": 0,
+      "prompts": "No GT-specific essays.",
+      "teacher_recs": "Optional",
+      "counselor_rec": "No",
+      "interview": "Not offered (international applicants may send a recorded third-party interview)",
+      "fee": "$75 domestic / $85 intl",
+      "special": "Program portfolios may be required/optional; language-proficiency interview for international applicants",
+      "sources": [
+        {
+          "label": "GT deadlines",
+          "url": "https://admission.gatech.edu/first-year/deadlines"
+        }
+      ]
+    },
+    "uiuc": {
+      "cycle": "2025-26 previous cycle",
+      "platform": "Common App",
+      "supp_essay_count": "2-3 major-specific",
+      "prompts": "Experience from past 3-4 yrs related to first-choice major; goals after Illinois and how the major helps; undeclared: goals/interests + possible majors; second-choice major interest.",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered (program interviews for Music/Theatre)",
+      "fee": "$75",
+      "special": "Art & Design portfolio; Dance audition; Music application + audition; Theatre interview + audition/portfolio",
+      "sources": [
+        {
+          "label": "UIUC apply",
+          "url": "https://www.admissions.illinois.edu/first-year-apply/"
+        },
+        {
+          "label": "UIUC essays",
+          "url": "https://www.admissions.illinois.edu/essays/"
+        }
+      ]
+    },
+    "michigan": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": 2,
+      "prompts": "Contributing to U-M's goal of developing leaders and citizens who challenge the present and enrich the future (100-300 w); what attracts you to your specific college/school and how its curriculum supports your interests (100-500 w).",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$75",
+      "special": "Portfolio/artistic profile for SMTD, Stamps, Taubman",
+      "sources": [
+        {
+          "label": "UMich essays",
+          "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions"
+        }
+      ]
+    },
+    "johns-hopkins": {
+      "cycle": "2026-27",
+      "platform": "Common App or Coalition on Scoir",
+      "supp_essay_count": 1,
+      "prompts": "What you've learned engaging with people whose experiences differ from yours, and how it shaped your thinking about building bridges and working with others (350 w).",
+      "teacher_recs": 2,
+      "counselor_rec": "n.a.",
+      "interview": "Not offered",
+      "fee": "$70",
+      "special": "Optional Schoolhouse.world portfolio; ED Agreement; Certification of Finances for international",
+      "sources": [
+        {
+          "label": "JHU deadlines",
+          "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
+        }
+      ]
+    },
+    "maryland": {
+      "cycle": "2026-27",
+      "platform": "Common App or ApplyWeb",
+      "supp_essay_count": 1,
+      "prompts": "Choose one of UMD's essay questions to share your personality and experiences.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$80",
+      "special": "Activities/awards list or resume required; School of Music supplement + audition",
+      "sources": [
+        {
+          "label": "UMD apply",
+          "url": "https://admissions.umd.edu/apply/freshman-applicants"
+        }
+      ]
+    },
+    "northeastern": {
+      "cycle": "2026-27",
+      "platform": "Common App or Coalition",
+      "supp_essay_count": "Northeastern-specific questions; count not stated",
+      "prompts": "n.a.",
+      "teacher_recs": "1 (1-2 additional accepted)",
+      "counselor_rec": "Yes",
+      "interview": "Not offered (InitialView/Vericant videos considered)",
+      "fee": "$75",
+      "special": "CAMD creative portfolio encouraged (one only); Performing Arts NYC audition",
+      "sources": [
+        {
+          "label": "NEU required materials",
+          "url": "https://admissions.northeastern.edu/application-information/required-materials/"
+        }
+      ]
+    },
+    "ohio-state": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": "No OSU-specific count stated",
+      "prompts": "Morrill Scholarship applicants answer the MSP prompt.",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$60",
+      "special": "Dance/music auditions and portfolios; Eminence Application; MSP essay",
+      "sources": [
+        {
+          "label": "OSU apply",
+          "url": "https://undergrad.osu.edu/apply/freshmen-columbus/common-app"
+        }
+      ]
+    },
+    "nc-state": {
+      "cycle": "2026-27",
+      "platform": "Common App or Coalition on Scoir",
+      "supp_essay_count": "1 required (+1 optional Honors)",
+      "prompts": "Explain why you selected the academic program(s) and why you want to study them at NC State (required); Honors: optional essay \u2264500 w.",
+      "teacher_recs": 0,
+      "counselor_rec": "No \u2014 counselor endorsements dropped as of fall 2022",
+      "interview": "Not offered generally (Design/some depts interview by invitation)",
+      "fee": "$85",
+      "special": "Portfolio for studio-based majors via wolfPAW, Nov 1 deadline",
+      "sources": [
+        {
+          "label": "NC State apply",
+          "url": "https://admissions.ncsu.edu/apply/first-year/"
+        }
+      ]
+    },
+    "unc-chapel-hill": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": 2,
+      "prompts": "Both appear on the Common Application; UNC's public pages state the requirement but not the prompt text.",
+      "teacher_recs": 1,
+      "counselor_rec": "n.a.",
+      "interview": "Not offered",
+      "fee": "$85",
+      "special": "None",
+      "sources": [
+        {
+          "label": "UNC first-year",
+          "url": "https://admissions.unc.edu/apply/types-of-applications/first-year/"
+        }
+      ]
+    },
+    "virginia-tech": {
+      "cycle": "2025-26 (latest published Ut Prosim Profile)",
+      "platform": "Common App",
+      "supp_essay_count": "Ut Prosim Profile short answers",
+      "prompts": "n.a. \u2014 see the Common App member section",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$60 domestic / $70 intl",
+      "special": "STARS record required for U.S.-educated applicants; Ut Prosim Profile within Common App",
+      "sources": [
+        {
+          "label": "VT checklist",
+          "url": "https://www.vt.edu/admissions/undergraduate/apply/checklists.html"
+        }
+      ]
+    },
+    "florida": {
+      "cycle": "2026-27 (ED Oct 15, 2026)",
+      "platform": "Common App only",
+      "supp_essay_count": "A few additional short-answer questions in the UF Supplement",
+      "prompts": "n.a.; Honors adds one essay; Innovation Academy adds one essay",
+      "teacher_recs": "n.a.",
+      "counselor_rec": "n.a.",
+      "interview": "Not offered",
+      "fee": "$30",
+      "special": "Honors/Innovation Academy extra essays; College of the Arts audition; STARS record",
+      "sources": [
+        {
+          "label": "UF apply",
+          "url": "https://admissions.ufl.edu/apply/freshman/"
+        }
+      ]
+    },
+    "olin": {
+      "cycle": "2026-27 (deadline Jan 5, 2026)",
+      "platform": "Common App",
+      "supp_essay_count": 1,
+      "prompts": "Olin-specific essay; prompt text not published on official pages",
+      "teacher_recs": "1 required from STEM teacher; 2nd encouraged",
+      "counselor_rec": "n.a.",
+      "interview": "Required \u2014 Candidates' Weekend includes interviews",
+      "fee": "$85",
+      "special": "Optional Instrumental Music Portfolio; optional Schoolhouse.world portfolio",
+      "sources": [
+        {
+          "label": "Olin admission process",
+          "url": "https://www.olin.edu/admission-process"
+        }
+      ]
+    },
+    "rose-hulman": {
+      "cycle": "2026-27",
+      "platform": "Common App or Rose-Hulman application",
+      "supp_essay_count": "n.a.",
+      "prompts": "n.a.",
+      "teacher_recs": "1 (teacher, counselor, or principal)",
+      "counselor_rec": "No",
+      "interview": "Not offered for U.S. domestic students (InitialView for intl/abroad)",
+      "fee": "$65",
+      "special": "Optional 60-90s Glimpse video",
+      "sources": [
+        {
+          "label": "Rose-Hulman process",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html"
+        }
+      ]
+    },
+    "carleton": {
+      "cycle": "2025-26 published set",
+      "platform": "Common App, Coalition, QuestBridge",
+      "supp_essay_count": "1 required + 1 optional",
+      "prompts": "Discuss someone you connect with who is different from you and what's meaningful about those interactions; optional open prompt.",
+      "teacher_recs": "2 academic teachers",
+      "counselor_rec": "Yes",
+      "interview": "Optional (early June through Jan 15 of senior year)",
+      "fee": "Free",
+      "special": "Optional arts supplements (visual art \u226420 images, music, theater, dance, film); no creative writing portfolios",
+      "sources": [
+        {
+          "label": "Carleton materials",
+          "url": "https://www.carleton.edu/admissions/apply/steps/materials/"
+        }
+      ]
+    },
+    "swarthmore": {
+      "cycle": "2026-27",
+      "platform": "Common App, Coalition on Scoir, QuestBridge",
+      "supp_essay_count": 2,
+      "prompts": "Significant aspects of your identity/background, how your communities shaped you, how you navigate difference; a topic that recently fascinated you and what drives further exploration.",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes",
+      "interview": "Optional (offered)",
+      "fee": "$60",
+      "special": "Non-U.S.-schooled applicants: Swarthmore Video Response, English proficiency result, or InitialView/Vericant",
+      "sources": [
+        {
+          "label": "Swat materials",
+          "url": "https://www.swarthmore.edu/admissions-aid/application-materials-deadlines"
+        }
+      ]
+    },
+    "uc-berkeley": {
+      "cycle": "2026-27",
+      "platform": "UC Application (not Common App)",
+      "supp_essay_count": 4,
+      "prompts": "4 Personal Insight Questions (350 words each) from 8 prompt options \u2014 leadership, creative side, greatest talent/skill, educational opportunity, significant challenge, favorite academic subject, community service, what makes you a strong candidate for UC.",
+      "teacher_recs": "Invitation-only (Jan 10 deadline if invited)",
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$80",
+      "special": "No ED/EA \u2014 UC system has neither. Single RD deadline Nov 30. Recommendations are by admissions invitation only.",
+      "sources": [
+        {
+          "label": "UC Personal Insight Questions",
+          "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/personal-insight-questions.html"
+        }
+      ]
+    },
+    "uw-seattle": {
+      "cycle": "2026-27",
+      "platform": "Common App or UW-specific application",
+      "supp_essay_count": "1 essay + short-response questions",
+      "prompts": "UW personal statement + additional short-response prompts on academic and personal experiences.",
+      "teacher_recs": "Not accepted \u2014 UW does not accept letters of recommendation",
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$80",
+      "special": "No ED/EA. Single RD Nov 15 deadline. No letters of recommendation accepted (unusual).",
+      "sources": [
+        {
+          "label": "UW Admissions",
+          "url": "https://admit.washington.edu/apply/freshman/"
+        }
+      ]
+    },
+    "ut-austin": {
+      "cycle": "2026-27",
+      "platform": "ApplyTexas or Common App",
+      "supp_essay_count": "1 required + 3-4 short answers",
+      "prompts": "1 required essay (topic A: personal experiences), 3-4 short answers on leadership, community, and career goals. Robotics Program applicants add a 500-word robotics essay.",
+      "teacher_recs": "2 optional",
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$75",
+      "special": "Robotics Program requires 500-word robotics essay by Dec 1. Testing is REQUIRED, no superscore.",
+      "sources": [
+        {
+          "label": "UT Apply",
+          "url": "https://admissions.utexas.edu/apply/"
+        }
+      ]
+    },
+    "duke": {
+      "cycle": "2026-27",
+      "platform": "Common App or QuestBridge",
+      "supp_essay_count": "2 required + 1 optional",
+      "prompts": "Essay 1: Why Duke (250 words). Essay 2: Choose from prompts on personal identity, intellectual curiosity, or community. Optional 3rd essay for QuestBridge or specific majors.",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes",
+      "interview": "Alumni interview offered (optional)",
+      "fee": "$85",
+      "special": "Test-optional (not reinstated per CDS C8). Robertson Scholars requires separate application (Nov 15).",
+      "sources": [
+        {
+          "label": "Duke Apply",
+          "url": "https://admissions.duke.edu/apply/first-year-applicants/"
+        }
+      ]
+    },
+    "texas-am": {
+      "cycle": "2026-27",
+      "platform": "ApplyTexas or Common App",
+      "supp_essay_count": "1 required + 3 short answers",
+      "prompts": "Standard ApplyTexas essays.",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$75",
+      "special": "Corps of Cadets separate application; ETAM major placement post-freshman year.",
+      "sources": [
+        {
+          "label": "TAMU Apply",
+          "url": "https://admissions.tamu.edu/"
+        }
+      ]
+    },
+    "ut-dallas": {
+      "cycle": "2026-27",
+      "platform": "ApplyTexas or Common App",
+      "supp_essay_count": "Personal statement + short answers",
+      "prompts": "Standard ApplyTexas prompts.",
+      "teacher_recs": "Optional",
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$50",
+      "special": "McDermott Scholars requires separate application by Jan 15.",
+      "sources": [
+        {
+          "label": "UTD Apply",
+          "url": "https://enroll.utdallas.edu/freshman/"
+        }
+      ]
+    },
+    "kettering": {
+      "cycle": "2026-27",
+      "platform": "Common App or Kettering-specific",
+      "supp_essay_count": "1",
+      "prompts": "Kettering-specific essay on engineering interest.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Recommended",
+      "fee": "Free",
+      "special": "Robotics competition history strongly considered.",
+      "sources": [
+        {
+          "label": "Kettering Apply",
+          "url": "https://www.kettering.edu/admissions-aid/undergraduate-admissions"
+        }
+      ]
+    },
+    "michigan-dearborn": {
+      "cycle": "2026-27",
+      "platform": "Common App or U-M application",
+      "supp_essay_count": 1,
+      "prompts": "UM-Dearborn short essay + community response.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "Free",
+      "special": "3.0 HS GPA = guaranteed admission.",
+      "sources": [
+        {
+          "label": "UM-Dearborn Apply",
+          "url": "https://umdearborn.edu/admissions"
+        }
+      ]
+    }
+  }
+}

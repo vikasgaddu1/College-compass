@@ -1,0 +1,346 @@
+{
+  "note": "Testing policy, international share, housing, and study-abroad data from each school's official admissions/IR pages, July-August 2026. Every value has an inline source in the source markdown.",
+  "compiled_date": "2026-08-16",
+  "schools": {
+    "mit": {
+      "testing": "Required",
+      "testing_source": "https://mitadmissions.org/apply/firstyear/tests-scores/",
+      "intl_pct": 11.6,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "~4 (8 semesters)",
+      "housing_note": "93% of undergrads, 100% of first-years in college housing"
+    },
+    "carnegie-mellon": {
+      "testing": "Varies by college \u2014 SCS Required; Engineering/Dietrich/Heinz/MCS/Tepper test-flexible; CFA test-optional",
+      "testing_source": "https://www.cmu.edu/admission/admission/standardized-testing",
+      "intl_pct": 22.3,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "Up to 4",
+      "housing_note": "Guarantee lapses if you skip Room Selection"
+    },
+    "penn": {
+      "testing": "Required (hardship waiver)",
+      "testing_source": "https://admissions.upenn.edu/how-to-apply/preparing-your-application/testing",
+      "intl_pct": 13.0,
+      "intl_year": "Fall 2025 (fact page)",
+      "study_abroad_pct": null,
+      "housing_req": "Yes",
+      "housing_years": "2 (first 4 semesters)",
+      "housing_note": "Newly renovated Quad spaces in Fisher Hassenfeld"
+    },
+    "cornell": {
+      "testing": "Required (Fall 2026+)",
+      "testing_source": "https://admissions.cornell.edu/policies/standardized-testing-policy",
+      "intl_pct": 9.5,
+      "intl_year": "2024-25",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "2",
+      "housing_note": "64% of undergrads / 65% of first-years in college housing"
+    },
+    "purdue": {
+      "testing": "Expected/effectively required \u2014 90% of 2025 applicants submitted",
+      "testing_source": "https://admissions.purdue.edu/become-student/guide/",
+      "intl_pct": 9.9,
+      "intl_year": "2024-25",
+      "study_abroad_pct": 26,
+      "study_abroad_year": "2016-17 (dated)",
+      "housing_req": "No",
+      "housing_years": "None",
+      "housing_note": "42% of undergrads in college housing"
+    },
+    "penn-state": {
+      "testing": "Test-optional (through AY2026; Fall 2027 not confirmed)",
+      "testing_source": "https://www.psu.edu/resources/faq/test-optional",
+      "intl_pct": null,
+      "intl_year": "n.a.",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "1",
+      "housing_note": "First-year assignments made in random order"
+    },
+    "rit": {
+      "testing": "Test-optional",
+      "testing_source": "https://www.rit.edu/admissions/first-year",
+      "intl_pct": 4.1,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes",
+      "housing_years": "1",
+      "housing_note": "First-years self-select room/roommate; 95% of first-years in college housing"
+    },
+    "illinois-tech": {
+      "testing": "Test-optional (incl. scholarships)",
+      "testing_source": "https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students",
+      "intl_pct": 16.0,
+      "intl_year": "Current (Illinois Tech quick facts)",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "~2",
+      "housing_note": "Priority room selection July 2026"
+    },
+    "wpi": {
+      "testing": "Test-optional (was test-blind 2021-2024)",
+      "testing_source": "https://www.wpi.edu/admissions/undergraduate/apply/how-to/test-optional-admissions",
+      "intl_pct": 6.3,
+      "intl_year": "2025-26",
+      "study_abroad_pct": 60,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes",
+      "housing_years": "2 (fall 2026+ entrants)",
+      "housing_note": "96% of first-years in college housing"
+    },
+    "rpi": {
+      "testing": "Test-optional (Fall 2027 applicants); B.S./M.D. requires scores",
+      "testing_source": "https://undergrad.admissions.rpi.edu/apply",
+      "intl_pct": 8.7,
+      "intl_year": "Fall 2024",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "2 required",
+      "housing_note": "Sophomore requirement unusually strict; Greek-housing waiver available"
+    },
+    "georgia-tech": {
+      "testing": "Required (no in-state/OOS diff, CLT not accepted)",
+      "testing_source": "https://admission.gatech.edu/first-year/standardized-tests",
+      "intl_pct": 7.3,
+      "intl_year": "2025-26",
+      "study_abroad_pct": 44,
+      "study_abroad_year": "Current",
+      "housing_req": "No",
+      "housing_years": "No guarantee",
+      "housing_note": "Waitlist possible; 92% of first-years still in college housing"
+    },
+    "uiuc": {
+      "testing": "Test-optional (all majors, no residency difference)",
+      "testing_source": "https://www.admissions.illinois.edu/first-year-apply-faq/",
+      "intl_pct": 14.4,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "1 required",
+      "housing_note": "Private Certified Housing satisfies the rule; 99% of first-years in college housing"
+    },
+    "michigan": {
+      "testing": "Test-optional (Fall 2027 cycle)",
+      "testing_source": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/Article/7490/Test-optional-Policy-for-SAT-and-ACT",
+      "intl_pct": 7.1,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "No",
+      "housing_years": "No requirement",
+      "housing_note": "~97% of first-year students choose Michigan Housing"
+    },
+    "johns-hopkins": {
+      "testing": "Required",
+      "testing_source": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/standardized-testing/",
+      "intl_pct": 14.4,
+      "intl_year": "2025-26",
+      "study_abroad_pct": 25,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes with exemptions",
+      "housing_years": "2",
+      "housing_note": "Due to space limitations, unable to provide university housing for upper-class students"
+    },
+    "maryland": {
+      "testing": "Test-optional (through Spring/Fall 2027)",
+      "testing_source": "https://admissions.umd.edu/apply/freshman-applicants",
+      "intl_pct": 3.3,
+      "intl_year": "2024-25",
+      "study_abroad_pct": 20,
+      "study_abroad_year": "Current",
+      "housing_req": "No",
+      "housing_years": "No requirement",
+      "housing_note": "May 1, 2026 agreement return needed to be guaranteed for 2026-27"
+    },
+    "northeastern": {
+      "testing": "Test-optional",
+      "testing_source": "https://admissions.northeastern.edu/application-information/first-year-applicants/",
+      "intl_pct": 14.0,
+      "intl_year": "Current",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "2 required, continuing students not guaranteed",
+      "housing_note": "Many juniors/seniors rent in Boston"
+    },
+    "ohio-state": {
+      "testing": "Required",
+      "testing_source": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+      "intl_pct": 7.1,
+      "intl_year": "Autumn 2025",
+      "study_abroad_pct": 20,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes with exemptions",
+      "housing_years": "2 (contract term)",
+      "housing_note": "Requirement is space-contingent"
+    },
+    "nc-state": {
+      "testing": "Conditional \u2014 test-optional if weighted GPA \u22652.8; required (17+ ACT/930+ SAT) if <2.8",
+      "testing_source": "https://admissions.ncsu.edu/apply/first-year/test-score-consideration-in-admission-decisions/",
+      "intl_pct": 2.4,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes with exemptions",
+      "housing_years": "1",
+      "housing_note": "97% of first-years in college housing"
+    },
+    "unc-chapel-hill": {
+      "testing": "Conditional \u2014 test-optional if weighted GPA \u22652.8 (UNC System rule)",
+      "testing_source": "https://admissions.unc.edu/faqs/how-does-unc-look-at-act-or-sat-test-scores/",
+      "intl_pct": 5.6,
+      "intl_year": "2024-25",
+      "study_abroad_pct": 43,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes",
+      "housing_years": "1",
+      "housing_note": "Random lottery for on-time applications; singles scarce vs 3,000+ applications"
+    },
+    "virginia-tech": {
+      "testing": "Test-optional (through Fall 2028)",
+      "testing_source": "https://www.vt.edu/admissions/frequently-asked-questions/test-optional.html",
+      "intl_pct": null,
+      "intl_year": "CDS by email request only",
+      "study_abroad_pct": 17,
+      "study_abroad_year": "Dated",
+      "housing_req": "Yes with exemptions",
+      "housing_years": "1",
+      "housing_note": "Upper-year space not promised"
+    },
+    "florida": {
+      "testing": "Required (SAT, ACT, and/or CLT)",
+      "testing_source": "https://admissions.ufl.edu/apply/freshman/requirements",
+      "intl_pct": 5.0,
+      "intl_year": "2024-25",
+      "study_abroad_pct": null,
+      "housing_req": "No",
+      "housing_years": "Not guaranteed",
+      "housing_note": "Waitlist enacted at capacity; only ~25% of undergrads in college housing"
+    },
+    "olin": {
+      "testing": "Test-optional (through 2026-27 cycle)",
+      "testing_source": "https://www.olin.edu/admission/apply",
+      "intl_pct": 6.2,
+      "intl_year": "2023-24",
+      "study_abroad_pct": null,
+      "housing_req": "n.a. (page silent)",
+      "housing_years": "Not stated",
+      "housing_note": "Effectively fully residential \u2014 100% of undergrads in college housing (CDS)"
+    },
+    "rose-hulman": {
+      "testing": "Test-optional",
+      "testing_source": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+      "intl_pct": 8.9,
+      "intl_year": "2025-26",
+      "study_abroad_pct": null,
+      "housing_req": "Yes",
+      "housing_years": "1",
+      "housing_note": "New MRH hall opened Fall 2025; a hall reopens fall 2026 after renovations"
+    },
+    "carleton": {
+      "testing": "Test-optional (permanent, as of 2025)",
+      "testing_source": "https://www.carleton.edu/admissions/apply/steps/criteria/",
+      "intl_pct": 11.8,
+      "intl_year": "Current",
+      "study_abroad_pct": 70,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes with exemptions",
+      "housing_years": "4",
+      "housing_note": "Strictest residency+dining requirement on this list"
+    },
+    "swarthmore": {
+      "testing": "Test-optional",
+      "testing_source": "https://www.swarthmore.edu/admissions-aid/standardized-testing-policy",
+      "intl_pct": 13.6,
+      "intl_year": "2025-26",
+      "study_abroad_pct": 40,
+      "study_abroad_year": "Current",
+      "housing_req": "Yes",
+      "housing_years": "~4 (8 terms of eligibility)",
+      "housing_note": "Returning-student lottery by class year; 93.7% of undergrads / 100% of first-years in college housing"
+    },
+    "uc-berkeley": {
+      "testing": "Test-free (SAT/ACT not considered even if submitted)",
+      "testing_source": "https://admissions.berkeley.edu/application-faqs/",
+      "intl_pct": 15.0,
+      "intl_year": "2025-26 (UC systemwide report)",
+      "study_abroad_pct": null,
+      "housing_req": "No, but guaranteed for first-years if May 2 application met",
+      "housing_years": "1 guaranteed; increasing capacity 'all 4 years' but not formally 4-year",
+      "housing_note": "First-year housing guarantee via May 2 deadline; upperclass housing lottery."
+    },
+    "uw-seattle": {
+      "testing": "Test-free (SAT/ACT not considered even if submitted) \u2014 Fall 2027",
+      "testing_source": "https://admit.washington.edu/apply/freshman/",
+      "intl_pct": null,
+      "intl_year": "n.a. (CDS available but income-band net price gaps)",
+      "study_abroad_pct": null,
+      "housing_req": "Yes, first-year housing guaranteed if applied by May 15",
+      "housing_years": "1 guaranteed",
+      "housing_note": "First-year guarantee; upperclass housing via lottery."
+    },
+    "ut-austin": {
+      "testing": "Required \u2014 SAT or ACT (no superscore)",
+      "testing_source": "https://admissions.utexas.edu/apply/frequently-asked-questions/",
+      "intl_pct": null,
+      "intl_year": "UNK (CDS dashboard-only)",
+      "study_abroad_pct": null,
+      "housing_req": "No \u2014 housing is not guaranteed for any student",
+      "housing_years": "0 (space-available)",
+      "housing_note": "West Campus off-campus is dominant; capacity constrained on campus."
+    },
+    "duke": {
+      "testing": "Test-optional (not reinstated per CDS C8)",
+      "testing_source": "https://admissions.duke.edu/apply/first-year-applicants/",
+      "intl_pct": 10.0,
+      "intl_year": "2024-25 CDS",
+      "study_abroad_pct": null,
+      "housing_req": "Yes \u2014 2 years required (East Campus freshmen, then West/Central)",
+      "housing_years": "3 guaranteed",
+      "housing_note": "East Campus freshmen; 3-year on-campus guarantee; strong residential community."
+    },
+    "texas-am": {
+      "testing": "Required for OOS applicants",
+      "testing_source": "https://admissions.tamu.edu/apply/first-year",
+      "intl_pct": null,
+      "intl_year": "UNK",
+      "study_abroad_pct": null,
+      "housing_req": "No",
+      "housing_years": "0 (first-come-first-served)",
+      "housing_note": "First-come-first-served with Feb waitlist; no live-on requirement."
+    },
+    "ut-dallas": {
+      "testing": "Test-optional",
+      "testing_source": "https://enroll.utdallas.edu/freshman/",
+      "intl_pct": null,
+      "intl_year": "UNK",
+      "study_abroad_pct": null,
+      "housing_req": "No",
+      "housing_years": "0 (waitlisted)",
+      "housing_note": "First-year housing at University Commons is waitlisted; 78% off-campus."
+    },
+    "kettering": {
+      "testing": "Test-optional",
+      "testing_source": "https://www.kettering.edu/admissions-aid/undergraduate-admissions",
+      "intl_pct": null,
+      "intl_year": "UNK",
+      "study_abroad_pct": null,
+      "housing_req": "Yes for first-year",
+      "housing_years": "1",
+      "housing_note": "First-year housing standard; upperclass rotates during co-op terms."
+    },
+    "michigan-dearborn": {
+      "testing": "Test-optional",
+      "testing_source": "https://umdearborn.edu/admissions",
+      "intl_pct": null,
+      "intl_year": "UNK",
+      "study_abroad_pct": null,
+      "housing_req": "No \u2014 commuter school",
+      "housing_years": "0",
+      "housing_note": "NO university-owned housing at all \u2014 100% commuter."
+    }
+  }
+}

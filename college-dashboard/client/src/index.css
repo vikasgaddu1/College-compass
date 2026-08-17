@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= COLLEGE DASHBOARD DESIGN SYSTEM =================
+   Calm, editorial, data-dense. Deep navy accent, warm parchment surface,
+   generous whitespace, tabular numerics. Meant to feel like a
+   Bloomberg-terminal-meets-college-guidebook, not a marketing site.  */
+
+:root {
+  --background: 40 30% 97%;         /* warm parchment */
+  --foreground: 220 25% 12%;
+  --border: 220 15% 88%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 25% 12%;
+  --card-border: 220 15% 90%;
+
+  --sidebar: 220 25% 12%;
+  --sidebar-foreground: 40 20% 92%;
+  --sidebar-border: 220 20% 22%;
+  --sidebar-primary: 15 85% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 20% 18%;
+  --sidebar-accent-foreground: 40 20% 92%;
+  --sidebar-ring: 15 85% 55%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 25% 12%;
+  --popover-border: 220 15% 88%;
+
+  --primary: 220 40% 22%;            /* deep navy */
+  --primary-foreground: 40 30% 97%;
+  --secondary: 220 15% 94%;
+  --secondary-foreground: 220 25% 12%;
+  --muted: 40 20% 93%;
+  --muted-foreground: 220 15% 40%;
+  --accent: 15 85% 55%;              /* signal orange */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 70% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 220 15% 80%;
+  --ring: 220 40% 22%;
+
+  /* Score / fit colors */
+  --fit-top: 145 55% 35%;
+  --fit-strong: 200 65% 40%;
+  --fit-conditional: 30 80% 45%;
+  --fit-lower: 0 60% 45%;
+
+  --score-5: 145 55% 42%;
+  --score-4: 175 45% 42%;
+  --score-3: 45 75% 45%;
+  --score-2: 25 75% 50%;
+  --score-1: 0 65% 50%;
+  --score-unk: 220 10% 65%;
+
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.06);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.07);
+
+  --chart-1: 220 40% 22%;
+  --chart-2: 15 85% 55%;
+  --chart-3: 175 45% 42%;
+  --chart-4: 45 75% 45%;
+  --chart-5: 262 45% 45%;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'JetBrains Mono', Menlo, monospace;
+  --radius: 0.5rem;
+  --shadow-sm: 0 1px 2px rgba(15, 20, 40, 0.05);
+  --shadow: 0 2px 6px rgba(15, 20, 40, 0.06), 0 1px 2px rgba(15, 20, 40, 0.03);
+  --shadow-lg: 0 8px 24px rgba(15, 20, 40, 0.08);
+}
+
+.dark {
+  --background: 220 25% 8%;
+  --foreground: 40 20% 92%;
+  --border: 220 20% 20%;
+  --card: 220 25% 11%;
+  --card-foreground: 40 20% 92%;
+  --card-border: 220 20% 20%;
+
+  --sidebar: 220 30% 6%;
+  --sidebar-foreground: 40 20% 92%;
+  --sidebar-border: 220 20% 15%;
+  --sidebar-primary: 15 85% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 20% 14%;
+  --sidebar-accent-foreground: 40 20% 92%;
+  --sidebar-ring: 15 85% 55%;
+
+  --popover: 220 25% 10%;
+  --popover-foreground: 40 20% 92%;
+  --popover-border: 220 20% 20%;
+
+  --primary: 40 20% 92%;
+  --primary-foreground: 220 25% 12%;
+  --secondary: 220 20% 16%;
+  --secondary-foreground: 40 20% 92%;
+  --muted: 220 20% 14%;
+  --muted-foreground: 220 15% 65%;
+  --accent: 15 85% 55%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 70% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 220 20% 25%;
+  --ring: 15 85% 55%;
+
+  --button-outline: rgba(255, 255, 255, 0.12);
+  --badge-outline: rgba(255, 255, 255, 0.08);
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  * { border-color: hsl(var(--border)); }
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  #root {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .num { font-variant-numeric: tabular-nums lining-nums; }
+  .serif { font-family: var(--font-serif); font-feature-settings: 'ss01'; }
+  .mono  { font-family: var(--font-mono); }
+}
+
+/* Reusable pieces */
+.grid-dashboard {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100dvh;
+}
+.grid-sidebar { grid-row: 1 / -1; overflow-y: auto; overscroll-behavior: contain; }
+.grid-header  { grid-column: 2; position: sticky; top: 0; z-index: 10; }
+.grid-main    { grid-column: 2; overflow-y: auto; overscroll-behavior: contain; }
+
+@media (max-width: 900px) {
+  .grid-dashboard { grid-template-columns: 1fr; }
+  .grid-sidebar { display: none; }
+  .grid-header, .grid-main { grid-column: 1; }
+}
+
+.dot { display:inline-block; width: 8px; height: 8px; border-radius: 999px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.15rem 0.55rem; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 500; line-height: 1;
+  border: 1px solid hsl(var(--border)); background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+}
+.chip-accent { background: hsl(var(--accent) / 0.14); color: hsl(var(--accent)); border-color: hsl(var(--accent) / 0.35); }
+.chip-primary { background: hsl(var(--primary) / 0.10); color: hsl(var(--primary)); border-color: hsl(var(--primary) / 0.25); }
+.chip-outline { background: transparent; }
+
+/* Fit badges */
+.fit-top         { background: hsl(var(--fit-top) / 0.15); color: hsl(var(--fit-top)); border-color: hsl(var(--fit-top) / 0.35); }
+.fit-strong      { background: hsl(var(--fit-strong) / 0.15); color: hsl(var(--fit-strong)); border-color: hsl(var(--fit-strong) / 0.35); }
+.fit-conditional { background: hsl(var(--fit-conditional) / 0.15); color: hsl(var(--fit-conditional)); border-color: hsl(var(--fit-conditional) / 0.35); }
+.fit-lower       { background: hsl(var(--fit-lower) / 0.15); color: hsl(var(--fit-lower)); border-color: hsl(var(--fit-lower) / 0.35); }
+
+/* Score cells */
+.score-cell {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 4px;
+  font-size: 0.72rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: white;
+}
+.score-cell.s5 { background: hsl(var(--score-5)); }
+.score-cell.s4 { background: hsl(var(--score-4)); }
+.score-cell.s3 { background: hsl(var(--score-3)); }
+.score-cell.s2 { background: hsl(var(--score-2)); }
+.score-cell.s1 { background: hsl(var(--score-1)); }
+.score-cell.unk { background: hsl(var(--score-unk)); color: hsl(var(--foreground) / 0.7); font-size: 0.6rem; }
+
+/* Score bars for detail view */
+.bar-track { position: relative; height: 6px; background: hsl(var(--muted)); border-radius: 999px; overflow: hidden; }
+.bar-fill  { position: absolute; inset: 0; right: auto; border-radius: 999px; }
+
+/* Toggle buttons */
+.tab-btn {
+  padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 500;
+  border-radius: 6px; color: hsl(var(--muted-foreground));
+  transition: all 120ms ease;
+}
+.tab-btn:hover { background: hsl(var(--elevate-1)); color: hsl(var(--foreground)); }
+.tab-btn.active {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  box-shadow: var(--shadow-sm);
+}
+
+/* Card polish */
+.card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--card-border));
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow-sm);
+}
+.card-hover { transition: transform 120ms ease, box-shadow 120ms ease; }
+.card-hover:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+
+/* Sidebar nav */
+.side-item {
+  display:flex; align-items:center; gap:0.6rem;
+  padding: 0.55rem 0.75rem; border-radius: 6px;
+  font-size: 0.88rem; color: hsl(var(--sidebar-foreground) / 0.75);
+  cursor: pointer;
+}
+.side-item:hover { background: hsl(var(--sidebar-accent)); color: hsl(var(--sidebar-foreground)); }
+.side-item.active {
+  background: hsl(var(--sidebar-accent));
+  color: hsl(var(--sidebar-foreground));
+  box-shadow: inset 3px 0 0 hsl(var(--accent));
+}
+
+/* Data-density touches */
+table.dense th, table.dense td { padding: 0.4rem 0.6rem; font-size: 0.82rem; }
+table.dense th { font-weight: 500; text-align: left; color: hsl(var(--muted-foreground)); background: hsl(var(--muted) / 0.55); position: sticky; top: 0; z-index: 1; }
+table.dense tr { border-bottom: 1px solid hsl(var(--border) / 0.6); }
+table.dense tr:hover { background: hsl(var(--elevate-1)); }
+
+/* Utility */
+.text-tabular { font-variant-numeric: tabular-nums lining-nums; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
