@@ -35,6 +35,12 @@ export interface FocusPick {
 
 export interface FocusResult {
   picks: FocusPick[];
+  /**
+   * The next-best candidates in each tier that did not make the cut. Fit scores
+   * often separate by a few hundredths, which is not a meaningful difference, so
+   * these are surfaced rather than hidden behind a falsely crisp cutoff.
+   */
+  runnersUp: { tier: OddsTier; pick: FocusPick; gapFromLastPick: number }[];
   /** Tiers where fewer schools were available than requested. */
   shortfalls: { tier: OddsTier; wanted: number; got: number }[];
   /** Schools excluded because their robotics route is closed or not open to freshmen. */
@@ -65,9 +71,17 @@ export function roboticsAiFit(s: School): number {
 
   let fit = ((rc + ra) / 2) * 0.45 + coreAvg * 0.35 + breadth * 0.20;
 
-  // Available but with a real trade-off: keep eligible, rank slightly lower.
-  const sev = s.robotics_pathway_risk?.severity;
-  if (sev === "internal_gate" || sev === "accreditation") fit -= 0.25;
+  // Available but behind a later competitive application: rank slightly lower.
+  if (s.robotics_pathway_risk?.severity === "internal_gate") fit -= 0.25;
+
+  // ETAC penalty, derived from verified accreditation rather than a hand-written
+  // flag. Engineering technology is a deliberately less theoretical curriculum,
+  // which is real friction for engineering graduate school.
+  //
+  // NOT_ABET_ACCREDITED is deliberately NOT penalised. At CMU and Michigan the
+  // robotics degree is theory-heavy and simply has not sought accreditation --
+  // materially different from ETAC, and no obstacle to graduate school.
+  if (s.robotics_credential?.abet_commission === "ETAC") fit -= 0.25;
 
   return Math.round(fit * 100) / 100;
 }
@@ -111,9 +125,7 @@ export function buildRoboticsFocus(
       rate: r.effective_admit_rate,
       context: r.admit_rate_context,
       reason: r.reason,
-      caveat: s.robotics_pathway_risk
-        ? `${s.robotics_pathway_risk.affects}: ${s.robotics_pathway_risk.note}`
-        : null,
+      caveat: buildCaveat(s),
     });
   }
 
@@ -126,16 +138,49 @@ export function buildRoboticsFocus(
 
   const picks: FocusPick[] = [];
   const shortfalls: FocusResult["shortfalls"] = [];
+  const runnersUp: FocusResult["runnersUp"] = [];
 
   for (const [tier, n] of want) {
     const avail = scored
       .filter(p => p.tier === tier)
       .sort((a, b) => b.fit - a.fit || a.school.short.localeCompare(b.school.short));
-    picks.push(...avail.slice(0, n));
+    const chosen = avail.slice(0, n);
+    picks.push(...chosen);
     if (avail.length < n) shortfalls.push({ tier, wanted: n, got: avail.length });
+
+    const last = chosen[chosen.length - 1];
+    for (const p of avail.slice(n, n + 2)) {
+      runnersUp.push({
+        tier,
+        pick: p,
+        gapFromLastPick: last ? Math.round((last.fit - p.fit) * 100) / 100 : 0,
+      });
+    }
   }
 
-  return { picks, shortfalls, excluded };
+  return { picks, runnersUp, shortfalls, excluded };
+}
+
+/** Surface the accreditation trade-off and any pathway caveat as one string. */
+function buildCaveat(s: School): string | null {
+  const parts: string[] = [];
+  const cred = s.robotics_credential;
+  if (cred?.abet_commission === "ETAC") {
+    parts.push(
+      `${cred.program_name} is ABET engineering technology (ETAC), not an engineering (EAC) degree — ` +
+      `applied rather than theory-heavy, which can mean catch-up coursework for engineering grad school.` +
+      (cred.eac_alternative ? ` EAC alternative here: ${cred.eac_alternative}` : ""),
+    );
+  } else if (cred?.abet_commission === "NOT_ABET_ACCREDITED") {
+    parts.push(
+      `${cred.program_name} carries no ABET accreditation. Not a concern for graduate school at this ` +
+      `school, but it is not a route to PE licensure.`,
+    );
+  }
+  if (s.robotics_pathway_risk?.severity === "internal_gate") {
+    parts.push(`${s.robotics_pathway_risk.affects}: ${s.robotics_pathway_risk.note}`);
+  }
+  return parts.length ? parts.join(" ") : null;
 }
 
 export const TIER_LABEL: Record<OddsTier, string> = {
