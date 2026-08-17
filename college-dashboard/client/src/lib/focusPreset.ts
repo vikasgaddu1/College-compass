@@ -76,14 +76,14 @@ export function roboticsAiFit(s: School): number {
   // Available but behind a later competitive application: rank slightly lower.
   if (s.robotics_pathway_risk?.severity === "internal_gate") fit -= 0.25;
 
-  // ETAC penalty, derived from verified accreditation rather than a hand-written
-  // flag. Engineering technology is a deliberately less theoretical curriculum,
-  // which is real friction for engineering graduate school.
-  //
-  // NOT_ABET_ACCREDITED is deliberately NOT penalised. At CMU and Michigan the
-  // robotics degree is theory-heavy and simply has not sought accreditation --
-  // materially different from ETAC, and no obstacle to graduate school.
-  if (s.robotics_credential?.abet_commission === "ETAC") fit -= 0.25;
+  // ABET commission deliberately does NOT affect this score. Robotics and AI are
+  // unlicensed: no certificate or licence depends on which commission accredited
+  // the degree, and employers and CS and robotics graduate programs do not filter
+  // on it. An ETAC degree is more applied and less theoretical, which is worth
+  // knowing when comparing curricula -- it is surfaced as context on the school,
+  // not as a ranking penalty. The one case where the commission genuinely binds
+  // is PE licensure, which belongs to civil and structural work rather than to
+  // this path.
 
   return Math.round(fit * 100) / 100;
 }
