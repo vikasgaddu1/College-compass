@@ -917,6 +917,17 @@
     "lab_or_course": "Robotic Exploration Lab; Field Robotics Center; Kantor agricultural robotics",
     "url": "https://www.ri.cmu.edu/research-overview/"
    }
+  },
+  "robotics_credential": {
+   "program_name": "Bachelor of Science in Robotics (BSR)",
+   "credential_type": "degree",
+   "parent_degree": "n.a. (standalone primary major in the School of Computer Science)",
+   "abet_commission": "NOT_ABET_ACCREDITED",
+   "abet_evidence_quote": "Carnegie Mellon's engineering programs (Mechanical Engineering, Civil and Environmental Engineering, Chemical Engineering, Materials Science and Engineering, and Electrical and Computer Engineering) are accredited by the Engineering Accreditation Commission of ABET",
+   "abet_source_url": "https://www.cmu.edu/hub/consumer-information/docs/student-consumer-information.pdf",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical and Computer Engineering, BS Chemical Engineering, BS Civil and Environmental Engineering, BS Materials Science and Engineering (all College of Engineering) — https://www.cmu.edu/hub/consumer-information/docs/student-consumer-information.pdf",
+   "eac_alternative_url": null,
+   "notes": "The BS in Robotics is a School of Computer Science / Robotics Institute primary major with first cohort Fall 2023; CMU's own consumer-information ABET list names only the five College of Engineering programs and does not include Robotics. CMU's discipline-specific accreditation page lists ABET only under College of Engineering and does not mention the School of Computer Science or robotics (https://www.cmu.edu/accreditation/discipline-specific/index.html). The Robotics Institute program page contains no ABET statement (https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/). ABET's name search for Carnegie Mellon returned engineering programs only, with no Robotics entry (https://amspub.abet.org/aps/name-search?searchType=institution&keyword=Carnegie%20Mellon)."
   }
  },
  {
@@ -4242,6 +4253,17 @@
     "lab_or_course": null,
     "url": null
    }
+  },
+  "robotics_credential": {
+   "program_name": "Bachelor of Science in Engineering — Robotic Systems concentration (companion concentration: Engineering — Specialization in Mechatronic Systems)",
+   "credential_type": "concentration_within_degree",
+   "parent_degree": "BS in Engineering (B.S.E.)",
+   "abet_commission": "NOT_ABET_ACCREDITED",
+   "abet_evidence_quote": "The following programs are accredited by the Engineering Accreditation Commission of ABET: Chemical Engineering; Computer Engineering; Electrical Engineering; Engineering Physics; Industrial Engineering; Mechanical Engineering",
+   "abet_source_url": "https://www.kettering.edu/who-we-are/accreditation",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering (EAC per Kettering's accreditation page) — https://www.kettering.edu/who-we-are/accreditation",
+   "eac_alternative_url": null,
+   "notes": "Kettering's institutional accreditation page lists six EAC programs and does NOT include the general \"Engineering\" (B.S.E.) degree that hosts the Robotic Systems and Mechatronic Systems concentrations; Computer Science is CAC. Initial ABET accreditation of the BS in Engineering is in progress: \"This document is intended to fulfill the self-study requirement associated with ABET's 2025-2026 initial accreditation review of the Bachelor of Science in Engineering program at Kettering University.\" (https://digitalcommons.kettering.edu/abet_e/1/). ABET's institution search for Kettering lists Chemical, Computer, Computer Science, Electrical, Engineering Physics, Industrial and Mechanical Engineering — no plain \"Engineering\" entry (https://amspub.abet.org/aps/name-search?searchType=institution&keyword=Kettering). Catalog shows the Robotic Systems track inside a 161-total-credit-hour BSE (https://catalog.kettering.edu/undergrad/academic-programs/engineering/robotics/). The 52-credit figure in the brief could not be confirmed from the fetched catalog page (total shown: 161 credit hours)."
   }
  },
  {
@@ -4701,6 +4723,17 @@
     "lab_or_course": "Space Systems Laboratory and the Neutral Buoyancy Research Facility (Akin)",
     "url": "https://robotics.umd.edu/facilities"
    }
+  },
+  "robotics_credential": {
+   "program_name": "BS in Mechatronics Engineering (ENMT), taught at the Universities at Shady Grove",
+   "credential_type": "degree",
+   "parent_degree": "n.a. (standalone BS)",
+   "abet_commission": "NOT_ABET_ACCREDITED",
+   "abet_evidence_quote": "All of the above programs are accredited by the Engineering Accreditation Commission(s) of ABET, https://www.abet.org (with the exception of Biocomputational Engineering, Cyber-Physical Systems Engineering, and Mechatronics Engineering).",
+   "abet_source_url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/",
+   "eac_alternative": "BS Mechanical Engineering (\"accredited by the Engineering Accreditation Commission of ABET ... Program Criteria for Mechanical and Similarly Named Engineering Programs\") — https://me.umd.edu/undergraduate/accreditation ; also BS Electrical Engineering and BS Computer Engineering per the Clark School catalog statement — https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/",
+   "eac_alternative_url": null,
+   "notes": "Explicitly excluded from the Clark School's ABET-accredited list. Offered only at the Universities at Shady Grove in Rockville, MD (the catalog notes the three Shady Grove-exclusive degrees: Biocomputational Engineering, Cyber-Physical Systems Engineering, Mechatronics Engineering), which also means College Park students must declare a pre-major to enter it."
   }
  },
  {
@@ -5283,6 +5316,17 @@
     "lab_or_course": "Ford Building Mars Yard and marine tank; ROB 472 Marine Robotics; MRover URC team",
     "url": "https://robotics.umich.edu/about/facilities/ford-robotics-building/"
    }
+  },
+  "robotics_credential": {
+   "program_name": "B.S.E. in Robotics (Robotics BSE), Robotics Department, College of Engineering",
+   "credential_type": "degree",
+   "parent_degree": "n.a. (standalone B.S.E. awarded by the Robotics Department)",
+   "abet_commission": "NOT_ABET_ACCREDITED",
+   "abet_evidence_quote": "B.S.E. in Robotics | Robotics (ROB) | No  ... EAC: These programs are accredited by the Engineering Accreditation Commission of ABET.",
+   "abet_source_url": "https://bulletin.engin.umich.edu/ug-ed/degrees/",
+   "eac_alternative": "B.S.E. in Mechanical Engineering, B.S.E. in Electrical Engineering, B.S.E. in Computer Engineering (all marked EAC in the College of Engineering bulletin) — https://bulletin.engin.umich.edu/ug-ed/degrees/",
+   "eac_alternative_url": null,
+   "notes": "The College of Engineering degree-options table marks the Robotics B.S.E. accreditation status as \"No\" while ME/EE/CpE are marked \"EAC\". A College of Engineering Curriculum Committee minute confirms: \"Is Robotics is ABET accredited? i. Not currently, but there is departmental discussion of going for accreditation.\" (https://cc.engin.umich.edu/wp-content/uploads/sites/547/2026/01/1.27.2026-CCC-Minutes.pdf). The Robotics Department's undergraduate major page carries no ABET statement (https://robotics.umich.edu/academics/undergraduate/)."
   }
  },
  {
@@ -5758,6 +5802,17 @@
     "lab_or_course": null,
     "url": null
    }
+  },
+  "robotics_credential": {
+   "program_name": "Bachelor of Science in Engineering in Robotics Engineering (BSE Robotics Engineering)",
+   "credential_type": "degree",
+   "parent_degree": "n.a. (standalone BSE)",
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "The Bachelor of Science in Engineering in Robotics Engineering program is accredited by the Engineering Accreditation Commission of ABET.",
+   "abet_source_url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/",
+   "eac_alternative": "BSE in Mechanical Engineering, BSE in Electrical Engineering (both \"Accredited by the Engineering Accreditation Commission of ABET\") — https://umdearborn.edu/about-um-dearborn/accreditations",
+   "eac_alternative_url": null,
+   "notes": "125 credit hours; capstone sequence ECE 4987 Robotics Engineering Design I and ECE 4988 Robotics Engineering Design II, per the catalog. Campus-level accreditation page independently lists \"BSE in Robotics Engineering - Accredited by the Engineering Accreditation Commission of ABET\". Robotics-focused students at Dearborn do not need an alternative route, but ME/EE are also EAC."
   }
  },
  {
@@ -6770,6 +6825,17 @@
     "lab_or_course": "Robotics Initiative 'Field, Agricultural & Environmental Robotics' area; BenchBot 3.0 agricultural robot; N.C. PSI agricultural robotics",
     "url": "https://engr.ncsu.edu/news/2024/06/17/n-c-psi-advances-ai-for-agriculture/"
    }
+  },
+  "robotics_credential": {
+   "program_name": "Joint NC State / UNC Asheville B.S. in Engineering, Mechatronics Concentration (JEM)",
+   "credential_type": "concentration_within_degree",
+   "parent_degree": "BS in Engineering (joint NC State / UNC Asheville)",
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "The Joint NC State/UNC Asheville \"Engineering – Mechatronics Concentration Joint\" program is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org",
+   "abet_source_url": "https://engr.ncsu.edu/mechatronics/joint/",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, or the BS in Engineering, Mechanical Engineering Systems concentration — all named in NC State's list of 17 EAC-accredited programs — https://catalog.ncsu.edu/undergraduate/engineering/",
+   "eac_alternative_url": null,
+   "notes": "Joint program: coursework delivered on the UNC Asheville campus by NC State faculty. NC State's catalog independently names \"BS in engineering Mechatronics concentration joint program with UNC Asheville\" among the 17 programs \"accredited by the Engineering Accreditation Commission of ABET\". Already EAC, so no alternative route is needed."
   }
  },
  {
@@ -8182,6 +8248,17 @@
     "lab_or_course": "Olin Robot Lab: long-duration autonomous biomimetic undersea robots (field robotics)",
     "url": "https://www.olin.edu/research/olin-robot-lab"
    }
+  },
+  "robotics_credential": {
+   "program_name": "Engineering: Robotics (E:Robo) concentration",
+   "credential_type": "concentration_within_degree",
+   "parent_degree": "BS in Engineering",
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "The Bachelor of Science in Engineering degree program is accredited by the Engineering Accreditation Commission of ABET, www.abet.org, under the commission's General Criteria and Program Criteria for Engineering, General Engineering, Engineering Physics, Engineering Science, and Similarly Named Engineering Programs.",
+   "abet_source_url": "https://www.olin.edu/about/accreditation",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical and Computer Engineering (both EAC-accredited) — https://www.olin.edu/about/accreditation",
+   "eac_alternative_url": null,
+   "notes": "E:Robo is a concentration, not a separate accredited program; the awarded credential is the EAC-accredited BS in Engineering. Catalog: \"E:Robo is an interdisciplinary engineering concentration...\" and \"All paths to graduation with the Engineering degree provide for all outcomes required by the ABET General Criteria.\" (https://olin.smartcatalogiq.com/en/2025-26/catalog/programs-of-study-and-degree-requirements/academic-programs/engineering). All three Olin degrees are EAC."
   }
  },
  {
@@ -9096,6 +9173,17 @@
     "lab_or_course": "ARL Undersea Systems Office — unmanned undersea vehicles, Seahorse-class AUV, advanced sonars, $1.8B UUV enabling-technology contracts",
     "url": "https://www.arl.psu.edu/offices/uso/"
    }
+  },
+  "robotics_credential": {
+   "program_name": "BS in Electro-Mechanical Engineering Technology (EMET); plus the Mechatronics Minor and Mechatronics Technology Minor at Penn State Harrisburg",
+   "credential_type": "degree",
+   "parent_degree": "n.a. for EMET (standalone BS); the Mechatronics minor attaches to a host major such as BS Mechanical Engineering or BS Electrical Engineering",
+   "abet_commission": "ETAC",
+   "abet_evidence_quote": "The Bachelor of Science in Electro-Mechanical Engineering Technology is accredited by the Engineering Technology Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electromechanical Engineering Technology and Similarly Named Programs.",
+   "abet_source_url": "https://bulletins.psu.edu/undergraduate/colleges/engineering/electro-mechanical-engineering-technology-bs/",
+   "eac_alternative": "BS Mechanical Engineering at Penn State Harrisburg (\"accredited by the Engineering Accreditation Commission of ABET ... Program Criteria for Mechanical and Similarly Named Engineering Programs\") — https://harrisburg.psu.edu/science-engineering-technology/mechanical-engineering-bs",
+   "eac_alternative_url": null,
+   "notes": "The EMET bulletin page lists campuses as University Park, Beaver, Fayette, New Kensington, York, Altoona and Berks — Penn State Harrisburg is NOT listed as an EMET campus on the fetched bulletin page. The Harrisburg mechatronics-titled credentials are the Mechatronics Minor (19–22 credits, campus: Harrisburg) and the Mechatronics Technology Minor; neither bulletin page carries an accreditation statement (ABET accredits degree programs, not minors), so the minors themselves are not ABET-accredited credentials. Harrisburg's own accreditation page only says \"Multiple engineering and engineering technology programs in SSET are accredited by the relevant commissions of ABET ... Refer to each program page for details.\" (https://harrisburg.psu.edu/about-us/accreditations)."
   }
  },
  {
@@ -9579,6 +9667,17 @@
    "url": "https://catalog.purdue.edu/preview_program.php?catoid=19&poid=35161",
    "verify_with": "Purdue Polytechnic advising",
    "undermines_robotics_score": false
+  },
+  "robotics_credential": {
+   "program_name": "Robotics Engineering Technology, BS (Purdue Polytechnic)",
+   "credential_type": "degree",
+   "parent_degree": null,
+   "abet_commission": "ETAC",
+   "abet_evidence_quote": "ETAC/ABET-accredited engineering technology program.",
+   "abet_source_url": "https://catalog.purdue.edu/preview_program.php?catoid=19&poid=35161",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering (Purdue College of Engineering)",
+   "eac_alternative_url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate",
+   "notes": "Polytechnic admits at a higher rate than the College of Engineering, but the degree is engineering technology."
   }
  },
  {
@@ -10066,6 +10165,17 @@
    "url": "https://www.rit.edu/engineeringtechnology/robotics-and-manufacturing-engineering-technology-accreditation",
    "verify_with": "RIT admissions — ask which college the intended major sits in",
    "undermines_robotics_score": false
+  },
+  "robotics_credential": {
+   "program_name": "BS Robotics and Manufacturing Engineering Technology / BS Mechatronics Engineering Technology",
+   "credential_type": "degree",
+   "parent_degree": null,
+   "abet_commission": "ETAC",
+   "abet_evidence_quote": "The BS in robotics and manufacturing engineering technology major is accredited by the Engineering Technology Accreditation Commission of ABET.",
+   "abet_source_url": "https://www.rit.edu/engineeringtechnology/robotics-and-manufacturing-engineering-technology-accreditation",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, BS Industrial Engineering (Kate Gleason College of Engineering)",
+   "eac_alternative_url": "https://www.rit.edu/engineering/accreditation",
+   "notes": "RIT holds both: the robotics-titled degrees are ETAC, while Kate Gleason College of Engineering degrees are EAC."
   }
  },
  {
@@ -10557,6 +10667,17 @@
     "lab_or_course": "Rover Mars rover subteam and MATE underwater ROV subteam (competition teams, not research labs)",
     "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/BIC/teams-and-clubs.html"
    }
+  },
+  "robotics_credential": {
+   "program_name": "Multidisciplinary Minor in Robotics",
+   "credential_type": "minor",
+   "parent_degree": "Host majors include BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, BS Software Engineering, BS Computer Science, BS Engineering Design",
+   "abet_commission": "NOT_ABET_ACCREDITED",
+   "abet_evidence_quote": "The Biomedical Engineering, Chemical Engineering, Civil Engineering, Computer Engineering, Electrical Engineering, Engineering Design, Mechanical Engineering, NanoEngineering, Optical Engineering, and Software Engineering programs are accredited by the Engineering Accreditation Commission (EAC) of ABET. The Computer Science Program is accredited by the Computing Accreditation Commission (CAC) of ABET.",
+   "abet_source_url": "https://catalog.rose-hulman.edu/homepage.pdf",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, BS Software Engineering (all EAC); BS Computer Science is CAC — https://www.rose-hulman.edu/academics/academic-affairs/irpa/accreditation/index.html",
+   "eac_alternative_url": null,
+   "notes": "There is no robotics major at Rose-Hulman — only a minor, which is not an ABET-accreditable credential (robotics does not appear on Rose-Hulman's EAC or CAC lists). The base degrees the minor attaches to ARE EAC-accredited (CS is CAC). Minor structure: 7 courses / all majors take CSSE 120, ME-CSSE 435 Robotics Engineering and ECE 425 Introduction to Mobile Robotics, plus major-specific courses and a multidisciplinary senior design project (https://catalog.rose-hulman.edu/catalog/minors-certificates/multidiscpln-minor-robotics-minor/multidiscpln-minor-robotics-minor.pdf)."
   }
  },
  {
@@ -11004,6 +11125,17 @@
     "lab_or_course": "Satellite-refueling space robot (ECSE); RPI Rock Raiders University Rover Challenge team",
     "url": "https://news.rpi.edu/content/2019/12/10/refueling-satellites-space-help-robot"
    }
+  },
+  "robotics_credential": {
+   "program_name": "BS in Robotics Engineering (joint ECSE + MANE)",
+   "credential_type": "degree",
+   "parent_degree": null,
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "All Engineering bachelor's degree programs are accredited by the Engineering Accreditation Commission of ABET, except for the Engineering Science program.",
+   "abet_source_url": "https://catalog.rpi.edu/content.php?catoid=15&navoid=348",
+   "eac_alternative": "The robotics degree itself is EAC-accredited; no alternative needed.",
+   "eac_alternative_url": "https://catalog.rpi.edu/content.php?catoid=15&navoid=348",
+   "notes": "RPI's Engineering Science program is the single stated exception and is not a robotics degree."
   }
  },
  {
@@ -11952,6 +12084,17 @@
     "lab_or_course": "Robotics and Automation Design Lab (Robert Ambrose) — resilient robots for harsh terrestrial and extraterrestrial environments (REV, RoboBall projects), operating from the RELLIS Research Integration Center; StarLab",
     "url": "https://rad.engr.tamu.edu/"
    }
+  },
+  "robotics_credential": {
+   "program_name": "BS in Multidisciplinary Engineering Technology (MXET), Mechatronics track",
+   "credential_type": "degree",
+   "parent_degree": "n.a. (standalone BS MXET; Mechatronics is a focus area/track within it)",
+   "abet_commission": "ETAC",
+   "abet_evidence_quote": "The Bachelor of Science program in Multidisciplinary Engineering Technology is accredited by the Engineering Technology Accreditation Commission of ABET, under the commission's General Criteria with no applicable program criteria.",
+   "abet_source_url": "https://engineering.tamu.edu/etid/about/accreditation/multidisciplinary-engineering-technology-accreditation.html",
+   "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, BS Interdisciplinary Engineering (EAC per university accreditation statement) — https://www.tamu.edu/statements/accreditation.html",
+   "eac_alternative_url": null,
+   "notes": "Confirmed ETAC, not EAC, from two first-party sources: the ETID accreditation page and the university-level statement (\"Undergraduate programs in Electronic Systems Engineering Technology, Manufacturing and Mechanical Engineering Technology, Multidisciplinary Engineering Technology and Industrial Distribution are accredited by the Engineering Technology Accreditation Commission of ABET\"). The Texas A&M catalog repeats: \"The BS in Multidisciplinary Engineering Technology program is accredited by the Engineering Technology Accreditation Commission of ABET.\" (https://catalog.tamu.edu/undergraduate/engineering/technology-industrial-distribution/). The 127-hour total in the brief could not be confirmed on the fetched pages (n.a.)."
   }
  },
  {
@@ -15292,6 +15435,17 @@
    "url": "https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
    "verify_with": "Virginia Tech ME advising",
    "undermines_robotics_score": true
+  },
+  "robotics_credential": {
+   "program_name": "Robotics and Mechatronics (RMBT/RBMT) major within Mechanical Engineering",
+   "credential_type": "concentration_within_degree",
+   "parent_degree": "BS Mechanical Engineering (BSME)",
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "The Bachelor of Science in Mechanical Engineering (BSME) degree program is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and the Program Criteria for Mechanical and Similarly Named Engineering Programs.",
+   "abet_source_url": "https://me.vt.edu/for-students/undergraduate/abet.html",
+   "eac_alternative": "BS Mechanical Engineering (the general ME major — same EAC-accredited BSME); ECE's Controls, Robotics and Automation (CRA) major leads to the EAC-accredited electrical/computer engineering degrees; \"All other College of Engineering undergraduate programs in engineering are accredited by the Engineering Accreditation Commission of ABET\" — https://eng.vt.edu/about/accreditation.html",
+   "eac_alternative_url": null,
+   "notes": "Closed to new declarations: \"Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026. Students already in Robotics and Mechatronics who can graduate by May 2027, nothing changes. Students who cannot graduate by May 2027 will be moved to the Mechanical Engineering Major.\" (https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html). The awarded degree is the EAC-accredited BSME: \"Students graduating in the Robotics and Mechatronics major in Mechanical Engineering earn an ABET-accredited Bachelor of Science degree in Mechanical Engineering.\" (https://me.vt.edu/for-students/undergraduate/robotics-major.html). Catalog total: 128 credit hours; ECE 3254 had its last VT offering Spring 2025, replaced by ME 3704 starting Spring 2026."
   }
  },
  {
@@ -15815,6 +15969,17 @@
     "lab_or_course": "Team Oryx NASA RASC-AL rover, NASA Lunabotics, WHRL NASA Space Robotics Challenge",
     "url": "https://www.wpi.edu/news/teamoryx"
    }
+  },
+  "robotics_credential": {
+   "program_name": "BS in Robotics Engineering",
+   "credential_type": "degree",
+   "parent_degree": null,
+   "abet_commission": "EAC",
+   "abet_evidence_quote": "The Robotics Engineering Department is accredited by the Engineering Accreditation Commission of ABET.",
+   "abet_source_url": "https://www.wpi.edu/academics/departments/robotics-engineering/abet-accreditation",
+   "eac_alternative": "The robotics degree itself is EAC-accredited; no alternative needed.",
+   "eac_alternative_url": "https://www.wpi.edu/academics/engineering/accreditation",
+   "notes": "First ABET-accredited undergraduate robotics engineering program in the United States."
   }
  }
 ]
