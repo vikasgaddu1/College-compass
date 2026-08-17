@@ -7235,6 +7235,14 @@
     "lab_or_course": "IER field deployments of unmanned marine and ground vehicles in extreme environments; CORA underwater reinforcement learning; Northeastern Mars Rover Team; deployable space structures (Transformative Robotics Lab)",
     "url": "https://robotics.northeastern.edu/"
    }
+  },
+  "robotics_pathway_risk": {
+   "severity": "not_freshman",
+   "affects": "Mechatronics BS (Lowell Institute School)",
+   "note": "A degree-completion program for students with two years of college credit or an associate degree, not a first-year entry path. Listed for completeness rather than as a route for a high-school applicant.",
+   "url": "https://catalog.northeastern.edu/professional-studies/bachelors-postbaccalaureate/lowell-institute-school/mechatronics-bs/",
+   "verify_with": "Northeastern admissions",
+   "undermines_robotics_score": false
   }
  },
  {
@@ -9563,6 +9571,14 @@
     "lab_or_course": "Mahmoudian Underwater Robotics Lab (ocean gliders, harsh dynamic climates); CRL (Voyles) search and rescue and sustainable precision animal agriculture; PSP Astrobotics in-space servicing robot arm",
     "url": "https://www.purdue.edu/robotics/labs.html"
    }
+  },
+  "robotics_pathway_risk": {
+   "severity": "accreditation",
+   "affects": "BS Robotics / Mechatronics Engineering Technology (Polytechnic)",
+   "note": "Accredited by ETAC/ABET as an engineering technology degree rather than EAC/ABET engineering, which can matter for graduate school and some employers. The easier Polytechnic admit rate is real but comes with this trade-off.",
+   "url": "https://catalog.purdue.edu/preview_program.php?catoid=19&poid=35161",
+   "verify_with": "Purdue Polytechnic advising",
+   "undermines_robotics_score": false
   }
  },
  {
@@ -14806,6 +14822,14 @@
     "lab_or_course": "Husky Robotics Mars rover (University Rover Challenge); AeroAstro robotics and autonomous systems / Distributed Space Systems work",
     "url": "https://www.aa.washington.edu/students/areas-impact/robotics"
    }
+  },
+  "robotics_pathway_risk": {
+   "severity": "internal_gate",
+   "affects": "BSME Mechatronics option",
+   "note": "The Mechatronics option is a capacity-limited junior-year application made while enrolled in ME 374; UW states capacity is growing and the selection process is still evolving. Non-option students get only limited additional space in the controls/sensors/embedded core.",
+   "url": "https://www.me.washington.edu/students/ug/mechatronics",
+   "verify_with": "UW ME advising",
+   "undermines_robotics_score": false
   }
  },
  {
@@ -15252,6 +15276,14 @@
     "lab_or_course": "Center for Marine Autonomy and Robotics (underwater robotics, ONR-funded)",
     "url": "https://marinerobotics.centers.vt.edu/"
    }
+  },
+  "robotics_pathway_risk": {
+   "severity": "closed",
+   "affects": "Robotics & Mechatronics (RMBT) option within ME",
+   "note": "Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026; the route collapses into the standard BSME. Catalog and checksheet pages are stale relative to the FAQ. Surviving robotics-adjacent routes are ME with the informal robotics electives list or ECE's Controls, Robotics and Autonomy concentration.",
+   "url": "https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
+   "verify_with": "Virginia Tech ME advising",
+   "undermines_robotics_score": true
   }
  },
  {
