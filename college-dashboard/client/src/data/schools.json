@@ -2452,6 +2452,9 @@
     "institution_type": "Public technological research university (R1; $1.43B FY2025 research expenditures [GT-S38])",
     "is_public": true,
     "undergrad_enrollment": 20000,
+    "undergrad_enrollment_cite": "[GT-S14]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "VERIFIED (approximate). Georgia Tech reports 5,415 new undergraduates in 2025 bringing 'Tech's total undergraduate population to over 20,000'. The stored 20,000 is a rounded figure consistent with that statement; Georgia Tech's Fact Book (irp.gatech.edu) carries the exact census count.",
     "size_bucket": "large",
     "degree_name": "BS in Computer Science, Artificial Intelligence Thread + one additional Thread [GT-S1][GT-S2][GT-S3]",
     "degree_type": "CS degree with an AI concentration (Thread); no BS in AI exists [GT-S7]",
@@ -2739,7 +2742,8 @@
       "GT-S10": "Georgia Tech 2025 First-Year Admitted Profile, full (PDF) - https://admission.gatech.edu/images/pdf/2025/FY-admitted-profile-full-2025.pdf",
       "GT-S11": "Georgia Tech Enrollment Management news, Final Decision Release Completes Fall 2025 First-Year Class - https://news.em.gatech.edu/2025/03/31/final-decision-release-fall-2025-first-year/",
       "GT-S12": "Georgia Tech Research, Robotics / Institute for Robotics and Intelligent Machines - https://research.gatech.edu/robotics",
-      "GT-S13": "FIRST scholarship portal (Pearson Futures), Georgia Institute of Technology - FIRST - https://futures.pearson.com/scholarships/df4dc455-3dd6-416a-97f6-707518e4e321"
+      "GT-S13": "FIRST scholarship portal (Pearson Futures), Georgia Institute of Technology - FIRST - https://futures.pearson.com/scholarships/df4dc455-3dd6-416a-97f6-707518e4e321",
+      "GT-S14": "Over 5,400 Undergraduates Join Georgia Tech — Georgia Tech Enrollment Management (Fall 2025) - https://news.em.gatech.edu/2025/08/18/over-5400-undergraduates-join-georgia-tech/"
     },
     "robotics_curriculum_detail": {
       "score_basis": "No undergraduate robotics degree; instead a formal 15-credit Minor in Robotics open to all majors, with a required core course chosen from CS 3630 / ECE 4560 / ME 4451 / BMED 4739 and a large approved elective list organized into Autonomy, Controls, Mechanics and Perception buckets [GT-R1][GT-R2]. Course breadth exceeds 8 undergrad courses, but no robotics-specific capstone requirement was verified (VIP research and 4699 undergraduate research substitute), so the score sits at '4'.",
@@ -3367,7 +3371,7 @@
     "notable_undergraduate_research_program": "PURA ($3,000 academic year) and Summer PURA ($6,000, 10 weeks; 113 funded in Summer 2025); CSMR REU (LCSR/NSF, US citizens/PRs)",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Combined (concurrent) BS/MSE in Computer Science; also combined BS/MSE in Robotics via LCSR and concurrent BS/MSSI",
-    "cost_total_instate": null,
+    "cost_total_instate": 94858,
     "cost_total_outofstate": 94858,
     "cost_for_nc_resident": 94858,
     "housing_guarantee": "Two-year residency requirement for first- and second-year students; 93% of first-years in college housing, 46% of all undergraduates",
@@ -5345,7 +5349,10 @@
     "region": "Great Lakes",
     "institution_type": "Public research university (M1) — commuter-oriented",
     "is_public": true,
-    "undergrad_enrollment": 7300,
+    "undergrad_enrollment": 6199,
+    "undergrad_enrollment_cite": "[UMDBN-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 7,300. Fall 2025: 6,199 undergraduates out of 8,005 total headcount (a ~1% decline from Fall 2024).",
     "size_bucket": "medium",
     "degree_name": "BSE in Robotics Engineering (dedicated 125-cr ABET-accredited degree, ECE-housed)",
     "degree_type": "Dedicated BS Robotics — one of only ~6 in the US",
@@ -5663,7 +5670,13 @@
       "cs_gate": "none",
       "cs_gate_basis": "Direct admit into the chosen CECS major; 3.0 HS GPA is a university-wide guarantee."
     },
-    "source_log": {},
+    "source_log": {
+      "UMDBN-S1": {
+        "url": "https://umdearborn.edu/news/look-fall-2025-enrollment",
+        "title": "A look into Fall 2025 enrollment — University of Michigan-Dearborn",
+        "fetched": "2026-08-17"
+      }
+    },
     "robotics_curriculum_detail": {
       "score_basis": "Dedicated ABET-accredited BSE in Robotics Engineering (125 credits), one of the earliest such undergraduate degrees in the US, with a two-semester robotics capstone (ECE 4987/4988 Robotics Engineering Design I and II) [UMD-R1][UMD-R2]. Robotics course sequence spans manipulation (ECE 3641 Robotic Manipulation), mobility (ECE 4641 Mobile Robots), perception (ECE 4881 Introduction to Robot Vision), industrial robotics (IMSE 381, IMSE 489 Robotics Systems Simulation), mechatronics (ME 472) and vehicle/energy systems (ECE 237) [UMD-R1][UMD-R10]. A separate 9-credit Mechatronics and Robotics undergraduate certificate is open to other majors [UMD-R7][UMD-R8], and a 4+1 BSE/MSE Robotics Engineering path exists [UMD-R9].",
       "undergrad_courses": [
@@ -5833,6 +5846,9 @@
     "institution_type": "Private, nonprofit research university (SB-only undergraduate degrees) [MIT-S16]",
     "is_public": false,
     "undergrad_enrollment": 4561,
+    "undergrad_enrollment_cite": "[MIT-S12]",
+    "undergrad_enrollment_asof": "Fall 2024/2025",
+    "undergrad_enrollment_note": "VERIFIED. MIT Registrar reported 4,535 undergraduates as of October 2024; the stored 4,561 is consistent with that at a one-year offset.",
     "size_bucket": "small",
     "degree_name": "Bachelor of Science in Artificial Intelligence and Decision Making (Course 6-4) [MIT-S1]",
     "degree_type": "Dedicated AI bachelor's degree",
@@ -6183,7 +6199,8 @@
       "MIT-S8": "MIT CSAIL Alliances, CSAIL by the Numbers — https://cap.csail.mit.edu/engage/why-csail-alliances/csail-numbers",
       "MIT-S9": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
       "MIT-S10": "MIT Department of Mechanical Engineering, '2.007 Forever!' — https://meche.mit.edu/news-media/2007-forever",
-      "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) — https://web.mit.edu/webcast/2.007/"
+      "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) — https://web.mit.edu/webcast/2.007/",
+      "MIT-S12": "Enrollment statistics by year — MIT Registrar - https://registrar.mit.edu/stats-reports/enrollment-statistics-year/all"
     },
     "robotics_curriculum_detail": {
       "score_basis": "No dedicated undergraduate robotics degree or robotics minor was found; robotics is delivered through 5 documented undergraduate subjects across Course 2 and Course 6 - 2.12, 2.74, 2.017[J], 6.4200[J] and 6.4210 - which together cover mechanics/design, control, perception and planning, and 6.4200[J] Robotics: Science and Systems is a CI-M team design subject. That matches the '4' tier (5-7 undergrad courses incl. controls and perception/planning) rather than the dedicated-degree or 8+-course '5' tier.",
@@ -6323,8 +6340,11 @@
     "region": "Southeast",
     "institution_type": "Public land-grant R1 university",
     "is_public": true,
-    "undergrad_enrollment": 12500,
-    "size_bucket": "medium",
+    "undergrad_enrollment": 29340,
+    "undergrad_enrollment_cite": "[NCSU-S12]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from 12,500. Fall 2025: 29,340 degree-seeking undergraduates; 30,504 undergraduate degree/non-degree/certificate students out of 40,503 total headcount. The previous 12,500 was roughly the size of NC State's College of Engineering, not the undergraduate student body.",
+    "size_bucket": "large",
     "degree_name": "B.S. in Computer Science, Artificial Intelligence Concentration",
     "degree_type": "Transcript-recognized concentration within an ABET-accredited B.S. (21 AI credit hours; 121 total)",
     "program_archetype": "B (deep CS + AI); partially E (large AI ecosystem via the university-wide Data Science and AI Academy)",
@@ -6692,6 +6712,11 @@
         "url": "https://engr.ncsu.edu/",
         "title": "NC State College of Engineering home page (robotics framing)",
         "fetched": "2026-08-16"
+      },
+      "NCSU-S12": {
+        "url": "https://provost.ncsu.edu/news/2025/11/october-metrics-update-shows-gains-in-student-success-measures/",
+        "title": "October Metrics Update Shows Gains in Student Success Measures — NC State Office of the Provost (Fall 2025 enrollment census)",
+        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
@@ -6874,7 +6899,7 @@
     "notable_undergraduate_research_program": "PEAK Awards ($750-$6,000, three cycles/year) + Khoury paid research co-op [NEU-S9] [NEU-S8]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "PlusOne (up to 16 credits double-counted; MS in Artificial Intelligence available) [NEU-S10]",
-    "cost_total_instate": null,
+    "cost_total_instate": 94137,
     "cost_total_outofstate": 94137,
     "cost_for_nc_resident": 94137,
     "housing_guarantee": "Required for first two years; no guarantee beyond confirmed [NEU-S23] [NEU-S24]",
@@ -7800,7 +7825,7 @@
     "fourplusone_available": "No (for Olin students)",
     "fourplusone_name": "NOT APPLICABLE — the only 4+1 is for Wellesley students spending a fifth year at Olin [OLIN-S6]",
     "cost_total_instate": 97088,
-    "cost_total_outofstate": null,
+    "cost_total_outofstate": 97088,
     "cost_for_nc_resident": 97088,
     "housing_guarantee": "Effectively absolute — all students required to live on campus all four years, exemptions by Dean of Students only [OLIN-S53][OLIN-S55]",
     "greek_participation": "None — 83% of students in a Niche poll report no Greek life [OLIN-S58]",
@@ -8300,7 +8325,7 @@
     "notable_undergraduate_research_program": "PURM ($5,000, 1st/2nd-year students); SURE; Rachleff Scholars (rising sophomores, ≥3.4 GPA); Littlejohn",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Accelerated Master's (4+1) — \"submatriculation\" only for pre-Fall-2017 entrants",
-    "cost_total_instate": null,
+    "cost_total_instate": 99082,
     "cost_total_outofstate": 99082,
     "cost_for_nc_resident": 99082,
     "housing_guarantee": "Required and provided years 1–2 (two-year housing + dining requirement); ~950 spaces only for rising 3rd/4th-years, randomized",
@@ -9722,7 +9747,7 @@
     "notable_undergraduate_research_program": "35th Annual Undergraduate Research Symposium, open to all undergraduates [RIT-S10]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "BS/MS with 9 graduate credits double-counted [RIT-S4]",
-    "cost_total_instate": null,
+    "cost_total_instate": 82868,
     "cost_total_outofstate": 82868,
     "cost_for_nc_resident": 82868,
     "housing_guarantee": "First-year housing required; 95% of first-years live on campus; multi-year guarantee unverified [RIT-S32] [RIT-S31]",
@@ -10724,7 +10749,7 @@
     "notable_undergraduate_research_program": "URP (minimum $14.20/hr, up to $500/semester institutional match) plus the Summer Undergraduate Research Award (up to $6,400 for 10 weeks) [RPI-S18] [RPI-S20]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Co-Terminal (accelerated master's) — 90 credits to apply, 3.0 GPA minimum, CS requires an MS-advisor research letter; double-counted credits UNK [RPI-S47] [RPI-S49]",
-    "cost_total_instate": null,
+    "cost_total_instate": 90076,
     "cost_total_outofstate": 90076,
     "cost_for_nc_resident": 90076,
     "housing_guarantee": "Required for first-year and second-year cohorts with a meal plan; Greek sophomores may waive via the FS Commons Housing Waiver; beyond year 2 unverified [RPI-S61] [RPI-S62]",
@@ -11610,6 +11635,9 @@
     "institution_type": "Public flagship land-grant research university (R1)",
     "is_public": true,
     "undergrad_enrollment": 59000,
+    "undergrad_enrollment_cite": "[TAMU-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "VERIFIED (approximate). Fall 2025 preliminary reporting put College Station total enrollment above 74,000 with undergraduates up about 1.5% (+875), which brackets the stored 59,000; US News reports 60,710 undergraduates for Fall 2024. Left unchanged as within the reported range — the exact census figure should be read off the ABPA enrollment profile.",
     "size_bucket": "large",
     "degree_name": "BS Multidisciplinary Engineering Technology — Mechatronics (MXET) OR BS Mechanical Engineering (MEEN)",
     "degree_type": "Mechatronics/robotics via engineering technology + ME with robotics electives",
@@ -11972,7 +12000,13 @@
       "cs_gate": "strong",
       "cs_gate_basis": "All engineering admits enter General Engineering and compete through ETAM for capacity-limited major placement."
     },
-    "source_log": {},
+    "source_log": {
+      "TAMU-S1": {
+        "url": "https://abpa.tamu.edu/data-and-insights/enrollment/enrollment-profile.html",
+        "title": "Enrollment profile — Texas A&M Academic and Business Performance Analytics",
+        "fetched": "2026-08-17"
+      }
+    },
     "robotics_curriculum_detail": {
       "score_basis": "Texas A&M offers a dedicated mechatronics-track undergraduate degree — BS Multidisciplinary Engineering Technology (MXET), Mechatronics Track, 127 semester hours, ABET-accredited — whose catalog course descriptions document 8+ undergraduate robotics courses spanning design and mechanisms (MXET 250 Robotic Systems Design), embedded/mobile robotics (MXET 300 Mechatronics I - Mobile Robotic Systems, MXET 340 Advanced Embedded Systems for Mechatronics), kinematics and numerical methods for manipulators (MXET 345), dynamics/controls (MXET 375 Applied Dynamic Systems), industrial automation (MXET 360 Automation of Mechatronic Systems, MXET 400 Mechatronics II - Industrial Robotic Systems) and AI/perception (MXET 450 Artificial Intelligence for Mechatronics), plus a required team-based, industry-sponsored two-semester capstone design sequence. [TAMU-R1][TAMU-R2][TAMU-R3]",
       "undergrad_courses": [
@@ -13565,7 +13599,10 @@
     "region": "Southwest",
     "institution_type": "Public flagship research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 42400,
+    "undergrad_enrollment": 44314,
+    "undergrad_enrollment_cite": "[UTA-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 42,400. Fall 2025: 44,314 undergraduates, up 2.7% from 43,165 in Fall 2024; 55,000 total enrollment.",
     "size_bucket": "large",
     "degree_name": "BS in Computer Science (Turing Scholars honors option) + Undergraduate Robotics Program",
     "degree_type": "CS degree with robotics honors track",
@@ -13911,7 +13948,13 @@
       "cs_gate": "strong",
       "cs_gate_basis": "CS is a separately-admitted CNS major; internal transfer requires 3.0 GPA and competes on space, max two attempts."
     },
-    "source_log": {},
+    "source_log": {
+      "UTA-S1": {
+        "url": "https://news.utexas.edu/2025/09/18/ut-sets-all-time-highs-for-enrollment-and-student-performance/",
+        "title": "UT Sets All-Time Highs for Enrollment and Student Performance — UT Austin News (Fall 2025)",
+        "fetched": "2026-08-17"
+      }
+    },
     "robotics_curriculum_detail": {
       "score_basis": "No robotics BS was found - the brief's 'new Robotics BS' anchor could not be verified. What exists is a Robotics Honors Program (launched Fall 2025, believed to be the first US robotics program students apply to at freshman admission) that guarantees a place in the Robotics minor and an FRI robotics stream [UT-R2][UT-R3][UT-R13], plus a 15-credit Minor in Robotics built on RBT 350 Gateway to Robotics and four courses across five content areas [UT-R4][UT-R5]. Most approved minor electives are graduate-numbered, so documented undergraduate-specific robotics courses are fewer than the '5' tier requires; the honors program plus minor plus FRI streams place this at '4'.",
       "undergrad_courses": [
@@ -15016,7 +15059,10 @@
     "region": "Southeast",
     "institution_type": "Public land-grant research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 30000,
+    "undergrad_enrollment": 31536,
+    "undergrad_enrollment_cite": "[VT-S16]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 30,000. Fall 2025 census: 31,536 undergraduates, from an incoming class of 8,264 (7,088 first-time, 1,176 transfer).",
     "size_bucket": "large",
     "degree_name": "Bachelor of Science in Computer Science",
     "degree_type": "B.S. in CS with no AI concentration; AI assembled from electives",
@@ -15302,7 +15348,8 @@
       "VT-S12": "Autonomy and Robotics at Virginia Tech - https://autonomyandrobotics.centers.vt.edu/index.html",
       "VT-S13": "Virginia Tech Transportation Institute, About - https://www.vtti.vt.edu/about/index.html",
       "VT-S14": "Virginia Tech College of Engineering, Change of Major FAQs (three cycles per year, concentration changes effective January 2026) - https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
-      "VT-S15": "FIRST Scholarship Program portal index (searched for a Virginia Tech provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships"
+      "VT-S15": "FIRST Scholarship Program portal index (searched for a Virginia Tech provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
+      "VT-S16": "Strong retention rate highlights fall enrollment census — Virginia Tech News (Fall 2025) - https://news.vt.edu/articles/2025/10/cm-fallcensus.html"
     },
     "robotics_curriculum_detail": {
       "score_basis": "Virginia Tech's Robotics and Mechatronics (RMBT) degree option within Mechanical Engineering carries 10+ dedicated ME robotics courses plus a year-long ME 4015/4016 senior design capstone — clear rubric-5 territory. MAJOR CAVEAT: the program is being discontinued. The COE change-of-major FAQ states verbatim: 'Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026,' and students unable to graduate by May 2027 are moved to the plain Mechanical Engineering major. [VT-R1][VT-R2][VT-R3][VT-R4]",
@@ -15501,7 +15548,7 @@
     "fourplusone_available": "Yes",
     "fourplusone_name": "WPI BS/MS program; BS/MS in Artificial Intelligence [WPI-S38][WPI-S6]",
     "cost_total_instate": 87000,
-    "cost_total_outofstate": null,
+    "cost_total_outofstate": 87000,
     "cost_for_nc_resident": 87000,
     "housing_guarantee": "Required and guaranteed for first AND second years (Class of 2030 onward); not guaranteed for juniors/seniors [WPI-S51][WPI-S52]",
     "greek_participation": "26% of men, 25% of women (CDS 2024-25); CONFLICTING third-party figure of 45% of women [WPI-S21][WPI-S37]",
