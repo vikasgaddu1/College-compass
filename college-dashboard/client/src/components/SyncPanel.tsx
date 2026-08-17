@@ -92,7 +92,15 @@ export function SyncPanel() {
               if (!email) return;
               setMessage("Sending link…");
               const { error } = await signInWithMagicLink(email);
-              setMessage(error ? `Error: ${error}` : "Check your email for a sign-in link.");
+              setMessage(
+                error
+                  ? /not authorized/i.test(error)
+                    ? "This address is not authorized to receive mail from the project yet — the built-in Supabase sender only delivers to members of the project's organization. Add it under the organization's Team tab, or configure custom SMTP."
+                    : /rate limit/i.test(error)
+                      ? "Email rate limit hit — the built-in sender allows only about 2 messages per hour. Wait, or configure custom SMTP."
+                      : `Error: ${error}`
+                  : "Check your email for a sign-in link — also check the spam folder.",
+              );
             }}
           >
             <Mail size={11}/> Send magic link
@@ -161,7 +169,12 @@ export function SyncPanel() {
       {/* Invite counselor */}
       {workspace && (
         <div className="border-t border-[hsl(var(--border))] pt-3 space-y-2">
-          <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Invite a counselor</div>
+          <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Pre-authorize a counselor</div>
+          <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] leading-snug rounded border border-[hsl(var(--border))] bg-[hsl(var(--muted)/0.4)] px-2.5 py-2">
+            <strong className="text-[hsl(var(--foreground))]">This does not send an email.</strong> It grants the address permission to join
+            this workspace. Send them the dashboard link yourself — they sign in with their own magic link
+            using that exact address, and the pending access attaches automatically on first sign-in.
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             <input
               type="email"
@@ -186,15 +199,27 @@ export function SyncPanel() {
                 if (ok) {
                   setInviteEmail("");
                   setMembers(await listMembers(workspace.id));
-                  setMessage("Invite added — they'll join when they sign in with that email.");
+                  setMessage("Access granted. No email was sent — send them the link yourself; they request their own magic link with that address.");
                 } else {
                   setMessage(`Invite failed: ${error}`);
                 }
               }}
             >
-              <UserPlus size={11}/> Invite
+              <UserPlus size={11}/> Grant access
             </button>
           </div>
+          <button
+            className="chip chip-outline inline-flex items-center gap-1"
+            onClick={() => {
+              const link = `${window.location.origin}${window.location.pathname}#/sync`;
+              navigator.clipboard?.writeText(link).then(
+                () => setMessage("Sign-in link copied — send it to them by text or email."),
+                () => setMessage(`Copy failed. Share this link manually: ${link}`),
+              );
+            }}
+          >
+            Copy sign-in link to share
+          </button>
           {members.length > 0 && (
             <div className="text-[11px] text-[hsl(var(--muted-foreground))]">
               <strong>Members:</strong> {members.map(m => `${m.display_name || m.invited_email || m.user_id?.slice(0,8) || "unknown"} (${m.role}${!m.user_id ? " · pending" : ""})`).join(", ")}

@@ -44,6 +44,33 @@ export interface School {
     campus_life: number | null;
     ambition_healthy: number | null;
     outcomes: number | null;
+    /** Robotics coursework an undergraduate can actually take (1-5). */
+    robotics_curriculum?: number | null;
+    /** Whether an undergraduate can get into robotics research/labs/teams (1-5). */
+    robotics_access?: number | null;
+  };
+  /** Per-subdomain robotics coverage, researched per school. */
+  robotics_domains?: Record<string, {
+    coverage: "strong" | "present" | "none";
+    lab_or_course?: string | null;
+    url?: string | null;
+  }>;
+  robotics_curriculum_detail?: {
+    score_basis?: string;
+    course_count_undergrad?: number | null;
+    dedicated_degree?: string | null;
+    minor_or_concentration?: string | null;
+    capstone?: string | null;
+    undergrad_courses?: { code?: string; title?: string; cite?: string }[];
+  };
+  robotics_access_detail?: {
+    score_basis?: string;
+    institute_or_center?: string | null;
+    documented_lab_count?: string | null;
+    undergrad_access_mode?: string | null;
+    named_undergrad_program?: string | null;
+    makerspaces?: string[];
+    competition_teams?: string[];
   };
   fit_classification: "TOP FIT" | "STRONG FIT" | "CONDITIONAL FIT" | "LOWER FIT" | string;
   best_fit_reason: string;

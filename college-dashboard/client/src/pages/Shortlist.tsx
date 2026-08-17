@@ -41,6 +41,8 @@ export default function ShortlistPage() {
                   <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3">
                     <AxisBar value={s.axes.program_depth} label="AI curriculum" />
                     <AxisBar value={s.axes.research_access} label="Research access" />
+                    <AxisBar value={s.axes.robotics_curriculum ?? null} label="Robotics curriculum" />
+                    <AxisBar value={s.axes.robotics_access ?? null} label="Robotics access" />
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
                     <CostChip s={s} />

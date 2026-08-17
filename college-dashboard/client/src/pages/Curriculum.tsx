@@ -18,7 +18,9 @@ const columns = [
   { key: "faculty_mentorship", label: "Faculty" },
   { key: "computing_resources", label: "GPU / compute" },
   { key: "project_based_learning", label: "Projects" },
-  { key: "robotics_autonomy_options", label: "Robotics" },
+  { key: "robotics_autonomy_options", label: "Robotics (overall)" },
+  { key: "robotics_curriculum", label: "Robotics courses", axis: true },
+  { key: "robotics_access", label: "Robotics access", axis: true },
   { key: "industry_preparation", label: "Industry prep" },
   { key: "graduate_school_preparation", label: "Grad-school prep" },
   { key: "fourplusone_quality", label: "4+1" },
@@ -34,8 +36,12 @@ export default function CurriculumPage() {
   const rows = useMemo(() => {
     const list = schools.filter(s => !hidden.has(s.slug));
     return [...list].sort((a,b) => {
-      const av = (a.scores[sort.key] as number) ?? -1;
-      const bv = (b.scores[sort.key] as number) ?? -1;
+      const col = columns.find((c: { key: string; axis?: boolean }) => c.key === sort.key);
+      const get = (s: typeof a) => (col?.axis
+        ? ((s.axes as Record<string, number | null>)[sort.key] ?? -1)
+        : ((s.scores[sort.key] as number) ?? -1));
+      const av = get(a);
+      const bv = get(b);
       return sort.asc ? av - bv : bv - av;
     });
   }, [hidden, sort]);
@@ -86,8 +92,12 @@ export default function CurriculumPage() {
                     <td><RoboticsCell slug={s.slug}/></td>
                     {columns.map(c => (
                       <td key={c.key} className="text-center">
-                        <span title={s.score_notes[c.key] || ""}>
-                          <ScoreCell value={s.scores[c.key] as any} />
+                        <span title={(c.axis
+                          ? ((c.key === "robotics_curriculum" ? s.robotics_curriculum_detail : s.robotics_access_detail)?.score_basis || "")
+                          : (s.score_notes[c.key] || ""))}>
+                          <ScoreCell value={(c.axis
+                            ? (s.axes as Record<string, number | null>)[c.key]
+                            : s.scores[c.key]) as any} />
                         </span>
                       </td>
                     ))}

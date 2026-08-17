@@ -1,0 +1,2108 @@
+{
+ "wpi": {
+  "WPI-R1": {
+   "url": "https://www.wpi.edu/academics/study/robotics-engineering-bs",
+   "title": "Robotics Engineering BS | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R2": {
+   "url": "https://www.wpi.edu/academics/calendar-courses/course-descriptions/107406/robotics-engineering",
+   "title": "Robotics Engineering course descriptions | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R3": {
+   "url": "https://www.wpi.edu/sites/default/files/inline-image/RBE%202026.pdf",
+   "title": "RBE 2026 degree flowchart (MQP capstone)",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R4": {
+   "url": "https://www.wpi.edu/academics/departments/robotics-engineering/research/groups",
+   "title": "Robotics Engineering research groups | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R5": {
+   "url": "https://www.wpi.edu/academics/departments/robotics-engineering/research",
+   "title": "Robotics Engineering research | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R6": {
+   "url": "https://www.wpi.edu/research/centers/practicepoint",
+   "title": "PracticePoint | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R7": {
+   "url": "https://www.wpi.edu/academics/departments/robotics-engineering/resources/student-organizations",
+   "title": "Robotics student organizations | WPI",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R8": {
+   "url": "https://www.wpi.edu/news/teamoryx",
+   "title": "Team Oryx NASA RASC-AL | WPI News",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R9": {
+   "url": "https://www.wpi.edu/news/announcements/team-wpi-whrl-finalist-nasa-space-robotics-challenge",
+   "title": "Team WPI-WHRL finalist, NASA Space Robotics Challenge",
+   "fetched": "2026-08-17"
+  },
+  "WPI-R10": {
+   "url": "https://labs.wpi.edu/cirl/",
+   "title": "Cognitive and Immersive Robotics Lab (CIRL) - undergrad MQP recruiting",
+   "fetched": "2026-08-17"
+  }
+ },
+ "carnegie-mellon": {
+  "CMU-R1": {
+   "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/how-to-apply/",
+   "title": "BS in Robotics - How to Apply | CMU Robotics Institute",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R2": {
+   "url": "https://www.cmu.edu/news/stories/archives/2023/september/carnegie-mellon-university-launches-bachelor-of-science-in-robotics",
+   "title": "CMU launches Bachelor of Science in Robotics",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R3": {
+   "url": "http://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/",
+   "title": "Robotics - CMU Course Catalog (BSR curriculum)",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R4": {
+   "url": "https://www.ri.cmu.edu/education/academic-programs/minor-in-robotics/",
+   "title": "Minor in Robotics | CMU Robotics Institute",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R5": {
+   "url": "https://www.ri.cmu.edu/research/labs-groups/",
+   "title": "Labs and Groups | CMU Robotics Institute",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R6": {
+   "url": "https://labs.ri.cmu.edu/",
+   "title": "RI Labs directory",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R7": {
+   "url": "https://riss.ri.cmu.edu/",
+   "title": "Robotics Institute Summer Scholars (RISS)",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R8": {
+   "url": "https://riss.ri.cmu.edu/faq/",
+   "title": "RISS FAQ - cohort size, stipend, eligibility",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R9": {
+   "url": "https://www.cs.cmu.edu/~rel/",
+   "title": "CMU Robotics Education Lab",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R10": {
+   "url": "https://roboclub.org/",
+   "title": "CMU Roboclub",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R11": {
+   "url": "https://roboclub.org/projects/",
+   "title": "Roboclub projects and teams",
+   "fetched": "2026-08-17"
+  },
+  "CMU-R12": {
+   "url": "https://www.ri.cmu.edu/research-overview/",
+   "title": "Research Overview | CMU Robotics Institute",
+   "fetched": "2026-08-17"
+  }
+ },
+ "michigan": {
+  "MICH-R1": {
+   "url": "https://robotics.umich.edu/academics/undergraduate/",
+   "title": "Undergraduate Robotics | Michigan Robotics",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R2": {
+   "url": "https://robotics.umich.edu/academics/courses/complete-course-list/",
+   "title": "Complete ROB course list | Michigan Robotics",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R3": {
+   "url": "https://robotics.umich.edu/academics/undergraduate/degree-requirements/",
+   "title": "Robotics BSE degree requirements",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R4": {
+   "url": "https://robotics.umich.edu/about/facilities/ford-robotics-building/",
+   "title": "Ford Motor Company Robotics Building",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R5": {
+   "url": "https://robotics.umich.edu/about/facilities/",
+   "title": "Michigan Robotics facilities (M-Air, Mcity)",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R6": {
+   "url": "https://robotics.umich.edu/research/",
+   "title": "Michigan Robotics research focus areas",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R7": {
+   "url": "https://robotics.umich.edu/research/focus-areas/autonomous-vehicles/",
+   "title": "Autonomous Vehicles focus area",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R8": {
+   "url": "https://robotics.umich.edu/people/student-teams/",
+   "title": "Robotics student teams | Michigan Robotics",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R9": {
+   "url": "https://cse.engin.umich.edu/community/student-groups-and-teams/",
+   "title": "Student groups and teams | Michigan CSE",
+   "fetched": "2026-08-17"
+  },
+  "MICH-R10": {
+   "url": "https://alumni.umich.edu/michigan-alum/spaces-the-robotics-institute/",
+   "title": "Spaces: The Robotics Institute | Michigan Alum",
+   "fetched": "2026-08-17"
+  }
+ },
+ "mit": {
+  "MIT-R1": {
+   "url": "https://catalog.mit.edu/subjects/2/",
+   "title": "MIT Course 2 subject listings (2.12, 2.017)",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R2": {
+   "url": "https://meche.mit.edu/featured-classes/introduction-robotics",
+   "title": "2.12 Introduction to Robotics | MIT MechE",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R3": {
+   "url": "https://meche.mit.edu/featured-classes/bio-inspired-robotics",
+   "title": "2.74 Bio-Inspired Robotics | MIT MechE",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R4": {
+   "url": "https://manipulation.csail.mit.edu/Fall2025/",
+   "title": "6.4210 Robotic Manipulation (Fall 2025)",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R5": {
+   "url": "https://catalog.mit.edu/degree-charts/electrical-engineering-computer-science-tracks/",
+   "title": "EECS degree chart tracks incl. 6.4200[J] robotics",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R6": {
+   "url": "https://catalog.mit.edu/degree-charts/mechanical-engineering-course-2/",
+   "title": "MechE Course 2 degree chart (2.017[J])",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R7": {
+   "url": "https://urop.mit.edu/about/",
+   "title": "About UROP | MIT",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R8": {
+   "url": "https://groups.csail.mit.edu/robotics-center/projects/projects.shtml",
+   "title": "MIT Center for Robotics projects",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R9": {
+   "url": "https://www.csail.mit.edu/research/robot-locomotion-group",
+   "title": "Robot Locomotion Group | CSAIL",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R10": {
+   "url": "https://www.csail.mit.edu/research/interactive-robotics-group",
+   "title": "Interactive Robotics Group | CSAIL",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R11": {
+   "url": "https://www.csail.mit.edu/research/robust-robotics-group",
+   "title": "Robust Robotics Group | CSAIL",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R12": {
+   "url": "https://meche.mit.edu/people/faculty/SANGBAE@MIT.EDU",
+   "title": "Sangbae Kim - Biomimetic Robotics Lab | MIT MechE",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R13": {
+   "url": "https://danielarus.csail.mit.edu/index.html",
+   "title": "Daniela Rus - Distributed Robotics Laboratory",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R14": {
+   "url": "https://aeroastro.mit.edu/arclab/about/",
+   "title": "ARCLab (Astrodynamics, Space Robotics and Controls) | MIT AeroAstro",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R15": {
+   "url": "https://roboteam.mit.edu/",
+   "title": "MIT Robotics Team",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R16": {
+   "url": "https://edgerton.mit.edu/for-MIT-students/clubs-teams",
+   "title": "Edgerton Center clubs and teams",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R17": {
+   "url": "https://news.mit.edu/2015/soft-robotic-hand-can-pick-and-identify-wide-array-of-objects-0930",
+   "title": "Soft robotic hand can pick up and identify objects | MIT News",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R18": {
+   "url": "https://engineering.mit.edu/undergraduate/undergraduate-research",
+   "title": "Undergraduate research | MIT School of Engineering",
+   "fetched": "2026-08-17"
+  },
+  "MIT-R19": {
+   "url": "https://aeroastro.mit.edu/graduate-student-open-house/open-virtual-lab-tours/",
+   "title": "AeroAstro lab tours (Space Systems Lab, Robust Robotics, Interactive Robotics, MERS)",
+   "fetched": "2026-08-17"
+  }
+ },
+ "uc-berkeley": {
+  "BERK-R1": {
+   "url": "https://www2.eecs.berkeley.edu/Courses/EEC106A/",
+   "title": "EECS C106A Introduction to Robotics",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R2": {
+   "url": "https://www2.eecs.berkeley.edu/Courses/EEC106B/",
+   "title": "EECS C106B Robotic Manipulation and Interaction",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R3": {
+   "url": "https://cdss.berkeley.edu/dsus/academics/domain-emphasis/robotics",
+   "title": "Robotics domain emphasis | Berkeley CDSS",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R4": {
+   "url": "https://www2.eecs.berkeley.edu/Research/Areas/Centers/",
+   "title": "EECS research centers (BAIR, AUTOLAB, RIML)",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R5": {
+   "url": "https://me.berkeley.edu/research-areas-and-major-fields/robotics/",
+   "title": "Robotics research | Berkeley Mechanical Engineering",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R6": {
+   "url": "https://ptolemy.berkeley.edu/projects/robotics/",
+   "title": "Berkeley robotics projects (Biomimetic Millisystems, BEAR, Robot Learning)",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R7": {
+   "url": "https://www2.eecs.berkeley.edu/Faculty/Homepages/goldberg.html",
+   "title": "Ken Goldberg - AUTOLAB, Cal-MR, CITRIS People and Robots",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R8": {
+   "url": "https://research.berkeley.edu/urap/",
+   "title": "Undergraduate Research Apprentice Program (URAP)",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R9": {
+   "url": "https://eecs.berkeley.edu/resources/undergrads/undergraduate-research/",
+   "title": "Undergraduate research | Berkeley EECS",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R10": {
+   "url": "https://roar.berkeley.edu/",
+   "title": "ROAR - Robot Open Autonomous Racing at Berkeley",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R11": {
+   "url": "https://engineering.berkeley.edu/students/student-life/teams-and-organizations/",
+   "title": "Student teams and organizations | Berkeley Engineering",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R12": {
+   "url": "https://rail.eecs.berkeley.edu/",
+   "title": "Robotic AI and Learning (RAIL) Lab",
+   "fetched": "2026-08-17"
+  },
+  "BERK-R13": {
+   "url": "https://undergraduate.catalog.berkeley.edu/courses/1547771",
+   "title": "Berkeley undergraduate catalog - C106B course entry",
+   "fetched": "2026-08-17"
+  }
+ },
+ "georgia-tech": {
+  "GT-R1": {
+   "url": "https://catalog.gatech.edu/programs/minor-robotics/",
+   "title": "Minor in Robotics | Georgia Tech Catalog",
+   "fetched": "2026-08-17"
+  },
+  "GT-R2": {
+   "url": "https://www.gatech.edu/academics/degrees/bachelors/robotics-minor",
+   "title": "Robotics Minor | Georgia Tech",
+   "fetched": "2026-08-17"
+  },
+  "GT-R3": {
+   "url": "https://www.me.gatech.edu/files/ug/me4451.pdf",
+   "title": "ME 4451 Robotics syllabus",
+   "fetched": "2026-08-17"
+  },
+  "GT-R4": {
+   "url": "https://robotics.gatech.edu/",
+   "title": "Institute for Robotics and Intelligent Machines (IRIM)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R5": {
+   "url": "https://rimold.cc.gatech.edu/labs.html",
+   "title": "IRIM labs directory",
+   "fetched": "2026-08-17"
+  },
+  "GT-R6": {
+   "url": "https://research.gatech.edu/robotics/robotics-research-facilities",
+   "title": "Robotics research facilities (Robotarium, Human Augmentation Core, Aware Home)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R7": {
+   "url": "https://osp.gatech.edu/sites/default/files/documents/irim-facilities-for-nsf.pdf",
+   "title": "IRIM facilities and equipment inventory (NSF)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R8": {
+   "url": "https://www.ic.gatech.edu/robotics",
+   "title": "Robotics | Georgia Tech School of Interactive Computing",
+   "fetched": "2026-08-17"
+  },
+  "GT-R9": {
+   "url": "https://vip.gatech.edu/",
+   "title": "Vertically Integrated Projects (VIP) | Georgia Tech",
+   "fetched": "2026-08-17"
+  },
+  "GT-R10": {
+   "url": "https://lab-idar.gatech.edu/vip/",
+   "title": "LIDAR Lab VIP - Agile Locomotion and Manipulation team",
+   "fetched": "2026-08-17"
+  },
+  "GT-R11": {
+   "url": "https://www.epic.gatech.edu/joining-the-lab/",
+   "title": "Joining the EPIC Lab (undergrads via VIP only)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R12": {
+   "url": "https://robojackets.org/teams/",
+   "title": "RoboJackets teams",
+   "fetched": "2026-08-17"
+  },
+  "GT-R13": {
+   "url": "https://robojackets.org/",
+   "title": "RoboJackets",
+   "fetched": "2026-08-17"
+  },
+  "GT-R14": {
+   "url": "https://ae.gatech.edu/browser-directory",
+   "title": "Georgia Tech AE labs directory (AREAL, CORE, Lunar Lab, SSDL)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R15": {
+   "url": "https://saferoboticslab.me.gatech.edu/faqs/robo-course-guide/",
+   "title": "Georgia Tech robotics course guide (Safe Robotics Lab)",
+   "fetched": "2026-08-17"
+  },
+  "GT-R16": {
+   "url": "https://research.gatech.edu/robotics/AR2022-2023",
+   "title": "IRIM annual report 2022-2023",
+   "fetched": "2026-08-17"
+  }
+ },
+ "maryland": {
+  "MD-R1": {
+   "url": "https://robotics.umd.edu/minor",
+   "title": "Robotics and Autonomous Systems minor | Maryland Robotics Center",
+   "fetched": "2026-08-17"
+  },
+  "MD-R2": {
+   "url": "https://robotics.umd.edu/news/story/new-undergraduate-minor-in-robotics-and-autonomous-systems",
+   "title": "New undergraduate minor in Robotics and Autonomous Systems",
+   "fetched": "2026-08-17"
+  },
+  "MD-R3": {
+   "url": "https://robotics.umd.edu/education",
+   "title": "Education | Maryland Robotics Center",
+   "fetched": "2026-08-17"
+  },
+  "MD-R4": {
+   "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enmt/",
+   "title": "ENMT Mechatronics Engineering courses | UMD catalog",
+   "fetched": "2026-08-17"
+  },
+  "MD-R5": {
+   "url": "https://eng.umd.edu/robotics",
+   "title": "Robotics | UMD A. James Clark School of Engineering",
+   "fetched": "2026-08-17"
+  },
+  "MD-R6": {
+   "url": "https://robotics.umd.edu/facilities",
+   "title": "Facilities | Maryland Robotics Center",
+   "fetched": "2026-08-17"
+  },
+  "MD-R7": {
+   "url": "https://www.facilities.robotics.umd.edu/index.html",
+   "title": "Maryland Robotics Center facilities and labs directory",
+   "fetched": "2026-08-17"
+  },
+  "MD-R8": {
+   "url": "https://me.umd.edu/research/institutes-labs-centers",
+   "title": "UMD Mechanical Engineering institutes, labs and centers",
+   "fetched": "2026-08-17"
+  },
+  "MD-R9": {
+   "url": "https://eng.umd.edu/research-facilities",
+   "title": "Research facilities incl. Robotics Realization Laboratory",
+   "fetched": "2026-08-17"
+  },
+  "MD-R10": {
+   "url": "https://robotics.umd.edu/get-involved",
+   "title": "Get involved (MRC Open Lab hours)",
+   "fetched": "2026-08-17"
+  },
+  "MD-R11": {
+   "url": "https://robotics.umd.edu/opportunities/student-teams",
+   "title": "Student teams | Maryland Robotics Center",
+   "fetched": "2026-08-17"
+  },
+  "MD-R12": {
+   "url": "https://robotics-at-maryland.pages.umd.edu/",
+   "title": "Robotics@Maryland",
+   "fetched": "2026-08-17"
+  },
+  "MD-R13": {
+   "url": "https://eng.umd.edu/news/story/passing-the-torch-maryland-robotics-centerrsquos-next-chapter",
+   "title": "Passing the torch: Maryland Robotics Center's next chapter",
+   "fetched": "2026-08-17"
+  },
+  "MD-R14": {
+   "url": "https://enme.umd.edu/course-schedule/course/ENME480",
+   "title": "ENME480 Introduction to Robotics course listing",
+   "fetched": "2026-08-17"
+  }
+ },
+ "ut-austin": {
+  "UT-R1": {
+   "url": "https://robotics.utexas.edu/",
+   "title": "Texas Robotics | UT Austin",
+   "fetched": "2026-08-17"
+  },
+  "UT-R2": {
+   "url": "https://robotics.utexas.edu/undergradroboticsprogram",
+   "title": "Undergraduate Robotics Program (Robotics Honors) | Texas Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UT-R3": {
+   "url": "https://news.utexas.edu/2024/09/05/ut-launches-nations-first-robotics-program-for-freshman-applicants/",
+   "title": "UT launches nation's first robotics program for freshman applicants",
+   "fetched": "2026-08-17"
+  },
+  "UT-R4": {
+   "url": "https://robotics.utexas.edu/undergraduate",
+   "title": "Undergraduate / Minor in Robotics | Texas Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UT-R5": {
+   "url": "https://catalog.utexas.edu/general-information/coursesatoz/rbt/",
+   "title": "RBT (Robotics) courses | UT Austin catalog",
+   "fetched": "2026-08-17"
+  },
+  "UT-R6": {
+   "url": "https://robotics.utexas.edu/research",
+   "title": "Research labs | Texas Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UT-R7": {
+   "url": "https://robotics.utexas.edu/people",
+   "title": "People | Texas Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UT-R8": {
+   "url": "https://fri.cns.utexas.edu/research-streams/texas-robotics-streams",
+   "title": "Texas Robotics FRI streams",
+   "fetched": "2026-08-17"
+  },
+  "UT-R9": {
+   "url": "https://www.cs.utexas.edu/~AustinVilla/humanoid/",
+   "title": "UT Austin Villa RoboCup Humanoid Soccer",
+   "fetched": "2026-08-17"
+  },
+  "UT-R10": {
+   "url": "https://news.utexas.edu/2026/07/14/ut-austin-villa-finishes-strong-at-robocup-2026/",
+   "title": "UT Austin Villa finishes strong at RoboCup 2026",
+   "fetched": "2026-08-17"
+  },
+  "UT-R11": {
+   "url": "https://inventionworks.engr.utexas.edu/",
+   "title": "Texas Inventionworks",
+   "fetched": "2026-08-17"
+  },
+  "UT-R12": {
+   "url": "https://www.cs.utexas.edu/research/intelligent-robotics",
+   "title": "Intelligent Robotics research | UT Austin CS",
+   "fetched": "2026-08-17"
+  },
+  "UT-R13": {
+   "url": "https://www.cs.utexas.edu/news/2025/computing-across-disciplines-texas-robotics",
+   "title": "Computing Across Disciplines: Texas Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UT-R14": {
+   "url": "https://fri.cns.utexas.edu/",
+   "title": "Freshman Research Initiative | UT Austin",
+   "fetched": "2026-08-17"
+  }
+ },
+ "uw-seattle": {
+  "UW-R1": {
+   "url": "https://robotics.cs.washington.edu/",
+   "title": "UW Robotics | Paul G. Allen School",
+   "fetched": "2026-08-17"
+  },
+  "UW-R2": {
+   "url": "https://courses.cs.washington.edu/courses/cse478/",
+   "title": "CSE 478 Autonomous Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UW-R3": {
+   "url": "https://www.cs.washington.edu/who-we-are/lab/facilities/",
+   "title": "Allen School lab facilities (robotics labs and platform fleet)",
+   "fetched": "2026-08-17"
+  },
+  "UW-R4": {
+   "url": "https://www.me.washington.edu/students/ug/mechatronics",
+   "title": "Mechatronics option | UW Mechanical Engineering",
+   "fetched": "2026-08-17"
+  },
+  "UW-R5": {
+   "url": "https://www.me.washington.edu/students/ug/options",
+   "title": "BSME degree options | UW Mechanical Engineering",
+   "fetched": "2026-08-17"
+  },
+  "UW-R6": {
+   "url": "https://personalrobotics.cs.washington.edu/",
+   "title": "Personal Robotics Lab | UW",
+   "fetched": "2026-08-17"
+  },
+  "UW-R7": {
+   "url": "https://rse-lab.cs.washington.edu/",
+   "title": "Robotics and State Estimation Lab | UW",
+   "fetched": "2026-08-17"
+  },
+  "UW-R8": {
+   "url": "https://huskyrobotics.me/",
+   "title": "Husky Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UW-R9": {
+   "url": "https://magazine.washington.edu/feature/husky-robotics-is-the-uws-most-popular-club-but-they-made-an-exception-for-a-vip/",
+   "title": "Husky Robotics is the UW's most popular club | UW Magazine",
+   "fetched": "2026-08-17"
+  },
+  "UW-R10": {
+   "url": "https://wp.ece.uw.edu/brl/robotics/surgical-robotics/",
+   "title": "Surgical Robotics | UW BioRobotics Laboratory",
+   "fetched": "2026-08-17"
+  },
+  "UW-R11": {
+   "url": "https://sites.uw.edu/afsl/",
+   "title": "Autonomous Flight Systems Lab | UW",
+   "fetched": "2026-08-17"
+  },
+  "UW-R12": {
+   "url": "https://depts.washington.edu/ctrl/news/welcome/",
+   "title": "Official launch of the Control & Trustworthy Robotics Lab (CTRL)",
+   "fetched": "2026-08-17"
+  },
+  "UW-R13": {
+   "url": "https://www.aa.washington.edu/students/areas-impact/robotics",
+   "title": "Robotics & Autonomous Systems | UW Aeronautics and Astronautics",
+   "fetched": "2026-08-17"
+  },
+  "UW-R14": {
+   "url": "https://www.me.washington.edu/news/article/2025-09-29/student-club-successes",
+   "title": "Student club successes (Husky Robotics URC results) | UW ME",
+   "fetched": "2026-08-17"
+  },
+  "UW-R15": {
+   "url": "https://www.ece.uw.edu/spotlight/prof-hannaford-develops-device-to-improve-surgeries-save-lives/",
+   "title": "Prof. Hannaford develops device to improve surgeries | UW ECE",
+   "fetched": "2026-08-17"
+  }
+ },
+ "penn": {
+  "PENN-R1": {
+   "url": "https://catalog.upenn.edu/undergraduate/programs/mechanical-engineering-applied-mechanics-bse/",
+   "title": "Mechanical Engineering and Applied Mechanics, BSE — Penn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R2": {
+   "url": "https://catalog.upenn.edu/courses/meam/",
+   "title": "MEAM course descriptions — Penn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R3": {
+   "url": "https://catalog.upenn.edu/courses/ese/",
+   "title": "ESE course descriptions — Penn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R4": {
+   "url": "https://catalog.upenn.edu/courses/cis/",
+   "title": "CIS course descriptions — Penn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R5": {
+   "url": "https://catalog.upenn.edu/undergraduate/engineering-applied-science/minors/",
+   "title": "Penn Engineering minors list",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R6": {
+   "url": "https://catalog.upenn.edu/courses/robo/",
+   "title": "ROBO course descriptions — Penn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R7": {
+   "url": "https://www.grasp.upenn.edu/about/facilities/",
+   "title": "GRASP Lab facilities",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R8": {
+   "url": "https://www.grasp.upenn.edu/research-groups/",
+   "title": "GRASP Lab research groups",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R9": {
+   "url": "https://detkin.ese.upenn.edu/student-clubs/",
+   "title": "Detkin Lab student clubs",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R10": {
+   "url": "https://www.pennaerial.com/",
+   "title": "Penn Aerial Robotics",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R11": {
+   "url": "https://www.me.upenn.edu/undergraduate/student-groups/",
+   "title": "Penn MEAM undergraduate student groups",
+   "fetched": "2026-08-17"
+  },
+  "PENN-R12": {
+   "url": "https://www.grasp.upenn.edu/academics/undergraduate-research/",
+   "title": "GRASP undergraduate research",
+   "fetched": "2026-08-17"
+  }
+ },
+ "johns-hopkins": {
+  "JHU-R1": {
+   "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/robotics-computational-sensing/robotics-minor/",
+   "title": "Robotics Minor — JHU e-catalogue",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R2": {
+   "url": "https://lcsr.jhu.edu/robotics-minor/",
+   "title": "LCSR Robotics Minor (sample curricula and course areas)",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R3": {
+   "url": "https://lcsr.jhu.edu/education/undergraduate-minors/",
+   "title": "LCSR undergraduate minors",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R4": {
+   "url": "https://lcsr.jhu.edu/lab-links/",
+   "title": "LCSR labs and groups directory",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R5": {
+   "url": "https://lcsr.jhu.edu/research/",
+   "title": "LCSR research thrusts",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R6": {
+   "url": "https://lcsr.jhu.edu/education/summer-reu-program/",
+   "title": "LCSR CSMR REU summer program",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R7": {
+   "url": "https://lcsr.jhu.edu/student-organizations/",
+   "title": "LCSR student organizations",
+   "fetched": "2026-08-17"
+  },
+  "JHU-R8": {
+   "url": "https://lcsr.jhu.edu/about/",
+   "title": "About LCSR",
+   "fetched": "2026-08-17"
+  }
+ },
+ "cornell": {
+  "CRNL-R1": {
+   "url": "https://courses.cornell.edu/programs/robotics-minor/",
+   "title": "Robotics Minor — Cornell Courses of Study",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R2": {
+   "url": "https://robotics.cornell.edu/undergraduate/",
+   "title": "Cornell Robotics — Undergraduate",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R3": {
+   "url": "https://www.duffield.cornell.edu/impact-areas/robotics-and-autonomous-systems/",
+   "title": "Robotics and Autonomous Systems impact area — Cornell Engineering",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R4": {
+   "url": "https://www.duffield.cornell.edu/ece/robotics-autonomy/",
+   "title": "Cornell ECE robotics and autonomy",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R5": {
+   "url": "https://www.duffield.cornell.edu/student-project-teams/active-project-teams/",
+   "title": "Cornell Engineering active project teams",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R6": {
+   "url": "https://rpl.engineering.cornell.edu/",
+   "title": "Cornell Rapid Prototyping Lab",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R7": {
+   "url": "https://rpl.engineering.cornell.edu/about/",
+   "title": "About the Cornell Rapid Prototyping Lab",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R8": {
+   "url": "http://cornell-asl.org/main/index.html",
+   "title": "Cornell Autonomous Systems Lab",
+   "fetched": "2026-08-17"
+  },
+  "CRNL-R9": {
+   "url": "https://orl.mae.cornell.edu/",
+   "title": "Cornell Organic Robotics Lab",
+   "fetched": "2026-08-17"
+  }
+ },
+ "northeastern": {
+  "NEU-R1": {
+   "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/robotics-minor/",
+   "title": "Robotics Minor — Northeastern Undergraduate Catalog",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R2": {
+   "url": "https://coe.northeastern.edu/academic-programs/minor-robo/",
+   "title": "Northeastern College of Engineering robotics minor",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R3": {
+   "url": "https://robotics.northeastern.edu/learning/",
+   "title": "Institute for Experiential Robotics — Learning (40+ affiliated labs, NU Robotics Club)",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R4": {
+   "url": "https://coe.northeastern.edu/coe-research/research-centers-institutes/institute-for-experiential-robotics/",
+   "title": "Institute for Experiential Robotics — research thrusts",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R5": {
+   "url": "https://robotics.northeastern.edu/",
+   "title": "Institute for Experiential Robotics home (labs and projects)",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R6": {
+   "url": "https://coe.northeastern.edu/news/mars-rover-team-takes-third-at-international-competition/",
+   "title": "Mars Rover Team takes third at international competition",
+   "fetched": "2026-08-17"
+  },
+  "NEU-R7": {
+   "url": "https://makerspaces.northeastern.edu/",
+   "title": "Makerspaces at Northeastern",
+   "fetched": "2026-08-17"
+  }
+ },
+ "duke": {
+  "DUKE-R1": {
+   "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/",
+   "title": "Robotics and Automation Undergraduate Certificate — Duke MEMS",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R2": {
+   "url": "https://robotics.duke.edu/",
+   "title": "Duke Robotics",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R3": {
+   "url": "https://robotics.pratt.duke.edu/students",
+   "title": "Duke Robotics — Students",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R4": {
+   "url": "https://robotics.pratt.duke.edu/research",
+   "title": "Duke Robotics — Research areas and labs",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R5": {
+   "url": "https://duke-robotics.com/",
+   "title": "Duke Robotics Club",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R6": {
+   "url": "https://colab.duke.edu/",
+   "title": "Duke Innovation Co-Lab",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R7": {
+   "url": "https://dexlab.pratt.duke.edu/",
+   "title": "Duke Robot Dexterity Lab",
+   "fetched": "2026-08-17"
+  },
+  "DUKE-R8": {
+   "url": "https://robotics.pratt.duke.edu/labs",
+   "title": "Duke Robotics labs",
+   "fetched": "2026-08-17"
+  }
+ },
+ "uiuc": {
+  "UIUC-R1": {
+   "url": "https://ece.illinois.edu/academics/courses/ece470",
+   "title": "ECE 470 Introduction to Robotics (cross-listed AE 482, ME 445)",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R2": {
+   "url": "https://mechse.illinois.edu/graduate/graduate-course-offerings/me446-120221",
+   "title": "ME 446 Robot Dynamics and Control (same as ECE 489 / SE 422)",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R3": {
+   "url": "https://ece.illinois.edu/academics/courses/ece484",
+   "title": "ECE 484 Principles of Safe Autonomy",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R4": {
+   "url": "https://autonomy.illinois.edu/education",
+   "title": "Center for Autonomy — Education",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R5": {
+   "url": "https://autonomy.illinois.edu/",
+   "title": "Center for Autonomy — home",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R6": {
+   "url": "http://daslab.illinois.edu/",
+   "title": "Distributed Autonomous Systems Laboratory (DASLAB)",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R7": {
+   "url": "https://motion.cs.illinois.edu/",
+   "title": "Intelligent Motion Lab (Kris Hauser)",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R8": {
+   "url": "https://irobotics.illinois.edu/",
+   "title": "iRobotics — UIUC's largest robotics student organization",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R9": {
+   "url": "https://one.illinois.edu/illinoisroboticsinspace/home/",
+   "title": "Illinois Robotics in Space (IRIS)",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R10": {
+   "url": "https://healtheng.illinois.edu/researchareas/robotics",
+   "title": "Health Care Engineering Systems Center — Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UIUC-R11": {
+   "url": "https://mechse.illinois.edu/people/profile/jkyim",
+   "title": "Justin Yim faculty profile — legged robot design and control",
+   "fetched": "2026-08-17"
+  }
+ },
+ "purdue": {
+  "PUR-R1": {
+   "url": "https://catalog.purdue.edu/preview_program.php?catoid=19&poid=35159",
+   "title": "Robotics Engineering Technology, BS — Purdue Catalog",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R2": {
+   "url": "https://polytechnic.purdue.edu/academics/robotics-engineering-technology",
+   "title": "Robotics Engineering Technology major — Purdue Polytechnic",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R3": {
+   "url": "https://polytechnic.purdue.edu/degrees/robotics-engineering-technology/plan-of-study",
+   "title": "ROET plan of study — Purdue Polytechnic",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R4": {
+   "url": "https://www.purdue.edu/robotics/education.html",
+   "title": "Purdue Robotics Accelerator — education/courses",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R5": {
+   "url": "https://www.purdue.edu/robotics/labs.html",
+   "title": "Purdue Robotics Accelerator — labs directory",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R6": {
+   "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/student-organizations/PEPC-Groups/ARC",
+   "title": "Autonomous Robotics Club of Purdue",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R7": {
+   "url": "https://www.purdue.edu/bidc/about/",
+   "title": "Bechtel Innovation Design Center — about",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R8": {
+   "url": "https://purdueseds.space/astrobotics/",
+   "title": "Purdue Space Program Astrobotics",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R9": {
+   "url": "https://www.purdueorbital.com/",
+   "title": "Purdue Orbital",
+   "fetched": "2026-08-17"
+  },
+  "PUR-R10": {
+   "url": "https://engineering.purdue.edu/IE/Research/CARE",
+   "title": "Center for AI and Robotic Excellence in Medicine (CARE)",
+   "fetched": "2026-08-17"
+  }
+ },
+ "texas-am": {
+  "TAMU-R1": {
+   "url": "https://catalog.tamu.edu/undergraduate/course-descriptions/mxet/",
+   "title": "MXET course descriptions — Texas A&M Undergraduate Catalog",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R2": {
+   "url": "https://catalog.tamu.edu/undergraduate/engineering/technology-industrial-distribution/multidisciplinary-engineering-technology-bs-mechatronics-track/",
+   "title": "Multidisciplinary Engineering Technology BS, Mechatronics Track — Texas A&M Catalog",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R3": {
+   "url": "https://engineering.tamu.edu/etid/academics/degrees/undergraduate/bs-mxet.html",
+   "title": "BS MXET — Texas A&M Engineering Technology and Industrial Distribution",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R4": {
+   "url": "https://engineering.tamu.edu/mechanical/research/laboratories-and-groups.html",
+   "title": "Texas A&M Mechanical Engineering laboratories and groups",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R5": {
+   "url": "https://tees.tamu.edu/research/facilities/rellis/rellis-research-facilities.html",
+   "title": "RELLIS research facilities (CANVASS and others) — TEES",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R6": {
+   "url": "https://rad.engr.tamu.edu/",
+   "title": "Robotics and Automation Design (RAD) Lab",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R7": {
+   "url": "https://blogs.baruch.cuny.edu/makerspaceresearch/engineering-innovation-center/",
+   "title": "Texas A&M Engineering Innovation Center facility description (makerspace research archive)",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R8": {
+   "url": "https://www.aggierobotics.org/",
+   "title": "Aggie Robotics",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R9": {
+   "url": "https://engineering.tamu.edu/news/2023/12/video-spotlight-dr-isuru-godage.html",
+   "title": "Video spotlight: Dr. Isuru Godage, SMART lab",
+   "fetched": "2026-08-17"
+  },
+  "TAMU-R10": {
+   "url": "https://engineering.tamu.edu/news/2020/04/texas-am-researchers-help-robots-acquire-steadier-hands-for-surgery.html",
+   "title": "Texas A&M researchers help robots acquire steadier hands for surgery",
+   "fetched": "2026-08-17"
+  }
+ },
+ "rit": {
+  "RIT-R1": {
+   "url": "https://www.rit.edu/study/robotics-and-manufacturing-engineering-technology-bs",
+   "title": "Robotics and Manufacturing Engineering Technology BS",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R2": {
+   "url": "https://www.rit.edu/study/mechatronics-engineering-technology-bs",
+   "title": "Mechatronics Engineering Technology BS",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R3": {
+   "url": "https://www.rit.edu/engineeringtechnology/robotics-and-manufacturing-engineering-technology-accreditation",
+   "title": "RMET ABET ETAC accreditation",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R4": {
+   "url": "https://www.rit.edu/study/electrical-engineering-bs-robotics-option",
+   "title": "Electrical Engineering BS — Robotics Option",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R5": {
+   "url": "https://www.rit.edu/study/mechanical-engineering-technology-bs-robotics-and-automation-option",
+   "title": "Mechanical Engineering Technology BS — Robotics and Automation Option",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R6": {
+   "url": "https://www.rit.edu/study/curriculum/042fb9ca-52da-435d-90bc-e63e1a147de2",
+   "title": "RMET BS curriculum course list",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R7": {
+   "url": "https://www.rit.edu/engineering/facilities",
+   "title": "Kate Gleason College of Engineering facilities (37 labs)",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R8": {
+   "url": "https://www.rit.edu/facilities/multi-agent-bio-robotics-laboratory",
+   "title": "Multi-Agent Bio-Robotics Laboratory (MABL)",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R9": {
+   "url": "https://campusgroups.rit.edu/mdrc/teams/",
+   "title": "RIT Multidisciplinary Robotics Club teams",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R10": {
+   "url": "https://mabl.rit.edu/mabl-robots-and-devices/",
+   "title": "MABL robots and devices (TigerBot VII, Baxter, Sawyer, UR10)",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R11": {
+   "url": "https://www.rit.edu/shed/makerspaces",
+   "title": "The SHED makerspaces",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R12": {
+   "url": "https://www.rit.edu/news/multidisciplinary-robotics-club-sets-new-record-brings-home-first-place-harvard-pacbot",
+   "title": "MDRC first place at Harvard PacBot",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R13": {
+   "url": "https://campusgroups.rit.edu/vexu/community-outreach/",
+   "title": "RIT VEXU",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R14": {
+   "url": "https://launch.rit.edu/",
+   "title": "RIT Launch Initiative",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R15": {
+   "url": "https://www.rit.edu/news/rit-launch-initiative-team-soars-first-competition-win-spaceport-america-cup-2023",
+   "title": "RIT Launch Initiative first competition win",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R16": {
+   "url": "https://www.indyautonomouschallenge.com/mit-pitt-rw",
+   "title": "MIT-PITT-RW Indy Autonomous Challenge team",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R17": {
+   "url": "https://www.rit.edu/news/teknic-partners-rit-robotic-projects",
+   "title": "Teknic partners with RIT on robotic projects (TigerBot)",
+   "fetched": "2026-08-17"
+  },
+  "RIT-R18": {
+   "url": "https://mabl.rit.edu/news/",
+   "title": "MABL news — Century Mold Collaborative Robotics Laboratory",
+   "fetched": "2026-08-17"
+  }
+ },
+ "rpi": {
+  "RPI-R1": {
+   "url": "https://eng.rpi.edu/bs-robotics-engineering",
+   "title": "BS in Robotics Engineering — RPI School of Engineering",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R2": {
+   "url": "https://catalog.rpi.edu/preview_course_nopop.php?catoid=15&coid=28294",
+   "title": "MANE 4120 Robotics I — RPI catalog",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R3": {
+   "url": "https://catalog.rpi.edu/preview_course_nopop.php?catoid=8&coid=13009",
+   "title": "CSCI 4480 Robotics I — RPI catalog",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R4": {
+   "url": "https://catalog.rpi.edu/preview_course_nopop.php?catoid=18&coid=33236",
+   "title": "ECSE 4490/6490 Robotics II — RPI catalog",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R5": {
+   "url": "https://catalog.rpi.edu/preview_entity.php?catoid=20&ent_oid=1105",
+   "title": "MANE department course list — RPI catalog",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R6": {
+   "url": "https://catalog.rpi.edu/content.php?catoid=33&navoid=872",
+   "title": "RPI complete minors list (no robotics minor)",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R7": {
+   "url": "https://research.rpi.edu/research-centers/center-automation-technologies-and-systems-cats",
+   "title": "Center for Automation Technologies and Systems (CATS)",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R8": {
+   "url": "https://catalog.rpi.edu/content.php?catoid=24&navoid=594",
+   "title": "CATS catalog description and research thrusts",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R9": {
+   "url": "https://cscms.rpi.edu/",
+   "title": "Center for Smart Convergent Manufacturing Systems (CSCMS)",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R10": {
+   "url": "https://news.rpi.edu/2025/07/18/rpi-awarded-195-million-state-funding-advance-smart-manufacturing-and-clean-energy",
+   "title": "RPI awarded $19.5M state funding for smart manufacturing",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R11": {
+   "url": "https://undergrad.rpi.edu/undergraduate-research",
+   "title": "RPI Undergraduate Research Program",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R12": {
+   "url": "https://ecse.rpi.edu/research/autonomy-robotics-and-control",
+   "title": "ECSE Autonomy, Robotics and Control research area",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R13": {
+   "url": "https://undergrad.rpi.edu/undergraduate-research/summer-undergraduate-research-award",
+   "title": "RPI Summer Undergraduate Research Award ($6,400)",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R14": {
+   "url": "https://rockraidersinc.github.io/",
+   "title": "RPI Rock Raiders rover team",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R15": {
+   "url": "https://news.rpi.edu/approach/2019/06/27",
+   "title": "Rock Raiders IGVC third place and Rookie of the Year",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R16": {
+   "url": "https://ecse.rpi.edu/sites/default/files/inline-files/ECSE_2024%20AdvisingBooklet.pdf",
+   "title": "ECSE 2024 Advising Booklet — 30% undergraduate research participation",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R17": {
+   "url": "https://news.rpi.edu/content/2019/12/10/refueling-satellites-space-help-robot",
+   "title": "Refueling satellites in space with help from a robot",
+   "fetched": "2026-08-17"
+  },
+  "RPI-R18": {
+   "url": "https://events.vtools.ieee.org/m/558652",
+   "title": "RPI Collaborative Robotics Lab / MILL / Forge / Mercer XLab tour listing",
+   "fetched": "2026-08-17"
+  }
+ },
+ "virginia-tech": {
+  "VT-R1": {
+   "url": "https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
+   "title": "VT College of Engineering change-of-major FAQs — Robotics and Mechatronics discontinuation",
+   "fetched": "2026-08-17"
+  },
+  "VT-R2": {
+   "url": "https://me.vt.edu/for-students/undergraduate/robotics-major.html",
+   "title": "Robotics and Mechatronics major — VT Mechanical Engineering",
+   "fetched": "2026-08-17"
+  },
+  "VT-R3": {
+   "url": "https://catalog.vt.edu/undergraduate/college-engineering/mechanical-engineering/robotics-mechatronics-bs/robotics-mechatronics-bs.pdf",
+   "title": "Robotics and Mechatronics BS — VT undergraduate catalog",
+   "fetched": "2026-08-17"
+  },
+  "VT-R4": {
+   "url": "https://me.vt.edu/for-students.html",
+   "title": "VT Mechanical Engineering — For Students",
+   "fetched": "2026-08-17"
+  },
+  "VT-R5": {
+   "url": "https://me.vt.edu/for-students/undergraduate/mechanical-major/MEElectives/robotics-electives.html",
+   "title": "VT ME robotics elective list",
+   "fetched": "2026-08-17"
+  },
+  "VT-R6": {
+   "url": "https://autonomyandrobotics.centers.vt.edu/index.html",
+   "title": "Autonomy and Robotics at Virginia Tech",
+   "fetched": "2026-08-17"
+  },
+  "VT-R7": {
+   "url": "https://autonomyandrobotics.centers.vt.edu/groups.html",
+   "title": "Autonomy and Robotics research groups directory",
+   "fetched": "2026-08-17"
+  },
+  "VT-R8": {
+   "url": "https://autonomyandrobotics.centers.vt.edu/research-expertise.html",
+   "title": "Autonomy and Robotics research expertise",
+   "fetched": "2026-08-17"
+  },
+  "VT-R9": {
+   "url": "https://marinerobotics.centers.vt.edu/",
+   "title": "Center for Marine Autonomy and Robotics",
+   "fetched": "2026-08-17"
+  },
+  "VT-R10": {
+   "url": "https://news.vt.edu/articles/2024/11/eng-coe-virginia-tech-researchers-continue-to-innovate-underwater-robotics-missions-with-support-from-office-naval-research.html",
+   "title": "VT underwater robotics ONR support",
+   "fetched": "2026-08-17"
+  },
+  "VT-R11": {
+   "url": "https://news.vt.edu/videos/k/2024/02/1_d0w8tu66.html",
+   "title": "VT Competitive Robotics Organization (Boeing-sponsored)",
+   "fetched": "2026-08-17"
+  },
+  "VT-R12": {
+   "url": "https://news.vt.edu/articles/2015/06/060815-engineering-darparecap.html",
+   "title": "Team VALOR DARPA Robotics Challenge recap",
+   "fetched": "2026-08-17"
+  },
+  "VT-R13": {
+   "url": "https://news.vt.edu/articles/2015/06/060115-engineering-twoteamsatdarpa.html",
+   "title": "Two VT teams at DARPA Robotics Challenge",
+   "fetched": "2026-08-17"
+  },
+  "VT-R14": {
+   "url": "https://arcol.me.vt.edu/",
+   "title": "ARCOL Lab (humanoid/quadruped robots)",
+   "fetched": "2026-08-17"
+  },
+  "VT-R15": {
+   "url": "https://asim.me.vt.edu/",
+   "title": "ASIM Lab — VT Mechanical Engineering",
+   "fetched": "2026-08-17"
+  },
+  "VT-R16": {
+   "url": "https://autonomyandrobotics.centers.vt.edu/groups/collab.html",
+   "title": "VT Collaborative Robotics Lab (Losey)",
+   "fetched": "2026-08-17"
+  },
+  "VT-R17": {
+   "url": "https://vtechworks.lib.vt.edu/items/2448150a-9919-44ec-896c-6d822b814975",
+   "title": "PANDORA humanoid robot (VTechWorks)",
+   "fetched": "2026-08-17"
+  }
+ },
+ "nc-state": {
+  "NCS-R1": {
+   "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+   "title": "Electrical Engineering BS — Controls and Robotics Concentration, NC State catalog",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R2": {
+   "url": "https://catalog.ncsu.edu/course-descriptions/ece/",
+   "title": "NC State ECE course descriptions",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R3": {
+   "url": "https://catalog.ncsu.edu/course-descriptions/mae/",
+   "title": "NC State MAE course descriptions (MAE 544 Real Time Robotics)",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R4": {
+   "url": "https://engr.ncsu.edu/mechatronics/joint/",
+   "title": "Joint NCSU / UNC Asheville Mechatronics Engineering program",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R5": {
+   "url": "https://engr.ncsu.edu/news/2024/01/19/asheville-based-mechatronics-engineering-program-produces-well-rounded-engineers-and-a-close-community/",
+   "title": "Asheville-based mechatronics engineering program (no program in Raleigh)",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R6": {
+   "url": "https://catalog.unca.edu/preview_entity.php?catoid=21&ent_oid=921&returnto=1265",
+   "title": "JEM (Joint Engineering Mechatronics) course list — UNC Asheville catalog",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R7": {
+   "url": "https://research.ece.ncsu.edu/crim/",
+   "title": "Center for Robotics and Intelligent Machines (CRIM)",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R8": {
+   "url": "https://research.ece.ncsu.edu/crim/?page_id=72",
+   "title": "CRIM about page — research areas",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R9": {
+   "url": "https://engr.ncsu.edu/robotics/",
+   "title": "Robotics at NC State — College of Engineering Robotics Initiative",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R10": {
+   "url": "https://research.ece.ncsu.edu/aros/",
+   "title": "Active Robotic Sensing (ARoS) Laboratory — undergraduate volunteer application",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R11": {
+   "url": "https://ece.ncsu.edu/research/centers/",
+   "title": "NC State ECE labs and centers directory",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R12": {
+   "url": "https://cals.ncsu.edu/psi/ai-at-the-n-c-psi/",
+   "title": "AI at the N.C. Plant Sciences Initiative — PSI Makerspace robotics",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R13": {
+   "url": "https://aerialroboticsclub.com/about/",
+   "title": "Aerial Robotics Club at NC State — about",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R14": {
+   "url": "https://engr.ncsu.edu/news/2022/06/28/aerial-robotics-club-continues-longstanding-participation-in-auvsi-suas-competition/",
+   "title": "Aerial Robotics Club at AUVSI SUAS 2022",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R15": {
+   "url": "https://ece.ncsu.edu/2005/ncsu-places-3rd-at-auvsi-uav-competition/",
+   "title": "NCSU places 3rd at AUVSI UAV competition",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R16": {
+   "url": "https://cals.ncsu.edu/news/robopack-nc-state-university/",
+   "title": "Run With the RoboPack — autonomous agricultural robot team",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R17": {
+   "url": "https://research.ece.ncsu.edu/aros/project/",
+   "title": "ARoS Lab projects — Wolfbots swarm robotic platform",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R18": {
+   "url": "https://engr.ncsu.edu/news/2024/06/17/n-c-psi-advances-ai-for-agriculture/",
+   "title": "N.C. PSI advances AI for agriculture — BenchBot 3.0",
+   "fetched": "2026-08-17"
+  },
+  "NCS-R19": {
+   "url": "https://research.ncsu.edu/defense-security/our-capabilities/",
+   "title": "NC State Defense and Security Institute capabilities — ARoS Lab",
+   "fetched": "2026-08-17"
+  }
+ },
+ "ohio-state": {
+  "OSU-R1": {
+   "url": "https://mae.osu.edu/robotics-and-autonomous-systems-minor",
+   "title": "Robotics and Autonomous Systems Minor — OSU MAE (full 12-credit course list)",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R2": {
+   "url": "https://engineering.osu.edu/undergraduate-students/minors",
+   "title": "OSU College of Engineering minors — Robotics and Autonomous Systems",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R3": {
+   "url": "https://mae.osu.edu/courses",
+   "title": "OSU MAE courses (ME 5463, ME 4998 undergraduate research)",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R4": {
+   "url": "https://mae.osu.edu/research/robotics-automation-and-autonomy",
+   "title": "Robotics, Automation and Autonomy research — OSU MAE labs and course list",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R5": {
+   "url": "https://syllabi.engineering.osu.edu/index.php/?page=56",
+   "title": "OSU engineering syllabi index — MECHENG course list",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R6": {
+   "url": "https://car.osu.edu/research/automated-and-connected-vehicles",
+   "title": "Automated and Connected Vehicles — OSU Center for Automotive Research",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R7": {
+   "url": "https://simcenter.osu.edu/",
+   "title": "Simulation Innovation and Modeling Center (SIMCenter)",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R8": {
+   "url": "https://mae.osu.edu/mekar",
+   "title": "Automated Driving Lab (ADL) — OSU MAE",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R9": {
+   "url": "https://org.osu.edu/osu-uwrt/",
+   "title": "Ohio State University Underwater Robotics Team",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R10": {
+   "url": "https://news.osu.edu/engineering-team-all-wet/",
+   "title": "Ohio State News — Underwater Robotics Team at AUVSI RoboSub",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R11": {
+   "url": "https://cdme.osu.edu/aims-lab/courses/robot-fundamentals",
+   "title": "Applied Robotics with ROS — OSU CDME AIMS Lab",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R12": {
+   "url": "https://car.osu.edu/CITR",
+   "title": "Control and Intelligent Transportation Research (CITR) Lab",
+   "fetched": "2026-08-17"
+  },
+  "OSU-R13": {
+   "url": "https://u.osu.edu/robotics/courses/",
+   "title": "Robotics at Ohio State — courses list",
+   "fetched": "2026-08-17"
+  }
+ },
+ "penn-state": {
+  "PSU-R1": {
+   "url": "https://bulletins.psu.edu/university-course-descriptions/undergraduate/me/",
+   "title": "Mechanical Engineering (ME) course descriptions — Penn State University Bulletins",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R2": {
+   "url": "https://bulletins.psu.edu/undergraduate/colleges/capital/mechatronics-minor/",
+   "title": "Mechatronics Minor (Penn State Harrisburg / Capital College) — course list",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R3": {
+   "url": "https://www.me.psu.edu/students/undergraduate/curriculum-mecore.aspx",
+   "title": "Penn State ME core courses (ME 454, ME 435, ME 440W, ME 450)",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R4": {
+   "url": "https://www.me.psu.edu/students/undergraduate/Courses.aspx",
+   "title": "Penn State ME technical elective policy",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R5": {
+   "url": "https://sites.psu.edu/controls/graduate-courses/",
+   "title": "Penn State Systems, Control and Robotics — course list",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R6": {
+   "url": "https://lf.psu.edu/students/lf-capstone/",
+   "title": "Learning Factory Capstone program",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R7": {
+   "url": "https://lf.psu.edu/students/lf-capstone/capstone4/",
+   "title": "Learning Factory 4th Year Capstone — 15-week structure",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R8": {
+   "url": "https://lf.psu.edu/students/lf-capstone/design-kickoff-showcase/",
+   "title": "Learning Factory Capstone Kickoff and Showcase",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R9": {
+   "url": "https://www.arl.psu.edu/",
+   "title": "Applied Research Laboratory at Penn State — 400+ programs, AI/autonomy",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R10": {
+   "url": "https://www.arl.psu.edu/offices/uso/",
+   "title": "ARL Undersea Systems Office — UUVs, autonomous vehicle guidance and control",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R11": {
+   "url": "https://www.esm.psu.edu/research/centers-and-institutes/applied-research-lab.aspx",
+   "title": "Applied Research Lab — Penn State Engineering (Center of Excellence)",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R12": {
+   "url": "https://lf.psu.edu/students/",
+   "title": "Penn State Learning Factory — student facilities and 24-hour makerspace",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R13": {
+   "url": "https://www.engr.psu.edu/facilities/learning-factory.aspx",
+   "title": "Learning Factory — Penn State Engineering facilities",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R14": {
+   "url": "https://www.psu.edu/news/university-park/story/applied-research-lab-offering-training-course-unmanned-underwater-vehicles",
+   "title": "ARL unmanned underwater vehicle short course",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R15": {
+   "url": "https://www.militaryaerospace.com/uncrewed/article/14288182/unmanned-undersea-enabling-technologies",
+   "title": "Penn State wins $1.8B in UUV enabling-technology contracts",
+   "fetched": "2026-08-17"
+  },
+  "PSU-R16": {
+   "url": "https://www.sedi.psu.edu/academics/undergraduate/index.aspx",
+   "title": "Penn State engineering technology undergraduate offerings (robotics exposure at Commonwealth campuses)",
+   "fetched": "2026-08-17"
+  }
+ },
+ "florida": {
+  "UF-R1": {
+   "url": "https://www.eng.ufl.edu/research/centers-institutes/",
+   "title": "UF Herbert Wertheim College of Engineering centers and institutes (CIMAR listed)",
+   "fetched": "2026-08-17"
+  },
+  "UF-R2": {
+   "url": "https://mae.ufl.edu/students/course-syllabi-2/",
+   "title": "UF MAE course syllabi archive (EML 4842, EML 4930 Sensor Based Robot Planning, EML 4535C)",
+   "fetched": "2026-08-17"
+  },
+  "UF-R3": {
+   "url": "https://mae.ufl.edu/wp-content/uploads/sites/4/2025/08/tech-2025-2026-2025-08-11.pdf",
+   "title": "UF MAE approved technical electives 2025-2026",
+   "fetched": "2026-08-17"
+  },
+  "UF-R4": {
+   "url": "https://catalog.ufl.edu/UGRD/courses/AI/",
+   "title": "UF undergraduate catalog — EEL 4665C Intelligent Machines Design Laboratory (4 credits)",
+   "fetched": "2026-08-17"
+  },
+  "UF-R5": {
+   "url": "https://mil.ufl.edu/5666/syllabus.pdf",
+   "title": "EEL 4665/5666 Intelligent Machines Design Laboratory syllabus",
+   "fetched": "2026-08-17"
+  },
+  "UF-R6": {
+   "url": "https://mae.ufl.edu/wp-content/uploads/sites/4/2024/09/Checkable-2024-2025-ME-Curriculum.pdf",
+   "title": "UF Mechanical Engineering checkable curriculum 2024-2025",
+   "fetched": "2026-08-17"
+  },
+  "UF-R7": {
+   "url": "https://mae.ufl.edu/students/undergraduate/advising-curriculum/minors-certificates/",
+   "title": "UF MAE minors and certificates (no robotics minor)",
+   "fetched": "2026-08-17"
+  },
+  "UF-R8": {
+   "url": "https://expertnet.org/index.cfm?fuseaction=centers.details&instituteID=4921",
+   "title": "Center for Intelligent Machines and Robotics — Florida ExpertNet center record",
+   "fetched": "2026-08-17"
+  },
+  "UF-R9": {
+   "url": "https://www.eng.ufl.edu/about/contact/college-directory/cat/centers-and-institutes/center-for-intelligent-machines-and-robotics/",
+   "title": "UF College Directory — Center for Intelligent Machines and Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UF-R10": {
+   "url": "https://mae.ufl.edu/people/name/carl-crane/",
+   "title": "Dr. Carl D. Crane III — CIMAR director, UF MAE",
+   "fetched": "2026-08-17"
+  },
+  "UF-R11": {
+   "url": "https://mil.ufl.edu/ems/ems.html",
+   "title": "Dr. Eric M. Schwartz — director, UF Machine Intelligence Lab",
+   "fetched": "2026-08-17"
+  },
+  "UF-R12": {
+   "url": "https://mil.ufl.edu/",
+   "title": "UF Machine Intelligence Laboratory — SubjuGator, NaviGator AMS, PropaGator competition record",
+   "fetched": "2026-08-17"
+  },
+  "UF-R13": {
+   "url": "https://www.eng.ufl.edu/news/engineering-education/uf-students-place-second-in-international-robotic-submarine-competition/",
+   "title": "UF students place second at International RoboSub Competition",
+   "fetched": "2026-08-17"
+  },
+  "UF-R14": {
+   "url": "https://www.eng.ufl.edu/flare/core-competencies/",
+   "title": "UF FLARE core competencies — MIL and CIMAR robotics",
+   "fetched": "2026-08-17"
+  },
+  "UF-R15": {
+   "url": "https://mae.ufl.edu/2023/07/07/as-subjugator-prepares-for-robosub-2023-a-look-back-at-navigators-trip-to-the-2022-maritime-robotx-challenge/",
+   "title": "SubjuGator and NaviGator competition history — UF MAE news",
+   "fetched": "2026-08-17"
+  },
+  "UF-R16": {
+   "url": "https://igvc.secs.oakland.edu/design/2009/University%20of%20Florida.pdf",
+   "title": "CIMAR OmniGator IGVC 2009 design report",
+   "fetched": "2026-08-17"
+  },
+  "UF-R17": {
+   "url": "https://archive.news.ufl.edu/articles/2005/09/uf-robotic-car-may-compete-for-big-prize-in-darpa-grand-challenge.html",
+   "title": "UF robotic car in DARPA Grand Challenge (Team CIMAR)",
+   "fetched": "2026-08-17"
+  },
+  "UF-R18": {
+   "url": "https://ifas.ufl.edu/artificial-intelligence/meet-the-experts/",
+   "title": "UF/IFAS AI experts — Henry Medeiros, AI for Agricultural Robotics and Precision Systems",
+   "fetched": "2026-08-17"
+  },
+  "UF-R19": {
+   "url": "https://www.eng.ufl.edu/news/magazine/2025issue/feature-story/uf-researchers-bring-innovation-and-cutting-edge-technology-to-farming/",
+   "title": "Smarter Agriculture Takes Root — UF ground robots and field sensing",
+   "fetched": "2026-08-17"
+  }
+ },
+ "ut-dallas": {
+  "UTD-R1": {
+   "url": "https://catalog.utdallas.edu/2025/undergraduate/programs/ecs/mechanical-engineering",
+   "title": "Mechanical Engineering (BS) — UT Dallas 2025 Undergraduate Catalog",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R2": {
+   "url": "https://catalog.utdallas.edu/2025/undergraduate/courses/mech",
+   "title": "MECH 4342 Introduction to Robotics — UT Dallas 2025 catalog course description",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R3": {
+   "url": "https://catalog.utdallas.edu/2025/undergraduate/courses/ee4342",
+   "title": "EE 4342 Introduction to Robotics — UT Dallas 2025 catalog",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R4": {
+   "url": "https://catalog.utdallas.edu/2024/undergraduate/programs/ecs/mechanical-engineering",
+   "title": "Mechanical Engineering (BS) — UT Dallas 2024 catalog (MECH 4V98 Undergraduate Research)",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R5": {
+   "url": "https://catalog.utdallas.edu/2025-undergraduate/programs/ecs/mechanical-engineering/four-year",
+   "title": "Mechanical Engineering BS 4-year plan (MECH 4381/4382 senior design)",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R6": {
+   "url": "https://ecs.utdallas.edu/research/researchlabs/LARS/",
+   "title": "Laboratory for Autonomous Robotics and Systems (LARS) — UT Dallas",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R7": {
+   "url": "https://ece.utdallas.edu/research/facilities/sensing-robotics-vision-controls-and-estimation-service-lab/",
+   "title": "Sensing, Robotics, Vision, Controls and Estimation (SeRViCE) Lab",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R8": {
+   "url": "https://labs.utdallas.edu/",
+   "title": "UT Dallas Research Labs directory (IRVL, HeRo Lab, CIReNS, CAML)",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R9": {
+   "url": "https://www.utdallas.edu/research/facilities-centers/",
+   "title": "UT Dallas research labs, centers and facilities (Center for Control Science and Technology)",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R10": {
+   "url": "https://cs.utdallas.edu/3448/hazeneckertroboticsdualmajorman/",
+   "title": "Grad Leaves His Mark on Jonsson School, Robotics Lab (undergraduate LARS entry route)",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R11": {
+   "url": "https://engineering.utdallas.edu/engage/students/student-organization/",
+   "title": "Jonsson School student organizations — Comet Robotics",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R12": {
+   "url": "https://cometrobotics.org/",
+   "title": "Comet Robotics at UT Dallas — divisions and UTDesign Makerspace meetings",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R13": {
+   "url": "https://givingday.utdallas.edu/giving-day/99039/department/99132",
+   "title": "Comet Robotics — combat robotics history and 'The Blender' BattleBot",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R14": {
+   "url": "https://impact.utdallas.edu/project/48427",
+   "title": "Comet Robotics Solis Rover Project — University Rover Challenge",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R15": {
+   "url": "https://engineering.utdallas.edu/news/archive/2024-fall/utd-underwater-robotics-team-brings-home-awards/",
+   "title": "UTD Underwater Robotics Team brings home MATE ROV awards",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R16": {
+   "url": "https://engineering.utdallas.edu/innovation/research/",
+   "title": "Jonsson School research thrusts — AI and robotics engineering as cross-cutting technology",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R17": {
+   "url": "https://impact.utdallas.edu/project/44757",
+   "title": "AIAA at UTD — NASA Lunabotics planetary robotics team",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R18": {
+   "url": "https://labs.utdallas.edu/hbslab/lab-members/",
+   "title": "Humanoid, Biorobotics and Smart Systems (HBS) Lab — Yonas Tadesse",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R19": {
+   "url": "https://engineering.utdallas.edu/news/archive/2019-spring/lower-limb-exoskeleton-research-featured-on-cover-of-ieee-control-systems-magazine/",
+   "title": "Locomotor Control Systems Laboratory lower-limb exoskeleton research",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R20": {
+   "url": "https://locolab.robotics.umich.edu/news.html",
+   "title": "Locomotor Control Systems Laboratory (now at University of Michigan) — relocation evidence",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R21": {
+   "url": "https://news.utdallas.edu/campus-community/atec-building-offers-bigger-frontier-for-jonsson-s/",
+   "title": "ATEC Building — SeRViCE quadrotor high bay, LARS",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R22": {
+   "url": "https://cs.utdallas.edu/30759/teams-new-ai-technology-gives-robot-recognition-skills-a-big-lift/",
+   "title": "IRVL robot object-recognition research",
+   "fetched": "2026-08-17"
+  },
+  "UTD-R23": {
+   "url": "https://news.utdallas.edu/campus-community/new-jonsson-school-building-offers-inside-view-of-engineering-at-work/",
+   "title": "New Jonsson School ME building — robotics, mechatronics teaching labs, prosthetics/surgical robotics floor",
+   "fetched": "2026-08-17"
+  }
+ },
+ "olin": {
+  "OLIN-R1": {
+   "url": "https://olin.smartcatalogiq.com/en/2025-26/catalog/programs-of-study-and-degree-requirements/academic-programs/engineering",
+   "title": "Engineering - Programs of Study and Degree Requirements, Olin College Catalog 2025-26",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R2": {
+   "url": "https://olin.smartcatalogiq.com/en/2024-25/catalog/courses-credits-hours/engr-engineering/3000/engr3390",
+   "title": "ENGR3390 Fundamentals of Robotics",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R3": {
+   "url": "https://olin.smartcatalogiq.com/en/2024-25/catalog/courses-credits-hours/engr-engineering/3000/engr3392",
+   "title": "ENGR3392 Robotics Systems Integration",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R4": {
+   "url": "https://olin.smartcatalogiq.com/en/2025-26/catalog/courses-credits-hours/engr-engineering/4000/engr4190",
+   "title": "ENGR4190 SCOPE",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R5": {
+   "url": "https://www.olin.edu/academics-capstone-programs/scope",
+   "title": "SCOPE - Senior Capstone Program in Engineering",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R6": {
+   "url": "https://www.olin.edu/subject/roboticsautomation",
+   "title": "Robotics/Automation - Olin College",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R7": {
+   "url": "https://www.olin.edu/research/olin-robot-lab",
+   "title": "Olin Robot Lab",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R8": {
+   "url": "https://olinrobotics.github.io/",
+   "title": "Olin Robotics Lab (student-run)",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R9": {
+   "url": "https://olinrobotics.github.io/hiro/about/",
+   "title": "HIRO - Human Interactions Robotics Laboratory",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R10": {
+   "url": "https://www.olin.edu/blogs/student-research-olin",
+   "title": "Student Research at Olin",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R11": {
+   "url": "https://machineshop.olin.edu/spaces",
+   "title": "Spaces - Olin Machine Shop",
+   "fetched": "2026-08-17"
+  },
+  "OLIN-R12": {
+   "url": "https://www.olin.edu/sites/default/files/2024-09/Olin%20Student%20Groups%2024-25.pdf",
+   "title": "Olin Student Groups 2024-25",
+   "fetched": "2026-08-17"
+  }
+ },
+ "kettering": {
+  "KETT-R1": {
+   "url": "https://catalog.kettering.edu/undergrad/academic-programs/engineering/engineering.pdf",
+   "title": "Kettering University Catalog - Engineering (BSE concentrations incl. Robotic Systems, Mechatronic Systems)",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R2": {
+   "url": "https://catalog.kettering.edu/undergrad/academic-programs/engineering/robotics/",
+   "title": "Engineering - Robotic Systems plan of study",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R3": {
+   "url": "https://www.kettering.edu/academics-research/research/research-facilities",
+   "title": "Research Facilities - Kettering University",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R4": {
+   "url": "https://www.kettering.edu/robotics/first-at-kettering/first-community-center",
+   "title": "FIRST Community Center - Kettering University",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R5": {
+   "url": "https://www.kettering.edu/robotics/first-at-kettering",
+   "title": "FIRST at Kettering",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R6": {
+   "url": "https://www.kettering.edu/robotics/vexu-kettering",
+   "title": "VEX U at Kettering (KUdos team)",
+   "fetched": "2026-08-17"
+  },
+  "KETT-R7": {
+   "url": "https://www.kettering.edu/academics-research/areas-of-study/robotics",
+   "title": "Robotics - Areas of Study, Kettering University",
+   "fetched": "2026-08-17"
+  }
+ },
+ "michigan-dearborn": {
+  "UMD-R1": {
+   "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/",
+   "title": "Robotics Engineering (BSE) - UM-Dearborn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R2": {
+   "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/undergraduate-programs/bse-robotics-engineering",
+   "title": "BSE in Robotics Engineering - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R3": {
+   "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/laboratories",
+   "title": "ECE Laboratories - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R4": {
+   "url": "https://umdearborn.edu/cecs/departments/industrial-and-manufacturing-systems-engineering/laboratories",
+   "title": "IMSE Laboratories - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R5": {
+   "url": "https://umdearborn.edu/cecs/research/institute-advanced-vehicle-systems",
+   "title": "Institute for Advanced Vehicle Systems - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R6": {
+   "url": "https://umdearborn.edu/cecs/life-cecs/laboratories-facilities",
+   "title": "Laboratories and Facilities - CECS, UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R7": {
+   "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/mechatronics-robotics/",
+   "title": "Mechatronics and Robotics Certificate - UM-Dearborn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R8": {
+   "url": "https://umdearborn.edu/cecs/departments/mechanical-engineering/undergraduate-programs/program-tracks-and-undergraduate",
+   "title": "ME Program Tracks and Undergraduate Certificates - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R9": {
+   "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/undergraduate-programs/41-robotics-engineering",
+   "title": "4+1 Robotics Engineering - UM-Dearborn",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R10": {
+   "url": "https://catalog.umd.umich.edu/undergraduate/coursesaz/ece/",
+   "title": "ECE Courses - UM-Dearborn Catalog",
+   "fetched": "2026-08-17"
+  },
+  "UMD-R11": {
+   "url": "https://umdearborn.edu/cecs/life-cecs/student-clubs-organizations",
+   "title": "Student Clubs and Organizations - CECS, UM-Dearborn",
+   "fetched": "2026-08-17"
+  }
+ },
+ "rose-hulman": {
+  "ROSE-R1": {
+   "url": "https://catalog.rose-hulman.edu/catalog/minors-certificates/multidiscpln-minor-robotics-minor/",
+   "title": "Multidisciplinary Minor in Robotics - Rose-Hulman Catalog",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R2": {
+   "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/robotics/teams-and-minor.html",
+   "title": "Robotics Teams and Minor - Rose-Hulman",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R3": {
+   "url": "https://catalog.rose-hulman.edu/catalog/courses/ece/",
+   "title": "ECE Courses - Rose-Hulman Catalog (ECE 425)",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R4": {
+   "url": "https://catalog.rose-hulman.edu/catalog/courses/me/",
+   "title": "ME Courses - Rose-Hulman Catalog (ME 435, ME 445)",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R5": {
+   "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/BIC/teams-and-clubs.html",
+   "title": "Branam Innovation Center Teams and Clubs - Rose-Hulman",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R6": {
+   "url": "https://www.rose-hulman.edu/academics/academic-departments/mechanical-engineering/index.html",
+   "title": "Mechanical Engineering - Rose-Hulman",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R7": {
+   "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-team-makes-it-to-the-top-10-of-the-nasa-lunar-autonomy-challenge.html",
+   "title": "Rose-Hulman team makes top 10 of NASA Lunar Autonomy Challenge",
+   "fetched": "2026-08-17"
+  },
+  "ROSE-R8": {
+   "url": "https://rose-hulman.edu/class/csse/robotics/curriculum.htm",
+   "title": "Robotics minor curriculum and advisors - Rose-Hulman CSSE",
+   "fetched": "2026-08-17"
+  }
+ },
+ "illinois-tech": {
+  "IIT-R1": {
+   "url": "https://catalog.iit.edu/undergraduate/colleges/engineering/mmae/",
+   "title": "MMAE undergraduate programs - Illinois Tech Catalog (MMAE 440)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R2": {
+   "url": "https://catalog.iit.edu/graduate/colleges/engineering/mmae/",
+   "title": "MMAE graduate programs - Illinois Tech Catalog (MMAE 539/540/551)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R3": {
+   "url": "https://catalog.iit.edu/undergraduate/colleges/engineering/mmae/minor-electromechanical-systems/",
+   "title": "Minor in Electromechanical Systems - Illinois Tech Catalog",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R4": {
+   "url": "https://www.iit.edu/academics/programs/electromechanical-design-and-manufacturing-minor",
+   "title": "Electromechanical Design and Manufacturing (Minor) - Illinois Tech",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R5": {
+   "url": "https://www.iit.edu/sites/default/files/2020-06/Illinois%20Tech%20ECE%20UG%20Tracks%202020-2.pdf",
+   "title": "Illinois Tech ECE Undergraduate Tracks (AI, Robotics and Automation track)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R6": {
+   "url": "https://www.iit.edu/mmae/research/faculty-research",
+   "title": "MMAE Faculty Research - Illinois Tech (autonomous systems group)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R7": {
+   "url": "https://sites.google.com/iit.edu/autonomous-systems/labs",
+   "title": "Autonomous Systems @ Illinois Tech - Labs",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R8": {
+   "url": "https://robots.iit.edu/research.html",
+   "title": "The Robotics Lab@IIT - Research (Prof. Matthew Spenko)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R9": {
+   "url": "https://robots.iit.edu/teaching.html",
+   "title": "The Robotics Lab@IIT - Teaching",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R10": {
+   "url": "https://sites.google.com/iit.edu/nonsmoothrobotics/people",
+   "title": "Nonsmooth Robotics Lab - People (Nelson Rosa)",
+   "fetched": "2026-08-17"
+  },
+  "IIT-R11": {
+   "url": "https://www.iit.edu/csi/faculty",
+   "title": "Center for Synchrotron Radiation / CSI faculty listing - Illinois Tech",
+   "fetched": "2026-08-17"
+  }
+ },
+ "swarthmore": {
+  "SWAT-R1": {
+   "url": "https://www.swarthmore.edu/engineering/courses",
+   "title": "Courses - Engineering, Swarthmore College",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R2": {
+   "url": "https://catalog.swarthmore.edu/preview_program.php?catoid=31&poid=2439&returnto=2221",
+   "title": "Program: Engineering - Swarthmore College Bulletin",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R3": {
+   "url": "https://catalog.swarthmore.edu/preview_program.php?catoid=31&poid=2436",
+   "title": "Program: Computer Science - Swarthmore College Bulletin",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R4": {
+   "url": "https://www.swarthmore.edu/computer-science/courses",
+   "title": "Courses - Computer Science, Swarthmore College",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R5": {
+   "url": "https://www.swarthmore.edu/engineering/shops-labs",
+   "title": "Shops & Labs - Engineering, Swarthmore College",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R6": {
+   "url": "https://www.swarthmore.edu/living-swarthmore/swarthmore-student-organizations",
+   "title": "Swarthmore Student Organizations",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R7": {
+   "url": "https://www.swarthmore.edu/news-events/engineering-faculty-students-participate-federal-robotics-challenge-disaster-relief",
+   "title": "Engineering Faculty, Students Participate in Federal Robotics Challenge for Disaster Relief",
+   "fetched": "2026-08-17"
+  },
+  "SWAT-R8": {
+   "url": "https://www.swarthmore.edu/makerspace",
+   "title": "MakerSpace - Swarthmore College",
+   "fetched": "2026-08-17"
+  }
+ },
+ "carleton": {
+  "CARL-R1": {
+   "url": "https://www.carleton.edu/catalog/current/departments/cs/",
+   "title": "Computer Science - Carleton College Academic Catalog 2025-26",
+   "fetched": "2026-08-17"
+  },
+  "CARL-R2": {
+   "url": "https://www.carleton.edu/physics-astronomy/student-orgs/",
+   "title": "Student Organizations - Physics and Astronomy, Carleton College",
+   "fetched": "2026-08-17"
+  },
+  "CARL-R3": {
+   "url": "https://www.carleton.edu/engineering/course-schedules/computer-science/",
+   "title": "Sample Course Schedule with Computer Science Major - Carleton 3-2 Engineering Program",
+   "fetched": "2026-08-17"
+  }
+ },
+ "unc-chapel-hill": {
+  "UNC-R1": {
+   "url": "https://catalog.unc.edu/courses/comp/",
+   "title": "Computer Science (COMP) - UNC Catalog",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R2": {
+   "url": "https://cs.unc.edu/research/facilities/",
+   "title": "Laboratories & Facilities - UNC Computer Science",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R3": {
+   "url": "https://robotics.cs.unc.edu/",
+   "title": "About the Computational Robotics Research Group - UNC-Chapel Hill",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R4": {
+   "url": "https://ideal.cs.unc.edu/",
+   "title": "IDEAL Lab (Intelligent Dexterous Embodied AI Lab) - UNC-Chapel Hill",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R5": {
+   "url": "https://spectrumlocalnews.com/nc/charlotte/technology/2025/06/11/ai-robotics-unc-research",
+   "title": "Would you trust a robot with house chores? UNC students are working on it (Interactive Robotics and Novel Technologies Lab)",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R6": {
+   "url": "https://www.cs.unc.edu/~ron/courses.html",
+   "title": "Prof. Ron Alterovitz: Courses (COMP 496/991 independent study and research)",
+   "fetched": "2026-08-17"
+  },
+  "UNC-R7": {
+   "url": "https://heellife.unc.edu/organization/ramrobotics",
+   "title": "R.A.M. Engineering / Ram Robotics - Heel Life, UNC-Chapel Hill",
+   "fetched": "2026-08-17"
+  }
+ }
+}

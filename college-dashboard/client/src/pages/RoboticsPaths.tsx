@@ -389,6 +389,9 @@ export default function RoboticsPathsPage() {
         </div>
       </div>
 
+      {/* Robotics subdomain coverage matrix */}
+      <DomainMatrix />
+
       {/* Filters */}
       <div className="card p-3 flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[220px]">
@@ -764,6 +767,200 @@ function DifferentialCell({ label, verdict, reason, source }: {
           source <ExternalLink size={8}/>
         </a>
       )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Robotics subdomain coverage matrix
+ * 10 researched subdomains x 33 schools. Coverage is strong / present /
+ * none, each cell carrying the lab or course that evidences it.
+ * ------------------------------------------------------------------ */
+
+const RD_DOMAINS: { key: string; label: string; short: string }[] = [
+  { key: "humanoid_legged",       label: "Humanoid / legged",      short: "Humanoid" },
+  { key: "swarm_multirobot",      label: "Swarm / multi-robot",    short: "Swarm" },
+  { key: "autonomous_vehicles",   label: "Autonomous vehicles",    short: "AV" },
+  { key: "manipulation_grasping", label: "Manipulation / grasping",short: "Manip." },
+  { key: "aerial_uav",            label: "Aerial / UAV",           short: "UAV" },
+  { key: "medical_surgical",      label: "Medical / surgical",     short: "Medical" },
+  { key: "soft_robotics",         label: "Soft robotics",          short: "Soft" },
+  { key: "hri",                   label: "Human-robot interaction",short: "HRI" },
+  { key: "industrial_automation", label: "Industrial automation",  short: "Industrial" },
+  { key: "space_field",           label: "Space / field",          short: "Space" },
+];
+
+function DomainMatrix() {
+  const { hidden } = useHidden();
+  const [focus, setFocus] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<string>("_breadth");
+
+  const rows = useMemo(() => {
+    return schools
+      .filter(s => !hidden.has(s.slug) && s.robotics_domains)
+      .map(s => {
+        const dom = s.robotics_domains!;
+        const strong = RD_DOMAINS.filter(d => dom[d.key]?.coverage === "strong").length;
+        const present = RD_DOMAINS.filter(d => dom[d.key]?.coverage === "present").length;
+        return {
+          slug: s.slug, short: s.short, dom, strong, present,
+          breadth: strong * 2 + present,
+          curr: s.axes.robotics_curriculum ?? 0,
+          access: s.axes.robotics_access ?? 0,
+        };
+      })
+      .sort((a, b) => {
+        if (sortKey === "_breadth") return b.breadth - a.breadth || a.short.localeCompare(b.short);
+        if (sortKey === "_curr") return b.curr - a.curr || a.short.localeCompare(b.short);
+        if (sortKey === "_access") return b.access - a.access || a.short.localeCompare(b.short);
+        // sort by a specific domain: strong > present > none
+        const rank = (r: typeof a) => {
+          const c = r.dom[sortKey]?.coverage;
+          return c === "strong" ? 2 : c === "present" ? 1 : 0;
+        };
+        return rank(b) - rank(a) || a.short.localeCompare(b.short);
+      });
+  }, [hidden, sortKey]);
+
+  // Column totals across the visible rows
+  const totals = useMemo(() => Object.fromEntries(RD_DOMAINS.map(d => [
+    d.key,
+    {
+      strong: rows.filter(r => r.dom[d.key]?.coverage === "strong").length,
+      present: rows.filter(r => r.dom[d.key]?.coverage === "present").length,
+    },
+  ])), [rows]);
+
+  const cellStyle = (cov?: string) =>
+    cov === "strong"
+      ? { background: "hsl(var(--fit-strong) / 0.85)" }
+      : cov === "present"
+        ? { background: "hsl(var(--fit-strong) / 0.28)" }
+        : { background: "transparent" };
+
+  return (
+    <div className="card p-5">
+      <div className="flex items-baseline gap-2 text-[hsl(var(--accent))]">
+        <Cpu size={15}/>
+        <div className="text-[11px] tracking-wider uppercase">Robotics subdomain coverage</div>
+      </div>
+      <h3 className="serif text-[19px] font-semibold mt-1">Which schools actually work on the robotics you care about</h3>
+      <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-1.5 leading-relaxed max-w-[820px]">
+        Ten subdomains, researched per school from department, lab and catalog pages.
+        <strong className="text-[hsl(var(--foreground))]"> Strong</strong> means a named lab, center or course sequence dedicated to it.
+        <strong className="text-[hsl(var(--foreground))]"> Present</strong> means it appears in a lab's stated work or a course, without dedicated infrastructure.
+        Blank means nothing published was found. Hover any cell for the evidence; click a column heading to sort by it.
+      </p>
+
+      <div className="flex flex-wrap items-center gap-3 mt-3 text-[11.5px]">
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3.5 h-3.5 rounded-sm" style={cellStyle("strong")}/>
+          <span className="text-[hsl(var(--muted-foreground))]">Strong</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3.5 h-3.5 rounded-sm" style={cellStyle("present")}/>
+          <span className="text-[hsl(var(--muted-foreground))]">Present</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="inline-block w-3.5 h-3.5 rounded-sm border border-[hsl(var(--border))]"/>
+          <span className="text-[hsl(var(--muted-foreground))]">None found</span>
+        </div>
+        {sortKey !== "_breadth" && (
+          <button className="chip chip-outline" onClick={()=>setSortKey("_breadth")}>Reset sort</button>
+        )}
+      </div>
+
+      <div className="overflow-x-auto mt-3">
+        <table className="w-full text-[12px] border-collapse">
+          <thead>
+            <tr className="border-b border-[hsl(var(--border))]">
+              <th className="text-left font-medium py-1.5 pr-2 sticky left-0 bg-[hsl(var(--card))] z-10 min-w-[132px]">School</th>
+              <th className="text-center font-medium px-1 cursor-pointer whitespace-nowrap"
+                  title="Researched robotics curriculum score (1-5)"
+                  onClick={()=>setSortKey("_curr")}>
+                Curr.{sortKey==="_curr" && " ↓"}
+              </th>
+              <th className="text-center font-medium px-1 cursor-pointer whitespace-nowrap"
+                  title="Researched robotics access score (1-5)"
+                  onClick={()=>setSortKey("_access")}>
+                Access{sortKey==="_access" && " ↓"}
+              </th>
+              {RD_DOMAINS.map(d => (
+                <th key={d.key}
+                    className="px-1 cursor-pointer align-bottom"
+                    title={`${d.label} — click to sort`}
+                    onClick={()=>setSortKey(d.key)}
+                    onMouseEnter={()=>setFocus(d.key)}
+                    onMouseLeave={()=>setFocus(null)}>
+                  <div className="font-medium whitespace-nowrap text-[10.5px] text-center pb-1"
+                       style={{ color: focus===d.key || sortKey===d.key ? "hsl(var(--accent))" : undefined }}>
+                    {d.short}{sortKey===d.key && " ↓"}
+                  </div>
+                </th>
+              ))}
+              <th className="text-center font-medium px-1 cursor-pointer whitespace-nowrap"
+                  title="Breadth = 2 points per strong subdomain + 1 per present"
+                  onClick={()=>setSortKey("_breadth")}>
+                Breadth{sortKey==="_breadth" && " ↓"}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr key={r.slug} className="border-b border-[hsl(var(--border)/0.5)] hover:bg-[hsl(var(--muted)/0.4)]">
+                <td className="py-1 pr-2 sticky left-0 bg-[hsl(var(--card))] font-medium whitespace-nowrap">{r.short}</td>
+                <td className="text-center num px-1">{r.curr.toFixed(0)}</td>
+                <td className="text-center num px-1">{r.access.toFixed(0)}</td>
+                {RD_DOMAINS.map(d => {
+                  const cell = r.dom[d.key];
+                  const cov = cell?.coverage;
+                  const ev = cell?.lab_or_course;
+                  return (
+                    <td key={d.key} className="px-1 py-1"
+                        style={{ background: focus===d.key ? "hsl(var(--muted) / 0.5)" : undefined }}>
+                      <div
+                        className="w-full h-4 rounded-sm mx-auto"
+                        style={{
+                          ...cellStyle(cov),
+                          border: cov === "none" || !cov ? "1px solid hsl(var(--border))" : "none",
+                          minWidth: 16,
+                        }}
+                        title={
+                          cov && cov !== "none"
+                            ? `${r.short} — ${d.label}: ${cov.toUpperCase()}${ev ? `\n${ev}` : ""}`
+                            : `${r.short} — ${d.label}: nothing published found`
+                        }
+                      />
+                    </td>
+                  );
+                })}
+                <td className="text-center num px-1 font-semibold">{r.breadth}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr className="border-t border-[hsl(var(--border))] text-[10.5px] text-[hsl(var(--muted-foreground))]">
+              <td className="pt-1.5 pr-2 sticky left-0 bg-[hsl(var(--card))]">Schools w/ strong</td>
+              <td/><td/>
+              {RD_DOMAINS.map(d => (
+                <td key={d.key} className="text-center pt-1.5 num">{totals[d.key].strong}</td>
+              ))}
+              <td/>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
+        <strong className="text-[hsl(var(--foreground))]">Column key:</strong>{" "}
+        {RD_DOMAINS.map(d => `${d.short} = ${d.label}`).join(" · ")}.
+        <br/>
+        Coverage was researched from first-party department, lab and catalog pages, with 408 sources recorded across
+        the {rows.length} schools shown. A blank cell means nothing published was found — not that the school does no
+        work in that area. Several pages blocked automated reading (MIT robotics, UF's Machine Intelligence Lab), so
+        equivalent first-party evidence was substituted; those substitutions are noted in the research files.
+        Virginia Tech's robotics coverage reflects an option that stops accepting new declarations after January 2026.
+      </div>
     </div>
   );
 }

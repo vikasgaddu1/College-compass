@@ -156,15 +156,59 @@ export default function WhyChoosePage() {
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                   <AxisBar value={s.axes.program_depth} label="AI curriculum" />
                   <AxisBar value={s.axes.research_access} label="Research access" />
+                  <AxisBar value={s.axes.robotics_curriculum ?? null} label="Robotics curriculum" />
+                  <AxisBar value={s.axes.robotics_access ?? null} label="Robotics access" />
                   <AxisBar value={s.axes.hands_on} label="Hands-on" />
                   <AxisBar value={s.axes.ambition_healthy} label="Healthy ambition" />
                 </div>
+                <RoboticsDomainChips domains={s.robotics_domains} />
               </div>
 
               <ChevronRight size={12} className="opacity-0"/> {/* spacer */}
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+// Compact chips for the robotics subdomains a school actually covers.
+const DOMAIN_LABELS: Record<string, string> = {
+  humanoid_legged: "Humanoid / legged",
+  swarm_multirobot: "Swarm / multi-robot",
+  autonomous_vehicles: "Autonomous vehicles",
+  manipulation_grasping: "Manipulation",
+  aerial_uav: "Aerial / UAV",
+  medical_surgical: "Medical / surgical",
+  soft_robotics: "Soft robotics",
+  hri: "Human-robot interaction",
+  industrial_automation: "Industrial automation",
+  space_field: "Space / field",
+};
+
+export function RoboticsDomainChips({ domains }: { domains?: Record<string, { coverage: string; lab_or_course?: string | null; url?: string | null }> }) {
+  if (!domains) return null;
+  const strong = Object.entries(domains).filter(([, v]) => v.coverage === "strong");
+  const present = Object.entries(domains).filter(([, v]) => v.coverage === "present");
+  if (strong.length === 0 && present.length === 0) return null;
+  return (
+    <div className="pt-2">
+      <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-1">Robotics focus areas</div>
+      <div className="flex flex-wrap gap-1">
+        {strong.map(([k, v]) => (
+          <span key={k} className="chip text-[10.5px] py-0"
+            style={{ color: "hsl(145 55% 30%)", borderColor: "hsl(145 45% 55%)", background: "hsl(145 55% 30% / 0.08)" }}
+            title={v.lab_or_course ? `${DOMAIN_LABELS[k] || k}: ${v.lab_or_course}` : DOMAIN_LABELS[k] || k}>
+            {DOMAIN_LABELS[k] || k}
+          </span>
+        ))}
+        {present.map(([k, v]) => (
+          <span key={k} className="chip chip-outline text-[10.5px] py-0 opacity-70"
+            title={v.lab_or_course ? `${DOMAIN_LABELS[k] || k} (present): ${v.lab_or_course}` : `${DOMAIN_LABELS[k] || k} (present)`}>
+            {DOMAIN_LABELS[k] || k}
+          </span>
+        ))}
       </div>
     </div>
   );
