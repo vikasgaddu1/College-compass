@@ -187,3 +187,65 @@ export function SourceLinks({ urls }: { urls: string[] }) {
     </div>
   );
 }
+
+/* ------------------------------------------------------------------ *
+ * ABET accreditation badge for robotics-titled credentials.
+ * EAC = engineering (theory track, cleanest path to grad school / PE).
+ * ETAC = engineering technology (applied; grad-school and licensure friction).
+ * CAC = computing. NOT_ABET_ACCREDITED is common and fine at strong CS schools.
+ * ------------------------------------------------------------------ */
+
+const ABET_META: Record<string, { label: string; hue: string; blurb: string }> = {
+  EAC: {
+    label: "ABET EAC — engineering",
+    hue: "var(--fit-strong)",
+    blurb: "Accredited as an engineering degree: theory and calculus-heavy, the cleanest route to engineering graduate school and PE licensure.",
+  },
+  ETAC: {
+    label: "ABET ETAC — engineering technology",
+    hue: "var(--fit-lower)",
+    blurb: "Accredited as engineering technology: applied and hands-on rather than theory-heavy. Can mean catch-up coursework for engineering graduate school, and PE licensure rules vary by state.",
+  },
+  CAC: {
+    label: "ABET CAC — computing",
+    hue: "var(--fit-top)",
+    blurb: "Accredited as a computing program rather than an engineering one. Fine for software and AI paths; not an engineering-licensure route.",
+  },
+  NOT_ABET_ACCREDITED: {
+    label: "No ABET accreditation",
+    hue: "var(--fit-top)",
+    blurb: "This degree has not sought ABET accreditation. Materially different from engineering technology: the curriculum is still theory-heavy, so engineering graduate school is unaffected. The one real consequence is that it is not a route to PE licensure.",
+  },
+  "n.a.": {
+    label: "Accreditation unverified",
+    hue: "var(--score-unk)",
+    blurb: "No first-party accreditation statement was found for this credential. Confirm with the department before relying on it.",
+  },
+};
+
+export function AbetBadge({ credential, compact }:
+  { credential?: School["robotics_credential"]; compact?: boolean }) {
+  if (!credential) return null;
+  const meta = ABET_META[credential.abet_commission] ?? ABET_META["n.a."];
+  const title = [
+    credential.program_name,
+    meta.blurb,
+    credential.abet_evidence_quote ? `Source states: "${credential.abet_evidence_quote}"` : null,
+    credential.eac_alternative ? `EAC alternative at this school: ${credential.eac_alternative}` : null,
+    credential.notes,
+  ].filter(Boolean).join("\n\n");
+
+  return (
+    <span
+      className="chip text-[10.5px] py-0 whitespace-nowrap"
+      style={{
+        color: `hsl(${meta.hue})`,
+        borderColor: `hsl(${meta.hue} / 0.5)`,
+        background: `hsl(${meta.hue} / 0.08)`,
+      }}
+      title={title}
+    >
+      {compact ? credential.abet_commission.replace("NOT_ABET_ACCREDITED", "No ABET") : meta.label}
+    </span>
+  );
+}
