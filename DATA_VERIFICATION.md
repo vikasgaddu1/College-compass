@@ -69,11 +69,8 @@ CDS counts, it was accurate in every case checked.
   Fall 2024, and Purdue reports 54,651 total on the West Lafayette campus for Fall 2025.
   The discrepancy likely comes from whether online and statewide students are counted.
   Left unchanged pending Purdue's own Data Digest.
-- **Cost of attendance** figures carry no citations anywhere in the dataset. Spot-checking
-  WPI found tuition and fees $63,046 + room and board $18,900 + books $1,200 = $83,146
-  direct-billed, against the stored $87,000 — the gap is plausibly health insurance
-  ($2,681) plus personal and travel allowances, but what each school's total includes is
-  not recorded, so the numbers are not comparable across schools as displayed.
+- **Cost of attendance** — partly addressed in the second pass below; most schools still
+  carry no citation.
 - **Kettering** has an admissions block with no admit rate, no test scores and no
   `cds_year`. **Virginia Tech** is also missing `cds_year`.
 - **Missing test scores**: `sat_mid50` is null for Kettering, Penn, UC Berkeley,
@@ -84,3 +81,62 @@ CDS counts, it was accurate in every case checked.
   backfilling the rest.
 - Non-numeric claims (curriculum detail, robotics coverage, club and housing prose) were
   outside the scope of this pass.
+
+---
+
+# Cost of attendance pass — 2026-08-17
+
+Second pass, covering `cost_total_instate`, `cost_total_outofstate` and
+`cost_for_nc_resident`. Same method and same limitation as above: web search only, no
+direct page fetching. Verified figures now carry `cost_cite`, `cost_asof` and `cost_note`,
+with the source URL added to that school's `source_log`.
+
+## The problem worth fixing: one school was measured differently
+
+| School | Field | Was | Now | Source |
+|---|---|---|---|---|
+| UIUC | `cost_total_instate` | 18,372 | **36,489** | [cost.illinois.edu](https://cost.illinois.edu/) |
+| UIUC | `cost_total_outofstate` | 41,444 | **58,318** | same |
+| UIUC | `cost_for_nc_resident` | 41,444 | **58,318** | follows — an NC applicant pays the non-resident rate |
+
+UIUC's stored numbers were **tuition and fees only**, while every other school in the
+dataset carries a full cost-of-attendance budget. Because the Cost page sorts on
+`cost_for_nc_resident`, UIUC was being ranked as by far the cheapest option on the list
+against other schools' all-in budgets — a like-for-unlike comparison, and the single most
+misleading number in the file. UIUC's own published 2025-26 budget is $36,489 in-state and
+$58,318 non-resident; the difference is roughly $17,022 of living costs.
+
+Engineering and CS at UIUC carry differential tuition, so an engineering applicant should
+expect a few hundred dollars above the general rate.
+
+## Verified as already correct, now cited
+
+- **NC State** — confirmed as a full budget, not tuition alone. Tuition and fees are $8,704
+  in-state and $33,964 out-of-state; the stored figures include the ~$17,562 living
+  allowance and sit a normal year's increase above the published 2024-25 budget of $27,237
+  and $51,285.
+- **Carnegie Mellon** — tuition $67,020 plus room and board $18,894 is ~$85,914
+  direct-billed, which CMU summarises as approaching $87,000 with fees. The stored $93,614
+  adds CMU's published books, personal and travel allowances.
+- **WPI** — direct-billed 2025-26 is $83,146 (tuition and fees $63,046 + room and board
+  $18,900 + books $1,200) against a stored $87,000. The gap is the required health
+  insurance ($2,681) plus personal and travel allowances, so the stored figure is an all-in
+  budget rather than a bill.
+
+## Consistency check
+
+`cost_for_nc_resident` was audited across all 33 schools against the rule "in-state rate
+only for NC publics (NC State, UNC), out-of-state or private rate everywhere else." After
+the UIUC fix, all 33 are consistent.
+
+## Still open
+
+- **29 of 33 schools** have uncited cost figures. They are all plausibly full
+  cost-of-attendance budgets — the UIUC error was the only scope break found — but only the
+  four above have been confirmed against the school's own cost page.
+- **What each total includes is still not recorded per school.** The three verified cases
+  show the spread: some totals are close to direct-billed, others fold in health insurance,
+  personal and travel allowances. Differences of a few thousand dollars between schools may
+  reflect budgeting conventions rather than real price differences.
+- Figures are academic-year 2025-26 where dated. Costs move annually, so the whole block
+  needs a refresh each spring.

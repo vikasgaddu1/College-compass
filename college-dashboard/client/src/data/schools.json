@@ -426,6 +426,9 @@
     "cost_total_instate": 93614,
     "cost_total_outofstate": 93614,
     "cost_for_nc_resident": 93614,
+    "cost_cite": "[CMU-S10]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED as full cost of attendance. Tuition is $67,020 and room and board $18,894 (~$85,914 direct-billed, which CMU summarises as approaching $87,000 with fees). The stored figure adds CMU's published allowances for books, personal expenses and travel.",
     "housing_guarantee": "Four-year guarantee for students continuously in university housing; first-years required on campus; 65% stay on campus all four years [CMU-S38][CMU-S39]",
     "greek_participation": "19% of the student body, 1,100+ members [CMU-S36]",
     "sports_influence": "Minor / prominent but optional (INFERRED, weakly evidenced)",
@@ -734,6 +737,11 @@
         "url": "https://www.cmu.edu/leadership/the-provost/campus-comms/2024/2024-08-29.html",
         "title": "Provost campus communication on standardized testing policy (Aug 29, 2024)",
         "fetched": "2026-08-16"
+      },
+      "CMU-S10": {
+        "url": "http://coursecatalog.web.cmu.edu/aboutcmu/costofattendance/",
+        "title": "2025-2026 Cost of Attendance — Carnegie Mellon University course catalog",
+        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
@@ -6364,6 +6372,9 @@
     "cost_total_instate": 28490,
     "cost_total_outofstate": 54779,
     "cost_for_nc_resident": 28490,
+    "cost_cite": "[NCSU-S13]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED as full cost of attendance, not tuition alone. NC State's published 2024-25 budget was $27,237 in-state and $51,285 out-of-state living on campus; the stored 2025-26 figures sit a normal year's increase above that. Tuition and fees alone are $8,704 in-state and $33,964 out-of-state, so the stored numbers include the ~$17,562 living allowance.",
     "housing_guarantee": "UNVERIFIED (housing site did not state a first-year guarantee)",
     "greek_participation": "CONFLICTING official figures — \"more than 15%\" (FSL Snapshot, updated Summer 2026), \"more than 12%\" (FSL FAQ), 12.03% (Spring 2023 official grade report); 52 chapters, 3,800+ members, Greek Village houses 767",
     "sports_influence": "UNVERIFIED (ACC member; no evidence gathered on social dominance)",
@@ -6716,6 +6727,11 @@
       "NCSU-S12": {
         "url": "https://provost.ncsu.edu/news/2025/11/october-metrics-update-shows-gains-in-student-success-measures/",
         "title": "October Metrics Update Shows Gains in Student Success Measures — NC State Office of the Provost (Fall 2025 enrollment census)",
+        "fetched": "2026-08-17"
+      },
+      "NCSU-S13": {
+        "url": "https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/",
+        "title": "Undergraduate Student Estimated Cost of Attendance — NC State Student Services Center",
         "fetched": "2026-08-17"
       }
     },
@@ -12673,9 +12689,12 @@
     "notable_undergraduate_research_program": "ISUR (paid, two-semester) and URSA for first/second-years, plus Clare Boothe Luce (8 scholars/year) [UI-S10][UI-S14][UI-S9]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Master of Computer Science (MCS) with guaranteed admission at CS 374 + CS 340/341/ECE 391 and 3.4 CS GPA [UI-S1]",
-    "cost_total_instate": 18372,
-    "cost_total_outofstate": 41444,
-    "cost_for_nc_resident": 41444,
+    "cost_total_instate": 36489,
+    "cost_total_outofstate": 58318,
+    "cost_for_nc_resident": 58318,
+    "cost_cite": "[UIUC-S10]",
+    "cost_asof": "2025-26",
+    "cost_note": "CORRECTED. The previous 18,372 / 41,444 were tuition and fees only, not cost of attendance, which made UIUC look like by far the cheapest school on the list — it was being compared against other schools' full budgets. UIUC publishes a 2025-26 cost of attendance of $36,489 in-state and $58,318 non-resident (tuition and fees plus roughly $17,022 of living costs). Engineering and CS carry differential tuition, so an engineering student should expect a few hundred dollars above the general rate.",
     "housing_guarantee": "NOT PUBLISHED on fetched pages",
     "greek_participation": "23.5% per institutional and independent counts (7,796 students, 96 chapters); current students dispute as lower — CONFLICTING [UI-S21][UI-S22][UI-S23]",
     "sports_influence": "UNVERIFIED",
@@ -12968,7 +12987,8 @@
       "UIUC-S6": "UIUC Undergraduate Admissions, First-Year Requirements - https://www.admissions.illinois.edu/first-year-requirements/",
       "UIUC-S7": "Grainger College of Engineering, Changing Majors - https://grainger.illinois.edu/academics/undergraduate/changing-majors",
       "UIUC-S8": "Coordinated Science Laboratory (CSL), University of Illinois - https://csl.illinois.edu/",
-      "UIUC-S9": "FIRST Scholarship Program portal index (searched for a UIUC provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships"
+      "UIUC-S9": "FIRST Scholarship Program portal index (searched for a UIUC provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
+      "UIUC-S10": "Tuition and Cost of Attendance — University of Illinois Urbana-Champaign (2025-26) - https://cost.illinois.edu/"
     },
     "robotics_curriculum_detail": {
       "score_basis": "Three distinct undergraduate robotics courses verified on fetched Illinois course pages: ECE 470 / AE 482 / ME 445 Introduction to Robotics (stated as a technical elective for computer engineering and electrical engineering majors), ME 446 / ECE 489 / SE 422 Robot Dynamics and Control, and ECE 484 Principles of Safe Autonomy (4 undergraduate hours; hands-on labs on the Polaris GEM autonomous vehicle platform). The Center for Autonomy education page claims 'a variety of undergraduate and graduate robotics courses' across ECE, ME, AE, ABE, ISE and CS but names none, and no robotics minor, certificate or undergraduate robotics degree was found. [UIUC-R1][UIUC-R2][UIUC-R3][UIUC-R4]",
@@ -15550,6 +15570,9 @@
     "cost_total_instate": 87000,
     "cost_total_outofstate": 87000,
     "cost_for_nc_resident": 87000,
+    "cost_cite": "[WPI-S15]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED with a caveat on scope. WPI's direct-billed 2025-26 total is $83,146 (tuition and fees $63,046 + room and board $18,900 + books $1,200). The stored 87,000 is a rounded all-in figure that additionally covers the required health insurance ($2,681) plus personal and travel allowances. Treat it as an all-in budget rather than a bill.",
     "housing_guarantee": "Required and guaranteed for first AND second years (Class of 2030 onward); not guaranteed for juniors/seniors [WPI-S51][WPI-S52]",
     "greek_participation": "26% of men, 25% of women (CDS 2024-25); CONFLICTING third-party figure of 45% of women [WPI-S21][WPI-S37]",
     "sports_influence": "Minor (NCAA Division III) [WPI-S35]",
@@ -15869,6 +15892,11 @@
         "url": "https://www.wpi.edu/sites/default/files/2024-11/cap-test-blind-nov-13-2024.pptx.pdf",
         "title": "WPI Committee on Academic Policy motion on test-blind policy (Nov 13, 2024)",
         "fetched": "2026-08-16"
+      },
+      "WPI-S15": {
+        "url": "https://www.wpi.edu/admissions/tuition-aid/cost-attendance",
+        "title": "Cost of Attendance — Worcester Polytechnic Institute",
+        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
