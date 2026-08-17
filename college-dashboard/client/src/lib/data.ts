@@ -36,6 +36,12 @@ export interface School {
   cost_total_instate: number | null;
   cost_total_outofstate: number | null;
   cost_for_nc_resident: number | null;
+  /** Source-log tag for the cost figures, e.g. "[UIUC-S10]". */
+  cost_cite?: string;
+  /** Academic year the cost figures describe, e.g. "2025-26". */
+  cost_asof?: string;
+  /** What the figure covers — full cost of attendance vs direct-billed. */
+  cost_note?: string;
   housing_guarantee: string;
   greek_participation: string;
   sports_influence: string;
