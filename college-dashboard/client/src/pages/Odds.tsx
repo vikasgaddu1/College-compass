@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import { Target, Settings, AlertTriangle, Info, CheckCircle } from "lucide-react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
-import { useApplicantProfile, useOddsThresholds, classify, type OddsTier } from "@/lib/applicantProfile";
+import { useApplicantProfile, useOddsThresholds, classify, computeRigor,
+  HIGHEST_MATH_LABEL, type OddsTier, type HighestMath } from "@/lib/applicantProfile";
 import roboticsPaths from "@/data/robotics_paths.json";
 
 const tierMeta: Record<OddsTier, { label: string; color: string; bg: string }> = {
@@ -17,6 +18,7 @@ export default function OddsPage() {
   const { hidden } = useHidden();
   const [profile, setProfile] = useApplicantProfile();
   const [thresholds, setThresholds, resetThresholds] = useOddsThresholds();
+  const rigor = computeRigor(profile);
   const [showSettings, setShowSettings] = useState(false);
 
   const visibleSchools = schools.filter(s => !hidden.has(s.slug));
@@ -29,6 +31,11 @@ export default function OddsPage() {
       return { school: s, result, adm };
     });
   }, [visibleSchools, profile, thresholds]);
+
+  // How many visible schools call rigor "very important" in CDS C7 -- the honest
+  // justification for asking about course load at all.
+  const rigorVeryImportant = visibleSchools.filter(
+    s => (s as any).admissions?.c7_factors?.rigor === "very_important").length;
 
   // Portfolio balance counts
   const counts: Record<OddsTier, number> = { LIKELY: 0, TARGET: 0, REACH: 0, HIGH_REACH: 0, NEEDS_DATA: 0 };
@@ -80,10 +87,81 @@ export default function OddsPage() {
               value={profile.home_state} onChange={e => setProfile({ home_state: e.target.value.toUpperCase().slice(0,2) })}/>
           </div>
         </div>
-        <div>
-          <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Rigor / course-load note (optional)</label>
-          <input className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
-            placeholder="e.g., 8 APs incl. AP Calc BC, AP Physics C" value={profile.rigor_note} onChange={e => setProfile({ rigor_note: e.target.value })}/>
+        {/* Academic rigor -- structured, no transcript needed */}
+        <div className="border-t border-[hsl(var(--border))] pt-3 mt-1">
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <div className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">
+              Academic rigor — no transcript required
+            </div>
+            {rigor.index !== null && (
+              <div className="text-[11.5px]">
+                <span className="text-[hsl(var(--muted-foreground))]">Rigor index </span>
+                <span className="num font-semibold">{rigor.index.toFixed(1)}</span>
+                <span className="text-[hsl(var(--muted-foreground))]"> / 5 · {rigor.band}</span>
+              </div>
+            )}
+          </div>
+          <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] mt-1 mb-2 max-w-[820px] leading-snug">
+            Count the courses instead of uploading anything. {rigorVeryImportant} of {visibleSchools.length} schools
+            in view rate rigor of secondary school record <strong className="text-[hsl(var(--foreground))]">very important</strong> in
+            CDS C7 — more than rate test scores that way — so this is usually the highest-leverage row on the page.
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <NumberInput label="AP / IB / DE completed" value={profile.ap_ib_de_completed}
+              onChange={v => setProfile({ ap_ib_de_completed: v })} step={1} min={0} max={30} placeholder="6"/>
+            <NumberInput label="AP / IB / DE senior year" value={profile.ap_ib_de_planned}
+              onChange={v => setProfile({ ap_ib_de_planned: v })} step={1} min={0} max={30} placeholder="4"/>
+            <div>
+              <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Highest math</label>
+              <select className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+                value={profile.highest_math ?? ""}
+                onChange={e => setProfile({ highest_math: (e.target.value || null) as HighestMath | null })}>
+                <option value="">Select…</option>
+                {(Object.keys(HIGHEST_MATH_LABEL) as HighestMath[]).map(k => (
+                  <option key={k} value={k}>{HIGHEST_MATH_LABEL[k]}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Your school offers</label>
+              <select className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+                value={profile.school_offers_advanced}
+                onChange={e => setProfile({ school_offers_advanced: e.target.value as any })}>
+                <option value="unknown">Not sure</option>
+                <option value="many">Many advanced courses (15+)</option>
+                <option value="some">Some (6–14)</option>
+                <option value="few">Few (5 or fewer)</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Honors core</label>
+              <select className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+                value={profile.has_honors_core ? "yes" : "no"}
+                onChange={e => setProfile({ has_honors_core: e.target.value === "yes" })}>
+                <option value="no">Not all core subjects</option>
+                <option value="yes">All core subjects honors+</option>
+              </select>
+            </div>
+          </div>
+          {rigor.index !== null && rigor.drivers.length > 0 && (
+            <div className="text-[11.5px] mt-2 rounded border border-[hsl(var(--border))] bg-[hsl(var(--muted)/0.4)] px-2.5 py-2">
+              <strong>What this reflects:</strong> {rigor.drivers.join("; ")}.
+              {rigor.context_limited && (
+                <> Colleges state they read rigor against what your school actually offered, so a short
+                course list at a school with few options is not read as a weak one.</>
+              )}
+              <div className="text-[hsl(var(--muted-foreground))] mt-1">
+                This index is a planning aid built from your own self-report. It is not a school-published
+                figure and no admissions office computes it — it does not feed the tier classification.
+              </div>
+            </div>
+          )}
+          <div className="mt-2">
+            <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Anything else worth noting (optional)</label>
+            <input className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+              placeholder="e.g. AP Physics C self-studied; dual enrollment at community college"
+              value={profile.rigor_note} onChange={e => setProfile({ rigor_note: e.target.value })}/>
+          </div>
         </div>
 
         {/* Threshold settings drawer */}
@@ -97,6 +175,16 @@ export default function OddsPage() {
               <NumberInput label="Likely min admit rate" value={thresholds.likely_admit_min} onChange={v => v!==null && setThresholds({ likely_admit_min: v })} step={0.01} max={1} min={0}/>
               <NumberInput label="Target min admit rate" value={thresholds.target_admit_min} onChange={v => v!==null && setThresholds({ target_admit_min: v })} step={0.01} max={1} min={0}/>
               <NumberInput label="High-reach max admit rate" value={thresholds.high_reach_admit_max} onChange={v => v!==null && setThresholds({ high_reach_admit_max: v })} step={0.01} max={1} min={0}/>
+              <NumberInput label="GPA gap that moves a tier" value={thresholds.gpa_delta} onChange={v => v!==null && setThresholds({ gpa_delta: v })} step={0.01} max={1} min={0}/>
+              <div>
+                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Let GPA move the tier</label>
+                <select className="w-full px-2 py-1 mt-0.5 text-[12px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+                  value={thresholds.use_gpa ? "yes" : "no"}
+                  onChange={e => setThresholds({ use_gpa: e.target.value === "yes" })}>
+                  <option value="yes">Yes</option>
+                  <option value="no">No — admit rate and tests only</option>
+                </select>
+              </div>
               <div>
                 <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Downgrade gated CS</label>
                 <select className="w-full px-2 py-1 mt-0.5 text-[12px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
@@ -168,6 +256,13 @@ export default function OddsPage() {
                       {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>gated CS downgrade</span>}
                       {!result.gated_downgrade_applied && result.cs_gate === "mild" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 55% 48%)" }}>mild CS gate</span>}
                       {result.cs_gate === "none" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(145 50% 35%)" }}>no CS gate</span>}
+                      {result.gpa_moved_tier && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(200 70% 38%)" }}>GPA moved tier</span>}
+                      {result.gpa?.delta === null && result.gpa?.caveat && (
+                        <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-1 italic">{result.gpa.caveat}</div>
+                      )}
+                      {result.gpa?.delta !== null && result.gpa?.caveat && (
+                        <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-1">{result.gpa.caveat}</div>
+                      )}
                     </td>
                   </tr>
                 );
@@ -180,7 +275,7 @@ export default function OddsPage() {
       <div className="card p-3 text-[11px] text-[hsl(var(--muted-foreground))] flex items-start gap-1.5">
         <Info size={11} className="mt-0.5 flex-shrink-0"/>
         <div>
-          <strong>How this works.</strong> Admit rates come from each school's Common Data Set. Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the 3 NC schools (UNC-CH 37.0%, NC State 48.9%, Duke has no residency preference) and the <em>out-of-state</em> rate at the 10 other publics that publish one (Georgia Tech 10.1%, UIUC 29.0%, Purdue 43.6%, UW 39.0%, and so on). Schools with no published split fall back to the overall rate. The SAT modifier uses CDS C9 mid-50 and only applies when you're submitting scores. The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> — 16 schools where CS sits behind a separate admission or a hard internal gate — and never on schools that explicitly state they have no major-level gate. Every threshold is adjustable above.
+          <strong>How this works.</strong> Admit rates come from each school's Common Data Set. Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the 3 NC schools (UNC-CH 37.0%, NC State 48.9%, Duke has no residency preference) and the <em>out-of-state</em> rate at the 10 other publics that publish one (Georgia Tech 10.1%, UIUC 29.0%, Purdue 43.6%, UW 39.0%, and so on). Schools with no published split fall back to the overall rate. The SAT modifier uses CDS C9 mid-50 and only applies when you're submitting scores. The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> — 16 schools where CS sits behind a separate admission or a hard internal gate — and never on schools that explicitly state they have no major-level gate. The GPA modifier compares your figure to each school's published CDS C12 average and moves at most one tier, but <strong>only when the weighting matches</strong> — comparing an unweighted 3.9 against Georgia Tech's weighted 4.17 would misread you badly. 18 of 33 schools publish a GPA; 12 of those never state whether it is weighted, so those comparisons are labelled. Five schools (Cornell, Duke, Carleton, Ohio State, UIUC) leave the CDS GPA fields blank entirely, so GPA cannot move their tier at all. The rigor index is your own self-report and deliberately does <em>not</em> feed the tier. Every threshold is adjustable above.
           <div className="mt-1.5"><strong>Known gaps:</strong> Kettering publishes no Common Data Set at all, so it shows as Needs data. Virginia Tech's CDS URLs returned 404 during research, so its C7 grid and test-score fields are empty. UC Berkeley, UT Austin, Texas A&amp;M and Michigan publish no residency split, so those use the overall rate and understate the out-of-state difficulty.</div>
         </div>
       </div>
