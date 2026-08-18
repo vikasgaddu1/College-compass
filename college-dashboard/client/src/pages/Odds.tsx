@@ -45,6 +45,47 @@ export default function OddsPage() {
   const rigorVeryImportant = visibleSchools.filter(
     s => (s as any).admissions?.c7_factors?.rigor === "very_important").length;
 
+  // Every figure quoted in the "How this works" note is derived here rather than
+  // typed into the prose. The previous hardcoded copy had drifted: it said "10
+  // other publics" publish an out-of-state rate when 11 schools do, two of them
+  // private, and it named five schools as lacking a CDS GPA when 15 do.
+  const facts = useMemo(() => {
+    const A = (s: any) => (s as any).admissions ?? {};
+    const home = visibleSchools.filter(s => A(s).is_home_state_nc);
+    const oosPublishers = visibleSchools.filter(
+      s => !A(s).is_home_state_nc && A(s).oos_admit_rate != null);
+    const gpaRows = visibleSchools.map(s => A(s).avg_gpa)
+      .filter(g => g && typeof g === "object" && g.basis !== "not_published" && g.value != null);
+    return {
+      home,
+      homeWithSplit: home.filter(s => A(s).in_state_admit_rate != null),
+      oosCount: oosPublishers.length,
+      oosPublicCount: oosPublishers.filter(s => s.is_public).length,
+      strongGates: visibleSchools.filter(s => A(s).cs_gate === "strong").length,
+      gpaPublished: gpaRows.length,
+      gpaUnspecified: gpaRows.filter((g: any) => (g.basis ?? "unspecified") === "unspecified").length,
+      gpaMissing: visibleSchools.length - gpaRows.length,
+      needsData: visibleSchools.filter(s => A(s).overall_admit_rate == null).map(s => s.short),
+    };
+  }, [visibleSchools]);
+
+  // Sanity audit: at a school that publishes both doors, computing must never
+  // classify as EASIER than engineering. Georgia Tech did exactly that before the
+  // residency clamp, because its computing figure blends residencies while the
+  // engineering fallback is out-of-state only.
+  const doorInversions = useMemo(() => {
+    const out: { short: string; eng: number; comp: number }[] = [];
+    for (const s of visibleSchools) {
+      const adm = (s as any).admissions;
+      const nc = (roboticsPaths.schools as any)[s.slug]?.nc_applicant_note;
+      const eng = classify(adm, nc, profile, { ...thresholds, pathway: "engineering" });
+      const comp = classify(adm, nc, profile, { ...thresholds, pathway: "computing" });
+      const e = eng.effective_admit_rate, c = comp.effective_admit_rate;
+      if (e != null && c != null && c > e + 1e-9) out.push({ short: s.short, eng: e, comp: c });
+    }
+    return out;
+  }, [visibleSchools, profile, thresholds]);
+
   // Portfolio balance counts
   const counts: Record<OddsTier, number> = { LIKELY: 0, TARGET: 0, REACH: 0, HIGH_REACH: 0, NEEDS_DATA: 0 };
   classifications.forEach(({ result }) => { counts[result.tier]++; });
@@ -231,9 +272,19 @@ export default function OddsPage() {
                   <option value="no">No — treat CS same as overall</option>
                 </select>
               </div>
+              <div>
+                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Gate applies to</label>
+                <select className="w-full px-2 py-1 mt-0.5 text-[12px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
+                  value={thresholds.gate_pathway_aware ? "computing":"both"}
+                  onChange={e => setThresholds({ gate_pathway_aware: e.target.value === "computing" })}>
+                  <option value="computing">The computing door only</option>
+                  <option value="both">Both doors</option>
+                </select>
+              </div>
             </div>
             <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] italic">
               Admit rates are decimals (0.35 = 35%). Defaults: Likely ≥35%, Target ≥20%, High-reach &lt;10%. These are user-adjustable heuristics — the tier labels have no external authority.
+              {" "}<strong>Gate applies to</strong> defaults to the computing door only: <code>cs_gate</code> describes a CS/AI-specific obstacle, so on the engineering door it is reported as a risk to reaching the major rather than as a higher admission bar. Set it to "both doors" for the older, more pessimistic behaviour.
             </div>
           </div>
         )}
@@ -263,6 +314,21 @@ export default function OddsPage() {
           <div className="mt-3 text-[11.5px] text-[hsl(145_55%_30%)] flex items-center gap-1.5"><CheckCircle size={11}/> Balance looks reasonable — at least 2 Likely and 3 Target.</div>
         )}
       </div>
+
+      {doorInversions.length > 0 && (
+        <div className="card p-4 border-[hsl(var(--fit-lower)/0.4)]">
+          <div className="text-[11.5px] flex items-start gap-1.5 text-[hsl(var(--fit-lower))]">
+            <AlertTriangle size={12} className="mt-0.5 flex-shrink-0"/>
+            <div>
+              <strong>Door ordering looks wrong at {doorInversions.length} school{doorInversions.length === 1 ? "" : "s"}.</strong>{" "}
+              The computing door classifies as <em>easier</em> than the engineering door here, which is almost
+              always a sign that the two figures rest on different bases rather than a real difference:{" "}
+              {doorInversions.map(d => `${d.short} (engineering ${(d.eng*100).toFixed(1)}%, computing ${(d.comp*100).toFixed(1)}%)`).join("; ")}.
+              Check the source notes before trusting either number.
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Per-school table */}
       <div className="card overflow-hidden">
@@ -294,7 +360,18 @@ export default function OddsPage() {
                     </td>
                     <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div>
                       {result.unit_used && (
-                        <div className="text-[9.5px] mt-0.5" style={{ color: "hsl(var(--accent))" }}>per-college rate</div>
+                        <div className="text-[9.5px] mt-0.5" style={{ color: "hsl(var(--accent))" }}
+                          title={result.unit_used.note ?? undefined}>
+                          per-college rate
+                          {result.unit_residency_blended && (
+                            <span className="block" style={{ color: "hsl(30 75% 40%)" }}>
+                              {result.unit_clamped_to != null ? "blended · capped" : "blended residency"}
+                            </span>
+                          )}
+                          {result.unit_used.note && (
+                            <span className="block text-[hsl(var(--muted-foreground))] font-normal">source note</span>
+                          )}
+                        </div>
                       )}</td>
                     <td className="text-[11.5px] leading-snug">{result.reason}
                       {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>gated CS downgrade</span>}
@@ -319,8 +396,14 @@ export default function OddsPage() {
       <div className="card p-3 text-[11px] text-[hsl(var(--muted-foreground))] flex items-start gap-1.5">
         <Info size={11} className="mt-0.5 flex-shrink-0"/>
         <div>
-          <strong>How this works.</strong> Admit rates come from each school's Common Data Set. Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the 3 NC schools (UNC-CH 37.0%, NC State 48.9%, Duke has no residency preference) and the <em>out-of-state</em> rate at the 10 other publics that publish one (Georgia Tech 10.1%, UIUC 29.0%, Purdue 43.6%, UW 39.0%, and so on). Schools with no published split fall back to the overall rate. The SAT modifier uses CDS C9 mid-50 and only applies when you're submitting scores. The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> — 16 schools where CS sits behind a separate admission or a hard internal gate — and never on schools that explicitly state they have no major-level gate. The GPA modifier compares your figure to each school's published CDS C12 average and moves at most one tier, but <strong>only when the weighting matches</strong> — comparing an unweighted 3.9 against Georgia Tech's weighted 4.17 would misread you badly. 18 of 33 schools publish a GPA; 12 of those never state whether it is weighted, so those comparisons are labelled. Five schools (Cornell, Duke, Carleton, Ohio State, UIUC) leave the CDS GPA fields blank entirely, so GPA cannot move their tier at all. The rigor index is your own self-report and deliberately does <em>not</em> feed the tier. Every threshold is adjustable above.
-          <div className="mt-1.5"><strong>Known gaps:</strong> Kettering publishes no Common Data Set at all, so it shows as Needs data. Virginia Tech's CDS URLs returned 404 during research, so its C7 grid and test-score fields are empty. UC Berkeley, UT Austin, Texas A&amp;M and Michigan publish no residency split, so those use the overall rate and understate the out-of-state difficulty.</div>
+          <strong>How this works.</strong> Admit rates come from each school's Common Data Set, and every count in this paragraph is computed from the loaded data rather than written by hand.
+          Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the {facts.homeWithSplit.length} of {facts.home.length} home-state schools that publish one ({facts.homeWithSplit.map(s => `${s.short} ${(( (s as any).admissions.in_state_admit_rate)*100).toFixed(1)}%`).join(", ")}), and the <em>out-of-state</em> rate at the {facts.oosCount} other schools that publish one ({facts.oosPublicCount} public, {facts.oosCount - facts.oosPublicCount} private). Schools with no published split fall back to the overall rate.
+          {" "}The test modifier uses CDS C9 and accepts either the SAT or the ACT — whichever you and the school both have — and moves at most one tier in either direction. It only applies when you are submitting; on the "hold" plan a below-25th score is treated as one you would withhold.
+          {" "}The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> ({facts.strongGates} schools in view), never on schools that state they have no major-level gate, and never on top of a per-college rate that already prices the same obstacle in.
+          {" "}The GPA modifier compares your figure to each school's published CDS C12 average and moves at most one tier, but <strong>only when the weighting matches</strong> — comparing an unweighted 3.9 against a weighted 4.17 would misread you badly. {facts.gpaPublished} of {visibleSchools.length} schools publish a usable GPA; {facts.gpaUnspecified} of those never state whether it is weighted, so those comparisons are labelled. The other {facts.gpaMissing} publish nothing usable, so GPA cannot move their tier at all.
+          {" "}The rigor index is your own self-report and deliberately does <em>not</em> feed the tier. Every threshold is adjustable above.
+          <div className="mt-1.5"><strong>Per-college rates and residency.</strong> Where a school publishes admit rates by college, the rate for your chosen door replaces the university figure. Some schools publish that split for <em>all residencies combined</em> while also publishing a separate in-state/out-of-state split for the university — two different measurements. A blended figure can show a door is harder, never that it is easier than your own residency rate; where it would, it is capped and labelled <em>capped</em> in the table. Without that cap, Georgia Tech's computing door (11.3%, blended) read as easier than its published out-of-state rate (10.1%), so picking the harder door made the school look more attainable.</div>
+          <div className="mt-1.5"><strong>Known gaps:</strong> {facts.needsData.length > 0 ? `${facts.needsData.join(", ")} publish${facts.needsData.length === 1 ? "es" : ""} no usable overall admit rate, so ${facts.needsData.length === 1 ? "it shows" : "they show"} as Needs data. ` : ""}Schools that publish no residency split use the overall rate, which understates out-of-state difficulty. Per-college figures marked as inferred in the source notes are shown with that note attached.</div>
         </div>
       </div>
     </div>
