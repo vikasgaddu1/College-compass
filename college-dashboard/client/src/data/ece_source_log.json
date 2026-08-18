@@ -1,0 +1,1072 @@
+{
+  "CMU-E1": {
+    "url": "http://coursecatalog.web.cmu.edu/schools-colleges/collegeofengineering/departmentofelectricalandcomputerengineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CMU-E2": {
+    "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CMU-E3": {
+    "url": "https://www.ri.cmu.edu/education/academic-programs/additional-major-in-robotics/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CMU-E4": {
+    "url": "https://www.cs.cmu.edu/education/undergraduate/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CMU-E5": {
+    "url": "https://ml.cmu.edu/academics/minor-in-machine-learning",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CMU-E6": {
+    "url": "https://www.cmu.edu/admission/majors-programs/college-of-engineering/electrical-and-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E1": {
+    "url": "https://www.eecs.mit.edu/academics/undergraduate-programs/curriculum/faq-about-fall-2024-changes/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E2": {
+    "url": "https://mitadmissions.org/help/faq/majors/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E3": {
+    "url": "https://catalog.mit.edu/degree-charts/electrical-engineering-computing-course-6-5/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E4": {
+    "url": "https://catalog.mit.edu/degree-charts/electrical-engineering-computer-science-tracks/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E5": {
+    "url": "https://catalog.mit.edu/subjects/6/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E6": {
+    "url": "https://engineering.mit.edu/undergraduate/admissions",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MIT-E7": {
+    "url": "https://www.eecs.mit.edu/academics/undergraduate-programs/program-objectives-and-accreditation/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E1": {
+    "url": "https://eecs.berkeley.edu/academics/undergraduate/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E2": {
+    "url": "https://eecs.berkeley.edu/academics/undergraduate/compare-majors/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E3": {
+    "url": "https://eecs.berkeley.edu/academics/undergraduate/ece-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E4": {
+    "url": "https://engineering.berkeley.edu/students/undergraduate-guide/degree-requirements/major-programs/electrical-computer-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E5": {
+    "url": "https://guide.berkeley.edu/courses/eecs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E6": {
+    "url": "https://engineering.berkeley.edu/academics/majors-and-minors/change-of-major-criteria/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UCB-E7": {
+    "url": "https://engineering.berkeley.edu/academics/majors-and-minors/major-options/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E1": {
+    "url": "https://bulletin.engin.umich.edu/ug-ed/degrees/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E2": {
+    "url": "https://ece.engin.umich.edu/academics/undergraduate/admissions/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E3": {
+    "url": "https://admissions.umich.edu/apply",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E4": {
+    "url": "https://bulletin.engin.umich.edu/courses/eecs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E5": {
+    "url": "https://cse.engin.umich.edu/academics/undergraduate/new-to-cs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMICH-E6": {
+    "url": "https://ece.engin.umich.edu/academics/undergraduate/majors-minors/electrical-engineering-major/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E1": {
+    "url": "https://catalog.gatech.edu/colleges/coe/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E2": {
+    "url": "https://catalog.gatech.edu/programs/electrical-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E3": {
+    "url": "https://admission.gatech.edu/first-year/major-selection",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E4": {
+    "url": "https://admission.gatech.edu/first-year/major-confirmation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E5": {
+    "url": "https://registrar.gatech.edu/info/change-major-form-undergraduate-students",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E6": {
+    "url": "https://catalog.gatech.edu/coursesaz/ece/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E7": {
+    "url": "https://www.cc.gatech.edu/create-application-changing-majors-computer-science",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "GT-E8": {
+    "url": "https://ece.gatech.edu/ECE-threads",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UIUC-E1": {
+    "url": "https://www.admissions.illinois.edu/admit-rates/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UIUC-E2": {
+    "url": "https://ece.illinois.edu/academics/educational-objectives-ee",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UIUC-E3": {
+    "url": "https://advising.grainger.illinois.edu/degree-programs/changing-majors",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UIUC-E4": {
+    "url": "https://ece.illinois.edu/academics/educational-objectives-ce",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UIUC-E5": {
+    "url": "https://courses.illinois.edu/schedule/2026/fall/ECE",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CORNELL-E1": {
+    "url": "https://courses.cornell.edu/programs/electrical-computer-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CORNELL-E2": {
+    "url": "https://www.duffield.cornell.edu/admissions/admissions-faqs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CORNELL-E3": {
+    "url": "https://www.ece.cornell.edu/ece/programs/undergraduate-programs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CORNELL-E4": {
+    "url": "https://classes.cornell.edu/browse/roster/SP26/class/ECE/4160",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PENN-E1": {
+    "url": "https://catalog.upenn.edu/undergraduate/programs/electrical-engineering-bse/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PENN-E2": {
+    "url": "https://admissions.upenn.edu/how-to-apply/first-year-applicants",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PENN-E3": {
+    "url": "https://admissions.upenn.edu/academics/exploring-academics/majors-minors",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PENN-E4": {
+    "url": "https://catalog.upenn.edu/undergraduate/engineering-applied-science/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PENN-E5": {
+    "url": "https://catalog.upenn.edu/courses/ese/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "JHU-E1": {
+    "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "JHU-E2": {
+    "url": "https://apply.jhu.edu/frequently-asked-questions/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "JHU-E3": {
+    "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/robotics-computational-sensing/robotics-minor/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "JHU-E4": {
+    "url": "https://engineering.jhu.edu/about/accreditation/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PURDUE-E1": {
+    "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PURDUE-E2": {
+    "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum/Courses-by-Area",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PURDUE-E3": {
+    "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/current-students/academic/advising/t2m",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PURDUE-E4": {
+    "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/current-students/academic/advising/t2m/t2m-faq",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PURDUE-E5": {
+    "url": "https://www.admissions.purdue.edu/academics/freshmanprofile.php",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "TAMU-E1": {
+    "url": "https://catalog.tamu.edu/undergraduate/engineering/electrical-computer/electrical-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "TAMU-E2": {
+    "url": "https://engineering.tamu.edu/electrical/academics/degrees/undergraduate/bs-ce.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "TAMU-E3": {
+    "url": "https://engineering.tamu.edu/academics/undergraduate/entry-to-a-major/class-of-2030.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "TAMU-E4": {
+    "url": "https://catalog.tamu.edu/undergraduate/engineering/technology-industrial-distribution/multidisciplinary-engineering-technology-bs-mechatronics-track/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "TAMU-E5": {
+    "url": "https://catalog.tamu.edu/undergraduate/course-descriptions/ecen/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E1": {
+    "url": "https://www.ece.uw.edu/about/abet-accreditation-bsece/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E2": {
+    "url": "https://www.ece.uw.edu/academics/bachelor-of-science/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E3": {
+    "url": "https://peden.ece.uw.edu/academic-ops/abet/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E4": {
+    "url": "https://www.engr.washington.edu/admission/current-uw-non-engineering/admission-data",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E5": {
+    "url": "https://www.engr.washington.edu/undergraduate-admission/capacity-constrained/current-non-uw-data",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E6": {
+    "url": "https://www.engr.washington.edu/current/placement/data",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E7": {
+    "url": "https://www.engr.washington.edu/current/placement",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E8": {
+    "url": "https://admit.washington.edu/majors/electrical-and-computer-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E9": {
+    "url": "https://www.cs.washington.edu/academics/undergraduate/admissions/direct-major/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E10": {
+    "url": "https://www.cs.washington.edu/academics/undergraduate/admissions/current-uw/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UW-E11": {
+    "url": "https://www.engr.washington.edu/explore-uw-engineering-departments",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E1": {
+    "url": "https://ece.utexas.edu/academics/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E2": {
+    "url": "https://ece.utexas.edu/academics/undergraduate/curriculum",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E3": {
+    "url": "https://cockrell.utexas.edu/admissions/undergraduate/internal-transfer/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E4": {
+    "url": "https://onestop.utexas.edu/registration-and-degree-planning/internal-transfer/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E5": {
+    "url": "https://ece.utexas.edu/academics/undergraduate/techcore",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E6": {
+    "url": "https://catalog.utexas.edu/general-information/coursesatoz/ece/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E7": {
+    "url": "https://catalog.utexas.edu/undergraduate/engineering/degrees-and-programs/bs-electrical-engineering/bs-electrical-engineering.pdf",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E8": {
+    "url": "https://cns.utexas.edu/info-undergraduate-students/academics-advising-policies/internal-transfer",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E9": {
+    "url": "https://cns.utexas.edu/media/3040/download?inline",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E10": {
+    "url": "https://robotics.utexas.edu/undergraduate",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTA-E11": {
+    "url": "https://ece.utexas.edu/academics/integrated",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E1": {
+    "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E2": {
+    "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/cyber-physical-systems-engineering-major/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E3": {
+    "url": "https://www.lep.umd.edu/engineering.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E4": {
+    "url": "https://eng.umd.edu/undergraduate-transfer-students-faq",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E5": {
+    "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enee/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E6": {
+    "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/electrical-engineering-major/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UMD-E7": {
+    "url": "https://undergrad.cs.umd.edu/cs-lep-faq-effective-fall-2024",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E1": {
+    "url": "https://ece.northeastern.edu/academics/undergraduate-studies/ece-accreditation/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E2": {
+    "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E3": {
+    "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/computer-engineering-computer-science-bscompe/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E4": {
+    "url": "https://ece.northeastern.edu/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E5": {
+    "url": "https://ece.northeastern.edu/academics/undergraduate-studies/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E6": {
+    "url": "https://ece.northeastern.edu/experiential-learning/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E7": {
+    "url": "https://catalog.northeastern.edu/graduate/university-interdisciplinary-programs/robotics-ms-sea/robotics-ms-sea.pdf",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NEU-E8": {
+    "url": "https://coe.northeastern.edu/news/college-of-engineering-co-op-department-hosts-robotics-week/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E1": {
+    "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E2": {
+    "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E3": {
+    "url": "https://engr.ncsu.edu/academics/undergraduate/coda/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E4": {
+    "url": "https://engr.ncsu.edu/academics/undergraduate/academic-advising/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E5": {
+    "url": "https://ece.ncsu.edu/tour/undergraduate-journey/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E6": {
+    "url": "https://ece.ncsu.edu/undergraduate-2025/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "NCSU-E7": {
+    "url": "https://engr.ncsu.edu/academics/undergraduate/facts-and-stats/coda-statistics/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E1": {
+    "url": "https://ece.vt.edu/undergrad/curriculum.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E2": {
+    "url": "https://catalog.vt.edu/undergraduate/college-engineering/electrical-computer-engineering/computer-engineering-bs-controls-robotics-autonomy/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E3": {
+    "url": "https://catalog.vt.edu/undergraduate/college-engineering/electrical-computer-engineering/electrical-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E4": {
+    "url": "https://eng.vt.edu/undergraduate/resources-support/change-of-major/restricted.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E5": {
+    "url": "https://eng.vt.edu/undergraduate/orientation/frequently-asked-questions.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "VT-E6": {
+    "url": "https://catalog.vt.edu/undergraduate/college-engineering/mechanical-engineering/robotics-mechatronics-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E1": {
+    "url": "https://www.wpi.edu/academics/departments/electrical-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E2": {
+    "url": "https://www.wpi.edu/academics/study/electrical-computer-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E3": {
+    "url": "https://www.wpi.edu/academics/departments/electrical-computer-engineering/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E4": {
+    "url": "https://www.wpi.edu/academics/engineering/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E5": {
+    "url": "https://www.wpi.edu/academics/departments/electrical-computer-engineering/undergraduate",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E6": {
+    "url": "https://www.wpi.edu/academics/study/robotics-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E7": {
+    "url": "https://www.wpi.edu/project-based-learning/project-based-education/major-qualifying-project",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E8": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E9": {
+    "url": "https://www.wpi.edu/academics/calendar-courses/course-descriptions/3781/electrical-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "WPI-E10": {
+    "url": "https://www.wpi.edu/admissions/undergraduate/apply/application-options",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E1": {
+    "url": "https://ecse.rpi.edu/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E2": {
+    "url": "https://ecse.rpi.edu/academics/undergraduate-programs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E3": {
+    "url": "https://ecse.rpi.edu/academics/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E4": {
+    "url": "https://undergrad.admissions.rpi.edu/apply/first-year-applicants/application-frequently-asked-questions",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E5": {
+    "url": "https://registrar.rpi.edu/services/academic-planning/dual-major",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E6": {
+    "url": "https://catalog.rpi.edu/preview_program.php?catoid=8&poid=1678",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RPI-E7": {
+    "url": "https://ecse.rpi.edu/academics/undergraduate-programs/program-templates",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E1": {
+    "url": "https://www.rit.edu/study/electrical-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E2": {
+    "url": "https://www.rit.edu/study/computer-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E3": {
+    "url": "https://www.rit.edu/engineering/electrical-and-microe-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E4": {
+    "url": "https://www.rit.edu/engineering/computerengineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E5": {
+    "url": "https://www.rit.edu/study/electrical-engineering-bs-robotics-option",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E6": {
+    "url": "https://www.rit.edu/engineeringtechnology/robotics-and-manufacturing-engineering-technology-accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E7": {
+    "url": "https://www.rit.edu/careerservices/study/electrical-engineering-bs/co-op",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E8": {
+    "url": "https://www.rit.edu/engineering/immerse-yourself/cooperative-education",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "RIT-E9": {
+    "url": "https://www.rit.edu/study/robotics-and-manufacturing-engineering-technology-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E1": {
+    "url": "https://www.olin.edu/academics/majors-concentrations",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E2": {
+    "url": "https://www.olin.edu/about/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E3": {
+    "url": "https://olin.smartcatalogiq.com/en/2025-26/catalog/programs-of-study-and-degree-requirements/academic-programs/electrical-and-computer-engineering-ece",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E4": {
+    "url": "https://olin.smartcatalogiq.com/en/2025-26/catalog/programs-of-study-and-degree-requirements/academic-programs/engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E5": {
+    "url": "https://www.olin.edu/admission/apply",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OLIN-E6": {
+    "url": "https://www.olin.edu/admission/profile-class-2028",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E1": {
+    "url": "https://www.rose-hulman.edu/academics/academic-departments/electrical-computer-engineering/index.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E2": {
+    "url": "https://www.rose-hulman.edu/academics/academic-departments/electrical-computer-engineering/majors-and-minors.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E3": {
+    "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/electrical-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E4": {
+    "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/computer-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E5": {
+    "url": "https://www.rose-hulman.edu/academics/academic-affairs/irpa/accreditation/index.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E6": {
+    "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/robotics/teams-and-minor.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E7": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ROSE-HULMAN-E8": {
+    "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E1": {
+    "url": "https://www.kettering.edu/academics-research/colleges-schools/college-of-engineering/department-electrical-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E2": {
+    "url": "https://catalog.kettering.edu/undergrad/academic-programs/electrical-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E3": {
+    "url": "https://catalog.kettering.edu/undergrad/academic-programs/computer-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E4": {
+    "url": "https://www.kettering.edu/who-we-are/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E5": {
+    "url": "https://www.kettering.edu/co-op",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E6": {
+    "url": "https://catalog.kettering.edu/undergrad/academic-programs/engineering/robotics/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E7": {
+    "url": "https://www.kettering.edu/apply",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "KETTERING-E8": {
+    "url": "https://www.kettering.edu/academics-research/programs/electrical-engineering-bachelor",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E1": {
+    "url": "https://www.iit.edu/ece",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E2": {
+    "url": "https://www.iit.edu/academics/programs/electrical-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E3": {
+    "url": "https://www.iit.edu/academics/programs/computer-engineering-bs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E4": {
+    "url": "https://www.iit.edu/engineering/about/abet-accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E5": {
+    "url": "https://www.iit.edu/sites/default/files/2020-06/Illinois%20Tech%20ECE%20UG%20Tracks_final.pdf",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E6": {
+    "url": "https://www.iit.edu/resources-admitted-students/undergraduate/whats-next/admitted-alternate-major",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E7": {
+    "url": "https://catalog.iit.edu/undergraduate/courses/ece/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "ILLINOIS-TECH-E8": {
+    "url": "https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E1": {
+    "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E2": {
+    "url": "https://umdearborn.edu/academics/program/electrical-engineering-bse",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E3": {
+    "url": "https://umdearborn.edu/academics/program/computer-engineering-bse",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E4": {
+    "url": "https://umdearborn.edu/about-um-dearborn/accreditations",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E5": {
+    "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E6": {
+    "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/electrical-engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E7": {
+    "url": "https://catalog.umd.umich.edu/undergraduate/coursesaz/ece/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "MICHIGAN-DEARBORN-E8": {
+    "url": "https://catalog.umd.umich.edu/undergraduate/admissions/freshman-student-admission/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E1": {
+    "url": "https://undergraduate.bulletins.duke.edu/pages/XxAyh86HqynixoDfGMur",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E2": {
+    "url": "https://ece.duke.edu/academics/undergrad/concentrations/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E3": {
+    "url": "https://ece.duke.edu/academics/undergrad/areas/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E4": {
+    "url": "https://admissions.duke.edu/apply/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E5": {
+    "url": "https://admissions.duke.edu/pratt/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E6": {
+    "url": "https://admissions.duke.edu/wp-content/uploads/2026/02/2029ClassProfile.pdf",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E7": {
+    "url": "https://undergraduate.bulletins.duke.edu/pages/NAK26ddDhwT3Go2i4qd7",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "DUKE-E8": {
+    "url": "https://ece.duke.edu/academics/undergrad/minors/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E1": {
+    "url": "https://engineering.osu.edu/bachelor-science-electrical-and-computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E2": {
+    "url": "https://engineering.osu.edu/accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E3": {
+    "url": "https://ece.osu.edu/ohio-state-electrical-computer-engineering-program/academic-domains-and-electives",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E4": {
+    "url": "https://ece.osu.edu/ece-course-listings",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E5": {
+    "url": "https://advising.engineering.osu.edu/current-students/applying-your-major",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "OSU-E6": {
+    "url": "https://cse.osu.edu/current-students/undergraduate/enrollment-limits",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E1": {
+    "url": "https://www.eecs.psu.edu/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E2": {
+    "url": "https://bulletins.psu.edu/undergraduate/colleges/engineering/electrical-engineering-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E3": {
+    "url": "https://advising.engr.psu.edu/advising/entrance-to-major/new-reenrolling-summer-2020-or-later.aspx",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E4": {
+    "url": "https://www.eecs.psu.edu/assets/docs/handbooks/EE-Program-Booklet.pdf",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E5": {
+    "url": "https://bulletins.psu.edu/undergraduate/colleges/engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "PSU-E6": {
+    "url": "https://admissions.psu.edu/apply/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UF-E1": {
+    "url": "https://catalog.ufl.edu/UGRD/colleges-schools/UGENG/ELE_BSEE/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UF-E2": {
+    "url": "https://www.ece.ufl.edu/academics/undergraduate/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UF-E3": {
+    "url": "https://catalog.ufl.edu/UGRD/colleges-schools/UGENG/CPE_BSCO/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UF-E4": {
+    "url": "https://admissions.ufl.edu/apply/freshman/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UF-E5": {
+    "url": "https://admissions.ufl.edu/counselors",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTD-E1": {
+    "url": "https://catalog.utdallas.edu/2025/undergraduate/programs/ecs/electrical-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTD-E2": {
+    "url": "https://catalog.utdallas.edu/2025/undergraduate/programs/ecs/computer-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTD-E3": {
+    "url": "https://catalog.utdallas.edu/2025/undergraduate/programs/ecs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UTD-E4": {
+    "url": "https://oue.utdallas.edu/change-of-major/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UNC-E1": {
+    "url": "https://catalog.unc.edu/undergraduate/schools-college/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "UNC-E2": {
+    "url": "https://catalog.unc.edu/undergraduate/programs-study/applied-sciences-major-bs/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "SWAT-E1": {
+    "url": "https://www.swarthmore.edu/engineering/abet-accreditation",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "SWAT-E2": {
+    "url": "https://www.swarthmore.edu/engineering/why-choose-swarthmore-engineering",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "SWAT-E3": {
+    "url": "https://www.swarthmore.edu/engineering/faqs",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "SWAT-E4": {
+    "url": "https://catalog.swarthmore.edu/preview_program.php?catoid=31&poid=2439&returnto=2221",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CARL-E1": {
+    "url": "https://www.carleton.edu/engineering/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CARL-E2": {
+    "url": "https://www.carleton.edu/engineering/about/",
+    "title": null,
+    "fetched": "2026-08-18"
+  },
+  "CARL-E3": {
+    "url": "https://www.carleton.edu/engineering/questions/",
+    "title": null,
+    "fetched": "2026-08-18"
+  }
+}
