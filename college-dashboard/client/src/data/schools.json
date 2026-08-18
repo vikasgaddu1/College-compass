@@ -417,7 +417,38 @@
         "url": null
       }
     },
-    "best_fit_reason_original": "Paid, published, first-year-accessible faculty research plus 6th-in-nation doctoral productivity and directed research every term [CA-S10][CA-S11][CA-S29]. Classification qualifier: outstanding for research mentorship and PhD preparation, structurally thin for AI course depth"
+    "best_fit_reason_original": "Paid, published, first-year-accessible faculty research plus 6th-in-nation doctoral productivity and directed research every term [CA-S10][CA-S11][CA-S29]. Classification qualifier: outstanding for research mentorship and PhD preparation, structurally thin for AI course depth",
+    "ece": {
+      "department_name": "n.a. - no engineering department; engineering is handled as an advising track through the Dual Degree (3-2/3-3) Engineering Program",
+      "structure": "none",
+      "degrees": [],
+      "exists": false,
+      "abet": {
+        "commission": "NOT_ABET_ACCREDITED",
+        "eac_accredited": false,
+        "quote": "As a reminder, an advantage of the Dual Degree program is that you earn an ABET accredited BS degree that allows you to sit for the Engineering Licensure Exam. A BA or MS degree is not sufficient to qualify to take this exam.",
+        "url": "https://www.carleton.edu/engineering/questions/",
+        "pending_or_absent": true
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 0,
+        "courses": [],
+        "covers": [],
+        "capstone": null
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to Carleton College as a whole; there is no engineering unit to apply to, since 'Carleton does not offer an official pre-engineering track', and engineering is reached later through the Dual Degree Program with Washington University.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Not applicable: Carleton has no engineering or ECE program, and no per-major admission data is published on the fetched pages.",
+        "internal_gate": "To enter the Dual Degree Program you must complete Carleton's distribution requirements, an integrative exercise in an appropriate field such as chemistry, mathematics, computer science or physics, and the Dual Degree prerequisites within three years, then be accepted by Washington University; admission type is listed as 'Preferred' (CARL-E2).",
+        "gate_severity": "strong",
+        "rank": 0
+      },
+      "vs_cs": "Carleton offers no engineering degree at all, so there is no ECE door: 'Although Carleton does not offer an official pre-engineering track, there are a number of options to prepare students to pursue engineering after Carleton' (CARL-E1). The intended route is a major in physics for electrical or mechanical interests, or math/computer science for computer engineering interests, followed by the Dual Degree Program - three or four years at Carleton plus three at Washington University, yielding a B.A. from Carleton plus a B.S. and M.S. from Washington University in a 3-3 or 4-3 structure (CARL-E3, CARL-E2). For robotics that means the hardware, controls and embedded content arrives only after transfer, the timeline stretches to six or seven years, and the Carleton B.A. alone is not ABET-accredited and does not qualify a graduate for the engineering licensure exam (CARL-E3).",
+      "notable": "The Dual Degree partner is Washington University, and 3-3/4-3 participants are admitted directly to the graduate school with a guaranteed 50% tuition waiver for each year at Washington University (CARL-E3). Carleton's total credit and senior residency requirements are waived for the 3-3 program, but the Carleton degree is only awarded at the end of the six-year sequence (CARL-E2). Note: Carleton College (Minnesota, carleton.edu) is a different institution from Carleton University in Ottawa; only carleton.edu sources were used."
+    }
   },
   {
     "slug": "carnegie-mellon",
@@ -998,7 +1029,103 @@
       "eac_alternative_url": null,
       "notes": "The BS in Robotics is a School of Computer Science / Robotics Institute primary major with first cohort Fall 2023; CMU's own consumer-information ABET list names only the five College of Engineering programs and does not include Robotics. CMU's discipline-specific accreditation page lists ABET only under College of Engineering and does not mention the School of Computer Science or robotics (https://www.cmu.edu/accreditation/discipline-specific/index.html). The Robotics Institute program page contains no ABET statement (https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/). ABET's name search for Carnegie Mellon returned engineering programs only, with no Robotics entry (https://amspub.abet.org/aps/name-search?searchType=institution&keyword=Carnegie%20Mellon)."
     },
-    "best_fit_reason_original": "A purpose-built AI degree with a real statistics spine (36-401), four mandatory AI clusters reaching graduate-level courses, research courses inside the major, first-year-eligible funded research, and a no-GPA-gate honors thesis [CMU-S1][CMU-S14][CMU-S13]"
+    "best_fit_reason_original": "A purpose-built AI degree with a real statistics spine (36-401), four mandatory AI clusters reaching graduate-level courses, research courses inside the major, first-year-eligible funded research, and a no-GPA-gate honors thesis [CMU-S1][CMU-S14][CMU-S13]",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering (College of Engineering / CIT)",
+      "structure": "combined_ece",
+      "degrees": [
+        "B.S. in Electrical and Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The B.S. in Electrical and Computer Engineering is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "http://coursecatalog.web.cmu.edu/schools-colleges/collegeofengineering/departmentofelectricalandcomputerengineering/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "ECE areas: Hardware Systems, Software Systems, Signals and Systems (plus the university-wide Robotics Additional Major and Machine Learning Minor, both reachable from ECE)",
+        "course_count": 11,
+        "courses": [
+          {
+            "code": "18-370",
+            "title": "Fundamentals of Control",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-395",
+            "title": "Introduction to Computer Vision",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-442",
+            "title": "Autonomous Robotics II",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-444",
+            "title": "Embedded Machine Learning",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-461",
+            "title": "Introduction to Machine Learning for Engineers",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-462",
+            "title": "Principles and Engineering Applications of AI",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-474",
+            "title": "Embedded Control Systems",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-500",
+            "title": "ECE Design Experience",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-578",
+            "title": "Mechatronic Design",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-794",
+            "title": "Pattern Recognition Theory (Deep Learning & Pattern Recognition for Computer Vision)",
+            "cite": "CMU-E1"
+          },
+          {
+            "code": "18-853",
+            "title": "Introduction to XR Systems",
+            "cite": "CMU-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi"
+        ],
+        "capstone": "Any 18-5xx capstone, e.g. 18-500 ECE Design Experience, which must span at least two ECE areas and ends in a final presentation, written report and public demo (CMU-E1). Students in the Robotics Additional Major additionally take 16-450 Systems Engineering (senior fall) and 16-474 Robotics Capstone (senior spring) (CMU-E3)."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "You apply to the College of Engineering and are admitted directly to the ECE department/major (or as CoE undecided); the School of Computer Science is an entirely separate admit unit.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "CMU's first-party admission and SCS undergraduate pages publish no current per-college or per-major admit rates (CMU-E2, CMU-E4), so no published comparison of the CoE/ECE door with the SCS door exists. What is documented is that they are separate doors: 'Students applying to the College of Engineering apply to and are admitted directly to a department/major unless choosing undecided' (CMU-E2).",
+        "internal_gate": "Graduation QPA of 2.0 required after freshman year; ECE department courses require a minimum 2.0 QPA and prerequisite courses require a grade of C or better (18-202 specifically C or better) (CMU-E1). Robotics Additional Major requires a 3.0 GPA to apply and a 3.0 QPA in the additional-major curriculum to graduate (CMU-E3).",
+        "gate_severity": "mild",
+        "rank": 0
+      },
+      "vs_cs": "ECE at CMU is a genuinely different door from SCS: ECE is admitted through the College of Engineering while CS/AI/Robotics majors are admitted through SCS, and ECE's own course set already covers controls (18-370, 18-474), autonomous robotics (18-442), mechatronics (18-578), vision (18-395, 18-794) and ML for engineers (18-461/18-462). Crucially, an ECE student can still reach the Robotics Additional Major, which is 'Open to students across all majors and colleges at Carnegie Mellon University' at a 3.0 GPA, and the Machine Learning Minor, which is explicitly reserved for undergraduates 'outside the School of Computer Science' — so ECE, not CS, is the major that unlocks the ML minor. The cost is a hardware-heavy core (circuits, devices, 18-220/18-240/18-290) and the fact that CMU publishes no admit-rate evidence that the CoE door is actually easier.",
+      "notable": "Integrated Master's/Bachelor's (IMB) into the Professional M.S. in ECE is guaranteed at 270+ units with a 3.00 QPA, with no separate application and no GRE (CMU-E1). Robotics Additional Major lets non-CS majors double count up to six courses (CS majors only five) (CMU-E3). The Machine Learning Minor is open to any major outside SCS (CMU-E5)."
+    }
   },
   {
     "slug": "cornell",
@@ -1550,7 +1677,88 @@
         "url": "https://www.duffield.cornell.edu/impact-areas/robotics-and-autonomous-systems/"
       }
     },
-    "best_fit_reason_original": "A required AI core course, a documented AI vector and AI minor, and two funded research programs that admit students before they even affiliate — with CS 4701 and CUAUV-class project teams to build in [COR-S5][COR-S19][COR-S24][COR-S27][COR-S33]"
+    "best_fit_reason_original": "A required AI core course, a documented AI vector and AI minor, and two funded research programs that admit students before they even affiliate — with CS 4701 and CUAUV-class project teams to build in [COR-S5][COR-S19][COR-S24][COR-S27][COR-S33]",
+    "ece": {
+      "department_name": "School of Electrical and Computer Engineering (Cornell Engineering)",
+      "structure": "combined_ece",
+      "degrees": [
+        "B.S. Electrical and Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Electrical and Computer Engineering program is accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://courses.cornell.edu/programs/electrical-computer-engineering-bs/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "ECE concentrations include Robotics and Power systems and control (advising concentrations, not formal tracks)",
+        "course_count": 8,
+        "courses": [
+          {
+            "code": "ECE 4160",
+            "title": "Fast Robots",
+            "cite": "CORNELL-E4"
+          },
+          {
+            "code": "ECE 3400",
+            "title": "Intelligent Physical Systems",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 3250",
+            "title": "Signals and Systems",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 3100",
+            "title": "Introduction to Probability and Inference for Random Signals and Systems",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 3140",
+            "title": "Embedded Systems",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 2720",
+            "title": "Data Science for Engineers",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 4760",
+            "title": "Digital Systems Design Using Microcontrollers",
+            "cite": "CORNELL-E1"
+          },
+          {
+            "code": "ECE 4750",
+            "title": "Computer Architecture",
+            "cite": "CORNELL-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "Culminating Design Experience (CDE): one of ECE 4530 Analog Integrated Circuit Design, ECE 4740 Introduction to Digital (VLSI) Design, ECE 4760 Digital Systems Design Using Microcontrollers, ECE 4670 Digital Communication System Design, or ECE 4750 Computer Architecture (CORNELL-E1)."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "You apply to Cornell Engineering as your college, not to ECE: 'Cornell University only allows applicants to apply to one of the seven undergraduate colleges and schools' and 'No, you do not apply to a particular major; you apply to the college' — you may indicate an intended major, and 'You do not officially select your major until the second semester of your sophomore year' (CORNELL-E2, CORNELL-E3).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Cornell publishes admissions decisions at the college level, not by major, and no first-party per-major admit rates for ECE or CS were found. The structural point is that you apply to a college rather than a major, and ECE and Engineering-side CS sit in the same college, so the college choice matters more than the major label (CORNELL-E2).",
+        "internal_gate": "ECE affiliation requires at least a C+ in MATH 2930 or 2940, in PHYS 2213, and in one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300, plus a GPA of at least 2.5 across the listed math, physics and ECE gateway courses (CORNELL-E1).",
+        "gate_severity": "mild",
+        "rank": 0
+      },
+      "vs_cs": "The decisive Cornell fact is that you apply to one of seven colleges and not to a major: Cornell Engineering is the single wrapper for both ECE and Engineering-side CS, so ECE is not a lower-selectivity backdoor but a different major chosen inside the same admitted cohort (major selection happens in the second semester of sophomore year). Once affiliated, ECE gives a hardware-and-signals core (circuits, digital logic, signals, embedded) with a required Culminating Design Experience and hands-on robotics through ECE 4160 Fast Robots, which focuses on 'systems level design and implementation of fast and dynamic autonomous robots' and has students 'design a fast autonomous car, explore dynamic behaviors, acting forces, sensors, and reactive control on an embedded processor'. The costs are a modest affiliation gate (C+ in gateway courses, 2.5 GPA) and the fact that ECE has no formal robotics track — robotics is a listed concentration area rather than a defined thread.",
+      "notable": "First-years arrive without an official major inside Cornell Engineering and must be 'accepted into and affiliate with a specific Engineering major' (CORNELL-E2). ECE 4160 Fast Robots is cross-listed with ECE 5160, MAE 4190 and MAE 5190, so the robotics course is shared with mechanical engineering (CORNELL-E4). The College of Engineering is now named the Cornell David A. Duffield College of Engineering (CORNELL-E2)."
+    }
   },
   {
     "slug": "duke",
@@ -2056,7 +2264,108 @@
         "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/"
       }
     },
-    "best_fit_reason_original": "15 minutes from home, direct-admit into CS with a transcript-designated AI/ML concentration (required for all CS students now), 100% of demonstrated need met, and Robertson Scholarship offering full-ride across both Duke and UNC."
+    "best_fit_reason_original": "15 minutes from home, direct-admit into CS with a transcript-designated AI/ML concentration (required for all CS students now), 100% of demonstrated need met, and Robertson Scholarship offering full-ride across both Duke and UNC.",
+    "ece": {
+      "department_name": "Electrical & Computer Engineering Department, Pratt School of Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Engineering (BSE) in Electrical and Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The electrical and computer engineering (ECE) program is fully accredited by the Engineering Commission of ABET",
+        "url": "https://undergraduate.bulletins.duke.edu/pages/XxAyh86HqynixoDfGMur",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Machine Learning (ECE undergraduate concentration; minimum five courses)",
+        "course_count": 12,
+        "courses": [
+          {
+            "code": "ECE 383",
+            "title": "Introduction to Robotics and Automation",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 495.08",
+            "title": "Introduction to Robotics",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 382L",
+            "title": "Linear Control Systems",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 381",
+            "title": "Fundamentals of Digital Signal Processing",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 480",
+            "title": "Applied Probability for Statistical Learning",
+            "cite": "DUKE-E2"
+          },
+          {
+            "code": "ECE 580",
+            "title": "Introduction to Machine Learning",
+            "cite": "DUKE-E2"
+          },
+          {
+            "code": "ECE 588",
+            "title": "Image and Video Processing",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 661",
+            "title": "Computer Engineering Machine Learning and Deep Neural Networks",
+            "cite": "DUKE-E2"
+          },
+          {
+            "code": "ECE 685D",
+            "title": "Introduction to Deep Learning",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 459",
+            "title": "Introduction to Embedded Systems",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ECE 567",
+            "title": "Cyberphysical System Design",
+            "cite": "DUKE-E3"
+          },
+          {
+            "code": "ME 555 / ECE 590",
+            "title": "Robot Learning",
+            "cite": "DUKE-E2"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi"
+        ],
+        "capstone": "Culminating engineering design course in which student teams address a significant real-world problem; the BSE requires at least one design elective among the seven electives (DUKE-E1)"
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "You apply on the Common Application to either Trinity College of Arts & Sciences or the Pratt School of Engineering, and ECE exists only inside Pratt while Computer Science exists only inside Trinity, so the ECE-vs-CS decision is made as a college choice at application time.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Duke's Class of 2029 profile publishes only a single university-wide funnel (58,712 applications, 5.2% overall, 12.6% Early Decision, 4.2% Regular Decision) with no Trinity-versus-Pratt breakdown, so no per-college or per-major comparison is published (DUKE-E6).",
+        "internal_gate": "None published for declaring ECE once enrolled in Pratt; the ECE BSE requires at least 34 units including six foundation courses (DUKE-E1). Changing between Trinity and Pratt after enrollment is not addressed on the apply page (DUKE-E4).",
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "At Duke, ECE is the only door to robotics hardware: the BSE curriculum forces circuits, digital systems, signals and controls (ECE 110L/230L/250D/270DL/280L) and then lets you stack the ECE Machine Learning concentration on top, so you graduate able to build the sensing-and-actuation stack as well as the model (DUKE-E1, DUKE-E2). CS in Trinity gives more algorithms, theory and software breadth and a lighter math/lab load, but no accredited engineering degree and no required hardware sequence. The real cost is structural, not curricular: choosing ECE means applying to Pratt rather than Trinity on the application itself, and Duke publishes no evidence that either college is the easier admit (DUKE-E4, DUKE-E6).",
+      "notable": "Duke offers a university-wide Minor in Machine Learning and Artificial Intelligence administered by ECE (DUKE-E8), an ECE minor, and a Robotics and Automation Certificate that pairs ECE 383 with ME 555 Robot Studio plus machine-learning, controls/dynamics and ethics courses (DUKE-E7). Pratt awards BSE degrees in Biomedical, Civil, Environmental, Mechanical and Electrical & Computer engineering only (DUKE-E5)."
+    }
   },
   {
     "slug": "florida",
@@ -2579,7 +2888,79 @@
         "url": "https://ifas.ufl.edu/artificial-intelligence/meet-the-experts/"
       }
     },
-    "best_fit_reason_original": "Verified, documented pathways for an undergraduate to run real work on an NVIDIA DGX SuperPOD, plus 32 credits of student-directed electives and a stackable AI certificate"
+    "best_fit_reason_original": "Verified, documented pathways for an undergraduate to run real work on an NVIDIA DGX SuperPOD, plus 32 credits of student-directed electives and a stackable AI certificate",
+    "ece": {
+      "department_name": "Electrical and Computer Engineering Department, Herbert Wertheim College of Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Electrical Engineering",
+        "Bachelor of Science in Computer Engineering (joint with Computer and Information Science and Engineering)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Electrical Engineering BS Program is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the General Criteria and the Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "https://catalog.ufl.edu/UGRD/colleges-schools/UGENG/ELE_BSEE/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 6,
+        "courses": [
+          {
+            "code": "EEL 4657C",
+            "title": "Linear Control Systems",
+            "cite": "UF-E1"
+          },
+          {
+            "code": "EEE 4773",
+            "title": "Fundamentals of Machine Learning",
+            "cite": "UF-E1"
+          },
+          {
+            "code": "EEL 4750",
+            "title": "Foundations of Digital Signal Processing",
+            "cite": "UF-E1"
+          },
+          {
+            "code": "EEL 4744C",
+            "title": "Microprocessor Applications",
+            "cite": "UF-E1"
+          },
+          {
+            "code": "EEL 3701C",
+            "title": "Digital Logic and Computer Systems",
+            "cite": "UF-E3"
+          },
+          {
+            "code": "EEL 4712C",
+            "title": "Digital Design",
+            "cite": "UF-E3"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "EEL 3923C Electrical Engineering Design 1 and EEL 4924C Electrical Engineering Design 2 (or EGN 4952 Integrated Product and Process Design 2), with a required assessment of performance on a major design experience (UF-E1)"
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to UF as a whole through the Common Application under Early Decision (binding), Early Action or Regular Decision, and are admitted to the freshman class rather than to a major, then hold the ECE major by meeting critical-tracking requirements.",
+        "easier_than_cs": "same",
+        "easier_than_cs_basis": "UF publishes that 'Freshmen applicants are admitted as members of the freshman class and not to a specific major or program, so major choices do not increase nor decrease the opportunity of being admitted' (UF-E5), so at the admission stage there is no ECE-versus-CS difference. No per-major admit rates are published.",
+        "internal_gate": "Critical tracking: minimum grade of C in each critical-tracking course and a minimum 2.5 critical-tracking GPA, tracked semester by semester (UF-E3 for Computer Engineering; the BSEE catalog carries the same critical-tracking structure, UF-E1).",
+        "gate_severity": "mild",
+        "rank": 2
+      },
+      "vs_cs": "UF ECE gives an out-of-state applicant the hardware half of robotics inside one department: the BSEE breadth list already contains Linear Control Systems, Microprocessor Applications, Digital Signal Processing and Fundamentals of Machine Learning, and 18 credits of technical electives are open to 'any 3000 level or above course in ECE' (UF-E1). Computer Engineering is run jointly by ECE and CISE, so you can lean hardware or software while still holding an EAC-accredited degree (UF-E3). The cost is the absence of a named robotics or AI concentration inside ECE, so the robotics identity has to be assembled from electives; the admission cost is that UF's Early Decision option is binding, which is a heavy commitment for an out-of-state applicant (UF-E4).",
+      "notable": "Computer Engineering at UF is delivered jointly by the ECE and CISE departments and is separately EAC-accredited, so the same degree name can be pursued from either department (UF-E3). UF's application offers three timelines and Early Decision is explicitly 'a binding application option' (UF-E4). No named robotics concentration was found on the ECE undergraduate page (UF-E2)."
+    }
   },
   {
     "slug": "georgia-tech",
@@ -3098,7 +3479,100 @@
         "url": "https://ae.gatech.edu/browser-directory"
       }
     },
-    "best_fit_reason_original": "A student who wants to build AI systems with real research and startup infrastructure gets an open, transcript-recognized research path and a required AI course sequence plus a research-eligible capstone [GT-S11][GT-S3][GT-S2]"
+    "best_fit_reason_original": "A student who wants to build AI systems with real research and startup infrastructure gets an open, transcript-recognized research path and a required AI course sequence plus a research-eligible capstone [GT-S11][GT-S3][GT-S2]",
+    "ece": {
+      "department_name": "School of Electrical and Computer Engineering (College of Engineering)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "B.S. Electrical Engineering (GT-E2)",
+        "B.S. Computer Engineering (GT-E1)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Computer Engineering (B.S.) program is accredited by the Engineering Accreditation Commission of ABET, under the General Criteria and the Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "https://catalog.gatech.edu/colleges/coe/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "ECE Threads — Robotics (EE) / Robotics & Autonomous Systems (CmpE); BS EE selects any two of eight threads",
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "ECE 3550",
+            "title": "Feedback Control Systems",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4550",
+            "title": "Control System Design",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4560",
+            "title": "Introduction to Automation and Robotics",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4570",
+            "title": "System Theory for Communication and Control",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4575",
+            "title": "Numerical Methods for Optimization and Optimal Control",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4580",
+            "title": "Computational Computer Vision",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4252",
+            "title": "Fundamentals of Machine Learning (FunML)",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 4180",
+            "title": "Embedded Systems Design",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 6562",
+            "title": "Autonomous Control of Robotic Systems",
+            "cite": "GT-E6"
+          },
+          {
+            "code": "ECE 6563",
+            "title": "Networked Control and Multiagent Systems",
+            "cite": "GT-E6"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "ECE 4013/4014 ECE Culminating Design I and II, with alternatives ECE 4015 (ECE-only single semester), ECE 4723 Interdisciplinary Capstone Design and ECE 4853 Create-X Capstone; the BS EE catalog describes the degree as 'culminating in a common major design experience' (GT-E6, GT-E2)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "'When you apply to Georgia Tech as a first-year applicant, you do not apply to a specific major or college. However, on your Common Application, you are asked to select an intended (primary) major' — and 'consideration of your major is an important part of our application review process' (GT-E3).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Georgia Tech does not publish admit rates by major or college (the first-year class profile page returned no such figures), so no numeric ECE-vs-CS comparison exists. The documented asymmetry is post-admission: 'Due to high-demand, first-year students who are admitted Summer 2024 and beyond will not have the option to confirm their major to the BS in Computer Science' (GT-E4), and the registrar states such students 'will not have the option to change their major to the BS in Computer Science and must plan accordingly' (GT-E5).",
+        "internal_gate": "No published GPA or capacity gate to confirm an ECE major; the restriction runs the other way — CS is a 'space-restricted program' now accepting change-of-major applications only 'on a limited basis', and 'Students should not assume they will be able to change their major to Computer Science' (GT-E7).",
+        "gate_severity": "none",
+        "rank": 0
+      },
+      "vs_cs": "At Georgia Tech ECE and CS sit in different colleges (College of Engineering vs College of Computing) and, because major confirmation into the BS CS is closed to students admitted Summer 2024 and later, ECE is the door that stays open — you can confirm or change into EE or Computer Engineering, but not into CS. The ECE thread system is unusually well matched to this applicant: BS EE picks any two of eight threads including Robotics, and BS CmpE picks two of nine including Robotics & Autonomous Systems, backed by ECE 3550/4550 controls, ECE 4560 robotics, ECE 4580 vision, ECE 4252 machine learning and ECE 4180 embedded systems. The cost is that GT publishes no admit-rate evidence, and intended major is explicitly weighed in review, so listing ECE is a real commitment rather than a backdoor.",
+      "notable": "Georgia Tech CS is CAC-accredited while EE and CmpE are EAC-accredited under the electrical/computer program criteria (GT-E1). ECE also owns robotics-specific graduate courses (ECE 7785 Introduction to Robotics Research, ECE 8741 Robotics Capstone Project) that undergraduates can approach through the BS/MS (GT-E6)."
+    }
   },
   {
     "slug": "illinois-tech",
@@ -3535,6 +4009,74 @@
         "lab_or_course": "Robotics Lab@IIT: XPRIZE Rainforest finalist field-robotics team and NASA/ONR-funded climbing/perching adhesion robots",
         "url": "https://robots.iit.edu/research.html"
       }
+    },
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS Electrical Engineering",
+        "BS Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Currently, the aerospace, architectural, biomedical, chemical, civil, computer, electrical, materials science and engineering, and mechanical engineering undergraduate programs are accredited by the Engineering Accreditation Commission of ABET, www.abet.org.",
+        "url": "https://www.iit.edu/engineering/about/abet-accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "ECE undergraduate track 'Artificial Intelligence, Robotics and Automation' (other tracks include 'Power Electronics and Control Systems' and 'Signal / Image Processing and Machine Learning') (ILLINOIS-TECH-E5)",
+        "course_count": 5,
+        "courses": [
+          {
+            "code": "ECE 438",
+            "title": "Control Systems",
+            "cite": "ILLINOIS-TECH-E5"
+          },
+          {
+            "code": "ECE 449",
+            "title": "Object-Oriented Programming and Machine Learning",
+            "cite": "ILLINOIS-TECH-E5"
+          },
+          {
+            "code": "ECE 497",
+            "title": "Special Problems on Robotics and Automation",
+            "cite": "ILLINOIS-TECH-E5"
+          },
+          {
+            "code": "ECE 441",
+            "title": "Smart and Connected Embedded Systems",
+            "cite": "ILLINOIS-TECH-E2"
+          },
+          {
+            "code": "ECE 429",
+            "title": "Introduction to VLSI Design",
+            "cite": "ILLINOIS-TECH-E2"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "ECE 441 Smart and Connected Embedded Systems serves as the major design experience in the EE and CpE curricula; the AI/Robotics track also routes students into ECE 497 Special Problems on Robotics and Automation and, for qualified students, graduate-level ECE 565 Computer Vision and Image Processing and ECE 566 Machine and Deep Learning (ILLINOIS-TECH-E2, ILLINOIS-TECH-E5)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Applicants select first- and second-choice degree programs and can be admitted directly to one of them - 'Direct admission into your first- or second-choice degree program' - or admitted to the university and routed into the Discover+ undecided program to reapply to the preferred major in year two (ILLINOIS-TECH-E6).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Illinois Tech says 'Your choice of major will impact this process as well, because each major has its own criteria for admission' and that math/science performance is the most common reason a first-choice major is denied ('Illinois Tech typically requires a B or higher in math and science courses'), but it publishes no per-major admit rates comparing ECE with computer science (ILLINOIS-TECH-E2, ILLINOIS-TECH-E6).",
+        "internal_gate": "Students not admitted to a first- or second-choice engineering/computing major may enter Discover+ and be reconsidered by submitting an updated transcript showing a B or higher in pre-calculus, calculus or physics, scoring 80+ on the ALEKS math placement exam, earning college credit for MATH 151, or completing MATH 151 in the first year (ILLINOIS-TECH-E6).",
+        "gate_severity": "mild",
+        "rank": 0
+      },
+      "vs_cs": "Illinois Tech admits by major with a second-choice fallback, so ECE functions as a genuine alternative door: an applicant whose first choice is computer science can name EE or CpE second and still land in an EAC-accredited engineering program with a formal 'Artificial Intelligence, Robotics and Automation' track (ILLINOIS-TECH-E6, ILLINOIS-TECH-E5, ILLINOIS-TECH-E4). What ECE adds over CS is control systems (ECE 438), embedded and IoT design (ECE 441), VLSI (ECE 429) and access to graduate machine-vision and deep-learning courses from a hardware-first foundation; what it costs is CS-side breadth in software engineering and theory. Note the AI/Robotics track evidence comes from an ECE tracks document published on iit.edu rather than the live catalog, so verify current track names with the department.",
+      "notable": "ECE sits in the School of Engineering, Applied Science, and Health and advertises 'ABET-accredited undergraduate degrees' with customizable tracks in wireless communications, DSP, IoT, renewable energy and VLSI; both EE and CpE program pages state that 'each major has its own criteria for admission'; first-year admission is test-optional with no application fee (ILLINOIS-TECH-E1, ILLINOIS-TECH-E2, ILLINOIS-TECH-E8)."
     }
   },
   {
@@ -4022,6 +4564,99 @@
         "lab_or_course": "SMARTS Lab (Kazanzides — surgery and space robotics), DSCL (Whitcomb — underwater Nereus/NUI, space telerobotics); LCSR thrust 'Robots in Extreme Environments'",
         "url": "https://lcsr.jhu.edu/lab-links/"
       }
+    },
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering (Whiting School of Engineering)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "B.S. Electrical Engineering",
+        "B.S. Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The BS program in Electrical Engineering is accredited by the Engineering Accreditation Commission of ABET under the General Criteria and the Program Criteria for Electrical, Computer Communications, Telecommunication(s) and similarly Named Programs.",
+        "url": "https://engineering.jhu.edu/about/accreditation/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No formal ECE robotics track; robotics is reached through the LCSR-managed Robotics Minor plus ECE control/ML courses",
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "EN.520.241",
+            "title": "Introduction to Mechatronics: Sensing, Processing, Learning and Actuation",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.353",
+            "title": "Control Systems",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.454",
+            "title": "Control Systems Design",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.465",
+            "title": "Machine Perception",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.438",
+            "title": "Deep Learning",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.440",
+            "title": "Machine Intelligence on Embedded Systems",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.412",
+            "title": "Machine Learning for Signal Processing",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.488",
+            "title": "Learning-enabled Multi-agent Systems",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.468",
+            "title": "Electronics Design Lab",
+            "cite": "JHU-E1"
+          },
+          {
+            "code": "EN.520.621",
+            "title": "Introduction To Nonlinear Systems",
+            "cite": "JHU-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "EN.520.498 and EN.520.499 Capstone Design Project I and II (3 credits each), team-based system engineering evaluated against design criteria, with interdisciplinary participation from BME, ME and CS majors strongly encouraged; ECE also runs multi-semester Ideation and Design Labs (EN.520.151/251/363/463) and EN.520.468 Electronics Design Lab, whose projects may involve 'sensors/actuators, mixed-signal electronics, embedded microcomputers, algorithms, and robotics systems design' (JHU-E1)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "There is no ECE admission door: 'When you applied to Hopkins, you applied to the full university, and not to a specific school or major (except in the case of biomedical engineering)' and 'You are not bound to the major you listed on your application' (JHU-E2).",
+        "easier_than_cs": "same",
+        "easier_than_cs_basis": "Identical door by policy. JHU admits university-wide and Biomedical Engineering is the only major with its own admission decision, so ECE and CS applicants receive the same admission review and either can declare after matriculating (JHU-E2).",
+        "internal_gate": "No published GPA or capacity gate to declare Electrical Engineering or Computer Engineering; students may choose any major across Krieger and Whiting after matriculation (JHU-E2). The LCSR Robotics Minor requires grades of C- or higher, a minimum of 6 courses and 18 credits, with at least 6 credits outside the primary major department (JHU-E3).",
+        "gate_severity": "none",
+        "rank": 2
+      },
+      "vs_cs": "Johns Hopkins is the batch's cleanest 'no separate door' case in the applicant's favor: admission is university-wide with BME as the sole direct-admit exception, so ECE is neither easier nor harder than CS — you get in and then choose. That makes the decision purely about content, and ECE is strong here: EN.520.353/454 control systems, EN.520.241 mechatronics (teams design, build and demonstrate a robotic system), EN.520.465 Machine Perception, EN.520.438 Deep Learning, plus a two-semester capstone. The multiplier is the Laboratory for Computational Sensing and Robotics: its Robotics Minor is 'not owned by any one department' and 'Any student from any department within the university can work toward the minor', so an ECE major can add a transcript-recognized robotics credential built on kinematics/dynamics, systems-and-control and computation-and-sensing.",
+      "notable": "Whiting's accreditation page lists Electrical Engineering and Computer Engineering as separately EAC-accredited BS programs, while Computer Science is accredited by the Computing Accreditation Commission (JHU-E4). The robotics minor requires at least 6 of the 18 credits outside the student's primary major department, so it forces ECE students into robotics coursework beyond their home department (JHU-E3). EN.620.745 Seminar in Computational Sensing and Robotics is cross-listed into the ECE catalog (JHU-E1)."
     }
   },
   {
@@ -4503,7 +5138,83 @@
       "eac_alternative_url": null,
       "notes": "Kettering's institutional accreditation page lists six EAC programs and does NOT include the general \"Engineering\" (B.S.E.) degree that hosts the Robotic Systems and Mechatronic Systems concentrations; Computer Science is CAC. Initial ABET accreditation of the BS in Engineering is in progress: \"This document is intended to fulfill the self-study requirement associated with ABET's 2025-2026 initial accreditation review of the Bachelor of Science in Engineering program at Kettering University.\" (https://digitalcommons.kettering.edu/abet_e/1/). ABET's institution search for Kettering lists Chemical, Computer, Computer Science, Electrical, Engineering Physics, Industrial and Mechanical Engineering — no plain \"Engineering\" entry (https://amspub.abet.org/aps/name-search?searchType=institution&keyword=Kettering). Catalog shows the Robotic Systems track inside a 161-total-credit-hour BSE (https://catalog.kettering.edu/undergrad/academic-programs/engineering/robotics/). The 52-credit figure in the brief could not be confirmed from the fetched catalog page (total shown: 161 credit hours)."
     },
-    "best_fit_reason_original": "Mandatory co-op model = 2.5 years work experience + $70,000 earned + $75,700 median start salary. 570+ employers including GM, Ford, Bosch. Uniquely valuable for a robotics-focused, career-oriented applicant."
+    "best_fit_reason_original": "Mandatory co-op model = 2.5 years work experience + $70,000 earned + $75,700 median start salary. 570+ employers including GM, Ford, Bosch. Uniquely valuable for a robotics-focused, career-oriented applicant.",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering (College of Engineering)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "BS Electrical Engineering",
+        "BS Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Kettering's electrical engineering program is accredited by the Engineering Accreditation Commission (EAC) of ABET, under the Commision's General Criteria and Program Criteria for Baccalaureate Level Progams, Electrical, Computer, Communications, Telecommunication(s), and Similarly Named Engineering Programs, http://www.abet.org.",
+        "url": "https://www.kettering.edu/academics-research/programs/electrical-engineering-bachelor",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No robotics concentration inside the EE or CE degrees; robotics is a separate BSE Engineering concentration - 'Bachelor of Science in Engineering - Robotic Systems' - which is itself built mostly from ECE-coded courses (KETTERING-E6)",
+        "course_count": 7,
+        "courses": [
+          {
+            "code": "EE-432",
+            "title": "Feedback Control Systems",
+            "cite": "KETTERING-E2"
+          },
+          {
+            "code": "EE-336",
+            "title": "Continuous-Time Signals and Systems",
+            "cite": "KETTERING-E2"
+          },
+          {
+            "code": "EE-338",
+            "title": "Discrete-Time Signals and Systems",
+            "cite": "KETTERING-E2"
+          },
+          {
+            "code": "CE-320",
+            "title": "Intro to Microcomputers",
+            "cite": "KETTERING-E2"
+          },
+          {
+            "code": "CE-426",
+            "title": "Real-Time Embedded Systems",
+            "cite": "KETTERING-E3"
+          },
+          {
+            "code": "CE-420",
+            "title": "Microcomputer Systems",
+            "cite": "KETTERING-E3"
+          },
+          {
+            "code": "CE-442",
+            "title": "Mobile Robotics",
+            "cite": "KETTERING-E6"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "EE-490 Senior EE Design Project / CE-490 Senior CE Design Project, plus the undergraduate thesis sequence CILE-400 and CILE-401 tied to the co-op employer; the Robotic Systems BSE instead ends in ENGR-490 Senior Multidisciplinary Engineering Design Project (KETTERING-E2, KETTERING-E3, KETTERING-E6)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to Kettering University with the Common Application or the Kettering Application (Early Action November 15, otherwise rolling 'Ongoing until spaces are filled'), reviewed on GPA, grade pattern and course selection - the pages fetched describe no separate ECE admitting unit.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Kettering states 'Kettering does not have a fixed formula for admission' and publishes required high-school coursework and priority dates, but no per-major admit rates (KETTERING-E7).",
+        "internal_gate": null,
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "Kettering's robotics offering is a BSE Engineering concentration in Robotic Systems that is not on the institution's EAC-accredited list (which names Chemical, Computer, Electrical, Engineering Physics, Industrial and Mechanical Engineering under EAC, and Computer Science under CAC), so choosing EE or CE buys you an accredited engineering credential while the Robotic Systems path does not (KETTERING-E4, KETTERING-E6). The robotics content you would want is already ECE-coded - CE-320 Microcomputers, CE-420 Microcomputer Systems, CE-426 Real-Time Embedded Systems, CE-442 Mobile Robotics and EE-432 Feedback Control Systems - and the department runs the REACH Lab for autonomous systems, robotics/haptics and human-machine interaction, which CS does not touch (KETTERING-E3, KETTERING-E2, KETTERING-E1). The cost is the mandatory co-op rhythm: 'Starting your first year, you'll spend three months in the classroom and three months at your Co-op,' students work 11-week paid co-op terms twice a year all four years, and average completion runs 4.5-5 years - so an ECE student trades a conventional four-year calendar for about 2.5 years of paid work experience and up to $70,000 earned over nine terms (KETTERING-E5).",
+      "notable": "Both EE and CE are separately EAC-accredited; ECE labs include High Voltage, the AMPED power-electronics lab and the REACH Lab (autonomous systems, robotics/haptics, human-machine interaction); the Robotic Systems BSE totals 161 credit hours and blends ECE, IME and MECH coursework; Kettering's engineering programs require an undergraduate thesis (KETTERING-E1, KETTERING-E2, KETTERING-E3, KETTERING-E6)."
+    }
   },
   {
     "slug": "maryland",
@@ -4996,6 +5707,90 @@
       "eac_alternative": "BS Mechanical Engineering (\"accredited by the Engineering Accreditation Commission of ABET ... Program Criteria for Mechanical and Similarly Named Engineering Programs\") — https://me.umd.edu/undergraduate/accreditation ; also BS Electrical Engineering and BS Computer Engineering per the Clark School catalog statement — https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/",
       "eac_alternative_url": null,
       "notes": "Explicitly excluded from the Clark School's ABET-accredited list. Offered only at the Universities at Shady Grove in Rockville, MD (the catalog notes the three Shady Grove-exclusive degrees: Biocomputational Engineering, Cyber-Physical Systems Engineering, Mechatronics Engineering), which also means College Park students must declare a pre-major to enter it."
+    },
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Electrical Engineering Major (BS)",
+        "Computer Engineering Major",
+        "Cyber-Physical Systems Engineering Major (BS)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Bachelor of Science degree in Electrical Engineering degree program at the University of Maryland is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named and Engineering Programs.",
+        "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/electrical-engineering-major/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 8,
+        "courses": [
+          {
+            "code": "ENEE460",
+            "title": "Control Systems",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE461",
+            "title": "Control Systems Laboratory",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE463",
+            "title": "Digital Control Systems",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE469",
+            "title": "Topics in Controls",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE467",
+            "title": "Robotics Project Laboratory",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE436",
+            "title": "Foundations of Machine Learning",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE464",
+            "title": "Introduction to Optimization",
+            "cite": "UMD-E5"
+          },
+          {
+            "code": "ENEE408",
+            "title": "Capstone Design Project",
+            "cite": "UMD-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "ENEE408 Capstone Design Project. The BSEE requires 22 credits of EE technical electives distributed across Category A Advanced Theory and Applications (min 3 credits), Category B Advanced Laboratory (min 2 credits) and Category C Capstone Design (min 3 credits); ENEE499 Senior Projects can satisfy Category A or B but cannot count as Category C. The Cyber-Physical Systems Engineering major has its own ENEB408A/ENEB408B Capstone Design I and II."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Two steps: you apply to and are admitted directly to the A. James Clark School of Engineering, which is itself a Limited Enrollment Program, and then you must clear the Clark School gateway review at 45 credits to continue in an engineering major such as ECE — 'All students accepted directly as freshman into the Clark School of Engineering must complete a series of gateway courses and a review at 45 credits.'",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Maryland runs ECE and CS under two different Limited Enrollment Programs with different severities, and the published requirements differ sharply. The Clark School engineering LEP gateway for newly admitted freshmen requires, by the semester they reach their 45th UMD credit: ENGL 101; ENES 100 (C-); MATH 141 (C- or AP); PHYS 161 (C- or AP); CHEM 135/271/134 (C- or AP); one Distributive Studies Gen-Ed; and a minimum cumulative GPA of 2.00, with only one repeat of any single course allowed. Computer Science is a separate LEP whose published gateway standard is materially higher — the CS minor gateway effective spring 2025 requires CMSC131/133/141 at B-, CMSC132/142 at B-, MATH140 at B- and a 3.0 UMD GPA. A 2.00 continuation GPA for engineering versus B- course grades and a 3.0 GPA for the CS side is the published gap.",
+        "internal_gate": "Clark School LEP gateway review at 45 credits (courses and 2.00 cumulative GPA above, one repeat maximum per course). Beyond that, ECE imposes a course-level control: 'Departmental permission is required in order for students to register and for all courses in the major.' The BSEE also requires a grade of C- or higher in all engineering, mathematics and science courses and their prerequisites. No separate ECE-specific admission gate beyond the Clark School LEP was found on the pages fetched.",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "At Maryland the whole Clark School is one Limited Enrollment Program, so ECE inherits an engineering-wide gateway (2.00 cumulative GPA plus five specified courses at C- by 45 credits) rather than a department-specific competition, while Computer Science is a separate and stiffer LEP whose published gateway standards run to B- course grades and a 3.0 GPA. ECE gives you a full controls stack (ENEE460/461/463/469), a dedicated ENEE467 Robotics Project Laboratory, ENEE436 Foundations of Machine Learning and ENEE408 Capstone Design — arguably a more complete robotics path than CS at this school. The cost is the absence of a named robotics concentration in the BSEE and the department's requirement that you get departmental permission to register for major courses.",
+      "notable": "Maryland ECE offers a distinct Cyber-Physical Systems Engineering BS, separately EAC-accredited, whose junior/senior sequence includes ENEB346 Linear Algebra for Machine Learning Applications and ENEB408A/B Capstone Design I/II — this is effectively a purpose-built embedded/autonomy degree and is unusual among the schools in this batch. ECE also offers a Quantum Science and Engineering minor and an ECE Honors Program (honors students may apply up to 6 ENEE499/499L credits versus 5 for others)."
     }
   },
   {
@@ -5613,6 +6408,109 @@
       "eac_alternative": "B.S.E. in Mechanical Engineering, B.S.E. in Electrical Engineering, B.S.E. in Computer Engineering (all marked EAC in the College of Engineering bulletin) — https://bulletin.engin.umich.edu/ug-ed/degrees/",
       "eac_alternative_url": null,
       "notes": "The College of Engineering degree-options table marks the Robotics B.S.E. accreditation status as \"No\" while ME/EE/CpE are marked \"EAC\". A College of Engineering Curriculum Committee minute confirms: \"Is Robotics is ABET accredited? i. Not currently, but there is departmental discussion of going for accreditation.\" (https://cc.engin.umich.edu/wp-content/uploads/sites/547/2026/01/1.27.2026-CCC-Minutes.pdf). The Robotics Department's undergraduate major page carries no ABET statement (https://robotics.umich.edu/academics/undergraduate/)."
+    },
+    "ece": {
+      "department_name": "Department of Electrical Engineering and Computer Science (EECS) — ECE Division",
+      "structure": "eecs_combined_with_cs",
+      "degrees": [
+        "B.S.E. Electrical Engineering",
+        "B.S.E. Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Electrical Engineering (B.S.E.) program is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the General Criteria and the Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and similarly named engineering programs.",
+        "url": "https://ece.engin.umich.edu/academics/undergraduate/majors-minors/electrical-engineering-major/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "EE paths of study, including Robotics, Control Systems, Embedded Systems, and Signal & Image Processing (11 optional paths)",
+        "course_count": 12,
+        "courses": [
+          {
+            "code": "EECS 216",
+            "title": "Introduction to Signals and Systems",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 351",
+            "title": "Introduction to Digital Signal Processing",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 360",
+            "title": "Control Systems Analysis and Design",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 367",
+            "title": "Introduction to Autonomous Robotics (ROB 380)",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 442",
+            "title": "Computer Vision",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 445",
+            "title": "Introduction to Machine Learning",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 461",
+            "title": "Embedded Control Systems",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 464",
+            "title": "Hands-on Robotics",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 465",
+            "title": "Introduction to Algorithmic Robotics",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 467",
+            "title": "Autonomous Robotics Design Experience",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 473",
+            "title": "Advanced Embedded Systems",
+            "cite": "UMICH-E4"
+          },
+          {
+            "code": "EECS 568",
+            "title": "Mobile Robotics",
+            "cite": "UMICH-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "EECS 467 Autonomous Robotics Design Experience and EECS 452 Digital Signal Processing Design Laboratory serve as major design experiences within EE/CompE (UMICH-E4)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to the University of Michigan / College of Engineering, enter undeclared, and then declare: 'Undergraduate students apply to the University of Michigan for admission. Once admitted as a student and maintaining an appropriate academic record, you may declare a major in electrical engineering or computer engineering after talking with an advisor' (UMICH-E2).",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Published policy difference rather than admit rates: Michigan requires CS applicants to be selected into the major at the application stage — 'students who apply for admission into the College of LSA or the College of Engineering and are considering computer science as a major must now request selection into the major on the Common Application' (UMICH-E3) — while the CSE department states 'Students are not required to request advance selection for the computer engineering and data science major programs' (UMICH-E5). Per-major admit rates are not published.",
+        "internal_gate": "First-years enter the College of Engineering undeclared and are urged to declare by the start of their third term; declaring EE or Computer Engineering requires only 'maintaining an appropriate academic record' plus an advisor conversation, with no published GPA threshold or capacity cap (UMICH-E2).",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "Michigan is the batch's strongest example of ECE being a genuinely less-gated door: EE and Computer Engineering are declared after enrollment with no advance selection, whereas CS applicants must request selection into the major on the Common Application and can be admitted to Michigan without getting CS. The ECE division's own course set is unusually deep in robotics — EECS 367 Intro to Autonomous Robotics, 464 Hands-on Robotics, 465 Algorithmic Robotics, 467 Autonomous Robotics Design Experience, 568 Mobile Robotics, plus 360/461 controls and 442/445 vision and ML. The trade is that CS in Engineering is not ABET-accredited by EAC anyway, so choosing EE or CompE also buys you EAC accreditation that the CS B.S.E. does not carry.",
+      "notable": "EE and CS live in one EECS department split into an ECE Division and a CSE Division, so ECE students sit inside the same department as CS. The College of Engineering bulletin lists Computer Engineering and Electrical Engineering as EAC-accredited while the B.S.E. in Computer Science is not EAC-accredited (UMICH-E1). Computer Engineering and Data Science are the CSE-side programs that do not require advance selection (UMICH-E5)."
     }
   },
   {
@@ -6125,7 +7023,91 @@
       "eac_alternative_url": null,
       "notes": "125 credit hours; capstone sequence ECE 4987 Robotics Engineering Design I and ECE 4988 Robotics Engineering Design II, per the catalog. Campus-level accreditation page independently lists \"BSE in Robotics Engineering - Accredited by the Engineering Accreditation Commission of ABET\". Robotics-focused students at Dearborn do not need an alternative route, but ME/EE are also EAC."
     },
-    "best_fit_reason_original": "One of only ~6 US universities with a dedicated BSE in Robotics Engineering (est. 2014, 8 yrs before Ann Arbor's). DIRECT-admit at 3.0 HS GPA. Ford, GM, Stellantis rank #2/#3/#8 among employers."
+    "best_fit_reason_original": "One of only ~6 US universities with a dedicated BSE in Robotics Engineering (est. 2014, 8 yrs before Ann Arbor's). DIRECT-admit at 3.0 HS GPA. Ford, GM, Stellantis rank #2/#3/#8 among employers.",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering (College of Engineering and Computer Science)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "BSE Electrical Engineering",
+        "BSE Computer Engineering",
+        "Dual BSE in Electrical Engineering and Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The UM-Dearborn Bachelor of Science in engineering in electrical engineering program is accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://umdearborn.edu/academics/program/electrical-engineering-bse",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No named robotics concentration inside the EE degree; robotics courses appear as EE technical electives, and UM-Dearborn's separate BSE in Robotics Engineering is built almost entirely from ECE-coded courses (MICHIGAN-DEARBORN-E6, MICHIGAN-DEARBORN-E5)",
+        "course_count": 8,
+        "courses": [
+          {
+            "code": "ECE 460",
+            "title": "Automatic Control Systems",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 3641",
+            "title": "Robotic Manipulation",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 4641",
+            "title": "Mobile Robots",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 4881",
+            "title": "Introduction to Robot Vision",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 434",
+            "title": "Introduction to Machine Learning",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 237",
+            "title": "Energy Systems in Electric, Autonomous, and Robotic Vehicles",
+            "cite": "MICHIGAN-DEARBORN-E6"
+          },
+          {
+            "code": "ECE 3731",
+            "title": "Microprocessors and Embedded Systems",
+            "cite": "MICHIGAN-DEARBORN-E5"
+          },
+          {
+            "code": "ECE 479",
+            "title": "Artificial Intelligence",
+            "cite": "MICHIGAN-DEARBORN-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "EE includes ECE 4951 System Design and Microcontrollers in its curriculum; the Robotics Engineering BSE ends in ECE 4987/4988 Robotics Engineering Design I and II, both ECE-coded (MICHIGAN-DEARBORN-E6, MICHIGAN-DEARBORN-E5)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Unverified: the catalog's first-year admission section describes one selective university-level review ('The admission of all students is on a selective basis; admissions officials consider various factors') based on the secondary-school record, with no statement that applicants select a college or major, so the ECE-specific door cannot be confirmed from first-party pages fetched.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "UM-Dearborn's catalog admission page describes holistic, test-optional, space-available review with recommended coursework for engineering applicants but publishes no per-major admit rates (MICHIGAN-DEARBORN-E8).",
+        "internal_gate": "The 4+1 BSE/MSE accelerated option requires a 3.2 cumulative GPA (MICHIGAN-DEARBORN-E5).",
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "UM-Dearborn is the unusual case where the robotics degree itself is EAC-accredited - 'BSE in Robotics Engineering - Accredited by the Engineering Accreditation Commission of ABET' - so ECE is not needed to secure accreditation, and the 125-credit Robotics Engineering core is already ECE-coded (ECE 3641 Robotic Manipulation, ECE 4641 Mobile Robots, ECE 460 Automatic Control Systems, ECE 3731 Microprocessors and Embedded Systems, ECE 4987/4988 Robotics Engineering Design) (MICHIGAN-DEARBORN-E4, MICHIGAN-DEARBORN-E5). What ECE adds beyond the robotics BSE is breadth outside robots - power, communications, microelectronics and the option of a dual BSE in EE and CpE for 141 credits, only 16 more than one degree - while robotics courses remain available to EE students as technical electives (MICHIGAN-DEARBORN-E2, MICHIGAN-DEARBORN-E3, MICHIGAN-DEARBORN-E6). Versus CS, ECE and Robotics Engineering both give you controls, embedded hardware and robot vision that the CAC-accredited Computer and Information Science degree does not (MICHIGAN-DEARBORN-E4, MICHIGAN-DEARBORN-E6).",
+      "notable": "Dual BSE in electrical engineering plus computer engineering in 141 credits, 16 more than either degree alone; robotics-relevant ECE electives include ECE 434 Introduction to Machine Learning, ECE 4881 Introduction to Robot Vision, ECE 480 Introduction to DSP and ECE 473 Embedded System Design; 4+1 BSE/MSE option requires a 3.2 CGPA; the institution's accreditation page lists EAC accreditation for Bioengineering, Computer, Electrical, Industrial and Systems, Manufacturing, Mechanical, Robotics and Software Engineering, with Computer and Information Science under CAC (MICHIGAN-DEARBORN-E2, MICHIGAN-DEARBORN-E5, MICHIGAN-DEARBORN-E6, MICHIGAN-DEARBORN-E4)."
+    }
   },
   {
     "slug": "mit",
@@ -6633,6 +7615,102 @@
         "lab_or_course": "AeroAstro Space Systems Lab and ARCLab (Astrodynamics, Space Robotics and Controls); Marine Robotics Group AUVs",
         "url": "https://aeroastro.mit.edu/arclab/about/"
       }
+    },
+    "ece": {
+      "department_name": "Department of Electrical Engineering and Computer Science (EECS)",
+      "structure": "eecs_combined_with_cs",
+      "degrees": [
+        "6-3 Computer Science and Engineering",
+        "6-4 Artificial Intelligence and Decision Making",
+        "6-5 Electrical Engineering with Computing",
+        "6-7 Computer Science and Molecular Biology",
+        "6-9 Computation and Cognition",
+        "6-14 Computer Science, Economics, and Data Science"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Our Electrical Science and Engineering (Course 6-1) program is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electrical Engineering.",
+        "url": "https://www.eecs.mit.edu/academics/undergraduate-programs/program-objectives-and-accreditation/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "6-5 Electrical Engineering with Computing tracks (Systems Science; Embedded Systems; Computer Architecture)",
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "6.3000",
+            "title": "Signal Processing",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.3010",
+            "title": "Signals, Systems and Inference",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.3100",
+            "title": "Dynamical System Modeling and Control Design",
+            "cite": "MIT-E5"
+          },
+          {
+            "code": "6.3900",
+            "title": "Introduction to Machine Learning",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.4110",
+            "title": "Representation, Inference, and Reasoning in AI",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.4200[J]",
+            "title": "Robotics: Science and Systems",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.4210",
+            "title": "Robotic Manipulation",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.4300",
+            "title": "Introduction to Computer Vision",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.5931",
+            "title": "Hardware Architecture for Deep Learning",
+            "cite": "MIT-E4"
+          },
+          {
+            "code": "6.9000",
+            "title": "Engineering for Impact",
+            "cite": "MIT-E3"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi"
+        ],
+        "capstone": "6-5 requires a System Design Lab, 6.9000 Engineering for Impact, plus three System Design Center subjects (6.1910 Computation Structures, 6.2000 Electrical Circuits, 6.3000 Signal Processing) and a PLAB requirement (MIT-E3)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "There is no separate ECE admission door at MIT: 'Students apply to MIT for general admission and select a major at the end of the first year' (MIT-E2), and 'When you're admitted to MIT as a first-year student, you're admitted to the entire Institute' (MIT-E6).",
+        "easier_than_cs": "same",
+        "easier_than_cs_basis": "Identical door by policy. MIT admits Institute-wide and majors are declared after enrollment, so the EE-side major (6-5) and the CS-side majors (6-3, 6-4) are reached through exactly the same admission decision (MIT-E2, MIT-E6).",
+        "internal_gate": "No published GPA or capacity gate to declare 6-5, 6-3 or 6-4; majors are declared (most commonly in the spring of the first year) after Institute-wide admission (MIT-E2).",
+        "gate_severity": "none",
+        "rank": 2
+      },
+      "vs_cs": "MIT is the clearest case of ECE and CS being fused: Course 6 is one department covering both, so choosing the EE side buys no admissions advantage whatsoever. What it does change is curriculum — 6-5 Electrical Engineering with Computing is now the sole EE major (6-1 and 6-2 are retired for students entering Fall 2024 and later), and it forces circuits, computation structures and signal processing plus a hardware-flavored System Design Lab, while robotics and AI subjects (6.4200 Robotics: Science and Systems, 6.4210 Robotic Manipulation, 6.3900 Intro to ML) are shared with 6-3/6-4. Note the accreditation wrinkle: the published ABET statements cover the retired 6-1 and 6-2 programs, and no ABET statement is published for 6-5, 6-3 or 6-4.",
+      "notable": "6-1 and 6-2 are retired; MIT describes 6-5 as 'the sole new electrical engineering major', with the department organized into three sub-units — EE (6-5), CS (6-3) and AI+D (6-4) (MIT-E1). The 5-year MEng is open to 6-3, 6-4, 6-5, 6-7 and 6-14 (MIT-E1)."
     }
   },
   {
@@ -7191,7 +8269,121 @@
       "eac_alternative_url": null,
       "notes": "Joint program: coursework delivered on the UNC Asheville campus by NC State faculty. NC State's catalog independently names \"BS in engineering Mechatronics concentration joint program with UNC Asheville\" among the 17 programs \"accredited by the Engineering Accreditation Commission of ABET\". Already EAC, so no alternative route is needed."
     },
-    "best_fit_reason_original": "Required CSC 411 AI + required CSC 422 ML + AI in the first-year spring + required industry-sponsored senior design capstone, at in-state cost 25 minutes from home. Classification qualifier: (contingent on CODA)"
+    "best_fit_reason_original": "Required CSC 411 AI + required CSC 422 ML + AI in the first-year spring + required industry-sponsored senior design capstone, at in-state cost 25 minutes from home. Classification qualifier: (contingent on CODA)",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Electrical Engineering (BS)",
+        "Electrical Engineering (BS) — Controls and Robotics Concentration",
+        "Computer Engineering (BS)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The curriculum leads to a Bachelor of Science in Electrical Engineering and is nationally accredited by ABET: http://www.abet.org.",
+        "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Controls and Robotics Concentration (BS Electrical Engineering) — 24 hours, 12 prescribed plus 12 open",
+        "course_count": 14,
+        "courses": [
+          {
+            "code": "MA 305",
+            "title": "Introduction to Linear Algebra and Matrices (or MA 405) — required",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 308",
+            "title": "Elements of Control Systems — required",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 411",
+            "title": "Introduction to Machine Learning — required elective",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 425/525",
+            "title": "Neural Networks and Deep Learning — required elective",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 441",
+            "title": "Robot Motion Planning — required elective",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 455",
+            "title": "Industrial Robotic Systems — required elective",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 460/560",
+            "title": "Embedded System Architectures — required elective",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 436",
+            "title": "Digital Control Systems",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 516",
+            "title": "System Control Engineering",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 555",
+            "title": "Autonomous Robot Systems",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 558",
+            "title": "Digital Imaging Systems",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 306",
+            "title": "Introduction to Embedded Systems",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 484",
+            "title": "Senior Design I",
+            "cite": "NCSU-E1"
+          },
+          {
+            "code": "ECE 485",
+            "title": "Senior Design II",
+            "cite": "NCSU-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Two-semester senior design sequence ECE 484 Senior Design I followed by ECE 485 Senior Design II."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Two steps: all first-year engineering students are admitted into the Engineering First Year (EFY) program rather than to ECE, then they complete the CODA (Change of Degree Audit) requirements — earliest in December of the first year — to move into Electrical Engineering, EE REES or Computer Engineering. Students in Exploratory Studies or other majors can also take the CODA courses and apply.",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "NC State publishes CODA statistics per major. For 2024-25 overall, Electrical Engineering had 183 first-choice applicants and 176 enrolled, with an EFY middle-50% CODA GPA of 3.22-3.95 and cumulative GPA 3.24-4.01; Computer Engineering had 120 applicants and 112 enrolled with CODA GPA 3.29-3.92; Computer Science had 268 applicants and 259 enrolled with CODA GPA 3.43-3.97. Both EE and CpE therefore show lower matriculant GPA profiles than CS, with CS demand roughly 1.5x EE. Note the caveat: because CODA operates on a guarantee-plus-capacity model rather than a published admit rate, the applicant/enrolled ratios are not admit rates.",
+        "internal_gate": "CODA. The CODA GPA is computed from six Success courses (MA 141, MA 241, PY 205, PY 206, CH 101, CH 102), each of which must be passed with a C or better, and the CODA GPA must be at least 2.0; students must also complete ENG 101, E 101 and E 102 with C- or better and E 115 with an S. Requisites must be completed within four fall/spring semesters. 'Only students in the Engineering First Year program with a CODA GPA greater than or equal 2.0 and a continuation GPA of 2.0 will be guaranteed entrance into at least one of the remaining programs with available seats' — the guarantee is to a program with seats, not to your first choice. Practically, ECE gates course access too: 'Students must CODA into EE, EE REES, or CPE to take 300 courses.'",
+        "gate_severity": "strong",
+        "rank": 3
+      },
+      "vs_cs": "NC State ECE has the most explicit robotics offering in this batch: a published Controls and Robotics Concentration in the BSEE, 24 hours built on ECE 308 Elements of Control Systems plus a required-elective menu of ECE 441 Robot Motion Planning, ECE 455 Industrial Robotic Systems, ECE 411 Introduction to Machine Learning and ECE 425/525 Neural Networks and Deep Learning, capped by ECE 484/485 Senior Design. As a North Carolina resident the applicant gets in-state consideration at the admission step, but the real gate is CODA after enrollment, and the published statistics show EE matriculants clearing at a lower GPA band (3.22-3.95 CODA GPA) than CS matriculants (3.43-3.97) with far fewer applicants. The cost is a genuine one-year deferral of major identity: you cannot take 300-level ECE courses until you have CODA'd in.",
+      "notable": "The EE degree also lists an AI & Machine Learning concentration and a Digital Circuits concentration alongside Controls and Robotics. ECE offers an EE/CpE dual degree program reachable through CODA. The earliest an EFY student can CODA is December of the first year, which means a strong fall semester is the whole game."
+    }
   },
   {
     "slug": "northeastern",
@@ -7685,7 +8877,86 @@
       "verify_with": "Northeastern admissions",
       "undermines_robotics_score": false
     },
-    "best_fit_reason_original": "Paid research co-op inside Khoury AI labs plus PEAK novice funding gives a first- or second-year student real AI work, not just courses [NEU-S8] [NEU-S9]"
+    "best_fit_reason_original": "Paid research co-op inside Khoury AI labs plus PEAK novice funding gives a first- or second-year student real AI work, not just courses [NEU-S8] [NEU-S9]",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS Computer Engineering",
+        "BS Electrical Engineering",
+        "BS Computer Engineering with a concentration in Electrical and Computer Engineering (Boston)",
+        "BS Electrical Engineering with a concentration in Electrical and Computer Engineering",
+        "BS Computer Engineering and Computer Science (combined major)",
+        "BS Computer Engineering and Physics",
+        "BS Electrical Engineering and Physics",
+        "BS Electrical Engineering and Music (Music Technology concentration)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The BS in Computer Engineering is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s), and Similarly Named Engineering Programs.",
+        "url": "https://ece.northeastern.edu/academics/undergraduate-studies/ece-accreditation/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No named robotics concentration inside the BSEE/BSCmpE, but ECE lists Robotics as a curriculum/research area and offers a Minor in Robotics; the combined major route (Computer Engineering and Computer Science) is the school's signature robotics-relevant structure.",
+        "course_count": 6,
+        "courses": [
+          {
+            "code": "EECE 2160",
+            "title": "Embedded Design: Enabling Robotics",
+            "cite": "NEU-E3"
+          },
+          {
+            "code": "EECE 4791",
+            "title": "ECE Capstone 1",
+            "cite": "NEU-E3"
+          },
+          {
+            "code": "EECE 4792",
+            "title": "ECE Capstone 2",
+            "cite": "NEU-E3"
+          },
+          {
+            "code": "EECE 5550",
+            "title": "Mobile Robotics",
+            "cite": "NEU-E7"
+          },
+          {
+            "code": "EECE 5552",
+            "title": "Assistive Robotics",
+            "cite": "NEU-E7"
+          },
+          {
+            "code": "EECE 5554",
+            "title": "Robotics Sensing and Navigation",
+            "cite": "NEU-E7"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Two-semester senior design: 'A senior-year design (two-semester) course caps the education', realized as EECE 4791 ECE Capstone 1 and EECE 4792 ECE Capstone 2 in the combined Computer Engineering and Computer Science curriculum."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "Direct application to a named major or a combined major: you apply to the College of Engineering for BS Computer Engineering or BS Electrical Engineering, or to an intercollege combined major such as Computer Engineering and Computer Science (College of Engineering plus the Khoury College of Computer Sciences).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Northeastern does not publish per-major or per-college admit rates on the pages fetched, so no numeric ECE-versus-CS comparison is available. Structurally, the Computer Engineering and Computer Science combined major is an intercollege degree and is 'fully accredited as a Bachelor of Science in Computer Engineering and adds the computer science depth', which means it is admitted through the engineering side rather than as a standalone Khoury CS admit.",
+        "internal_gate": "No published GPA or capacity gate to declare or remain in ECE was found on the pages fetched. The combined-major BSCmpE requires 135 total semester hours.",
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "Northeastern's differentiator is not admissions math but the co-op engine: more than 90 percent of ECE undergraduates do co-op, typically two to three six-month placements, and ECE co-op employers include Amazon Robotics, iRobot, Analog Devices, Apple, Draper, MIT Lincoln Laboratory, Tesla and SpaceX, with the College running a dedicated Robotics Week featuring Amazon Robotics, Boston Dynamics, Shield AI, Symbotic and Piaggio Fast Forward. The combined Computer Engineering and Computer Science major is the strongest single answer to the ECE-versus-CS question here because it is one degree that is ABET-accredited as Computer Engineering while adding CS depth (CS 3000, CS 3650, CS 4530 alongside EECE 2160 Embedded Design: Enabling Robotics and the EECE 4791/4792 capstone). The cost is length and load: 135 semester hours plus co-op cycles push the degree toward five calendar years.",
+      "notable": "Intercollege combined majors pairing engineering with computer science (Computer Engineering and Computer Science) plus Computer Engineering and Physics, Electrical Engineering and Physics, and Electrical Engineering and Music. ECE offers a Minor in Robotics, an MS in Robotics, and a PlusOne accelerated master's pathway; graduate robotics courses EECE 5550 Mobile Robotics, EECE 5552 Assistive Robotics and EECE 5554 Robotics Sensing and Navigation are ECE-taught and reachable through PlusOne."
+    }
   },
   {
     "slug": "ohio-state",
@@ -8162,7 +9433,84 @@
         "url": "https://org.osu.edu/osu-uwrt/"
       }
     },
-    "best_fit_reason_original": "A student can build a de facto AI major from 17 free technical-elective hours of 5000-level AI courses, repeat CSE 5539 up to four times, double-count 9 of those credits into an MS, get a funded faculty-mentored sophomore research project regardless of GPA, and do it inside a campus where AI fluency is a graduation expectation"
+    "best_fit_reason_original": "A student can build a de facto AI major from 17 free technical-elective hours of 5000-level AI courses, repeat CSE 5539 up to four times, double-count 9 of those credits into an MS, get a funded faculty-mentored sophomore research project regardless of GPA, and do it inside a campus where AI fluency is a graduation expectation",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering, College of Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Electrical and Computer Engineering (BSECE), electrical engineering program",
+        "Bachelor of Science in Electrical and Computer Engineering (BSECE), computer engineering program"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Electrical Engineering, BSECE: Accredited by the Engineering Accreditation Commission of ABET, under the General Criteria and the Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "https://engineering.osu.edu/accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Control (one of seven ECE technical-elective academic domains; also Communications and Digital Signal Processing, Computers)",
+        "course_count": 7,
+        "courses": [
+          {
+            "code": "ECE 5463",
+            "title": "Introduction to Real Time Robotics Systems",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 3551",
+            "title": "Introduction to Feedback Control Systems",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 5307",
+            "title": "Introduction to Machine Learning for ECE",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 5466",
+            "title": "Embedded Computer Systems",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 5553",
+            "title": "Autonomy in Vehicles",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 5200",
+            "title": "Introduction to Digital Signal Processing",
+            "cite": "OSU-E4"
+          },
+          {
+            "code": "ECE 7866",
+            "title": "Computer Vision",
+            "cite": "OSU-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "ECE 3906 Capstone Design I followed by ECE 4905 Capstone Design II, with an honors variant ECE 4905H Design II with Honors Thesis Project (OSU-E4)"
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to Ohio State indicating a major; engineering students on the Columbus campus then move into ECE as a 'Space Available Program', which requires only good standing with a 2.0 GPA and no separate major application.",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Published entry-to-major policy differs: ECE is a Space Available Program open to engineering students in good standing with a 2.0 GPA or above 'without the need to submit an admission application', while Computer Science is a Limited Space Program that requires a major application and, per CSE's published mechanism, students 'who have a cumulative GPA of 3.2 or above and have completed the prerequisite courses are admitted to the major' (OSU-E5, OSU-E6). No per-major admit rates are published, so this is a policy-threshold difference rather than a published yield comparison.",
+        "internal_gate": "2.0 cumulative GPA and good standing in the College of Engineering, no application required (OSU-E5)",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "Ohio State ECE hands you the physical robot: 73 core credit hours plus 31 hours of ECE electives structured across seven domains, so you can concentrate in Control and still reach across to Computers and Communications/DSP (OSU-E3), with named courses in real-time robotics, feedback control, embedded systems, vehicle autonomy and machine learning for ECE (OSU-E4). CSE gives deeper software, algorithms and AI theory but is enrollment-limited behind a 3.2 GPA gate, whereas ECE admits any engineering student at 2.0 (OSU-E5, OSU-E6). The cost of ECE is a heavier prescribed core with less room for free electives and less software depth.",
+      "notable": "The Robotics and Autonomous Systems minor requires ECE/ME 5463, so ECE owns the gateway robotics course for the campus-wide minor. Computer engineering BSECE majors take 84 core credit hours plus 20 technical/directed elective hours, a heavier core than the EE program (OSU-E3)."
+    }
   },
   {
     "slug": "olin",
@@ -8686,7 +10034,78 @@
       "eac_alternative_url": null,
       "notes": "E:Robo is a concentration, not a separate accredited program; the awarded credential is the EAC-accredited BS in Engineering. Catalog: \"E:Robo is an interdisciplinary engineering concentration...\" and \"All paths to graduation with the Engineering degree provide for all outcomes required by the ABET General Criteria.\" (https://olin.smartcatalogiq.com/en/2025-26/catalog/programs-of-study-and-degree-requirements/academic-programs/engineering). All three Olin degrees are EAC."
     },
-    "best_fit_reason_original": "A project-from-day-one curriculum, a 9:1 ratio with no graduate students, funded self-designed projects, and a year-long sponsored capstone with sponsors like Amazon Robotics, Blue Origin and Microsoft Research [OLIN-S1][OLIN-S35][OLIN-S21][OLIN-S43]"
+    "best_fit_reason_original": "A project-from-day-one curriculum, a 9:1 ratio with no graduate students, funded self-designed projects, and a year-long sponsored capstone with sponsors like Amazon Robotics, Blue Origin and Microsoft Research [OLIN-S1][OLIN-S35][OLIN-S21][OLIN-S43]",
+    "ece": {
+      "department_name": "Olin College of Engineering - Electrical and Computer Engineering (ECE) major (Olin has no departments; majors are college-wide programs)",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Electrical and Computer Engineering",
+        "Bachelor of Science in Engineering (with concentrations, incl. Engineering: Robotics / E:Robo)",
+        "Bachelor of Science in Mechanical Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Bachelor of Science in Electrical and Computer Engineering degree program is accredited by the Engineering Accreditation Commission of ABET, www.abet.org, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s), and Similarly Named Engineering Programs.",
+        "url": "https://www.olin.edu/about/accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No robotics concentration inside ECE; robotics is a concentration of the separate Engineering degree - 'Engineering Robotics (E:ROBO)... a multi-disciplinary concentration focusing on software, sensing, mechanics, controls and integration aspects of robotics' (OLIN-E1)",
+        "course_count": 6,
+        "courses": [
+          {
+            "code": "ENGR2410",
+            "title": "Engineering Systems Analysis: Signals",
+            "cite": "OLIN-E3"
+          },
+          {
+            "code": "ENGR3410",
+            "title": "Computer Architecture",
+            "cite": "OLIN-E3"
+          },
+          {
+            "code": "ENGR3370",
+            "title": "Controls (ECE upper-level option)",
+            "cite": "OLIN-E3"
+          },
+          {
+            "code": "ENGR3390",
+            "title": "Fundamentals of Robotics (ECE upper-level option; required for E:Robo)",
+            "cite": "OLIN-E3"
+          },
+          {
+            "code": "ENGR3392",
+            "title": "Robotics Systems Integration (ECE upper-level option)",
+            "cite": "OLIN-E3"
+          },
+          {
+            "code": "ENGR3590",
+            "title": "Computational Introduction to Robotics (E:Robo requirement)",
+            "cite": "OLIN-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "vlsi"
+        ],
+        "capstone": "'Every student at Olin completes industry-sponsored or impact-focused capstone work' and Olin students 'begin project-based engineering in their first semester' (OLIN-E5)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Olin is a single small engineering college: you apply to Olin through the Common Application with Olin-specific questions, and no major- or college-level selection appears on Olin's apply page, so ECE is not an admission door at all.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Olin has no CS major to compare against - its three ABET-accredited degrees are ECE, ME and Engineering (with an Engineering Computing concentration) - and Olin publishes only class-level data (Class of 2028: 115 students, middle-50% unweighted GPA 3.81-4.00, SAT 1483-1528, 59% submitting scores), not per-major admit rates (OLIN-E1, OLIN-E6).",
+        "internal_gate": null,
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "ECE is a real, ABET-accredited degree at Olin, but it is a curricular choice made after you arrive, not an admission door, and Olin has no CS degree to be easier than - the closest software route is the Engineering degree's Engineering Computing concentration (OLIN-E1, OLIN-E5). Choosing ECE over Engineering:Robotics gives you the electronics and systems spine (signals, microelectronic circuits, computer architecture, mixed analog-digital VLSI) with robotics as an upper-level option (ENGR3390 Fundamentals of Robotics, ENGR3392 Robotics Systems Integration, ENGR3370 Controls), whereas E:Robo requires ENGR3390 plus ENGR3590 Computational Introduction to Robotics and pulls in mechanics, ML and directed robotics research (OLIN-E3, OLIN-E4). The trade is accreditation and hardware depth (ECE) versus breadth across the full robot stack (E:Robo, which sits under the more flexible Engineering degree).",
+      "notable": "Only three ABET-accredited degrees exist at Olin - ECE, ME and Engineering - and the Engineering degree carries predefined concentrations including E:Robo, E:Bio, E:C, E:Design and E:Sustainability (OLIN-E1). Every admitted student receives a merit scholarship, and 47% of the Class of 2028 came from competitive robotics teams (OLIN-E5, OLIN-E6)."
+    }
   },
   {
     "slug": "penn",
@@ -9198,7 +10617,99 @@
         "url": "https://www.grasp.upenn.edu/about/facilities/"
       }
     },
-    "best_fit_reason_original": "A genuinely AI-centered required curriculum (12 AI CUs across six categories, project course by year 2, thesis option) combined with funded first- and second-year research paths into GRASP/PRiML"
+    "best_fit_reason_original": "A genuinely AI-centered required curriculum (12 AI CUs across six categories, project course by year 2, thesis option) combined with funded first- and second-year research paths into GRASP/PRiML",
+    "ece": {
+      "department_name": "Department of Electrical and Systems Engineering (ESE), School of Engineering and Applied Science",
+      "structure": "ee_only",
+      "degrees": [
+        "B.S.E. Electrical Engineering",
+        "B.S.E. Systems Science and Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The following BSE programs are accredited by the Engineering Accreditation Commission of ABET (http://www.abet.org). [list includes] Electrical Engineering ... Systems Science and Engineering",
+        "url": "https://catalog.upenn.edu/undergraduate/engineering-applied-science/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Robotics concentration (ESE); also Data Science and Internet of Things concentrations",
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "ESE 4210",
+            "title": "Control For Autonomous Robots",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 5000",
+            "title": "Linear Systems Theory",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 5050",
+            "title": "Feedback Control Design and Analysis",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 6150",
+            "title": "RoboRacer Autonomous Racing Cars",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 6190",
+            "title": "Model Predictive Control",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 6500",
+            "title": "Learning in Robotics",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 6510",
+            "title": "Physical Intelligence: Science and Systems",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 3500",
+            "title": "Embedded Systems/Microcontroller Laboratory",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 3600",
+            "title": "TinyML: Tiny Machine Learning for Embedded Systems",
+            "cite": "PENN-E1"
+          },
+          {
+            "code": "ESE 2000",
+            "title": "Artificial Intelligence Lab: Data, Systems, and Decisions",
+            "cite": "PENN-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "ESE 4500 and ESE 4510 Senior Design Project I and II (EE and SSE), 2 CUs total in the fourth year, plus a design-and-project course requirement satisfied by ESE 2900/2910 or one of ESE 3190, ESE 3360, ESE 3500, ESE 4210 Control For Autonomous Robots, or BE 4700 (PENN-E1)."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "You apply to a school, not the university: 'Penn is one University, but when you submit your application, it will be to one of our four undergraduate schools' (PENN-E2), and Penn Engineering is the one school where you also name an intended major — 'Students in Penn Engineering must declare a major by the end of their first year and are asked to indicate a major on their application' (PENN-E3).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Penn publishes no admit rates by school or major on its first-party admissions pages, so there is no published basis to say Electrical Engineering is an easier admit than Computer Science; both are BSE majors inside the same school (SEAS) and are named on the same application (PENN-E3).",
+        "internal_gate": "No published GPA or capacity gate: SEAS students must declare a major by the end of the first year, and indicating a major on the application is advisory rather than binding admission to that major (PENN-E3).",
+        "gate_severity": "none",
+        "rank": 0
+      },
+      "vs_cs": "Penn is a school-level door, not a major-level one: Electrical Engineering, Computer Engineering, Computer Science, AI and Visual & Interactive Computing are all BSE majors inside SEAS, so applying ESE rather than CIS does not move you to a different admit unit — it only signals intent to a committee that is told to consider it. Where ESE genuinely pays off is content: it owns a formal Robotics concentration built on ESE 4210 Control For Autonomous Robots plus ESE 5000/5050 systems and control, ESE 6150 RoboRacer, ESE 6190 Model Predictive Control and ESE 6500 Learning in Robotics, and it is EAC-accredited while the CS BSE is CAC-accredited. The cost is that Penn Engineering undergraduates are steered away from loading up on CIS courses (CIS is excluded from the general-elective list) and CS ML content enters ESE only through specific approved electives like CIS 5200.",
+      "notable": "ESE's Robotics concentration pulls in MEAM 5200 Introduction to Robotics and MEAM 6200 Advanced Robotics from mechanical engineering, so the robotics path is cross-departmental. Penn's BSE Computer Science is accredited by the Computing Accreditation Commission, not EAC (PENN-E4). SEAS offers a separate BSE in Artificial Intelligence alongside EE (PENN-E3)."
+    }
   },
   {
     "slug": "penn-state",
@@ -9656,7 +11167,101 @@
       "eac_alternative_url": null,
       "notes": "The EMET bulletin page lists campuses as University Park, Beaver, Fayette, New Kensington, York, Altoona and Berks — Penn State Harrisburg is NOT listed as an EMET campus on the fetched bulletin page. The Harrisburg mechatronics-titled credentials are the Mechatronics Minor (19–22 credits, campus: Harrisburg) and the Mechatronics Technology Minor; neither bulletin page carries an accreditation statement (ABET accredits degree programs, not minors), so the minors themselves are not ABET-accredited credentials. Harrisburg's own accreditation page only says \"Multiple engineering and engineering technology programs in SSET are accredited by the relevant commissions of ABET ... Refer to each program page for details.\" (https://harrisburg.psu.edu/about-us/accreditations)."
     },
-    "best_fit_reason_original": "A two-year-old dedicated AI engineering degree in the same school as CS that requires optimization, AI systems and tooling, responsible AI and a capstone — reachable through a published 2.60 ETM threshold rather than CS's 3.20 — backed by cluster access open to all Penn Staters with free GPU credits"
+    "best_fit_reason_original": "A two-year-old dedicated AI engineering degree in the same school as CS that requires optimization, AI systems and tooling, responsible AI and a capstone — reachable through a published 2.60 ETM threshold rather than CS's 3.20 — backed by cluster access open to all Penn Staters with free GPU credits",
+    "ece": {
+      "department_name": "School of Electrical Engineering and Computer Science (Department of Electrical Engineering; Department of Computer Science and Engineering), College of Engineering",
+      "structure": "eecs_combined_with_cs",
+      "degrees": [
+        "B.S. in Electrical Engineering",
+        "B.S. in Computer Engineering",
+        "B.S. in Computer Science",
+        "B.S. in Artificial Intelligence Engineering",
+        "B.S. in Data Sciences"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Bachelor of Science in Electrical Engineering is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s), and Similarly Named Engineering Programs.",
+        "url": "https://bulletins.psu.edu/undergraduate/colleges/engineering/electrical-engineering-bs/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "EE 483",
+            "title": "Introduction to Automation and Robotics Systems",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 380",
+            "title": "Linear Control Systems",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 482",
+            "title": "Introduction to Digital Control Systems",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 454",
+            "title": "Fundamentals of Computer Vision",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 455",
+            "title": "Introduction to Digital Image Processing",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 456",
+            "title": "Introduction to Neural Networks",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 453",
+            "title": "Fundamentals of Digital Signal Processing",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "EE 351",
+            "title": "Discrete-Time Linear Systems",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "CMPEN 472",
+            "title": "Microprocessors and Embedded Systems",
+            "cite": "PSU-E4"
+          },
+          {
+            "code": "CMPEN 431",
+            "title": "Introduction to Computer Architecture",
+            "cite": "PSU-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "power"
+        ],
+        "capstone": "EE 403W Capstone Design, preceded by EE 200 Design Tools for Electrical Engineers and EE 300W Design Process in the prescribed 127-credit sequence (PSU-E2)"
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to a specific Penn State campus and an intended major (or apply undecided), then must satisfy Entrance to Major requirements after 29-55 graded credits, which for Electrical Engineering means a minimum 2.60 cumulative GPA while enrolled in the College of Engineering or the Division of Undergraduate Studies.",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Published Entrance to Major GPA thresholds differ: Electrical Engineering requires a 2.60 minimum cumulative GPA and is not enrollment-controlled, while Computer Science at University Park requires 3.20 and Computer Engineering requires 3.2, both flagged as enrollment-controlled majors (PSU-E3). Artificial Intelligence Engineering is also 2.6 (PSU-E3). No admit rates by major are published.",
+        "internal_gate": "Entrance to Major: 29-55 graded Penn State credits; C or better in CMPSC 121/131 or EDSGN 100; CHEM 110, MATH 140, MATH 141, PHYS 211; minimum 2.60 cumulative GPA. 'In the event that the major is under enrollment control, a higher minimum cumulative grade-point average is likely to be needed' (PSU-E2).",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "Penn State puts EE and CS in the same school, so the robotics content is reachable from either side, but only the EE degree makes continuous- and discrete-time systems, control and hardware mandatory while still offering EE 483 Automation and Robotics, EE 454 Computer Vision and EE 456 Neural Networks as electives (PSU-E1, PSU-E4). The practical difference at Penn State is the gate, not the geography: EE needs a 2.60 to enter and is not enrollment-controlled, whereas Computer Science and Computer Engineering are enrollment-controlled at 3.20 (PSU-E3). The cost of EE is a 127-credit prescribed core with less software-engineering depth than CS.",
+      "notable": "The EECS School was created in 2015 and houses both departments, so an EE student can take CMPEN and CMPSC coursework inside one school (PSU-E1). Penn State also offers a B.S. in Artificial Intelligence Engineering with the same 2.6 entrance GPA as EE (PSU-E1, PSU-E3). All College of Engineering baccalaureate programs are EAC-accredited while Computer Science is accredited by the Computing Accreditation Commission (PSU-E5). Applicants choose among University Park, commonwealth campuses and World Campus, and may apply undecided (PSU-E6)."
+    }
   },
   {
     "slug": "purdue",
@@ -10203,7 +11808,94 @@
       "eac_alternative_url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate",
       "notes": "Polytechnic admits at a higher rate than the College of Engineering, but the degree is engineering technology."
     },
-    "best_fit_reason_original": "A student can take graduate-level NLP and statistical ML as undergraduate selectives, get paid summer research after one semester, and use 411 GPUs and a free makerspace — at frozen tuition"
+    "best_fit_reason_original": "A student can take graduate-level NLP and statistical ML as undergraduate selectives, get paid summer research after one semester, and use 411 GPUs and a free makerspace — at frozen tuition",
+    "ece": {
+      "department_name": "Elmore Family School of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS Electrical Engineering (BSEE)",
+        "BS Computer Engineering (BSCmpE)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Both the BS programs in Computer Engineering and Electrical Engineering are accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Automatic Control; Artificial Intelligence & Machine Learning (offered as concentrations in both BSEE and BSCmpE)",
+        "course_count": 9,
+        "courses": [
+          {
+            "code": "ECE 30800",
+            "title": "Systems Simulation and Control Laboratory",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 38200",
+            "title": "Feedback System Analysis and Design",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 48300",
+            "title": "Digital Control Systems Analysis and Design",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 56900",
+            "title": "Introduction to Robotic Systems",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 36200",
+            "title": "Microprocessor Systems and Interfacing",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 47300",
+            "title": "Introduction to Artificial Intelligence",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 57000",
+            "title": "Artificial Intelligence",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 40875",
+            "title": "Data Mining",
+            "cite": "PURDUE-E2"
+          },
+          {
+            "code": "ECE 47700",
+            "title": "Digital Systems Senior Project",
+            "cite": "PURDUE-E2"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "ECE 47700 Digital Systems Senior Project is listed as the senior project course in the Computer Engineering course area; ECE degree rules also require an overall GPA of at least 2.000 in courses applying to the ECE major area (PURDUE-E1, PURDUE-E2)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Two steps: you first apply to and are admitted to the College of Engineering (46.1% admit rate), entering First-Year Engineering rather than a named major, and then complete First-Year Engineering requirements and go through the Transition to Major (T2M) process to declare ECE, ranking first and second choices.",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Purdue's published freshman profile gives College of Engineering 46.1% and Computer Science 35.9% (Polytechnic Institute 54.2%), so the admission step into the college that contains ECE is more than 10 points more permissive than the direct Computer Science admit. Purdue's T2M pages further list the capacity-limited majors as Aeronautical & Astronautical Engineering, Biomedical Engineering, Multidisciplinary Engineering and Mechanical Engineering; ECE is not on that list (PURDUE-E3, PURDUE-E4, PURDUE-E5).",
+        "internal_gate": "T2M after First-Year Engineering: complete FYE requirements, then request a major. No published minimum GPA for ECE; FYE advising flags students with cumulative GPA of 2.80 or below only when their first choice is a capacity-limited major (ME, AAE, BME), and ECE is not listed as capacity-limited. The ECE degree itself requires an overall GPA of at least 2.000 in courses applying to the ECE major area.",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "Purdue ECE gives you a named Automatic Control concentration plus an AI & Machine Learning concentration in either the BSEE or the BSCmpE, so you get feedback control, embedded microprocessor design and robotics coursework (ECE 56900 Introduction to Robotic Systems) inside an EAC-accredited engineering degree. The cost is the First-Year Engineering detour: you cannot declare ECE as an applicant, and you must clear FYE requirements before T2M. Compared with Computer Science, the front door is materially wider (46.1% vs 35.9%) and ECE is not on Purdue's capacity-limited major list, so the second gate is also softer.",
+      "notable": "ECE lists Quantum Technology and Microelectronics & Semiconductors concentrations alongside AI/ML; ECE prefers CS 15900 as the First-Year Engineering selective, so an ECE-bound student should take the programming selective in FYE. 32 credits of upper-level ECE must be taken at West Lafayette."
+    }
   },
   {
     "slug": "rit",
@@ -10726,7 +12418,50 @@
       "eac_alternative_url": "https://www.rit.edu/engineering/accreditation",
       "notes": "RIT holds both: the robotics-titled degrees are ETAC, while Kate Gleason College of Engineering degrees are EAC."
     },
-    "best_fit_reason_original": "Required coursework in optimization, reinforcement learning, LLMs, and AI security, plus explicit permission for undergraduates to take graduate AI courses [RIT-S1] [RIT-S5]"
+    "best_fit_reason_original": "Required coursework in optimization, reinforcement learning, LLMs, and AI security, plus explicit permission for undergraduates to take graduate AI courses [RIT-S1] [RIT-S5]",
+    "ece": {
+      "department_name": "Department of Electrical and Microelectronic Engineering; Department of Computer Engineering (Kate Gleason College of Engineering)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "BS Electrical Engineering",
+        "BS Computer Engineering",
+        "BS Microelectronic Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The BS degree in computer engineering is accredited by the Engineering Accreditation Commission of ABET, www.abet.org.",
+        "url": "https://www.rit.edu/engineering/computerengineering",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Electrical Engineering BS 'Robotics option' (also AI option); Computer Engineering BS concentrations 'Computer vision and machine intelligence' and 'Signal processing, control, and embedded systems' (RIT-E5, RIT-E1, RIT-E2)",
+        "course_count": 0,
+        "courses": [],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Multidisciplinary Senior Design, 'a two-course sequence in your final year of study... a capstone learning experience that integrates engineering theory, principles, and processes within a collaborative team environment'; 'Students in the robotics option are expected to work on a design project that focuses on designing, developing, or advancing an aspect of robotics' (RIT-E5)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Unverified: RIT program pages describe the EE and CpE degrees inside the Kate Gleason College of Engineering, but no first-party page fetched in this session states whether the application asks you to select a college or a specific major, so the admission door cannot be confirmed.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "No RIT first-party page fetched publishes per-major or per-college admit rates, and the application-level college/major selection itself could not be confirmed.",
+        "internal_gate": null,
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "At RIT the robotics-labelled degree is Robotics and Manufacturing Engineering Technology, accredited by the Engineering Technology Accreditation Commission rather than the Engineering Accreditation Commission, so ECE - specifically the EE 'Robotics option' or CpE's 'Computer vision and machine intelligence' / 'Signal processing, control, and embedded systems' concentrations - is the route to an EAC-accredited engineering degree with robotics content (RIT-E6, RIT-E5, RIT-E2, RIT-E3). Versus CS you gain kinematics and dynamics of manipulators, mobile and intelligent robots, localization and mapping, embedded hardware and control, delivered inside a five-year EE program with nearly a year of co-op; the cost is time-to-degree and less software-theory depth. Co-op is not optional: 'Required by all majors in the college, cooperative education is full-time, paid work experience,' with a typical EE schedule of '12 months: 4 blocks (2 semesters and 2 summers)' and graduates leaving with 48 weeks of work experience (RIT-E8, RIT-E7).",
+      "notable": "EE BS is a five-year program with options in Artificial Intelligence, Clean and Renewable Energy, Computer Engineering, Microelectronics and Robotics; CpE BS offers BS/MS options and concentrations spanning software, computer architecture, ICs, networks/security, computer vision and machine intelligence, and signal processing/control/embedded (RIT-E1, RIT-E2). Average reported EE co-op wage was $24.17/hr with a $50.00/hr maximum for summer 2024-spring 2025 (RIT-E7)."
+    }
   },
   {
     "slug": "rose-hulman",
@@ -11252,7 +12987,82 @@
       "eac_alternative_url": null,
       "notes": "There is no robotics major at Rose-Hulman — only a minor, which is not an ABET-accreditable credential (robotics does not appear on Rose-Hulman's EAC or CAC lists). The base degrees the minor attaches to ARE EAC-accredited (CS is CAC). Minor structure: 7 courses / all majors take CSSE 120, ME-CSSE 435 Robotics Engineering and ECE 425 Introduction to Mobile Robotics, plus major-specific courses and a multidisciplinary senior design project (https://catalog.rose-hulman.edu/catalog/minors-certificates/multidiscpln-minor-robotics-minor/multidiscpln-minor-robotics-minor.pdf)."
     },
-    "best_fit_reason_original": "Mandatory multi-quarter project work, a documented paid first-year research on-ramp, and CS/SE placement at 89-100% with $88.5K-$111K averages [RH-S2][RH-S22][RH-S11]. Classification qualifier: (conditional on AI major details being published before commitment)"
+    "best_fit_reason_original": "Mandatory multi-quarter project work, a documented paid first-year research on-ramp, and CS/SE placement at 89-100% with $88.5K-$111K averages [RH-S2][RH-S22][RH-S11]. Classification qualifier: (conditional on AI major details being published before commitment)",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "BS Electrical Engineering",
+        "BS Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The electrical engineering program is accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s), and Similarly Named Engineering Programs.",
+        "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/electrical-engineering-bs/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Multidisciplinary minor in robotics, offered with ECE participation (not an ECE-internal concentration); ECE also offers certificates in power systems and communications systems (ROSE-HULMAN-E2, ROSE-HULMAN-E6)",
+        "course_count": 7,
+        "courses": [
+          {
+            "code": "ECE 320",
+            "title": "Linear Control Systems",
+            "cite": "ROSE-HULMAN-E3"
+          },
+          {
+            "code": "ECE 230",
+            "title": "Introduction to Embedded Systems",
+            "cite": "ROSE-HULMAN-E3"
+          },
+          {
+            "code": "ECE 180",
+            "title": "Introduction to Signal Processing",
+            "cite": "ROSE-HULMAN-E3"
+          },
+          {
+            "code": "ECE 300",
+            "title": "Continuous-Time Signals and Systems",
+            "cite": "ROSE-HULMAN-E3"
+          },
+          {
+            "code": "ECE 380",
+            "title": "Discrete-Time Signals and Systems",
+            "cite": "ROSE-HULMAN-E3"
+          },
+          {
+            "code": "ECE 332",
+            "title": "Computer Architecture II",
+            "cite": "ROSE-HULMAN-E4"
+          },
+          {
+            "code": "ECE 343",
+            "title": "High-Speed Digital Design",
+            "cite": "ROSE-HULMAN-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "power"
+        ],
+        "capstone": "ECE 460/461/462 Engineering Design I-III: a senior year-long team project for a real client; the first-year ECE design course is project-based and builds an Arduino-based robot. Robotics-minor students instead complete a three-term multidisciplinary senior design project in robotics with students from other majors (ROSE-HULMAN-E3, ROSE-HULMAN-E1, ROSE-HULMAN-E6)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to Rose-Hulman as an institution (one application, Early Action or Regular Decision, holistic review of transcript, curriculum rigor and a recommendation), and the pages fetched describe no separate ECE admitting unit.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Rose-Hulman's application and evaluation-criteria pages describe a single holistic process ('We continue to embrace a holistic admission process') with required high-school coursework and no per-major admit rates (ROSE-HULMAN-E7, ROSE-HULMAN-E8).",
+        "internal_gate": null,
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "Rose-Hulman's robotics offering is a multidisciplinary minor, not a degree, and it does not appear on the institution's EAC-accredited program list - so ECE's EAC accreditation matters more here than at schools with an accredited robotics BS (ROSE-HULMAN-E5, ROSE-HULMAN-E6). Versus CS, ECE gives you the physical layer of a robot: Arduino-based robot building in the first-year design course, embedded systems (ECE 230), signals (ECE 180/300/380), Linear Control Systems (ECE 320) and a year-long senior design project for a real client, and the CpE catalog states outright that 'Computer engineers are also well-suited for research in the field of robotics' (ROSE-HULMAN-E1, ROSE-HULMAN-E3, ROSE-HULMAN-E4). The cost is a heavy 194-credit load and a departmental restriction: ECE will not allow an EE degree with a CpE second major or vice versa, so your hedging happens through the robotics minor rather than a second ECE major - and CpE students earning the robotics minor must take ECE 320 (ROSE-HULMAN-E1, ROSE-HULMAN-E4).",
+      "notable": "194 total credits for each of EE and CpE; department will not permit EE+CpE double majors; ECE-linked certificates in power systems and communications systems; MSEE and MECE master's programs; the robotics program's leadership includes the Lawrence J. Giacoletto Endowed Chair and Professor of Electrical and Computer Engineering, and the minor starts with CSSE120 Introduction to Software Development - Robotics in the first year (ROSE-HULMAN-E1, ROSE-HULMAN-E2, ROSE-HULMAN-E6)."
+    }
   },
   {
     "slug": "rpi",
@@ -11734,7 +13544,49 @@
       "eac_alternative_url": "https://catalog.rpi.edu/content.php?catoid=15&navoid=348",
       "notes": "RPI's Engineering Science program is the single stated exception and is not a robotics degree."
     },
-    "best_fit_reason_original": "A required 8-course AI/ML/Data Science Track built on required Mathematical Foundations of Machine Learning, with dedicated RL, CV, optimization, and trustworthy-ML courses at published annual frequencies, plus AiMOS-class compute [RPI-S1] [RPI-S3] [RPI-S4] [RPI-S14]"
+    "best_fit_reason_original": "A required 8-course AI/ML/Data Science Track built on required Mathematical Foundations of Machine Learning, with dedicated RL, CV, optimization, and trustworthy-ML courses at published annual frequencies, plus AiMOS-class compute [RPI-S1] [RPI-S3] [RPI-S4] [RPI-S14]",
+    "ece": {
+      "department_name": "Department of Electrical, Computer, and Systems Engineering (ECSE)",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "BS Electrical Engineering",
+        "BS Computer and Systems Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The undergraduate Electrical Engineering program at Rensselaer is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electrical, Computer, Communications, Telecommunication(s) and Similarly Named Engineering Programs.",
+        "url": "https://ecse.rpi.edu/academics/accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "ECSE optional Focus Areas: 'Robotics and Automation', 'Control Systems', 'Artificial Intelligence and Machine Learning', 'Computer Vision and Image Processing' (RPI-E2)",
+        "course_count": 0,
+        "courses": [],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "n.a. - ECSE's undergraduate program pages describe program templates and focus-area electives; a specific senior capstone course could not be confirmed from the pages fetched (RPI-E2, RPI-E7)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "RPI applicants either declare a specific major or apply undeclared to a school - the admissions FAQ lists 'Options for declaring a major: Declare specific major / Undeclared to a specific school (i.e., undeclared engineering)' - so ECSE is entered by major choice inside one engineering application rather than through a separate admitting college (RPI-E4).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "RPI's admissions FAQ pages describe major/undeclared options but publish no per-major admit rates; ECSE publishes enrollment and degree counts for accreditation purposes (e.g. Electrical Engineering 389 undergraduates in 19/20) but no admissions selectivity data (RPI-E4, RPI-E3).",
+        "internal_gate": null,
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "ECSE is the strongest robotics door at RPI because RPI has no standalone undergraduate robotics degree: robotics arrives as ECSE focus areas ('Robotics and Automation', 'Control Systems', 'Artificial Intelligence and Machine Learning', 'Computer Vision and Image Processing'), and completing and declaring one earns a certificate at graduation (RPI-E2). Versus CS you gain circuits, signals, embedded hardware, power and control theory plus the EAC-accredited engineering credential; you give up depth in software systems and theory. RPI's dual-major mechanism makes ECSE+CS realistic - electives can 'Fulfill the course requirements of a dual major,' one diploma is awarded for both majors, and the 24-credit math/science and 24-credit HASS requirements count for both curricula (RPI-E2, RPI-E5).",
+      "notable": "Both ECSE undergraduate programs (Electrical Engineering and Computer and Systems Engineering) are separately EAC-accredited (RPI-E3); ECSE research includes 'cyberphysical systems such as smart grid and collaborative robots' (RPI-E1); dual major is administered via the registrar with a first-named and second-named major (RPI-E5); ECSE publishes per-class program templates and an undergraduate course flowchart (RPI-E7)."
+    }
   },
   {
     "slug": "swarthmore",
@@ -12197,7 +14049,91 @@
         "url": "https://www.swarthmore.edu/news-events/engineering-faculty-students-participate-federal-robotics-challenge-disaster-relief"
       }
     },
-    "best_fit_reason_original": "AI foundations become required core in 2026, AI ran every semester checked, GPUs are current and student-accessible, doctoral productivity in math/CS is 5th nationally, and aid is loan-free with a tuition guarantee starting in the student's own entry year [SW-S6][SW-S12][SW-S30][SW-S26][SW-S74]"
+    "best_fit_reason_original": "AI foundations become required core in 2026, AI ran every semester checked, GPUs are current and student-accessible, doctoral productivity in math/CS is 5th nationally, and aid is loan-free with a tuition guarantee starting in the student's own entry year [SW-S6][SW-S12][SW-S30][SW-S26][SW-S74]",
+    "ece": {
+      "department_name": "Engineering Department",
+      "structure": "ee_only",
+      "degrees": [
+        "Bachelor of Science in Engineering (single, non-specialized engineering degree; nominal specialization in Electrical or Computer Engineering via electives)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Swarthmore College Engineering Program's bachelor of science in engineering is accredited by the Engineering Accreditation Commission (EAC) of ABET, https://www.abet.org.",
+        "url": "https://www.swarthmore.edu/engineering/abet-accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Mobile Robotics and Machine Vision (honors examination preparation area); nominal Electrical or Computer Engineering specialization via the elective program",
+        "course_count": 9,
+        "courses": [
+          {
+            "code": "ENGR 028 / CPSC 082",
+            "title": "Mobile Robotics",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 027 / CPSC 072",
+            "title": "Computer Vision",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 058",
+            "title": "Control Theory and Design",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 029",
+            "title": "Embedded Systems",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 025 / CPSC 052",
+            "title": "Principles of Computer Architecture",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 071",
+            "title": "Digital Signal Processing",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 055",
+            "title": "Statistical Signal Processing",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 012",
+            "title": "Linear Physical Systems Analysis",
+            "cite": "SWAT-E4"
+          },
+          {
+            "code": "ENGR 021",
+            "title": "Computer Engineering Fundamentals",
+            "cite": "SWAT-E4"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing"
+        ],
+        "capstone": "ENGR 090 Engineering Design, a spring-senior-year project required of all majors whose report and oral presentation 'constitutes the comprehensive examination for engineering majors'; past projects include autonomous operation of an elevator by a robot (SWAT-E4)"
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to Swarthmore College, not to an engineering school - 'Unlike most other undergraduate engineering programs, Swarthmore's is not a School of Engineering, but rather an Engineering Department' - and you do not declare the major until spring of sophomore year.",
+        "easier_than_cs": "same",
+        "easier_than_cs_basis": "Swarthmore admits to the college with no engineering-specific admission door: 'We don't require students to commit to an engineering major before arrival; indeed, we don't even ask them to declare a major until Spring of their sophomore year' and 'you don't even apply for a major until the second semester of you sophomore year' (SWAT-E2, SWAT-E3). No published admit-rate comparison by intended major exists.",
+        "internal_gate": "Formal application for the engineering major in spring of sophomore year, including departmental approval of the elective program; no published GPA cutoff (SWAT-E4).",
+        "gate_severity": "mild",
+        "rank": 2
+      },
+      "vs_cs": "Swarthmore is a genuine EAC-accredited engineering degree without an ECE degree: everyone receives the Bachelor of Science in Engineering, and 'the degree students receive at Swarthmore is a Bachelor of Science in Engineering, not one in ME, or EE, or CivE, or CompE', with electrical or computer specialization expressed only through elective choice (SWAT-E1, SWAT-E2, SWAT-E3). For robotics this is surprisingly strong at the undergraduate level - Mobile Robotics, Computer Vision, Control Theory and Design, Embedded Systems and Digital Signal Processing all exist as ENGR courses, several cross-listed with CPSC, and Mobile Robotics and Machine Vision is a recognized honors preparation area (SWAT-E4). The cost is depth and volume: engineering is only about a third of coursework ('12 Engineering courses out of 32 required for graduation') versus half or two-thirds at a typical engineering school, so you graduate as 'excellent raw material for graduate programs' rather than a specialized electrical engineer (SWAT-E2).",
+      "notable": "Engineering is a department 'like the English or Philosophy or Biology departments', not a separate school, so there is no engineering application to make (SWAT-E2). Robotics and vision courses are cross-listed between ENGR and CPSC (ENGR 027/CPSC 072, ENGR 028/CPSC 082), and students wanting more specialized coursework may take courses at the University of Pennsylvania's engineering school (SWAT-E3, SWAT-E4). An engineering minor (minimum 5 credits) is also available (SWAT-E4)."
+    }
   },
   {
     "slug": "texas-am",
@@ -12732,6 +14668,63 @@
       "eac_alternative": "BS Mechanical Engineering, BS Electrical Engineering, BS Computer Engineering, BS Interdisciplinary Engineering (EAC per university accreditation statement) — https://www.tamu.edu/statements/accreditation.html",
       "eac_alternative_url": null,
       "notes": "Confirmed ETAC, not EAC, from two first-party sources: the ETID accreditation page and the university-level statement (\"Undergraduate programs in Electronic Systems Engineering Technology, Manufacturing and Mechanical Engineering Technology, Multidisciplinary Engineering Technology and Industrial Distribution are accredited by the Engineering Technology Accreditation Commission of ABET\"). The Texas A&M catalog repeats: \"The BS in Multidisciplinary Engineering Technology program is accredited by the Engineering Technology Accreditation Commission of ABET.\" (https://catalog.tamu.edu/undergraduate/engineering/technology-industrial-distribution/). The 127-hour total in the brief could not be confirmed on the fetched pages (n.a.)."
+    },
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Electrical Engineering - BS",
+        "BS Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The bachelor's degree program in electrical engineering has been accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://catalog.tamu.edu/undergraduate/engineering/electrical-computer/electrical-bs/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 3,
+        "courses": [
+          {
+            "code": "ECEN 420",
+            "title": "Linear Control Systems",
+            "cite": "TAMU-E5"
+          },
+          {
+            "code": "ECEN 441",
+            "title": "Electric/Electronic Motor Drives (covers industrial, robotic and traction systems)",
+            "cite": "TAMU-E5"
+          },
+          {
+            "code": "ECEN 460",
+            "title": "Power System Operation and Control",
+            "cite": "TAMU-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "n.a. — a capstone/senior design course was not confirmed from the pages fetched."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Two steps: engineering applicants are admitted into a common General Engineering first year rather than to ECE, then compete through Entry to a Major (ETAM) after at least two semesters at Texas A&M to be placed in Electrical Engineering or Computer Engineering.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Texas A&M does not publish per-major admit rates or per-major ETAM placement rates on the pages fetched. ETAM documentation states only that placement uses 'academic performance, application content, and program capacity' and that students rank three (up to five) majors. Note also that Computer Science at Texas A&M sits in the College of Engineering, so both ECE and CS are reached through the same General Engineering front door.",
+        "internal_gate": "ETAM. Minimum 2.0 cumulative and 2.0 term GPA. Automatic entry to first choice with a 3.75+ cumulative GPA (or National Merit semifinalist/finalist status) plus full-time status, no honor-code violation and no incompletes. Required courses with C or better: two engineering (ENGR 102, ENGR 216/PHYS 216), two science (CHEM 107/117 or 119, PHYS 206, PHYS 207, CHEM 120) and two math (MATH 151, 152, 251/253, 308, 304 or CSCE 222). Below the 3.75 automatic threshold, a priority method places students in the highest-preferred major possible subject to program capacity. The EE catalog also states: 'Before commencing course work in the major, students must be admitted to the major or have the approval of the department.'",
+        "gate_severity": "strong",
+        "rank": 0
+      },
+      "vs_cs": "Texas A&M ECE gives you EAC-accredited engineering with linear control systems, motor drives explicitly framed around robotic and traction systems, and a unified BS Computer Engineering that merged the former CEEN and CS computer-engineering tracks in fall 2021. The important trap here is the MXET mechatronics track: it lives in Multidisciplinary Engineering Technology and is accredited by the Engineering Technology Accreditation Commission of ABET, not the Engineering Accreditation Commission, so the robotics-sounding option is engineering technology rather than engineering. Because CS is also inside the College of Engineering and reached through the same ETAM gate, ECE is not a way to bypass the competition at A&M, only a different landing spot with a lighter reputation for oversubscription.",
+      "notable": "The mechatronics-flavored MXET path is ETAC-accredited engineering technology, a real distinction for graduate-school and PE-track purposes. ECE combined the EE computer-engineering track (CEEN) with the CS computer-engineering track into a single BS Computer Engineering effective fall 2021. Automatic ETAM entry at a 3.75 cumulative GPA is the cleanest way to guarantee ECE."
     }
   },
   {
@@ -13253,6 +15246,84 @@
         "lab_or_course": "Space Technologies at California student team; no dedicated space-robotics lab found on fetched pages",
         "url": "https://engineering.berkeley.edu/students/student-life/teams-and-organizations/"
       }
+    },
+    "ece": {
+      "department_name": "Department of Electrical Engineering and Computer Sciences (EECS)",
+      "structure": "eecs_combined_with_cs",
+      "degrees": [
+        "B.S. Electrical & Computer Engineering (ECE), College of Engineering",
+        "B.S. Electrical Engineering and Computer Sciences (EECS), College of Engineering",
+        "B.A. Computer Science, College of Computing, Data Science, and Society"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "NOT_ABET_ACCREDITED",
+        "eac_accredited": false,
+        "quote": "The ECE major is on track to earn ABET accreditation.",
+        "url": "https://eecs.berkeley.edu/academics/undergraduate/ece-bs/",
+        "pending_or_absent": true
+      },
+      "robotics_ai": {
+        "concentration_name": "ECE Major Breadth + technical electives (robotics is a named ECE focus area, not a formal concentration)",
+        "course_count": 7,
+        "courses": [
+          {
+            "code": "ELENG 66",
+            "title": "Introduction to Signals, Dynamics, and Information",
+            "cite": "UCB-E4"
+          },
+          {
+            "code": "ELENG 64",
+            "title": "Introduction to Circuits & Devices",
+            "cite": "UCB-E4"
+          },
+          {
+            "code": "EECS C106A",
+            "title": "Introduction to Robotics",
+            "cite": "UCB-E5"
+          },
+          {
+            "code": "EECS C106B",
+            "title": "Robotic Manipulation and Interaction",
+            "cite": "UCB-E5"
+          },
+          {
+            "code": "EECS 149",
+            "title": "Introduction to Embedded and Cyber Physical Systems",
+            "cite": "UCB-E5"
+          },
+          {
+            "code": "EECS 127",
+            "title": "Optimization Models in Engineering",
+            "cite": "UCB-E5"
+          },
+          {
+            "code": "EECS 151",
+            "title": "Introduction to Digital Design and Integrated Circuits",
+            "cite": "UCB-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "One of the four ECE technical electives must be a major design experience; approved options include EECS C106A/C106B (robotics), EECS 149 (embedded/CPS), ELENG C128 (feedback control) and EECS 151 (UCB-E4)."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "Direct admission to the major as a first-year applicant: for all three degrees, 'Admitted directly to the major. (Students must apply directly to ECE/EECS/CS at admission if interested)' (UCB-E2); the ECE page adds that first-years are admitted directly into ECE via the UC Application and may alternatively apply Engineering Undeclared (UCB-E3).",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Berkeley's first-party EECS and College of Engineering pages publish no per-major admit rates for ECE, EECS or CS, so the widely repeated claim that EECS is the hardest admit on campus is not supported by a first-party published figure. What is published is that all three are direct-admit-only majors (UCB-E2) and that post-enrollment entry is heavily gated (UCB-E6).",
+        "internal_gate": "Change of major into ECE requires '3.5 Overall UC GPA and 3.5 Technical UC GPA'; change into EECS (for Fall 2026 admits and later) requires a minimum 3.7 GPA in two of the first four courses from ELENG 66/64, CS 61A/61B/61C/70, before the fourth term, and must be the student's first change of major. Transferring into ECE after enrollment is described as 'rare but possible' (UCB-E3, UCB-E6).",
+        "gate_severity": "strong",
+        "rank": 0
+      },
+      "vs_cs": "Berkeley has restructured: there is now a distinct B.S. in Electrical & Computer Engineering in the College of Engineering alongside the combined EECS B.S., while the CS degree sits in the College of Computing, Data Science, and Society — so ECE is a nominally separate application choice, but the department behind it is still the combined EECS department and all three degrees are direct-admit-only. ECE gives you the analog/circuits/signals core (ELENG 64, ELENG 66) plus the same robotics sequence CS students take (EECS C106A/C106B) and embedded/CPS work (EECS 149), with a design experience baked in. The costs are real: the new ECE major is only 'on track to earn ABET accreditation' rather than accredited, you cannot double in ECE plus CS or ECE plus EECS, and if you land in the wrong major the change-of-major bar is 3.5+ GPA (ECE) or 3.7 (EECS).",
+      "notable": "'Students cannot double in ECE+CS (in CDSS) or ECE +EECS' (UCB-E6). EECS/MSE and EECS/NE joint majors 'will no longer accept students after Fall 2026', and 'they are not ABET (Accreditation Board for Engineering and Technology) accredited programs' (UCB-E7). There is no ME/EECS joint major at Berkeley. EECS students entering Fall 2025 may switch to ECE in their first two semesters, one-way (UCB-E6)."
     }
   },
   {
@@ -13744,7 +15815,100 @@
         "url": "http://daslab.illinois.edu/"
       }
     },
-    "best_fit_reason_original": "The AI elective inventory is both deeper and more current than typical — CS 440/441/442/443/444/446/447/448 all confirmed in a live schedule, on top of required probability and numerical methods [UI-S2][UI-S5]. Classification qualifier: (conditional on being direct-admitted to BS CS, which is a structural, not probabilistic, observation)"
+    "best_fit_reason_original": "The AI elective inventory is both deeper and more current than typical — CS 440/441/442/443/444/446/447/448 all confirmed in a live schedule, on top of required probability and numerical methods [UI-S2][UI-S5]. Classification qualifier: (conditional on being direct-admitted to BS CS, which is a structural, not probabilistic, observation)",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering (ECE), The Grainger College of Engineering",
+      "structure": "separate_ee_and_cpe",
+      "degrees": [
+        "B.S. Electrical Engineering",
+        "B.S. Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The B.S. in Electrical Engineering degree program is accredited by the Engineering Accreditation Commission of ABET, under the commission's General Criteria and Program Criteria for Electrical Engineering.",
+        "url": "https://ece.illinois.edu/academics/educational-objectives-ee",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 10,
+        "courses": [
+          {
+            "code": "ECE 470",
+            "title": "Introduction to Robotics",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 486",
+            "title": "Control Systems",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 515",
+            "title": "Control System Theory & Design",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 364",
+            "title": "Programming Methods for Machine Learning",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 449",
+            "title": "Machine Learning",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 494",
+            "title": "Deep Learning for Computer Vision",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 549",
+            "title": "Computer Vision",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 310",
+            "title": "Digital Signal Processing",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 420",
+            "title": "Embedded DSP Laboratory",
+            "cite": "UIUC-E5"
+          },
+          {
+            "code": "ECE 445",
+            "title": "Senior Design Project Lab",
+            "cite": "UIUC-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi",
+          "power"
+        ],
+        "capstone": "ECE 445 Senior Design Project Lab, with ECE 496 Senior Research Project and ECE 499 Senior Thesis as research alternatives (UIUC-E5)."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "Illinois admits directly to a first-choice major within Grainger Engineering, so you apply to Electrical Engineering or Computer Engineering by name (admit rates are reported by first-choice major) (UIUC-E1).",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Illinois publishes 2025 first-year admit rates by first-choice major: 'Computer Science 7.4%' and 'Computer Science + X Programs 17.4%' against 'Grainger College of Engineering 21.2%' and a 36.6% total admit rate (UIUC-E1). Electrical Engineering and Computer Engineering rates are specifically NOT published on that page, so the EE/CmpE-vs-CS gap cannot be quantified beyond the fact that CS is roughly a third of the college-wide rate that EE and CmpE sit inside.",
+        "internal_gate": "No GPA gate is published for staying in EE or Computer Engineering, but movement is constrained: change of major within Grainger requires a petition with completed prerequisite coursework in petition windows during the second through fifth semesters, and 'Computer Science is closed to on-campus transfer, including Engineering Undeclared, for all students who entered the university in summer/fall 2022 or later' (UIUC-E3).",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "UIUC is the one school in this batch with hard published numbers, and they favor ECE: CS admits at 7.4% and CS+X at 17.4%, while the college that houses Electrical and Computer Engineering admits at 21.2% — and once you are on campus CS is permanently closed to internal transfer, so ECE is not just an easier door, it is the only door that stays usable. Computer Engineering is the closer substitute for CS (it shares CS 173/CS 225 and the digital-systems core) while Electrical Engineering is the more distinctively hardware-and-signals path; both are EAC-accredited, whereas CS is not. The robotics/AI content is real but thinner than at Michigan or Georgia Tech: ECE 470 is the single named robotics course, supported by ECE 486/515 controls, ECE 449/494/549 ML and vision, and ECE 445 senior design.",
+      "notable": "There is no formal robotics concentration inside ECE Illinois; robotics comes from ECE 470 plus controls and ML electives. EE and CmpE are separately EAC-accredited under the Electrical Engineering and Computer Engineering program criteria respectively (UIUC-E2, UIUC-E4). Switching between EE and Computer Engineering is an explicitly supported petition path with defined prerequisites (UIUC-E3)."
+    }
   },
   {
     "slug": "unc-chapel-hill",
@@ -14283,7 +16447,38 @@
         "url": null
       }
     },
-    "best_fit_reason_original": "Undergraduate-accessible 500-level AI courses (COMP 560/562/577/586/581) and 600-level COMP 664 Deep Learning that counts toward the major, at in-state cost, inside a 12+ lab AI ecosystem that admits BS students"
+    "best_fit_reason_original": "Undergraduate-accessible 500-level AI courses (COMP 560/562/577/586/581) and 600-level COMP 664 Deep Learning that counts toward the major, at in-state cost, inside a 12+ lab AI ecosystem that admits BS students",
+    "ece": {
+      "department_name": "n.a. - no electrical or computer engineering department exists; the closest unit is the Department of Applied Physical Sciences in the College of Arts and Sciences",
+      "structure": "none",
+      "degrees": [],
+      "exists": false,
+      "abet": {
+        "commission": "n.a.",
+        "eac_accredited": false,
+        "quote": "n.a. - the UNC catalog page for the Applied Sciences, B.S. contains no accreditation statement, and no ABET-accredited electrical or computer engineering program was found in the UNC catalog.",
+        "url": "https://catalog.unc.edu/undergraduate/programs-study/applied-sciences-major-bs/",
+        "pending_or_absent": true
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 0,
+        "courses": [],
+        "covers": [],
+        "capstone": null
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "There is no applicant-selected school: 'Entering first-year students and transfers of less than junior standing from other institutions enter the College of Arts and Sciences (General College)', and the two first-year application deadlines are both non-binding.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Not applicable in a meaningful sense: UNC has no ECE program to compare, and admission is to the university/College rather than to a major (UNC-E1). No per-major admit data is published.",
+        "internal_gate": "For the closest engineering-adjacent option, the Applied Sciences B.S.: 'students who wish to complete the Applied Sciences major must apply for admission to the program. Admission to the university does not guarantee admission to the program', with December and May deadlines, an essay, and prerequisite courses (CHEM 101/101L, MATH 231, PHYS 118, ENGL 105) passed with C or better (UNC-E2).",
+        "gate_severity": "strong",
+        "rank": 0
+      },
+      "vs_cs": "For an ECE-oriented applicant, UNC-Chapel Hill is a dead end and this is decision-critical for a North Carolina resident who would otherwise be drawn there by in-state cost: the catalog's list of schools contains no engineering school at all, and the only engineering-labeled undergraduate degree is the Applied Sciences B.S. with just two tracks, Environmental Engineering and Materials Engineering, neither of which is electrical, computer, controls or robotics (UNC-E1, UNC-E2). No ABET accreditation statement appears on that program's catalog page, and no ECE department exists, so there is no accredited electrical/computer engineering door here. A robotics-minded student at UNC would have to route entirely through Computer Science plus physics or the Applied Sciences and Engineering minor, accepting a software-and-science education with no accredited hardware engineering degree - and the Applied Sciences major itself is a second, competitive admission after enrollment.",
+      "notable": "Because all first-years enter the College of Arts and Sciences (General College), there is no engineering-versus-arts application choice to make at UNC at all (UNC-E1). Applicants who need an accredited ECE degree in the UNC System should look to a separate campus (for example NC State) rather than expecting a Chapel Hill pathway; nothing on the fetched UNC pages offers an electrical or computer engineering degree."
+    }
   },
   {
     "slug": "ut-austin",
@@ -14795,7 +16990,84 @@
         "url": "https://fri.cns.utexas.edu/research-streams/texas-robotics-streams"
       }
     },
-    "best_fit_reason_original": "The nation's first undergraduate robotics program directly applied to from high school — 55,000 sq ft AHG robotics facility, guaranteed FRI admission with reserved robotics stream, reserved Minor in Robotics, and Peter Stone's Autonomous Driving stream with TACC HPC access."
+    "best_fit_reason_original": "The nation's first undergraduate robotics program directly applied to from high school — 55,000 sq ft AHG robotics facility, guaranteed FRI admission with reserved robotics stream, reserved Minor in Robotics, and Peter Stone's Autonomous Driving stream with TACC HPC access.",
+    "ece": {
+      "department_name": "Chandra Family Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Electrical and Computer Engineering (BSECE)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The University of Texas at Austin's Department of Electrical and Computer Engineering offers three undergraduate programs, of which Electrical Engineering and Electrical Engineering, Computer Engineering are accredited by the Engineering Accreditation Commission of ABET, https://www.abet.org.",
+        "url": "https://ece.utexas.edu/academics/accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Technical components (declared at the end of sophomore year): EE side — Communication, Signal Processing, Networks and Systems; Electronics and Integrated Circuits; Energy Systems and Renewable Energy; Fields, Waves and Electromagnetic Systems; Nanoelectronics and Nanotechnology. Computer Engineering side — Computer Architecture and Embedded Systems; Data Science and Information Processing; Software Engineering and Design. There is no technical component literally named robotics; robotics coursework sits inside these components.",
+        "course_count": 7,
+        "courses": [
+          {
+            "code": "ECE 362K",
+            "title": "Introduction to Automatic Control",
+            "cite": "UTA-E6"
+          },
+          {
+            "code": "ECE 370K",
+            "title": "Computer Control Systems",
+            "cite": "UTA-E6"
+          },
+          {
+            "code": "ECE 370L",
+            "title": "Introduction to Manufacturing Systems Automation (automation techniques applied to manufacturing systems, robotics, and computer vision)",
+            "cite": "UTA-E6"
+          },
+          {
+            "code": "ECE 370N",
+            "title": "Introduction to Robotics and Mechatronics",
+            "cite": "UTA-E6"
+          },
+          {
+            "code": "ECE 371Q",
+            "title": "Digital Image Processing",
+            "cite": "UTA-E7"
+          },
+          {
+            "code": "ECE 351M",
+            "title": "Digital Signal Processing",
+            "cite": "UTA-E7"
+          },
+          {
+            "code": "ECE 464K",
+            "title": "Senior Design Project",
+            "cite": "UTA-E7"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Two-stage design sequence in the BSECE degree plan: ECE 364D Introduction to Engineering Design (or ECE 364E Interdisciplinary Entrepreneurship) followed by a senior design project chosen from ECE 464C Corporate Senior Design Project, ECE 464G Multidisciplinary Senior Design Project, ECE 464H Honors Senior Design Project, ECE 464K Senior Design Project, ECE 464R Research Senior Design Project or ECE 464S Start-Up Senior Design Project."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "Direct-admit to major: you apply to the Cockrell School of Engineering and are admitted directly to Electrical and Computer Engineering as your first-choice major; there is no common engineering first year to clear afterward.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "UT Austin does not publish per-major freshman admit rates on the pages fetched, so no numeric comparison is available. Structurally, however, ECE and CS are separate admit targets in different colleges: ECE is in the Cockrell School of Engineering while Computer Science is in the College of Natural Sciences, where CNS itself describes internal transfer as 'a required process for CNS students applying to Computer Science' with a minimum 3.0 GPA, 24 in-residence hours, an essay, a two-attempt cap, and the statements 'Internal Transfer is a competitive process and completed student applications are reviewed holistically with admission decisions offered on a space available basis' and 'Meeting all minimum criteria does not guarantee admission.' A CNS internal-transfer session deck lists Computer Science as a 'Restricted Major.'",
+        "internal_gate": "None to stay in ECE once admitted — the BSECE has a common two-year basic sequence and students declare a technical component at the end of sophomore year. The gate is only relevant if you need to move INTO ECE later: Cockrell internal transfer says 'Admission is competitive and based on space availability', requires minimum cumulative and technical GPA of 3.0 plus in-residence calculus and technical credit and a 500-word essay, and notes 'The Cockrell School does not have a standard GPA requirement for internal transfer admission. The cumulative and required technical GPAs of admitted students vary by semester and requested major, as does the number of seats offered.' University rules limit you to two internal-transfer applications per college, applications must be made within the first four long semesters, and no transfer after 60 in-residence hours.",
+        "gate_severity": "none",
+        "rank": 0
+      },
+      "vs_cs": "UT Austin is the cleanest structural case in the batch: ECE is a direct-admit major in Cockrell with no first-year sorting, while CS lives in a different college and is treated as a restricted, space-available major, so listing ECE as first choice avoids the CS bottleneck entirely. The robotics content is real — ECE 370N Introduction to Robotics and Mechatronics, ECE 362K Introduction to Automatic Control, ECE 370K Computer Control Systems, ECE 370L (robotics and computer vision in automation), plus a six-way choice of senior design projects — and Texas Robotics runs a 15-hour Minor in Robotics that explicitly lists Electrical & Computer Engineering as a supported major. The cost is that robotics is not a named technical component, so you assemble it from the Data Science and Information Processing or Computer Architecture and Embedded Systems components plus the robotics minor.",
+      "notable": "Integrated BS/MSE in ECE: BSECE plus MSE with a minimum 150 total hours, open to currently enrolled UT ECE students. The department is transitioning accreditation — the accreditation page notes 'ABET accreditation of the Electrical and Computer Engineering program, newly offered in Fall 2022, will be sought in 2024 and if approved, will replace both programs', so a Fall 2027 entrant should confirm the BSECE's accreditation status at the time of application. Texas Robotics' Minor in Robotics requires RBT 350 Gateway to Robotics plus four courses spanning hardware, programming, modeling & control, sensing/perception/planning and machine learning."
+    }
   },
   {
     "slug": "ut-dallas",
@@ -15282,7 +17554,89 @@
         "url": "https://impact.utdallas.edu/project/48427"
       }
     },
-    "best_fit_reason_original": "Outstanding value: 976 no-need first-years got merit averaging $10,636. McDermott Scholars program is worth ~$310,000 to non-Texas students. Comet Robotics is a genuine club powerhouse (combat, VEX U, University Rover Challenge)."
+    "best_fit_reason_original": "Outstanding value: 976 no-need first-years got merit averaging $10,636. McDermott Scholars program is worth ~$310,000 to non-Texas students. Comet Robotics is a genuine club powerhouse (combat, VEX U, University Rover Challenge).",
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering, Erik Jonsson School of Engineering and Computer Science",
+      "structure": "combined_ece",
+      "degrees": [
+        "Bachelor of Science in Electrical Engineering",
+        "Bachelor of Science in Computer Engineering (delivered by the combined faculties of Computer Science and Electrical Engineering)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The BS program in Electrical Engineering is accredited by the Engineering Accreditation Commission of ABET, www.abet.org.",
+        "url": "https://catalog.utdallas.edu/2025/undergraduate/programs/ecs/electrical-engineering",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "Signals and Systems (BSEE concentration area; at least two courses required per area)",
+        "course_count": 8,
+        "courses": [
+          {
+            "code": "EE 4342",
+            "title": "Introduction to Robotics",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 4331",
+            "title": "Applied Machine Learning",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 4310",
+            "title": "Systems and Controls",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 3302",
+            "title": "Signals and Systems",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 4361",
+            "title": "Introduction to Digital Signal Processing",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 4370",
+            "title": "Embedded Systems",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 4304",
+            "title": "Computer Architecture",
+            "cite": "UTD-E1"
+          },
+          {
+            "code": "EE 3320",
+            "title": "Digital Circuits",
+            "cite": "UTD-E1"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "EE 4388 Senior Design Project I followed by EE 4389 Senior Design Project II within the 128-semester-credit-hour BSEE (UTD-E1)"
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to UT Dallas naming a first-choice and a second-choice major and are admitted to a specific major stated in the acceptance letter; if you are not admitted to your first choice you may be admitted to your second.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "UT Dallas publishes that applicants 'are evaluated for their ability to be successful in the major they select on their application and are offered admission to the major outlined in their acceptance letter' and that students not admitted to a first choice 'may be admitted to their second choice major' (UTD-E4), but no admit rate or threshold is published for Electrical Engineering versus Computer Science.",
+        "internal_gate": "No published GPA gate for holding the major; admitted students may request a major change only after Census Day of their first semester (UTD-E4).",
+        "gate_severity": "unpublished",
+        "rank": 0
+      },
+      "vs_cs": "UT Dallas ECE is unusually explicit for a robotics-minded applicant: the BSEE Signals and Systems concentration area contains both EE 4342 Introduction to Robotics and EE 4331 Applied Machine Learning alongside EE 4310 Systems and Controls, and EE 4370 Embedded Systems sits in the required core (UTD-E1). Computer Science would give more software depth but no accredited engineering degree and no required controls or embedded sequence; Computer Engineering is the middle path, jointly delivered by the CS and EE departments and separately EAC-accredited (UTD-E2). The cost of ECE is that the major is chosen and awarded at admission, so a first-choice/second-choice strategy matters more here than at schools that admit undeclared.",
+      "notable": "The Jonsson School offers six degree programs including both Computer Engineering and Electrical Engineering (UTD-E3), and the Computer Engineering BS is explicitly co-owned by the Computer Science and Electrical Engineering departments (UTD-E2). The department's own undergraduate page could not be read (blocked to automated access), so all values here come from the university catalog."
+    }
   },
   {
     "slug": "uw-seattle",
@@ -15853,7 +18207,46 @@
       "verify_with": "UW ME advising",
       "undermines_robotics_score": false
     },
-    "best_fit_reason_original": "Elite Allen School CS with world-class NLP (Zettlemoyer) and a six-lab cooperative robotics program (Srinivasa, Fox, Cakmak, Boots, Smith, Gupta) — students get a unified undergrad research application across all six labs."
+    "best_fit_reason_original": "Elite Allen School CS with world-class NLP (Zettlemoyer) and a six-lab cooperative robotics program (Srinivasa, Fox, Cakmak, Boots, Smith, Gupta) — students get a unified undergrad research application across all six labs.",
+    "ece": {
+      "department_name": "Department of Electrical & Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS in Electrical and Computer Engineering (BSECE)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "NOT_ABET_ACCREDITED",
+        "eac_accredited": false,
+        "quote": "The Bachelor of Science in Electrical and Computer Engineering program is not currently ABET-accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://www.ece.uw.edu/about/abet-accreditation-bsece/",
+        "pending_or_absent": true
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 0,
+        "courses": [],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "vlsi"
+        ],
+        "capstone": "n.a. — a specific capstone course was not confirmed from the pages fetched."
+      },
+      "door": {
+        "is_separate_admit_unit": true,
+        "how_you_enter": "Two steps, and this is the sharpest two-gate case in the batch. Step 1: apply Direct to College (DTC) for the College of Engineering — you are admitted as a pre-engineering ENGRUD student, not to ECE. (Direct to Major admission exists at UW for the Allen School's Computer Science/Computer Engineering, but ECE's own admissions page states 'The primary pathway to Electrical and Computer Engineering is through Direct to College admission to the College of Engineering... be sure to list it as your first-choice major'.) Step 2: after at least 24 credits as a matriculated UW student, request placement into ECE through the College's major-placement process.",
+        "easier_than_cs": "yes",
+        "easier_than_cs_basis": "Both gates favor ECE, and the gap is enormous for a non-resident. Gate 1: the Allen School publishes Direct-to-Major 2025 outcomes of 599/1617 = 37% for Washington residents, 181/3916 = 5% for domestic non-residents and 30/1413 = 2% for international applicants; ECE has no comparable DTM funnel because it is entered through DTC. Gate 2: the College of Engineering publishes first-choice-major admission rates for current UW students, where Electrical & Computer Engineering is 65% while Computer Engineering is 28% and Computer Science is 28%; the same page reports '73% of all current UW student applicants are offered admission into an engineering major' with the footnote 'All engineering majors except computer science.' A second College page gives ECE first-choice admit rates trending 88% (2023), 67% (2024), 50% (2025) versus CS/CE 33%, 29%, 20% over the same years. The Allen School also states 'we do not admit differently between Computer Science and Computer Engineering', so Computer Engineering at UW is a CS-side door, not an ECE-side door.",
+        "internal_gate": "ENGRUD major placement. Requirements: satisfy the ENGRUD continuation policy and placement requirements, minimum 2.00 UW ENGRUD GPA, minimum 2.0 in each placement requirement, and at least 24 credits as a matriculated UW student. The College states 'All ENGRUDs are guaranteed placement into an engineering major' and that historically over 90% are placed into one of their top-choice majors. Placement data show ECE capacity is close to demand: summer 2026 saw 281 first-choice ECE requests against 239 total ECE placements (237 of them first-choice); summer 2025 saw 240 first-choice requests against 226 placements. ECE is also labeled capacity-constrained on the admissions page: 'This major is capacity-constrained. Completion of prerequisites does not guarantee admission.'",
+        "gate_severity": "mild",
+        "rank": 3
+      },
+      "vs_cs": "For an out-of-state applicant UW ECE is dramatically more reachable than UW CS — Allen School Direct-to-Major admitted 5% of domestic non-residents in 2025, while the College of Engineering's own current-student data put ECE first-choice admission at 65% against 28% for CS and Computer Engineering. ECE delivers the controls, embedded systems, machine learning and hardware content a robotics student needs, but there are two real costs: you enter as an undeclared ENGRUD and must place into the major later, and the BSECE is not currently ABET-EAC accredited (the department says it is not accredited and plans to apply, with a retroactive request for graduates since October 1, 2023). Note that choosing 'Computer Engineering' at UW does not dodge CS competition, because the Allen School says it does not admit differently between CS and CpE.",
+      "notable": "The BSECE replaced the BSEE: autumn 2023 was the final BSEE admission cycle and from autumn 2024 the BSECE is the only degree available for undergraduate admission, with the final BSEE expected in 2026. The legacy BSEE was EAC-accredited ('The Electrical Engineering program is accredited by the Engineering Accreditation Commission of ABET'), so a Fall 2027 entrant would be in the not-yet-accredited BSECE. UW also publishes a current-UW pathway into the Allen School: for spring+autumn 2025 cycles, 58/244 = 24% for WA residents and 33/90 = 37% for domestic non-residents."
+    }
   },
   {
     "slug": "virginia-tech",
@@ -16343,7 +18736,120 @@
       "eac_alternative_url": null,
       "notes": "Closed to new declarations: \"Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026. Students already in Robotics and Mechatronics who can graduate by May 2027, nothing changes. Students who cannot graduate by May 2027 will be moved to the Mechanical Engineering Major.\" (https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html). The awarded degree is the EAC-accredited BSME: \"Students graduating in the Robotics and Mechatronics major in Mechanical Engineering earn an ABET-accredited Bachelor of Science degree in Mechanical Engineering.\" (https://me.vt.edu/for-students/undergraduate/robotics-major.html). Catalog total: 128 credit hours; ECE 3254 had its last VT offering Spring 2025, replaced by ME 3704 starting Spring 2026."
     },
-    "best_fit_reason_original": "A required, AI-capable capstone plus a mandatory Career Bridge Experience, a first-year research fellowship designed for beginners, and genuine 4000/5000-level AI depth including reinforcement learning, deep learning, and NLP"
+    "best_fit_reason_original": "A required, AI-capable capstone plus a mandatory Career Bridge Experience, a first-year research fellowship designed for beginners, and genuine 4000/5000-level AI depth including reinforcement learning, deep learning, and NLP",
+    "ece": {
+      "department_name": "Bradley Department of Electrical and Computer Engineering",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS Computer Engineering (BSCPE)",
+        "BS Computer Engineering — Controls, Robotics and Autonomy major",
+        "BS Electrical Engineering (BSEE)",
+        "BS Electrical Engineering — Controls, Robotics and Autonomy major",
+        "BS Electrical and Computer Engineering (new ECE major, students entering Fall 2023 or after only)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "n.a.",
+        "eac_accredited": false,
+        "quote": "n.a. — an accreditation sentence was not found on the ECE curriculum page or the BSCPE/BSEE catalog pages fetched.",
+        "url": "https://ece.vt.edu/undergrad/curriculum.html",
+        "pending_or_absent": true
+      },
+      "robotics_ai": {
+        "concentration_name": "Controls, Robotics and Autonomy — offered as a major/concentration within both the BSCPE and the BSEE",
+        "course_count": 12,
+        "courses": [
+          {
+            "code": "ECE 2804",
+            "title": "Integrated Design Project (2 cr) — C or higher required",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 2564",
+            "title": "Embedded systems core requirement",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 2514",
+            "title": "Core requirement",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 3504",
+            "title": "Major requirement",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 3574",
+            "title": "Core requirement",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 3704",
+            "title": "Continuous and Discrete System Theory",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 3714",
+            "title": "Introduction to Control Systems (choose three of four)",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 4524",
+            "title": "Artificial Intelligence and Engineering Applications (choose three of four)",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 4580",
+            "title": "Digital Image Processing (choose three of four)",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 4704",
+            "title": "Principles of Robotics Systems (choose three of four)",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 4805",
+            "title": "Senior Design Project I",
+            "cite": "VT-E2"
+          },
+          {
+            "code": "ECE 4806",
+            "title": "Senior Design Project II",
+            "cite": "VT-E2"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "perception_cv",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Two-semester senior design ECE 4805 and ECE 4806, plus the earlier ECE 2804 Integrated Design Project. The BSCPE also requires the Career Bridge Experience (ENGE 3900). Degree totals 120 credits with a minimum 2.00 overall GPA and 2.00 in-major GPA, and a 9-credit Secondary Focus is required of all ECE students."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "Two steps: engineering applicants are admitted into General Engineering rather than to ECE, then apply to a degree-granting major. 'Degree-granting engineering majors accept applicants on a space-available basis'; you need a minimum 2.0 overall Virginia Tech GPA to apply, a 3.0 overall Virginia Tech GPA guarantees your first-choice major, and below 3.0 applicants are rank-ordered.",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "Virginia Tech does not publish per-major admit rates or per-major change-of-major acceptance rates on the pages fetched. What is published is the rule set: ECE is reached from General Engineering on a space-available basis with a guarantee at a 3.0 overall Virginia Tech GPA, and the change-of-major course requirements are ENGE 1215, ENGE 1216 (or ENGE 1414), MATH 1225, MATH 1226 and ENGL 1105 with a minimum of 12 GPA hours; non-engineering students need a 3.5 overall GPA for the guarantee versus 3.0 for engineering students.",
+        "internal_gate": "Change-of-major into ECE from General Engineering: ENGE 1215, ENGE 1216 (or ENGE 1414), MATH 1225, MATH 1226, ENGL 1105; minimum 12 GPA hours; minimum 2.0 overall VT GPA to apply; guarantee of first choice at 3.0 overall VT GPA (3.5 for non-engineering students). Once in ECE, the catalog requires 'Students must earn a C or higher in the following ECE courses: ECE 1004, ECE 2024, ECE 2214, ECE 2514, ECE 2544, ECE 2564, ECE 2714, ECE 2804 Integrated Design Project' — so ECE 2804 specifically requires a C or higher. Degree also requires 2.00 overall and 2.00 in-major GPA.",
+        "gate_severity": "mild",
+        "rank": 0
+      },
+      "vs_cs": "Virginia Tech is the strongest case on the list for entering through ECE rather than CS, because the Mechanical Engineering robotics route is closing. The College of Engineering change-of-major FAQ states verbatim: 'Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026.' The catalog and checksheet pages still list the major and are stale relative to the FAQ. That leaves ECE's 'Controls, Robotics and Autonomy' concentration, offered in both the BSEE and the BSCPE, as the surviving named robotics pathway. The cost of the ECE route is the General Engineering first year and a space-available declaration only guaranteed at a 3.0 overall GPA, plus a C or higher in eight named ECE courses including ECE 2804.",
+      "notable": "ECE runs an unusually granular set of named majors: Computer Engineering side — Computer Engineering, Chip-Scale Integration, Machine Learning, Controls, Robotics and Autonomy, Networking and Cybersecurity, Software Systems Engineering; Electrical Engineering side — Electrical Engineering, Wireless Communications & Signal Processing, Controls, Robotics and Autonomy, Energy and Power Electronics Systems, Micro and Nano Systems, plus a new ECE major covering space systems, RF-microwave and photonics available only to students entering Fall 2023 or after. A 9-credit Secondary Focus is required of all ECE students, and the BSCPE requires the ENGE 3900 Career Bridge Experience.",
+      "_correction": {
+        "field": "vs_cs",
+        "what": "ECE research recorded the ME Robotics & Mechatronics closure as unconfirmed; it is confirmed.",
+        "evidence": "https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
+        "quote": "Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026.",
+        "verified": "2026-08-18"
+      }
+    }
   },
   {
     "slug": "wpi",
@@ -16901,6 +19407,77 @@
       "eac_alternative_url": "https://www.wpi.edu/academics/engineering/accreditation",
       "notes": "First ABET-accredited undergraduate robotics engineering program in the United States."
     },
-    "best_fit_reason_original": "Genuine undergraduate access to generative-AI, RL, NLP and computer-vision coursework combined with two mandatory faculty-advised team projects and a grading system that rewards academic risk-taking [WPI-S4][WPI-S5][WPI-S12][WPI-S15]"
+    "best_fit_reason_original": "Genuine undergraduate access to generative-AI, RL, NLP and computer-vision coursework combined with two mandatory faculty-advised team projects and a grading system that rewards academic risk-taking [WPI-S4][WPI-S5][WPI-S12][WPI-S15]",
+    "ece": {
+      "department_name": "Electrical and Computer Engineering (ECE) Department",
+      "structure": "combined_ece",
+      "degrees": [
+        "BS Electrical and Computer Engineering"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "The Electrical & Computer Engineering Program is accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://www.wpi.edu/academics/departments/electrical-computer-engineering/accreditation",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": null,
+        "course_count": 6,
+        "courses": [
+          {
+            "code": "ECE 3012",
+            "title": "Introduction to Control Systems Engineering",
+            "cite": "WPI-E5"
+          },
+          {
+            "code": "ECE 3405",
+            "title": "Foundations and Trends in Machine Learning for Engineering",
+            "cite": "WPI-E5"
+          },
+          {
+            "code": "ECE 3849",
+            "title": "Real-Time Embedded Systems",
+            "cite": "WPI-E5"
+          },
+          {
+            "code": "ECE 2049",
+            "title": "Embedded Computing in Engineering Design",
+            "cite": "WPI-E5"
+          },
+          {
+            "code": "ECE 4703",
+            "title": "Real-Time Digital Signal Processing",
+            "cite": "WPI-E5"
+          },
+          {
+            "code": "ECE 2799",
+            "title": "Electrical and Computer Engineering Design",
+            "cite": "WPI-E5"
+          }
+        ],
+        "covers": [
+          "controls",
+          "embedded",
+          "signal_processing",
+          "ml_hardware",
+          "power",
+          "vlsi"
+        ],
+        "capstone": "Major Qualifying Project (MQP): a 'team-based, professional-level design or research experience' that is 'the culmination of WPI's project-based undergraduate education' and a requirement of every graduating senior; ECE MQP examples on the BS ECE page include traffic-light detection for self-driving cars, radio communications for a robotic aerial vehicle, a robotic sailboat and a semi-autonomous wheelchair (WPI-E7, WPI-E2)."
+      },
+      "door": {
+        "is_separate_admit_unit": false,
+        "how_you_enter": "You apply to WPI itself through the Common Application (single first-year application with ED/EA/RD timing options) and are not admitted to ECE as a separate unit; WPI's Robotics Engineering page tells applicants 'Undecided? No problem. Apply now and explore before committing to a specific path.'",
+        "easier_than_cs": "unpublished",
+        "easier_than_cs_basis": "WPI's first-year application pages describe one university-wide Common Application process with no major-specific admission criteria and publish no per-major admit rates (WPI-E8, WPI-E10).",
+        "internal_gate": null,
+        "gate_severity": "none",
+        "rank": 0
+      },
+      "vs_cs": "WPI already has an EAC-accredited Robotics Engineering degree, so ECE is not the robotics door here — it is the hardware-depth door: circuits, microelectronics, embedded computing, signals, control systems and power that neither CS nor the interdisciplinary RBE core covers to the same depth (WPI-E5, WPI-E4). What ECE costs you relative to RBE is the integrated robotics core itself (manipulation, mechanics, robot software stack), and relative to CS you trade algorithms/software breadth for circuit and signal depth. WPI's structure makes doubling up cheap in principle: the Robotics Engineering page lists Electrical & Computer Engineering among potential minors, and ECE offers a minor with clusters in control and power, signals, analog and RF (WPI-E6, WPI-E2) — but WPI does not publish how many students actually pair RBE with an ECE major, so treat 'commonly double up' as unverified.",
+      "notable": "ECE offers a BS/MS in five years and an ECE minor with clusters in control and power, signals, analog and RF (WPI-E2); the ECE department in Atwater Kent Laboratories lists research in machine learning, signal processing, autonomous vehicles, prosthetic control and microelectronics (WPI-E1); WPI's engineering accreditation page confirms both 'electrical and computer engineering' and 'robotics engineering' programs are EAC-accredited (WPI-E4)."
+    }
   }
 ]
