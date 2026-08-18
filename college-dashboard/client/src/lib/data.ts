@@ -279,6 +279,26 @@ export const scoreGroups: { key: string; label: string; short: string; keys: str
     short: "Outcomes",
     keys: ["industry_preparation", "graduate_school_preparation", "fourplusone_quality"],
   },
+  // Robotics is researched per school as its own pair of axes rather than
+  // composed from the `scores` sub-keys, so `keys` is empty here: consumers that
+  // flatMap over `keys` (the Curriculum score-note grid) correctly add nothing,
+  // while consumers that read `axes[key]` (the Compare radar) pick them up.
+  //
+  // Without these the radar showed robotics only as one third of "Hands-on",
+  // diluted by project work and club ecosystem -- so two schools with very
+  // different robotics offerings could trace nearly the same shape.
+  {
+    key: "robotics_curriculum",
+    label: "Robotics coursework you can actually take",
+    short: "Robotics curriculum",
+    keys: [],
+  },
+  {
+    key: "robotics_access",
+    label: "Robotics labs, teams & undergraduate research access",
+    short: "Robotics access",
+    keys: [],
+  },
 ];
 
 export function fitClass(f: string) {
