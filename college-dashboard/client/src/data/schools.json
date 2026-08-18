@@ -314,6 +314,20 @@
           "https://www.carleton.edu/admissions/apply/steps/criteria/",
           "https://www.carleton.edu/handbook/academics/policy/361/declaration-of-major-or-minor/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": false,
+          "severity": "no_program",
+          "basis": "To enter the Dual Degree Program you must complete Carleton's distribution requirements, an integrative exercise in an appropriate field such as chemistry, mathematics, computer science or physics, and the Dual Degree prerequisites within three years, then be accepted by Washington University; admission type is listed as 'Preferred' (CARL-E2).",
+          "how_you_enter": "You apply to Carleton College as a whole; there is no engineering unit to apply to, since 'Carleton does not offer an official pre-engineering track', and engineering is reached later through the Dual Degree Program with Washington University."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "Carleton admits to the college with no major-level or divisional differentiation: the CDS reports a single funnel (6,796 / 1,480) and one C7 factor set applied to all applicants, with eight factors rated Very Important for everyone [CARL-S1]. Carleton has no engineering school — students interested in engineering use a 3-2 engineering pathway or the CS major — so there is no separate technical-admissions track and prospective CS applicants clear the same holistic bar as everyone else [CARL-S4][CARL-S7]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -786,7 +800,21 @@
           "https://www.cmu.edu/ira/factbook/pdf/facts2017/admission.pdf"
         ]
       },
-      "unit_rates_official": false
+      "unit_rates_official": false,
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Graduation QPA of 2.0 required after freshman year; ECE department courses require a minimum 2.0 QPA and prerequisite courses require a grade of C or better (18-202 specifically C or better) (CMU-E1). Robotics Additional Major requires a 3.0 GPA to apply and a 3.0 QPA in the additional-major curriculum to graduate (CMU-E3).",
+          "how_you_enter": "You apply to the College of Engineering and are admitted directly to the ECE department/major (or as CoE undecided); the School of Computer Science is an entirely separate admit unit."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "CMU admits by college and by program, and the spread is enormous. In CMU's own publication, the School of Computer Science 'now turns away almost 95 percent of those who apply': in the cited year 6,756 students applied to SCS and only 350 were admitted, 'a rate of less than 5.2 percent. ... Compare that to the 19 percent acceptance rate for CMU's other seven undergraduate programs' [CMU-S5]. Testing requirements also differ by college for the most recently published cycle: SCS requires the SAT or ACT, the College of Fine Arts is test-optional, and the College of Engineering, Dietrich, Heinz Information Systems, Mellon College of Science and Tepper are 'test flexible' — applicants must submit some standardized evidence (SAT, ACT, IB, AP, Cambridge A-Level or French Baccalaureate) [CMU-S4]. The College of Engineering admits directly to a department/major unless the applicant selects undecided [CMU-S6]. Early Decision is materially easier: 553 admits from 2,680 ED applicants (20.6%) versus 11.07% overall [CMU-S1]. Robotics at the undergraduate level is a minor rather than a major — the Robotics Institute offers 'masters programs and an undergraduate minor for Carnegie Mellon students' [CMU-S8]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
+      }
     },
     "source_log": {
       "CMU-S1": {
@@ -1496,6 +1524,20 @@
           "https://irp.dpb.cornell.edu/university-factbook/undergraduate-admissions",
           "https://irp.cornell.edu/university-factbook/factbook-archives/admissions"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "ECE affiliation requires at least a C+ in MATH 2930 or 2940, in PHYS 2213, and in one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300, plus a GPA of at least 2.5 across the listed math, physics and ECE gateway courses (CORNELL-E1).",
+          "how_you_enter": "You apply to Cornell Engineering as your college, not to ECE: 'Cornell University only allows applicants to apply to one of the seven undergraduate colleges and schools' and 'No, you do not apply to a particular major; you apply to the college' — you may indicate an intended major, and 'You do not officially select your major until the second semester of your sophomore year' (CORNELL-E2, CORNELL-E3)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Cornell applicants \"apply directly to one of our undergraduate colleges and schools\" rather than to the university at large [CORNELL-S2], and the college-specific supplemental essays differ sharply — Duffield Engineering asks two 200-word essays including \"engineering is the application of math, science, and technology to solve complex problems. Why do you want to study engineering?\", while Arts & Sciences asks a single 650-word intellectual-passion essay [CORNELL-S3][CORNELL-S4]. Despite this college-by-college process, the CDS reports only one university-wide funnel (72,523 / 6,077) and one ED funnel (10,057 / 1,889), so the effective ED bar for the College of Engineering is not published as a separate rate — applicants must treat the ED CoE bar as unpublished rather than assume it matches the 18.78% university-wide ED rate [CORNELL-S1]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -2115,6 +2157,20 @@
           "https://trinity.duke.edu/undergraduate/academic-policies/transfer-to-from-pratt",
           "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "None published for declaring ECE once enrolled in Pratt; the ECE BSE requires at least 34 units including six foundation courses (DUKE-E1). Changing between Trinity and Pratt after enrollment is not addressed on the apply page (DUKE-E4).",
+          "how_you_enter": "You apply on the Common Application to either Trinity College of Arts & Sciences or the Pratt School of Engineering, and ECE exists only inside Pratt while Computer Science exists only inside Trinity, so the ECE-vs-CS decision is made as a college choice at application time."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "Duke's CDS reports a single university-wide admission funnel (55,541 applied / 2,910 admitted) with no separate counts for Trinity College of Arts & Sciences versus the Pratt School of Engineering, so Trinity and Pratt admit rates are indistinguishable from published data [DUKE-S1]. Applicants do indicate a school: the required 'Why Duke' short essay is phrased 'Feel free to consider intellectual creativity, sense of community, and any other aspects of Duke that appeal to you, and how you plan to engage with the Trinity College of Arts & Sciences or the Pratt School of Engineering' [DUKE-S3]. Duke publishes no major-level or school-level admit rates."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -2740,6 +2796,20 @@
           "https://admissions.ufl.edu/apply/freshman/our-decision-process",
           "https://ir.aa.ufl.edu/facts/admission/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Critical tracking: minimum grade of C in each critical-tracking course and a minimum 2.5 critical-tracking GPA, tracked semester by semester (UF-E3 for Computer Engineering; the BSEE catalog carries the same critical-tracking structure, UF-E1).",
+          "how_you_enter": "You apply to UF as a whole through the Common Application under Early Decision (binding), Early Action or Regular Decision, and are admitted to the freshman class rather than to a major, then hold the ECE major by meeting critical-tracking requirements."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "UF DOES NOT ADMIT BY MAJOR — this directly CORRECTS the brief. UF Admissions states verbatim: 'The University of Florida does not admit by major, so Early Decision is binding regardless of outcome through the College of the Arts audition process' [UF-S3]. Applicants are admitted to the university, and access to competitive majors is controlled AFTER matriculation by CRITICAL TRACKING, a published per-semester progression standard. The brief's 2.5 / 2.8 figures are correct but they are critical-tracking thresholds, not admission thresholds, and the direction is confirmed: CS is the more forgiving path and ME is HARDER. Verified thresholds: (a) CS in the College of Liberal Arts and Sciences requires a 2.5 GPA across all critical-tracking courses (checked from semester 4 onward) plus a 2.0 UF GPA every semester, tracking MAC 1147/2311, MAC 2312, MAC 2313, PHY 2053/2048 series, COP 3502C/3504C, COP 3503C, COT 3100, COP 3530, COP 4600 [UF-S6]. (b) CS in the Herbert Wertheim College of Engineering requires a 2.5 GPA across a group of SIX critical-tracking courses (MAC 2311, MAC 2312, MAC 2313, COP 3502C, PHY 2048, PHY 2049), each completed with a minimum grade of C within TWO ATTEMPTS, on a 1/1/2/1/all-six semester schedule, plus 2.0 UF GPA [UF-S7]. (c) MECHANICAL ENGINEERING requires a 2.8 GPA across a group of EIGHT critical-tracking courses (CHM 2045/2095, EML 2023, MAC 2311, MAC 2312, MAC 2313, MAP 2302, PHY 2048, PHY 2049), each with a minimum grade of C within two attempts, two courses per semester across semesters 1-4, plus 2.0 UF GPA [UF-S8]. ME additionally enforces departmental probation: 'An aerospace or mechanical engineering student whose cumulative, upper-division or department grade point average falls below a 2.0 or who does not meet critical tracking requirements will be placed on academic probation,' with a maximum of two probation terms and possible dismissal from the department [UF-S8]. STRATEGIC CONSEQUENCE: at UF the admissions bar is university-level and OOS-neutral, but the ME major carries a 2.8 tracking GPA and a two-attempts-per-course rule that is unforgiving of a weak first-year calculus/physics run — the real risk at UF is post-admission, and a robotics applicant choosing ME should plan first-year course load accordingly. Note also the ED consequence of not admitting by major: because there is no major-contingent outcome, UF's binding ED gives no major-access advantage, only a timing/odds advantage."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -3279,7 +3349,21 @@
           "https://admission.gatech.edu/images/pdf/2026/2026-First-year-admitted-profile.pdf"
         ]
       },
-      "unit_rates_official": false
+      "unit_rates_official": false,
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": "No published GPA or capacity gate to confirm an ECE major; the restriction runs the other way — CS is a 'space-restricted program' now accepting change-of-major applications only 'on a limited basis', and 'Students should not assume they will be able to change their major to Computer Science' (GT-E7).",
+          "how_you_enter": "'When you apply to Georgia Tech as a first-year applicant, you do not apply to a specific major or college. However, on your Common Application, you are asked to select an intended (primary) major' — and 'consideration of your major is an important part of our application review process' (GT-E3)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Georgia Tech admits by major, and the college you name on the Common App materially changes your odds. Institute-published profiles show only intended-area-of-study mix rather than per-college admit rates: 42% Engineering, 15% Computing, 22% Sciences, 7% Business, 8% Liberal Arts, 6% Design for the Fall 2026 admitted class [GT-S9] (Fall 2025: 44% Engineering, 16% Computing) [GT-S10]. The College of Computing states only that 'Competition remains high, with an admission rate for Computing that is lower than Georgia Tech's already low overall admission rate,' while disclosing that the Fall 2025 cycle drew 66,895 total applications including 13,711 for CS and Computational Media combined, that 1,547 first-year students were offered admission to CS or CM, and that CS alone accounted for 92.7% of College applicants [GT-S8]. That implies a CS+CM admit rate of roughly 11.3% (INFERRED - 1,547/13,711) [GT-S8], i.e. computing sits below the Institute-wide 13.3% [GT-S1]. The widely repeated figures of 8.5% for the College of Computing versus 13.1% for the College of Engineering could NOT be verified from any Georgia Tech source fetched on 2026-08-16 - treat them as unsourced. The second, larger constraint is mobility after admission: change of major into CS was suspended, and as of April 15, 2025 the College of Computing 'updated their change of major process based on semester of matriculation,' with separate rules for students who matriculated in summer 2024 or afterward; the department 'is now prepared to begin accepting Change of Major applications again on a limited basis, which includes students who would like to add Computer Science as a second major' [GT-S7][GT-S8]. Practical consequence: apply directly to the major you want (Computer Science, or a specific engineering major such as Mechanical Engineering); do not plan on entering through another major and switching. Note also that Georgia Tech's CDS marks 'state residency' as Very Important in the review [GT-S1], which is the single biggest structural headwind for a North Carolina applicant."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
+      }
     },
     "source_log": {
       "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
@@ -3879,6 +3963,20 @@
           "https://www.iit.edu/resources-admitted-students/undergraduate/whats-next/admitted-alternate-major",
           "https://catalog.iit.edu/undergraduate/undergraduate-admission/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Students not admitted to a first- or second-choice engineering/computing major may enter Discover+ and be reconsidered by submitting an updated transcript showing a B or higher in pre-calculus, calculus or physics, scoring 80+ on the ALEKS math placement exam, earning college credit for MATH 151, or completing MATH 151 in the first year (ILLINOIS-TECH-E6).",
+          "how_you_enter": "Applicants select first- and second-choice degree programs and can be admitted directly to one of them - 'Direct admission into your first- or second-choice degree program' - or admitted to the university and routed into the Discover+ undecided program to reapply to the preferred major in year two (ILLINOIS-TECH-E6)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Illinois Tech admits directly to the major, and each program sets its own bar. The admissions office publishes recommended-GPA guidance by track rather than admit rates: the STEM track (all School of Engineering, Applied Science, and Health programs except Industrial Technology and Management, all School of Computing programs except IT and Management/Computer Information Systems, plus Finance, Biology, Chemistry, Physics and Food Science) has a recommended GPA range of 3.5-4.0+ with an average GPA of 4.12 among 2023 admits, while the Discover+/Tech+/Innovation and Society/Architecture track sits at 3.4-4.0+ with a 4.0 average [IIT-S5]. Review is holistic and explicitly weighs course level 'including math for more selective majors,' honors/AP/IB performance, the personal statement and activities [IIT-S4]. Applicants who miss their first-choice major are handled through an alternate-major process: for engineering and computing programs 'Illinois Tech typically requires a B or higher in math and science courses,' and reconsideration for a first-choice major in the School of Engineering, Applied Science, and Health or the School of Computing is possible with an updated mid-year or final transcript showing 'a B or higher in pre-calculus, calculus, or physics'; an ALEKS math placement score of 80 or above also figures in placement, and Architecture is called out as 'one of Illinois Tech's most selective academic programs' with a transfer-pathway fallback [IIT-S7]. No per-major admit rates are published. Practical consequence: name the exact major you want, keep pre-calculus/calculus/physics grades at B or higher, and know that reconsideration is a documented process rather than a favor - and that a 'Discover+' style admit is a real alternate outcome rather than a rejection."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -4402,6 +4500,20 @@
           "https://apply.jhu.edu/frequently-asked-questions/",
           "https://apply.jhu.edu/fast-facts/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": "No published GPA or capacity gate to declare Electrical Engineering or Computer Engineering; students may choose any major across Krieger and Whiting after matriculation (JHU-E2). The LCSR Robotics Minor requires grades of C- or higher, a minimum of 6 courses and 18 credits, with at least 6 credits outside the primary major department (JHU-E3).",
+          "how_you_enter": "There is no ECE admission door: 'When you applied to Hopkins, you applied to the full university, and not to a specific school or major (except in the case of biomedical engineering)' and 'You are not bound to the major you listed on your application' (JHU-E2)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "JHU's CDS reports one undergraduate funnel for the Homewood schools (50,259 / 3,072) with no separate Whiting School of Engineering vs. Krieger School of Arts & Sciences rates, and — critically — its ED figures are reported as a single combined round: CDS C21 lists both an ED I closing date of 11/1 (notification 12/11) and an ED II closing date of 1/3 (notification 2/12) but reports only one pair of counts (7,639 applied / 835 admitted = 10.93%), i.e. ED I and ED II are COMBINED and cannot be separated [JHU-S1]. The only place JHU differentiates by division is testing policy, where CDS C8 reads \"Required to be considered for admission (Homewood Schools); Not required but considered if submitted (Peabody Conservatory)\" [JHU-S1]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -4925,6 +5037,20 @@
           "https://www.kettering.edu/admissions-aid/undergraduate-admissions",
           "https://catalog.kettering.edu/undergrad/admissions/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": null,
+          "how_you_enter": "You apply to Kettering University with the Common Application or the Kettering Application (Early Action November 15, otherwise rolling 'Ongoing until spaces are filled'), reviewed on GPA, grade pattern and course selection - the pages fetched describe no separate ECE admitting unit."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "Kettering has no published major-level admission gate; review is squarely academic-record-based. Kettering states: 'Our application review centers on your preparedness for success at Kettering and includes consideration of your overall GPA, grade pattern, and selection of courses throughout high school' and 'Kettering does not have a fixed formula for admission' [KETT-S1]. Required high school coursework is unusually specific — two years of algebra, one year of geometry, a semester of trigonometry or equivalent, two years of lab science including chemistry or physics, and three years of English, with calculus/pre-calculus, CAD or engineering design, and computer science recommended [KETT-S1]. The distinctive structure is the co-op model and the A-section/B-section calendar rather than competitive major admission: orientation and move-in run on separate A-section (summer) and B-section (fall) tracks [KETT-S6]. For an FRC applicant the real 'major context' is financial and cultural — Kettering reports 'Awarding over $5.5 million in robotics scholarships since 1999' and hosts the Kettering University Robotics Center [KETT-S3]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -5521,6 +5647,20 @@
           "https://admissions.umd.edu/academics/limited-enrollment-programs",
           "https://irpa.umd.edu/CampusCounts/Admissions/apps_ug.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Clark School LEP gateway review at 45 credits (courses and 2.00 cumulative GPA above, one repeat maximum per course). Beyond that, ECE imposes a course-level control: 'Departmental permission is required in order for students to register and for all courses in the major.' The BSEE also requires a grade of C- or higher in all engineering, mathematics and science courses and their prerequisites. No separate ECE-specific admission gate beyond the Clark School LEP was found on the pages fetched.",
+          "how_you_enter": "Two steps: you apply to and are admitted directly to the A. James Clark School of Engineering, which is itself a Limited Enrollment Program, and then you must clear the Clark School gateway review at 45 credits to continue in an engineering major such as ECE — 'All students accepted directly as freshman into the Clark School of Engineering must complete a series of gateway courses and a review at 45 credits.'"
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "UMD separates admission to the university from admission to the major through Limited Enrollment Programs (LEPs). The LEP list includes both majors a robotics applicant cares about - Computer Science and Engineering - alongside Biochemistry, Biological Sciences, Business, Chemistry, Criminology, Immersive Media Design, Neuroscience and Psychology [UMD-S5]. The mechanics: 'Prospective students should indicate their preferred major when completing their online application... However, your preferred major does not affect your admissibility to the university. Admitted students who selected an LEP as their major are reviewed by the specific program to determine admission to that major,' and 'While the majority of students are admitted to their preferred major, some LEP applicants may not be.' Students admitted to UMD but not to the LEP are placed in Letters & Sciences to meet gateway requirements, while non-LEP applicants 'are admitted directly to the major indicated on their application'; all major decisions arrive in the admission decision letter [UMD-S5][UMD-S3]. LEP review is also test-optional [UMD-S7]. If you land in Letters & Sciences, the CS gateway for students starting Fall 2024 or later is concrete and demanding: CMSC131 or CMSC133 with a minimum B-, CMSC132 with a minimum B-, MATH140 with a minimum B-, and a minimum 3.0 GPA across all institutions, with the final grade posted by the application deadline; starting at CMSC131/133 means 'a minimum of 7 semesters/terms to complete the major' [UMD-S6]. No public per-major admit rate or internal-transfer slot count (the often-quoted '~100 CS slots per year') appears on any UMD page fetched on 2026-08-16 - that figure is unverified. Practical consequence: naming CS or Engineering costs nothing at the university level (preferred major does not affect admissibility) but the major decision is a second, program-level gate, and the fallback path through Letters & Sciences is a real risk with a 3.0/B- floor."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -6136,6 +6276,20 @@
           "https://michiganross.umich.edu/undergraduate/bba/admissions/admissions-blog/2024/10/07/where-apply-how-choose-your-first-year-0",
           "https://obp.umich.edu/wp-content/uploads/pubdata/factsfigures/firstyearsprofile_umaa_2024_10-22-24.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "First-years enter the College of Engineering undeclared and are urged to declare by the start of their third term; declaring EE or Computer Engineering requires only 'maintaining an appropriate academic record' plus an advisor conversation, with no published GPA threshold or capacity cap (UMICH-E2).",
+          "how_you_enter": "You apply to the University of Michigan / College of Engineering, enter undeclared, and then declare: 'Undergraduate students apply to the University of Michigan for admission. Once admitted as a student and maintaining an appropriate academic record, you may declare a major in electrical engineering or computer engineering after talking with an advisor' (UMICH-E2)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Michigan's binding constraint is the Computer Science major, not the college. U-M's CSE department states: 'Due to capacity constraints, students who are admitted to the University of Michigan in Fall 2023 or later must first be selected for the Computer Science (CS) major before they can declare the major. This selection policy ... is the same for students in both the College of Engineering and the College of Literature, Science, and the Arts (LSA). The selection policy applies only to the CS major and does NOT apply to students seeking to major in the Computer Engineering (CE) or Data Science (DS) programs' [UMICH-S6]. Incoming students request CS 'advance selection' on the Common Application itself, and transfer students cannot switch into CS once on campus [UMICH-S6][UMICH-S7]. Robotics is the opposite story: the Robotics BSE has no capacity cap — students declare after at least one term with a 2.0 GPA [UMICH-S8]. So a robotics-focused applicant should target Robotics BSE (open declaration) and treat CS as the gated option requiring the advance-selection request on the application."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -6863,6 +7017,20 @@
           "https://umdearborn.edu/cecs/undergraduate-programs/undergraduate-advising/academic-policies",
           "https://umdearborn.edu/casl/undergraduate-programs/advising-academic-success/policies-and-procedures/changingadding-majors"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "The 4+1 BSE/MSE accelerated option requires a 3.2 cumulative GPA (MICHIGAN-DEARBORN-E5).",
+          "how_you_enter": "Unverified: the catalog's first-year admission section describes one selective university-level review ('The admission of all students is on a selective basis; admissions officials consider various factors') based on the secondary-school record, with no statement that applicants select a college or major, so the ECE-specific door cannot be confirmed from first-party pages fetched."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "UM-Dearborn has NO major-level admissions gate for engineering — admission is university-wide and formula-driven on GPA, and the College of Engineering and Computer Science (CECS) majors, including the dedicated Robotics Engineering BSE, are entered directly. The published rule is a genuine guarantee: a high school GPA of 3.00 AND ABOVE = GUARANTEED ADMISSION (subject to conduct requirements); 2.75-2.99 is 'potentially admissible' and assessed on academic preparation and grade trends, and may require an essay and/or letters of recommendation; below 2.75 is 'likely not admissible' as a first-year student and is routed to a community-college pathway. GED equivalency requires a total of 660 with at least 165 in each area [DBN-S2]. This is the only school in this batch offering a published, mechanical admissions guarantee, and it is the reason Dearborn functions as the portfolio's anchor 'likely' — the odds engine should NOT downgrade it for major gating, because there is none. Distinctive academic point: Dearborn awards a dedicated ABET-accredited Robotics Engineering BSE (not a robotics concentration inside ME or ECE), teaching robotics, electrical and computer engineering, systems engineering and mechanical engineering with 'lots of opportunities for hands-on learning in your classes and in our pair of robotics engineering labs' [DBN-S4]. Michigan residents should also note the separate Michigan Assured Admission pathway [DBN-S7]; it does not apply to a North Carolina applicant."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -7473,6 +7641,20 @@
           "https://mitadmissions.org/discover/the-mit-education/majors-minors/",
           "https://ir.mit.edu/projects/2025-26-common-data-set/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": "No published GPA or capacity gate to declare 6-5, 6-3 or 6-4; majors are declared (most commonly in the spring of the first year) after Institute-wide admission (MIT-E2).",
+          "how_you_enter": "There is no separate ECE admission door at MIT: 'Students apply to MIT for general admission and select a major at the end of the first year' (MIT-E2), and 'When you're admitted to MIT as a first-year student, you're admitted to the entire Institute' (MIT-E6)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "MIT runs a single Institute-wide admission review: applicants are not admitted to a school, department, or major, and the CDS reports one funnel (29,281 / 1,334) with no departmental breakdown [MIT-S1]. MIT's own stats page likewise reports only Institute-level Early Action and Regular Action counts (EA 12,052 applicants / 721 admitted; RA 17,229 applicants / 603 admitted, plus 175 admitted from the 7,486 deferred) with no major-level rates [MIT-S2]. Consequently intended field of study does not change the admissions bar, and the essay set asks about interests rather than about a chosen department [MIT-S3]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -8059,6 +8241,20 @@
           "https://uda.ncsu.edu/institutional-analytics/fast-facts/",
           "https://admissions.ncsu.edu/connect/frequently-asked-questions/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "strong",
+          "basis": "CODA. The CODA GPA is computed from six Success courses (MA 141, MA 241, PY 205, PY 206, CH 101, CH 102), each of which must be passed with a C or better, and the CODA GPA must be at least 2.0; students must also complete ENG 101, E 101 and E 102 with C- or better and E 115 with an S. Requisites must be completed within four fall/spring semesters. 'Only students in the Engineering First Year program with a CODA GPA greater than or equal 2.0 and a continuation GPA of 2.0 will be guaranteed entrance into at least one of the remaining programs with available seats' — the guarantee is to a program with seats, not to your first choice. Practically, ECE gates course access too: 'Students must CODA into EE, EE REES, or CPE to take 300 courses.'",
+          "how_you_enter": "Two steps: all first-year engineering students are admitted into the Engineering First Year (EFY) program rather than to ECE, then they complete the CODA (Change of Degree Audit) requirements — earliest in December of the first year — to move into Electrical Engineering, EE REES or Computer Engineering. Students in Exploratory Studies or other majors can also take the CODA courses and apply."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "For engineering, NC State's intended major is explicitly non-competitive at the admission stage: 'All first-year students are admitted to the Engineering First Year Program (EFY). Students who know which engineering major they plan to pursue may indicate it on the admissions application as their intended major ... Please note that indication of an intended major on the admissions application has no effect whatsoever on admissions decisions.' Students must complete English composition, calculus, chemistry, physics and introductory engineering and computer courses before joining an academic department [NCSU-S6]. What is weighted heavily is the academic record: 'a student's high school academic record, including grade point average (weighted and unweighted) and class rank, receives significant emphasis in engineering admissions decisions', with the typical admitted first-year at an unweighted GPA of 3.8-4.0 [NCSU-S6]. Studio-based majors are the exception — College of Design, Fashion and Textile Design and Music Technology applicants must apply by November 1 with a 10-piece portfolio and an additional essay [NCSU-S2]. The CDS also flags a math floor: 'The most competitive applicants will have taken math through precalculus as a minimum in high school, particularly for STEM and business' [NCSU-S1]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -8702,6 +8898,20 @@
           "https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/degrees-majors-minors/",
           "https://damore-mckim.northeastern.edu/resources/change-of-major/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "No published GPA or capacity gate to declare or remain in ECE was found on the pages fetched. The combined-major BSCmpE requires 135 total semester hours.",
+          "how_you_enter": "Direct application to a named major or a combined major: you apply to the College of Engineering for BS Computer Engineering or BS Electrical Engineering, or to an intercollege combined major such as Computer Engineering and Computer Science (College of Engineering plus the Khoury College of Computer Sciences)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Northeastern's published CDS shows an extreme early-versus-overall gap: 3,466 ED applicants / 1,492 admitted = 43.05% in the ED round versus 5.21% overall (98,425 / 5,133) [NEU-S1]. The brief's shorthand of \"ED ~35% vs RD ~4%\" is directionally right but is NOT an officially published pair of figures; the only official numbers are the 43.05% combined-ED rate and the 5.21% overall rate, and Northeastern reports no RD-only rate, no EA counts, and no college- or major-level rates (it publishes a single university funnel covering all campuses/colleges) [NEU-S1]. Northeastern also does not publish separate ED I and ED II counts — its single ED line covers both rounds."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -9272,6 +9482,20 @@
           "https://eari.osu.edu/admissions.aspx",
           "https://undergrad.osu.edu/welcome/freshmen"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "2.0 cumulative GPA and good standing in the College of Engineering, no application required (OSU-E5)",
+          "how_you_enter": "You apply to Ohio State indicating a major; engineering students on the Columbus campus then move into ECE as a 'Space Available Program', which requires only good standing with a 2.0 GPA and no separate major application."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Ohio State admits first-year students as PRE-majors, not majors: 'Students new to OSU are not directly admitted to major status. Instead, they are admitted as pre-majors' [OSU-S8]. To be a pre-CSE student you must be 'directly admitted to the College of Engineering,' where 'Entry into the college is competitive and several factors are considered including ACT/SAT scores, strong college prep curriculum, class rank and GPA'; the alternative CIS option lives in Arts and Sciences with no additional departmental requirements after college admission [OSU-S8]. Both majors a robotics applicant would want are Limited Space Programs reached through the admission-to-major application, and eligibility is restricted by pre-major: 'Computer Science - CSE and CIS pre-majors may apply' and 'Mechanical Engineering - MECH and AERO pre-majors may apply' (Aerospace likewise) [OSU-S6]. By contrast, Chemical, Civil, Electrical and Computer, Environmental, Industrial and Systems, Materials, Welding, Engineering Physics and FABE are 'Space Available Programs' that accept any engineering student in good standing (2.0 GPA or above) without an application [OSU-S6]. The admission-to-major floor is a 2.0 cumulative OSU GPA plus major-specific course criteria (for CS: Calculus I and CSE 2221 with a C or better plus pre-major enrollment, and for the CSE option also Calculus II and Fundamentals of Engineering; for ME: Calculus II, Fundamentals of Engineering, Physics I and enrollment in the aerospace or mechanical pre-major), but admission is capacity-competitive, students rank up to three majors, and 'Admitted students will be offered a place in one major' [OSU-S6]. There are hard limits on second chances - two attempts only, and accepting an offer bars reapplying in the next cycle [OSU-S6]. Front-end choice matters too: applicants wanting Aerospace, Biomedical, CSE, CIS or Mechanical 'must choose one of these programs during their initial application to Ohio State,' admitted students may change into engineering programs only through May 15, and 'After May 15, students will not be permitted to switch into Aerospace Engineering, Biomedical Engineering, Computer Science and Engineering, Computer and Information Science, or Mechanical Engineering programs' [OSU-S7]. Applying Early Action is effectively mandatory for engineering: EA is required for 'Majors in the College of Engineering' as well as merit scholarships and honors [OSU-S3]. No per-major admit rate is published by OSU."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -9832,6 +10056,20 @@
           "https://www.olin.edu/sites/default/files/2024-05/CDS_2023_2024%20(2).pdf",
           "https://olin.smartcatalogiq.com/-/media/institution/olin-college-of-engineering/2021-22/2021-22%20Olin%20College%20Catalog_v1.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": null,
+          "how_you_enter": "Olin is a single small engineering college: you apply to Olin through the Common Application with Olin-specific questions, and no major- or college-level selection appears on Olin's apply page, so ECE is not an admission door at all."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "Olin has no major-level admission gate at all — there are only three degrees (Engineering, Electrical & Computer Engineering, Mechanical Engineering) and robotics is pursued as the E:Robo concentration, where 'students work and study in a multi-disciplinary concentration focusing on software, sensing, mechanics, controls and integration aspects of robotics' [OLIN-S9]. The selectivity structure is completely different from a normal college: Olin runs a two-step process, inviting roughly 275-300 applicants to a mandatory on-campus Candidates' Weekend, and states 'Participation in CW is required to continue to be considered for admission to Olin' [OLIN-S3][OLIN-S2]. That makes the interview — rated Very Important in CDS C7, along with demonstrated interest — the decisive gate rather than any major choice [OLIN-S1]. There is also one deadline and no early plans: 'We don't have any early deadlines. There's one deadline for all applications' [OLIN-S7]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -10446,6 +10684,20 @@
           "https://admissions.upenn.edu/how-to-apply/first-year-applicants",
           "https://admissions.upenn.edu/how-to-apply/resources-programs/incoming-class-profile"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": "No published GPA or capacity gate: SEAS students must declare a major by the end of the first year, and indicating a major on the application is advisory rather than binding admission to that major (PENN-E3).",
+          "how_you_enter": "You apply to a school, not the university: 'Penn is one University, but when you submit your application, it will be to one of our four undergraduate schools' (PENN-E2), and Penn Engineering is the one school where you also name an intended major — 'Students in Penn Engineering must declare a major by the end of their first year and are asked to indicate a major on their application' (PENN-E3)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Penn's application requires selecting an undergraduate school and an intended major, and Penn Engineering's school-specific essay asks applicants to \"Describe how you plan to pursue your engineering interests at Penn, particularly within the intended major you selected\" — i.e., the intended major is explicitly part of the evaluated file [PENN-S4]. Despite that, Penn publishes NO school-level or major-level admit rate: the CDS reports one university funnel (72,544 / 3,570) and one ED funnel (9,503 / 1,266) with no SEAS/Wharton/College breakdown [PENN-S1]. So an applicant can state that SEAS ranks and reads the intended major, but no SEAS-specific admit rate exists in official sources."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -10995,6 +11247,20 @@
           "https://bulletins.psu.edu/undergraduate/general-information/academic-information/undergraduate-degrees-requirements/entrance-major/",
           "https://em.psu.edu/dashboards/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Entrance to Major: 29-55 graded Penn State credits; C or better in CMPSC 121/131 or EDSGN 100; CHEM 110, MATH 140, MATH 141, PHYS 211; minimum 2.60 cumulative GPA. 'In the event that the major is under enrollment control, a higher minimum cumulative grade-point average is likely to be needed' (PSU-E2).",
+          "how_you_enter": "You apply to a specific Penn State campus and an intended major (or apply undecided), then must satisfy Entrance to Major requirements after 29-55 graded credits, which for Electrical Engineering means a minimum 2.60 cumulative GPA while enrolled in the College of Engineering or the Division of Undergraduate Studies."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Penn State admits to the university and campus first, then to the major through Entrance to Major (ETM), so the competitive gate is entirely internal. Both target majors carry the same explicit control: the Undergraduate Bulletin states for Computer Science, B.S. at University Park that 'This program currently has administrative enrollment controls. Administrative Enrollment Controls are initiated when limitations of space, faculty, or other resources in a major prevent accommodating all students who request them,' and for first-year students entering Summer 2026 / Fall 2026 / Spring 2027 requires enrollment in the College of Engineering or the Division of Undergraduate Studies, 29-55 graded Penn State credits, C or better in CMPSC 121 or 131, CMPSC 122 or 132, MATH 140, MATH 141 and PHYS 211, and 'a minimum cumulative grade-point average (GPA) of 3.20' [PSU-S7]. Mechanical Engineering, B.S. at University Park carries the identical structure and the same 3.20 minimum with CHEM 110, EDSGN 100, MATH 140, MATH 141 and PHYS 211 [PSU-S8]. Aerospace Engineering also sits at 3.20 while, for contrast, Architectural Engineering is 2.60 [PSU-S9]. The mechanics: you become eligible after 29 graded Penn State credits, must request the change before exceeding 55 graded credits, must meet the published minimum GPA at the time you apply, must be scheduled for or have completed the ETM courses with a C or better, and then request the major in LionPATH [PSU-S9]. Note the same 3.20 threshold applies at University Park while satellite-campus versions of both majors sit at 2.60 - with the caveat that 'In the event that the major is under enrollment control, a higher minimum cumulative grade-point average is likely to be needed' [PSU-S7][PSU-S8]. One admissions-strategy wrinkle: applicants naming University Park and fall entry are asked whether they would accept summer start, and Penn State states plainly that 'Saying yes to this question will increase your chances of admission to University Park because summer admission is slightly less competitive than fall admission,' with summer then mandatory [PSU-S6]. Practical consequence for a robotics applicant: getting into Penn State is comparatively easy, but you must produce a 3.20 college GPA in a calculus/physics/programming sequence during your first year to actually enter CS or ME - plan for that, and consider the summer-start option and the 2+2 campus plan as levers."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -11619,7 +11885,21 @@
           "https://admissions.purdue.edu/become-student/class-profile/"
         ]
       },
-      "unit_rates_official": true
+      "unit_rates_official": true,
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "T2M after First-Year Engineering: complete FYE requirements, then request a major. No published minimum GPA for ECE; FYE advising flags students with cumulative GPA of 2.80 or below only when their first choice is a capacity-limited major (ME, AAE, BME), and ECE is not listed as capacity-limited. The ECE degree itself requires an overall GPA of at least 2.000 in courses applying to the ECE major area.",
+          "how_you_enter": "Two steps: you first apply to and are admitted to the College of Engineering (46.1% admit rate), entering First-Year Engineering rather than a named major, and then complete First-Year Engineering requirements and go through the Transition to Major (T2M) process to declare ECE, ranking first and second choices."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Purdue admits engineering applicants into First-Year Engineering (FYE), not into a degree program: 'The first year of all Engineering programs at Purdue is common, and incoming students are admitted to First-Year Engineering (FYE) rather than to one of the 16 Engineering degree programs,' and after completing FYE requirements students move through the 'Transition to Major' (T2M) process [PU-S5]. T2M outcomes are good but not guaranteed: 'Over the past five years 93% to 95% of students who have met minimum requirements for transition-to-major have received their first choice,' while 'Admission to Engineering degree programs may be competitive, especially for programs that are at or above enrollment capacity,' judged on GPA, the Engineering Admissions Index (EAI) and other factors [PU-S5]. Two programs are named as capacity-limited: Aeronautical and Astronautical Engineering (AAE) and Mechanical Engineering (ME) - 'Students with a cumulative GPA of 2.99 or below, and who request majors with capacity limitations (currently AAE and ME), will be advised by FYE Advisors' [PU-S5]. So for a robotics applicant targeting ME, first choice is usually granted but a sub-3.0 first year puts it at risk. Computer Science sits outside engineering and is the harder door from inside: CS change-of-degree-objective (CODO) approvals 'will be made on a SPACE AVAILABLE BASIS and will be determined through an academic review of all applicants,' with the highest consideration going to students earning an A- in CS 18000, a B or better in an approved calculus course, and a minimum 3.00 cumulative GPA; students on academic probation are ineligible, only the first or second attempt at a required course counts, and decisions are made at the end of each semester [PU-S6]. Purdue also tells applicants directly that 'Changing majors or locations is never guaranteed' and lets them list a primary major plus an optional alternate [PU-S3]. Practical consequence: name CS on the application if CS is the goal - do not plan to CODO in - and expect ME to be reachable through FYE with a solid first-year GPA."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
+      }
     },
     "source_log": {
       "PU-S1": "Purdue University West Lafayette Common Data Set 2025-2026 (XLSX) - https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
@@ -12211,6 +12491,20 @@
           "https://www.rit.edu/institutionalresearch/dashboards-enrollment",
           "https://www.rit.edu/registrar/sites/rit.edu.registrar/files/documents/Change%20of%20Program%20Plan%20090823.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": null,
+          "how_you_enter": "Unverified: RIT program pages describe the EE and CpE degrees inside the Kate Gleason College of Engineering, but no first-party page fetched in this session states whether the application asks you to select a college or a specific major, so the admission door cannot be confirmed."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "RIT reviews by program, and it says so in the context of applying early: Early Decision I lets an applicant 'Stand out in a small pool of applicants and benefit from higher acceptance rates, especially for competitive majors', and applications received after a deadline 'will be reviewed, but on a space-available basis for each program' [RIT-S2]. The numbers bear this out — ED I admitted 1,028 of 1,405 applicants (73.2%), only marginally above the 71.0% overall rate, so the ED advantage at RIT is program-level rather than institution-level [RIT-S1]. Program-specific requirements also exist: an art portfolio is required for bachelor's programs in the School of Art, School of Design and School of Film and Animation, and RIT recommends STEM applicants include the optional ACT Science section if submitting ACT scores [RIT-S3][RIT-S7]. For a robotics applicant the most consequential program-level fact is financial: the RIT/FIRST Scholarship is worth $14,000 per year but 'is not stackable. It cannot be combined with other RIT merit-based scholarships', while base first-year merit scholarships already range from $14,000 to $27,000 annually [RIT-S5]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -12776,6 +13070,20 @@
           "https://www.rose-hulman.edu/academics/degrees-and-programs/undecided-major.html",
           "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": null,
+          "how_you_enter": "You apply to Rose-Hulman as an institution (one application, Early Action or Regular Decision, holistic review of transcript, curriculum rigor and a recommendation), and the pages fetched describe no separate ECE admitting unit."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "Rose-Hulman has no separate major-level admission gate and no published capacity caps; admission is to the institute with an intended major. What matters instead is preparation: 'Incoming students are expected to complete the following high school courses, at a minimum, before enrolling: Four years of math (through trigonometry/precalculus), Four years of English, Three years of lab science (one year EACH of biology, chemistry, and physics)' [RHIT-S3]. That physics-and-chemistry-and-biology requirement is stricter than most peers in this set. Rose-Hulman recently restructured its computing offering, launching 'a unified computer science major with new AI, cybersecurity and data science specializations' [RHIT-S7]. Applying by the November 1 Early Action date is the real lever: 'To be considered for admission to Rose-Hulman and the new Provost Scholarship, students must apply by the November 1 non-binding early action date', and Rose-Hulman tells students to 'Apply by Nov. 1 for Early Action (non-binding) for maximum consideration for scholarships' [RHIT-S4][RHIT-S8]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -13379,6 +13687,20 @@
           "https://catalog.rpi.edu/content.php?catoid=26&navoid=657",
           "https://undergrad.admissions.rpi.edu/apply"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": null,
+          "how_you_enter": "RPI applicants either declare a specific major or apply undeclared to a school - the admissions FAQ lists 'Options for declaring a major: Declare specific major / Undeclared to a specific school (i.e., undeclared engineering)' - so ECSE is entered by major choice inside one engineering application rather than through a separate admitting college (RPI-E4)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "RPI admits to a school rather than to a capacity-controlled major: applicants select a program (for example a School of Engineering major or Undeclared Engineering), and the application requires no program-specific essay except for five named programs - Accelerated Physician-Scientist (B.S./M.D.), Architecture, Electronic Arts, Games and Simulation Arts and Sciences, and Music [RPI-S4]. RPI publishes NO major-level or school-level admit rates, and none appear in the CDS [RPI-S1][RPI-S4]; there is likewise no published GPA gate, capacity limit, or restricted change-of-major process for Computer Science or Mechanical Engineering on the pages fetched on 2026-08-16 [RPI-S4]. For a robotics applicant the notable structural feature is curricular rather than competitive: RPI now offers a B.S. in Robotics Engineering 'Jointly administered by the Departments of Electrical, Computer, and Systems Engineering and Mechanical, Aerospace, and Nuclear Engineering,' combining 'mechanical design, electronics, computing, and artificial intelligence' with coursework in sensing, actuation, control and intelligent decision-making [RPI-S5]. Practical consequence: you can apply directly into robotics rather than assembling it from a mechanical or CS degree, and there is no internal admission tournament to survive after arrival - the trade-off is a 67% admit rate that makes RPI a likely-admit whose real question is net price."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -13920,6 +14242,20 @@
           "https://www.swarthmore.edu/engineering/engineering-and-liberal-arts",
           "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Formal application for the engineering major in spring of sophomore year, including departmental approval of the elective program; no published GPA cutoff (SWAT-E4).",
+          "how_you_enter": "You apply to Swarthmore College, not to an engineering school - 'Unlike most other undergraduate engineering programs, Swarthmore's is not a School of Engineering, but rather an Engineering Department' - and you do not declare the major until spring of sophomore year."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Swarthmore admits to the college, not to a department or major: its CDS reports one funnel (12,995 / 977) with no engineering-versus-arts split, and the same holistic factor set in C7 applies to every applicant regardless of intended field [SWAT-S1]. Both supplemental prompts are field-neutral (identity/community and \"a topic that has fascinated you recently\"), reinforcing that prospective engineering and prospective humanities applicants clear the same holistic bar [SWAT-S2]. Engineering is a single ABET-accredited B.S. in Engineering rather than separate majors, so there is no departmental admissions gate [SWAT-S4]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -14524,6 +14860,20 @@
           "https://abpa.tamu.edu/data-and-insights/applied-admitted-enrolled/applied-admitted-enrolled.html",
           "https://abpa.tamu.edu/data-and-insights/applied-admitted-enrolled/index.html"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "strong",
+          "basis": "ETAM. Minimum 2.0 cumulative and 2.0 term GPA. Automatic entry to first choice with a 3.75+ cumulative GPA (or National Merit semifinalist/finalist status) plus full-time status, no honor-code violation and no incompletes. Required courses with C or better: two engineering (ENGR 102, ENGR 216/PHYS 216), two science (CHEM 107/117 or 119, PHYS 206, PHYS 207, CHEM 120) and two math (MATH 151, 152, 251/253, 308, 304 or CSCE 222). Below the 3.75 automatic threshold, a priority method places students in the highest-preferred major possible subject to program capacity. The EE catalog also states: 'Before commencing course work in the major, students must be admitted to the major or have the approval of the department.'",
+          "how_you_enter": "Two steps: engineering applicants are admitted into a common General Engineering first year rather than to ECE, then compete through Entry to a Major (ETAM) after at least two semesters at Texas A&M to be placed in Electrical Engineering or Computer Engineering."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Texas A&M engineering does NOT admit to a major. Every engineering admit enters as a GENERAL ENGINEERING student and competes later through Entry to a Major (ETAM): 'we don't ask you to decide on a major during the first year' [TAMU-S3]. ETAM 'uses a priority method that places students in their highest preferred major possible based on their academic performance, their ETAM application content and the program's capacity' [TAMU-S4]. Mechanics for the Class of 2030 (Fall 2026 entrants, one year ahead of this applicant but the same published structure): students must rank at least THREE majors and may rank up to FIVE; they get THREE attempts, starting with the second semester and ending no later than the fourth semester in the college; eligibility requires at least two semesters of A&M coursework with a minimum 2.0 cumulative AND 2.0 term GPA plus the required course sequence with C or better; for a Fall 2026 entrant the first application window is March 2027 with decisions in July 2027 [TAMU-S4]. THE CRITICAL POINT FOR A ROBOTICS APPLICANT: Multidisciplinary Engineering Technology - Mechatronics (MXET, awarded as a BS in MXET, with an alternative STEM Educator track) [TAMU-S5] and Computer Science & Engineering (CSCE) are BOTH allocated out of that same capacity-constrained ETAM pool. So at TAMU the robotics-relevant selectivity is deferred by a year and converted into a first-year GPA competition against a cohort of several thousand general engineering students — the opposite of UT Austin's direct-admit model. Additional capacity risk on the admissions side: 'Students selected from the waitlist may be asked to select a new major due to capacity limitations,' and engineering pathway offers (which may route an applicant to Blinn TEAM, Galveston or McAllen rather than College Station) begin in January [TAMU-S2]. TAMU publishes no ETAM placement rates by major on the pages reviewed, so the probability of landing MXET or CSCE specifically is officially unquantified."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -15093,6 +15443,20 @@
           "https://opa.berkeley.edu/campus-data/our-berkeley-data-digest",
           "https://engineering.berkeley.edu/admissions/undergraduate-admissions/change-of-college/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Change of major into ECE requires '3.5 Overall UC GPA and 3.5 Technical UC GPA'; change into EECS (for Fall 2026 admits and later) requires a minimum 3.7 GPA in two of the first four courses from ELENG 66/64, CS 61A/61B/61C/70, before the fourth term, and must be the student's first change of major. Transferring into ECE after enrollment is described as 'rare but possible' (UCB-E3, UCB-E6).",
+          "how_you_enter": "Direct admission to the major as a first-year applicant: for all three degrees, 'Admitted directly to the major. (Students must apply directly to ECE/EECS/CS at admission if interested)' (UCB-E2); the ECE page adds that first-years are admitted directly into ECE via the UC Application and may alternatively apply Engineering Undeclared (UCB-E3)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Berkeley admits BY COLLEGE AND BY MAJOR, and EECS is the single hardest undergraduate admit on campus. Berkeley does not publish a major-level admit rate — no official Berkeley or UC page discloses an EECS or Mechanical Engineering first-year admit rate, and every '4-5% EECS' / '10% CoE-ME' figure in circulation traces to admissions-consulting blogs, which are excluded under the source-priority rule. What IS officially documented is the one-way door: for students admitted Fall 2026 and later, changing INTO EECS requires a minimum 3.7 GPA across two of the first four courses drawn from EECS 16A/16B, CS 61A/61B/61C and CS 70, the request must be filed before the start of the 4th term, and it must be the student's first change of major; the parallel ECE path requires a 3.5 overall plus 3.5 technical GPA [BERK-S4]. The EECS department states plainly: 'Because of our competitive admissions process, it is rare for students already admitted to UC Berkeley to change their field of study to EECS,' and since Fall 2017 the College of Engineering has stopped accepting change-of-COLLEGE applications into EECS entirely [BERK-S5]. STRATEGIC CONSEQUENCE: applying to CoE Mechanical Engineering as a robotics back door into EECS is not a viable plan at Berkeley — ME is a legitimate robotics home (and the correct application target if ME is genuinely wanted), but the EECS internal-transfer path should be treated as effectively closed, not as a hedge. Berkeley's separate 'L&S Computer Science' route no longer exists as an open declaration path either; CS is now a capped major."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -15698,7 +16062,21 @@
           "https://www.admissions.illinois.edu/admit-rates/"
         ]
       },
-      "unit_rates_official": true
+      "unit_rates_official": true,
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "No GPA gate is published for staying in EE or Computer Engineering, but movement is constrained: change of major within Grainger requires a petition with completed prerequisite coursework in petition windows during the second through fifth semesters, and 'Computer Science is closed to on-campus transfer, including Engineering Undeclared, for all students who entered the university in summer/fall 2022 or later' (UIUC-E3).",
+          "how_you_enter": "Illinois admits directly to a first-choice major within Grainger Engineering, so you apply to Electrical Engineering or Computer Engineering by name (admit rates are reported by first-choice major) (UIUC-E1)."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "UIUC is the most transparent school in this batch about major-level selectivity, and the numbers are stark: against a 36.6% total admit rate, the first-choice-major admit rate is 30.2%, the Grainger College of Engineering rate is 21.2%, and Computer Science alone is 7.4%, with CS+X programs at 17.4% [UIUC-S3]. For comparison, the Division of Exploratory Studies admits 53.4% and Gies Business 20.9% [UIUC-S3]. Applicants name a first-choice and optional second-choice major, and the second choice is a real hedge: a separate essay is required for it [UIUC-S4]. The mobility rules make first-choice selection close to irreversible for computing: Grainger states that students admitted as Engineering Undeclared may declare other engineering majors, but 'Computer Science, Computer Science + Bioengineering, and Computer Science + Physics are not available majors for declaration'; transfer students admitted to a major outside Grainger 'are not eligible to change their major into a major within the Grainger College of Engineering nor Chemical Engineering,' and transfers admitted inside Grainger may only add the ILEE dual degree [UIUC-S7]. Internal moves run through an Inter-Departmental Transfer / Intercollegiate Transfer process handled with an advisor [UIUC-S7]. Practical consequence: a robotics-oriented applicant should pick the engineering major they actually want (e.g. Mechanical Engineering or Electrical/Computer Engineering at 21.2% college-level odds) rather than treating CS at 7.4% as a gateway, and should use the second-choice slot deliberately. One curriculum gate to note: all Grainger Engineering and CS+X majors require 3.5 years of math including trigonometry [UIUC-S6]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
+      }
     },
     "source_log": {
       "UIUC-S1": "University of Illinois Urbana-Champaign Common Data Set 2025-2026 (XLSX) - https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
@@ -16257,6 +16635,20 @@
           "https://datascience.unc.edu/undergraduate-degrees/apply/",
           "https://oira.unc.edu/reports/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": false,
+          "severity": "no_program",
+          "basis": "For the closest engineering-adjacent option, the Applied Sciences B.S.: 'students who wish to complete the Applied Sciences major must apply for admission to the program. Admission to the university does not guarantee admission to the program', with December and May deadlines, an essay, and prerequisite courses (CHEM 101/101L, MATH 231, PHYS 118, ENGL 105) passed with C or better (UNC-E2).",
+          "how_you_enter": "There is no applicant-selected school: 'Entering first-year students and transfers of less than junior standing from other institutions enter the College of Arts and Sciences (General College)', and the two first-year application deadlines are both non-binding."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "The dominant admission constraint at UNC-Chapel Hill is residency, not major. UNC System Policy 700.1.3 states 'The cap shall be 18 percent for Appalachian State University, North Carolina State University at Raleigh, University of North Carolina at Chapel Hill, University of North Carolina at Charlotte, and University of North Carolina Wilmington', calculated as a percentage of the prior year's first-time undergraduate cohort, and any institution exceeding it for two consecutive fiscal years 'shall have its State operating budget reduced' [UNC-S6]. Because UNC receives roughly 2.7 times more nonresident than resident applications while only 18 percent of seats may go to nonresidents, the out-of-state admit rate collapses to single digits — 9.6% versus 37.0% in-state [UNC-S1]. Consistent with this, CDS C7 rates state residency 'Very Important' — the only school in this set to do so [UNC-S1]. Major selection is comparatively unconstrained: UNC has no undergraduate engineering college, robotics exists as research (the Computational Robotics Research Group in Computer Science) and as coursework such as COMP 581 Introduction to Robotics inside an Applied Sciences and Engineering minor, and data science degrees now sit in the new School of Data and Information Sciences launched July 1, 2026 [UNC-S10][UNC-S11][UNC-S9]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -16852,6 +17244,20 @@
           "https://admissions.utexas.edu/explore/ranks-stats/",
           "https://reports.utexas.edu/spotlight-data/students"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": "None to stay in ECE once admitted — the BSECE has a common two-year basic sequence and students declare a technical component at the end of sophomore year. The gate is only relevant if you need to move INTO ECE later: Cockrell internal transfer says 'Admission is competitive and based on space availability', requires minimum cumulative and technical GPA of 3.0 plus in-residence calculus and technical credit and a 500-word essay, and notes 'The Cockrell School does not have a standard GPA requirement for internal transfer admission. The cumulative and required technical GPAs of admitted students vary by semester and requested major, as does the number of seats offered.' University rules limit you to two internal-transfer applications per college, applications must be made within the first four long semesters, and no transfer after 60 in-residence hours.",
+          "how_you_enter": "Direct-admit to major: you apply to the Cockrell School of Engineering and are admitted directly to Electrical and Computer Engineering as your first-choice major; there is no common engineering first year to clear afterward."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "UT Austin is a DIRECT-ADMIT-TO-MAJOR school: applicants are admitted to a specific major in a specific college, and being denied the first-choice major means being denied or redirected, not held in a general pool. Computer Science sits in the College of Natural Sciences (CNS); Mechanical Engineering sits in the Cockrell School of Engineering. UT DOES NOT PUBLISH major-level admit rates — no official UT page discloses a CS or ME first-year admit rate, and the CDS reports only university totals [UTA-S1]. Two officially documented gates matter more than any rumored rate: (1) COCKRELL CALCULUS READINESS — every Cockrell (engineering, incl. ME) admit must demonstrate calculus readiness via SAT Math >=620, ACT Math >=26, AP Calculus AB or BC score >=3, IB HL Math >=4, or transferred Calculus I credit with a B+ or better [UTA-S5]; a North Carolina FRC applicant should treat SAT Math 620 as a hard floor, not a target. (2) TEXAS ROBOTICS HONORS PROGRAM — this is the one place UT lets a robotics applicant be admitted to robotics FROM HIGH SCHOOL. Applicants apply to one of six eligible majors (Aerospace Engineering, Electrical & Computer Engineering, Computational Engineering, Computer Science, X+CS, or MECHANICAL ENGINEERING), check the 'interested in the robotics program' box, and write one extra ~500-word short answer. Admitted Robotics Honors students get the Robotics Living-Learning Community at Jester West, a GUARANTEED Freshman Research Initiative robotics stream, and a RESERVED seat in the 15-hour Minor in Robotics (gateway RBT 350) [UTA-S4]. Because ME is an eligible feeder major, ME + Robotics Honors is a genuinely coherent robotics application at UT — unlike Berkeley, where the ME-to-EECS path is closed. Also note UT's holistic review changed in 2024: standardized scores 'will not change the admissions decision for automatic admits' but ARE used 'to match applicants to their choice of majors' [UTA-S6] — i.e. at UT, test scores are explicitly a MAJOR-ALLOCATION instrument, which raises the stakes of the SAT for a CS or ME first choice."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -17422,6 +17828,20 @@
           "https://oisds.utdallas.edu/common-data-set",
           "https://nsm.utdallas.edu/advising/frequently-asked-questions/"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "No published GPA gate for holding the major; admitted students may request a major change only after Census Day of their first semester (UTD-E4).",
+          "how_you_enter": "You apply to UT Dallas naming a first-choice and a second-choice major and are admitted to a specific major stated in the acceptance letter; if you are not admitted to your first choice you may be admitted to your second."
+        },
+        "computing": {
+          "available": true,
+          "severity": "mild",
+          "basis": "UT Dallas admits DIRECTLY TO THE INTENDED MAJOR, and its holistic-review criteria explicitly include 'Preparation for and ability to be successful in the intended major' [UTD-S2]. Critically, UTD publishes its capacity-overflow rule in writing: 'Students not admitted into their first choice of major due to capacity constraints or major-specific requirements may be offered admission to a different major as outlined in their acceptance letter' [UTD-S2] — so the downside case at UTD is an alternate-major offer, not a denial, which materially softens the risk of naming a competitive first choice (CS or Mechanical Engineering). UTD publishes no per-major admit rates. Texas residents in the top 10% with the Distinguished Level of Achievement receive automatic admission [UTD-S2]; that does not help a North Carolina applicant but it also does not crowd OOS applicants out the way UT Austin's top-6% rule does, as the residency data above shows. Change of major after enrolling is handled centrally through the Office of Undergraduate Education [UTD-S7]. Class-rank context from the CDS: 39.95% of enrolled first-years were in the top tenth and 69.93% in the top quarter, with 56.67% submitting rank [UTD-S1] — a less rank-compressed class than TAMU's 66.57% top-tenth."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -18061,6 +18481,20 @@
           "Civil": 0.94
         },
         "overall": "73% of current UW student applicants are offered admission into an engineering major"
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "ENGRUD major placement. Requirements: satisfy the ENGRUD continuation policy and placement requirements, minimum 2.00 UW ENGRUD GPA, minimum 2.0 in each placement requirement, and at least 24 credits as a matriculated UW student. The College states 'All ENGRUDs are guaranteed placement into an engineering major' and that historically over 90% are placed into one of their top-choice majors. Placement data show ECE capacity is close to demand: summer 2026 saw 281 first-choice ECE requests against 239 total ECE placements (237 of them first-choice); summer 2025 saw 240 first-choice requests against 226 placements. ECE is also labeled capacity-constrained on the admissions page: 'This major is capacity-constrained. Completion of prerequisites does not guarantee admission.'",
+          "how_you_enter": "Two steps, and this is the sharpest two-gate case in the batch. Step 1: apply Direct to College (DTC) for the College of Engineering — you are admitted as a pre-engineering ENGRUD student, not to ECE. (Direct to Major admission exists at UW for the Allen School's Computer Science/Computer Engineering, but ECE's own admissions page states 'The primary pathway to Electrical and Computer Engineering is through Direct to College admission to the College of Engineering... be sure to list it as your first-choice major'.) Step 2: after at least 24 credits as a matriculated UW student, request placement into ECE through the College's major-placement process."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "UW is the single most extreme major-gating case in this dataset, and the gap is officially published. UW admits first-years through named pathways, and the Allen School's Direct to Major (DTM) pathway for Computer Science / Computer Engineering admits 30% of Washington residents but only 2% of non-residents (3-year averages) [UW-S2]. Direct to College (DTC) Engineering — which covers Mechanical Engineering and the other CoE majors — admits 43% of residents and 37% of non-residents [UW-S2]. So for a North Carolina applicant the same application yields roughly a 2% shot at CS and a ~37% shot at Engineering: an 18x difference. DTM is not a separate application (no extra essay, no computing prerequisites, no coding experience required — the applicant simply lists CS or CE as first-choice major, and UW Admissions reviews it) [UW-S5], which is precisely why it is so oversubscribed. DTC, by contrast, 'guarantees incoming first-year students access to an engineering major' once admitted to the college [UW-S6]. STRATEGIC CONSEQUENCE: for an out-of-state robotics applicant, UW should be treated as an ENGINEERING (DTC) application, not a CS application; listing CS first-choice as a non-resident converts a target-band school into a sub-3% lottery. Note UW's CDS also marks 'Selective admission to some programs' under C6, and marks STATE RESIDENCY as VERY IMPORTANT in C7 [UW-S1] — the only school in this batch to do so."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {},
@@ -18550,6 +18984,20 @@
           "https://news.vt.edu/articles/2025/02/CM-applications-fall-2025.html",
           "https://eng.vt.edu/undergraduate/resources-support/change-of-major/restricted.html"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "mild",
+          "basis": "Change-of-major into ECE from General Engineering: ENGE 1215, ENGE 1216 (or ENGE 1414), MATH 1225, MATH 1226, ENGL 1105; minimum 12 GPA hours; minimum 2.0 overall VT GPA to apply; guarantee of first choice at 3.0 overall VT GPA (3.5 for non-engineering students). Once in ECE, the catalog requires 'Students must earn a C or higher in the following ECE courses: ECE 1004, ECE 2024, ECE 2214, ECE 2514, ECE 2544, ECE 2564, ECE 2714, ECE 2804 Integrated Design Project' — so ECE 2804 specifically requires a C or higher. Degree also requires 2.00 overall and 2.00 in-major GPA.",
+          "how_you_enter": "Two steps: engineering applicants are admitted into General Engineering rather than to ECE, then apply to a degree-granting major. 'Degree-granting engineering majors accept applicants on a space-available basis'; you need a minimum 2.0 overall Virginia Tech GPA to apply, a 3.0 overall Virginia Tech GPA guarantees your first-choice major, and below 3.0 applicants are rank-ordered."
+        },
+        "computing": {
+          "available": true,
+          "severity": "strong",
+          "basis": "Virginia Tech does not admit first-year students into an engineering major at all: 'When a student applies to Virginia Tech to begin as a first year student, they are applying to the College of Engineering's General Engineering program through the Office of Undergraduate Admissions,' and 'While students can indicate that Computer Science is their intended program, if admitted to the College of Engineering, all freshmen students still have to apply and be admitted to their preferred College of Engineering major after completing the general engineering requirements' [VT-S10]. Neither the College of Engineering nor the CS department has any role in freshman admission [VT-S10]. General Engineering coursework is built around 'the required change of major courses for a restricted engineering degree, which include two semesters of calculus, one semester of English, and two semesters of foundations of engineering' [VT-S11]. The restricted list is broad and includes both target majors: Aerospace and Ocean, Biological Systems, Biomedical, Chemical, Civil, Computer Engineering, Computer Science, Construction Engineering and Management, Electrical, Industrial and Systems, Materials Science, Mechanical and Mining Engineering (plus restricted minors in Biomedical Engineering, Computer Science, Cybersecurity and Human-Computer Interaction) [VT-S8]. Entry requirements: ENGE 1215 and 1216 (or ENGE 1414), MATH 1225, MATH 1226, ENGL 1105, at least 12 GPA hours, a 2.0 overall VT GPA minimum, with a 3.0 'guarantee' for engineering students and 3.5 for non-engineering students - and the crucial nuance: 'Most engineering majors accept students below the GPA guarantees. In previous application reviews, Aerospace Engineering and Mechanical Engineering were the only programs not able to admit students below the GPA guarantees' [VT-S9]. So MECHANICAL ENGINEERING is effectively the tight door at VT (3.0 in practice), while Computer Science, though formally restricted, has historically admitted students below the guarantee [VT-S9]. Students may rank up to three engineering majors, order is set by application sequence, and change-of-major cycles open in May, August and November - three chances per year [VT-S14][VT-S10]. Two 2026 curricular changes matter for robotics applicants: 'Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026' and 'Students can no longer declare Data Centric Computing or Secure Computing within Computer Science as of January 2026,' with affected students moved to the base major [VT-S14]. Practical consequence: apply to VT knowing you enter General Engineering; plan for a 3.0-plus first-year GPA if ME is the goal; and note that the named Robotics and Mechatronics option inside ME is being retired."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
@@ -19151,6 +19599,20 @@
           "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
           "https://www.wpi.edu/student-experience/first-year-experience/course-registration"
         ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "none",
+          "basis": null,
+          "how_you_enter": "You apply to WPI itself through the Common Application (single first-year application with ED/EA/RD timing options) and are not admitted to ECE as a separate unit; WPI's Robotics Engineering page tells applicants 'Undecided? No problem. Apply now and explore before committing to a specific path.'"
+        },
+        "computing": {
+          "available": true,
+          "severity": "none",
+          "basis": "WPI admits to the university, not to a capped major: applicants indicate an intended major on the Common Application and there is no separate, more selective admission gate for Robotics Engineering. The practical 'direct-admit' benefit is financial rather than academic — WPI states that students who indicate Robotics Engineering as their intended major are automatically considered for Robotics Engineering Scholars awards of typically $10,000-$25,000 per year renewable for four years [WPI-S9]. WPI's Robotics Engineering department describes its BS program as 'first-of-its-kind in the nation and the most comprehensive in the world' [WPI-S10]. Selectivity is instead concentrated in the application plan: Early Decision I admitted 310 of 397 applicants (78.1%) for Fall 2025 versus 69.3% Early Action and 61.9% overall, and ED admits receive a minimum $25,000 scholarship plus a free summer course [WPI-S1][WPI-S3]."
+        },
+        "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       }
     },
     "source_log": {
