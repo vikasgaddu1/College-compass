@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { schools, School, scoreGroups, fmtCost, fmtEnroll, stripSourceTags } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
-import { FitBadge, AccessBadge, ArchetypeChips, ShortlistPill, NoteButton, MyRatingChip } from "@/components/SchoolBits";
+import { FitBadge, AccessBadge, ArchetypeChips, ShortlistPill, NoteButton, MyRatingChip, AbetBadge } from "@/components/SchoolBits";
 import { X, GitCompare, StickyNote, Bot, Wrench, ExternalLink, Trophy } from "lucide-react";
 import { useNotes, statusLabel, hasContent } from "@/lib/notes";
 import roboticsPaths from "@/data/robotics_paths.json";
@@ -12,7 +12,14 @@ import {
 const MAX = 4;
 const seriesColors = ["hsl(220 40% 22%)","hsl(15 85% 55%)","hsl(175 45% 42%)","hsl(262 45% 45%)"];
 
-const rows: { label: string; get: (s: School) => any; }[] = [
+/**
+ * `cmp` supplies a comparable string for rows whose `get` returns JSX.
+ *
+ * The difference highlight only ever compared string cells, so every rendered
+ * row -- badges, chips, scores -- silently opted out of the one feature the page
+ * advertises. Rows that render markup can now say how they should be compared.
+ */
+const rows: { label: string; get: (s: School) => any; cmp?: (s: School) => string }[] = [
   { label: "Location", get: s => s.city_state },
   { label: "Region", get: s => s.region },
   { label: "Institution type", get: s => s.institution_type },
@@ -21,6 +28,62 @@ const rows: { label: string; get: (s: School) => any; }[] = [
   { label: "Shortlist group", get: s => <ShortlistPill group={s.shortlist_group} /> },
   { label: "Degree", get: s => s.degree_name },
   { label: "Program archetype(s)", get: s => <ArchetypeChips codes={s.archetypes} /> },
+  { label: "Robotics curriculum", get: s => <ScoreOutOfFive v={s.axes.robotics_curriculum ?? null} />,
+    cmp: s => s.axes.robotics_curriculum != null ? s.axes.robotics_curriculum.toFixed(1) : "" },
+  { label: "Robotics access", get: s => <ScoreOutOfFive v={s.axes.robotics_access ?? null} />,
+    cmp: s => s.axes.robotics_access != null ? s.axes.robotics_access.toFixed(1) : "" },
+  { label: "Undergrad robotics courses",
+    cmp: s => {
+      const n = s.robotics_curriculum_detail?.course_count_undergrad;
+      return n == null ? "" : String(n);
+    },
+    get: s => {
+      const n = s.robotics_curriculum_detail?.course_count_undergrad;
+      if (n == null) return "—";
+      return <span className="num">{n}</span>;
+    } },
+  { label: "Robotics credential",
+    cmp: s => {
+      const c = s.robotics_credential;
+      if (!c || c.credential_type === "none") return "none";
+      return `${c.credential_type}|${c.abet_commission}|${c.program_name}`;
+    },
+    get: s => {
+      const c = s.robotics_credential;
+      if (!c || c.credential_type === "none") {
+        return <span className="text-[hsl(var(--muted-foreground))]">No robotics-titled credential</span>;
+      }
+      return (
+        <div className="space-y-1">
+          <div className="text-[11.5px] leading-snug">{c.program_name}</div>
+          <div className="flex flex-wrap items-center gap-1">
+            <span className="chip chip-outline text-[10px] py-0">{String(c.credential_type).replace(/_/g, " ")}</span>
+            <AbetBadge credential={c} compact />
+          </div>
+        </div>
+      );
+    } },
+  { label: "Robotics subdomains covered",
+    cmp: s => {
+      const dom = s.robotics_domains;
+      if (!dom) return "";
+      const v = Object.values(dom);
+      return `${v.filter(d => d.coverage === "strong").length}/${v.filter(d => d.coverage === "present").length}`;
+    },
+    get: s => {
+      const dom = s.robotics_domains;
+      if (!dom) return "—";
+      const vals = Object.values(dom);
+      const strong = vals.filter(d => d.coverage === "strong").length;
+      const present = vals.filter(d => d.coverage === "present").length;
+      return (
+        <span className="text-[11.5px]">
+          <span className="num font-medium">{strong}</span> strong ·{" "}
+          <span className="num font-medium">{present}</span> present
+          <span className="text-[hsl(var(--muted-foreground))]"> of {vals.length}</span>
+        </span>
+      );
+    } },
   { label: "Major access", get: s => <AccessBadge status={s.major_access_status}/> },
   { label: "Access rules (detail)", get: s => s.major_access_full },
   { label: "Recommended route", get: s => s.recommended_major_route },
@@ -66,6 +129,21 @@ const noteRowMakers: { label: string; key: keyof import("@/lib/notes").SchoolNot
   { label: "Questions for the visit", key: "questions_for_visit" },
   { label: "My tags", key: "tags" },
 ];
+
+/** A 0-5 axis score with a proportional bar, so a column scan reads at a glance. */
+function ScoreOutOfFive({ v }: { v: number | null }) {
+  if (v == null) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span className="num font-medium">{v.toFixed(1)}</span>
+      <span className="text-[10px] text-[hsl(var(--muted-foreground))]">/5</span>
+      <span className="inline-block w-[52px] h-[5px] rounded-sm bg-[hsl(var(--border))] align-middle">
+        <span className="block h-full rounded-sm"
+          style={{ width: `${(v / 5) * 100}%`, background: "hsl(var(--accent))" }}/>
+      </span>
+    </span>
+  );
+}
 
 export default function ComparePage() {
   const { hidden } = useHidden();
@@ -135,7 +213,11 @@ export default function ComparePage() {
             {/* Radar */}
             <div className="card p-4">
               <div className="text-[13px] font-medium mb-1">Overall program shape</div>
-              <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Seven aggregate axes, each 0-5.</div>
+              <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">
+                {scoreGroups.length} aggregate axes, each 0-5. Robotics curriculum and access are
+                separate axes because "Hands-on" blends robotics with project work and clubs, which
+                hid real differences between schools.
+              </div>
               <ResponsiveContainer width="100%" height={360}>
                 <RadarChart data={radarData} outerRadius="72%">
                   <PolarGrid stroke="hsl(var(--border))"/>
@@ -243,7 +325,8 @@ export default function ComparePage() {
                 <tbody>
                   {rows.map(r => {
                     const vals = selected.map(s => r.get(s));
-                    const strVals = vals.map(v => typeof v === "string" ? v : "");
+                    const strVals = selected.map((s, i) =>
+                      r.cmp ? r.cmp(s) : (typeof vals[i] === "string" ? vals[i] as string : ""));
                     const disagree = strVals.length > 1 && new Set(strVals).size > 1 && strVals.every(v => v !== "");
                     return (
                       <tr key={r.label} className={disagree ? "bg-[hsl(var(--accent)/0.05)]" : ""}>
