@@ -468,7 +468,17 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
         unitRate = residencyRate;
       }
       rate = unitRate;
-      ctx = `${unit.unit}${unit.residency !== "all" ? ` · ${unit.residency === "in_state" ? "in-state" : "out-of-state"}` : " · all residencies"}`;
+      // When the blend is capped, the number shown is no longer the unit's own
+      // figure -- it is the university residency rate. Naming only the unit made
+      // the label misattribute the value: Purdue read "College of Engineering
+      // 43.6%" when the published College of Engineering rate is 46.1% and 43.6%
+      // is the university out-of-state rate. Say so in the context itself so
+      // every consumer inherits it, not just the odds table.
+      const resLabel = unit.residency === "in_state" ? "in-state"
+                     : unit.residency === "oos" ? "out-of-state" : "all residencies";
+      ctx = unit_clamped_to !== null
+        ? `${unit.unit}, capped at the ${inHomeState ? "in-state" : "out-of-state"} rate`
+        : `${unit.unit}${unit.residency !== "all" ? ` · ${resLabel}` : " · all residencies"}`;
     }
   }
 
