@@ -13,6 +13,87 @@ export interface ApplicantProfile {
   test_plan: "submitting" | "optional_hold" | "not_submitting";
   rigor_note: string;
   home_state: string;      // NC by default
+
+  /**
+   * Structured rigor self-report -- the alternative to uploading a transcript.
+   * The applicant counts what they have taken; the app compares that to what
+   * each school says about rigor in CDS C7. Stays on this device.
+   */
+  ap_ib_de_completed: number | null;   // finished and graded
+  ap_ib_de_planned: number | null;     // scheduled for senior year
+  highest_math: HighestMath | null;
+  /** What the high school actually offers, so rigor is judged in context. */
+  school_offers_advanced: "many" | "some" | "few" | "unknown";
+  has_honors_core: boolean;            // honors/advanced across all core subjects
+}
+
+export type HighestMath =
+  | "below_precalc" | "precalc" | "calc_ab" | "calc_bc" | "beyond_calc";
+
+export const HIGHEST_MATH_LABEL: Record<HighestMath, string> = {
+  below_precalc: "Algebra 2 or below",
+  precalc: "Precalculus",
+  calc_ab: "Calculus AB",
+  calc_bc: "Calculus BC",
+  beyond_calc: "Beyond calculus (multivariable, linear algebra)",
+};
+
+const MATH_POINTS: Record<HighestMath, number> = {
+  below_precalc: 0, precalc: 1, calc_ab: 2, calc_bc: 3, beyond_calc: 4,
+};
+
+export interface RigorResult {
+  index: number | null;                // 1-5, comparable to the other axes
+  band: "limited" | "solid" | "strong" | "very strong";
+  drivers: string[];
+  context_limited: boolean;
+}
+
+/**
+ * Compose a rigor index from the self-report. Deliberately simple and legible:
+ * it is a conversation aid, not a prediction. Course count is capped because
+ * beyond a point it stops differentiating, and math level is weighted heavily
+ * because engineering admissions care about the calculus sequence specifically.
+ */
+export function computeRigor(p: ApplicantProfile): RigorResult {
+  const done = p.ap_ib_de_completed;
+  const planned = p.ap_ib_de_planned;
+  const math = p.highest_math;
+  if (done == null && planned == null && math == null) {
+    return { index: null, band: "limited", drivers: [], context_limited: false };
+  }
+
+  const total = (done ?? 0) + (planned ?? 0);
+  const drivers: string[] = [];
+
+  const capped = Math.min(total, 8);
+  let score = (capped / 8) * 2.2;
+  if (total) drivers.push(`${total} advanced course${total === 1 ? "" : "s"} taken or scheduled`);
+
+  if (math) {
+    score += (MATH_POINTS[math] / 4) * 2.0;
+    drivers.push(`math through ${HIGHEST_MATH_LABEL[math]}`);
+  }
+
+  if (p.has_honors_core) {
+    score += 0.5;
+    drivers.push("honors or advanced across all core subjects");
+  }
+
+  // A thin course catalogue is not the applicant's doing, and colleges state they
+  // read rigor against what was available. Partial credit, not a penalty.
+  const context_limited = p.school_offers_advanced === "few";
+  if (context_limited && total <= 4) {
+    score += 0.6;
+    drivers.push("limited advanced offerings at your school, judged in context");
+  }
+
+  const index = Math.max(1, Math.min(5, Math.round(score * 10) / 10));
+  const band =
+    index >= 4.5 ? "very strong" :
+    index >= 3.5 ? "strong" :
+    index >= 2.5 ? "solid" : "limited";
+  return { index, band, drivers, context_limited };
 }
 
 export interface OddsThresholds {
@@ -21,12 +102,18 @@ export interface OddsThresholds {
   high_reach_admit_max: number;  // 0.10
   sat_75_bonus: number;          // pts above mid-50 high => likely bump
   gated_downgrade: boolean;      // downgrade one tier when major_admit_context flags gated CS
+  /** How far above/below the school average a GPA must sit to move a tier. */
+  gpa_delta: number;             // 0.15
+  use_gpa: boolean;              // let GPA move the tier at all
 }
 
 const DEFAULT_PROFILE: ApplicantProfile = {
   gpa_uw: null, gpa_w: null, sat: null, act: null,
   test_plan: "optional_hold", rigor_note: "",
   home_state: "NC",
+  ap_ib_de_completed: null, ap_ib_de_planned: null,
+  highest_math: null, school_offers_advanced: "unknown",
+  has_honors_core: false,
 };
 
 const DEFAULT_THRESHOLDS: OddsThresholds = {
@@ -35,6 +122,8 @@ const DEFAULT_THRESHOLDS: OddsThresholds = {
   high_reach_admit_max: 0.10,
   sat_75_bonus: 0,
   gated_downgrade: true,
+  gpa_delta: 0.15,
+  use_gpa: true,
 };
 
 const PROFILE_KEY = "college-compass-applicant-profile";
@@ -77,6 +166,9 @@ export type OddsTier = "LIKELY" | "TARGET" | "REACH" | "HIGH_REACH" | "NEEDS_DAT
 
 export interface OddsResult {
   tier: OddsTier;
+  /** Populated whenever the school publishes a GPA figure. */
+  gpa?: GpaComparison;
+  gpa_moved_tier?: boolean;
   reason: string;             // one-sentence explanation
   effective_admit_rate: number | null;   // residency-adjusted for publics
   admit_rate_context: string; // "in-state (NC resident)" | "out-of-state (from NC)" | "overall"
@@ -102,6 +194,83 @@ export function coerceRate(v: any): number | null {
   if (!Number.isFinite(n) || n < 0) return null;
   const r = n > 1 ? n / 100 : n;
   return r > 1 ? null : r;   // still nonsense after scaling -> reject
+}
+
+export type GpaBasis = "weighted" | "unweighted" | "unspecified" | "not_published";
+
+export interface GpaComparison {
+  /** null when the school publishes nothing usable, or the applicant has no matching figure. */
+  delta: number | null;
+  school_avg: number | null;
+  school_basis: GpaBasis | null;
+  applicant_used: number | null;
+  /** Which of the applicant's two GPAs was compared. */
+  applicant_basis: "weighted" | "unweighted" | null;
+  /** Set when a like-for-like comparison was not possible, with the reason. */
+  caveat: string | null;
+}
+
+/**
+ * Compare the applicant's GPA to the school's published average -- LIKE FOR LIKE.
+ *
+ * This is the part that matters. Comparing an unweighted 3.9 against Georgia
+ * Tech's WEIGHTED 4.17 average would understate the applicant badly, so a
+ * comparison is only returned when the bases line up. Twelve of the eighteen
+ * schools that publish a GPA never state their weighting; for those, a figure at
+ * or below 4.0 is compared against the unweighted GPA and explicitly flagged.
+ */
+export function compareGpa(admissions: any, profile: ApplicantProfile): GpaComparison {
+  const raw = admissions?.avg_gpa;
+  const empty: GpaComparison = {
+    delta: null, school_avg: null, school_basis: null,
+    applicant_used: null, applicant_basis: null, caveat: null,
+  };
+  if (!raw || typeof raw !== "object") {
+    return { ...empty, caveat: "This school does not publish an average GPA." };
+  }
+  const basis: GpaBasis = raw.basis ?? "unspecified";
+  const avg: number | null = typeof raw.value === "number" ? raw.value : null;
+  if (basis === "not_published" || avg == null) {
+    return { ...empty, school_basis: basis,
+      caveat: "This school leaves the CDS GPA fields blank, so there is nothing to compare against." };
+  }
+
+  if (basis === "weighted") {
+    if (profile.gpa_w == null) {
+      return { ...empty, school_avg: avg, school_basis: basis,
+        caveat: `This school reports a WEIGHTED average (${avg.toFixed(2)}). Enter your weighted GPA to compare.` };
+    }
+    return { delta: Math.round((profile.gpa_w - avg) * 100) / 100, school_avg: avg,
+      school_basis: basis, applicant_used: profile.gpa_w, applicant_basis: "weighted", caveat: null };
+  }
+
+  if (basis === "unweighted") {
+    if (profile.gpa_uw == null) {
+      return { ...empty, school_avg: avg, school_basis: basis,
+        caveat: `This school reports an UNWEIGHTED average (${avg.toFixed(2)}). Enter your unweighted GPA to compare.` };
+    }
+    return { delta: Math.round((profile.gpa_uw - avg) * 100) / 100, school_avg: avg,
+      school_basis: basis, applicant_used: profile.gpa_uw, applicant_basis: "unweighted", caveat: null };
+  }
+
+  // basis unspecified
+  if (avg > 4.0) {
+    // Cannot be an unweighted 4.0-scale figure; treat as weighted if we can.
+    if (profile.gpa_w == null) {
+      return { ...empty, school_avg: avg, school_basis: basis,
+        caveat: `Average ${avg.toFixed(2)} exceeds 4.0, so it must be weighted, but the school does not say so. Enter your weighted GPA to compare.` };
+    }
+    return { delta: Math.round((profile.gpa_w - avg) * 100) / 100, school_avg: avg,
+      school_basis: basis, applicant_used: profile.gpa_w, applicant_basis: "weighted",
+      caveat: "The school does not state its weighting; treated as weighted because the average exceeds 4.0." };
+  }
+  if (profile.gpa_uw == null) {
+    return { ...empty, school_avg: avg, school_basis: basis,
+      caveat: `This school does not state whether its ${avg.toFixed(2)} average is weighted. Enter your unweighted GPA for the closest comparison.` };
+  }
+  return { delta: Math.round((profile.gpa_uw - avg) * 100) / 100, school_avg: avg,
+    school_basis: basis, applicant_used: profile.gpa_uw, applicant_basis: "unweighted",
+    caveat: "The school does not state its weighting; compared against your unweighted GPA." };
 }
 
 export function classify(admissions: any, nc_note: string | undefined, profile: ApplicantProfile, t: OddsThresholds): OddsResult {
@@ -153,6 +322,35 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     }
   }
 
+  // GPA modifier. Previously the profile collected GPA and nothing read it, so
+  // the field did nothing at all. It only fires on a like-for-like comparison
+  // (see compareGpa) and moves at most one tier, in the same spirit as the SAT
+  // modifier -- admit rate remains the primary driver.
+  const gpa = compareGpa(admissions, profile);
+  let gpa_moved_tier = false;
+  if (t.use_gpa && gpa.delta !== null) {
+    const d = gpa.delta;
+    const basisLabel = gpa.applicant_basis === "weighted" ? "weighted" : "unweighted";
+    if (d >= t.gpa_delta && (tier === "TARGET" || tier === "REACH")) {
+      tier = tier === "REACH" ? "TARGET" : "LIKELY";
+      gpa_moved_tier = true;
+      reason += ` Your ${basisLabel} GPA is ${d.toFixed(2)} above this school's published average (${gpa.school_avg?.toFixed(2)}).`;
+    } else if (d <= -t.gpa_delta && (tier === "LIKELY" || tier === "TARGET")) {
+      tier = tier === "LIKELY" ? "TARGET" : "REACH";
+      gpa_moved_tier = true;
+      reason += ` Your ${basisLabel} GPA is ${Math.abs(d).toFixed(2)} below this school's published average (${gpa.school_avg?.toFixed(2)}).`;
+    } else if (Math.abs(d) < t.gpa_delta) {
+      reason += ` Your ${basisLabel} GPA is within ${t.gpa_delta.toFixed(2)} of the published average (${gpa.school_avg?.toFixed(2)}), so it does not move the tier.`;
+    } else {
+      // The gap IS material, but the tier is already at the end of the scale in
+      // that direction. Saying "within X" here would be factually wrong -- the
+      // earlier version did exactly that and reported a 0.36 gap as "within 0.15".
+      const dir = d > 0 ? "above" : "below";
+      const ceiling = d > 0 ? "already the most favourable tier" : "already the least favourable tier";
+      reason += ` Your ${basisLabel} GPA is ${Math.abs(d).toFixed(2)} ${dir} the published average (${gpa.school_avg?.toFixed(2)}), but this school is ${ceiling} on admit rate alone, so the tier does not change.`;
+    }
+  }
+
   // Gated-major downgrade, driven by the researched `cs_gate` enum rather than
   // keyword-matching prose. The old regex was negation-blind and penalised WPI,
   // RPI and Florida for explicitly NOT having a major-level gate.
@@ -168,5 +366,5 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     }
   }
 
-  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null };
+  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null, gpa, gpa_moved_tier };
 }
