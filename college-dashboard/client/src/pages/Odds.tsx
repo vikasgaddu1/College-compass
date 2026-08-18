@@ -273,18 +273,25 @@ export default function OddsPage() {
                 </select>
               </div>
               <div>
-                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Gate applies to</label>
+                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Gate severity</label>
                 <select className="w-full px-2 py-1 mt-0.5 text-[12px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
-                  value={thresholds.gate_pathway_aware ? "computing":"both"}
-                  onChange={e => setThresholds({ gate_pathway_aware: e.target.value === "computing" })}>
-                  <option value="computing">The computing door only</option>
-                  <option value="both">Both doors</option>
+                  value={thresholds.use_door_gates ? "per_door" : (thresholds.gate_pathway_aware ? "computing" : "both")}
+                  onChange={e => {
+                    const v = e.target.value;
+                    setThresholds({
+                      use_door_gates: v === "per_door",
+                      gate_pathway_aware: v === "computing",
+                    });
+                  }}>
+                  <option value="per_door">Per door, as researched</option>
+                  <option value="computing">Waive on engineering</option>
+                  <option value="both">Both doors, always</option>
                 </select>
               </div>
             </div>
             <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] italic">
               Admit rates are decimals (0.35 = 35%). Defaults: Likely ≥35%, Target ≥20%, High-reach &lt;10%. These are user-adjustable heuristics — the tier labels have no external authority.
-              {" "}<strong>Gate applies to</strong> defaults to the computing door only: <code>cs_gate</code> describes a CS/AI-specific obstacle, so on the engineering door it is reported as a risk to reaching the major rather than as a higher admission bar. Set it to "both doors" for the older, more pessimistic behaviour.
+              {" "}<strong>Gate severity</strong> defaults to per-door, using the researched gate for whichever door you are applying through. The engineering figure comes from the ECE admission research and the computing figure from <code>cs_gate</code>; only a "strong" gate moves a tier. This matters because waiving the gate on engineering wholesale would be wrong at the schools that route every engineering admit through a competition — Texas A&amp;M ETAM, NC State CODA, Berkeley's change-of-major rules — while it is right at Michigan, whose own constraint is the CS major rather than the college. Schools with no ECE programme at all (UNC-Chapel Hill, Carleton) are labelled as having no engineering door rather than an easy one.
             </div>
           </div>
         )}
