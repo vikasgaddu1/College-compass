@@ -164,6 +164,8 @@ export default function WhyChoosePage() {
                 <RoboticsDomainChips domains={s.robotics_domains} />
               </div>
 
+              <EcePanel ece={(s as any).ece} />
+
               <ChevronRight size={12} className="opacity-0"/> {/* spacer */}
             </div>
           );
@@ -219,6 +221,145 @@ function FactBox({ label, value }: { label: string; value: string }) {
     <div className="rounded-md bg-[hsl(var(--muted)/0.5)] px-2.5 py-1.5 border border-[hsl(var(--border))]">
       <div className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">{label}</div>
       <div className="leading-snug">{value}</div>
+    </div>
+  );
+}
+
+
+/* ------------------------------------------------------------------------- *
+ * ECE as an alternative door.
+ *
+ * The list was built around CS/AI, but ECE is usually EAC-accredited
+ * engineering and is often a less gated admit than CS while still carrying
+ * controls, embedded systems, perception and hardware for ML. Two cautions are
+ * surfaced deliberately rather than buried: schools with no ECE at all, and
+ * schools whose NEW ECE degree is not yet EAC-accredited.
+ * ------------------------------------------------------------------------- */
+
+const EASIER_META: Record<string, { label: string; hue: string; blurb: string }> = {
+  yes: {
+    label: "Easier door than CS",
+    hue: "var(--fit-strong)",
+    blurb: "Published evidence shows the ECE route is less gated than CS here.",
+  },
+  same: {
+    label: "Same door as CS",
+    hue: "var(--muted-foreground)",
+    blurb: "Admission does not distinguish ECE from CS at this school.",
+  },
+  no: {
+    label: "Harder than CS",
+    hue: "var(--fit-lower)",
+    blurb: "The ECE route is the more competitive of the two here.",
+  },
+  unpublished: {
+    label: "Not published",
+    hue: "var(--score-unk)",
+    blurb:
+      "This school admits by unit but publishes no per-unit rate, so whether ECE is easier than CS is genuinely unknown — verify with admissions.",
+  },
+};
+
+const STRUCTURE_LABEL: Record<string, string> = {
+  combined_ece: "Combined ECE department",
+  separate_ee_and_cpe: "Separate EE and CpE degrees",
+  ee_only: "Electrical engineering only",
+  eecs_combined_with_cs: "EECS — fused with CS",
+  none: "No ECE program",
+};
+
+const COVERS_LABEL: Record<string, string> = {
+  controls: "Controls",
+  embedded: "Embedded",
+  perception_cv: "Perception / CV",
+  signal_processing: "Signal processing",
+  ml_hardware: "ML hardware",
+  power: "Power",
+  vlsi: "VLSI",
+};
+
+function EcePanel({ ece }: { ece?: any }) {
+  if (!ece) return null;
+
+  const easier = String(ece.door?.easier_than_cs ?? "unpublished");
+  const meta = EASIER_META[easier] ?? EASIER_META.unpublished;
+  const covers: string[] = Array.isArray(ece.robotics_ai?.covers) ? ece.robotics_ai.covers : [];
+  const courseCount = ece.robotics_ai?.course_count ?? 0;
+  const conc = ece.robotics_ai?.concentration_name;
+  const abetPending = ece.abet?.pending_or_absent === true;
+
+  // No ECE at all is the single most decision-relevant state, so it replaces
+  // the panel rather than rendering an empty shell.
+  if (ece.exists === false) {
+    return (
+      <div className="mt-2 rounded-md border border-dashed p-2.5"
+           style={{ borderColor: "hsl(var(--fit-lower))" }}>
+        <div className="text-[11px] uppercase tracking-wider font-semibold mb-1"
+             style={{ color: "hsl(var(--fit-lower))" }}>
+          ECE route · none
+        </div>
+        <p className="text-[11.5px] leading-snug">{stripSourceTags(ece.vs_cs)}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-2 rounded-md border p-2.5"
+         style={{ borderColor: "hsl(var(--border))", background: "hsl(var(--muted) / 0.35)" }}>
+      <div className="flex items-baseline justify-between gap-2 mb-1.5 flex-wrap">
+        <div className="text-[11px] uppercase tracking-wider font-semibold text-[hsl(var(--muted-foreground))]">
+          ECE route
+        </div>
+        <span className="chip chip-outline text-[10px] font-semibold"
+              style={{ color: `hsl(${meta.hue})` }}
+              title={`${meta.blurb}${ece.door?.easier_than_cs_basis ? "\n\n" + ece.door.easier_than_cs_basis : ""}`}>
+          {meta.label}
+        </span>
+      </div>
+
+      <div className="flex flex-wrap gap-1 mb-1.5 items-center">
+        <span className="chip text-[10px]">{STRUCTURE_LABEL[ece.structure] ?? ece.structure}</span>
+        <span className="chip text-[10px]"
+              style={ece.abet?.eac_accredited
+                ? { color: "hsl(var(--fit-strong))" }
+                : { color: "hsl(var(--fit-lower))" }}
+              title={ece.abet?.quote || undefined}>
+          {ece.abet?.eac_accredited ? "ABET EAC" : abetPending ? "ABET pending / absent" : "Not EAC"}
+        </span>
+        {courseCount > 0 && (
+          <span className="chip text-[10px]">{courseCount} robotics/AI course{courseCount === 1 ? "" : "s"}</span>
+        )}
+      </div>
+
+      {abetPending && ece.abet?.quote && (
+        <p className="text-[10.5px] leading-snug mb-1.5 pl-2 border-l-2"
+           style={{ borderColor: "hsl(var(--fit-lower))", color: "hsl(var(--fit-lower))" }}>
+          {stripSourceTags(ece.abet.quote)}
+        </p>
+      )}
+
+      {conc && (
+        <div className="text-[11px] mb-1">
+          <span className="text-[hsl(var(--muted-foreground))]">Track: </span>{stripSourceTags(conc)}
+        </div>
+      )}
+
+      {covers.length > 0 && (
+        <div className="flex flex-wrap gap-1 mb-1.5">
+          {covers.map(c => (
+            <span key={c} className="chip chip-outline text-[9.5px]">{COVERS_LABEL[c] ?? c}</span>
+          ))}
+        </div>
+      )}
+
+      {ece.door?.how_you_enter && (
+        <p className="text-[11px] leading-snug text-[hsl(var(--muted-foreground))] mb-1">
+          <span className="font-medium text-[hsl(var(--foreground))]">Getting in: </span>
+          {stripSourceTags(ece.door.how_you_enter)}
+        </p>
+      )}
+
+      {ece.vs_cs && <p className="text-[11.5px] leading-snug">{stripSourceTags(ece.vs_cs)}</p>}
     </div>
   );
 }
