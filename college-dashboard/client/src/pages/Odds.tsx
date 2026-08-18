@@ -372,7 +372,9 @@ export default function OddsPage() {
                           per-college rate
                           {result.unit_residency_blended && (
                             <span className="block" style={{ color: "hsl(30 75% 40%)" }}>
-                              {result.unit_clamped_to != null ? "blended · capped" : "blended residency"}
+                              {/* The cap itself is now named in the context line above, so repeating
+                                  "capped" here just said it twice. */}
+                              blended residency
                             </span>
                           )}
                           {result.unit_used.note && (
