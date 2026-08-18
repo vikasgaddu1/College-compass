@@ -1153,7 +1153,10 @@
       },
       "vs_cs": "ECE at CMU is a genuinely different door from SCS: ECE is admitted through the College of Engineering while CS/AI/Robotics majors are admitted through SCS, and ECE's own course set already covers controls (18-370, 18-474), autonomous robotics (18-442), mechatronics (18-578), vision (18-395, 18-794) and ML for engineers (18-461/18-462). Crucially, an ECE student can still reach the Robotics Additional Major, which is 'Open to students across all majors and colleges at Carnegie Mellon University' at a 3.0 GPA, and the Machine Learning Minor, which is explicitly reserved for undergraduates 'outside the School of Computer Science' — so ECE, not CS, is the major that unlocks the ML minor. The cost is a hardware-heavy core (circuits, devices, 18-220/18-240/18-290) and the fact that CMU publishes no admit-rate evidence that the CoE door is actually easier.",
       "notable": "Integrated Master's/Bachelor's (IMB) into the Professional M.S. in ECE is guaranteed at 270+ units with a 3.00 QPA, with no separate application and no GRE (CMU-E1). Robotics Additional Major lets non-CS majors double count up to six courses (CS majors only five) (CMU-E3). The Machine Learning Minor is open to any major outside SCS (CMU-E5)."
-    }
+    },
+    "cost_cite": "[CMU-S10]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED as full cost of attendance. Tuition is $67,020 and room and board $18,894 (~$85,914 direct-billed, which CMU summarises as approaching $87,000 with fees). The stored figure adds CMU's published allowances for books, personal expenses and travel."
   },
   {
     "slug": "cornell",
@@ -3656,7 +3659,10 @@
       },
       "vs_cs": "At Georgia Tech ECE and CS sit in different colleges (College of Engineering vs College of Computing) and, because major confirmation into the BS CS is closed to students admitted Summer 2024 and later, ECE is the door that stays open — you can confirm or change into EE or Computer Engineering, but not into CS. The ECE thread system is unusually well matched to this applicant: BS EE picks any two of eight threads including Robotics, and BS CmpE picks two of nine including Robotics & Autonomous Systems, backed by ECE 3550/4550 controls, ECE 4560 robotics, ECE 4580 vision, ECE 4252 machine learning and ECE 4180 embedded systems. The cost is that GT publishes no admit-rate evidence, and intended major is explicitly weighed in review, so listing ECE is a real commitment rather than a backdoor.",
       "notable": "Georgia Tech CS is CAC-accredited while EE and CmpE are EAC-accredited under the electrical/computer program criteria (GT-E1). ECE also owns robotics-specific graduate courses (ECE 7785 Introduction to Robotics Research, ECE 8741 Robotics Capstone Project) that undergraduates can approach through the BS/MS (GT-E6)."
-    }
+    },
+    "undergrad_enrollment_cite": "[GT-S14]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "VERIFIED (approximate). Georgia Tech reports 5,415 new undergraduates in 2025 bringing 'Tech's total undergraduate population to over 20,000'. The stored 20,000 is a rounded figure consistent with that statement; Georgia Tech's Fact Book (irp.gatech.edu) carries the exact census count."
   },
   {
     "slug": "illinois-tech",
@@ -4204,7 +4210,7 @@
     "notable_undergraduate_research_program": "PURA ($3,000 academic year) and Summer PURA ($6,000, 10 weeks; 113 funded in Summer 2025); CSMR REU (LCSR/NSF, US citizens/PRs)",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Combined (concurrent) BS/MSE in Computer Science; also combined BS/MSE in Robotics via LCSR and concurrent BS/MSSI",
-    "cost_total_instate": null,
+    "cost_total_instate": 94858,
     "cost_total_outofstate": 94858,
     "cost_for_nc_resident": 94858,
     "housing_guarantee": "Two-year residency requirement for first- and second-year students; 93% of first-years in college housing, 46% of all undergraduates",
@@ -6676,7 +6682,7 @@
     "region": "Great Lakes",
     "institution_type": "Public research university (M1) — commuter-oriented",
     "is_public": true,
-    "undergrad_enrollment": 7300,
+    "undergrad_enrollment": 6199,
     "size_bucket": "medium",
     "degree_name": "BSE in Robotics Engineering (dedicated 125-cr ABET-accredited degree, ECE-housed)",
     "degree_type": "Dedicated BS Robotics — one of only ~6 in the US",
@@ -7275,7 +7281,10 @@
       },
       "vs_cs": "UM-Dearborn is the unusual case where the robotics degree itself is EAC-accredited - 'BSE in Robotics Engineering - Accredited by the Engineering Accreditation Commission of ABET' - so ECE is not needed to secure accreditation, and the 125-credit Robotics Engineering core is already ECE-coded (ECE 3641 Robotic Manipulation, ECE 4641 Mobile Robots, ECE 460 Automatic Control Systems, ECE 3731 Microprocessors and Embedded Systems, ECE 4987/4988 Robotics Engineering Design) (MICHIGAN-DEARBORN-E4, MICHIGAN-DEARBORN-E5). What ECE adds beyond the robotics BSE is breadth outside robots - power, communications, microelectronics and the option of a dual BSE in EE and CpE for 141 credits, only 16 more than one degree - while robotics courses remain available to EE students as technical electives (MICHIGAN-DEARBORN-E2, MICHIGAN-DEARBORN-E3, MICHIGAN-DEARBORN-E6). Versus CS, ECE and Robotics Engineering both give you controls, embedded hardware and robot vision that the CAC-accredited Computer and Information Science degree does not (MICHIGAN-DEARBORN-E4, MICHIGAN-DEARBORN-E6).",
       "notable": "Dual BSE in electrical engineering plus computer engineering in 141 credits, 16 more than either degree alone; robotics-relevant ECE electives include ECE 434 Introduction to Machine Learning, ECE 4881 Introduction to Robot Vision, ECE 480 Introduction to DSP and ECE 473 Embedded System Design; 4+1 BSE/MSE option requires a 3.2 CGPA; the institution's accreditation page lists EAC accreditation for Bioengineering, Computer, Electrical, Industrial and Systems, Manufacturing, Mechanical, Robotics and Software Engineering, with Computer and Information Science under CAC (MICHIGAN-DEARBORN-E2, MICHIGAN-DEARBORN-E5, MICHIGAN-DEARBORN-E6, MICHIGAN-DEARBORN-E4)."
-    }
+    },
+    "undergrad_enrollment_cite": "[UMDBN-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 7,300. Fall 2025: 6,199 undergraduates out of 8,005 total headcount (a ~1% decline from Fall 2024)."
   },
   {
     "slug": "mit",
@@ -7893,7 +7902,10 @@
       },
       "vs_cs": "MIT is the clearest case of ECE and CS being fused: Course 6 is one department covering both, so choosing the EE side buys no admissions advantage whatsoever. What it does change is curriculum — 6-5 Electrical Engineering with Computing is now the sole EE major (6-1 and 6-2 are retired for students entering Fall 2024 and later), and it forces circuits, computation structures and signal processing plus a hardware-flavored System Design Lab, while robotics and AI subjects (6.4200 Robotics: Science and Systems, 6.4210 Robotic Manipulation, 6.3900 Intro to ML) are shared with 6-3/6-4. Note the accreditation wrinkle: the published ABET statements cover the retired 6-1 and 6-2 programs, and no ABET statement is published for 6-5, 6-3 or 6-4.",
       "notable": "6-1 and 6-2 are retired; MIT describes 6-5 as 'the sole new electrical engineering major', with the department organized into three sub-units — EE (6-5), CS (6-3) and AI+D (6-4) (MIT-E1). The 5-year MEng is open to 6-3, 6-4, 6-5, 6-7 and 6-14 (MIT-E1)."
-    }
+    },
+    "undergrad_enrollment_cite": "[MIT-S12]",
+    "undergrad_enrollment_asof": "Fall 2024/2025",
+    "undergrad_enrollment_note": "VERIFIED. MIT Registrar reported 4,535 undergraduates as of October 2024; the stored 4,561 is consistent with that at a one-year offset."
   },
   {
     "slug": "nc-state",
@@ -7904,8 +7916,8 @@
     "region": "Southeast",
     "institution_type": "Public land-grant R1 university",
     "is_public": true,
-    "undergrad_enrollment": 12500,
-    "size_bucket": "medium",
+    "undergrad_enrollment": 29340,
+    "size_bucket": "large",
     "degree_name": "B.S. in Computer Science, Artificial Intelligence Concentration",
     "degree_type": "Transcript-recognized concentration within an ABET-accredited B.S. (21 AI credit hours; 121 total)",
     "program_archetype": "B (deep CS + AI); partially E (large AI ecosystem via the university-wide Data Science and AI Academy)",
@@ -8579,7 +8591,13 @@
       },
       "vs_cs": "NC State ECE has the most explicit robotics offering in this batch: a published Controls and Robotics Concentration in the BSEE, 24 hours built on ECE 308 Elements of Control Systems plus a required-elective menu of ECE 441 Robot Motion Planning, ECE 455 Industrial Robotic Systems, ECE 411 Introduction to Machine Learning and ECE 425/525 Neural Networks and Deep Learning, capped by ECE 484/485 Senior Design. As a North Carolina resident the applicant gets in-state consideration at the admission step, but the real gate is CODA after enrollment, and the published statistics show EE matriculants clearing at a lower GPA band (3.22-3.95 CODA GPA) than CS matriculants (3.43-3.97) with far fewer applicants. The cost is a genuine one-year deferral of major identity: you cannot take 300-level ECE courses until you have CODA'd in.",
       "notable": "The EE degree also lists an AI & Machine Learning concentration and a Digital Circuits concentration alongside Controls and Robotics. ECE offers an EE/CpE dual degree program reachable through CODA. The earliest an EFY student can CODA is December of the first year, which means a strong fall semester is the whole game."
-    }
+    },
+    "cost_cite": "[NCSU-S13]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED as full cost of attendance, not tuition alone. NC State's published 2024-25 budget was $27,237 in-state and $51,285 out-of-state living on campus; the stored 2025-26 figures sit a normal year's increase above that. Tuition and fees alone are $8,704 in-state and $33,964 out-of-state, so the stored numbers include the ~$17,562 living allowance.",
+    "undergrad_enrollment_cite": "[NCSU-S12]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from 12,500. Fall 2025: 29,340 degree-seeking undergraduates; 30,504 undergraduate degree/non-degree/certificate students out of 40,503 total headcount. The previous 12,500 was roughly the size of NC State's College of Engineering, not the undergraduate student body."
   },
   {
     "slug": "northeastern",
@@ -8608,7 +8626,7 @@
     "notable_undergraduate_research_program": "PEAK Awards ($750-$6,000, three cycles/year) + Khoury paid research co-op [NEU-S9] [NEU-S8]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "PlusOne (up to 16 credits double-counted; MS in Artificial Intelligence available) [NEU-S10]",
-    "cost_total_instate": null,
+    "cost_total_instate": 94137,
     "cost_total_outofstate": 94137,
     "cost_for_nc_resident": 94137,
     "housing_guarantee": "Required for first two years; no guarantee beyond confirmed [NEU-S23] [NEU-S24]",
@@ -9763,7 +9781,7 @@
     "fourplusone_available": "No (for Olin students)",
     "fourplusone_name": "NOT APPLICABLE — the only 4+1 is for Wellesley students spending a fifth year at Olin [OLIN-S6]",
     "cost_total_instate": 97088,
-    "cost_total_outofstate": null,
+    "cost_total_outofstate": 97088,
     "cost_for_nc_resident": 97088,
     "housing_guarantee": "Effectively absolute — all students required to live on campus all four years, exemptions by Dean of Students only [OLIN-S53][OLIN-S55]",
     "greek_participation": "None — 83% of students in a Niche poll report no Greek life [OLIN-S58]",
@@ -10372,7 +10390,7 @@
     "notable_undergraduate_research_program": "PURM ($5,000, 1st/2nd-year students); SURE; Rachleff Scholars (rising sophomores, ≥3.4 GPA); Littlejohn",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Accelerated Master's (4+1) — \"submatriculation\" only for pre-Fall-2017 entrants",
-    "cost_total_instate": null,
+    "cost_total_instate": 99082,
     "cost_total_outofstate": 99082,
     "cost_for_nc_resident": 99082,
     "housing_guarantee": "Required and provided years 1–2 (two-year housing + dining requirement); ~950 spaces only for rising 3rd/4th-years, randomized",
@@ -12204,7 +12222,7 @@
     "notable_undergraduate_research_program": "35th Annual Undergraduate Research Symposium, open to all undergraduates [RIT-S10]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "BS/MS with 9 graduate credits double-counted [RIT-S4]",
-    "cost_total_instate": null,
+    "cost_total_instate": 82868,
     "cost_total_outofstate": 82868,
     "cost_for_nc_resident": 82868,
     "housing_guarantee": "First-year housing required; 95% of first-years live on campus; multi-year guarantee unverified [RIT-S32] [RIT-S31]",
@@ -13399,7 +13417,7 @@
     "notable_undergraduate_research_program": "URP (minimum $14.20/hr, up to $500/semester institutional match) plus the Summer Undergraduate Research Award (up to $6,400 for 10 weeks) [RPI-S18] [RPI-S20]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Co-Terminal (accelerated master's) — 90 credits to apply, 3.0 GPA minimum, CS requires an MS-advisor research letter; double-counted credits UNK [RPI-S47] [RPI-S49]",
-    "cost_total_instate": null,
+    "cost_total_instate": 90076,
     "cost_total_outofstate": 90076,
     "cost_for_nc_resident": 90076,
     "housing_guarantee": "Required for first-year and second-year cohorts with a meal plan; Greek sophomores may waive via the FS Commons Housing Waiver; beyond year 2 unverified [RPI-S61] [RPI-S62]",
@@ -15075,7 +15093,10 @@
       },
       "vs_cs": "Texas A&M ECE gives you EAC-accredited engineering with linear control systems, motor drives explicitly framed around robotic and traction systems, and a unified BS Computer Engineering that merged the former CEEN and CS computer-engineering tracks in fall 2021. The important trap here is the MXET mechatronics track: it lives in Multidisciplinary Engineering Technology and is accredited by the Engineering Technology Accreditation Commission of ABET, not the Engineering Accreditation Commission, so the robotics-sounding option is engineering technology rather than engineering. Because CS is also inside the College of Engineering and reached through the same ETAM gate, ECE is not a way to bypass the competition at A&M, only a different landing spot with a lighter reputation for oversubscription.",
       "notable": "The mechatronics-flavored MXET path is ETAC-accredited engineering technology, a real distinction for graduate-school and PE-track purposes. ECE combined the EE computer-engineering track (CEEN) with the CS computer-engineering track into a single BS Computer Engineering effective fall 2021. Automatic ETAM entry at a 3.75 cumulative GPA is the cleanest way to guarantee ECE."
-    }
+    },
+    "undergrad_enrollment_cite": "[TAMU-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "VERIFIED (approximate). Fall 2025 preliminary reporting put College Station total enrollment above 74,000 with undergraduates up about 1.5% (+875), which brackets the stored 59,000; US News reports 60,710 undergraduates for Fall 2024. Left unchanged as within the reported range — the exact census figure should be read off the ABPA enrollment profile."
   },
   {
     "slug": "uc-berkeley",
@@ -15717,9 +15738,9 @@
     "notable_undergraduate_research_program": "ISUR (paid, two-semester) and URSA for first/second-years, plus Clare Boothe Luce (8 scholars/year) [UI-S10][UI-S14][UI-S9]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Master of Computer Science (MCS) with guaranteed admission at CS 374 + CS 340/341/ECE 391 and 3.4 CS GPA [UI-S1]",
-    "cost_total_instate": 18372,
-    "cost_total_outofstate": 41444,
-    "cost_for_nc_resident": 41444,
+    "cost_total_instate": 36489,
+    "cost_total_outofstate": 58318,
+    "cost_for_nc_resident": 58318,
     "housing_guarantee": "NOT PUBLISHED on fetched pages",
     "greek_participation": "23.5% per institutional and independent counts (7,796 students, 96 chapters); current students dispute as lower — CONFLICTING [UI-S21][UI-S22][UI-S23]",
     "sports_influence": "UNVERIFIED",
@@ -16286,7 +16307,10 @@
       },
       "vs_cs": "UIUC is the one school in this batch with hard published numbers, and they favor ECE: CS admits at 7.4% and CS+X at 17.4%, while the college that houses Electrical and Computer Engineering admits at 21.2% — and once you are on campus CS is permanently closed to internal transfer, so ECE is not just an easier door, it is the only door that stays usable. Computer Engineering is the closer substitute for CS (it shares CS 173/CS 225 and the digital-systems core) while Electrical Engineering is the more distinctively hardware-and-signals path; both are EAC-accredited, whereas CS is not. The robotics/AI content is real but thinner than at Michigan or Georgia Tech: ECE 470 is the single named robotics course, supported by ECE 486/515 controls, ECE 449/494/549 ML and vision, and ECE 445 senior design.",
       "notable": "There is no formal robotics concentration inside ECE Illinois; robotics comes from ECE 470 plus controls and ML electives. EE and CmpE are separately EAC-accredited under the Electrical Engineering and Computer Engineering program criteria respectively (UIUC-E2, UIUC-E4). Switching between EE and Computer Engineering is an explicitly supported petition path with defined prerequisites (UIUC-E3)."
-    }
+    },
+    "cost_cite": "[UIUC-S10]",
+    "cost_asof": "2025-26",
+    "cost_note": "CORRECTED. The previous 18,372 / 41,444 were tuition and fees only, not cost of attendance, which made UIUC look like by far the cheapest school on the list — it was being compared against other schools' full budgets. UIUC publishes a 2025-26 cost of attendance of $36,489 in-state and $58,318 non-resident (tuition and fees plus roughly $17,022 of living costs). Engineering and CS carry differential tuition, so an engineering student should expect a few hundred dollars above the general rate."
   },
   {
     "slug": "unc-chapel-hill",
@@ -16881,7 +16905,7 @@
     "region": "Southwest",
     "institution_type": "Public flagship research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 42400,
+    "undergrad_enrollment": 44314,
     "size_bucket": "large",
     "degree_name": "BS in Computer Science (Turing Scholars honors option) + Undergraduate Robotics Program",
     "degree_type": "CS degree with robotics honors track",
@@ -17473,7 +17497,10 @@
       },
       "vs_cs": "UT Austin is the cleanest structural case in the batch: ECE is a direct-admit major in Cockrell with no first-year sorting, while CS lives in a different college and is treated as a restricted, space-available major, so listing ECE as first choice avoids the CS bottleneck entirely. The robotics content is real — ECE 370N Introduction to Robotics and Mechatronics, ECE 362K Introduction to Automatic Control, ECE 370K Computer Control Systems, ECE 370L (robotics and computer vision in automation), plus a six-way choice of senior design projects — and Texas Robotics runs a 15-hour Minor in Robotics that explicitly lists Electrical & Computer Engineering as a supported major. The cost is that robotics is not a named technical component, so you assemble it from the Data Science and Information Processing or Computer Architecture and Embedded Systems components plus the robotics minor.",
       "notable": "Integrated BS/MSE in ECE: BSECE plus MSE with a minimum 150 total hours, open to currently enrolled UT ECE students. The department is transitioning accreditation — the accreditation page notes 'ABET accreditation of the Electrical and Computer Engineering program, newly offered in Fall 2022, will be sought in 2024 and if approved, will replace both programs', so a Fall 2027 entrant should confirm the BSECE's accreditation status at the time of application. Texas Robotics' Minor in Robotics requires RBT 350 Gateway to Robotics plus four courses spanning hardware, programming, modeling & control, sensing/perception/planning and machine learning."
-    }
+    },
+    "undergrad_enrollment_cite": "[UTA-S1]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 42,400. Fall 2025: 44,314 undergraduates, up 2.7% from 43,165 in Fall 2024; 55,000 total enrollment."
   },
   {
     "slug": "ut-dallas",
@@ -18691,7 +18718,7 @@
     "region": "Southeast",
     "institution_type": "Public land-grant research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 30000,
+    "undergrad_enrollment": 31536,
     "size_bucket": "large",
     "degree_name": "Bachelor of Science in Computer Science",
     "degree_type": "B.S. in CS with no AI concentration; AI assembled from electives",
@@ -19297,7 +19324,10 @@
         "quote": "Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026.",
         "verified": "2026-08-18"
       }
-    }
+    },
+    "undergrad_enrollment_cite": "[VT-S16]",
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_note": "CORRECTED from a rounded 30,000. Fall 2025 census: 31,536 undergraduates, from an incoming class of 8,264 (7,088 first-time, 1,176 transfer)."
   },
   {
     "slug": "wpi",
@@ -19327,7 +19357,7 @@
     "fourplusone_available": "Yes",
     "fourplusone_name": "WPI BS/MS program; BS/MS in Artificial Intelligence [WPI-S38][WPI-S6]",
     "cost_total_instate": 87000,
-    "cost_total_outofstate": null,
+    "cost_total_outofstate": 87000,
     "cost_for_nc_resident": 87000,
     "housing_guarantee": "Required and guaranteed for first AND second years (Class of 2030 onward); not guaranteed for juniors/seniors [WPI-S51][WPI-S52]",
     "greek_participation": "26% of men, 25% of women (CDS 2024-25); CONFLICTING third-party figure of 45% of women [WPI-S21][WPI-S37]",
@@ -19940,6 +19970,9 @@
       },
       "vs_cs": "WPI already has an EAC-accredited Robotics Engineering degree, so ECE is not the robotics door here — it is the hardware-depth door: circuits, microelectronics, embedded computing, signals, control systems and power that neither CS nor the interdisciplinary RBE core covers to the same depth (WPI-E5, WPI-E4). What ECE costs you relative to RBE is the integrated robotics core itself (manipulation, mechanics, robot software stack), and relative to CS you trade algorithms/software breadth for circuit and signal depth. WPI's structure makes doubling up cheap in principle: the Robotics Engineering page lists Electrical & Computer Engineering among potential minors, and ECE offers a minor with clusters in control and power, signals, analog and RF (WPI-E6, WPI-E2) — but WPI does not publish how many students actually pair RBE with an ECE major, so treat 'commonly double up' as unverified.",
       "notable": "ECE offers a BS/MS in five years and an ECE minor with clusters in control and power, signals, analog and RF (WPI-E2); the ECE department in Atwater Kent Laboratories lists research in machine learning, signal processing, autonomous vehicles, prosthetic control and microelectronics (WPI-E1); WPI's engineering accreditation page confirms both 'electrical and computer engineering' and 'robotics engineering' programs are EAC-accredited (WPI-E4)."
-    }
+    },
+    "cost_cite": "[WPI-S15]",
+    "cost_asof": "2025-26",
+    "cost_note": "VERIFIED with a caveat on scope. WPI's direct-billed 2025-26 total is $83,146 (tuition and fees $63,046 + room and board $18,900 + books $1,200). The stored 87,000 is a rounded all-in figure that additionally covers the required health insurance ($2,681) plus personal and travel allowances. Treat it as an all-in budget rather than a bill."
   }
 ]
