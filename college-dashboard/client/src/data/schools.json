@@ -552,10 +552,10 @@
       "pct_submitting_sat_note": "1,182 enrolled first-years submitted SAT scores (65.5%); 327 submitted ACT (18.1%).",
       "gpa_note": "CDS C12 average high school GPA 3.89, reported for 99.7% of enrolled first-years; CDS C10 shows 82.5% in the top tenth of their high school class.",
       "gpa_note_cite": "[CMU-S1]",
-      "test_policy_2027_cycle": "test-optional",
+      "test_policy_2027_cycle": "required (varies by college)",
       "test_policy_2027_cycle_cite": "[CMU-S1][CMU-S4]",
       "test_policy_inferred": true,
-      "test_policy_note": "CDS C8 marks SAT/ACT 'Consider if Submitted' for the Fall 2027 cycle, which reads as test-optional. However CMU's own testing pages describe a by-college policy for Fall 2026 — SAT/ACT required for the School of Computer Science, test-optional for the College of Fine Arts, and 'test flexible' for Engineering, Dietrich, Heinz Information Systems, MCS and Tepper. CMU has not published a Fall-2027-specific statement, so an SCS applicant should assume a test requirement until CMU posts the 2027 policy.",
+      "test_policy_note": "Not test-optional. The School of Computer Science requires an SAT or ACT score. The College of Engineering, Dietrich, MCS, Tepper and Heinz are 'test flexible', which CMU defines as scores being REQUIRED with a choice of test type (SAT, ACT, IB, AP, Cambridge A-Level, French Bac). Only the College of Fine Arts is test optional. CDS C7 lists test scores as merely 'Considered', which describes weight, not whether they must be submitted. Testing preferred complete by November 1 for Early Decision.",
       "c7_factors": {
         "rigor": "very_important",
         "class_rank": "very_important",
@@ -697,7 +697,8 @@
         "value": 3.89,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "test_policy_note_url": "https://www.cmu.edu/admission/admission/standardized-testing"
     },
     "source_log": {
       "CMU-S1": {
