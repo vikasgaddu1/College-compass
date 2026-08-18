@@ -298,7 +298,23 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - single liberal-arts college with no undergraduate schools; applicants use 'the Common App, QuestBridge App, and Coalition App (we have no preference)'."
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "'Early in the sixth term of enrollment, but not before that term, students must declare an academic area as their major field or they will not be allowed to register for the seventh term'; 'the major declaration form does not become available until students' sixth term, which for most is the spring term of sophomore year.' Later changes: 'Students wishing to change their major during the junior or senior year can do so by obtaining the approval of the chair of the new department and completing the form available from the Registrar's Office.'",
+        "source_urls": [
+          "https://www.carleton.edu/admissions/apply/steps/materials/",
+          "https://www.carleton.edu/catalog/current/admissions/",
+          "https://www.carleton.edu/admissions/apply/steps/criteria/",
+          "https://www.carleton.edu/handbook/academics/policy/361/declaration-of-major-or-minor/"
+        ]
+      }
     },
     "source_log": {
       "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) — https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
@@ -705,26 +721,41 @@
       "admission_unit": "college",
       "unit_admit_rates": [
         {
+          "unit": "Other seven colleges (incl. College of Engineering)",
+          "rate": 0.19,
+          "residency": "all",
+          "door": "engineering",
+          "basis": "CMU-published comparison figure",
+          "note": "ME and ECE live here. The Robotics Additional Major is open to all colleges at 3.0 GPA, and the Robotics and ML minors are reserved for non-SCS students."
+        },
+        {
           "unit": "School of Computer Science (SCS)",
           "rate": 0.052,
           "residency": "all",
+          "door": "computing",
           "basis": "350 admitted of 6,756 applicants",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false,
           "note": "Houses the BS in Robotics and the BS in Artificial Intelligence."
-        },
-        {
-          "unit": "Other seven undergraduate colleges (incl. College of Engineering)",
-          "rate": 0.19,
-          "residency": "all",
-          "basis": "CMU-published comparison figure",
-          "robotics_relevant": true,
-          "preferred_for_robotics": true,
-          "note": "Mechanical and Electrical & Computer Engineering live here. The Robotics Additional Major is open to all colleges at a 3.0 GPA, and the Robotics and Machine Learning minors are reserved for non-SCS students."
         }
       ],
-      "unit_admit_note": "CMU admits by college and the spread is enormous. SCS houses the BS in Robotics and the AI major, so the robotics-titled degree sits behind the hardest door on campus.",
-      "unit_admit_source": "https://www.cs.cmu.edu/link/meeting-demand"
+      "unit_admit_note": "Not an official rate table. These come from a CMU publication comparing SCS with the rest of the university, so treat them as indicative.",
+      "unit_admit_source": "https://www.cs.cmu.edu/link/meeting-demand",
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": null,
+        "units_named": [
+          "Applicants apply to a specific college/program: School of Computer Science (SCS), College of Engineering (Carnegie Institute of Technology, CIT), Mellon College of Science (MCS), Dietrich College of Humanities and Social Sciences (DC), College of Fine Arts (CFA), Tepper School of Business (TSB, Business Administration), BXA Intercollege Degree Programs, Science and Humanities Scholars. A second application is permitted only if the second choice is in the College of Fine Arts."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with admissions. No first-party internal-transfer/GPA rule was located in this session.",
+        "source_urls": [
+          "http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateadmission/",
+          "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf",
+          "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds-2025-c-first-time-first-year-admission.pdf",
+          "https://www.cmu.edu/ira/factbook/pdf/facts2017/admission.pdf"
+        ]
+      },
+      "unit_rates_official": false
     },
     "source_log": {
       "CMU-S1": {
@@ -1322,7 +1353,23 @@
       },
       "admission_unit": "college",
       "unit_admit_rates": [],
-      "unit_admit_note": "Applicants apply to a specific undergraduate college; no per-college rate published."
+      "unit_admit_note": "Applicants apply to a specific undergraduate college; no per-college rate published.",
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": null,
+        "units_named": [
+          "'You will apply to only one undergraduate college or school at Cornell': College of Agriculture and Life Sciences; College of Architecture, Art, and Planning; College of Arts and Sciences; Brooks School of Public Policy; Cornell David A. Duffield College of Engineering; College of Human Ecology; Nolan School of Hotel Administration; Charles H. Dyson School of Applied Economics and Management; School of Industrial and Labor Relations."
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "Internal transfer between colleges exists but no first-party GPA/capacity rule was captured in this session - UNPUBLISHED, verify with the receiving college.",
+        "source_urls": [
+          "https://catalog.cornell.edu/general-information/admissions/",
+          "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+          "https://irp.dpb.cornell.edu/university-factbook/undergraduate-admissions",
+          "https://irp.cornell.edu/university-factbook/factbook-archives/admissions"
+        ]
+      }
     },
     "source_log": {
       "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) — https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
@@ -1842,9 +1889,25 @@
         "basis": "not_published",
         "cite": null
       },
-      "admission_unit": "university",
+      "admission_unit": "college",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": null,
+        "units_named": [
+          "Trinity College of Arts & Sciences or Pratt School of Engineering. Application prompt: 'Choose One: Trinity College of Arts & Sciences or Pratt School of Engineering?'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "'After completing one semester in the college or school in which they matriculated, Trinity College and Pratt School of Engineering students may apply to transfer between the two schools.'",
+        "source_urls": [
+          "https://admissions.duke.edu/resources/",
+          "https://admissions.duke.edu/apply/",
+          "https://trinity.duke.edu/undergraduate/academic-policies/transfer-to-from-pratt",
+          "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf"
+        ]
+      }
     },
     "source_log": {
       "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) — https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
@@ -2353,7 +2416,22 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a. Optional program pathways exist (Innovation Academy, Honors Program, PaCE) but no college/school is selected for admission."
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "'Admitted students may declare or change their major, within their admitted pathway, during their freshman orientation.'",
+        "source_urls": [
+          "https://admissions.ufl.edu/counselors",
+          "https://admissions.ufl.edu/apply/freshman/our-decision-process",
+          "https://ir.aa.ufl.edu/facts/admission/"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -2791,29 +2869,36 @@
         "basis": "weighted",
         "cite": "GT-S1"
       },
-      "admission_unit": "major",
+      "admission_unit": "university",
       "unit_admit_rates": [
         {
           "unit": "College of Computing (CS + Computational Media)",
           "rate": 0.113,
           "residency": "all",
+          "door": "computing",
           "basis": "INFERRED: 1,547 offers of 13,711 applicants",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false,
-          "note": "Inferred, not a published rate. Change of major into CS was suspended."
-        },
-        {
-          "unit": "Institute overall",
-          "rate": 0.133,
-          "residency": "all",
-          "basis": "published",
-          "robotics_relevant": false,
-          "preferred_for_robotics": false
+          "note": "Inferred, not published. Change of major into CS was suspended."
         }
       ],
-      "unit_admit_note": "Georgia Tech admits by major. Computing sits below the Institute-wide rate, but Tech does not publish a clean per-college figure, so the computing number is inferred from published application and offer counts.",
+      "unit_admit_note": "Georgia Tech does not have applicants select a college, but it DOES evaluate the intended major. No official per-college rate is published; the computing figure below is inferred from published counts.",
       "unit_admit_source": "https://irp.gatech.edu/common-data-set",
-      "unit_admit_caution": "The widely repeated 8.5% College of Computing and 13.1% College of Engineering figures could not be verified from any Georgia Tech source and should be treated as unsourced."
+      "unit_admit_caution": "The widely repeated 8.5% Computing and 13.1% Engineering figures could not be verified from any Georgia Tech source.",
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": "university (with an evaluated intended major - no college/school is selected)",
+        "units_named": [
+          "n/a for admission. 'When you apply to Georgia Tech as a first-year applicant, you do not apply to a specific major or college.' Applicants select an intended (primary) major and may add a secondary major of interest."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with admissions (no first-party change-of-major rule fetched).",
+        "source_urls": [
+          "https://admission.gatech.edu/first-year/major-selection",
+          "https://admission.gatech.edu/first-year/application-review",
+          "https://admission.gatech.edu/images/pdf/2026/2026-First-year-admitted-profile.pdf"
+        ]
+      },
+      "unit_rates_official": false
     },
     "source_log": {
       "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
@@ -3305,7 +3390,22 @@
       },
       "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Admits directly to the major; no per-major rate published."
+      "unit_admit_note": "Admits directly to the major; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "First- and second-choice degree programs, or the 'Discover+' undecided program. College-level selection is not stated; the operative unit is the degree program."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Discover+ students 'reapply to their preferred major in their second year'; admitted students may 'accept direct admission in their first year into one of the majors offered in their decision email.' No GPA threshold for internal transfer stated.",
+        "source_urls": [
+          "https://www.iit.edu/admissions-aid/undergraduate-admission/first-year-students",
+          "https://www.iit.edu/resources-admitted-students/undergraduate/whats-next/admitted-alternate-major",
+          "https://catalog.iit.edu/undergraduate/undergraduate-admission/"
+        ]
+      }
     },
     "source_log": {
       "IIT-S1": "Illinois Institute of Technology Common Data Set 2023-2024 (PDF; latest published edition) - https://www.iit.edu/sites/default/files/2024-07/Full-2023-2024-Common-Data-Set.pdf",
@@ -3746,7 +3846,21 @@
       "cs_gate_basis": "Change of major by emailing advising; only BME is closed.",
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": "university (single exception: Biomedical Engineering is a direct-admit major)",
+        "units_named": [
+          "n/a for the general application. Krieger School of Arts & Sciences and Whiting School of Engineering are the two undergraduate divisions, but the applicant does not select one. BME is the only unit-level selection: 'You must indicate BME as your first-choice major on your application.'"
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "Free movement across Krieger and Whiting majors after matriculation ('you can choose any major you're interested in pursuing across the Krieger School... and Whiting School'); entry into BME after matriculation is the constrained case (space-available, credential-based).",
+        "source_urls": [
+          "https://apply.jhu.edu/frequently-asked-questions/",
+          "https://apply.jhu.edu/fast-facts/"
+        ]
+      }
     },
     "source_log": {
       "JHU-S1": "Johns Hopkins University Common Data Set 2025-2026 (PDF) — https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
@@ -4161,7 +4275,22 @@
       "cs_gate_basis": "Concentration selected inside the BS in Engineering; no separate admission.",
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - no undergraduate college or school is identified as selectable on the application. 'Students interested in admission to Kettering University must apply using either the Common Application or the Kettering Application.'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with the registrar; no change-of-major rule was on the fetched pages.",
+        "source_urls": [
+          "https://www.kettering.edu/apply",
+          "https://www.kettering.edu/admissions-aid/undergraduate-admissions",
+          "https://catalog.kettering.edu/undergrad/admissions/"
+        ]
+      }
     },
     "source_log": {
       "KETT-S1": {
@@ -4664,9 +4793,24 @@
         "basis": "weighted",
         "cite": "UMD-S1"
       },
-      "admission_unit": "pre_major",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Limited Enrollment Programs gate the major after entry; no per-LEP admit rate published."
+      "unit_admit_note": "Limited Enrollment Programs gate the major after entry; no per-LEP admit rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": "major (with Limited Enrollment Programs evaluated separately)",
+        "units_named": [
+          "A preferred major is selected; Limited Enrollment Programs (LEPs) include Computer Science, Engineering majors, Business (Smith), Biological Sciences, Public Health Science, Nursing and others. Non-admitted-to-major students are placed in the Letters & Sciences advising unit."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Students not admitted to an LEP major are placed in Letters & Sciences and must complete gateway requirements to be admitted to the LEP later; specific gateway GPA thresholds are program-specific and were not enumerated on the fetched pages.",
+        "source_urls": [
+          "https://admissions.umd.edu/apply/freshman-applicants",
+          "https://admissions.umd.edu/academics/limited-enrollment-programs",
+          "https://irpa.umd.edu/CampusCounts/Admissions/apps_ug.pdf"
+        ]
+      }
     },
     "source_log": {
       "UMD-S1": "University of Maryland Common Data Set 2025-2026 (XLSX; URL verified HTTP 200 on 2026-08-16) - https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
@@ -5181,7 +5325,23 @@
       },
       "admission_unit": "college",
       "unit_admit_rates": [],
-      "unit_admit_note": "CS is a restricted major inside the college; no per-major rate published."
+      "unit_admit_note": "CS is a restricted major inside the college; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": null,
+        "units_named": [
+          "'The ten units that admit first-year students include:' College of Literature, Science, and the Arts; College of Engineering; College of Pharmacy; Marsal Family School of Education; Ross School of Business; School of Music, Theatre & Dance; School of Kinesiology; School of Nursing; Stamps School of Art & Design; Taubman College of Architecture and Urban Planning. Dual enrollment in two schools/colleges and preferred-admission paths (e.g. Ross) are also selectable."
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with admissions. No first-party cross-school transfer rule was located in this session.",
+        "source_urls": [
+          "https://admissions.umich.edu/apply",
+          "https://admissions.umich.edu/apply/first-year-applicants/requirements-deadlines/application-changes",
+          "https://michiganross.umich.edu/undergraduate/bba/admissions/admissions-blog/2024/10/07/where-apply-how-choose-your-first-year-0",
+          "https://obp.umich.edu/wp-content/uploads/pubdata/factsfigures/firstyearsprofile_umaa_2024_10-22-24.pdf"
+        ]
+      }
     },
     "source_log": {
       "UMICH-S1": {
@@ -5786,9 +5946,26 @@
         "basis": "unspecified",
         "cite": "DBN-S1"
       },
-      "admission_unit": "university",
+      "admission_unit": "unknown",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": null,
+        "applies_to_note": "UNPUBLISHED - verify with admissions (college-level enrollment units exist; application-level selection not stated)",
+        "units_named": [
+          "UM-Dearborn's undergraduate units include the College of Engineering and Computer Science (CECS) and the College of Arts, Sciences, and Letters (CASL); however, neither the undergraduate catalog admissions pages nor the apply page fetched states that a first-year applicant selects a college or major. Internal rules do show students are enrolled in a specific college: 'Students from other academic units at UM-Dearborn can apply as cross-campus transfers to CECS.'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "Cross-campus transfer into CECS requires 'A 2.75 cumulative GPA, or A 2.50 cumulative GPA if Calculus II is complete with a minimum C grade'; below 2.50 'may be considered if Calculus II is complete with a minimum C grade and a student has excelled in math, science, and other relevant coursework.' 'Students may not change their CECS major while on academic probation' (probation = cumulative or CECS GPA below 2.0). In CASL, 'The Change of Major/Minor form is used to declare or remove majors' and 'Approval of these changes is always subject to any eligibility criteria in effect for the program or major'; 'When a student has completed 60 credit hours toward a degree, they must have declared and been accepted into a degree program.'",
+        "source_urls": [
+          "https://catalog.umd.umich.edu/undergraduate/admissions/freshman-student-admission/",
+          "https://catalog.umd.umich.edu/undergraduate/admissions/",
+          "https://umdearborn.edu/admissions-aid/apply",
+          "https://umdearborn.edu/cecs/undergraduate-programs/undergraduate-advising/academic-policies",
+          "https://umdearborn.edu/casl/undergraduate-programs/advising-academic-success/policies-and-procedures/changingadding-majors"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -6300,7 +6477,21 @@
       "cs_gate_basis": "\"When you're admitted to MIT... you're admitted to the entire Institute\"; Course 6 declared freely in spring of year one.",
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "n/a - no units to move between. 'Students apply to MIT for general admission and select a major at the end of the first year with the help of their first-year advisor.'",
+        "source_urls": [
+          "https://mitadmissions.org/help/faq/majors/",
+          "https://catalog.mit.edu/schools/engineering/engineering_admissionstext.pdf",
+          "https://mitadmissions.org/discover/the-mit-education/majors-minors/",
+          "https://ir.mit.edu/projects/2025-26-common-data-set/"
+        ]
+      }
     },
     "source_log": {
       "MIT-S1": "MIT Institutional Research, 2025-26 Common Data Set — https://ir.mit.edu/projects/2025-26-common-data-set/",
@@ -6771,9 +6962,26 @@
         "basis": "unspecified",
         "cite": null
       },
-      "admission_unit": "university",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": "major (engineering applicants are admitted into the Engineering First Year program)",
+        "units_named": [
+          "Up to two majors are selected, each housed in one of the colleges: College of Agriculture and Life Sciences, College of Design, College of Education, College of Engineering, College of Humanities and Social Sciences, College of Natural Resources, College of Sciences, Wilson College of Textiles, Poole College of Management, plus University College/Exploratory Studies. Engineering entrants join the 'Engineering First Year Program (EFY)'."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Post-enrollment major changes are 'on a space available basis'; engineering students move from EFY into a degree major through the college's placement process.",
+        "source_urls": [
+          "https://admissions.ncsu.edu/apply/first-year/application-review/",
+          "https://admissions.ncsu.edu/discover/",
+          "https://engr.ncsu.edu/admissions/",
+          "https://uda.ncsu.edu/institutional-analytics/fast-facts/",
+          "https://admissions.ncsu.edu/connect/frequently-asked-questions/"
+        ]
+      }
     },
     "source_log": {
       "NCSU-S1": {
@@ -7283,9 +7491,26 @@
       "is_home_state_nc": false,
       "cs_gate": "mild",
       "cs_gate_basis": "Khoury change-of-major requires 2.0 GPA plus the intro course.",
-      "admission_unit": "college",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "No per-college rate published; the dominant published split is ED versus overall."
+      "unit_admit_note": "No per-college rate published; the dominant published split is ED versus overall.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "'Applicants to Northeastern apply to a major or a combined major housed in one of our seven undergraduate colleges or to the Explore Program for undeclared students.' Colleges include Khoury College of Computer Sciences, College of Engineering, College of Science, College of Social Sciences and Humanities, D'Amore-McKim School of Business, Bouve College of Health Sciences, College of Arts, Media and Design. Applicants also choose an enrollment opportunity (Boston, Oakland, N.U.in, etc.)."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "'Undergraduate students may declare their majors upon admission to Northeastern University or may elect to join programs for undeclared students before declaring a major'; 'Students must declare a major no later than the end of the sophomore year.' Changes into business majors carry explicit thresholds, e.g. BSBA requires 'Good Academic Standing (Full-time student status and minimum 2.0 Cumulative GPA)', '2.0 Cumulative GPA', '2.0 Business GPA'; BSIB requires '2.75 Cumulative GPA' and '2.75 Business GPA'.",
+        "source_urls": [
+          "https://catalog.northeastern.edu/undergraduate/admission/admission-policy-entrance-requirements/",
+          "https://admissions.northeastern.edu/application-information/frequently-asked-admissions-questions/",
+          "https://facts.northeastern.edu/",
+          "https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/degrees-majors-minors/",
+          "https://damore-mckim.northeastern.edu/resources/change-of-major/"
+        ]
+      }
     },
     "source_log": {
       "NEU-S1": "Northeastern University Common Data Set 2024-2025 (PDF) — https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
@@ -7757,9 +7982,26 @@
         "basis": "not_published",
         "cite": null
       },
-      "admission_unit": "pre_major",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Admits as pre-majors; no per-major rate published."
+      "unit_admit_note": "Admits as pre-majors; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": "major for direct-enrolled programs, pre_major for the rest",
+        "units_named": [
+          "Applicants indicate a major; engineering programs are split into 'Direct-enrolled majors' and 'Pre-majors'. Named units/pathways include College of Engineering (direct-enrolled and pre-major tracks) and the Columbus vs. regional campus choice (Lima, Mansfield, Marion, Newark, Wooster)."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Pre-major students go through an 'admission to major' process after fundamentals of engineering coursework: 'Once final grades are available at the end of the semester, applications will undergo a program review.' 'Once enrolled, students can later add a second major or degree, either within engineering or from another university program', but 'adding a double major or dual degree in these specified programs later on is not allowed.'",
+        "source_urls": [
+          "https://engineering.osu.edu/undergraduate/future-students/admissions/new-students",
+          "https://advising.engineering.osu.edu/enroll-engineering-program",
+          "https://advising.engineering.osu.edu/current-students/applying-your-major",
+          "https://eari.osu.edu/admissions.aspx",
+          "https://undergrad.osu.edu/welcome/freshmen"
+        ]
+      }
     },
     "source_log": {
       "OSU-S1": "The Ohio State University Common Data Set 2025-2026, Columbus campus (PDF; C7/C8 grids read from page images) - https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
@@ -8226,7 +8468,23 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - Franklin W. Olin College of Engineering is a single-college institution. Degrees (chosen after enrolling): Mechanical Engineering (ME), Electrical and Computer Engineering (ECE), Engineering (E)."
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "'Students are expected to declare their major no later than the time of registration for the fourth semester (sophomore year)'; during the fifth or sixth semester 'there is a Junior Reality Check, where students update their program plans of study.' No GPA or capacity gate.",
+        "source_urls": [
+          "https://www.olin.edu/admission/apply/admission-process",
+          "https://www.olin.edu/admission/discover",
+          "https://www.olin.edu/sites/default/files/2024-05/CDS_2023_2024%20(2).pdf",
+          "https://olin.smartcatalogiq.com/-/media/institution/olin-college-of-engineering/2021-22/2021-22%20Olin%20College%20Catalog_v1.pdf"
+        ]
+      }
     },
     "source_log": {
       "OLIN-S1": {
@@ -8753,7 +9011,23 @@
       "cs_gate_basis": "CIS is not limited-enrollment; only Digital Media Design and NETS are restricted.",
       "admission_unit": "college",
       "unit_admit_rates": [],
-      "unit_admit_note": "Requires selecting a school and intended major; no per-school rate published."
+      "unit_admit_note": "Requires selecting a school and intended major; no per-school rate published.",
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": null,
+        "units_named": [
+          "College of Arts and Sciences; School of Engineering and Applied Science (Penn Engineering); School of Nursing; The Wharton School - plus the coordinated dual-degree programs (e.g. Vagelos LSM, Nursing/Wharton, Fisher Program in Management & Technology), which are separate application choices."
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "Internal transfer between the four schools exists but no first-party GPA/capacity rule was captured in this session - UNPUBLISHED, verify with the schools.",
+        "source_urls": [
+          "https://admissions.upenn.edu/academics/four-schools",
+          "https://admissions.upenn.edu/how-to-apply/preparing-your-application/academics",
+          "https://admissions.upenn.edu/how-to-apply/first-year-applicants",
+          "https://admissions.upenn.edu/how-to-apply/resources-programs/incoming-class-profile"
+        ]
+      }
     },
     "source_log": {
       "PENN-S1": "University of Pennsylvania Common Data Set 2025-2026 (via Penn IRA, Box-hosted PDF, dated 23 June 2026) — https://ira.upenn.edu/penn-numbers/common-data-set",
@@ -9194,7 +9468,23 @@
       },
       "admission_unit": "pre_major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Admits to university and campus, then Entrance to Major; no per-major rate published."
+      "unit_admit_note": "Admits to university and campus, then Entrance to Major; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "pre_major",
+        "applies_to_note": "pre_major (campus + intended major selected; most students enter a college or the Division of Undergraduate Studies and enter the major later)",
+        "units_named": [
+          "Applicants select a first-choice and alternate-choice CAMPUS plus a major or 'undecided': 'First-year students are required to provide both a first-choice and an alternate-choice campus on their application.' On enrollment, 'most are enrolled in either a specific college that offers majors of interest or in the Division of Undergraduate Studies.'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "'Typically, students do not enter a specific major within the college until sometime between their third and fifth semesters.' 'Students who meet the entry-to-major criteria for their choice of major can apply for entrance to that major by using LionPATH \"Update Academics\"'; majors with Administrative Enrollment Controls require a separate LionPATH request.",
+        "source_urls": [
+          "https://www.psu.edu/admission/undergraduate/how-to-apply/first-year-students",
+          "https://www.psu.edu/resources/first-year-students/application-review",
+          "https://bulletins.psu.edu/undergraduate/general-information/academic-information/undergraduate-degrees-requirements/entrance-major/",
+          "https://em.psu.edu/dashboards/"
+        ]
+      }
     },
     "source_log": {
       "PSU-S1": "Penn State University Park Common Data Set 2025-2026 (PDF) - https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf",
@@ -9673,29 +9963,58 @@
       "is_home_state_nc": false,
       "cs_gate": "strong",
       "cs_gate_basis": "Entry via First-Year Engineering; CS change-of-degree (CODO) is space-restricted.",
-      "admission_unit": "first_year_eng",
+      "admission_unit": "major",
       "unit_admit_rates": [
         {
-          "unit": "College of Engineering (First-Year Engineering)",
+          "unit": "College of Engineering",
           "rate": 0.461,
           "residency": "all",
+          "door": "engineering",
           "basis": "published",
-          "robotics_relevant": true,
-          "preferred_for_robotics": true,
-          "note": "EAC-accredited engineering degrees; major declared after First-Year Engineering."
+          "note": "EAC-accredited engineering; major declared after First-Year Engineering."
         },
         {
-          "unit": "Polytechnic Institute — Mechatronics / Robotics Engineering Technology",
+          "unit": "Computer Science",
+          "rate": 0.359,
+          "residency": "all",
+          "door": "computing",
+          "basis": "published",
+          "note": "Notably less severe than the CS gap at UIUC or UW."
+        },
+        {
+          "unit": "Polytechnic Institute",
           "rate": 0.542,
           "residency": "all",
+          "door": "other",
           "basis": "published",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false,
-          "note": "Easier admit, but ETAC engineering technology rather than EAC engineering."
+          "note": "Houses Robotics/Mechatronics Engineering Technology — easier admit, but ETAC rather than EAC."
+        },
+        {
+          "unit": "University overall",
+          "rate": 0.498,
+          "residency": "all",
+          "door": "other",
+          "basis": "published"
         }
       ],
-      "unit_admit_note": "Purdue admits engineering applicants into First-Year Engineering rather than a degree program. The Polytechnic Institute is a separate, less selective college whose robotics degree is engineering technology (ETAC) rather than engineering.",
-      "unit_admit_source": "https://www.admissions.purdue.edu/academics/freshmanprofile.php"
+      "unit_admit_note": "Purdue publishes a full by-college admit-rate table plus selected majors. No residency split published.",
+      "unit_admit_source": "https://www.admissions.purdue.edu/academics/freshmanprofile.php",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "Majors are chosen within: College of Agriculture, College of Education, College of Engineering, College of Health and Human Sciences, College of Liberal Arts, College of Pharmacy, College of Science, College of Veterinary Medicine, Daniels School of Business, Exploratory Studies, Purdue Polytechnic Institute."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": true,
+        "internal_mobility": "UNPUBLISHED - verify with admissions (no first-party change-of-major rule fetched); admissions criteria note 'Space availability in the desired program'.",
+        "source_urls": [
+          "https://admissions.purdue.edu/become-student/first-year-criteria/",
+          "https://www.admissions.purdue.edu/academics/freshmanprofile.php",
+          "https://admissions.purdue.edu/become-student/class-profile/"
+        ]
+      },
+      "unit_rates_official": true
     },
     "source_log": {
       "PU-S1": "Purdue University West Lafayette Common Data Set 2025-2026 (XLSX) - https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
@@ -10182,9 +10501,25 @@
         "basis": "unspecified",
         "cite": null
       },
-      "admission_unit": "major",
+      "admission_unit": "unknown",
       "unit_admit_rates": [],
-      "unit_admit_note": "Reviews by program; no per-program rate published."
+      "unit_admit_note": "Reviews by program; no per-program rate published.",
+      "admission_structure": {
+        "applies_to": null,
+        "applies_to_note": "UNPUBLISHED - verify with admissions",
+        "units_named": [
+          "UNPUBLISHED at application level. RIT's colleges (e.g. Golisano College of Computing and Information Sciences, Kate Gleason College of Engineering) exist, but none of the RIT pages fetched - the first-year application page, the Institutional Research dashboards, or the 2024-25 and 2025-26 Common Data Sets - states that a first-year applicant selects a college/school or program."
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "Post-enrollment changes use a 'Change of Program and / or Plan Application'; the form 'should be completed in conjunction with the student's current academic department', students are 'strongly advised to consult with the new department', and 'To be effective for a given term, Change of Program/Plan Applications must be submitted to the Registrar's Office during the Add/Drop period.' No GPA threshold stated.",
+        "source_urls": [
+          "https://www.rit.edu/admissions/first-year-application",
+          "https://www.rit.edu/institutionalresearch/sites/rit.edu.institutionalresearch/files/documents/Common%20Data%20Set%20PDFs/RIT_CDS_2025_26_FINAL_20260603.pdf",
+          "https://www.rit.edu/institutionalresearch/dashboards-enrollment",
+          "https://www.rit.edu/registrar/sites/rit.edu.registrar/files/documents/Change%20of%20Program%20Plan%20090823.pdf"
+        ]
+      }
     },
     "source_log": {
       "RIT-S1": {
@@ -10691,7 +11026,22 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - no undergraduate colleges/schools; an 'Undecided Major' option is available."
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "Undecided students settle a major in the first fall: 'Your one and only goal this fall is to succeed in your classes and commit to a major program of study'; 'Every Rose-Hulman student, regardless of major, will take foundational courses.' No GPA or capacity gate stated.",
+        "source_urls": [
+          "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+          "https://www.rose-hulman.edu/academics/degrees-and-programs/undecided-major.html",
+          "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf"
+        ]
+      }
     },
     "source_log": {
       "RHIT-S1": {
@@ -11204,7 +11554,22 @@
       },
       "admission_unit": "college",
       "unit_admit_rates": [],
-      "unit_admit_note": "Admits to a school; no per-school rate published."
+      "unit_admit_note": "Admits to a school; no per-school rate published.",
+      "admission_structure": {
+        "applies_to": "college",
+        "applies_to_note": "college (optional - applicants may instead apply undeclared)",
+        "units_named": [
+          "'Students interested in Rensselaer have the option of applying to one of the five schools or as undeclared candidates.' The five schools: 'Engineering; Science; Architecture; Humanities, Arts, and Social Sciences; and the Lally School of Management; as well as an interdisciplinary degree in Information Technology and Web Science.'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with the registrar; no change-of-school GPA or capacity rule was on the fetched pages.",
+        "source_urls": [
+          "https://catalog.rpi.edu/content.php?catoid=22&navoid=534",
+          "https://catalog.rpi.edu/content.php?catoid=26&navoid=657",
+          "https://undergrad.admissions.rpi.edu/apply"
+        ]
+      }
     },
     "source_log": {
       "RPI-S1": "Rensselaer Polytechnic Institute Common Data Set 2025-2026 (hosted on RPI's Box account, linked as '2025 - 2026' from the Provost's Institutional Research and Assessment page) - https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
@@ -11687,7 +12052,23 @@
       "cs_gate_basis": "CS has a C+/C grade gate on CPSC 031/035 and a course lottery in which non-majors are not guaranteed seats.",
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - single college; Engineering is a department, 'not a School of Engineering'."
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "'In fact, you don't even apply for a major until the second semester of your sophomore year'; students are not 'required to commit to an engineering major before arrival' and declare via the sophomore plan on mySwarthmore.",
+        "source_urls": [
+          "https://www.swarthmore.edu/admissions-aid/apply-to-swarthmore",
+          "https://www.swarthmore.edu/engineering/faqs",
+          "https://www.swarthmore.edu/engineering/engineering-and-liberal-arts",
+          "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf"
+        ]
+      }
     },
     "source_log": {
       "SWAT-S1": "Swarthmore College Common Data Set 2025-2026 (PDF) — https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
@@ -12189,9 +12570,25 @@
       "is_home_state_nc": false,
       "cs_gate": "strong",
       "cs_gate_basis": "All engineering admits enter General Engineering and compete through ETAM for capacity-limited major placement.",
-      "admission_unit": "first_year_eng",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "All engineering admits enter general engineering; no per-major rate published."
+      "unit_admit_note": "All engineering admits enter general engineering; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": "major (engineering applicants are placed into a common first-year General Engineering program)",
+        "units_named": [
+          "Majors are chosen within colleges including College of Engineering, College of Arts & Sciences, College of Performance, Visualization and Fine Arts, College of Marine Sciences and Maritime Studies, and others; engineering entrants share the 'General Engineering' first-year pathway."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Engineering students enter General Engineering and are subsequently placed into a degree program; specific entry-to-major GPA rules were not on the fetched pages - UNPUBLISHED, verify with the College of Engineering.",
+        "source_urls": [
+          "https://catalog.tamu.edu/undergraduate/general-information/admission/",
+          "https://admissions.tamu.edu/apply/freshman/index.html",
+          "https://abpa.tamu.edu/data-and-insights/applied-admitted-enrolled/applied-admitted-enrolled.html",
+          "https://abpa.tamu.edu/data-and-insights/applied-admitted-enrolled/index.html"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -12686,7 +13083,24 @@
       },
       "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Berkeley admits by college and by major and EECS is the hardest admit on campus, but no official Berkeley or UC page discloses an EECS or ME first-year admit rate. Every figure in circulation traces to consulting blogs. Changing into EECS after admission is effectively closed."
+      "unit_admit_note": "Berkeley admits by college and by major and EECS is the hardest admit on campus, but no official Berkeley or UC page discloses an EECS or ME first-year admit rate. Every figure in circulation traces to consulting blogs. Changing into EECS after admission is effectively closed.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "Majors are selected from within Berkeley's colleges: College of Letters & Science, Rausser College of Natural Resources, College of Engineering, College of Chemistry, College of Environmental Design, College of Computing, Data Science, and Society, Haas School of Business. 'Undeclared' options exist in three colleges; Engineering also offers undeclared. M.E.T. (Management, Entrepreneurship & Technology) is a separate selectable program."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Change of college into Engineering is a competitive application: reviewers consider 'whether the applicant would have been accepted had they applied directly to the College of Engineering as a freshman, completion (at a minimum) of the prescribed engineering freshman curriculum... the student's overall GPA in these courses, the number of technical courses completed at Berkeley... space availability in the major to which a student has applied and the student's motivation for engineering.' Berkeley Engineering advises: 'Students interested in studying engineering at UC Berkeley should apply directly to the college as a freshman or transfer applicant.'",
+        "source_urls": [
+          "https://admissions.berkeley.edu/application-faqs/",
+          "https://www.admissions.berkeley.edu/apply-to-berkeley/application-resources/application-tips/",
+          "https://admissions.berkeley.edu/apply-to-berkeley/student-profile/",
+          "https://opa.berkeley.edu/campus-data/our-berkeley-data-digest",
+          "https://engineering.berkeley.edu/admissions/undergraduate-admissions/change-of-college/"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -13161,50 +13575,59 @@
       "admission_unit": "major",
       "unit_admit_rates": [
         {
-          "unit": "Computer Science",
-          "rate": 0.074,
-          "residency": "all",
-          "basis": "published",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false,
-          "note": "Grainger states CS is not available for later declaration, so first choice is near-irreversible."
-        },
-        {
-          "unit": "CS + X programs",
-          "rate": 0.174,
-          "residency": "all",
-          "basis": "published",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false
-        },
-        {
           "unit": "Grainger College of Engineering (non-CS)",
           "rate": 0.212,
           "residency": "all",
-          "basis": "published",
-          "robotics_relevant": true,
-          "preferred_for_robotics": true,
-          "note": "Mechanical and Electrical Engineering sit here."
+          "door": "engineering",
+          "basis": "published 2025"
         },
         {
-          "unit": "University overall",
+          "unit": "Computer Science",
+          "rate": 0.074,
+          "residency": "all",
+          "door": "computing",
+          "basis": "published 2025",
+          "note": "Grainger states CS is not available for later declaration, so first choice is near-irreversible."
+        },
+        {
+          "unit": "Computer Science + X",
+          "rate": 0.174,
+          "residency": "all",
+          "door": "other",
+          "basis": "published 2025"
+        },
+        {
+          "unit": "University total",
           "rate": 0.366,
           "residency": "all",
-          "basis": "published",
-          "robotics_relevant": false,
-          "preferred_for_robotics": false
+          "door": "other",
+          "basis": "published 2025"
         },
         {
           "unit": "Division of Exploratory Studies",
           "rate": 0.534,
           "residency": "all",
-          "basis": "published",
-          "robotics_relevant": false,
-          "preferred_for_robotics": false
+          "door": "other",
+          "basis": "published 2025"
         }
       ],
-      "unit_admit_note": "UIUC publishes admit rates by major, and the gap between Computer Science and the rest of Grainger Engineering is close to 3x.",
-      "unit_admit_source": "https://www.admissions.illinois.edu/admit-rates/"
+      "unit_admit_note": "UIUC publishes 2025 first-year admit rates by college and for selected majors. First-choice majors only; no residency split.",
+      "unit_admit_source": "https://www.admissions.illinois.edu/admit-rates/",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "First- and second-choice majors are selected within: College of Agricultural, Consumer & Environmental Sciences; College of Applied Health Sciences; College of Education; College of Fine & Applied Arts; College of Liberal Arts & Sciences; College of Media; Division of Exploratory Studies; Gies College of Business; Grainger College of Engineering; School of Information Sciences; School of Social Work; plus Computer Science and Computer Science + X programs."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": true,
+        "internal_mobility": "UNPUBLISHED - verify with admissions; the admissions FAQ notes space limitations for second-choice majors but no post-enrollment transfer GPA rule was fetched.",
+        "source_urls": [
+          "https://www.admissions.illinois.edu/first-year-apply-faq/",
+          "https://www.admissions.illinois.edu/admit-rates/"
+        ]
+      },
+      "unit_rates_official": true
     },
     "source_log": {
       "UIUC-S1": "University of Illinois Urbana-Champaign Common Data Set 2025-2026 (XLSX) - https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
@@ -13653,7 +14076,24 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - all first-year students begin in one unit: 'At Carolina, you'll begin your studies in the College of Arts and Sciences.' There is no applicant-facing choice of an applied-sciences or data-science school; the School of Data Science and Society's B.S. in Data Science is entered by internal application after prerequisites, not on the first-year application."
+        ],
+        "applicant_selects_major": false,
+        "separate_rates_published": false,
+        "internal_mobility": "'By the end of your second year, you'll declare your major(s) and minor(s), or apply to the programs that require an application including Computer Science, Biomedical Engineering, and majors housed in the professional schools.' Data Science: 'Application for the B.S. in Data Science'; 'If you are interested in applying for the B.S. in Data Science, please complete the prerequisites'; once the offer is accepted 'Your primary major will be changed to a B.S. in Data Science.'",
+        "source_urls": [
+          "https://admissions.unc.edu/faqs/how-does-my-intended-major-affect-my-application/",
+          "https://admissions.unc.edu/apply/types-of-applications/first-year/",
+          "https://catalog.unc.edu/admissions/undergraduate/",
+          "https://datascience.unc.edu/undergraduate-degrees/apply/",
+          "https://oira.unc.edu/reports/"
+        ]
+      }
     },
     "source_log": {
       "UNC-S1": {
@@ -14201,7 +14641,23 @@
       "cs_gate_basis": "CS is a separately-admitted CNS major; internal transfer requires 3.0 GPA and competes on space, max two attempts.",
       "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Direct-admit to major; no per-major first-year admit rate published."
+      "unit_admit_note": "Direct-admit to major; no per-major first-year admit rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "Majors are selected within colleges/schools such as the Cockrell School of Engineering, College of Natural Sciences, McCombs School of Business, Moody College of Communication, College of Liberal Arts, School of Architecture, School of Nursing."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "UNPUBLISHED - verify with the colleges; internal transfer requirements are set per college and were not on the fetched pages.",
+        "source_urls": [
+          "https://catalog.utexas.edu/general-information/admission/undergraduate-admission/",
+          "https://admissions.utexas.edu/apply/frequently-asked-questions/",
+          "https://admissions.utexas.edu/explore/ranks-stats/",
+          "https://reports.utexas.edu/spotlight-data/students"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -14677,7 +15133,24 @@
       "cs_gate_basis": "Direct admit to intended major with a published capacity-overflow rule offering an alternate major.",
       "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "Admits directly to the intended major; no per-major rate published."
+      "unit_admit_note": "Admits directly to the intended major; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": null,
+        "units_named": [
+          "A major is selected (first and second choice); majors sit in schools such as the Erik Jonsson School of Engineering and Computer Science, School of Natural Sciences and Mathematics, Naveen Jindal School of Management, but school-level selection is not stated - the operative unit is the major."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "'Admitted students may request to change their major after the Census Day of their first semester at the university.' 'Students with a cumulative GPA below 2.00 may only change their major with permission from the Associate Dean from both the sending and receiving school.' Students must 'Meet with an academic advisor in the advising office of the newly desired major before registration and no later than the first day of classes.'",
+        "source_urls": [
+          "https://enroll.utdallas.edu/freshman/criteria/",
+          "https://oue.utdallas.edu/change-of-major/",
+          "https://catalog.utdallas.edu/2024/undergraduate/admission/admission-policies",
+          "https://oisds.utdallas.edu/common-data-set",
+          "https://nsm.utdallas.edu/advising/frequently-asked-questions/"
+        ]
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -15160,45 +15633,81 @@
         "basis": "unspecified",
         "cite": "UW-S1"
       },
-      "admission_unit": "major",
+      "admission_unit": "first_year_eng",
       "unit_admit_rates": [
-        {
-          "unit": "Allen School Direct to Major — CS / CE",
-          "rate": 0.3,
-          "residency": "in_state",
-          "basis": "3-year average",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false
-        },
-        {
-          "unit": "Allen School Direct to Major — CS / CE",
-          "rate": 0.02,
-          "residency": "oos",
-          "basis": "3-year average",
-          "robotics_relevant": true,
-          "preferred_for_robotics": false,
-          "note": "No extra essay or prerequisites, which is exactly why it is oversubscribed."
-        },
         {
           "unit": "Direct to College — Engineering",
           "rate": 0.43,
           "residency": "in_state",
-          "basis": "3-year average",
-          "robotics_relevant": true,
-          "preferred_for_robotics": true
+          "door": "engineering",
+          "basis": "3-year average"
         },
         {
           "unit": "Direct to College — Engineering",
           "rate": 0.37,
           "residency": "oos",
+          "door": "engineering",
           "basis": "3-year average",
-          "robotics_relevant": true,
-          "preferred_for_robotics": true,
-          "note": "Guarantees access to an engineering major once admitted; covers Mechanical Engineering and the ME Mechatronics option."
+          "note": "Guarantees access to an engineering major once admitted; covers ME and the Mechatronics option."
+        },
+        {
+          "unit": "Direct to Major — CS / CE",
+          "rate": 0.3,
+          "residency": "in_state",
+          "door": "computing",
+          "basis": "3-year average"
+        },
+        {
+          "unit": "Direct to Major — CS / CE",
+          "rate": 0.02,
+          "residency": "oos",
+          "door": "computing",
+          "basis": "3-year average",
+          "note": "No extra essay or prerequisites, which is why it is so oversubscribed."
+        },
+        {
+          "unit": "Overall",
+          "rate": 0.39,
+          "residency": "oos",
+          "door": "other",
+          "basis": "3-year average"
         }
       ],
-      "unit_admit_note": "The most extreme split in the dataset. For a non-resident the SAME application yields roughly 2% for Direct-to-Major CS and about 37% for Direct-to-College Engineering: an 18x difference driven purely by the major named.",
-      "unit_admit_source": "https://www.cs.washington.edu/academics/undergraduate/admissions/direct-major/"
+      "unit_admit_note": "UW publishes 3-year average admit rates by pathway WITH a residency split — the only school in the list to do both.",
+      "unit_admit_source": "https://admit.washington.edu/apply/admission-to-majors/",
+      "admission_structure": {
+        "applies_to": "first_year_eng",
+        "applies_to_note": "first_year_eng (Direct to College for engineering) plus major (Direct to Major for CS/CE and Business); other applicants are admitted pre-major",
+        "units_named": [
+          "Pathways selected via first-choice major: 'Direct to College' (College of Engineering, entering as Engineering Undeclared), 'Direct to Major' for Computer Science / Computer Engineering (Paul G. Allen School) and for Business Administration (Foster School); all other applicants enter as pre-major/undeclared."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": true,
+        "internal_mobility": "Students not admitted Direct to College/Direct to Major must apply to a major later as current UW students; College of Engineering notes 'Admission rates and average GPAs for current UW students can fluctuate significantly by major and from year to year' and 'While some majors have more capacity, all are actively seeking applicants who are major-ready.'",
+        "source_urls": [
+          "https://admit.washington.edu/apply/admission-to-majors/",
+          "https://www.engr.washington.edu/undergraduate-admission/first-year/direct-to-college-faqs",
+          "https://admit.washington.edu/apply/first-year/by-the-numbers/",
+          "https://www.cs.washington.edu/academics/undergraduate/admissions/direct-major/",
+          "https://www.engr.washington.edu/admission/current-uw-non-engineering/admission-data"
+        ]
+      },
+      "unit_rates_official": true,
+      "post_enrollment_major_rates": {
+        "note": "Even inside Direct to College, entry to a specific major is a second competition. UW publishes admission-to-major rates for current students.",
+        "source": "https://www.engr.washington.edu/undergraduate-admission/first-year/direct-to-college-faqs",
+        "rates": {
+          "Mechanical": 0.75,
+          "Electrical & Computer": 0.65,
+          "Computer Engineering": 0.28,
+          "Computer Science": 0.28,
+          "Aeronautics & Astronautics": 0.49,
+          "Bioengineering": 0.79,
+          "Industrial": 0.95,
+          "Civil": 0.94
+        },
+        "overall": "73% of current UW student applicants are offered admission into an engineering major"
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -15630,9 +16139,25 @@
         "basis": "weighted",
         "cite": "VT-S7"
       },
-      "admission_unit": "first_year_eng",
+      "admission_unit": "major",
       "unit_admit_rates": [],
-      "unit_admit_note": "No first-year admission into an engineering major; no per-major rate published."
+      "unit_admit_note": "No first-year admission into an engineering major; no per-major rate published.",
+      "admission_structure": {
+        "applies_to": "major",
+        "applies_to_note": "major (engineering entrants share a General Engineering first year)",
+        "units_named": [
+          "A specific major or the 'undecided option' is selected ('We offer over 150 different majors and options'). Engineering applicants enter General Engineering in the College of Engineering before moving into a degree major."
+        ],
+        "applicant_selects_major": true,
+        "separate_rates_published": false,
+        "internal_mobility": "Entry into restricted engineering majors is gated: 'To become eligible for entry into one of the restricted engineering majors, students must meet the below course, hour, and GPA requirements', with required ENGE 1215/1216 (or ENGE 1414), MATH 1225, MATH 1226 and ENGL 1105; 'Only College of Engineering students are permitted to take this course.'",
+        "source_urls": [
+          "https://www.vt.edu/admissions/frequently-asked-questions/first-year-applicant-faq.html",
+          "https://www.vt.edu/admissions/undergraduate/apply/freshman-requirements.html",
+          "https://news.vt.edu/articles/2025/02/CM-applications-fall-2025.html",
+          "https://eng.vt.edu/undergraduate/resources-support/change-of-major/restricted.html"
+        ]
+      }
     },
     "source_log": {
       "VT-S1": "Virginia Tech Analytics and Institutional Effectiveness, Common Data Set page (JavaScript-rendered; all underlying file paths returned HTTP 404 on 2026-08-16, so no VT CDS could be retrieved) - https://aie.vt.edu/analytics-and-ai/common-data-set.html",
@@ -16105,7 +16630,22 @@
       },
       "admission_unit": "university",
       "unit_admit_rates": [],
-      "unit_admit_note": null
+      "unit_admit_note": null,
+      "admission_structure": {
+        "applies_to": "university",
+        "applies_to_note": null,
+        "units_named": [
+          "n/a - WPI has no undergraduate colleges/schools that applicants select; 'All first-year candidates use the Common Application.'"
+        ],
+        "applicant_selects_major": null,
+        "separate_rates_published": false,
+        "internal_mobility": "'Students can change their major, minor, or concentration in Workday when they start class in August'; 'Students can also email the Registrar's office... over the summer to initiate the major change.' No GPA or capacity limit stated.",
+        "source_urls": [
+          "https://www.wpi.edu/admissions/undergraduate/apply/how-to",
+          "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
+          "https://www.wpi.edu/student-experience/first-year-experience/course-registration"
+        ]
+      }
     },
     "source_log": {
       "WPI-S1": {
