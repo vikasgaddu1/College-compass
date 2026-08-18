@@ -24,8 +24,11 @@ function FrontierLabel(props: any) {
   // was being clipped straight out of the plot area -- Michigan-Dearborn (5/5)
   // vanished entirely. Flip below the marker up there.
   const below = d.curriculum >= 4.5;
+  // Flipping below fixed the clipping, but the label then sat on the marker: the
+  // access bubble runs to roughly a 10px radius, so a 20px offset still collided.
+  // 27px clears the largest bubble plus its ring.
   return (
-    <text x={x} y={below ? y + 20 : y - 13} textAnchor="middle"
+    <text x={x} y={below ? y + 27 : y - 15} textAnchor="middle"
       style={{ fontSize: 10.5, fontWeight: 600, fill: "hsl(var(--foreground))", pointerEvents: "none" }}>
       {d.name}
     </text>
@@ -275,7 +278,10 @@ export default function CostPage() {
           <strong className="text-[hsl(var(--foreground))]">Best value ({frontierRows.length} ringed and named):</strong>{" "}
           {frontierRows.map(d => `${d.name} (${fmtCost(d.cost)}, robotics ${d.curriculum.toFixed(0)}/5)`).join(" · ")}.
           {" "}Nothing on this list is both cheaper and stronger on robotics than these — every other school is
-          beaten outright on one axis or the other. That is a statement about published sticker price only:
+          beaten outright on one axis or the other. Read UNC-Chapel Hill with care: it is the cheapest point on
+          the axis, but it has no electrical or computer engineering department and no ABET-accredited
+          engineering degree, so what robotics coursework exists sits inside other departments.
+          That is a statement about published sticker price only:
           aid moves the horizontal axis a long way at the private schools, so re-read this after net-price
           figures rather than before.
         </div>
