@@ -4,21 +4,24 @@ import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 
 // C7 factors in Common Data Set order
-const C7_FACTORS: { key: string; label: string }[] = [
-  { key: "rigor",                 label: "Rigor of HS record" },
-  { key: "class_rank",            label: "Class rank" },
-  { key: "gpa",                   label: "Academic GPA" },
-  { key: "test_scores",           label: "Standardized tests" },
-  { key: "essay",                 label: "Application essay" },
-  { key: "recommendations",       label: "Recommendations" },
-  { key: "interview",             label: "Interview" },
-  { key: "extracurriculars",      label: "Extracurriculars" },
-  { key: "talent_ability",        label: "Talent / ability" },
-  { key: "character",             label: "Character / qualities" },
-  { key: "first_generation",      label: "First generation" },
-  { key: "volunteer_work",        label: "Volunteer work" },
-  { key: "work_experience",       label: "Work experience" },
-  { key: "demonstrated_interest", label: "Demonstrated interest" },
+// `short` is what the column header renders. Headers were previously rotated
+// vertical, which made them slow to read; short horizontal labels plus a key
+// below the table are legible without rotation.
+const C7_FACTORS: { key: string; label: string; short: string }[] = [
+  { key: "rigor",                 label: "Rigor of HS record",     short: "Rigor" },
+  { key: "class_rank",            label: "Class rank",             short: "Rank" },
+  { key: "gpa",                   label: "Academic GPA",           short: "GPA" },
+  { key: "test_scores",           label: "Standardized tests",     short: "Tests" },
+  { key: "essay",                 label: "Application essay",      short: "Essay" },
+  { key: "recommendations",       label: "Recommendations",        short: "Recs" },
+  { key: "interview",             label: "Interview",              short: "Interview" },
+  { key: "extracurriculars",      label: "Extracurriculars",       short: "Activities" },
+  { key: "talent_ability",        label: "Talent / ability",       short: "Talent" },
+  { key: "character",             label: "Character / qualities",  short: "Character" },
+  { key: "first_generation",      label: "First generation",       short: "First-gen" },
+  { key: "volunteer_work",        label: "Volunteer work",         short: "Volunteer" },
+  { key: "work_experience",       label: "Work experience",        short: "Work" },
+  { key: "demonstrated_interest", label: "Demonstrated interest",  short: "Interest" },
 ];
 
 const IMPORTANCE_COLOR: Record<string, string> = {
@@ -27,6 +30,11 @@ const IMPORTANCE_COLOR: Record<string, string> = {
   considered:      "hsl(200 40% 78%)",   // light blue
   not_considered:  "hsl(0 0% 92%)",      // grey
 };
+
+// A school that publishes no CDS must not look like a school that considers
+// nothing. "Not considered" is a flat grey; "not reported" is hatched.
+const NOT_REPORTED_FILL =
+  "repeating-linear-gradient(45deg, hsl(0 0% 97%) 0 4px, hsl(0 0% 89%) 4px 8px)";
 const IMPORTANCE_LABEL: Record<string, string> = {
   very_important: "Very important",
   important: "Important",
@@ -55,6 +63,11 @@ const ACTION_META: Record<InterestAction, { label: string; icon: any }> = {
 export default function StrategyPage() {
   const { hidden } = useHidden();
   const visible = schools.filter(s => !hidden.has(s.slug));
+  // Schools with no CDS C7 block at all — called out so an all-hatched row is not
+  // misread as "this school considers nothing".
+  const missingC7 = visible
+    .filter(s => !(s as any).admissions?.c7_factors)
+    .map(s => s.short);
   const [log, setLog] = useState<InterestEntry[]>(loadLog);
 
   const trackers = useMemo(() =>
@@ -94,6 +107,11 @@ export default function StrategyPage() {
         {(["very_important","important","considered","not_considered"] as const).map(k => (
           <div key={k} className="flex items-center gap-1"><span className="inline-block w-3 h-3 rounded-sm" style={{ background: IMPORTANCE_COLOR[k] }}/> {IMPORTANCE_LABEL[k]}</div>
         ))}
+        <div className="flex items-center gap-1">
+          <span className="inline-block w-3 h-3 rounded-sm border border-[hsl(var(--border))]"
+                style={{ background: NOT_REPORTED_FILL }}/>
+          Not reported
+        </div>
       </div>
 
       {/* Heatmap */}
@@ -104,8 +122,11 @@ export default function StrategyPage() {
               <tr>
                 <th className="text-left sticky left-0 z-[2] bg-[hsl(var(--card))] w-[180px]">School</th>
                 {C7_FACTORS.map(f => (
-                  <th key={f.key} className="text-center px-1" style={{ minWidth: 46 }}>
-                    <div className="text-[9.5px] leading-tight [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-2">{f.label}</div>
+                  <th key={f.key} className="text-center px-1.5 align-bottom"
+                      style={{ minWidth: 62 }} title={f.label}>
+                    <div className="text-[10.5px] font-medium leading-tight whitespace-nowrap pb-1.5">
+                      {f.short}
+                    </div>
                   </th>
                 ))}
               </tr>
@@ -118,10 +139,16 @@ export default function StrategyPage() {
                     <td className="serif font-medium sticky left-0 z-[1] bg-[hsl(var(--card))]">{s.short}</td>
                     {C7_FACTORS.map(f => {
                       const v = c7?.[f.key];
-                      const c = v ? IMPORTANCE_COLOR[v] || "hsl(0 0% 88%)" : "hsl(0 0% 96%)";
+                      const reported = Boolean(v);
+                      const fill = reported
+                        ? (IMPORTANCE_COLOR[v] || "hsl(0 0% 88%)")
+                        : NOT_REPORTED_FILL;
                       return (
-                        <td key={f.key} className="text-center p-0" title={`${s.short} — ${f.label}: ${IMPORTANCE_LABEL[v] || (v || "not reported")}`}>
-                          <div className="w-full h-8" style={{ background: c }}/>
+                        <td key={f.key} className="text-center p-0"
+                          title={reported
+                            ? `${s.short} — ${f.label}: ${IMPORTANCE_LABEL[v] || v}`
+                            : `${s.short} — ${f.label}: not reported (no published Common Data Set entry)`}>
+                          <div className="w-full h-8" style={{ background: fill }}/>
                         </td>
                       );
                     })}
@@ -130,6 +157,18 @@ export default function StrategyPage() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="px-3 pb-3 pt-2 text-[10.5px] text-[hsl(var(--muted-foreground))] leading-relaxed">
+          <strong className="text-[hsl(var(--foreground))]">Column key:</strong>{" "}
+          {C7_FACTORS.filter(f => f.short !== f.label).map(f => `${f.short} = ${f.label}`).join(" · ")}.
+          Hover any cell for the school's reported weighting.
+          {missingC7.length > 0 && (
+            <>
+              {" "}<strong className="text-[hsl(var(--foreground))]">Hatched rows publish no C7 data:</strong>{" "}
+              {missingC7.join(", ")} — that is missing information, not evidence that these
+              schools disregard these factors. Ask admissions directly.
+            </>
+          )}
         </div>
       </div>
 
