@@ -13,6 +13,12 @@ export interface School {
   institution_type: string;
   is_public: boolean;
   undergrad_enrollment: number | null;
+  /** Source-log tag for the enrollment figure, e.g. "[NCSU-S12]". */
+  undergrad_enrollment_cite?: string;
+  /** Term the enrollment figure describes, e.g. "Fall 2025". */
+  undergrad_enrollment_asof?: string;
+  /** What was verified, and against what — including any correction made. */
+  undergrad_enrollment_note?: string;
   size_bucket: "very-small" | "small" | "medium" | "large" | "unknown";
   degree_name: string;
   degree_type: string;
@@ -30,6 +36,12 @@ export interface School {
   cost_total_instate: number | null;
   cost_total_outofstate: number | null;
   cost_for_nc_resident: number | null;
+  /** Source-log tag for the cost figures, e.g. "[UIUC-S10]". */
+  cost_cite?: string;
+  /** Academic year the cost figures describe, e.g. "2025-26". */
+  cost_asof?: string;
+  /** What the figure covers — full cost of attendance vs direct-billed. */
+  cost_note?: string;
   housing_guarantee: string;
   greek_participation: string;
   sports_influence: string;
