@@ -34,6 +34,14 @@ export default function OddsPage() {
 
   // How many visible schools call rigor "very important" in CDS C7 -- the honest
   // justification for asking about course load at all.
+  const unitSchoolCount = visibleSchools.filter(
+    s => ((s as any).admissions?.unit_admit_rates?.length ?? 0) > 0).length;
+  const gatedUnpublishedCount = visibleSchools.filter(s => {
+    const a = (s as any).admissions;
+    return a && a.admission_unit && a.admission_unit !== "university"
+      && (a.unit_admit_rates?.length ?? 0) === 0;
+  }).length;
+
   const rigorVeryImportant = visibleSchools.filter(
     s => (s as any).admissions?.c7_factors?.rigor === "very_important").length;
 
@@ -67,6 +75,35 @@ export default function OddsPage() {
             <Settings size={11}/> {showSettings ? "Hide" : "Adjust"} thresholds
           </button>
         </div>
+        {/* Which door -- the single biggest lever at schools that admit by college */}
+        <div className="rounded-md border border-[hsl(var(--accent)/0.35)] bg-[hsl(var(--accent)/0.06)] px-3 py-2.5 mb-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="text-[11px] uppercase tracking-wider text-[hsl(var(--accent))]">Which door are you applying through?</div>
+            <div className="flex gap-1">
+              {(["engineering","computing"] as const).map(k => (
+                <button key={k}
+                  onClick={() => setThresholds({ pathway: k })}
+                  className={thresholds.pathway === k ? "chip chip-primary" : "chip chip-outline"}>
+                  {k === "engineering" ? "Engineering / ME / ECE" : "Computing / CS / SCS"}
+                </button>
+              ))}
+            </div>
+            <label className="flex items-center gap-1.5 text-[11.5px] text-[hsl(var(--muted-foreground))] ml-auto">
+              <input type="checkbox" checked={thresholds.use_unit_rates}
+                onChange={e => setThresholds({ use_unit_rates: e.target.checked })}/>
+              Use per-college rates where published
+            </label>
+          </div>
+          <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] mt-1.5 leading-snug max-w-[880px]">
+            A university-wide admit rate describes nobody at a school that admits by college.
+            The same UW application is roughly <strong className="text-[hsl(var(--foreground))]">2%</strong> through
+            Direct-to-Major CS and <strong className="text-[hsl(var(--foreground))]">37%</strong> through
+            Direct-to-College Engineering for an out-of-state applicant. {unitSchoolCount} schools in
+            view publish a per-college split; {gatedUnpublishedCount} admit by college or major but publish
+            no unit-level rate, and those keep the university figure with a caveat.
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
           <NumberInput label="GPA (unweighted)" value={profile.gpa_uw} onChange={v => setProfile({ gpa_uw: v })} step={0.01} max={4.5} min={0} placeholder="3.85"/>
           <NumberInput label="GPA (weighted)"   value={profile.gpa_w}  onChange={v => setProfile({ gpa_w: v })}  step={0.01} max={6.0} min={0} placeholder="4.35"/>
@@ -251,7 +288,10 @@ export default function OddsPage() {
                   <tr key={school.slug} style={{ background: m.bg }}>
                     <td className="serif font-medium">{school.short}<div className="text-[10.5px] text-[hsl(var(--muted-foreground))] font-normal">{school.city_state}</div></td>
                     <td><span className="chip chip-outline inline-flex text-[10.5px] font-semibold" style={{ color: m.color }}>{m.label}</span></td>
-                    <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div></td>
+                    <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div>
+                      {result.unit_used && (
+                        <div className="text-[9.5px] mt-0.5" style={{ color: "hsl(var(--accent))" }}>per-college rate</div>
+                      )}</td>
                     <td className="text-[11.5px] leading-snug">{result.reason}
                       {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>gated CS downgrade</span>}
                       {!result.gated_downgrade_applied && result.cs_gate === "mild" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 55% 48%)" }}>mild CS gate</span>}
