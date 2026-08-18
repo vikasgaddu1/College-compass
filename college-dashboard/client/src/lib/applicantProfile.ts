@@ -113,6 +113,29 @@ export interface OddsThresholds {
    */
   pathway: "engineering" | "computing";
   use_unit_rates: boolean;       // use per-college rates instead of the university average
+  /**
+   * Rate each door's gate on its own researched severity rather than applying one
+   * global flag to both.
+   *
+   * The earlier binary version waived the gate on the engineering door entirely,
+   * on the theory that it describes a CS-specific obstacle. That holds at
+   * Michigan, whose own note says "the binding constraint is the Computer Science
+   * major, not the college". It does NOT hold at Texas A&M (every engineering
+   * admit competes through ETAM), NC State (CODA), Virginia Tech (General
+   * Engineering) or Maryland, whose Limited Enrollment Program list contains
+   * Engineering alongside Computer Science. Waiving those understated a real
+   * obstacle by a full tier.
+   *
+   * With per-door severities the engineering gate stays STRONG at NC State,
+   * Texas A&M and Berkeley, and relaxes only where the evidence says it should.
+   */
+  use_door_gates: boolean;
+  /**
+   * Legacy global flag, kept so previously stored settings still load. It now
+   * applies only when a school has no researched per-door severity, and defaults
+   * to false because waiving a gate should be evidence-led, not assumed.
+   */
+  gate_pathway_aware: boolean;
 }
 
 const DEFAULT_PROFILE: ApplicantProfile = {
@@ -134,6 +157,8 @@ const DEFAULT_THRESHOLDS: OddsThresholds = {
   use_gpa: true,
   pathway: "engineering",
   use_unit_rates: true,
+  use_door_gates: true,
+  gate_pathway_aware: false,
 };
 
 const PROFILE_KEY = "college-compass-applicant-profile";
@@ -178,6 +203,19 @@ export interface OddsResult {
   tier: OddsTier;
   /** The college/program whose rate was used, when the school admits by unit. */
   unit_used?: UnitRate | null;
+  /**
+   * Set when the chosen unit rate blends residents and non-residents while the
+   * school also publishes a residency split. The two are not comparable.
+   */
+  unit_residency_blended?: boolean;
+  /** Set when a blended unit rate was capped at the applicant's residency rate. */
+  unit_clamped_to?: number | null;
+  /** Which test the modifier used, when one applied. */
+  test_used?: "SAT" | "ACT" | null;
+  /** The researched gate severity for the door actually being used. */
+  door_gate_severity?: string | null;
+  /** False when the school has no programme behind the requested door. */
+  door_available?: boolean;
   /** Populated whenever the school publishes a GPA figure. */
   gpa?: GpaComparison;
   gpa_moved_tier?: boolean;
@@ -328,11 +366,21 @@ export interface UnitRate {
  * unit flagged preferred_for_robotics (the engineering door), "computing" takes
  * the other robotics-relevant unit (the CS/SCS door).
  */
+export interface UnitPick {
+  unit: UnitRate;
+  /**
+   * True when the unit's residency basis matches the applicant's. False means an
+   * all-residency row was used as a stand-in, which is NOT interchangeable with a
+   * residency-specific figure -- see the clamp in classify().
+   */
+  residency_matched: boolean;
+}
+
 export function pickUnitRate(
   admissions: any,
   profile: ApplicantProfile,
   pathway: "engineering" | "computing",
-): UnitRate | null {
+): UnitPick | null {
   const units: UnitRate[] = Array.isArray(admissions?.unit_admit_rates)
     ? admissions.unit_admit_rates : [];
   if (!units.length) return null;
@@ -342,9 +390,11 @@ export function pickUnitRate(
   const relevant = units.filter(u => u.door === pathway);
   if (!relevant.length) return null;
 
-  // Residency: exact match, else the "all" rows, else give up rather than
-  // silently comparing an in-state rate to an out-of-state applicant.
+  // Residency: exact match first. An "all" row is accepted only as a fallback and
+  // is reported as unmatched, because a blend of residents and non-residents is a
+  // different measurement from a residency-specific rate.
   let pool = relevant.filter(u => u.residency === wantRes);
+  const matched = pool.length > 0;
   if (!pool.length) pool = relevant.filter(u => u.residency === "all");
   if (!pool.length) return null;
 
@@ -352,7 +402,12 @@ export function pickUnitRate(
   // Georgia Tech publishes a computing figure and no engineering figure; asking
   // for the engineering door there correctly yields nothing and the caller falls
   // back to the university-wide rate with a visible note.
-  return pool[0] ?? null;
+  //
+  // When several rows share a door and residency, take the lowest rate rather
+  // than whichever happens to be first in the file: array order is not a
+  // meaningful signal, and the conservative figure is the safer default.
+  const chosen = pool.reduce((a, b) => (b.rate < a.rate ? b : a));
+  return { unit: chosen, residency_matched: matched };
 }
 
 export function classify(admissions: any, nc_note: string | undefined, profile: ApplicantProfile, t: OddsThresholds): OddsResult {
@@ -387,11 +442,33 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   // application is ~37% via Direct-to-College Engineering and ~2% via
   // Direct-to-Major CS for a non-resident.
   let unit: UnitRate | null = null;
+  let unit_residency_blended = false;
+  let unit_clamped_to: number | null = null;
   if (t.use_unit_rates) {
-    unit = pickUnitRate(admissions, profile, t.pathway);
-    if (unit) {
-      rate = unit.rate;
-      ctx = `${unit.unit}${unit.residency !== "all" ? ` · ${unit.residency === "in_state" ? "in-state" : "out-of-state"}` : ""}`;
+    const picked = pickUnitRate(admissions, profile, t.pathway);
+    if (picked) {
+      unit = picked.unit;
+      const residencyRate = inHomeState ? inState : oosRate;
+      // An all-residency unit figure blends residents with non-residents. At a
+      // public that also publishes a residency split those are different
+      // measurements, and swapping one for the other silently inverted Georgia
+      // Tech: the College of Computing blend (11.3%) read as EASIER than the
+      // published out-of-state university rate (10.1%), so choosing the harder
+      // door made the school look more attainable. The blend only clears 10.1%
+      // because it carries Georgia residents admitted at 29.5%.
+      //
+      // Rule: a blended unit rate may show a door is harder, never that it is
+      // easier than the applicant's own residency-specific rate. Capping keeps
+      // the informative signal (UIUC CS 7.4%, Purdue CS 35.9%) while removing
+      // the inversion, and invents no number that nobody published.
+      unit_residency_blended = !picked.residency_matched && residencyRate !== null;
+      let unitRate = unit.rate;
+      if (unit_residency_blended && residencyRate !== null && unitRate > residencyRate) {
+        unit_clamped_to = residencyRate;
+        unitRate = residencyRate;
+      }
+      rate = unitRate;
+      ctx = `${unit.unit}${unit.residency !== "all" ? ` · ${unit.residency === "in_state" ? "in-state" : "out-of-state"}` : " · all residencies"}`;
     }
   }
 
@@ -403,17 +480,45 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
                                     "LIKELY";
   let reason = `${ctx.charAt(0).toUpperCase() + ctx.slice(1)} admit rate ${(rate*100).toFixed(1)}%.`;
 
-  // SAT modifier (informational only — moves TARGET → LIKELY if SAT ≥ 75th percentile)
+  // Test-score modifier. Moves at most ONE tier in either direction.
+  //
+  // Two fixes here. The ACT was collected on the profile and read by nothing, so
+  // an ACT-only applicant got no test signal at all -- the same defect the GPA
+  // field had. And the downgrade used to jump LIKELY straight to REACH, skipping
+  // TARGET, which labelled Rose-Hulman (80.9% admit) a Reach for an applicant
+  // ten points under its 25th percentile.
   let used_test_score = false;
-  if (Array.isArray(admissions.sat_mid50) && admissions.sat_mid50.length === 2 && profile.sat && profile.test_plan !== "not_submitting") {
+  let test_used: "SAT" | "ACT" | null = null;
+  const satBand = Array.isArray(admissions.sat_mid50) && admissions.sat_mid50.length === 2
+    ? (admissions.sat_mid50 as [number, number]) : null;
+  const actBand = Array.isArray(admissions.act_mid50) && admissions.act_mid50.length === 2
+    ? (admissions.act_mid50 as [number, number]) : null;
+
+  // Prefer the SAT when both the applicant and the school have one; otherwise
+  // fall back to the ACT. Penn publishes an ACT band and no SAT band, so without
+  // this its test modifier could never fire for anyone.
+  let band: [number, number] | null = null;
+  let score: number | null = null;
+  if (satBand && profile.sat) { band = satBand; score = profile.sat; test_used = "SAT"; }
+  else if (actBand && profile.act) { band = actBand; score = profile.act; test_used = "ACT"; }
+
+  if (band && score && profile.test_plan !== "not_submitting") {
     used_test_score = true;
-    const [low, high] = admissions.sat_mid50 as [number, number];
-    if (profile.sat >= high + t.sat_75_bonus && tier === "TARGET") {
+    const [low, high] = band;
+    const bonus = test_used === "SAT" ? t.sat_75_bonus : 0;
+    if (score >= high + bonus && tier === "TARGET") {
       tier = "LIKELY";
-      reason += ` Your SAT ${profile.sat} is at or above the 75th percentile (${high}).`;
-    } else if (profile.sat < low && (tier === "TARGET" || tier === "LIKELY")) {
-      tier = "REACH";
-      reason += ` Your SAT ${profile.sat} is below the 25th percentile (${low}).`;
+      reason += ` Your ${test_used} ${score} is at or above the 75th percentile (${high}).`;
+    } else if (score < low && (tier === "TARGET" || tier === "LIKELY")) {
+      // "Hold — decide per school" means exactly that: a score below the 25th
+      // percentile is the one you would withhold, so it should not drag the tier
+      // down. Only an applicant committed to submitting takes that hit.
+      if (profile.test_plan === "submitting") {
+        tier = tier === "LIKELY" ? "TARGET" : "REACH";
+        reason += ` Your ${test_used} ${score} is below the 25th percentile (${low}).`;
+      } else {
+        reason += ` Your ${test_used} ${score} is below the 25th percentile (${low}), but your test plan is "hold", so it does not move the tier — you would simply not submit it here.`;
+      }
     }
   }
 
@@ -456,14 +561,45 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   // average" -- which is exactly what a unit rate measures directly. Applying
   // both double-counted the same obstacle: CMU came out as High reach on the
   // engineering door's 19% rate, and Purdue as Target on 46.1%.
-  const gateAlreadyPricedIn = unit !== null;
-  if (t.gated_downgrade && !gateAlreadyPricedIn && gate === "strong" && tier !== "HIGH_REACH") {
+  //
+  // A CAPPED unit rate is the exception: capping discards the blended figure and
+  // falls back to the university residency rate, so no door-specific signal
+  // survives and the proxy is needed again. Without this, Georgia Tech still
+  // inverted on tier even after the rate was capped -- the engineering door took
+  // the downgrade to High reach while the computing door kept Reach purely
+  // because a (discarded) unit row existed.
+  const gateAlreadyPricedIn = unit !== null && unit_clamped_to === null;
+  // The gate describes the CS/AI door. Applying it to someone entering through
+  // engineering said "harder to get in" when the truth is "harder to switch into
+  // CS once in" -- and it produced a visible contradiction: Purdue's engineering
+  // door classified HARDER than its computing door, because the gate landed on
+  // engineering while computing's own per-college rate exempted it.
+  // Per-door severity. `gate_by_door.engineering` comes from the ECE admission
+  // research (which established the engineering-side gate for all 33 schools);
+  // `gate_by_door.computing` is the researched cs_gate. Only "strong" moves a
+  // tier, so behaviour is unchanged -- what changes is WHICH door is strong.
+  const doorGate = t.use_door_gates
+    ? (admissions?.gate_by_door?.[t.pathway] ?? null)
+    : null;
+  const doorSeverity: string | null = doorGate?.severity ?? null;
+  const doorAvailable: boolean = doorGate?.available !== false;
+
+  // Effective gate for THIS door. Fall back to the global flag only where no
+  // per-door severity was researched.
+  const effectiveGate = doorSeverity ?? gate;
+  const gateSkippedForDoor = doorSeverity !== null
+    ? (effectiveGate !== "strong" && gate === "strong")
+    : (t.gate_pathway_aware && t.pathway !== "computing" && gate === "strong");
+
+  if (t.gated_downgrade && !gateAlreadyPricedIn && effectiveGate === "strong" && tier !== "HIGH_REACH") {
     const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH"];
     const idx = order.indexOf(tier);
     if (idx >= 0 && idx < order.length - 1) {
       tier = order[idx + 1];
       gated_downgrade_applied = true;
-      reason += " Downgraded one tier: CS/AI sits behind a strong separate admission or internal gate here.";
+      reason += doorSeverity !== null
+        ? ` Downgraded one tier: the ${t.pathway} door itself sits behind a strong gate here${doorGate?.basis ? ` — ${String(doorGate.basis).slice(0, 180)}` : ""}.`
+        : " Downgraded one tier: CS/AI sits behind a strong separate admission or internal gate here.";
     }
   }
 
@@ -479,5 +615,32 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     reason += " The CS-gate penalty is not applied here because this school's own per-college rate already reflects which door you are using.";
   }
 
-  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null, gpa, gpa_moved_tier, unit_used: unit };
+  if (gateSkippedForDoor) {
+    reason += doorSeverity !== null
+      ? ` CS/AI is strongly gated here, but the ${t.pathway} door's own gate is rated "${doorSeverity}", so it does not move the tier${doorGate?.basis ? ` (${String(doorGate.basis).slice(0, 160)})` : ""}. It remains a risk to switching into CS later.`
+      : " CS/AI is gated here, but you are applying through the engineering door, so it does not change the admission bar — it remains a risk to reaching the major later.";
+  }
+
+  // A school with no ECE/engineering programme has no engineering door at all.
+  // Silence here is what would otherwise let UNC-Chapel Hill read as "Likely" on
+  // a door that does not exist.
+  // Prepend, do not append. Appending buried this behind a long reason string and
+  // left UNC-Chapel Hill reading as "Likely" on an engineering door that does not
+  // exist -- the same misleading outcome as waiving its gate outright. The tier
+  // still reflects general admission difficulty, which is real, but the missing
+  // door has to be the first thing read.
+  if (!doorAvailable) {
+    reason = `No ${t.pathway === "engineering" ? "ECE/engineering" : "computing"} door here: this school has no ${t.pathway === "engineering" ? "electrical or computer engineering programme" : "computing programme"}, so the tier below reflects general admission only, not a route into the major. ` + reason;
+  }
+
+  if (unit_residency_blended && unit) {
+    reason += unit_clamped_to !== null
+      ? ` The ${unit.unit} figure (${(unit.rate*100).toFixed(1)}%) blends residents and non-residents, so it overstates your odds as a ${inHomeState ? "resident" : "non-resident"}; capped at the published ${(unit_clamped_to*100).toFixed(1)}% residency rate.`
+      : ` Note: the ${unit.unit} figure blends residents and non-residents, while this school publishes a residency split — treat it as approximate.`;
+  }
+  if (unit?.note) {
+    reason += ` Source note on this per-college figure: ${unit.note}`;
+  }
+
+  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, test_used, gated_downgrade_applied, cs_gate: gate ?? null, door_gate_severity: doorSeverity, door_available: doorAvailable, gpa, gpa_moved_tier, unit_used: unit, unit_residency_blended, unit_clamped_to };
 }
