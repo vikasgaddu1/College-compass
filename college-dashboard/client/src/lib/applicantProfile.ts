@@ -285,13 +285,38 @@ export function compareGpa(admissions: any, profile: ApplicantProfile): GpaCompa
     caveat: "The school does not state its weighting; compared against your unweighted GPA." };
 }
 
+/**
+ * How a school admits, as TWO independent facts.
+ *
+ * These were previously collapsed into one field, which produced a real error:
+ * Duke was recorded as admitting university-wide because its Common Data Set
+ * reports a single funnel, even though Duke applicants choose between Trinity
+ * College of Arts & Sciences and the Pratt School of Engineering. Not publishing
+ * a split is a DISCLOSURE fact. Requiring the applicant to pick a school is a
+ * STRUCTURAL fact. Keep them apart.
+ */
+export type AppliesTo =
+  | "university" | "college" | "major" | "first_year_eng" | "pre_major";
+
+export interface AdmissionStructure {
+  /** What the applicant actually selects on the application. */
+  applies_to: AppliesTo;
+  /** Real names of the selectable undergraduate units. */
+  units_named?: string[];
+  /** Whether an intended major is asked for AND evaluated. */
+  applicant_selects_major?: boolean;
+  /** Whether the school publishes admit rates broken out by unit. */
+  separate_rates_published?: boolean;
+}
+
 export interface UnitRate {
   unit: string;
   rate: number;
   residency: "all" | "in_state" | "oos";
+  /** Which application door this unit represents. "other" is context only and is
+   *  never auto-selected, so a university-total row cannot be mistaken for a door. */
+  door: "engineering" | "computing" | "other";
   basis?: string;
-  robotics_relevant?: boolean;
-  preferred_for_robotics?: boolean;
   note?: string;
 }
 
@@ -314,7 +339,7 @@ export function pickUnitRate(
 
   const inHome = profile.home_state === "NC" && Boolean(admissions?.is_home_state_nc);
   const wantRes = inHome ? "in_state" : "oos";
-  const relevant = units.filter(u => u.robotics_relevant);
+  const relevant = units.filter(u => u.door === pathway);
   if (!relevant.length) return null;
 
   // Residency: exact match, else the "all" rows, else give up rather than
@@ -323,15 +348,11 @@ export function pickUnitRate(
   if (!pool.length) pool = relevant.filter(u => u.residency === "all");
   if (!pool.length) return null;
 
-  // Never substitute one door's rate for the other. Georgia Tech publishes a
-  // computing figure and no engineering figure; falling back to "highest rate
-  // available" quietly reported the computing rate as the engineering door's
-  // odds. If the requested door has no published rate, return null and let the
-  // caller fall back to the university-wide figure.
-  if (pathway === "engineering") {
-    return pool.find(u => u.preferred_for_robotics === true) ?? null;
-  }
-  return pool.find(u => u.preferred_for_robotics !== true) ?? null;
+  // Doors are labelled explicitly, so no cross-door substitution is possible.
+  // Georgia Tech publishes a computing figure and no engineering figure; asking
+  // for the engineering door there correctly yields nothing and the caller falls
+  // back to the university-wide rate with a visible note.
+  return pool[0] ?? null;
 }
 
 export function classify(admissions: any, nc_note: string | undefined, profile: ApplicantProfile, t: OddsThresholds): OddsResult {
