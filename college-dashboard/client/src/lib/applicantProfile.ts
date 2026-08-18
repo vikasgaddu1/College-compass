@@ -114,11 +114,26 @@ export interface OddsThresholds {
   pathway: "engineering" | "computing";
   use_unit_rates: boolean;       // use per-college rates instead of the university average
   /**
-   * Whether the cs_gate downgrade applies only when the applicant is going
-   * through the computing door. The field describes a CS/AI-specific obstacle,
-   * so applying it to an engineering applicant conflates two different things:
-   * how hard it is to be ADMITTED, and how hard it is to REACH the major later.
-   * This page ranks admission difficulty, so the default keeps them apart.
+   * Rate each door's gate on its own researched severity rather than applying one
+   * global flag to both.
+   *
+   * The earlier binary version waived the gate on the engineering door entirely,
+   * on the theory that it describes a CS-specific obstacle. That holds at
+   * Michigan, whose own note says "the binding constraint is the Computer Science
+   * major, not the college". It does NOT hold at Texas A&M (every engineering
+   * admit competes through ETAM), NC State (CODA), Virginia Tech (General
+   * Engineering) or Maryland, whose Limited Enrollment Program list contains
+   * Engineering alongside Computer Science. Waiving those understated a real
+   * obstacle by a full tier.
+   *
+   * With per-door severities the engineering gate stays STRONG at NC State,
+   * Texas A&M and Berkeley, and relaxes only where the evidence says it should.
+   */
+  use_door_gates: boolean;
+  /**
+   * Legacy global flag, kept so previously stored settings still load. It now
+   * applies only when a school has no researched per-door severity, and defaults
+   * to false because waiving a gate should be evidence-led, not assumed.
    */
   gate_pathway_aware: boolean;
 }
@@ -142,7 +157,8 @@ const DEFAULT_THRESHOLDS: OddsThresholds = {
   use_gpa: true,
   pathway: "engineering",
   use_unit_rates: true,
-  gate_pathway_aware: true,
+  use_door_gates: true,
+  gate_pathway_aware: false,
 };
 
 const PROFILE_KEY = "college-compass-applicant-profile";
@@ -196,6 +212,10 @@ export interface OddsResult {
   unit_clamped_to?: number | null;
   /** Which test the modifier used, when one applied. */
   test_used?: "SAT" | "ACT" | null;
+  /** The researched gate severity for the door actually being used. */
+  door_gate_severity?: string | null;
+  /** False when the school has no programme behind the requested door. */
+  door_available?: boolean;
   /** Populated whenever the school publishes a GPA figure. */
   gpa?: GpaComparison;
   gpa_moved_tier?: boolean;
@@ -554,15 +574,32 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   // CS once in" -- and it produced a visible contradiction: Purdue's engineering
   // door classified HARDER than its computing door, because the gate landed on
   // engineering while computing's own per-college rate exempted it.
-  const gateSkippedForDoor =
-    t.gate_pathway_aware && t.pathway !== "computing" && gate === "strong";
-  if (t.gated_downgrade && !gateSkippedForDoor && !gateAlreadyPricedIn && gate === "strong" && tier !== "HIGH_REACH") {
+  // Per-door severity. `gate_by_door.engineering` comes from the ECE admission
+  // research (which established the engineering-side gate for all 33 schools);
+  // `gate_by_door.computing` is the researched cs_gate. Only "strong" moves a
+  // tier, so behaviour is unchanged -- what changes is WHICH door is strong.
+  const doorGate = t.use_door_gates
+    ? (admissions?.gate_by_door?.[t.pathway] ?? null)
+    : null;
+  const doorSeverity: string | null = doorGate?.severity ?? null;
+  const doorAvailable: boolean = doorGate?.available !== false;
+
+  // Effective gate for THIS door. Fall back to the global flag only where no
+  // per-door severity was researched.
+  const effectiveGate = doorSeverity ?? gate;
+  const gateSkippedForDoor = doorSeverity !== null
+    ? (effectiveGate !== "strong" && gate === "strong")
+    : (t.gate_pathway_aware && t.pathway !== "computing" && gate === "strong");
+
+  if (t.gated_downgrade && !gateAlreadyPricedIn && effectiveGate === "strong" && tier !== "HIGH_REACH") {
     const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH"];
     const idx = order.indexOf(tier);
     if (idx >= 0 && idx < order.length - 1) {
       tier = order[idx + 1];
       gated_downgrade_applied = true;
-      reason += " Downgraded one tier: CS/AI sits behind a strong separate admission or internal gate here.";
+      reason += doorSeverity !== null
+        ? ` Downgraded one tier: the ${t.pathway} door itself sits behind a strong gate here${doorGate?.basis ? ` — ${String(doorGate.basis).slice(0, 180)}` : ""}.`
+        : " Downgraded one tier: CS/AI sits behind a strong separate admission or internal gate here.";
     }
   }
 
@@ -579,7 +616,21 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   }
 
   if (gateSkippedForDoor) {
-    reason += " CS/AI is gated here, but you are applying through the engineering door, so it does not change the admission bar — it remains a risk to reaching the major later.";
+    reason += doorSeverity !== null
+      ? ` CS/AI is strongly gated here, but the ${t.pathway} door's own gate is rated "${doorSeverity}", so it does not move the tier${doorGate?.basis ? ` (${String(doorGate.basis).slice(0, 160)})` : ""}. It remains a risk to switching into CS later.`
+      : " CS/AI is gated here, but you are applying through the engineering door, so it does not change the admission bar — it remains a risk to reaching the major later.";
+  }
+
+  // A school with no ECE/engineering programme has no engineering door at all.
+  // Silence here is what would otherwise let UNC-Chapel Hill read as "Likely" on
+  // a door that does not exist.
+  // Prepend, do not append. Appending buried this behind a long reason string and
+  // left UNC-Chapel Hill reading as "Likely" on an engineering door that does not
+  // exist -- the same misleading outcome as waiving its gate outright. The tier
+  // still reflects general admission difficulty, which is real, but the missing
+  // door has to be the first thing read.
+  if (!doorAvailable) {
+    reason = `No ${t.pathway === "engineering" ? "ECE/engineering" : "computing"} door here: this school has no ${t.pathway === "engineering" ? "electrical or computer engineering programme" : "computing programme"}, so the tier below reflects general admission only, not a route into the major. ` + reason;
   }
 
   if (unit_residency_blended && unit) {
@@ -591,5 +642,5 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     reason += ` Source note on this per-college figure: ${unit.note}`;
   }
 
-  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, test_used, gated_downgrade_applied, cs_gate: gate ?? null, gpa, gpa_moved_tier, unit_used: unit, unit_residency_blended, unit_clamped_to };
+  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, test_used, gated_downgrade_applied, cs_gate: gate ?? null, door_gate_severity: doorSeverity, door_available: doorAvailable, gpa, gpa_moved_tier, unit_used: unit, unit_residency_blended, unit_clamped_to };
 }
