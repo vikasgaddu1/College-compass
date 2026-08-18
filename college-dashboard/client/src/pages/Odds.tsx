@@ -272,6 +272,7 @@ export default function OddsPage() {
               <tr>
                 <th className="text-left w-[220px]">School</th>
                 <th className="text-left w-[110px]">Tier</th>
+                <th className="text-left w-[132px]">You apply to</th>
                 <th className="text-right w-[100px]">Eff. admit</th>
                 <th className="text-left">Reason</th>
               </tr>
@@ -282,12 +283,15 @@ export default function OddsPage() {
                   const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH","NEEDS_DATA"];
                   return order.indexOf(a.result.tier) - order.indexOf(b.result.tier);
                 })
-                .map(({ school, result }) => {
+                .map(({ school, result, adm }) => {
                 const m = tierMeta[result.tier];
                 return (
                   <tr key={school.slug} style={{ background: m.bg }}>
                     <td className="serif font-medium">{school.short}<div className="text-[10.5px] text-[hsl(var(--muted-foreground))] font-normal">{school.city_state}</div></td>
                     <td><span className="chip chip-outline inline-flex text-[10.5px] font-semibold" style={{ color: m.color }}>{m.label}</span></td>
+                    <td className="text-[11px] leading-tight">
+                      <StructureCell admissions={adm} />
+                    </td>
                     <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div>
                       {result.unit_used && (
                         <div className="text-[9.5px] mt-0.5" style={{ color: "hsl(var(--accent))" }}>per-college rate</div>
@@ -331,5 +335,52 @@ function NumberInput({ label, value, onChange, step = 1, min, max, placeholder }
         value={value ?? ""} onChange={e => onChange(e.target.value === "" ? null : parseFloat(e.target.value))}
         className="w-full px-2 py-1 mt-0.5 text-[12.5px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"/>
     </div>
+  );
+}
+
+
+/* ------------------------------------------------------------------ *
+ * What the applicant actually selects on the application.
+ * Kept visible because "the CDS reports one funnel" is NOT the same as
+ * "admission is university-wide" -- conflating those two mislabelled 12 of 33
+ * schools, Duke among them.
+ * ------------------------------------------------------------------ */
+
+const APPLIES_LABEL: Record<string, { short: string; hue: string }> = {
+  university:     { short: "University-wide",  hue: "var(--muted-foreground)" },
+  college:        { short: "A college",        hue: "var(--accent)" },
+  major:          { short: "A named major",   hue: "var(--accent)" },
+  first_year_eng: { short: "First-yr eng.",    hue: "var(--fit-top)" },
+  pre_major:      { short: "Pre-major",        hue: "var(--fit-top)" },
+  unknown:        { short: "Unverified",       hue: "var(--score-unk)" },
+};
+
+function StructureCell({ admissions }: { admissions: any }) {
+  const st = admissions?.admission_structure;
+  const key = st?.applies_to ?? admissions?.admission_unit ?? "unknown";
+  const meta = APPLIES_LABEL[key] ?? APPLIES_LABEL.unknown;
+  const units: string[] = Array.isArray(st?.units_named) ? st.units_named : [];
+  const published = st?.separate_rates_published === true;
+
+  const title = [
+    st?.applies_to_note ? `Structure: ${st.applies_to_note}` : `Structure: ${meta.short}`,
+    units.length ? `Selectable units: ${units.join("; ")}` : null,
+    published
+      ? "This school publishes admit rates broken out by unit."
+      : key !== "university"
+        ? "This school admits by unit but does NOT publish separate rates, so the university figure is used."
+        : null,
+    st?.internal_mobility ? `Moving between units later: ${st.internal_mobility}` : null,
+  ].filter(Boolean).join("\n\n");
+
+  return (
+    <span title={title} className="inline-flex flex-col gap-0.5">
+      <span style={{ color: `hsl(${meta.hue})` }} className="font-medium">{meta.short}</span>
+      {key !== "university" && (
+        <span className="text-[9.5px] text-[hsl(var(--muted-foreground))]">
+          {published ? "rates published" : "rates not published"}
+        </span>
+      )}
+    </span>
   );
 }
