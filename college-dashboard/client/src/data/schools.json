@@ -295,7 +295,10 @@
         "value": null,
         "basis": "not_published",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) — https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
@@ -698,7 +701,30 @@
         "basis": "unspecified",
         "cite": null
       },
-      "test_policy_note_url": "https://www.cmu.edu/admission/admission/standardized-testing"
+      "test_policy_note_url": "https://www.cmu.edu/admission/admission/standardized-testing",
+      "admission_unit": "college",
+      "unit_admit_rates": [
+        {
+          "unit": "School of Computer Science (SCS)",
+          "rate": 0.052,
+          "residency": "all",
+          "basis": "350 admitted of 6,756 applicants",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false,
+          "note": "Houses the BS in Robotics and the BS in Artificial Intelligence."
+        },
+        {
+          "unit": "Other seven undergraduate colleges (incl. College of Engineering)",
+          "rate": 0.19,
+          "residency": "all",
+          "basis": "CMU-published comparison figure",
+          "robotics_relevant": true,
+          "preferred_for_robotics": true,
+          "note": "Mechanical and Electrical & Computer Engineering live here. The Robotics Additional Major is open to all colleges at a 3.0 GPA, and the Robotics and Machine Learning minors are reserved for non-SCS students."
+        }
+      ],
+      "unit_admit_note": "CMU admits by college and the spread is enormous. SCS houses the BS in Robotics and the AI major, so the robotics-titled degree sits behind the hardest door on campus.",
+      "unit_admit_source": "https://www.cs.cmu.edu/link/meeting-demand"
     },
     "source_log": {
       "CMU-S1": {
@@ -1293,7 +1319,10 @@
         "value": null,
         "basis": "not_published",
         "cite": null
-      }
+      },
+      "admission_unit": "college",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Applicants apply to a specific undergraduate college; no per-college rate published."
     },
     "source_log": {
       "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) — https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
@@ -1812,7 +1841,10 @@
         "value": null,
         "basis": "not_published",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) — https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
@@ -2318,7 +2350,10 @@
         "value": 3.92,
         "basis": "unspecified",
         "cite": "UF-S1"
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -2755,7 +2790,30 @@
         "value": 4.17,
         "basis": "weighted",
         "cite": "GT-S1"
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [
+        {
+          "unit": "College of Computing (CS + Computational Media)",
+          "rate": 0.113,
+          "residency": "all",
+          "basis": "INFERRED: 1,547 offers of 13,711 applicants",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false,
+          "note": "Inferred, not a published rate. Change of major into CS was suspended."
+        },
+        {
+          "unit": "Institute overall",
+          "rate": 0.133,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": false,
+          "preferred_for_robotics": false
+        }
+      ],
+      "unit_admit_note": "Georgia Tech admits by major. Computing sits below the Institute-wide rate, but Tech does not publish a clean per-college figure, so the computing number is inferred from published application and offer counts.",
+      "unit_admit_source": "https://irp.gatech.edu/common-data-set",
+      "unit_admit_caution": "The widely repeated 8.5% College of Computing and 13.1% College of Engineering figures could not be verified from any Georgia Tech source and should be treated as unsourced."
     },
     "source_log": {
       "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
@@ -3244,7 +3302,10 @@
         "value": 4.2,
         "basis": "weighted",
         "cite": "IIT-S1"
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Admits directly to the major; no per-major rate published."
     },
     "source_log": {
       "IIT-S1": "Illinois Institute of Technology Common Data Set 2023-2024 (PDF; latest published edition) - https://www.iit.edu/sites/default/files/2024-07/Full-2023-2024-Common-Data-Set.pdf",
@@ -3682,7 +3743,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "Change of major by emailing advising; only BME is closed."
+      "cs_gate_basis": "Change of major by emailing advising; only BME is closed.",
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "JHU-S1": "Johns Hopkins University Common Data Set 2025-2026 (PDF) — https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
@@ -4094,7 +4158,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "Concentration selected inside the BS in Engineering; no separate admission."
+      "cs_gate_basis": "Concentration selected inside the BS in Engineering; no separate admission.",
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "KETT-S1": {
@@ -4596,7 +4663,10 @@
         "value": 4.41,
         "basis": "weighted",
         "cite": "UMD-S1"
-      }
+      },
+      "admission_unit": "pre_major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Limited Enrollment Programs gate the major after entry; no per-LEP admit rate published."
     },
     "source_log": {
       "UMD-S1": "University of Maryland Common Data Set 2025-2026 (XLSX; URL verified HTTP 200 on 2026-08-16) - https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
@@ -5108,7 +5178,10 @@
         "value": 3.9,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "college",
+      "unit_admit_rates": [],
+      "unit_admit_note": "CS is a restricted major inside the college; no per-major rate published."
     },
     "source_log": {
       "UMICH-S1": {
@@ -5712,7 +5785,10 @@
         "value": 3.64,
         "basis": "unspecified",
         "cite": "DBN-S1"
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -6221,7 +6297,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "\"When you're admitted to MIT... you're admitted to the entire Institute\"; Course 6 declared freely in spring of year one."
+      "cs_gate_basis": "\"When you're admitted to MIT... you're admitted to the entire Institute\"; Course 6 declared freely in spring of year one.",
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "MIT-S1": "MIT Institutional Research, 2025-26 Common Data Set — https://ir.mit.edu/projects/2025-26-common-data-set/",
@@ -6691,7 +6770,10 @@
         "value": 3.83,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "NCSU-S1": {
@@ -7200,7 +7282,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "Khoury change-of-major requires 2.0 GPA plus the intro course."
+      "cs_gate_basis": "Khoury change-of-major requires 2.0 GPA plus the intro course.",
+      "admission_unit": "college",
+      "unit_admit_rates": [],
+      "unit_admit_note": "No per-college rate published; the dominant published split is ED versus overall."
     },
     "source_log": {
       "NEU-S1": "Northeastern University Common Data Set 2024-2025 (PDF) — https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
@@ -7671,7 +7756,10 @@
         "value": null,
         "basis": "not_published",
         "cite": null
-      }
+      },
+      "admission_unit": "pre_major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Admits as pre-majors; no per-major rate published."
     },
     "source_log": {
       "OSU-S1": "The Ohio State University Common Data Set 2025-2026, Columbus campus (PDF; C7/C8 grids read from page images) - https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
@@ -8135,7 +8223,10 @@
         "value": 3.9,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "OLIN-S1": {
@@ -8659,7 +8750,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "CIS is not limited-enrollment; only Digital Media Design and NETS are restricted."
+      "cs_gate_basis": "CIS is not limited-enrollment; only Digital Media Design and NETS are restricted.",
+      "admission_unit": "college",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Requires selecting a school and intended major; no per-school rate published."
     },
     "source_log": {
       "PENN-S1": "University of Pennsylvania Common Data Set 2025-2026 (via Penn IRA, Box-hosted PDF, dated 23 June 2026) — https://ira.upenn.edu/penn-numbers/common-data-set",
@@ -9097,7 +9191,10 @@
         "value": 3.67,
         "basis": "unweighted",
         "cite": "PSU-S1"
-      }
+      },
+      "admission_unit": "pre_major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Admits to university and campus, then Entrance to Major; no per-major rate published."
     },
     "source_log": {
       "PSU-S1": "Penn State University Park Common Data Set 2025-2026 (PDF) - https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf",
@@ -9575,7 +9672,30 @@
       "oos_admit_rate": 0.436,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "Entry via First-Year Engineering; CS change-of-degree (CODO) is space-restricted."
+      "cs_gate_basis": "Entry via First-Year Engineering; CS change-of-degree (CODO) is space-restricted.",
+      "admission_unit": "first_year_eng",
+      "unit_admit_rates": [
+        {
+          "unit": "College of Engineering (First-Year Engineering)",
+          "rate": 0.461,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": true,
+          "preferred_for_robotics": true,
+          "note": "EAC-accredited engineering degrees; major declared after First-Year Engineering."
+        },
+        {
+          "unit": "Polytechnic Institute — Mechatronics / Robotics Engineering Technology",
+          "rate": 0.542,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false,
+          "note": "Easier admit, but ETAC engineering technology rather than EAC engineering."
+        }
+      ],
+      "unit_admit_note": "Purdue admits engineering applicants into First-Year Engineering rather than a degree program. The Polytechnic Institute is a separate, less selective college whose robotics degree is engineering technology (ETAC) rather than engineering.",
+      "unit_admit_source": "https://www.admissions.purdue.edu/academics/freshmanprofile.php"
     },
     "source_log": {
       "PU-S1": "Purdue University West Lafayette Common Data Set 2025-2026 (XLSX) - https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
@@ -10061,7 +10181,10 @@
         "value": 3.9,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Reviews by program; no per-program rate published."
     },
     "source_log": {
       "RIT-S1": {
@@ -10565,7 +10688,10 @@
         "value": 3.91,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "RHIT-S1": {
@@ -11075,7 +11201,10 @@
         "value": 3.93,
         "basis": "unspecified",
         "cite": "RPI-S1"
-      }
+      },
+      "admission_unit": "college",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Admits to a school; no per-school rate published."
     },
     "source_log": {
       "RPI-S1": "Rensselaer Polytechnic Institute Common Data Set 2025-2026 (hosted on RPI's Box account, linked as '2025 - 2026' from the Provost's Institutional Research and Assessment page) - https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
@@ -11555,7 +11684,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "CS has a C+/C grade gate on CPSC 031/035 and a course lottery in which non-majors are not guaranteed seats."
+      "cs_gate_basis": "CS has a C+/C grade gate on CPSC 031/035 and a course lottery in which non-majors are not guaranteed seats.",
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "SWAT-S1": "Swarthmore College Common Data Set 2025-2026 (PDF) — https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
@@ -12056,7 +12188,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "All engineering admits enter General Engineering and compete through ETAM for capacity-limited major placement."
+      "cs_gate_basis": "All engineering admits enter General Engineering and compete through ETAM for capacity-limited major placement.",
+      "admission_unit": "first_year_eng",
+      "unit_admit_rates": [],
+      "unit_admit_note": "All engineering admits enter general engineering; no per-major rate published."
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -12548,7 +12683,10 @@
         "value": 3.9,
         "basis": "unspecified",
         "cite": "BERK-S1"
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Berkeley admits by college and by major and EECS is the hardest admit on campus, but no official Berkeley or UC page discloses an EECS or ME first-year admit rate. Every figure in circulation traces to consulting blogs. Changing into EECS after admission is effectively closed."
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -13019,7 +13157,54 @@
         "value": null,
         "basis": "not_published",
         "cite": null
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [
+        {
+          "unit": "Computer Science",
+          "rate": 0.074,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false,
+          "note": "Grainger states CS is not available for later declaration, so first choice is near-irreversible."
+        },
+        {
+          "unit": "CS + X programs",
+          "rate": 0.174,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false
+        },
+        {
+          "unit": "Grainger College of Engineering (non-CS)",
+          "rate": 0.212,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": true,
+          "preferred_for_robotics": true,
+          "note": "Mechanical and Electrical Engineering sit here."
+        },
+        {
+          "unit": "University overall",
+          "rate": 0.366,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": false,
+          "preferred_for_robotics": false
+        },
+        {
+          "unit": "Division of Exploratory Studies",
+          "rate": 0.534,
+          "residency": "all",
+          "basis": "published",
+          "robotics_relevant": false,
+          "preferred_for_robotics": false
+        }
+      ],
+      "unit_admit_note": "UIUC publishes admit rates by major, and the gap between Computer Science and the rest of Grainger Engineering is close to 3x.",
+      "unit_admit_source": "https://www.admissions.illinois.edu/admit-rates/"
     },
     "source_log": {
       "UIUC-S1": "University of Illinois Urbana-Champaign Common Data Set 2025-2026 (XLSX) - https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
@@ -13465,7 +13650,10 @@
         "value": 4.47,
         "basis": "weighted",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "UNC-S1": {
@@ -14010,7 +14198,10 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "CS is a separately-admitted CNS major; internal transfer requires 3.0 GPA and competes on space, max two attempts."
+      "cs_gate_basis": "CS is a separately-admitted CNS major; internal transfer requires 3.0 GPA and competes on space, max two attempts.",
+      "admission_unit": "major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Direct-admit to major; no per-major first-year admit rate published."
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -14483,7 +14674,10 @@
       "oos_admit_rate": 0.628,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "Direct admit to intended major with a published capacity-overflow rule offering an alternate major."
+      "cs_gate_basis": "Direct admit to intended major with a published capacity-overflow rule offering an alternate major.",
+      "admission_unit": "major",
+      "unit_admit_rates": [],
+      "unit_admit_note": "Admits directly to the intended major; no per-major rate published."
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -14965,7 +15159,46 @@
         "value": 3.84,
         "basis": "unspecified",
         "cite": "UW-S1"
-      }
+      },
+      "admission_unit": "major",
+      "unit_admit_rates": [
+        {
+          "unit": "Allen School Direct to Major — CS / CE",
+          "rate": 0.3,
+          "residency": "in_state",
+          "basis": "3-year average",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false
+        },
+        {
+          "unit": "Allen School Direct to Major — CS / CE",
+          "rate": 0.02,
+          "residency": "oos",
+          "basis": "3-year average",
+          "robotics_relevant": true,
+          "preferred_for_robotics": false,
+          "note": "No extra essay or prerequisites, which is exactly why it is oversubscribed."
+        },
+        {
+          "unit": "Direct to College — Engineering",
+          "rate": 0.43,
+          "residency": "in_state",
+          "basis": "3-year average",
+          "robotics_relevant": true,
+          "preferred_for_robotics": true
+        },
+        {
+          "unit": "Direct to College — Engineering",
+          "rate": 0.37,
+          "residency": "oos",
+          "basis": "3-year average",
+          "robotics_relevant": true,
+          "preferred_for_robotics": true,
+          "note": "Guarantees access to an engineering major once admitted; covers Mechanical Engineering and the ME Mechatronics option."
+        }
+      ],
+      "unit_admit_note": "The most extreme split in the dataset. For a non-resident the SAME application yields roughly 2% for Direct-to-Major CS and about 37% for Direct-to-College Engineering: an 18x difference driven purely by the major named.",
+      "unit_admit_source": "https://www.cs.washington.edu/academics/undergraduate/admissions/direct-major/"
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -15396,7 +15629,10 @@
         "value": 4.06,
         "basis": "weighted",
         "cite": "VT-S7"
-      }
+      },
+      "admission_unit": "first_year_eng",
+      "unit_admit_rates": [],
+      "unit_admit_note": "No first-year admission into an engineering major; no per-major rate published."
     },
     "source_log": {
       "VT-S1": "Virginia Tech Analytics and Institutional Effectiveness, Common Data Set page (JavaScript-rendered; all underlying file paths returned HTTP 404 on 2026-08-16, so no VT CDS could be retrieved) - https://aie.vt.edu/analytics-and-ai/common-data-set.html",
@@ -15866,7 +16102,10 @@
         "value": 3.9,
         "basis": "unspecified",
         "cite": null
-      }
+      },
+      "admission_unit": "university",
+      "unit_admit_rates": [],
+      "unit_admit_note": null
     },
     "source_log": {
       "WPI-S1": {
