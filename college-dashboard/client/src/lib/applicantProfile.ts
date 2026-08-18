@@ -105,6 +105,14 @@ export interface OddsThresholds {
   /** How far above/below the school average a GPA must sit to move a tier. */
   gpa_delta: number;             // 0.15
   use_gpa: boolean;              // let GPA move the tier at all
+  /**
+   * Which door the applicant intends at schools that admit by college or major.
+   * At UW the same application is ~2% via Direct-to-Major CS and ~37% via
+   * Direct-to-College Engineering for a non-resident, so this is not a cosmetic
+   * preference -- it changes the odds by an order of magnitude.
+   */
+  pathway: "engineering" | "computing";
+  use_unit_rates: boolean;       // use per-college rates instead of the university average
 }
 
 const DEFAULT_PROFILE: ApplicantProfile = {
@@ -124,6 +132,8 @@ const DEFAULT_THRESHOLDS: OddsThresholds = {
   gated_downgrade: true,
   gpa_delta: 0.15,
   use_gpa: true,
+  pathway: "engineering",
+  use_unit_rates: true,
 };
 
 const PROFILE_KEY = "college-compass-applicant-profile";
@@ -166,6 +176,8 @@ export type OddsTier = "LIKELY" | "TARGET" | "REACH" | "HIGH_REACH" | "NEEDS_DAT
 
 export interface OddsResult {
   tier: OddsTier;
+  /** The college/program whose rate was used, when the school admits by unit. */
+  unit_used?: UnitRate | null;
   /** Populated whenever the school publishes a GPA figure. */
   gpa?: GpaComparison;
   gpa_moved_tier?: boolean;
@@ -273,6 +285,55 @@ export function compareGpa(admissions: any, profile: ApplicantProfile): GpaCompa
     caveat: "The school does not state its weighting; compared against your unweighted GPA." };
 }
 
+export interface UnitRate {
+  unit: string;
+  rate: number;
+  residency: "all" | "in_state" | "oos";
+  basis?: string;
+  robotics_relevant?: boolean;
+  preferred_for_robotics?: boolean;
+  note?: string;
+}
+
+/**
+ * Pick the college/program rate that actually applies to this applicant.
+ *
+ * A university-wide rate describes nobody at a school that admits by college.
+ * Residency is matched first, then the requested pathway: "engineering" takes the
+ * unit flagged preferred_for_robotics (the engineering door), "computing" takes
+ * the other robotics-relevant unit (the CS/SCS door).
+ */
+export function pickUnitRate(
+  admissions: any,
+  profile: ApplicantProfile,
+  pathway: "engineering" | "computing",
+): UnitRate | null {
+  const units: UnitRate[] = Array.isArray(admissions?.unit_admit_rates)
+    ? admissions.unit_admit_rates : [];
+  if (!units.length) return null;
+
+  const inHome = profile.home_state === "NC" && Boolean(admissions?.is_home_state_nc);
+  const wantRes = inHome ? "in_state" : "oos";
+  const relevant = units.filter(u => u.robotics_relevant);
+  if (!relevant.length) return null;
+
+  // Residency: exact match, else the "all" rows, else give up rather than
+  // silently comparing an in-state rate to an out-of-state applicant.
+  let pool = relevant.filter(u => u.residency === wantRes);
+  if (!pool.length) pool = relevant.filter(u => u.residency === "all");
+  if (!pool.length) return null;
+
+  // Never substitute one door's rate for the other. Georgia Tech publishes a
+  // computing figure and no engineering figure; falling back to "highest rate
+  // available" quietly reported the computing rate as the engineering door's
+  // odds. If the requested door has no published rate, return null and let the
+  // caller fall back to the university-wide figure.
+  if (pathway === "engineering") {
+    return pool.find(u => u.preferred_for_robotics === true) ?? null;
+  }
+  return pool.find(u => u.preferred_for_robotics !== true) ?? null;
+}
+
 export function classify(admissions: any, nc_note: string | undefined, profile: ApplicantProfile, t: OddsThresholds): OddsResult {
   const overall = coerceRate(admissions?.overall_admit_rate);
   if (overall === null) {
@@ -298,6 +359,19 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   } else if (!inHomeState && oosRate !== null) {
     rate = oosRate;
     ctx = `out-of-state (from ${profile.home_state})`;
+  }
+
+  // Per-college / per-program override. This is the point of the whole feature:
+  // at CMU the engineering door is ~19% and SCS is ~5.2%; at UW the same
+  // application is ~37% via Direct-to-College Engineering and ~2% via
+  // Direct-to-Major CS for a non-resident.
+  let unit: UnitRate | null = null;
+  if (t.use_unit_rates) {
+    unit = pickUnitRate(admissions, profile, t.pathway);
+    if (unit) {
+      rate = unit.rate;
+      ctx = `${unit.unit}${unit.residency !== "all" ? ` · ${unit.residency === "in_state" ? "in-state" : "out-of-state"}` : ""}`;
+    }
   }
 
   // Determine tier by admit rate
@@ -356,7 +430,13 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   // RPI and Florida for explicitly NOT having a major-level gate.
   let gated_downgrade_applied = false;
   const gate: string | undefined = admissions.cs_gate;
-  if (t.gated_downgrade && gate === "strong" && tier !== "HIGH_REACH") {
+  // Do NOT apply the gate penalty on top of a per-college rate. The cs_gate flag
+  // is a PROXY for "the computing door is much harder than the university
+  // average" -- which is exactly what a unit rate measures directly. Applying
+  // both double-counted the same obstacle: CMU came out as High reach on the
+  // engineering door's 19% rate, and Purdue as Target on 46.1%.
+  const gateAlreadyPricedIn = unit !== null;
+  if (t.gated_downgrade && !gateAlreadyPricedIn && gate === "strong" && tier !== "HIGH_REACH") {
     const order: OddsTier[] = ["LIKELY","TARGET","REACH","HIGH_REACH"];
     const idx = order.indexOf(tier);
     if (idx >= 0 && idx < order.length - 1) {
@@ -366,5 +446,17 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
     }
   }
 
-  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null, gpa, gpa_moved_tier };
+  // If the school admits by college but publishes nothing for the requested door,
+  // say so -- otherwise a university-wide fallback reads as a real per-door number
+  // and the two doors look comparable when they are not.
+  if (t.use_unit_rates && !unit && admissions?.admission_unit
+      && admissions.admission_unit !== "university") {
+    reason += ` Note: this school admits by ${String(admissions.admission_unit).replace(/_/g, " ")}, but publishes no admit rate for the ${t.pathway} door, so the university-wide figure is shown instead.`;
+  }
+
+  if (gateAlreadyPricedIn && gate === "strong") {
+    reason += " The CS-gate penalty is not applied here because this school's own per-college rate already reflects which door you are using.";
+  }
+
+  return { tier, reason, effective_admit_rate: rate, admit_rate_context: ctx, used_test_score, gated_downgrade_applied, cs_gate: gate ?? null, gpa, gpa_moved_tier, unit_used: unit };
 }
