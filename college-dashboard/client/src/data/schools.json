@@ -290,7 +290,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "Sixth-term declaration with no GPA or course prerequisite."
+      "cs_gate_basis": "Sixth-term declaration with no GPA or course prerequisite.",
+      "avg_gpa": {
+        "value": null,
+        "basis": "not_published",
+        "cite": null
+      }
     },
     "source_log": {
       "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) — https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
@@ -426,9 +431,6 @@
     "cost_total_instate": 93614,
     "cost_total_outofstate": 93614,
     "cost_for_nc_resident": 93614,
-    "cost_cite": "[CMU-S10]",
-    "cost_asof": "2025-26",
-    "cost_note": "VERIFIED as full cost of attendance. Tuition is $67,020 and room and board $18,894 (~$85,914 direct-billed, which CMU summarises as approaching $87,000 with fees). The stored figure adds CMU's published allowances for books, personal expenses and travel.",
     "housing_guarantee": "Four-year guarantee for students continuously in university housing; first-years required on campus; 65% stay on campus all four years [CMU-S38][CMU-S39]",
     "greek_participation": "19% of the student body, 1,100+ members [CMU-S36]",
     "sports_influence": "Minor / prominent but optional (INFERRED, weakly evidenced)",
@@ -690,7 +692,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "SCS admitted 350 of 6,756 (~5.2%) vs ~19% for CMU's other colleges; internal transfer to SCS needs ~3.6 QPA plus space."
+      "cs_gate_basis": "SCS admitted 350 of 6,756 (~5.2%) vs ~19% for CMU's other colleges; internal transfer to SCS needs ~3.6 QPA plus space.",
+      "avg_gpa": {
+        "value": 3.89,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "CMU-S1": {
@@ -737,11 +744,6 @@
         "url": "https://www.cmu.edu/leadership/the-provost/campus-comms/2024/2024-08-29.html",
         "title": "Provost campus communication on standardized testing policy (Aug 29, 2024)",
         "fetched": "2026-08-16"
-      },
-      "CMU-S10": {
-        "url": "http://coursecatalog.web.cmu.edu/aboutcmu/costofattendance/",
-        "title": "2025-2026 Cost of Attendance — Carnegie Mellon University course catalog",
-        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
@@ -1285,7 +1287,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "CS affiliation requires a supplemental application plus GPA minimums in CS 2110/2800 and math."
+      "cs_gate_basis": "CS affiliation requires a supplemental application plus GPA minimums in CS 2110/2800 and math.",
+      "avg_gpa": {
+        "value": null,
+        "basis": "not_published",
+        "cite": null
+      }
     },
     "source_log": {
       "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) — https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
@@ -1799,7 +1806,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": true,
       "cs_gate": "none",
-      "cs_gate_basis": "Trinity declaration in sophomore year with no GPA threshold and no capped majors."
+      "cs_gate_basis": "Trinity declaration in sophomore year with no GPA threshold and no capped majors.",
+      "avg_gpa": {
+        "value": null,
+        "basis": "not_published",
+        "cite": null
+      }
     },
     "source_log": {
       "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) — https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
@@ -2300,7 +2312,12 @@
       "oos_admit_rate": 0.233,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "\"UF does not admit by major\" at entry, but CS Critical Tracking (2.5 GPA / 6 courses) and ME (2.8 / 8 courses) gate progression post-matriculation."
+      "cs_gate_basis": "\"UF does not admit by major\" at entry, but CS Critical Tracking (2.5 GPA / 6 courses) and ME (2.8 / 8 courses) gate progression post-matriculation.",
+      "avg_gpa": {
+        "value": 3.92,
+        "basis": "unspecified",
+        "cite": "UF-S1"
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -2460,9 +2477,6 @@
     "institution_type": "Public technological research university (R1; $1.43B FY2025 research expenditures [GT-S38])",
     "is_public": true,
     "undergrad_enrollment": 20000,
-    "undergrad_enrollment_cite": "[GT-S14]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "VERIFIED (approximate). Georgia Tech reports 5,415 new undergraduates in 2025 bringing 'Tech's total undergraduate population to over 20,000'. The stored 20,000 is a rounded figure consistent with that statement; Georgia Tech's Fact Book (irp.gatech.edu) carries the exact census count.",
     "size_bucket": "large",
     "degree_name": "BS in Computer Science, Artificial Intelligence Thread + one additional Thread [GT-S1][GT-S2][GT-S3]",
     "degree_type": "CS degree with an AI concentration (Thread); no BS in AI exists [GT-S7]",
@@ -2735,7 +2749,12 @@
       "oos_admit_rate": 0.101,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "College of Computing admits separately from Engineering and CS is closed to change-of-major for Summer-2024+ matriculants."
+      "cs_gate_basis": "College of Computing admits separately from Engineering and CS is closed to change-of-major for Summer-2024+ matriculants.",
+      "avg_gpa": {
+        "value": 4.17,
+        "basis": "weighted",
+        "cite": "GT-S1"
+      }
     },
     "source_log": {
       "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
@@ -2750,8 +2769,7 @@
       "GT-S10": "Georgia Tech 2025 First-Year Admitted Profile, full (PDF) - https://admission.gatech.edu/images/pdf/2025/FY-admitted-profile-full-2025.pdf",
       "GT-S11": "Georgia Tech Enrollment Management news, Final Decision Release Completes Fall 2025 First-Year Class - https://news.em.gatech.edu/2025/03/31/final-decision-release-fall-2025-first-year/",
       "GT-S12": "Georgia Tech Research, Robotics / Institute for Robotics and Intelligent Machines - https://research.gatech.edu/robotics",
-      "GT-S13": "FIRST scholarship portal (Pearson Futures), Georgia Institute of Technology - FIRST - https://futures.pearson.com/scholarships/df4dc455-3dd6-416a-97f6-707518e4e321",
-      "GT-S14": "Over 5,400 Undergraduates Join Georgia Tech — Georgia Tech Enrollment Management (Fall 2025) - https://news.em.gatech.edu/2025/08/18/over-5400-undergraduates-join-georgia-tech/"
+      "GT-S13": "FIRST scholarship portal (Pearson Futures), Georgia Institute of Technology - FIRST - https://futures.pearson.com/scholarships/df4dc455-3dd6-416a-97f6-707518e4e321"
     },
     "robotics_curriculum_detail": {
       "score_basis": "No undergraduate robotics degree; instead a formal 15-credit Minor in Robotics open to all majors, with a required core course chosen from CS 3630 / ECE 4560 / ME 4451 / BMED 4739 and a large approved elective list organized into Autonomy, Controls, Mechanics and Perception buckets [GT-R1][GT-R2]. Course breadth exceeds 8 undergrad courses, but no robotics-specific capstone requirement was verified (VIP research and 4699 undergraduate research substitute), so the score sits at '4'.",
@@ -3220,7 +3238,12 @@
       "oos_admit_rate": 0.616,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "Each major sets its own admission criteria; change of major needs department approval."
+      "cs_gate_basis": "Each major sets its own admission criteria; change of major needs department approval.",
+      "avg_gpa": {
+        "value": 4.2,
+        "basis": "weighted",
+        "cite": "IIT-S1"
+      }
     },
     "source_log": {
       "IIT-S1": "Illinois Institute of Technology Common Data Set 2023-2024 (PDF; latest published edition) - https://www.iit.edu/sites/default/files/2024-07/Full-2023-2024-Common-Data-Set.pdf",
@@ -3379,7 +3402,7 @@
     "notable_undergraduate_research_program": "PURA ($3,000 academic year) and Summer PURA ($6,000, 10 weeks; 113 funded in Summer 2025); CSMR REU (LCSR/NSF, US citizens/PRs)",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Combined (concurrent) BS/MSE in Computer Science; also combined BS/MSE in Robotics via LCSR and concurrent BS/MSSI",
-    "cost_total_instate": 94858,
+    "cost_total_instate": null,
     "cost_total_outofstate": 94858,
     "cost_for_nc_resident": 94858,
     "housing_guarantee": "Two-year residency requirement for first- and second-year students; 93% of first-years in college housing, 46% of all undergraduates",
@@ -4567,7 +4590,12 @@
       "oos_admit_rate": 0.456,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "CS is a Limited Enrollment Program; internal transfer competes for roughly 100 slots per year."
+      "cs_gate_basis": "CS is a Limited Enrollment Program; internal transfer competes for roughly 100 slots per year.",
+      "avg_gpa": {
+        "value": 4.41,
+        "basis": "weighted",
+        "cite": "UMD-S1"
+      }
     },
     "source_log": {
       "UMD-S1": "University of Maryland Common Data Set 2025-2026 (XLSX; URL verified HTTP 200 on 2026-08-16) - https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
@@ -5074,7 +5102,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "\"students who are admitted... in Fall 2023 or later must first be selected for the Computer Science major\" (capacity constraints)."
+      "cs_gate_basis": "\"students who are admitted... in Fall 2023 or later must first be selected for the Computer Science major\" (capacity constraints).",
+      "avg_gpa": {
+        "value": 3.9,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "UMICH-S1": {
@@ -5357,10 +5390,7 @@
     "region": "Great Lakes",
     "institution_type": "Public research university (M1) — commuter-oriented",
     "is_public": true,
-    "undergrad_enrollment": 6199,
-    "undergrad_enrollment_cite": "[UMDBN-S1]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "CORRECTED from a rounded 7,300. Fall 2025: 6,199 undergraduates out of 8,005 total headcount (a ~1% decline from Fall 2024).",
+    "undergrad_enrollment": 7300,
     "size_bucket": "medium",
     "degree_name": "BSE in Robotics Engineering (dedicated 125-cr ABET-accredited degree, ECE-housed)",
     "degree_type": "Dedicated BS Robotics — one of only ~6 in the US",
@@ -5676,15 +5706,14 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "Direct admit into the chosen CECS major; 3.0 HS GPA is a university-wide guarantee."
-    },
-    "source_log": {
-      "UMDBN-S1": {
-        "url": "https://umdearborn.edu/news/look-fall-2025-enrollment",
-        "title": "A look into Fall 2025 enrollment — University of Michigan-Dearborn",
-        "fetched": "2026-08-17"
+      "cs_gate_basis": "Direct admit into the chosen CECS major; 3.0 HS GPA is a university-wide guarantee.",
+      "avg_gpa": {
+        "value": 3.64,
+        "basis": "unspecified",
+        "cite": "DBN-S1"
       }
     },
+    "source_log": {},
     "robotics_curriculum_detail": {
       "score_basis": "Dedicated ABET-accredited BSE in Robotics Engineering (125 credits), one of the earliest such undergraduate degrees in the US, with a two-semester robotics capstone (ECE 4987/4988 Robotics Engineering Design I and II) [UMD-R1][UMD-R2]. Robotics course sequence spans manipulation (ECE 3641 Robotic Manipulation), mobility (ECE 4641 Mobile Robots), perception (ECE 4881 Introduction to Robot Vision), industrial robotics (IMSE 381, IMSE 489 Robotics Systems Simulation), mechatronics (ME 472) and vehicle/energy systems (ECE 237) [UMD-R1][UMD-R10]. A separate 9-credit Mechatronics and Robotics undergraduate certificate is open to other majors [UMD-R7][UMD-R8], and a 4+1 BSE/MSE Robotics Engineering path exists [UMD-R9].",
       "undergrad_courses": [
@@ -5854,9 +5883,6 @@
     "institution_type": "Private, nonprofit research university (SB-only undergraduate degrees) [MIT-S16]",
     "is_public": false,
     "undergrad_enrollment": 4561,
-    "undergrad_enrollment_cite": "[MIT-S12]",
-    "undergrad_enrollment_asof": "Fall 2024/2025",
-    "undergrad_enrollment_note": "VERIFIED. MIT Registrar reported 4,535 undergraduates as of October 2024; the stored 4,561 is consistent with that at a one-year offset.",
     "size_bucket": "small",
     "degree_name": "Bachelor of Science in Artificial Intelligence and Decision Making (Course 6-4) [MIT-S1]",
     "degree_type": "Dedicated AI bachelor's degree",
@@ -6207,8 +6233,7 @@
       "MIT-S8": "MIT CSAIL Alliances, CSAIL by the Numbers — https://cap.csail.mit.edu/engage/why-csail-alliances/csail-numbers",
       "MIT-S9": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
       "MIT-S10": "MIT Department of Mechanical Engineering, '2.007 Forever!' — https://meche.mit.edu/news-media/2007-forever",
-      "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) — https://web.mit.edu/webcast/2.007/",
-      "MIT-S12": "Enrollment statistics by year — MIT Registrar - https://registrar.mit.edu/stats-reports/enrollment-statistics-year/all"
+      "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) — https://web.mit.edu/webcast/2.007/"
     },
     "robotics_curriculum_detail": {
       "score_basis": "No dedicated undergraduate robotics degree or robotics minor was found; robotics is delivered through 5 documented undergraduate subjects across Course 2 and Course 6 - 2.12, 2.74, 2.017[J], 6.4200[J] and 6.4210 - which together cover mechanics/design, control, perception and planning, and 6.4200[J] Robotics: Science and Systems is a CI-M team design subject. That matches the '4' tier (5-7 undergrad courses incl. controls and perception/planning) rather than the dedicated-degree or 8+-course '5' tier.",
@@ -6348,11 +6373,8 @@
     "region": "Southeast",
     "institution_type": "Public land-grant R1 university",
     "is_public": true,
-    "undergrad_enrollment": 29340,
-    "undergrad_enrollment_cite": "[NCSU-S12]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "CORRECTED from 12,500. Fall 2025: 29,340 degree-seeking undergraduates; 30,504 undergraduate degree/non-degree/certificate students out of 40,503 total headcount. The previous 12,500 was roughly the size of NC State's College of Engineering, not the undergraduate student body.",
-    "size_bucket": "large",
+    "undergrad_enrollment": 12500,
+    "size_bucket": "medium",
     "degree_name": "B.S. in Computer Science, Artificial Intelligence Concentration",
     "degree_type": "Transcript-recognized concentration within an ABET-accredited B.S. (21 AI credit hours; 121 total)",
     "program_archetype": "B (deep CS + AI); partially E (large AI ecosystem via the university-wide Data Science and AI Academy)",
@@ -6372,9 +6394,6 @@
     "cost_total_instate": 28490,
     "cost_total_outofstate": 54779,
     "cost_for_nc_resident": 28490,
-    "cost_cite": "[NCSU-S13]",
-    "cost_asof": "2025-26",
-    "cost_note": "VERIFIED as full cost of attendance, not tuition alone. NC State's published 2024-25 budget was $27,237 in-state and $51,285 out-of-state living on campus; the stored 2025-26 figures sit a normal year's increase above that. Tuition and fees alone are $8,704 in-state and $33,964 out-of-state, so the stored numbers include the ~$17,562 living allowance.",
     "housing_guarantee": "UNVERIFIED (housing site did not state a first-year guarantee)",
     "greek_participation": "CONFLICTING official figures — \"more than 15%\" (FSL Snapshot, updated Summer 2026), \"more than 12%\" (FSL FAQ), 12.03% (Spring 2023 official grade report); 52 chapters, 3,800+ members, Greek Village houses 767",
     "sports_influence": "UNVERIFIED (ACC member; no evidence gathered on social dominance)",
@@ -6666,7 +6685,12 @@
       "oos_admit_rate": 0.357,
       "is_home_state_nc": true,
       "cs_gate": "strong",
-      "cs_gate_basis": "All engineering first-years enter Engineering First-Year and compete through ranked CODA against per-department seat caps."
+      "cs_gate_basis": "All engineering first-years enter Engineering First-Year and compete through ranked CODA against per-department seat caps.",
+      "avg_gpa": {
+        "value": 3.83,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "NCSU-S1": {
@@ -6723,16 +6747,6 @@
         "url": "https://engr.ncsu.edu/",
         "title": "NC State College of Engineering home page (robotics framing)",
         "fetched": "2026-08-16"
-      },
-      "NCSU-S12": {
-        "url": "https://provost.ncsu.edu/news/2025/11/october-metrics-update-shows-gains-in-student-success-measures/",
-        "title": "October Metrics Update Shows Gains in Student Success Measures — NC State Office of the Provost (Fall 2025 enrollment census)",
-        "fetched": "2026-08-17"
-      },
-      "NCSU-S13": {
-        "url": "https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/",
-        "title": "Undergraduate Student Estimated Cost of Attendance — NC State Student Services Center",
-        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
@@ -6915,7 +6929,7 @@
     "notable_undergraduate_research_program": "PEAK Awards ($750-$6,000, three cycles/year) + Khoury paid research co-op [NEU-S9] [NEU-S8]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "PlusOne (up to 16 credits double-counted; MS in Artificial Intelligence available) [NEU-S10]",
-    "cost_total_instate": 94137,
+    "cost_total_instate": null,
     "cost_total_outofstate": 94137,
     "cost_for_nc_resident": 94137,
     "housing_guarantee": "Required for first two years; no guarantee beyond confirmed [NEU-S23] [NEU-S24]",
@@ -7651,7 +7665,12 @@
       "oos_admit_rate": 0.464,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "CS is a Limited Space Program with capacity-competitive transition from pre-major."
+      "cs_gate_basis": "CS is a Limited Space Program with capacity-competitive transition from pre-major.",
+      "avg_gpa": {
+        "value": null,
+        "basis": "not_published",
+        "cite": null
+      }
     },
     "source_log": {
       "OSU-S1": "The Ohio State University Common Data Set 2025-2026, Columbus campus (PDF; C7/C8 grids read from page images) - https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
@@ -7841,7 +7860,7 @@
     "fourplusone_available": "No (for Olin students)",
     "fourplusone_name": "NOT APPLICABLE — the only 4+1 is for Wellesley students spending a fifth year at Olin [OLIN-S6]",
     "cost_total_instate": 97088,
-    "cost_total_outofstate": 97088,
+    "cost_total_outofstate": null,
     "cost_for_nc_resident": 97088,
     "housing_guarantee": "Effectively absolute — all students required to live on campus all four years, exemptions by Dean of Students only [OLIN-S53][OLIN-S55]",
     "greek_participation": "None — 83% of students in a Niche poll report no Greek life [OLIN-S58]",
@@ -8110,7 +8129,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "No CS major exists; concentration chosen with a faculty advisor."
+      "cs_gate_basis": "No CS major exists; concentration chosen with a faculty advisor.",
+      "avg_gpa": {
+        "value": 3.9,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "OLIN-S1": {
@@ -8341,7 +8365,7 @@
     "notable_undergraduate_research_program": "PURM ($5,000, 1st/2nd-year students); SURE; Rachleff Scholars (rising sophomores, ≥3.4 GPA); Littlejohn",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Accelerated Master's (4+1) — \"submatriculation\" only for pre-Fall-2017 entrants",
-    "cost_total_instate": 99082,
+    "cost_total_instate": null,
     "cost_total_outofstate": 99082,
     "cost_for_nc_resident": 99082,
     "housing_guarantee": "Required and provided years 1–2 (two-year housing + dining requirement); ~950 spaces only for rising 3rd/4th-years, randomized",
@@ -9067,7 +9091,12 @@
       "oos_admit_rate": 0.533,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "Entrance-to-Major gate at University Park with a published 3.20 GPA control for CS."
+      "cs_gate_basis": "Entrance-to-Major gate at University Park with a published 3.20 GPA control for CS.",
+      "avg_gpa": {
+        "value": 3.67,
+        "basis": "unweighted",
+        "cite": "PSU-S1"
+      }
     },
     "source_log": {
       "PSU-S1": "Penn State University Park Common Data Set 2025-2026 (PDF) - https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf",
@@ -9763,7 +9792,7 @@
     "notable_undergraduate_research_program": "35th Annual Undergraduate Research Symposium, open to all undergraduates [RIT-S10]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "BS/MS with 9 graduate credits double-counted [RIT-S4]",
-    "cost_total_instate": 82868,
+    "cost_total_instate": null,
     "cost_total_outofstate": 82868,
     "cost_for_nc_resident": 82868,
     "housing_guarantee": "First-year housing required; 95% of first-years live on campus; multi-year guarantee unverified [RIT-S32] [RIT-S31]",
@@ -10026,7 +10055,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "mild",
-      "cs_gate_basis": "Reviews by program and cites \"higher acceptance rates, especially for competitive majors\" for ED, but publishes no separate CS gate."
+      "cs_gate_basis": "Reviews by program and cites \"higher acceptance rates, especially for competitive majors\" for ED, but publishes no separate CS gate.",
+      "avg_gpa": {
+        "value": 3.9,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "RIT-S1": {
@@ -10525,7 +10559,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "Change of curriculum is a registrar notification with no GPA or capacity condition."
+      "cs_gate_basis": "Change of curriculum is a registrar notification with no GPA or capacity condition.",
+      "avg_gpa": {
+        "value": 3.91,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "RHIT-S1": {
@@ -10765,7 +10804,7 @@
     "notable_undergraduate_research_program": "URP (minimum $14.20/hr, up to $500/semester institutional match) plus the Summer Undergraduate Research Award (up to $6,400 for 10 weeks) [RPI-S18] [RPI-S20]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Co-Terminal (accelerated master's) — 90 credits to apply, 3.0 GPA minimum, CS requires an MS-advisor research letter; double-counted credits UNK [RPI-S47] [RPI-S49]",
-    "cost_total_instate": 90076,
+    "cost_total_instate": null,
     "cost_total_outofstate": 90076,
     "cost_for_nc_resident": 90076,
     "housing_guarantee": "Required for first-year and second-year cohorts with a meal plan; Greek sophomores may waive via the FS Commons Housing Waiver; beyond year 2 unverified [RPI-S61] [RPI-S62]",
@@ -11030,7 +11069,12 @@
       "oos_admit_rate": 0.685,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "\"RPI admits to a school rather than to a capacity-controlled major.\""
+      "cs_gate_basis": "\"RPI admits to a school rather than to a capacity-controlled major.\"",
+      "avg_gpa": {
+        "value": 3.93,
+        "basis": "unspecified",
+        "cite": "RPI-S1"
+      }
     },
     "source_log": {
       "RPI-S1": "Rensselaer Polytechnic Institute Common Data Set 2025-2026 (hosted on RPI's Box account, linked as '2025 - 2026' from the Provost's Institutional Research and Assessment page) - https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
@@ -11651,9 +11695,6 @@
     "institution_type": "Public flagship land-grant research university (R1)",
     "is_public": true,
     "undergrad_enrollment": 59000,
-    "undergrad_enrollment_cite": "[TAMU-S1]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "VERIFIED (approximate). Fall 2025 preliminary reporting put College Station total enrollment above 74,000 with undergraduates up about 1.5% (+875), which brackets the stored 59,000; US News reports 60,710 undergraduates for Fall 2024. Left unchanged as within the reported range — the exact census figure should be read off the ABPA enrollment profile.",
     "size_bucket": "large",
     "degree_name": "BS Multidisciplinary Engineering Technology — Mechatronics (MXET) OR BS Mechanical Engineering (MEEN)",
     "degree_type": "Mechatronics/robotics via engineering technology + ME with robotics electives",
@@ -12016,13 +12057,7 @@
       "cs_gate": "strong",
       "cs_gate_basis": "All engineering admits enter General Engineering and compete through ETAM for capacity-limited major placement."
     },
-    "source_log": {
-      "TAMU-S1": {
-        "url": "https://abpa.tamu.edu/data-and-insights/enrollment/enrollment-profile.html",
-        "title": "Enrollment profile — Texas A&M Academic and Business Performance Analytics",
-        "fetched": "2026-08-17"
-      }
-    },
+    "source_log": {},
     "robotics_curriculum_detail": {
       "score_basis": "Texas A&M offers a dedicated mechatronics-track undergraduate degree — BS Multidisciplinary Engineering Technology (MXET), Mechatronics Track, 127 semester hours, ABET-accredited — whose catalog course descriptions document 8+ undergraduate robotics courses spanning design and mechanisms (MXET 250 Robotic Systems Design), embedded/mobile robotics (MXET 300 Mechatronics I - Mobile Robotic Systems, MXET 340 Advanced Embedded Systems for Mechatronics), kinematics and numerical methods for manipulators (MXET 345), dynamics/controls (MXET 375 Applied Dynamic Systems), industrial automation (MXET 360 Automation of Mechatronic Systems, MXET 400 Mechatronics II - Industrial Robotic Systems) and AI/perception (MXET 450 Artificial Intelligence for Mechatronics), plus a required team-based, industry-sponsored two-semester capstone design sequence. [TAMU-R1][TAMU-R2][TAMU-R3]",
       "undergrad_courses": [
@@ -12507,7 +12542,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "EECS is a separate application target; change-of-major requires 3.7 gateway GPA and is \"highly unlikely for impacted majors\"."
+      "cs_gate_basis": "EECS is a separate application target; change-of-major requires 3.7 gateway GPA and is \"highly unlikely for impacted majors\".",
+      "avg_gpa": {
+        "value": 3.9,
+        "basis": "unspecified",
+        "cite": "BERK-S1"
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -12689,12 +12729,9 @@
     "notable_undergraduate_research_program": "ISUR (paid, two-semester) and URSA for first/second-years, plus Clare Boothe Luce (8 scholars/year) [UI-S10][UI-S14][UI-S9]",
     "fourplusone_available": "Yes",
     "fourplusone_name": "Master of Computer Science (MCS) with guaranteed admission at CS 374 + CS 340/341/ECE 391 and 3.4 CS GPA [UI-S1]",
-    "cost_total_instate": 36489,
-    "cost_total_outofstate": 58318,
-    "cost_for_nc_resident": 58318,
-    "cost_cite": "[UIUC-S10]",
-    "cost_asof": "2025-26",
-    "cost_note": "CORRECTED. The previous 18,372 / 41,444 were tuition and fees only, not cost of attendance, which made UIUC look like by far the cheapest school on the list — it was being compared against other schools' full budgets. UIUC publishes a 2025-26 cost of attendance of $36,489 in-state and $58,318 non-resident (tuition and fees plus roughly $17,022 of living costs). Engineering and CS carry differential tuition, so an engineering student should expect a few hundred dollars above the general rate.",
+    "cost_total_instate": 18372,
+    "cost_total_outofstate": 41444,
+    "cost_for_nc_resident": 41444,
     "housing_guarantee": "NOT PUBLISHED on fetched pages",
     "greek_participation": "23.5% per institutional and independent counts (7,796 students, 96 chapters); current students dispute as lower — CONFLICTING [UI-S21][UI-S22][UI-S23]",
     "sports_influence": "UNVERIFIED",
@@ -12976,7 +13013,12 @@
       "oos_admit_rate": 0.29,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "Grainger CS admitted 7.4% vs 21.2% college-wide; CS is closed to on-campus major change."
+      "cs_gate_basis": "Grainger CS admitted 7.4% vs 21.2% college-wide; CS is closed to on-campus major change.",
+      "avg_gpa": {
+        "value": null,
+        "basis": "not_published",
+        "cite": null
+      }
     },
     "source_log": {
       "UIUC-S1": "University of Illinois Urbana-Champaign Common Data Set 2025-2026 (XLSX) - https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
@@ -12987,8 +13029,7 @@
       "UIUC-S6": "UIUC Undergraduate Admissions, First-Year Requirements - https://www.admissions.illinois.edu/first-year-requirements/",
       "UIUC-S7": "Grainger College of Engineering, Changing Majors - https://grainger.illinois.edu/academics/undergraduate/changing-majors",
       "UIUC-S8": "Coordinated Science Laboratory (CSL), University of Illinois - https://csl.illinois.edu/",
-      "UIUC-S9": "FIRST Scholarship Program portal index (searched for a UIUC provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
-      "UIUC-S10": "Tuition and Cost of Attendance — University of Illinois Urbana-Champaign (2025-26) - https://cost.illinois.edu/"
+      "UIUC-S9": "FIRST Scholarship Program portal index (searched for a UIUC provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships"
     },
     "robotics_curriculum_detail": {
       "score_basis": "Three distinct undergraduate robotics courses verified on fetched Illinois course pages: ECE 470 / AE 482 / ME 445 Introduction to Robotics (stated as a technical elective for computer engineering and electrical engineering majors), ME 446 / ECE 489 / SE 422 Robot Dynamics and Control, and ECE 484 Principles of Safe Autonomy (4 undergraduate hours; hands-on labs on the Polaris GEM autonomous vehicle platform). The Center for Autonomy education page claims 'a variety of undergraduate and graduate robotics courses' across ECE, ME, AE, ABE, ISE and CS but names none, and no robotics minor, certificate or undergraduate robotics degree was found. [UIUC-R1][UIUC-R2][UIUC-R3][UIUC-R4]",
@@ -13418,7 +13459,12 @@
       "oos_admit_rate": 0.096,
       "is_home_state_nc": true,
       "cs_gate": "strong",
-      "cs_gate_basis": "CS requires admission to the major via a spring application after COMP 210."
+      "cs_gate_basis": "CS requires admission to the major via a spring application after COMP 210.",
+      "avg_gpa": {
+        "value": 4.47,
+        "basis": "weighted",
+        "cite": null
+      }
     },
     "source_log": {
       "UNC-S1": {
@@ -13619,10 +13665,7 @@
     "region": "Southwest",
     "institution_type": "Public flagship research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 44314,
-    "undergrad_enrollment_cite": "[UTA-S1]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "CORRECTED from a rounded 42,400. Fall 2025: 44,314 undergraduates, up 2.7% from 43,165 in Fall 2024; 55,000 total enrollment.",
+    "undergrad_enrollment": 42400,
     "size_bucket": "large",
     "degree_name": "BS in Computer Science (Turing Scholars honors option) + Undergraduate Robotics Program",
     "degree_type": "CS degree with robotics honors track",
@@ -13968,13 +14011,7 @@
       "cs_gate": "strong",
       "cs_gate_basis": "CS is a separately-admitted CNS major; internal transfer requires 3.0 GPA and competes on space, max two attempts."
     },
-    "source_log": {
-      "UTA-S1": {
-        "url": "https://news.utexas.edu/2025/09/18/ut-sets-all-time-highs-for-enrollment-and-student-performance/",
-        "title": "UT Sets All-Time Highs for Enrollment and Student Performance — UT Austin News (Fall 2025)",
-        "fetched": "2026-08-17"
-      }
-    },
+    "source_log": {},
     "robotics_curriculum_detail": {
       "score_basis": "No robotics BS was found - the brief's 'new Robotics BS' anchor could not be verified. What exists is a Robotics Honors Program (launched Fall 2025, believed to be the first US robotics program students apply to at freshman admission) that guarantees a place in the Robotics minor and an FRI robotics stream [UT-R2][UT-R3][UT-R13], plus a 15-credit Minor in Robotics built on RBT 350 Gateway to Robotics and four courses across five content areas [UT-R4][UT-R5]. Most approved minor electives are graduate-numbered, so documented undergraduate-specific robotics courses are fewer than the '5' tier requires; the honors program plus minor plus FRI streams place this at '4'.",
       "undergrad_courses": [
@@ -14922,7 +14959,12 @@
       "oos_admit_rate": 0.39,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "Direct-to-Major CS admits 2% of non-Washington applicants; \"unlikely that you'll be admitted to computer science\" if not direct-admitted."
+      "cs_gate_basis": "Direct-to-Major CS admits 2% of non-Washington applicants; \"unlikely that you'll be admitted to computer science\" if not direct-admitted.",
+      "avg_gpa": {
+        "value": 3.84,
+        "basis": "unspecified",
+        "cite": "UW-S1"
+      }
     },
     "source_log": {},
     "robotics_curriculum_detail": {
@@ -15079,10 +15121,7 @@
     "region": "Southeast",
     "institution_type": "Public land-grant research university (R1)",
     "is_public": true,
-    "undergrad_enrollment": 31536,
-    "undergrad_enrollment_cite": "[VT-S16]",
-    "undergrad_enrollment_asof": "Fall 2025",
-    "undergrad_enrollment_note": "CORRECTED from a rounded 30,000. Fall 2025 census: 31,536 undergraduates, from an incoming class of 8,264 (7,088 first-time, 1,176 transfer).",
+    "undergrad_enrollment": 30000,
     "size_bucket": "large",
     "degree_name": "Bachelor of Science in Computer Science",
     "degree_type": "B.S. in CS with no AI concentration; AI assembled from electives",
@@ -15351,7 +15390,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "strong",
-      "cs_gate_basis": "First-years enter General Engineering; major placement is an internal gated step."
+      "cs_gate_basis": "First-years enter General Engineering; major placement is an internal gated step.",
+      "avg_gpa": {
+        "value": 4.06,
+        "basis": "weighted",
+        "cite": "VT-S7"
+      }
     },
     "source_log": {
       "VT-S1": "Virginia Tech Analytics and Institutional Effectiveness, Common Data Set page (JavaScript-rendered; all underlying file paths returned HTTP 404 on 2026-08-16, so no VT CDS could be retrieved) - https://aie.vt.edu/analytics-and-ai/common-data-set.html",
@@ -15368,8 +15412,7 @@
       "VT-S12": "Autonomy and Robotics at Virginia Tech - https://autonomyandrobotics.centers.vt.edu/index.html",
       "VT-S13": "Virginia Tech Transportation Institute, About - https://www.vtti.vt.edu/about/index.html",
       "VT-S14": "Virginia Tech College of Engineering, Change of Major FAQs (three cycles per year, concentration changes effective January 2026) - https://eng.vt.edu/undergraduate/resources-support/change-of-major/faqs.html",
-      "VT-S15": "FIRST Scholarship Program portal index (searched for a Virginia Tech provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships",
-      "VT-S16": "Strong retention rate highlights fall enrollment census — Virginia Tech News (Fall 2025) - https://news.vt.edu/articles/2025/10/cm-fallcensus.html"
+      "VT-S15": "FIRST Scholarship Program portal index (searched for a Virginia Tech provider listing; none found) - https://www.firstinspires.org/resources/library/scholarships"
     },
     "robotics_curriculum_detail": {
       "score_basis": "Virginia Tech's Robotics and Mechatronics (RMBT) degree option within Mechanical Engineering carries 10+ dedicated ME robotics courses plus a year-long ME 4015/4016 senior design capstone — clear rubric-5 territory. MAJOR CAVEAT: the program is being discontinued. The COE change-of-major FAQ states verbatim: 'Students can no longer declare Robotics and Mechatronics within Mechanical Engineering as of January 2026,' and students unable to graduate by May 2027 are moved to the plain Mechanical Engineering major. [VT-R1][VT-R2][VT-R3][VT-R4]",
@@ -15568,11 +15611,8 @@
     "fourplusone_available": "Yes",
     "fourplusone_name": "WPI BS/MS program; BS/MS in Artificial Intelligence [WPI-S38][WPI-S6]",
     "cost_total_instate": 87000,
-    "cost_total_outofstate": 87000,
+    "cost_total_outofstate": null,
     "cost_for_nc_resident": 87000,
-    "cost_cite": "[WPI-S15]",
-    "cost_asof": "2025-26",
-    "cost_note": "VERIFIED with a caveat on scope. WPI's direct-billed 2025-26 total is $83,146 (tuition and fees $63,046 + room and board $18,900 + books $1,200). The stored 87,000 is a rounded all-in figure that additionally covers the required health insurance ($2,681) plus personal and travel allowances. Treat it as an all-in budget rather than a bill.",
     "housing_guarantee": "Required and guaranteed for first AND second years (Class of 2030 onward); not guaranteed for juniors/seniors [WPI-S51][WPI-S52]",
     "greek_participation": "26% of men, 25% of women (CDS 2024-25); CONFLICTING third-party figure of 45% of women [WPI-S21][WPI-S37]",
     "sports_influence": "Minor (NCAA Division III) [WPI-S35]",
@@ -15820,7 +15860,12 @@
       "oos_admit_rate": null,
       "is_home_state_nc": false,
       "cs_gate": "none",
-      "cs_gate_basis": "\"WPI admits to the university, not to a capped major... there is no separate, more selective admission gate for Robotics Engineering.\""
+      "cs_gate_basis": "\"WPI admits to the university, not to a capped major... there is no separate, more selective admission gate for Robotics Engineering.\"",
+      "avg_gpa": {
+        "value": 3.9,
+        "basis": "unspecified",
+        "cite": null
+      }
     },
     "source_log": {
       "WPI-S1": {
@@ -15892,11 +15937,6 @@
         "url": "https://www.wpi.edu/sites/default/files/2024-11/cap-test-blind-nov-13-2024.pptx.pdf",
         "title": "WPI Committee on Academic Policy motion on test-blind policy (Nov 13, 2024)",
         "fetched": "2026-08-16"
-      },
-      "WPI-S15": {
-        "url": "https://www.wpi.edu/admissions/tuition-aid/cost-attendance",
-        "title": "Cost of Attendance — Worcester Polytechnic Institute",
-        "fetched": "2026-08-17"
       }
     },
     "robotics_curriculum_detail": {
