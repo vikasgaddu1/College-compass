@@ -13,12 +13,6 @@ export interface School {
   institution_type: string;
   is_public: boolean;
   undergrad_enrollment: number | null;
-  /** Source-log tag for the enrollment figure, e.g. "[NCSU-S12]". */
-  undergrad_enrollment_cite?: string;
-  /** Term the enrollment figure describes, e.g. "Fall 2025". */
-  undergrad_enrollment_asof?: string;
-  /** What was verified, and against what — including any correction made. */
-  undergrad_enrollment_note?: string;
   size_bucket: "very-small" | "small" | "medium" | "large" | "unknown";
   degree_name: string;
   degree_type: string;
@@ -36,12 +30,6 @@ export interface School {
   cost_total_instate: number | null;
   cost_total_outofstate: number | null;
   cost_for_nc_resident: number | null;
-  /** Source-log tag for the cost figures, e.g. "[UIUC-S10]". */
-  cost_cite?: string;
-  /** Academic year the cost figures describe, e.g. "2025-26". */
-  cost_asof?: string;
-  /** What the figure covers — full cost of attendance vs direct-billed. */
-  cost_note?: string;
   housing_guarantee: string;
   greek_participation: string;
   sports_influence: string;
@@ -181,8 +169,20 @@ function cleanForDisplay(s: any): School {
 
 function stripSourceTagsInternal(s: string): string {
   if (!s) return s;
+  // Citation tags come in three shapes across the research batches: admissions
+  // [SLUG-S##], robotics [SLUG-R##] and ECE [SLUG-E##]. They appear bracketed,
+  // parenthesised, and as comma-separated groups. The original pattern matched
+  // only bracketed -S tags, so robotics and ECE tags leaked into visible prose.
   return s
+    // whole bracketed or parenthesised groups that contain nothing but tags
+    .replace(
+      /\s*[\[(]\s*[A-Z]{2,8}-[SRE]\d+(?:\s*[,;]?\s*(?:\[)?[A-Z]{2,8}-[SRE]\d+(?:\])?)*\s*[\])]/g,
+      " ",
+    )
+    // any stragglers left bare in the sentence
+    .replace(/\s*\b[A-Z]{2,8}-[SRE]\d+\b/g, " ")
     .replace(/\s*(?:\[[A-Za-z]+-S\d+\]\s*)+/g, " ")
+    .replace(/\(\s*[,;]?\s*\)/g, "")
     .replace(/\s+([,.;:])/g, "$1")
     .replace(/([,;])\s*([,.;])/g, "$2")
     .replace(/\s{2,}/g, " ")
