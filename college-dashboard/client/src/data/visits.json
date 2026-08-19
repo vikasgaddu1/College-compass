@@ -37,7 +37,7 @@
         "wpi"
       ],
       "travel": "Fly RDU→BOS ($140-$280 band). Worcester is about an hour west of Boston; use the MBTA in the city, rent a car for WPI.",
-      "why_first": "Best value on the whole plan: two schools for one missed school day, and the only two of the eight where a visit plausibly earns interest credit. WPI is also the only campus offering prospective students robotics lab access, and it holds a dedicated ABET-accredited BS in Robotics Engineering.",
+      "why_first": "Best value on the whole plan: two schools for one missed school day, and the only two of the seven where a visit plausibly earns interest credit. WPI is also the only campus offering prospective students robotics lab access, and it holds a dedicated ABET-accredited BS in Robotics Engineering.",
       "book": [
         "Northeastern information session + campus tour, Fri 2 Oct",
         "Northeastern College of Engineering or Khoury CS session if a 3:00 p.m. date lands that week",
@@ -76,29 +76,6 @@
     },
     {
       "id": 4,
-      "name": "Ithaca — Cornell",
-      "dates": "Wed 21 – Thu 22 Oct 2026",
-      "school_days": 2,
-      "schools": [
-        "cornell"
-      ],
-      "travel": "Fly RDU→ITH with a connection ($280-$500 band), or SYR/Elmira/Binghamton and drive. Driving is ~11 h each way.",
-      "why_first": "Lowest visit leverage of the six November schools: Cornell states plainly that it does not track demonstrated interest and that visiting is \"neither required nor expected\". It is also the hardest to reach. Go if there is time, and go after fall break so classes are actually in session.",
-      "book": [
-        "Student-led campus tour, 8:45-10:00 a.m. or 11:30 a.m.-12:45 p.m.",
-        "Undergraduate Admissions information session, 10:30-11:00 a.m.",
-        "Duffield engineering self-guided audio walking tour — no booking needed",
-        "Duffield engineering LIVE VIRTUAL session — 11 Sept, 25 Sept or 13 Oct, and worth doing from home regardless of whether you travel"
-      ],
-      "watch": [
-        "Fall break 10-13 October, classes resume 14 October — avoid",
-        "Homecoming 17 October will squeeze Ithaca lodging",
-        "Welcome Center closed 7 September and 25-29 November",
-        "There is NO in-person engineering admissions session — engineering is self-guided or virtual only, which lowers the value of the trip itself"
-      ]
-    },
-    {
-      "id": 5,
       "name": "Texas — UT Austin + Texas A&M",
       "dates": "Mon 9 – Wed 11 Nov 2026 (after the November wall)",
       "school_days": 3,
@@ -107,7 +84,7 @@
         "texas-am"
       ],
       "travel": "Fly RDU→AUS nonstop ($260-$450), drive Austin→College Station (~106 mi, 1 h 50 m), fly home from CLL via DFW or drive back to AUS.",
-      "why_first": "The scheduling gift in this plan. Both are 1 December with no early plan, so they are the only two schools that can be visited AFTER the 1-2 November applications are submitted. Moving them to November frees three autumn weeks for the six schools that close first.",
+      "why_first": "The scheduling gift in this plan. Both are 1 December with no early plan, so they are the only two schools that can be visited AFTER the 1-2 November applications are submitted. Moving them to November frees three autumn weeks for the five schools that close first.",
       "book": [
         "UT Austin campus tour (weekdays, specific open dates)",
         "Cockrell School of Engineering undergraduate info session — the highest-value item on that campus, because UT admits directly to major",
@@ -127,11 +104,11 @@
   ],
   "dead_week": {
     "dates": "Mon 12 – Sun 18 Oct 2026",
-    "why": "Do not plan travel this week. Carnegie Mellon's fall break is 12-16 October with the Welcome Center also closed 17-18, Purdue's October Break is 12-13, Cornell's fall break is 10-13, and WPI has no classes at all from 10-18 October between A and B terms. Four of the eight campuses are either shut or empty."
+    "why": "Do not plan travel this week. Carnegie Mellon's fall break is 12-16 October with the Welcome Center also closed 17-18, Purdue's October Break is 12-13, and WPI has no classes at all from 10-18 October between A and B terms. Three of the seven remaining campuses are shut or empty, including the two you most need."
   },
   "submit_week": {
     "dates": "Mon 26 Oct – Sun 1 Nov 2026",
-    "why": "Reserve for finishing applications, not travel. Six of the eight are due 1-2 November, and a visit is only worth taking if there is still time to write what it taught you into the essays."
+    "why": "Reserve for finishing applications, not travel. Five of the seven are due 1-2 November, and a visit is only worth taking if there is still time to write what it taught you into the essays."
   },
   "schools": {
     "carnegie-mellon": {
@@ -229,6 +206,103 @@
         "pair_with": "Standalone trip - CMU (Pittsburgh) does not pair well with the Boston or Ithaca schools in this batch."
       },
       "cost_notes": "Campus tours and information sessions are free. Parking: CMU does not validate parking and rates are not stated on the visitor-information page; the Morewood Lot is free on Saturdays and Sundays. Group tours (10-100 people) are arranged separately. [CARNEGIE-MELLON-V03, CARNEGIE-MELLON-V02]",
+      "questions": {
+        "read_first": [
+          {
+            "q": "How do I do robotics and AI inside ECE?",
+            "a": "Already published. ECE's own course guide lists 18-461 Introduction to Machine Learning for Engineers, 18-395 Introduction to Computer Vision, 18-370 Fundamentals of Control and 18-475 Autonomous Control Systems, and every ECE course numbered 18-300 or higher counts toward the Coverage requirement. On top of that the Robotics Additional Major is open to students in all colleges at a 3.0 GPA, and the Robotics Minor and Machine Learning Minor are reserved for students OUTSIDE the School of Computer Science — so being in ECE is exactly what qualifies you.",
+            "url": "https://www.ece.cmu.edu/academics/bs-in-ece/academic-guide.html"
+          },
+          {
+            "q": "What are the core courses?",
+            "a": "Published in the same ECE academic guide. Worth knowing separately: ECE students need a cumulative, College of Engineering and ECE QPA of at least 2.0 to graduate.",
+            "url": "https://www.ece.cmu.edu/academics/bs-in-ece/academic-guide.html"
+          },
+          {
+            "q": "Can I take School of Computer Science courses if I'm in ECE?",
+            "a": "Yes in principle, but CMU's academic regulations say registration priority goes to students registering for courses in their primary major. So the real issue is whether you get a seat, which is a question for the ECE department, not admissions.",
+            "url": "http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateacademicregulations/"
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Two of your own pages seem to disagree and it changes my whole application. Your admissions site says engineering applicants \"apply to and are admitted directly to a department/major unless choosing undecided\", but the College of Engineering catalog says engineering students \"do not select a major until the end of the first year\". If I name Electrical and Computer Engineering on my application, am I committed to it, or do I still choose at the end of first year?",
+            "why": "This decides whether applying Early Decision naming ECE is a safe choice or a lock-in."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Is applying to engineering as \"undecided\" looked at differently from naming Electrical and Computer Engineering? I would rather name ECE, but not if it costs me the ability to switch.",
+            "why": "Your site says only undecided admits get to choose freely among engineering majors in spring."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Your catalog says I may apply to up to two colleges, but only in Regular Decision. If I apply Regular Decision, am I allowed to choose the College of Engineering and the School of Computer Science as my two — or do both choices have to sit inside one college?",
+            "why": "Whether that specific pairing is allowed is not published anywhere."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "If my first-choice college turns me down, does my second-choice college actually read my application, or has the decision already been made by then?",
+            "why": "Determines whether a second choice is real insurance or decoration."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "You publish a 20.6% Early Decision admit rate against 11.07% overall, but also say Early and Regular applicants are admitted at almost exactly the same rate. Is there an Early Decision rate for the College of Engineering specifically?",
+            "why": "Nothing is published by college, and this is the number that would justify applying ED."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "Your site says requests to change majors after first year \"are not guaranteed to be approved\". In practice, how often does someone admitted to ECE end up moving to another engineering department?",
+            "why": "Turns a policy sentence into an actual probability."
+          },
+          {
+            "who": "ECE department tour",
+            "priority": "high",
+            "q": "I want to take 18-461 Machine Learning for Engineers, 18-395 Computer Vision and 18-475 Autonomous Control Systems. Do ECE students reliably get seats in those, or do they fill up?",
+            "why": "Registration priority follows your primary major, so these are the courses that must be reachable."
+          },
+          {
+            "who": "ECE department tour",
+            "priority": "high",
+            "q": "The Robotics Additional Major says it is open to students in all colleges with a 3.0 GPA. Is there a limit on how many ECE students can actually do it, and does it add a semester?",
+            "why": "This is the main route into robotics from ECE, so its real capacity matters."
+          },
+          {
+            "who": "ECE department tour",
+            "priority": "medium",
+            "q": "The Machine Learning Minor is only open to students outside the School of Computer Science, so I would qualify from ECE. Can an ECE student realistically fit its prerequisites — 15-121 or 15-122, 15-151 or 21-127, and a probability course — alongside the ECE core?",
+            "why": "Being eligible is not the same as it fitting in a four-year schedule."
+          },
+          {
+            "who": "ECE department tour",
+            "priority": "medium",
+            "q": "ECE groups its courses into Hardware Systems, Software Systems and Signals and Systems. If robotics is what I care about, which of those am I effectively choosing?",
+            "why": "Tells you which ECE area to aim at before you arrive."
+          },
+          {
+            "who": "Mechanical Engineering / Tech Spark tour",
+            "priority": "medium",
+            "q": "Mechanical Engineering here publishes elective groups called Robotics and Automation and Autonomous Systems and Machine Learning. If I care about robots that move, is Mechanical a better home than ECE — and can I reach the same machine learning courses from there?",
+            "why": "Worth testing the alternative engineering door while you are on campus."
+          }
+        ],
+        "dont_ask": [
+          {
+            "q": "Does visiting or showing interest help my application?",
+            "because": "CMU's Common Data Set marks level of applicant's interest, alumni relation and interviews all as Not considered. The visit is for your information only."
+          },
+          {
+            "q": "Can I send a portfolio of my robotics work?",
+            "because": "CMU states plainly: \"Carnegie Mellon doesn't accept supplemental submissions, such as resumes, artwork, portfolios, recording or websites.\""
+          }
+        ]
+      },
       "sources": [
         {
           "id": "CARNEGIE-MELLON-V01",
@@ -303,171 +377,15 @@
       ]
     },
     "cornell": {
-      "visited": false,
+      "visited": true,
       "deadline": {
         "date": "2026-11-01",
         "label": "ED 1 Nov"
       },
-      "interest": {
-        "level": "none",
-        "quote": "Cornell University does not track demonstrated interest. Visiting campus is neither required nor expected of applicants.",
-        "basis": "Cornell admissions."
-      },
-      "book_by": {
-        "when": "Book within 2 weeks",
-        "why": "\"Capacity is limited, so advance registration is required.\" No numeric lead time published."
-      },
-      "visit_home_url": "https://admissions.cornell.edu/visit",
-      "registration_url": "https://www.cornell.edu/visit/plan/",
-      "registration_required": true,
-      "booking_lead_time": "'Capacity is limited, so advance registration is required.' No numeric lead time is published for individual tours; special/group tours require three weeks advance notice and walk-ins are not accommodated. The booking wizard at cornell.edu/visit/plan/ is blocked to automated fetching (robots), so live Fall 2026 slot availability could not be confirmed. [CORNELL-V01, CORNELL-V02]",
-      "tours": [
-        {
-          "name": "Student-led campus tour",
-          "days_offered": "Aligned to Martin Y. Tang Welcome Center hours: Mon-Fri 8 a.m.-5 p.m., Sat 8 a.m.-3 p.m. Per-date Fall 2026 availability is only visible in the (robots-blocked) booking wizard.",
-          "times": "8:45-10:00 a.m. and 11:30 a.m.-12:45 p.m. (times shown on Cornell's visit-activities page; the fetched copy renders against a sample date, so confirm the specific Fall 2026 date in the booking wizard)",
-          "duration": "approx. 75 minutes",
-          "audience": "general",
-          "notes": "Departs the Tang Welcome Center at Noyes Lodge and ends at Ho Plaza. Held rain or shine. If the university closes, the Welcome Center closes and tours are cancelled.",
-          "cite": "CORNELL-V01, CORNELL-V02, CORNELL-V03"
-        },
-        {
-          "name": "Undergraduate Admissions Office information session",
-          "days_offered": "Same Welcome Center schedule; per-date Fall 2026 availability only in booking wizard",
-          "times": "10:30-11:00 a.m.",
-          "duration": "approx. 30-35 minutes",
-          "audience": "general",
-          "notes": "Does not include a walking tour, so it must be paired with a campus tour slot. It sits neatly between the two tour slots, so a morning arrival can cover tour + session.",
-          "cite": "CORNELL-V03"
-        },
-        {
-          "name": "Self-guided smartphone tour",
-          "days_offered": "Any day, no registration",
-          "times": "Any time",
-          "duration": "approx. 1 hour",
-          "audience": "general",
-          "notes": "Useful fallback for 10-13 October (fall break) or 7 September when staffed options are unavailable.",
-          "cite": "CORNELL-V01"
-        },
-        {
-          "name": "Duffield Engineering audio / self-guided walking tour of the Pew Engineering Quad",
-          "days_offered": "Any day, self-guided",
-          "times": "Any time",
-          "duration": "NOT PUBLISHED",
-          "audience": "engineering",
-          "notes": "This is the ONLY on-campus engineering-specific visit product Cornell publishes for prospective undergraduates. Narration includes the Systems Engineering Lab maker space used by student project teams.",
-          "cite": "CORNELL-V04, CORNELL-V12"
-        },
-        {
-          "name": "Duffield Engineering live virtual information sessions",
-          "days_offered": "Specific dates, virtual only",
-          "times": "NOT PUBLISHED (no times listed on the session page)",
-          "duration": "NOT PUBLISHED",
-          "audience": "engineering",
-          "notes": "Fall dates listed: 11 September 'Preparing for Your Cornell Engineering Application'; 25 September Selander Center leadership panel; 13 October 'Engineering Your Global Journey'. The page does not state the year, so confirm before booking. Recorded sessions (July 2026 engineering info session, August 2026 admissions Q&A) and a Student Project Teams session are also available on demand.",
-          "cite": "CORNELL-V05, CORNELL-V04"
-        }
-      ],
-      "engineering_specific": "No in-person engineering admissions session. The College of Engineering (now the Cornell David A. Duffield College of Engineering) offers only a self-guided audio walking tour of the Pew Engineering Quad plus live and recorded VIRTUAL information sessions - fall live dates 11 Sept, 25 Sept and 13 Oct. No in-person engineering session dates or times are published. [CORNELL-V04, CORNELL-V05]",
-      "robotics_lab_access": "No in-person robotics or maker lab visit is offered to prospective undergraduates. Access is virtual: the engineering virtual tour features the Robotic Personal Assistants Lab, and the audio tour narrates the Systems Engineering Lab maker space. Cornell's undergraduate campus tour route is not published as including engineering labs. [CORNELL-V13, CORNELL-V12]",
-      "class_visit_possible": "NOT PUBLISHED - no prospective-student class-visit program was found on Cornell's visit or admissions pages.",
-      "calendar": {
-        "term_start": "2026-08-24 (instruction begins)",
-        "fall_break": "Fall break begins 10 October 2026; instruction resumes 14 October 2026 (no classes 10-13 October)",
-        "thanksgiving_break": "Begins 25 November 2026; instruction resumes 30 November 2026",
-        "term_end": "2026-12-07 last day of instruction; study period 8-10 December; exams 11-19 December",
-        "blackouts": [
-          "7 September 2026 (Labor Day) - Tang Welcome Center building closed to the public; no classes",
-          "25-29 November 2026 - Tang Welcome Center building closed to the public (Thanksgiving)",
-          "21 December 2026 - 18 January 2027 - Tang Welcome Center building closed to the public",
-          "Saturdays in December and January - Welcome Center closed on Saturdays",
-          "10-13 October 2026 - fall break; Cornell does not list the Welcome Center as closed, but no classes are in session, so campus feel and any class-adjacent activity is degraded. Confirm tour availability in the booking wizard.",
-          "Any university closure - 'In the case of university closure, the Martin Y. Tang Welcome Center is closed, and tours are canceled.'"
-        ],
-        "cite": "CORNELL-V02, CORNELL-V08, CORNELL-V09"
-      },
-      "football": [
-        "26 September 2026 - vs Yale, 1:00 p.m., Schoellkopf Field",
-        "10 October 2026 - vs Harvard, 1:00 p.m. (falls on the first day of fall break)",
-        "17 October 2026 - vs Lehigh, 2:00 p.m., Homecoming 2026 (expect hotel scarcity in Ithaca)",
-        "7 November 2026 - vs Penn (Trustees' Cup)",
-        "14 November 2026 - vs Dartmouth (Senior Day)"
-      ],
-      "travel": {
-        "airport": "Ithaca Tompkins International Airport (ITH), served by Delta and United - connecting flights only. Alternatives named by Cornell: Syracuse Hancock (SYR, 60 miles northeast), Elmira Corning (45 minutes), Greater Binghamton (55 minutes).",
-        "airport_to_campus": "ITH is about a 10-minute drive from campus; SYR is 60 miles / roughly 60-75 minutes. [CORNELL-V11]",
-        "drive_from_cary": "UNVERIFIED ESTIMATE ~11 hours (per the planning brief). Cornell publishes directions from Philadelphia/NYC/Syracuse but no drive time from North Carolina. [CORNELL-V11]",
-        "suggested_stay": "2 nights - Ithaca is remote, ITH is connecting-flights-only, and the tour + info session sequence runs 8:45 a.m.-12:45 p.m., so arrive the evening before. Avoid Homecoming weekend (17 October) for lodging.",
-        "pair_with": "Standalone trip. Ithaca does not pair efficiently with Pittsburgh or Boston in a single weekday trip."
-      },
-      "cost_notes": "Campus tours and admissions information sessions are free. Special group tours carry fees and require three weeks notice (specialtours@cornell.edu). Campus visitor parking is metered/Parkmobile-based; the Tang Welcome Center is at 616 Thurston Ave. TCAT local bus fares start at $1.50 cash. [CORNELL-V01, CORNELL-V02, CORNELL-V11]",
-      "sources": [
-        {
-          "id": "CORNELL-V01",
-          "url": "https://admissions.cornell.edu/visit",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V02",
-          "url": "https://www.cornell.edu/visit/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V03",
-          "url": "https://www.cornell.edu/visit/plan/activities/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V04",
-          "url": "https://www.duffield.cornell.edu/tours-information-sessions/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V05",
-          "url": "https://visit.engineering.cornell.edu/engineering-information-session/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V06",
-          "url": "https://visit.engineering.cornell.edu/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V07",
-          "url": "https://admissions.cornell.edu/visit-and-connect",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V08",
-          "url": "https://registrar.cornell.edu/academic-calendar/2026-2027",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V09",
-          "url": "https://courses.cornell.edu/enrollment-credit-requirements/academic-calendar/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V10",
-          "url": "https://cornellbigred.com/sports/football/schedule/2026",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V11",
-          "url": "https://conferenceservices.cornell.edu/resources-faqs/guest-support/maps-and-directions",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V12",
-          "url": "https://www.duffield.cornell.edu/cornell-engineering-audio-walking-tours/",
-          "fetched": "2026-08-19"
-        },
-        {
-          "id": "CORNELL-V13",
-          "url": "https://visit.engineering.cornell.edu/virtual/",
-          "fetched": "2026-08-19"
-        }
-      ]
+      "visited_note": "Ithaca, New York — already seen, which removes the hardest trip on the list: 11 hours by road, connecting flights only, and a fall break sitting inside the visit window. Cornell also states it does not track demonstrated interest, so nothing is lost by not returning.",
+      "tours": [],
+      "sources": [],
+      "questions": null
     },
     "northeastern": {
       "visited": false,
@@ -571,6 +489,59 @@
         "pair_with": "wpi - Worcester is roughly an hour west of Boston (UNVERIFIED ESTIMATE; neither school publishes a campus-to-campus drive time). A workable pairing is a Boston-area trip covering Northeastern on one weekday and WPI the next, or WPI's Saturday 3 October open house plus a Northeastern weekday visit."
       },
       "cost_notes": "Information sessions and tours are free. Parking is validated in the West Village Garage (30 Leon St) with overflow at the Columbus Garage (795 Columbus Ave); Northeastern otherwise steers visitors to MBTA public transit. Visitor Center: visitorcenter@northeastern.edu, 617-373-4097. [NORTHEASTERN-V01, NORTHEASTERN-V02, NORTHEASTERN-V03]",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Do I apply to a specific major?",
+            "a": "Yes. You apply to a named major such as Electrical Engineering or Computer Engineering, or to an intercollege combined major that pairs two fields.",
+            "url": null
+          },
+          {
+            "q": "Can I sit in on a class while I visit?",
+            "a": "No — Northeastern does not offer class visits to prospective students.",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "I would be applying to Electrical or Computer Engineering. You also offer combined majors that pair engineering with computer science. Is a combined major a harder admit than plain engineering — and can I move into one after I arrive, or does it have to be on the application?",
+            "why": "The combined majors are Northeastern's distinctive route into software plus hardware."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Your Common Data Set lists level of applicant's interest as \"Considered\", but your admissions pages do not explain what that means. What actually counts — does today's visit get recorded, and do virtual sessions or emails count too?",
+            "why": "Northeastern is one of the few schools here where a visit may genuinely help, so it is worth knowing what registers."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "You offer Early Decision, a second Early Decision round and Early Action. If I apply Early Decision to engineering, does that change which majors I can be considered for?",
+            "why": "Northeastern has more application plans than any other school on the list."
+          },
+          {
+            "who": "Engineering or co-op session",
+            "priority": "high",
+            "q": "Co-op is the main reason I am looking at Northeastern. Are there co-ops in robotics or autonomy specifically, and which semester would my first one be — how long am I away from campus?",
+            "why": "Co-op is the differentiator; robotics-specific placements are the thing to verify."
+          },
+          {
+            "who": "Engineering or co-op session",
+            "priority": "high",
+            "q": "I could not find a named robotics track inside the Electrical or Computer Engineering degree. How much robotics coursework is actually available to me, and who teaches it?",
+            "why": "Unlike WPI, Northeastern has no dedicated robotics degree — so the depth needs checking."
+          },
+          {
+            "who": "Engineering or co-op session",
+            "priority": "medium",
+            "q": "Does doing co-ops mean I graduate in five years rather than four, and what does that do to the total cost?",
+            "why": "Changes the cost comparison against every other school on the list."
+          }
+        ],
+        "dont_ask": []
+      },
       "sources": [
         {
           "id": "NORTHEASTERN-V01",
@@ -774,6 +745,65 @@
         "pair_with": "northeastern - Worcester is roughly an hour west of Boston. UNVERIFIED ESTIMATE: neither WPI nor Northeastern publishes a campus-to-campus drive time, so the ~1 hour / ~45 mile figure is not sourced to either institution."
       },
       "cost_notes": "Information sessions, tours, Preview Days and Open Houses are free. Parking: 'All visitors must obtain a temporary parking pass when parking on campus' with visitor spaces in the Park Ave Garage, Boynton St Lot and West St Lot; the visit-confirmation page states 'Free visitor parking is available in all spaces in the Park Avenue parking garage' (GPS 151 Salisbury Street) and no permit is needed for weekend visits. Arrive 15-20 minutes early. Contact admissions@wpi.edu, 508-831-5286. [WPI-V10, WPI-V11]",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Do I apply directly to Robotics Engineering?",
+            "a": "No. There is one Common Application for all first-year students and you are prompted to declare your major near the end of B-Term in your first year. WPI's own robotics page says \"Undecided? No problem.\"",
+            "url": null
+          },
+          {
+            "q": "Does WPI care that I visited?",
+            "a": "Yes, and it is the only school on your list that says so in plain prose: \"As part of an undergraduate application, WPI does look at demonstrated interest.\"",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "You say WPI does look at demonstrated interest. Does attending today get recorded against my application, and is there anything else that counts that I should be doing between now and 1 November?",
+            "why": "This is the one campus where the answer can actually change an outcome."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Because I declare my major near the end of B-Term rather than on the application, is Robotics Engineering ever full by the time students declare — or is it genuinely open to anyone who wants it?",
+            "why": "No capacity gate is published, which is unusual for a flagship robotics programme."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "You have Early Decision, Early Decision 2, Early Action 1 and Early Action 2. Given I am applying to several schools due 1 November, which of these actually helps me and which just commits me early?",
+            "why": "WPI has the most complicated set of plans of any school on the list."
+          },
+          {
+            "who": "Robotics lab tour or faculty",
+            "priority": "high",
+            "q": "Robotics Engineering here is ABET-accredited as engineering, which most robotics degrees are not. Does that accreditation constrain the curriculum — how much room is left for artificial intelligence and machine learning courses?",
+            "why": "WPI's accreditation is a genuine advantage; the question is what it costs in flexibility."
+          },
+          {
+            "who": "Robotics lab tour or faculty",
+            "priority": "high",
+            "q": "Courses here run in seven-week A and B terms. For something like control theory or machine learning, is seven weeks enough depth, or do those subjects continue across two terms?",
+            "why": "The term structure is WPI's most distinctive academic feature and cuts both ways."
+          },
+          {
+            "who": "Robotics lab tour or faculty",
+            "priority": "medium",
+            "q": "The Major Qualifying Project is a full-year project. Can a robotics one be done with a company or a research lab, and when do I choose it?",
+            "why": "The MQP is the capstone WPI is known for."
+          },
+          {
+            "who": "Robotics lab tour or faculty",
+            "priority": "medium",
+            "q": "Can I get into robotics lab space as a first-year, or is that mostly for upperclassmen?",
+            "why": "WPI is the only campus on your list offering prospective students lab access at all."
+          }
+        ],
+        "dont_ask": []
+      },
       "sources": [
         {
           "id": "WPI-V01",
@@ -944,6 +974,70 @@
         "pair_with": "Purdue (West Lafayette) - Ann Arbor to West Lafayette is roughly 220 road miles, about 3.5-4 hours, so the two 1 November deadline schools can be driven as one Midwest trip. Distance is an estimate, not a first-party figure."
       },
       "cost_notes": "Tours are free, including the Michigan Engineering North Campus Tour (Eventbrite listing: Free). Campus buses between Central and North Campus are free: \"There is no cost - Simply hop on and ride.\" Paid visitor parking: engineering tour visitors use Lot NC26 (2500 Hayward St) via the AMP Park app; the Robotics Department lists Lot NC-26 visitor parking at $2.40/hour. No fee-based visit programs found.",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Does visiting help my application?",
+            "a": "No — and Michigan says so directly: \"Attending an information session is not factored into our review process if you apply to U-M.\" Visit to decide whether you want it, not to be seen.",
+            "url": "https://admissions.umich.edu/explore-visit/visit-campus"
+          },
+          {
+            "q": "Do I pick a major on the application?",
+            "a": "For engineering you enter the College of Engineering undeclared. The exception is computer science: CS applicants must request selection into the major on the Common Application itself.",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "I understand engineering students arrive undeclared and declare later, but I have also read that computer science applicants must request the CS major on the Common Application itself. If I am aiming at Electrical or Computer Engineering and robotics, is there anything I have to request at application time, or do I genuinely arrive undeclared?",
+            "why": "Missing a required request at application time would be an unrecoverable mistake."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "You have a Robotics BSE degree. Is that a major I simply declare once I am here like any other engineering major, or is it capacity-limited?",
+            "why": "Michigan is one of very few schools with a standalone robotics bachelor's degree."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "Your visit page says attending an information session is not factored into review, but your Common Data Set lists level of applicant's interest as \"Considered\". What is being considered, if not visits?",
+            "why": "Two of Michigan's own documents point in different directions."
+          },
+          {
+            "who": "North Campus engineering tour",
+            "priority": "high",
+            "q": "Engineering is on North Campus and I would be living on Central Campus as a first-year. Realistically, how much of my day goes on the bus between them?",
+            "why": "This is the practical daily-life cost of Michigan engineering and hard to judge from a website."
+          },
+          {
+            "who": "North Campus engineering tour",
+            "priority": "high",
+            "q": "The Robotics BSE is not ABET-accredited, while Electrical and Computer Engineering are. Does that difference matter for the jobs robotics graduates here actually take?",
+            "why": "Accreditation is the main trade-off between Michigan's robotics degree and its ECE degree."
+          },
+          {
+            "who": "North Campus engineering tour",
+            "priority": "medium",
+            "q": "Is there a GPA needed to declare Electrical or Computer Engineering after first year, or is declaring automatic once I am in the College of Engineering?",
+            "why": "No number is published, and it decides how safe the undeclared entry really is."
+          },
+          {
+            "who": "North Campus engineering tour",
+            "priority": "medium",
+            "q": "Can undergraduates work in the Ford Robotics Building labs, and how early?",
+            "why": "The tour starts at that building, so it is the natural moment to ask."
+          }
+        ],
+        "dont_ask": [
+          {
+            "q": "Will coming to this information session help my chances?",
+            "because": "Michigan states outright that it is not factored into review."
+          }
+        ]
+      },
       "sources": [
         {
           "id": "MICHIGAN-V1",
@@ -1145,6 +1239,53 @@
         "pair_with": "Michigan (Ann Arbor) - roughly 220 road miles, about 3.5-4 hours between West Lafayette and Ann Arbor, so both 1 November deadline schools fit in one Midwest trip. Distance is an estimate, not a first-party figure."
       },
       "cost_notes": "Visit programs are free to attend; no fee-based prospective-student visit product was found. Parking is paid: a daily visitor permit is $5.00/day through the Purdue Parking Portal. Drop-in options (Office of Future Engineers, ME, BME) cost nothing and require no registration.",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Do I apply straight into Electrical and Computer Engineering?",
+            "a": "No. You are admitted to the College of Engineering — about a 46% admit rate — and enter First-Year Engineering rather than a named major. You then request your major through the Transition to Major process after completing First-Year Engineering requirements.",
+            "url": null
+          },
+          {
+            "q": "Is Purdue's robotics degree an engineering degree?",
+            "a": "Not in the strict sense. The Robotics Engineering Technology BS sits in Purdue Polytechnic and is accredited as engineering technology rather than engineering. Purdue's College of Engineering degrees, including ECE, are accredited as engineering.",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Engineering Information Session",
+            "priority": "high",
+            "q": "I would be admitted into First-Year Engineering rather than into a major. What does Transition to Major actually require to get into Electrical and Computer Engineering — is there a GPA number, and is ECE one of the oversubscribed ones?",
+            "why": "No minimum GPA for ECE is published anywhere, and this is the real gate at Purdue."
+          },
+          {
+            "who": "Engineering Information Session",
+            "priority": "high",
+            "q": "If Transition to Major does not give me my first choice, what actually happens — do I get a second-choice major straight away, or do I wait another year?",
+            "why": "The downside case matters more than the upside case here."
+          },
+          {
+            "who": "Engineering Information Session",
+            "priority": "high",
+            "q": "You publish Computer Science at about 36% and the College of Engineering at about 46%. If I want robotics and artificial intelligence, is there any real disadvantage to coming through engineering rather than computer science?",
+            "why": "Purdue is one of only three schools that publish rates by college, so this comparison is real."
+          },
+          {
+            "who": "Engineering Information Session",
+            "priority": "medium",
+            "q": "Purdue Polytechnic has a Robotics Engineering Technology degree and the College of Engineering has ECE. Can you explain the difference in plain terms, and which one engineering employers and graduate schools treat as an engineering degree?",
+            "why": "The two look interchangeable from outside and are not."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "Your Common Data Set says level of applicant's interest is considered. Does today's visit get recorded against my application?",
+            "why": "Purdue may count the visit, but says nothing about it in prose."
+          }
+        ],
+        "dont_ask": []
+      },
       "sources": [
         {
           "id": "PURDUE-V1",
@@ -1337,6 +1478,48 @@
         "pair_with": "UT Austin - College Station to Austin is about 106 road miles, roughly 1 hour 50 minutes to 2 hours by car (routing computation), so a single Texas trip covering both is clearly the right structure. Both schools share the 1 December deadline with no early plan, so the trip can be scheduled as late as mid-November - but avoid the week of 23-27 November (A&M Thanksgiving closures, UT Austin's 23-28 November break, and the Fri 27 Nov A&M-Texas game in College Station)."
       },
       "cost_notes": "Tours and informationals are free. Visitor parking is paid: for the Zachry Engineering Education Complex, visitors use the Northside Garage, Central Campus Garage or Lot 51. Registration is free but required at least three days ahead. RELLIS tours are free but require a group of at least 10.",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Do I apply to Electrical and Computer Engineering?",
+            "a": "No. Engineering applicants are admitted into a common General Engineering first year, then compete for their major through Entry to a Major, known as ETAM, after at least two semesters.",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "I would start in General Engineering and then go through Entry to a Major. You publish that a 3.75 cumulative GPA gets automatic entry to your first choice. If I am below 3.75, how competitive is Electrical and Computer Engineering specifically, and what have recent cut-offs looked like?",
+            "why": "Everything below the automatic threshold is a competition A&M does not publish numbers for."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "If Entry to a Major does not give me Electrical and Computer Engineering, what are my realistic options — do I get a second-choice major automatically, or can I be left without an engineering major at all?",
+            "why": "This is the single biggest risk in applying to A&M engineering."
+          },
+          {
+            "who": "Engineering visit",
+            "priority": "high",
+            "q": "You have a Mechatronics degree called MXET, which I understand is engineering technology rather than engineering. If robotics is my goal, would you steer me to MXET or to Electrical and Computer Engineering, and why?",
+            "why": "MXET is the obvious robotics-sounding option and carries a different accreditation."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "There is no early application plan here — everything is due 1 December. Does applying earlier in the autumn make any difference to admission or to scholarships?",
+            "why": "Worth knowing since this trip happens after the November deadlines elsewhere."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "Your Common Data Set lists level of applicant's interest as considered. Does this visit count, and does the separately booked engineering session count as well?",
+            "why": "A&M's engineering visit is booked in a different system, so it may register differently."
+          }
+        ],
+        "dont_ask": []
+      },
       "sources": [
         {
           "id": "TEXASAM-V1",
@@ -1533,6 +1716,58 @@
         "pair_with": "Texas A&M (College Station) - about 106 road miles, roughly 1 hour 50 minutes to 2 hours by car (routing computation). Fly RDU-AUS nonstop, drive to College Station, and return from AUS or CLL. Both schools are 1 December deadline with no early plan, so a trip in the first half of November works; avoid 23-28 November (UT has no classes, UT admissions is closed 26-27 November, A&M is closed for Thanksgiving, and the A&M-Texas game on Fri 27 November saturates College Station lodging)."
       },
       "cost_notes": "Tours, information sessions and the Cockrell engineering sessions are free. Paid visitor parking applies: Brazos Parking Garage (BRG) for the Welcome Center. No fee-based prospective-student visit programs found. Welcome Center hours 8 a.m. - 5 p.m. weekdays; welcomecenter@austin.utexas.edu, 512-475-7399.",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Does visiting help my application?",
+            "a": "No. UT states it plainly: \"UT Austin does not utilize demonstrated interest in the holistic review process.\" Visit to decide, not to be counted.",
+            "url": null
+          },
+          {
+            "q": "Can I sit in on an engineering class?",
+            "a": "No — the Cockrell School does not allow classroom visits.",
+            "url": null
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "You admit students directly to a major. If I apply to Electrical and Computer Engineering and am not admitted, am I considered for anything else, or is it simply a no?",
+            "why": "Direct-to-major admission means a rejected first choice may end the application entirely."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Computer Science sits in a different college here from engineering. Can I apply to both Electrical and Computer Engineering and Computer Science, or do I have to pick one?",
+            "why": "The two live in different colleges, so the rules are not obvious."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "How hard is it to switch into Computer Science after I arrive, if I decide I want more software than hardware?",
+            "why": "Internal transfer into CS is described as restricted, so the real difficulty matters."
+          },
+          {
+            "who": "Cockrell School session",
+            "priority": "high",
+            "q": "Once I am in Electrical and Computer Engineering, is there any GPA requirement to stay in it, or to get the technical area I want when I choose at the end of second year?",
+            "why": "UT appears to have no gate once admitted — worth confirming, because that is unusual."
+          },
+          {
+            "who": "Cockrell School session",
+            "priority": "high",
+            "q": "Texas Robotics is based in the Anna Hiss Gymnasium. Can undergraduates work in those labs, and starting from which year?",
+            "why": "Undergraduate lab access is the main thing a website will not tell you."
+          }
+        ],
+        "dont_ask": [
+          {
+            "q": "Does showing interest or visiting improve my chances?",
+            "because": "UT Austin states it does not use demonstrated interest at all."
+          }
+        ]
+      },
       "sources": [
         {
           "id": "UTAUSTIN-V1",
@@ -1624,7 +1859,8 @@
       },
       "visited_note": "In Raleigh — 25 minutes from home. Re-visit costs almost nothing if a specific question comes up.",
       "tours": [],
-      "sources": []
+      "sources": [],
+      "questions": null
     },
     "georgia-tech": {
       "visited": true,
@@ -1634,7 +1870,8 @@
       },
       "visited_note": "Atlanta, ~6 hours by road. EA deadline is 2 November; no further visit needed.",
       "tours": [],
-      "sources": []
+      "sources": [],
+      "questions": null
     }
   }
 }
