@@ -4,7 +4,7 @@ import {
   Layers, Sparkles, AlertTriangle, GraduationCap, Users, DollarSign,
   Columns3, CalendarClock, Award, EyeOff, NotebookPen, TrendingUp,
   Coins, ClipboardCheck, MessageCircle, ListOrdered, Bot,
-  Target, Grid3x3, GitBranch, Cloud
+  Target, Grid3x3, GitBranch, Cloud, MapPin
 } from "lucide-react";
 import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent } from "@/lib/notes";
@@ -37,6 +37,7 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
       { path: "/culture-signals", label: "Culture signals",  icon: MessageCircle, hint: "Reddit sentiment · anecdotal" },
       { path: "/compare",    label: "Side-by-side compare",  icon: Columns3,      hint: "Pick 2-4 and diff them" },
       { path: "/timeline",   label: "Application timeline",  icon: CalendarClock, hint: "ED / EA / RD deadlines" },
+      { path: "/visits",     label: "Campus visits",         icon: MapPin,        hint: "Trip plan to the deadline" },
       { path: "/checklist",  label: "Application checklist", icon: ClipboardCheck, hint: "Essays, recs, fees per school" },
     ],
   },
