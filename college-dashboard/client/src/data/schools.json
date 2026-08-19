@@ -6296,7 +6296,9 @@
           "basis": "Michigan's binding constraint is the Computer Science major, not the college. U-M's CSE department states: 'Due to capacity constraints, students who are admitted to the University of Michigan in Fall 2023 or later must first be selected for the Computer Science (CS) major before they can declare the major. This selection policy ... is the same for students in both the College of Engineering and the College of Literature, Science, and the Arts (LSA). The selection policy applies only to the CS major and does NOT apply to students seeking to major in the Computer Engineering (CE) or Data Science (DS) programs' [UMICH-S6]. Incoming students request CS 'advance selection' on the Common Application itself, and transfer students cannot switch into CS once on campus [UMICH-S6][UMICH-S7]. Robotics is the opposite story: the Robotics BSE has no capacity cap — students declare after at least one term with a 2.0 GPA [UMICH-S8]. So a robotics-focused applicant should target Robotics BSE (open declaration) and treat CS as the gated option requiring the advance-selection request on the application."
         },
         "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
-      }
+      },
+      "demonstrated_interest_note": "Both are true and they are easy to conflate. Michigan's Common Data Set lists 'Level of applicant's interest' as Considered, but its own visit page states: \"Attending an information session is not factored into our review process if you apply to U-M.\" So interest may be read somewhere, but NOT from a campus visit or info session — a visit here has decision value for the applicant, not signalling value.",
+      "demonstrated_interest_note_cite": "https://admissions.umich.edu/explore-visit/visit-campus"
     },
     "source_log": {
       "UMICH-S1": {
