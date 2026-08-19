@@ -23,6 +23,7 @@ import ChecklistPage from "@/pages/Checklist";
 import CultureSignalsPage from "@/pages/CultureSignals";
 import MyRankingPage from "@/pages/MyRanking";
 import RoboticsPathsPage from "@/pages/RoboticsPaths";
+import VisitsPage from "@/pages/Visits";
 import OddsPage from "@/pages/Odds";
 import StrategyPage from "@/pages/Strategy";
 import SequencingPage from "@/pages/Sequencing";
@@ -51,6 +52,7 @@ function AppRouter() {
         <Route path="/timeline" component={TimelinePage} />
         <Route path="/checklist" component={ChecklistPage} />
         <Route path="/robotics" component={RoboticsPathsPage} />
+        <Route path="/visits" component={VisitsPage} />
         <Route path="/odds" component={OddsPage} />
         <Route path="/strategy" component={StrategyPage} />
         <Route path="/sequencing" component={SequencingPage} />
