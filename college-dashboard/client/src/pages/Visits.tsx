@@ -8,7 +8,7 @@ import { ExternalLink, CalendarDays, Plane, Car, AlertTriangle, CheckCircle2, Cl
 /* ---------------------------------------------------------------------------
  * Campus visit planner.
  *
- * The whole page turns on one date: six of the eight unvisited schools are due
+ * The whole page turns on one date: five of the seven unvisited schools are due
  * 1-2 November 2026, while Texas A&M and UT Austin are 1 December with no early
  * plan. That means the Texas trip belongs AFTER the November wall, which frees
  * three autumn weeks for the schools that actually close first.
@@ -22,6 +22,9 @@ import { ExternalLink, CalendarDays, Plane, Car, AlertTriangle, CheckCircle2, Cl
  * ------------------------------------------------------------------------- */
 
 const V = visitsRaw as any;
+
+// Question sets follow trip order, so the list reads in the order they are used.
+const QUESTION_ORDER: string[] = V.trips.flatMap((t: any) => t.schools);
 
 const INTEREST_META: Record<string, { label: string; hue: string; blurb: string }> = {
   counts:   { label: "Visit counts",      hue: "var(--fit-strong)",       blurb: "The school says in prose that demonstrated interest is part of the review." },
@@ -41,6 +44,7 @@ export default function VisitsPage() {
   const { isHidden } = useHidden();
   const [openTrip, setOpenTrip] = useState<number | null>(1);
   const [openSchool, setOpenSchool] = useState<string | null>(null);
+  const [openQ, setOpenQ] = useState<string | null>("carnegie-mellon");
 
   const byslug = useMemo(() => {
     const m: Record<string, any> = {};
@@ -69,15 +73,15 @@ export default function VisitsPage() {
         {/* The structural point */}
         <div className="mt-3 rounded-md p-3 text-[12px] leading-relaxed"
              style={{ background: "hsl(var(--accent) / 0.07)", border: "1px solid hsl(var(--accent) / 0.35)" }}>
-          <strong>The scheduling gift.</strong> Six of the eight are due <strong>1-2 November</strong>. Texas A&amp;M and
+          <strong>The scheduling gift.</strong> Five of the seven are due <strong>1-2 November</strong>. Texas A&amp;M and
           UT Austin are <strong>1 December with no early plan</strong> — so they are the only two that can be visited{" "}
-          <em>after</em> the November applications are in. Moving Texas to November frees three autumn weeks for the six
-          schools that close first, and turns an impossible eight-school autumn into five manageable trips.
+          <em>after</em> the November applications are in. Moving Texas to November frees three autumn weeks for the five
+          schools that close first, and leaves four manageable trips.
         </div>
 
         <div className="flex flex-wrap gap-3 mt-3 text-[11.5px]">
-          <Stat label="Already visited" value={`${visited.length}`} detail="NC State · Georgia Tech"/>
-          <Stat label="Left to see" value={`${planned.length}`} detail="across 5 trips"/>
+          <Stat label="Already visited" value={`${visited.length}`} detail="NC State · Georgia Tech · Cornell"/>
+          <Stat label="Left to see" value={`${planned.length}`} detail="across 4 trips"/>
           <Stat label="School days needed" value={`${V.trips.reduce((a: number, t: any) => a + t.school_days, 0)}`} detail="weekday excuses"/>
           <Stat label="Weeks to 1 Nov" value="10.6" detail="9 usable travel weeks"/>
         </div>
@@ -218,17 +222,16 @@ export default function VisitsPage() {
 
       {/* If time runs short */}
       <div className="card p-4">
-        <div className="text-[13px] font-medium mb-1">If there is not time for all five</div>
+        <div className="text-[13px] font-medium mb-1">If there is not time for all four</div>
         <p className="text-[11.5px] text-[hsl(var(--muted-foreground))] mb-2.5 max-w-3xl leading-relaxed">
           Ranked by what you lose by skipping, measured against school days spent. Cut from the bottom.
         </p>
         <ol className="space-y-1.5">
           {[
             ["Boston — Northeastern + WPI", "1 school day", "Two schools, and the only two where a visit plausibly earns interest credit. WPI is also the only prospective-student robotics lab access on the list. Best ratio by a wide margin — keep this even if you cut everything else."],
-            ["Pittsburgh — Carnegie Mellon", "2 school days", "Top fit, and the ED choice between SCS and the engineering colleges is the single highest-stakes decision in the whole application. Worth the days even though CMU gives no interest credit."],
-            ["Midwest — Michigan + Purdue", "3 school days", "Two schools per trip. Purdue's visit may count; Michigan's explicitly does not, so if you have to shorten this, do Purdue as a one-night stop and see Michigan another year."],
-            ["Texas — UT Austin + Texas A&M", "3 school days", "Only because it costs nothing in the autumn crunch — it happens after the deadline. If November gets busy, this is the easiest to drop: A&M's visit may count, UT's does not."],
-            ["Ithaca — Cornell", "2 school days", "Cut first. Cornell says outright it does not track interest and that visiting is neither required nor expected, there is no in-person engineering session, and it is the hardest campus here to reach. Do the Duffield virtual session from home instead."],
+            ["Pittsburgh — Carnegie Mellon", "2 school days", "Top fit, and the choice between the School of Computer Science and the engineering colleges is the highest-stakes decision in the whole application. Worth the days even though CMU gives no interest credit."],
+            ["Midwest — Michigan + Purdue", "3 school days", "Two schools per trip. Purdue's visit may count; Michigan's explicitly does not. If you have to shorten it, do Purdue as a one-night stop for the Engineering Information Session and treat Michigan as optional."],
+            ["Texas — UT Austin + Texas A&M", "3 school days", "Cut first, but only because it is free in the autumn crunch — it happens after the November deadline. A&M's visit may count, UT's does not, and both are 1 December so there is slack."],
           ].map(([name, cost, why], i) => (
             <li key={i} className="flex items-start gap-2.5 text-[11.5px] py-1.5 border-b border-[hsl(var(--border))] last:border-0">
               <span className="num font-semibold text-[hsl(var(--accent))] shrink-0 w-4">{i + 1}</span>
@@ -240,6 +243,120 @@ export default function VisitsPage() {
             </li>
           ))}
         </ol>
+      </div>
+
+      {/* Questions to ask */}
+      <div className="card p-4">
+        <div className="text-[13px] font-medium mb-1">What to ask at each visit</div>
+        <p className="text-[11.5px] text-[hsl(var(--muted-foreground))] mb-3 max-w-4xl leading-relaxed">
+          Each question is written to stand on its own — the reason it matters is built into the question, so there is
+          nothing to look up while standing in an admissions office. Questions the school already answers in writing
+          are moved to <strong>Read before you go</strong> rather than asked, because a 30-minute session is too short
+          to spend on something a web page covers. Questions are grouped by <strong>who can actually answer</strong>:
+          an admissions counsellor knows application mechanics, but only a department knows whether a course fills up.
+        </p>
+        <div className="space-y-2">
+          {QUESTION_ORDER.filter(slug => V.schools[slug]?.questions).map(slug => {
+            const q = V.schools[slug].questions;
+            const s = byslug[slug];
+            const open = openQ === slug;
+            const byWho: Record<string, any[]> = {};
+            (q.ask || []).forEach((a: any) => { (byWho[a.who] ||= []).push(a); });
+            return (
+              <div key={slug} className="border border-[hsl(var(--border))] rounded-md overflow-hidden">
+                <button onClick={() => setOpenQ(open ? null : slug)}
+                        className="w-full text-left px-3 py-2 hover:bg-[hsl(var(--muted)/0.4)] transition-colors">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <span className="serif font-medium text-[13.5px]">{s?.short ?? slug}</span>
+                      <span className="chip text-[10px]">{(q.ask || []).length} to ask</span>
+                      {(q.read_first || []).length > 0 &&
+                        <span className="chip text-[10px]">{q.read_first.length} already answered</span>}
+                      {(q.dont_ask || []).length > 0 &&
+                        <span className="chip text-[10px]" style={{ color: "hsl(var(--muted-foreground))" }}>
+                          {q.dont_ask.length} to skip
+                        </span>}
+                    </div>
+                    <span className="text-[11px] text-[hsl(var(--muted-foreground))]">
+                      {Object.keys(byWho).join(" · ")}
+                    </span>
+                  </div>
+                </button>
+
+                {open && (
+                  <div className="px-3 pb-3 pt-2 border-t border-[hsl(var(--border))] space-y-3">
+                    {(q.read_first || []).length > 0 && (
+                      <div>
+                        <div className="text-[10.5px] uppercase tracking-wider font-semibold mb-1"
+                             style={{ color: "hsl(var(--fit-top))" }}>
+                          Read before you go — don&rsquo;t spend the session on these
+                        </div>
+                        <div className="space-y-1.5">
+                          {q.read_first.map((r: any, i: number) => (
+                            <div key={i} className="text-[11.5px] leading-snug pl-2 border-l-2"
+                                 style={{ borderColor: "hsl(var(--fit-top) / 0.5)" }}>
+                              <div className="font-medium">{r.q}</div>
+                              <div className="text-[hsl(var(--muted-foreground))]">{r.a}</div>
+                              {r.url && (
+                                <a href={r.url} target="_blank" rel="noreferrer"
+                                   className="text-[10.5px] inline-flex items-center gap-1 mt-0.5">
+                                  source <ExternalLink size={9}/>
+                                </a>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {Object.entries(byWho).map(([who, list]) => (
+                      <div key={who}>
+                        <div className="text-[10.5px] uppercase tracking-wider font-semibold mb-1"
+                             style={{ color: "hsl(var(--accent))" }}>
+                          Ask the {who.toLowerCase()}
+                        </div>
+                        <ol className="space-y-2">
+                          {list.map((a: any, i: number) => (
+                            <li key={i} className="text-[11.5px] leading-snug flex items-start gap-2">
+                              <span className="num font-semibold shrink-0 w-4 text-[hsl(var(--muted-foreground))]">
+                                {i + 1}
+                              </span>
+                              <div>
+                                <div className="font-medium">
+                                  &ldquo;{a.q}&rdquo;
+                                  {a.priority === "high" && (
+                                    <span className="chip text-[9px] ml-1.5 align-middle"
+                                          style={{ color: "hsl(var(--fit-lower))" }}>ask this one</span>
+                                  )}
+                                </div>
+                                <div className="text-[hsl(var(--muted-foreground))] italic mt-0.5">{a.why}</div>
+                              </div>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    ))}
+
+                    {(q.dont_ask || []).length > 0 && (
+                      <div>
+                        <div className="text-[10.5px] uppercase tracking-wider font-semibold mb-1 text-[hsl(var(--muted-foreground))]">
+                          Not worth asking
+                        </div>
+                        <div className="space-y-1">
+                          {q.dont_ask.map((d: any, i: number) => (
+                            <div key={i} className="text-[11.5px] leading-snug text-[hsl(var(--muted-foreground))]">
+                              <span className="line-through">{d.q}</span> — {d.because}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Per-school detail */}
