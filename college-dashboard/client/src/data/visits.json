@@ -1,0 +1,1640 @@
+{
+  "compiled": "2026-08-19",
+  "home_base": "Cary, North Carolina (RDU)",
+  "note": "Every tour day, time, break and closure below comes from the school's own visit pages, registrar calendar or athletics site, fetched 19 August 2026. Where a school had not published a Fall 2026 date, the field says NOT PUBLISHED rather than guessing. Drive times between campuses are routing estimates, not first-party figures.",
+  "constraint": "Anurag can be excused on weekdays, which is what makes this possible: almost every engineering-specific session on this list runs Monday to Friday only.",
+  "trips": [
+    {
+      "id": 1,
+      "name": "Pittsburgh — Carnegie Mellon",
+      "dates": "Thu 17 – Fri 18 Sep 2026",
+      "school_days": 2,
+      "schools": [
+        "carnegie-mellon"
+      ],
+      "travel": "Drive ~7.5 h each way, or fly RDU→PIT ($180-$280 band). Drivable in a day.",
+      "why_first": "Top fit, and the only school here where the application itself is a fork: ED forecloses applying to two colleges, and SCS admits near 5.2% against about 19% for the other colleges. He needs to have stood in both places before choosing.",
+      "book": [
+        "Campus Visit (tour + admission session) — NOT a Wednesday",
+        "ECE department tour, 45-60 min, weekdays only",
+        "Mechanical Engineering / Tech Spark tour, 30-45 min"
+      ],
+      "watch": [
+        "No visits at all before 10 September — this is the earliest possible week",
+        "No tours on ANY Wednesday",
+        "Welcome Center closed 10-11 and 17-18 October; academic fall break 12-16 October",
+        "Large campus event 26 September",
+        "SCS is \"not currently doing in-person visits for prospective students\" — the CS side is recorded sessions only, which is why the engineering tours are the visit"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Boston — Northeastern + WPI",
+      "dates": "Fri 2 – Sat 3 Oct 2026",
+      "school_days": 1,
+      "schools": [
+        "northeastern",
+        "wpi"
+      ],
+      "travel": "Fly RDU→BOS ($140-$280 band). Worcester is about an hour west of Boston; use the MBTA in the city, rent a car for WPI.",
+      "why_first": "Best value on the whole plan: two schools for one missed school day, and the only two of the eight where a visit plausibly earns interest credit. WPI is also the only campus offering prospective students robotics lab access, and it holds a dedicated ABET-accredited BS in Robotics Engineering.",
+      "book": [
+        "Northeastern information session + campus tour, Fri 2 Oct",
+        "Northeastern College of Engineering or Khoury CS session if a 3:00 p.m. date lands that week",
+        "WPI Fall Open House, Sat 3 Oct — full day"
+      ],
+      "watch": [
+        "WPI's other option is Fall Preview Day, Sat 12 Sept, which is the one that ends with the lab-space tour — if you can move that fast, it is the better WPI date",
+        "WPI has no classes 10-18 October, so a later weekday visit shows an empty campus",
+        "Northeastern does not offer class visits",
+        "Saturdays cost no school days, which is why this trip only costs one"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Midwest — Michigan + Purdue",
+      "dates": "Mon 5 – Wed 7 Oct 2026",
+      "school_days": 3,
+      "schools": [
+        "michigan",
+        "purdue"
+      ],
+      "travel": "Fly RDU→DTW ($140-$260), drive Ann Arbor→West Lafayette (~220 mi, 3.5-4 h), fly home from IND. Driving from Cary is ~11 h each way.",
+      "why_first": "Two strong engineering publics in one loop. Purdue is the efficient one — the Daily Visit and the Engineering Information Session both fit in a single weekday morning. Michigan is the opposite: Central Campus and the engineering North Campus are separate campuses in separate booking systems.",
+      "book": [
+        "Michigan Central Campus tour (Mondays and Fridays) — Mon 5 Oct",
+        "Michigan Engineering North Campus tour, 90 min, booked separately — meets at the Ford Robotics Building",
+        "Ford Robotics Building self-guided audio tour, free, Mon-Fri 7am-7pm",
+        "Purdue Daily Visit (8:30 or 9:30 a.m.) + Engineering Information Session 11:30 a.m.-12:30 p.m. ET, same day"
+      ],
+      "watch": [
+        "Michigan Fall Study Break 19-20 October; Purdue October Break 12-13 October — both outside this window",
+        "Purdue Early Action Week is 26-29 October, too close to the deadline to travel",
+        "Michigan's engineering tour is the scarce item: one confirmed Fall 2026 slot was Fri 11 Sept at 2:00 p.m. and some instances are waitlisted, so book before fixing flights",
+        "Purdue also runs a separate \"Discovering Purdue Polytechnic\" session — worth asking for, since Polytechnic is where the robotics technology degree lives (ETAC, not EAC)"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Ithaca — Cornell",
+      "dates": "Wed 21 – Thu 22 Oct 2026",
+      "school_days": 2,
+      "schools": [
+        "cornell"
+      ],
+      "travel": "Fly RDU→ITH with a connection ($280-$500 band), or SYR/Elmira/Binghamton and drive. Driving is ~11 h each way.",
+      "why_first": "Lowest visit leverage of the six November schools: Cornell states plainly that it does not track demonstrated interest and that visiting is \"neither required nor expected\". It is also the hardest to reach. Go if there is time, and go after fall break so classes are actually in session.",
+      "book": [
+        "Student-led campus tour, 8:45-10:00 a.m. or 11:30 a.m.-12:45 p.m.",
+        "Undergraduate Admissions information session, 10:30-11:00 a.m.",
+        "Duffield engineering self-guided audio walking tour — no booking needed",
+        "Duffield engineering LIVE VIRTUAL session — 11 Sept, 25 Sept or 13 Oct, and worth doing from home regardless of whether you travel"
+      ],
+      "watch": [
+        "Fall break 10-13 October, classes resume 14 October — avoid",
+        "Homecoming 17 October will squeeze Ithaca lodging",
+        "Welcome Center closed 7 September and 25-29 November",
+        "There is NO in-person engineering admissions session — engineering is self-guided or virtual only, which lowers the value of the trip itself"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Texas — UT Austin + Texas A&M",
+      "dates": "Mon 9 – Wed 11 Nov 2026 (after the November wall)",
+      "school_days": 3,
+      "schools": [
+        "ut-austin",
+        "texas-am"
+      ],
+      "travel": "Fly RDU→AUS nonstop ($260-$450), drive Austin→College Station (~106 mi, 1 h 50 m), fly home from CLL via DFW or drive back to AUS.",
+      "why_first": "The scheduling gift in this plan. Both are 1 December with no early plan, so they are the only two schools that can be visited AFTER the 1-2 November applications are submitted. Moving them to November frees three autumn weeks for the six schools that close first.",
+      "book": [
+        "UT Austin campus tour (weekdays, specific open dates)",
+        "Cockrell School of Engineering undergraduate info session — the highest-value item on that campus, because UT admits directly to major",
+        "Texas Robotics tour at Anna Hiss Gymnasium — registered, limited availability",
+        "Texas A&M Visitor Center campus walking tour, weekdays",
+        "Texas A&M engineering informational — SEPARATE system at tx.ag/ENGEVisit",
+        "RELLIS Campus tour, weekdays, engineering-focused"
+      ],
+      "watch": [
+        "Avoid 23-28 November entirely: UT has no classes and admissions is closed 26-27 Nov, A&M is on Thanksgiving, and the A&M-Texas game is Fri 27 Nov",
+        "Texas A&M's Fall 2026 engineering visit dates were NOT PUBLISHED in a readable form — you have to ask",
+        "A&M's Visitor Center closed-dates table was still showing 2025-26 dates, so confirm by phone",
+        "Cockrell registration was not open yet when this was researched",
+        "UT explicitly does not allow Cockrell classroom visits"
+      ]
+    }
+  ],
+  "dead_week": {
+    "dates": "Mon 12 – Sun 18 Oct 2026",
+    "why": "Do not plan travel this week. Carnegie Mellon's fall break is 12-16 October with the Welcome Center also closed 17-18, Purdue's October Break is 12-13, Cornell's fall break is 10-13, and WPI has no classes at all from 10-18 October between A and B terms. Four of the eight campuses are either shut or empty."
+  },
+  "submit_week": {
+    "dates": "Mon 26 Oct – Sun 1 Nov 2026",
+    "why": "Reserve for finishing applications, not travel. Six of the eight are due 1-2 November, and a visit is only worth taking if there is still time to write what it taught you into the essays."
+  },
+  "schools": {
+    "carnegie-mellon": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-02",
+        "label": "ED 2 Nov"
+      },
+      "interest": {
+        "level": "none",
+        "quote": "We don't consider demonstrated interest in our admission process.",
+        "basis": "CMU admissions."
+      },
+      "book_by": {
+        "when": "At least 48 hours ahead",
+        "why": "Registration closes 48 hours before the event. Easiest to book, hardest to schedule."
+      },
+      "visit_home_url": "https://www.cmu.edu/admission/visit",
+      "registration_url": "https://admission.cmu.edu/portal/campus_visit",
+      "registration_required": true,
+      "booking_lead_time": "Registration closes 48 hours before the scheduled event; not all visit experiences are offered every day, so CMU advises registering early. Group visits (10-100 people) are handled separately. [CARNEGIE-MELLON-V14, CARNEGIE-MELLON-V02]",
+      "tours": [
+        {
+          "name": "Campus Visit (student-led campus tour + admission information session)",
+          "days_offered": "Weekdays and weekends EXCEPT Wednesdays - 'No tours will be available on Wednesdays.' Fall 2026 visits run only 10 September - 6 December 2026.",
+          "times": "NOT PUBLISHED (Coulter Welcome Center open 9:00 a.m.-4:30 p.m. daily except Wednesdays; specific tour start times are only shown inside the registration portal)",
+          "duration": "Information session approx. 1 hour; self-guided tour approx. 1 hour; guided tour duration NOT PUBLISHED",
+          "audience": "general",
+          "notes": "A standard visit is a student-led tour plus an information session, with one-on-one counseling when available. No admission counselors are available Saturday or Sunday. On Wednesdays (no tours) counselors are available 8:30 a.m.-4:30 p.m. at Warner Hall, 2nd floor.",
+          "cite": "CARNEGIE-MELLON-V02, CARNEGIE-MELLON-V03, CARNEGIE-MELLON-V04"
+        },
+        {
+          "name": "Admission Counseling Session",
+          "days_offered": "Weekdays (portal component); not Saturday/Sunday",
+          "times": "NOT PUBLISHED",
+          "duration": "20-30 minutes",
+          "audience": "general",
+          "notes": "Bookable as a separate component of the campus visit in the admission portal.",
+          "cite": "CARNEGIE-MELLON-V04"
+        },
+        {
+          "name": "Electrical & Computer Engineering (ECE) student-led walking tour",
+          "days_offered": "Weekdays only; offered in fall and spring (none in summer)",
+          "times": "NOT PUBLISHED",
+          "duration": "45-60 minutes",
+          "audience": "engineering",
+          "notes": "Small-group student-led walking tour covering Hamerschlag Hall and new laboratories, plus student-life perspective.",
+          "cite": "CARNEGIE-MELLON-V05, CARNEGIE-MELLON-V06"
+        },
+        {
+          "name": "Mechanical Engineering department tour",
+          "days_offered": "Weekdays only (by request via department tour form / cmumechetours@andrew.cmu.edu)",
+          "times": "NOT PUBLISHED",
+          "duration": "30-45 minutes",
+          "audience": "engineering",
+          "notes": "Highlights the Tech Spark maker spaces, laboratories and classrooms - the closest thing CMU publishes to a makerspace tour for prospective students.",
+          "cite": "CARNEGIE-MELLON-V05, CARNEGIE-MELLON-V07"
+        },
+        {
+          "name": "School of Computer Science information sessions",
+          "days_offered": "Not applicable - recorded/virtual only",
+          "times": "On demand (recorded)",
+          "duration": "NOT PUBLISHED",
+          "audience": "cs_computing",
+          "notes": "SCS offers only recorded faculty information sessions for its four majors. The CS Department states plainly: 'The CS undergraduate program is not currently doing in-person visits for prospective students.'",
+          "cite": "CARNEGIE-MELLON-V05, CARNEGIE-MELLON-V08"
+        }
+      ],
+      "engineering_specific": "Partly. There is NO College of Engineering-wide admissions information session listed on CMU's departmental tours page. Instead, individual engineering departments host their own visits: ECE runs a 45-60 minute student-led walking tour (fall/spring, weekdays only) and Mechanical Engineering runs a 30-45 minute department tour by request. The School of Computer Science offers only recorded virtual information sessions, and the CS Department is explicitly not doing in-person prospective-student visits. Departmental visits overall are 'available only on weekdays and can range from 30-minutes to 2-hours in length.' [CARNEGIE-MELLON-V05, CARNEGIE-MELLON-V06, CARNEGIE-MELLON-V07, CARNEGIE-MELLON-V08]",
+      "robotics_lab_access": "No prospective-undergraduate robotics access is published. The departmental tours page has no Robotics Institute section. The Robotics Institute's own visit language is aimed at admitted/graduate applicants ('you are welcome to visit the Robotics Institute on your own, at any time' after contacting faculty). The nearest published hands-on facility for undergraduate visitors is the Mechanical Engineering tour of the Tech Spark maker spaces. [CARNEGIE-MELLON-V05, CARNEGIE-MELLON-V07, CARNEGIE-MELLON-V09]",
+      "class_visit_possible": "NOT PUBLISHED - no prospective-student class-visit program appears on CMU's visit pages.",
+      "calendar": {
+        "term_start": "2026-08-24 (first day of classes, 2026-27 academic calendar)",
+        "fall_break": "Academic calendar: 12-16 October 2026. Visitor-information page lists Fall Break as 10-18 October 2026 with the Coulter Welcome Center closed 10, 11, 17 and 18 October.",
+        "thanksgiving_break": "Academic calendar: 23-27 November 2026. Visitor-information page: Thanksgiving Break 25-29 November 2026, Welcome Center closed.",
+        "term_end": "2026-12-04 last day of classes; finals 7-11 and 14 December; make-up 15 December",
+        "blackouts": [
+          "Every Wednesday - 'No tours will be available on Wednesdays' (Coulter Welcome Center closed Wednesdays)",
+          "Before 10 September 2026 - 'First Day of Campus Visits: September 10' for Fall 2026; semester transition 10 Aug-9 Sept 2026 has no campus visits",
+          "26 September 2026 - large on-campus event flagged by CMU visitor information",
+          "10-11 and 17-18 October 2026 - Coulter Welcome Center closed for Fall Break (break listed 10-18 October)",
+          "25-29 November 2026 - Thanksgiving Break, Welcome Center closed",
+          "After 6 December 2026 - 'Last Day of Campus Visits: December 6'; closed 7 Dec 2026-31 Jan 2027"
+        ],
+        "cite": "CARNEGIE-MELLON-V03, CARNEGIE-MELLON-V02, CARNEGIE-MELLON-V10"
+      },
+      "football": [
+        "NOT PUBLISHED - the CMU athletics 2026 football schedule pages returned 404 on 19 Aug 2026 (athletics.cmu.edu/sports/football/schedule and /sports/fball/schedule/2026). The athletics landing page showed only one football fixture, an away game: 'Football Carnegie Mellon AT Catholic, Sat, Sep/12, 1:00 PM EDT'. [CARNEGIE-MELLON-V13]"
+      ],
+      "travel": {
+        "airport": "Pittsburgh International Airport (PIT) - not stated on CMU visit pages fetched; airport identity is general knowledge, distance NOT PUBLISHED by CMU",
+        "airport_to_campus": "NOT PUBLISHED on the CMU pages fetched",
+        "drive_from_cary": "UNVERIFIED ESTIMATE ~7-8 hours (approx. 450 miles). CMU publishes no drive time from North Carolina.",
+        "suggested_stay": "1 night. Because tours never run on Wednesdays and departmental (ECE/MechE) tours are weekday-only, target a Mon/Tue or Thu/Fri and stack the general tour with an ECE or MechE departmental tour the same day.",
+        "pair_with": "Standalone trip - CMU (Pittsburgh) does not pair well with the Boston or Ithaca schools in this batch."
+      },
+      "cost_notes": "Campus tours and information sessions are free. Parking: CMU does not validate parking and rates are not stated on the visitor-information page; the Morewood Lot is free on Saturdays and Sundays. Group tours (10-100 people) are arranged separately. [CARNEGIE-MELLON-V03, CARNEGIE-MELLON-V02]",
+      "sources": [
+        {
+          "id": "CARNEGIE-MELLON-V01",
+          "url": "https://www.cmu.edu/admission/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V02",
+          "url": "https://www.cmu.edu/visit/campus-tours",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V03",
+          "url": "https://www.cmu.edu/visit/visitor-information",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V04",
+          "url": "https://admission.cmu.edu/portal/campus_visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V05",
+          "url": "https://www.cmu.edu/visit/campus-tours/departmental-tours-events",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V06",
+          "url": "https://www.ece.cmu.edu/about/visitor-info.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V07",
+          "url": "https://www.meche.engineering.cmu.edu/about/tours.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V08",
+          "url": "https://www.csd.cs.cmu.edu/admissions/prospective-students",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V09",
+          "url": "https://www.ri.cmu.edu/education/academic-programs/master-of-science-robotics/faq/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V10",
+          "url": "https://www.cmu.edu/hub/calendar/docs/2627-academic-calendar.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V11",
+          "url": "http://coursecatalog.web.cmu.edu/aboutcmu/undergraduateadmission/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V12",
+          "url": "https://www.cmu.edu/admission/admission/preparing-for-college/common-admission-terms",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V13",
+          "url": "https://athletics.cmu.edu/landing/index",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CARNEGIE-MELLON-V14",
+          "url": "https://admission.cmu.edu/register/?id=37934fee-4cd6-4fcd-9ab9-31d767c5a987",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "cornell": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "ED 1 Nov"
+      },
+      "interest": {
+        "level": "none",
+        "quote": "Cornell University does not track demonstrated interest. Visiting campus is neither required nor expected of applicants.",
+        "basis": "Cornell admissions."
+      },
+      "book_by": {
+        "when": "Book within 2 weeks",
+        "why": "\"Capacity is limited, so advance registration is required.\" No numeric lead time published."
+      },
+      "visit_home_url": "https://admissions.cornell.edu/visit",
+      "registration_url": "https://www.cornell.edu/visit/plan/",
+      "registration_required": true,
+      "booking_lead_time": "'Capacity is limited, so advance registration is required.' No numeric lead time is published for individual tours; special/group tours require three weeks advance notice and walk-ins are not accommodated. The booking wizard at cornell.edu/visit/plan/ is blocked to automated fetching (robots), so live Fall 2026 slot availability could not be confirmed. [CORNELL-V01, CORNELL-V02]",
+      "tours": [
+        {
+          "name": "Student-led campus tour",
+          "days_offered": "Aligned to Martin Y. Tang Welcome Center hours: Mon-Fri 8 a.m.-5 p.m., Sat 8 a.m.-3 p.m. Per-date Fall 2026 availability is only visible in the (robots-blocked) booking wizard.",
+          "times": "8:45-10:00 a.m. and 11:30 a.m.-12:45 p.m. (times shown on Cornell's visit-activities page; the fetched copy renders against a sample date, so confirm the specific Fall 2026 date in the booking wizard)",
+          "duration": "approx. 75 minutes",
+          "audience": "general",
+          "notes": "Departs the Tang Welcome Center at Noyes Lodge and ends at Ho Plaza. Held rain or shine. If the university closes, the Welcome Center closes and tours are cancelled.",
+          "cite": "CORNELL-V01, CORNELL-V02, CORNELL-V03"
+        },
+        {
+          "name": "Undergraduate Admissions Office information session",
+          "days_offered": "Same Welcome Center schedule; per-date Fall 2026 availability only in booking wizard",
+          "times": "10:30-11:00 a.m.",
+          "duration": "approx. 30-35 minutes",
+          "audience": "general",
+          "notes": "Does not include a walking tour, so it must be paired with a campus tour slot. It sits neatly between the two tour slots, so a morning arrival can cover tour + session.",
+          "cite": "CORNELL-V03"
+        },
+        {
+          "name": "Self-guided smartphone tour",
+          "days_offered": "Any day, no registration",
+          "times": "Any time",
+          "duration": "approx. 1 hour",
+          "audience": "general",
+          "notes": "Useful fallback for 10-13 October (fall break) or 7 September when staffed options are unavailable.",
+          "cite": "CORNELL-V01"
+        },
+        {
+          "name": "Duffield Engineering audio / self-guided walking tour of the Pew Engineering Quad",
+          "days_offered": "Any day, self-guided",
+          "times": "Any time",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "This is the ONLY on-campus engineering-specific visit product Cornell publishes for prospective undergraduates. Narration includes the Systems Engineering Lab maker space used by student project teams.",
+          "cite": "CORNELL-V04, CORNELL-V12"
+        },
+        {
+          "name": "Duffield Engineering live virtual information sessions",
+          "days_offered": "Specific dates, virtual only",
+          "times": "NOT PUBLISHED (no times listed on the session page)",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "Fall dates listed: 11 September 'Preparing for Your Cornell Engineering Application'; 25 September Selander Center leadership panel; 13 October 'Engineering Your Global Journey'. The page does not state the year, so confirm before booking. Recorded sessions (July 2026 engineering info session, August 2026 admissions Q&A) and a Student Project Teams session are also available on demand.",
+          "cite": "CORNELL-V05, CORNELL-V04"
+        }
+      ],
+      "engineering_specific": "No in-person engineering admissions session. The College of Engineering (now the Cornell David A. Duffield College of Engineering) offers only a self-guided audio walking tour of the Pew Engineering Quad plus live and recorded VIRTUAL information sessions - fall live dates 11 Sept, 25 Sept and 13 Oct. No in-person engineering session dates or times are published. [CORNELL-V04, CORNELL-V05]",
+      "robotics_lab_access": "No in-person robotics or maker lab visit is offered to prospective undergraduates. Access is virtual: the engineering virtual tour features the Robotic Personal Assistants Lab, and the audio tour narrates the Systems Engineering Lab maker space. Cornell's undergraduate campus tour route is not published as including engineering labs. [CORNELL-V13, CORNELL-V12]",
+      "class_visit_possible": "NOT PUBLISHED - no prospective-student class-visit program was found on Cornell's visit or admissions pages.",
+      "calendar": {
+        "term_start": "2026-08-24 (instruction begins)",
+        "fall_break": "Fall break begins 10 October 2026; instruction resumes 14 October 2026 (no classes 10-13 October)",
+        "thanksgiving_break": "Begins 25 November 2026; instruction resumes 30 November 2026",
+        "term_end": "2026-12-07 last day of instruction; study period 8-10 December; exams 11-19 December",
+        "blackouts": [
+          "7 September 2026 (Labor Day) - Tang Welcome Center building closed to the public; no classes",
+          "25-29 November 2026 - Tang Welcome Center building closed to the public (Thanksgiving)",
+          "21 December 2026 - 18 January 2027 - Tang Welcome Center building closed to the public",
+          "Saturdays in December and January - Welcome Center closed on Saturdays",
+          "10-13 October 2026 - fall break; Cornell does not list the Welcome Center as closed, but no classes are in session, so campus feel and any class-adjacent activity is degraded. Confirm tour availability in the booking wizard.",
+          "Any university closure - 'In the case of university closure, the Martin Y. Tang Welcome Center is closed, and tours are canceled.'"
+        ],
+        "cite": "CORNELL-V02, CORNELL-V08, CORNELL-V09"
+      },
+      "football": [
+        "26 September 2026 - vs Yale, 1:00 p.m., Schoellkopf Field",
+        "10 October 2026 - vs Harvard, 1:00 p.m. (falls on the first day of fall break)",
+        "17 October 2026 - vs Lehigh, 2:00 p.m., Homecoming 2026 (expect hotel scarcity in Ithaca)",
+        "7 November 2026 - vs Penn (Trustees' Cup)",
+        "14 November 2026 - vs Dartmouth (Senior Day)"
+      ],
+      "travel": {
+        "airport": "Ithaca Tompkins International Airport (ITH), served by Delta and United - connecting flights only. Alternatives named by Cornell: Syracuse Hancock (SYR, 60 miles northeast), Elmira Corning (45 minutes), Greater Binghamton (55 minutes).",
+        "airport_to_campus": "ITH is about a 10-minute drive from campus; SYR is 60 miles / roughly 60-75 minutes. [CORNELL-V11]",
+        "drive_from_cary": "UNVERIFIED ESTIMATE ~11 hours (per the planning brief). Cornell publishes directions from Philadelphia/NYC/Syracuse but no drive time from North Carolina. [CORNELL-V11]",
+        "suggested_stay": "2 nights - Ithaca is remote, ITH is connecting-flights-only, and the tour + info session sequence runs 8:45 a.m.-12:45 p.m., so arrive the evening before. Avoid Homecoming weekend (17 October) for lodging.",
+        "pair_with": "Standalone trip. Ithaca does not pair efficiently with Pittsburgh or Boston in a single weekday trip."
+      },
+      "cost_notes": "Campus tours and admissions information sessions are free. Special group tours carry fees and require three weeks notice (specialtours@cornell.edu). Campus visitor parking is metered/Parkmobile-based; the Tang Welcome Center is at 616 Thurston Ave. TCAT local bus fares start at $1.50 cash. [CORNELL-V01, CORNELL-V02, CORNELL-V11]",
+      "sources": [
+        {
+          "id": "CORNELL-V01",
+          "url": "https://admissions.cornell.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V02",
+          "url": "https://www.cornell.edu/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V03",
+          "url": "https://www.cornell.edu/visit/plan/activities/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V04",
+          "url": "https://www.duffield.cornell.edu/tours-information-sessions/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V05",
+          "url": "https://visit.engineering.cornell.edu/engineering-information-session/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V06",
+          "url": "https://visit.engineering.cornell.edu/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V07",
+          "url": "https://admissions.cornell.edu/visit-and-connect",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V08",
+          "url": "https://registrar.cornell.edu/academic-calendar/2026-2027",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V09",
+          "url": "https://courses.cornell.edu/enrollment-credit-requirements/academic-calendar/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V10",
+          "url": "https://cornellbigred.com/sports/football/schedule/2026",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V11",
+          "url": "https://conferenceservices.cornell.edu/resources-faqs/guest-support/maps-and-directions",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V12",
+          "url": "https://www.duffield.cornell.edu/cornell-engineering-audio-walking-tours/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "CORNELL-V13",
+          "url": "https://visit.engineering.cornell.edu/virtual/",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "northeastern": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "ED/EA 1 Nov"
+      },
+      "interest": {
+        "level": "likely",
+        "quote": "Level of applicant's interest: Considered",
+        "basis": "Northeastern's own Common Data Set. Admissions prose is silent."
+      },
+      "book_by": {
+        "when": "Book now",
+        "why": "Registration opens 2-3 months in advance; the college-level sessions are single dated slots at 3:00 p.m."
+      },
+      "visit_home_url": "https://admissions.northeastern.edu/visit/visit-campus/",
+      "registration_url": "https://apply.northeastern.edu/portal/campus-visit-registration",
+      "registration_required": true,
+      "booking_lead_time": "'Campus visits are offered year-round. Registration for visits opens 2-3 months in advance.' On 19 August 2026 the visit-registration portal calendar displayed only August 2026 - September-November months were not yet browsable, and the calendar legend includes an 'Unavailable / Filled' state, so Sept-Oct slots must be watched as they open. Group visits (10-50 people) require at least two weeks notice and are not available on weekends. [NORTHEASTERN-V04, NORTHEASTERN-V03, NORTHEASTERN-V01]",
+      "tours": [
+        {
+          "name": "Information session + campus tour (standard visit)",
+          "days_offered": "Year-round, weekdays and some weekends (exact Fall 2026 dates open in the portal 2-3 months ahead)",
+          "times": "NOT PUBLISHED on public pages - shown in the registration portal only",
+          "duration": "30-minute information session followed by a 75-minute tour (other Northeastern pages describe the tour as 45-60 or 60 minutes; the booking portal text says 75 minutes)",
+          "audience": "general",
+          "notes": "Every visit begins with the 30-minute admissions-staff information session, then a Husky Ambassador-led tour. Departs the Visitor Center, West Village F, 40 Leon St. Exception published by Northeastern: 'from September 12 through September 30, weekday tours will depart from the Raytheon Amphitheater in the Egan Research Center.'",
+          "cite": "NORTHEASTERN-V01, NORTHEASTERN-V02, NORTHEASTERN-V03, NORTHEASTERN-V11"
+        },
+        {
+          "name": "College of Engineering information session",
+          "days_offered": "Specific dates - listed fall date: Wednesday 26 August 2026",
+          "times": "3:00 p.m.",
+          "duration": "60 minutes",
+          "audience": "engineering",
+          "notes": "Led by college staff/faculty; does NOT include a walking tour. Northeastern advises booking a college session on the same day as a general information session and tour. New dates are added frequently.",
+          "cite": "NORTHEASTERN-V05, NORTHEASTERN-V08"
+        },
+        {
+          "name": "Khoury College of Computer Sciences information session",
+          "days_offered": "Specific dates - listed fall date: Wednesday 16 September 2026",
+          "times": "3:00 p.m.",
+          "duration": "60 minutes",
+          "audience": "cs_computing",
+          "notes": "Boston campus; no walking tour included. Khoury also states: 'When you register for a visit to the Boston campus, you will be able to view options for a Khoury College info session.'",
+          "cite": "NORTHEASTERN-V05, NORTHEASTERN-V10"
+        },
+        {
+          "name": "Husky Highlights (topic-focused information session + tour)",
+          "days_offered": "27 Aug; 11, 17, 21, 29 Sept; 9, 12, 15, 19, 27 Oct 2026",
+          "times": "27 Aug 10:00-11:45 a.m.; 11 Sept 11:00 a.m.-12:45 p.m.; 17 Sept 10:00-11:45 a.m.; 21 Sept 11:00-11:45 a.m.; 29 Sept 12:00-1:45 p.m.; 9 Oct 12:00-1:45 p.m.; 12 Oct 2:00-3:45 p.m.; 15 Oct 12:00-1:45 p.m.; 19 Oct 12:00-1:45 p.m.; 27 Oct 12:00-1:45 p.m.",
+          "duration": "60-minute information session + 60-minute tour",
+          "audience": "general",
+          "notes": "Husky Highlights topics are advertised as 'The Northeastern Co-op Experience, The Northeastern Application Process, and Student Life at Northeastern' - but every fall 2026 date currently listed is 'The Application Process'. No co-op-topic date is on the calendar as of 19 August 2026; the page notes new event types and dates are added frequently, so a co-op session may appear. All at the Northeastern University Admissions Visitor Center.",
+          "cite": "NORTHEASTERN-V06"
+        },
+        {
+          "name": "Twilight Tours",
+          "days_offered": "NOT PUBLISHED for fall 2026 - format described but no dates listed",
+          "times": "Format: check-in 4:30-5:30 p.m., information session 5:30-6:15 p.m., glow-stick tour 6:30-7:30 p.m.",
+          "duration": "approx. 3 hours including dinner vouchers",
+          "audience": "general",
+          "notes": "Evening alternative described on the prospective-student programming page with no fall 2026 dates attached.",
+          "cite": "NORTHEASTERN-V06"
+        },
+        {
+          "name": "Early Decision Visit Days",
+          "days_offered": "None - 'There are no upcoming events to display.'",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "The dedicated ED Visit Days portal page was empty on 19 August 2026 - report as not yet posted, worth re-checking before the 1 November deadline.",
+          "cite": "NORTHEASTERN-V07"
+        }
+      ],
+      "engineering_specific": "Yes. 'The College of Engineering offers several engineering specific information sessions for prospective students and their families.' The live portal listed a College of Engineering Info Session on Wednesday 26 August 2026 at 3:00 p.m. in Boston (60 minutes, staff/faculty-led, no walking tour), and a Khoury College of Computer Sciences session on Wednesday 16 September 2026 at 3:00 p.m. Both should be booked on the same day as a general session + tour. Engineering contact: Lisa DeBenedictis, l.debenedictis@northeastern.edu. [NORTHEASTERN-V05, NORTHEASTERN-V08, NORTHEASTERN-V09, NORTHEASTERN-V10]",
+      "robotics_lab_access": "NOT PUBLISHED. Neither the College of Engineering visit pages nor the admissions tour description mention laboratory or robotics facility tours for prospective students. [NORTHEASTERN-V08, NORTHEASTERN-V09, NORTHEASTERN-V01]",
+      "class_visit_possible": "No. 'Class or overnight visits are not offered for prospective students.' [NORTHEASTERN-V11]",
+      "calendar": {
+        "term_start": "2026-09-09 (first day of full-semester fall classes) - note this is LATE: a visit before 9 September 2026 will see a campus without full-semester classes in session",
+        "fall_break": "Fall break begins 25 November 2026; classes resume 30 November 2026. There is no October fall break; instead the initial-third session ends 11 October and the middle-third begins 13 October.",
+        "thanksgiving_break": "Same as fall break: 25-29 November 2026",
+        "term_end": "2026-12-13 last day of full-semester classes with finals; final exam period 14-20 December",
+        "blackouts": [
+          "No blackout dates are published - 'Campus visits are offered year-round.'",
+          "Operational change rather than blackout: 12-30 September 2026, weekday tours depart from the Raytheon Amphitheater in the Egan Research Center instead of the Visitor Center",
+          "Group visits are not available on weekends",
+          "Practical constraint: full-semester classes do not begin until 9 September 2026"
+        ],
+        "cite": "NORTHEASTERN-V12, NORTHEASTERN-V01, NORTHEASTERN-V04"
+      },
+      "football": [
+        "Not applicable - Northeastern does not field a varsity football team. Northeastern competes in 17 Division I teams (baseball, basketball, cross country, field hockey, ice hockey, rowing, swimming & diving, soccer, track & field, volleyball, plus varsity esports); football is not among them. [NORTHEASTERN-V15]"
+      ],
+      "travel": {
+        "airport": "Boston Logan International (BOS) - not named on the Northeastern visit pages fetched; Northeastern directs visitors to the MBTA: 'If you plan to use public transit, please visit the city of Boston's MBTA website.'",
+        "airport_to_campus": "NOT PUBLISHED by Northeastern. Campus is in central Boston at 360 Huntington Ave / Visitor Center at 40 Leon St, directly on the MBTA network.",
+        "drive_from_cary": "UNVERIFIED ESTIMATE ~12 hours (approx. 800 miles). Flying to BOS is the practical option. Northeastern publishes no drive time from North Carolina.",
+        "suggested_stay": "2 nights, combined with WPI. Northeastern is in central Boston, so use the MBTA rather than driving; validated garage parking exists (West Village Garage, 30 Leon St; overflow Columbus Garage, 795 Columbus Ave) if you do drive.",
+        "pair_with": "wpi - Worcester is roughly an hour west of Boston (UNVERIFIED ESTIMATE; neither school publishes a campus-to-campus drive time). A workable pairing is a Boston-area trip covering Northeastern on one weekday and WPI the next, or WPI's Saturday 3 October open house plus a Northeastern weekday visit."
+      },
+      "cost_notes": "Information sessions and tours are free. Parking is validated in the West Village Garage (30 Leon St) with overflow at the Columbus Garage (795 Columbus Ave); Northeastern otherwise steers visitors to MBTA public transit. Visitor Center: visitorcenter@northeastern.edu, 617-373-4097. [NORTHEASTERN-V01, NORTHEASTERN-V02, NORTHEASTERN-V03]",
+      "sources": [
+        {
+          "id": "NORTHEASTERN-V01",
+          "url": "https://admissions.northeastern.edu/visit/visit-campus/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V02",
+          "url": "https://admissions.northeastern.edu/visit/visit-campus-1/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V03",
+          "url": "https://apply.northeastern.edu/portal/campus-visit-registration",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V04",
+          "url": "https://admissions.northeastern.edu/application-information/prospective-student-guide/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V05",
+          "url": "https://apply.northeastern.edu/portal/college-session-registration",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V06",
+          "url": "https://apply.northeastern.edu/portal/prospective-student-programming",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V07",
+          "url": "https://apply.northeastern.edu/portal/ed-visit-days",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V08",
+          "url": "https://coe.northeastern.edu/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V09",
+          "url": "https://coe.northeastern.edu/academics-experiential-learning/undergraduate-studies/undergraduate-admission-aid/undergraduate-admission-and-information-events/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V10",
+          "url": "https://www.khoury.northeastern.edu/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V11",
+          "url": "https://admissions.northeastern.edu/application-information/frequently-asked-admissions-questions/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V12",
+          "url": "https://registrar.northeastern.edu/wp-content/uploads/sites/9/2026-2027-Academic-Calendar.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V13",
+          "url": "https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V14",
+          "url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "NORTHEASTERN-V15",
+          "url": "https://news.northeastern.edu/2025/09/02/faculty-staff/division-i-varsity-sports-trivia/",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "wpi": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "ED/EA1 1 Nov"
+      },
+      "interest": {
+        "level": "counts",
+        "quote": "As part of an undergraduate application, WPI does look at demonstrated interest.",
+        "basis": "WPI FAQ — the only school here that says so in prose."
+      },
+      "book_by": {
+        "when": "Book now",
+        "why": "Fall Open House (Sat 3 Oct) is the last full-day program before the deadline; the 11 Nov open house is after it."
+      },
+      "visit_home_url": "https://www.wpi.edu/admissions/undergraduate/visit",
+      "registration_url": "https://www.wpi.edu/admissions/undergraduate/visit/campus/info-sessions-tours",
+      "registration_required": true,
+      "booking_lead_time": "'Advanced registration is required.' No numeric lead time published; WPI says 'In order to accommodate you on your preferred date and time, we encourage you to register well in advance of your visit... If a date is not available, the session is either at capacity or not being offered at that time,' and specifically warns 'Saturday options fill quickly. If you do not see a date you would like, please check back, as space may open up with cancelations.' [WPI-V02, WPI-V01, WPI-V03]",
+      "tours": [
+        {
+          "name": "Information session + campus tour",
+          "days_offered": "'Information sessions and campus tours are held on weekdays throughout the year and on select Saturdays in the Fall and Spring.'",
+          "times": "Varies by date; a first-party dated example is Saturday 26 September 2026, 12:00-2:00 p.m., 'Also offered at 10:00 AM,' from the Bartlett Center",
+          "duration": "'just over two hours'",
+          "audience": "general",
+          "notes": "Tour 'will include access to most buildings' - academic buildings, classrooms, library, a residence hall, dining hall, Sports & Recreation Center and the Rubin Campus Center - plus a chance to speak with an admissions counselor.",
+          "cite": "WPI-V02, WPI-V03, WPI-V01"
+        },
+        {
+          "name": "Fall Preview Day",
+          "days_offered": "Saturday 12 September 2026",
+          "times": "NOT PUBLISHED (half-day program)",
+          "duration": "Half day",
+          "audience": "general",
+          "notes": "Information session, student-led tour and a student panel drawn from the School of Arts & Sciences, School of Engineering and Business School. Critically for a robotics applicant: 'an option to tour lab spaces is available at the conclusion of the program.' Lab-tour departments vary by date; prior Preview Day programs have included Robotics Engineering.",
+          "cite": "WPI-V01, WPI-V04"
+        },
+        {
+          "name": "Fall Open House",
+          "days_offered": "Saturday 3 October 2026 and Wednesday 11 November 2026",
+          "times": "NOT PUBLISHED (full-day programs)",
+          "duration": "Full day",
+          "audience": "general",
+          "notes": "The 3 October Saturday open house is the only full-day open house inside the pre-deadline window; the 11 November date falls AFTER the 1 November ED I / EA I deadline, so it is not useful for this applicant's early application.",
+          "cite": "WPI-V01, WPI-V12"
+        },
+        {
+          "name": "Lab-space tours at Preview Day / on-campus programs",
+          "days_offered": "Attached to Preview Day and admitted-student programs; department varies by date",
+          "times": "At the conclusion of the Preview Day program",
+          "duration": "NOT PUBLISHED",
+          "audience": "robotics_lab",
+          "notes": "Robotics Engineering has appeared as a lab-tour option on WPI program agendas, at Atwater Kent 120, Innovation Studio 103 and the Robotics Resource Center at 15 Sagamore Road. The dated agendas found are 2025 Preview Day and April 2026 admitted-student programs, NOT a Fall 2026 Preview Day agenda - treat Robotics as likely but unconfirmed for 12 September 2026 and confirm with admissions.",
+          "cite": "WPI-V04, WPI-V05, WPI-V06, WPI-V07"
+        },
+        {
+          "name": "Virtual Fall Preview Days",
+          "days_offered": "Sunday 27 September 2026 and Wednesday 21 October 2026",
+          "times": "27 Sept 5:00-7:00 p.m.; 21 Oct 6:00-8:00 p.m.",
+          "duration": "2 hours",
+          "audience": "general",
+          "notes": "Virtual; useful pre-deadline supplement if the Boston trip slips.",
+          "cite": "WPI-V01"
+        },
+        {
+          "name": "Virtual Early Decision information session",
+          "days_offered": "Monday 28 September 2026",
+          "times": "7:00-8:00 p.m.",
+          "duration": "1 hour",
+          "audience": "general",
+          "notes": "Directly relevant to the 1 November ED I deadline.",
+          "cite": "WPI-V01, WPI-V12"
+        },
+        {
+          "name": "Virtual Women in STEM panel",
+          "days_offered": "Tuesday 6 October 2026",
+          "times": "7:00-8:00 p.m.",
+          "duration": "1 hour",
+          "audience": "general",
+          "notes": "Virtual panel.",
+          "cite": "WPI-V01"
+        },
+        {
+          "name": "Virtual information session / virtual tour",
+          "days_offered": "Multiple dates (separate registrations)",
+          "times": "NOT PUBLISHED",
+          "duration": "45 minutes each",
+          "audience": "general",
+          "notes": "Virtual information session and virtual tour are booked separately.",
+          "cite": "WPI-V01"
+        }
+      ],
+      "engineering_specific": "No standalone School of Engineering admissions session is published. Engineering exposure comes through the Fall Preview Day student panel (which includes School of Engineering students) and the optional lab-space tours at the end of that program. [WPI-V01]",
+      "robotics_lab_access": "Yes, conditionally - the strongest robotics access of the four schools. Fall Preview Day (12 September 2026) offers 'an option to tour lab spaces... at the conclusion of the program', and WPI program agendas list Robotics Engineering lab tours at Atwater Kent 120, Innovation Studio 103 and the Robotics Resource Center, 15 Sagamore Road (Robotics Resource Center, Manipulation & Environmental Robotics Lab, and an FRC practice field 'available through advanced sign-up'). The Robotics Engineering department also runs 'Robotics demonstrations and presentations to campus visitors' through the Robotics Resource Center's K-12 outreach. Caveat: the dated lab-tour agendas found are from 2025 Preview Day and April 2026 admitted-student programs, so confirm the Robotics option for the 12 September 2026 date. [WPI-V01, WPI-V04, WPI-V05, WPI-V06, WPI-V07]",
+      "class_visit_possible": "NOT PUBLISHED - WPI's visit pages do not describe class visits or faculty meetings for prospective students. No Major Qualifying Project (MQP)-specific visit content was found on WPI's visit pages.",
+      "calendar": {
+        "term_start": "2026-08-20 (A-Term begins)",
+        "fall_break": "No date is labelled 'Fall Break'. WPI's A/B term structure creates a gap: A-Term ends 9 October 2026 and B-Term begins 19 October 2026, so 10-18 October 2026 has no classes in session. Separate no-class 'Wellness Days' fall on 25 September and 3 November 2026.",
+        "thanksgiving_break": "25-27 November 2026",
+        "term_end": "2026-12-11 last day of B-Term / fall semester; reading and make-up day 7 December",
+        "blackouts": [
+          "No tour blackout dates are published by WPI admissions",
+          "Practical caution: 10-18 October 2026, no classes between A-Term and B-Term",
+          "Practical caution: 25 September and 3 November 2026 are Wellness Days with no classes",
+          "Practical caution: 24-26 September 2026 Homecoming & Family Weekend - campus busy and lodging tight",
+          "Practical caution: 25-27 November 2026 Thanksgiving"
+        ],
+        "cite": "WPI-V09, WPI-V14"
+      },
+      "football": [
+        "12 September 2026 - vs University of New England, noon, H. Carr Field at Alumni Stadium",
+        "19 September 2026 - vs Husson, noon",
+        "3 October 2026 - vs Norwich, noon (same day as the Fall Open House)",
+        "31 October 2026 - vs Merchant Marine, noon",
+        "7 November 2026 - vs MIT, noon"
+      ],
+      "travel": {
+        "airport": "Boston Logan International (BOS) - not named on the WPI visit pages fetched. Campus address 100 Institute Road, Worcester, MA 01609; admissions in the Bartlett Center.",
+        "airport_to_campus": "NOT PUBLISHED by WPI",
+        "drive_from_cary": "UNVERIFIED ESTIMATE ~12 hours (approx. 800 miles). WPI publishes no drive time from North Carolina.",
+        "suggested_stay": "2 nights combined with Northeastern. Best single-trip design inside the window: WPI Fall Open House Saturday 3 October (full day) or Fall Preview Day Saturday 12 September (lab-tour option), plus a Northeastern weekday information session + tour and a college session.",
+        "pair_with": "northeastern - Worcester is roughly an hour west of Boston. UNVERIFIED ESTIMATE: neither WPI nor Northeastern publishes a campus-to-campus drive time, so the ~1 hour / ~45 mile figure is not sourced to either institution."
+      },
+      "cost_notes": "Information sessions, tours, Preview Days and Open Houses are free. Parking: 'All visitors must obtain a temporary parking pass when parking on campus' with visitor spaces in the Park Ave Garage, Boynton St Lot and West St Lot; the visit-confirmation page states 'Free visitor parking is available in all spaces in the Park Avenue parking garage' (GPS 151 Salisbury Street) and no permit is needed for weekend visits. Arrive 15-20 minutes early. Contact admissions@wpi.edu, 508-831-5286. [WPI-V10, WPI-V11]",
+      "sources": [
+        {
+          "id": "WPI-V01",
+          "url": "https://www.wpi.edu/admissions/undergraduate/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V02",
+          "url": "https://www.wpi.edu/admissions/undergraduate/visit/campus/info-sessions-tours",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V03",
+          "url": "https://www.wpi.edu/news/calendar/events/admissions-campus-information-session-and-campus-tour-12-pm",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V04",
+          "url": "https://www.wpi.edu/sites/default/files/2025-08/Preview-Day.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V05",
+          "url": "https://www.wpi.edu/sites/default/files/2026-03/Sample-ASD-Program-2026-April-8.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V06",
+          "url": "https://www.wpi.edu/academics/departments/robotics-engineering/about",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V07",
+          "url": "https://www.wpi.edu/about/locations/15-sagamore-road",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V08",
+          "url": "https://www.wpi.edu/faq/does-college-credit-jumpstart-high-schoolers-help-my-chances-getting-admitted-wpi",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V09",
+          "url": "https://www.wpi.edu/academics/calendar/26-27",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V10",
+          "url": "https://www.wpi.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V11",
+          "url": "https://www.wpi.edu/admissions/undergraduate/visit/campus/open-houses/visit-registration-confirmation",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V12",
+          "url": "https://www.wpi.edu/admissions/undergraduate/apply",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V13",
+          "url": "https://athletics.wpi.edu/sports/football/schedule",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "WPI-V14",
+          "url": "https://www.wpi.edu/news/calendar",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "michigan": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "ED/EA 1 Nov"
+      },
+      "interest": {
+        "level": "excluded",
+        "quote": "Attending an information session is not factored into our review process if you apply to U-M.",
+        "basis": "Michigan's visit page. Its CDS lists interest as Considered, so the two coexist: interest may be read somewhere, but not from a visit."
+      },
+      "book_by": {
+        "when": "Book now",
+        "why": "Tours release ~2 months ahead and some North Campus engineering instances are already waitlist-only. Scarcest booking on the list."
+      },
+      "visit_home_url": "https://admissions.umich.edu/explore-visit/visit-campus",
+      "registration_url": "https://enrollmentconnect.umich.edu/portal/campus_tours",
+      "registration_required": true,
+      "booking_lead_time": "Book roughly 4-8 weeks out. U-M's own knowledge base states tours are released about two months in advance: \"We usually schedule walking tours of U-M's Central Campus two months out\" (MICHIGAN-V4). Walk-ins are refused outright: \"Due to strict tour capacities, registration is required and walk-ins cannot be accommodated\" (MICHIGAN-V1). Engineering North Campus tours are posted individually on Eventbrite and some Fall instances already show \"(Full - Waitlist Only)\" (MICHIGAN-V7), so the engineering tour is the binding constraint, not the Central Campus tour. Department meetings need three weeks: \"Please contact specific departments at least three weeks before your visit to inquire about availability\" (MICHIGAN-V5).",
+      "tours": [
+        {
+          "name": "Campus Tour (prospective first-year students) - Central Campus walking tour",
+          "days_offered": "Mondays and Fridays, plus some select Wednesdays and Saturdays (U-M KB: \"typically offer prospective first-year student tours on Mondays and Fridays, along with some select Wednesdays and Saturdays\")",
+          "times": "NOT PUBLISHED as fixed times - times vary by date and are shown only on the registration calendar",
+          "duration": "75 minutes",
+          "audience": "general",
+          "notes": "Central Campus only - does NOT cover the College of Engineering, which is on North Campus. By appointment only; no walk-ins; no waitlist for Central Campus tours.",
+          "cite": "https://admissions.umich.edu/explore-visit/visit-campus"
+        },
+        {
+          "name": "Admissions Information Session",
+          "days_offered": "\"generally be held each day a tour is offered (except Saturdays)\"",
+          "times": "NOT PUBLISHED - tied to the tour time you register for",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "You must be registered for a campus tour to attend an information session. Note the demonstrated-interest caveat: U-M says attending an info session is NOT factored into review.",
+          "cite": "https://admissions.umich.edu/explore-visit/visit-campus"
+        },
+        {
+          "name": "Michigan Engineering North Campus Tour",
+          "days_offered": "Select dates posted individually on the College of Engineering Eventbrite page; Fall 2026 instances observed on Fridays and Mondays",
+          "times": "Confirmed Fall 2026 instance: Fri 11 Sep 2026, 2:00 PM. Other observed instances start 2:00 PM or 10:00 AM.",
+          "duration": "1 hour 30 minutes",
+          "audience": "engineering",
+          "notes": "Meets at the Ford Robotics Building, 2505 Hayward St. Free. \"Due to strict tour capacities, registration is required and walk-ins cannot be accommodated.\" Some listings appear as \"(Full - Waitlist Only)\". Contact engin-our@umich.edu / (734) 647-7101. This is the tour that actually shows the robotics and engineering facilities.",
+          "cite": "https://www.engin.umich.edu/admissions-aid/undergraduate/admissions-faq/"
+        },
+        {
+          "name": "Ford Robotics Building student-guided tour",
+          "days_offered": "\"Typically student-guided tours on select Fridays during Fall and Winter semesters\"",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "robotics_lab",
+          "notes": "A self-guided audio tour of the Ford Motor Company Robotics Building is available anytime the building is open: \"typically open to visit Monday through Friday, 7am to 7pm.\"",
+          "cite": "https://robotics.umich.edu/about/facilities/ford-robotics-building/"
+        },
+        {
+          "name": "Group Tours (grades 9-12, school/organization groups)",
+          "days_offered": "Tuesdays and Thursdays",
+          "times": "9:00 a.m.",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "For organized groups, not individual families.",
+          "cite": "https://admissions.umich.edu/explore-visit/visit-campus/group-tours"
+        }
+      ],
+      "engineering_specific": "Yes - and it is a separate, separately-booked tour on a separate campus. The College of Engineering runs the \"Michigan Engineering North Campus Tour\" (1 hr 30 min, meets at the Ford Robotics Building on North Campus), posted on the College's Eventbrite page: \"We offer Michigan Engineering North Campus Tour throughout the year for anyone considering our engineering program. Tours are posted on our Eventbrite page. (Parents are welcome!)\" A confirmed Fall 2026 instance is Fri 11 Sep 2026 at 2:00 PM. Practical planning consequence: the Central Campus admissions tour (75 min) and the North Campus engineering tour (90 min) are two separate registrations in two separate systems in two physically separate locations, so budget a full day - CSE advises \"take both tours if you have time\" and notes engineering classes are primarily on North Campus. Free U-M buses connect the campuses; the engineering tour listing states \"University of Michigan buses are the easiest way to get around campus! There is no cost - Simply hop on and ride.\" Department-level meetings are possible but must be requested at least three weeks ahead. NOT PUBLISHED: a combined Central+North shuttle tour product; there is no single ticket covering both.",
+      "robotics_lab_access": "Yes. The Ford Motor Company Robotics Building is publicly visitable: \"typically open to visit Monday through Friday, 7am to 7pm\" with a free self-guided audio tour at https://audio.robotics.umich.edu/. The Robotics Department also notes \"Typically student-guided tours on select Fridays during Fall and Winter semesters\" - specific Fall 2026 Friday dates and times are NOT PUBLISHED on a fetchable page (tours.robotics.umich.edu blocks automated retrieval). The Michigan Engineering North Campus Tour also departs from this building, so it is the single best-value stop for a robotics-focused applicant. Visitor parking: Lot NC-26, $2.40/hour.",
+      "class_visit_possible": "Not offered as an admissions product; possible only by direct departmental arrangement. Admissions states: \"Some academic departments will meet with prospective students if time allows. Please contact specific departments at least three weeks before your visit to inquire about availability.\" At least one engineering department publishes an explicit yes - Aerospace Engineering: \"Classroom visits during the academic year are welcomed with advanced notice.\" No general prospective-student class-visit program is published.",
+      "calendar": {
+        "term_start": "Monday 31 August 2026 - classes begin (Registrar's Office 2026-2027 academic calendar PDF)",
+        "fall_break": "Fall Study Break: Monday 19 - Tuesday 20 October 2026. Labor Day holiday: Monday 7 September 2026.",
+        "thanksgiving_break": "Thanksgiving recess: Wednesday 25 - Friday 27 November 2026",
+        "term_end": "Classes end Friday 11 December 2026; final exams 14-18 December 2026",
+        "blackouts": [
+          "NOT PUBLISHED - the U-M visit pages do not publish a blackout-date list; availability is expressed only as open dates on the registration calendar, which is released about two months ahead"
+        ],
+        "cite": "https://ro.umich.edu/sites/default/files/calendar/pdfs/Cal_2026-2027.pdf"
+      },
+      "football": [
+        "Sat 5 Sep 2026 vs Western Michigan",
+        "Sat 12 Sep 2026 vs Oklahoma",
+        "Sat 19 Sep 2026 vs UTEP",
+        "Sat 26 Sep 2026 vs Iowa",
+        "Sat 17 Oct 2026 vs Penn State (Homecoming)",
+        "Sat 24 Oct 2026 vs Indiana (Parents Weekend)",
+        "Sat 7 Nov 2026 vs Michigan State",
+        "Sat 21 Nov 2026 vs UCLA"
+      ],
+      "travel": {
+        "airport": "DTW (Detroit Metropolitan Wayne County)",
+        "airport_to_campus": "DTW is the airport U-M directs visitors to; roughly 25-30 miles east of Ann Arbor, typically 40-50 minutes by rental car or airport shuttle service. Exact distance/time NOT PUBLISHED on the fetched U-M visit pages - treat as estimate.",
+        "drive_from_cary": "Approximately 658 road miles one way (routing computation, OSRM open routing engine), roughly 10-11 hours of driving - a two-day drive or a flight. Not a first-party figure; treat as an estimate.",
+        "suggested_stay": "2 nights - the Central Campus tour and the separate North Campus engineering tour are on different campuses in different booking systems, and the engineering tour's confirmed Fall 2026 slot is a 2:00 PM Friday",
+        "pair_with": "Purdue (West Lafayette) - Ann Arbor to West Lafayette is roughly 220 road miles, about 3.5-4 hours, so the two 1 November deadline schools can be driven as one Midwest trip. Distance is an estimate, not a first-party figure."
+      },
+      "cost_notes": "Tours are free, including the Michigan Engineering North Campus Tour (Eventbrite listing: Free). Campus buses between Central and North Campus are free: \"There is no cost - Simply hop on and ride.\" Paid visitor parking: engineering tour visitors use Lot NC26 (2500 Hayward St) via the AMP Park app; the Robotics Department lists Lot NC-26 visitor parking at $2.40/hour. No fee-based visit programs found.",
+      "sources": [
+        {
+          "id": "MICHIGAN-V1",
+          "url": "https://admissions.umich.edu/explore-visit/visit-campus",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V2",
+          "url": "https://admissions.umich.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V3",
+          "url": "https://enrollmentconnect.umich.edu/portal/campus_tours",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V4",
+          "url": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/Article/9572/Campus-Tour-Dates",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V5",
+          "url": "https://admissions.umich.edu/school-and-college-information-sessions",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V6",
+          "url": "https://admissions.umich.edu/explore-visit/visit-campus/group-tours",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V7",
+          "url": "https://www.engin.umich.edu/admissions-aid/undergraduate/admissions-faq/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V8",
+          "url": "https://www.engin.umich.edu/about/campus/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V9",
+          "url": "https://robotics.umich.edu/about/facilities/ford-robotics-building/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V10",
+          "url": "https://audio.robotics.umich.edu/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V11",
+          "url": "https://cse.engin.umich.edu/about/visit/student-visits/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V12",
+          "url": "https://ro.umich.edu/sites/default/files/calendar/pdfs/Cal_2026-2027.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V13",
+          "url": "https://mgoblue.com/sports/football/schedule/2026",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V14",
+          "url": "https://aero.engin.umich.edu/about/visit-us/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "MICHIGAN-V15",
+          "url": "https://www.eventbrite.com/e/michigan-engineering-north-campus-tour-tickets-1608511243429",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "purdue": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "EA 1 Nov"
+      },
+      "interest": {
+        "level": "likely",
+        "quote": "Level of applicant's interest: Considered",
+        "basis": "Purdue's own Common Data Set."
+      },
+      "book_by": {
+        "when": "At least 5 working days ahead",
+        "why": "Purdue asks for five working days for a Daily Visit; the Engineering Info Session is an add-on to it."
+      },
+      "visit_home_url": "https://admissions.purdue.edu/visit/",
+      "registration_url": "https://admissions.purdue.edu/dailyvisit/index.php",
+      "registration_required": true,
+      "booking_lead_time": "Purdue's Daily Visit customization page states: \"Reservations should be made at least five working days in advance of your visit.\" CAUTION - that page carries a footer reading \"Last updated June 18th, 2021\", so the five-working-day figure and the listed start times are potentially stale and should be confirmed by phone before booking. Purdue Engineering's own visit page indicated as of retrieval that \"These events for Spring 2026 have concluded. Fall 2026 dates and registration will open in the coming months,\" i.e. the Engineering Information Session calendar for Fall 2026 was still opening.",
+      "tours": [
+        {
+          "name": "Daily Visit (admissions presentation + student-guided walking tour)",
+          "days_offered": "Monday-Friday, plus one abbreviated visit on most Saturdays during the school year (\"Purdue hosts Daily Visits almost every day, sometimes multiple per day, and one on some Saturdays\")",
+          "times": "Four times each weekday. Published start times are 8:30 a.m., 9:30 a.m. and 1:30 p.m. ET - but these come from a page last updated 18 June 2021 and may be stale. Confirm on the live booking calendar.",
+          "duration": "About three hours (\"They include a presentation and student-guided walking tour and last about three hours\")",
+          "audience": "general",
+          "notes": "Saturday version is abbreviated. Purdue's meta description says \"four tours daily Monday through Friday and one tour on most Saturdays.\"",
+          "cite": "https://admissions.purdue.edu/dailyvisit/index.php"
+        },
+        {
+          "name": "Engineering Information Session (EIS) - West Lafayette",
+          "days_offered": "Weekdays, bookable as an add-on to a Daily Visit",
+          "times": "11:30 a.m. - 12:30 p.m. ET (one cached variant of the page shows 11:30 a.m. - 1:30 p.m.). The 2021-vintage Daily Visit page states \"EIS programs begin at 11:30 a.m.\"",
+          "duration": "1 hour (variant: up to 2 hours when a walking tour is included)",
+          "audience": "engineering",
+          "notes": "\"includes a walking tour of our engineering facilities led by current engineering students (based on student availability)\" - the facilities walk is not guaranteed. Fall 2026 dates/registration were still being released at retrieval.",
+          "cite": "https://www.purdue.edu/futureengineers/visit/"
+        },
+        {
+          "name": "Office of Future Engineers drop-in hours",
+          "days_offered": "Monday-Friday",
+          "times": "9:00 a.m. - 5:00 p.m. ET",
+          "duration": "Drop-in, no set length",
+          "audience": "engineering",
+          "notes": "Dudley Hall. No registration required - the single most schedule-proof engineering touchpoint at Purdue and a good fallback if the EIS calendar is not yet open for your date.",
+          "cite": "https://www.purdue.edu/futureengineers/visit/"
+        },
+        {
+          "name": "Introducing Purdue (large fall preview day)",
+          "days_offered": "Fall 2026 dates: 9, 15, 22, 23 and 29 October 2026",
+          "times": "8:30 a.m. check-in; 9:45 a.m. admissions presentation; academic sessions 10:30 a.m. and 11:30 a.m.; walking tours 1:30 p.m. and 2:30 p.m.",
+          "duration": "About 7 hours",
+          "audience": "general",
+          "notes": "Highest-content option and all five dates fall inside the pre-1 November Early Action window. Includes academic (college-level) sessions plus the walking tour in one day.",
+          "cite": "https://admissions.purdue.edu/visit/introducing-purdue/"
+        },
+        {
+          "name": "Discovering Purdue Polytechnic - Info Session and Tour",
+          "days_offered": "NOT PUBLISHED",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "A genuinely separate college visit: \"Info Sessions and tours for this visit take place in Young Hall, Dudley Hall, and Knoy Hall.\" School-specific tours are available including the School of Engineering Technology; aviation \"must be scheduled separately.\" Contact techrecruit@purdue.edu. Days, times and registration mechanics are not stated on the page.",
+          "cite": "https://polytechnic.purdue.edu/visit"
+        },
+        {
+          "name": "Mechanical Engineering department drop-ins and student-led tours",
+          "days_offered": "Drop-ins Monday-Friday; student-led tours Thursdays",
+          "times": "Drop-ins 8:30 a.m. - 5:00 p.m. (ME 2137); student-led tours 3:00 p.m. Thursdays",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "Department-level, in addition to the college EIS.",
+          "cite": "https://engineering.purdue.edu/futureengineers/visit"
+        },
+        {
+          "name": "Biomedical Engineering daily tours",
+          "days_offered": "Monday-Friday",
+          "times": "1:30 p.m.",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "MJIS 1021; no appointment needed.",
+          "cite": "https://engineering.purdue.edu/BME/Academics/Undergraduate/Future/visit"
+        },
+        {
+          "name": "Group Visits (schools/organizations)",
+          "days_offered": "Most Wednesdays",
+          "times": "10:00 a.m. - 12:30 p.m.",
+          "duration": "2.5 hours",
+          "audience": "general",
+          "notes": "For organized groups only.",
+          "cite": "https://admissions.purdue.edu/visit/groupvisit.php"
+        }
+      ],
+      "engineering_specific": "Yes, and it maps directly onto how Purdue admits engineers. Engineering applicants enter First-Year Engineering rather than a named major - Aeronautics and Astronautics states it plainly: \"There is no direct entry into the AAE program. Engineering students all start in the First-Year Engineering program.\" The college-level product is the Engineering Information Session (EIS) at West Lafayette, weekdays 11:30 a.m.-12:30 p.m. ET, which \"includes a walking tour of our engineering facilities led by current engineering students (based on student availability).\" The EIS is designed to be stacked onto a Daily Visit, and the 2021-vintage Daily Visit page confirms \"EIS programs begin at 11:30 a.m.\" As of retrieval, Fall 2026 EIS dates were still being posted (\"These events for Spring 2026 have concluded. Fall 2026 dates and registration will open in the coming months\"), so the drop-in alternative matters: the Office of Future Engineers takes drop-ins Mon-Fri 9-5 in Dudley Hall with no registration. Purdue Polytechnic Institute is a distinct college with its own visit - \"Discovering Purdue Polytechnic - Info Session and Tour\" in Young, Dudley and Knoy Halls, with school-specific tours available (including the School of Engineering Technology); its days and times are NOT PUBLISHED. Department options add depth: ME drop-ins Mon-Fri 8:30-5 plus 3 p.m. Thursday student-led tours; BME tours Mon-Fri 1:30 p.m., no appointment; AAE by request with 4-5 business days' notice; Computer Science uses its own separate sign-up.",
+      "robotics_lab_access": "NOT PUBLISHED as a standalone robotics-lab tour. The closest published access is through engineering facility walks: the EIS \"includes a walking tour of our engineering facilities led by current engineering students (based on student availability)\", Mechanical Engineering's 3 p.m. Thursday student-led tours, and the Polytechnic school-specific tours (School of Engineering Technology). No first-party page was found offering a dedicated robotics lab, makerspace or competition-team space tour to prospective students.",
+      "class_visit_possible": "NOT PUBLISHED. No first-party Purdue admissions page found offering prospective-student class sit-ins. The realistic substitutes are the departmental drop-in advising hours (Office of Future Engineers, Mon-Fri 9-5, Dudley Hall; ME 2137 Mon-Fri 8:30-5) and department tours. If a class visit is wanted, request it directly from the department alongside a tour booking (AAE, for example, takes visit requests with 4-5 business days' notice).",
+      "calendar": {
+        "term_start": "Monday 24 August 2026 - classes begin (Office of the Registrar academic calendar)",
+        "fall_break": "October Break: Monday 12 - Tuesday 13 October 2026. Labor Day holiday: Monday 7 September 2026.",
+        "thanksgiving_break": "Thanksgiving vacation: Wednesday 25 - Saturday 28 November 2026",
+        "term_end": "Classes end Saturday 12 December 2026; finals 14-19 December 2026",
+        "blackouts": [
+          "NOT PUBLISHED - no blackout list on the Daily Visit pages. Plan around the university holidays and breaks above, and note Early Action Week is 26-29 October 2026, immediately before the 1 November deadline, which will compress availability."
+        ],
+        "cite": "https://www.purdue.edu/registrar/calendars/academic/"
+      },
+      "football": [
+        "Fri 4 Sep 2026 vs Indiana State (Friday night home opener)",
+        "Sat 12 Sep 2026 vs Wake Forest",
+        "Sat 26 Sep 2026 vs Notre Dame",
+        "Sat 10 Oct 2026 vs Minnesota",
+        "Fri 16 Oct 2026 vs Washington (Friday game - affects Friday tour logistics and lodging)",
+        "Sat 7 Nov 2026 vs Maryland (Homecoming)",
+        "Sat 21 Nov 2026 vs Wisconsin"
+      ],
+      "travel": {
+        "airport": "IND (Indianapolis) is the usual gateway; ORD (Chicago O'Hare) and LAF (Purdue University Airport, limited service) are alternatives. Purdue's fetched visit pages do not designate an airport - treat as an estimate.",
+        "airport_to_campus": "IND to West Lafayette is roughly 65-70 miles, about 1 hour 15 minutes by car. Not stated on the fetched first-party pages - estimate.",
+        "drive_from_cary": "Approximately 673 road miles one way (routing computation, OSRM open routing engine), roughly 10.5-11 hours of driving. Not a first-party figure; treat as an estimate.",
+        "suggested_stay": "1 night for a Daily Visit plus EIS (both fit in one weekday: 8:30/9:30 a.m. Daily Visit, 11:30 a.m. EIS); 2 nights if adding the Polytechnic session or a department tour, or if attending a 7-hour Introducing Purdue day",
+        "pair_with": "Michigan (Ann Arbor) - roughly 220 road miles, about 3.5-4 hours between West Lafayette and Ann Arbor, so both 1 November deadline schools fit in one Midwest trip. Distance is an estimate, not a first-party figure."
+      },
+      "cost_notes": "Visit programs are free to attend; no fee-based prospective-student visit product was found. Parking is paid: a daily visitor permit is $5.00/day through the Purdue Parking Portal. Drop-in options (Office of Future Engineers, ME, BME) cost nothing and require no registration.",
+      "sources": [
+        {
+          "id": "PURDUE-V1",
+          "url": "https://admissions.purdue.edu/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V2",
+          "url": "https://admissions.purdue.edu/dailyvisit/index.php",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V3",
+          "url": "https://admissions.purdue.edu/dailyvisit/dvcustomize.php",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V4",
+          "url": "https://admissions.purdue.edu/visit/admittedvisits.php",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V5",
+          "url": "https://www.purdue.edu/futureengineers/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V6",
+          "url": "https://admissions.purdue.edu/visit/introducing-purdue/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V7",
+          "url": "https://polytechnic.purdue.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V8",
+          "url": "https://admissions.purdue.edu/visit/groupvisit.php",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V9",
+          "url": "https://engineering.purdue.edu/BME/Academics/Undergraduate/Future/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V10",
+          "url": "https://www.cs.purdue.edu/future-students/visit.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V11",
+          "url": "https://www.purdue.edu/registrar/calendars/academic/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V12",
+          "url": "https://purduesports.com/sports/football/schedule",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V13",
+          "url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V14",
+          "url": "https://www.purdue.edu/academics/ogsps/admissions/campus-tours/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "PURDUE-V15",
+          "url": "https://admissions.purdue.edu/our-state/",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "texas-am": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-12-01",
+        "label": "RD 1 Dec"
+      },
+      "interest": {
+        "level": "likely",
+        "quote": "Level of applicant's interest: Considered",
+        "basis": "Texas A&M's own Common Data Set."
+      },
+      "book_by": {
+        "when": "At least 3 days ahead",
+        "why": "A&M asks for three days. The engineering informational is a SECOND, separate booking system (tx.ag/ENGEVisit)."
+      },
+      "visit_home_url": "https://www.tamu.edu/visit/campus-visits-and-tours.html",
+      "registration_url": "https://recruiter.tamu.edu/portal/campus_visit (general campus visit); https://tx.ag/ENGEVisit -> https://recruiter.tamu.edu/portal/enge_tours (College of Engineering, booked separately)",
+      "registration_required": true,
+      "booking_lead_time": "\"Please register online at least three days prior to your visit.\" Accessibility accommodations need two weeks' notice. Cancellations go to visit@tamu.edu. Engineering sessions are on a separate Slate calendar with its own availability.",
+      "tours": [
+        {
+          "name": "Campus walking tour (Visitor Center, prospective students and families)",
+          "days_offered": "Monday-Friday",
+          "times": "Tours are provided between 8:00 a.m. and 5:00 p.m. Central Time; specific departure times are NOT PUBLISHED on the visit pages and appear only on the booking calendar. The page warns \"Hours of operation ... and tour times are subject to change.\"",
+          "duration": "90 minutes",
+          "audience": "general",
+          "notes": "Departs Rudder Tower, 401 Joe Routt Blvd. Phone 979-845-5851, visit@tamu.edu. A&M explicitly recommends weekdays in session: \"You'll get the full flavor of campus life on a weekday during the fall or spring semester, when classes are in session.\"",
+          "cite": "https://www.tamu.edu/visit/visitor-center.html"
+        },
+        {
+          "name": "Admissions information session (bookable with the campus visit)",
+          "days_offered": "Weekdays, with the campus visit",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Listed as one of the components you can add to a visit, alongside a residence hall tour, an academic college overview, and a Corps of Cadets visit.",
+          "cite": "https://www.tamu.edu/visit/campus-visits-and-tours.html"
+        },
+        {
+          "name": "General engineering informational with tour of the Zachry Engineering Education Complex",
+          "days_offered": "Dates appear on the College of Engineering Slate calendar; the calendar defaulted to September 2026 at retrieval",
+          "times": "NOT PUBLISHED in fetchable form - the calendar is JavaScript-rendered and its underlying data endpoint returns \"Not Found\", so specific Fall 2026 dates and times could not be extracted",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "\"The College of Engineering hosts information sessions and tours of the Zachry Engineering Education Complex and department visits for prospective students.\" Booked separately from the general campus visit; contact engineering-recruiters@tamu.edu.",
+          "cite": "https://recruiter.tamu.edu/portal/enge_tours"
+        },
+        {
+          "name": "Engineering department and program visits",
+          "days_offered": "By the same engineering calendar",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "\"We offer Zachry Complex in-person general engineering informationals with tours, virtual general engineering presentations and in-person engineering department and program visits for high school students. See the calendar below for opportunities.\"",
+          "cite": "https://recruiter.tamu.edu/portal/enge_tours"
+        },
+        {
+          "name": "Zachry Engineering Education Complex self-guided tour",
+          "days_offered": "Anytime the building is open",
+          "times": "NOT PUBLISHED",
+          "duration": "Self-paced",
+          "audience": "engineering",
+          "notes": "A published self-guided route plus a virtual tour - a useful fallback if the engineering calendar has no slot on your date. Visitor parking: Northside Garage, Central Campus Garage, or Lot 51.",
+          "cite": "https://zachry.tamu.edu/tours/self-guided-tour/"
+        },
+        {
+          "name": "RELLIS Campus tour (engineering-focused option, Bryan TX)",
+          "days_offered": "Monday-Friday",
+          "times": "8:00 a.m. - 5:00 p.m. (\"Tours are available Monday through Friday, 8 a.m. to 5 p.m.\")",
+          "duration": "About 1 hour",
+          "audience": "robotics_lab",
+          "notes": "1429 Bryan Rd., Bryan TX - the A&M System's testing and applied-research campus, home to autonomous-vehicle and robotics test facilities. \"To book an engineering-focused tour, please schedule an appointment here.\" Group size minimum 10, maximum 60; education@rellis.tamus.edu. Note the group minimum makes this hard for a single family.",
+          "cite": "https://rellis.tamus.edu/academicalliance/tours/"
+        },
+        {
+          "name": "Group campus visit",
+          "days_offered": "Weekdays via the group portal",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Minimum 11, maximum 66 students; one chaperone per 10 students.",
+          "cite": "https://recruiter.tamu.edu/portal/group_campus_visit"
+        }
+      ],
+      "engineering_specific": "Yes, and it must be booked in a second, separate system. The main A&M visit page is unusually explicit: \"College of Engineering informationals and tours are scheduled separately. Use this registration link: tx.ag/ENGEVisit. For questions or if you need assistance, please contact engineering-recruiters@tamu.edu.\" That link resolves to the College of Engineering Slate portal, which states: \"We offer Zachry Complex in-person general engineering informationals with tours, virtual general engineering presentations and in-person engineering department and program visits for high school students. See the calendar below for opportunities.\" The specific Fall 2026 dates and times are NOT PUBLISHED in any fetchable form - the calendar renders client-side and its data endpoint returns \"Not Found\"; a screenshot on 19 August 2026 showed the calendar opening on September 2026. Practical plan: register the general 90-minute Visitor Center tour at least three days ahead, then email engineering-recruiters@tamu.edu to pin an engineering informational on the same weekday, and hold https://zachry.tamu.edu/tours/self-guided-tour/ as a fallback. CORRECTION to a common assumption: the Mechatronics programme (MXET) is not in a different college - it sits in the Department of Engineering Technology and Industrial Distribution (ETID) *within* the College of Engineering, so it is covered by the engineering department-visit calendar; no separate MXET visit product exists. NOT PUBLISHED: any first-party page detailing an engineering entry-to-major walkthrough as part of a visit.",
+      "robotics_lab_access": "No dedicated main-campus robotics lab tour is published. The nearest first-party option is the RELLIS Campus (Bryan, TX), the A&M System's applied research and testing campus: \"Tours are available Monday through Friday, 8 a.m. to 5 p.m.\" and \"To book an engineering-focused tour, please schedule an appointment here\" (education@rellis.tamus.edu), about 1 hour, but with a group minimum of 10 and maximum of 60 - a barrier for an individual family. On main campus, the published substitutes are the Zachry Engineering Education Complex tour (guided via the engineering calendar, or self-guided) and engineering department/program visits.",
+      "class_visit_possible": "NOT PUBLISHED for engineering. The published visit menu is an admissions information session, residence hall tour, academic college overview and Corps of Cadets visit - class sit-ins are not among them, and no engineering page offers them. Any class visit would have to be arranged directly with a department through the engineering department-visit route (engineering-recruiters@tamu.edu).",
+      "calendar": {
+        "term_start": "Monday 24 August 2026 - first day of classes (Texas A&M undergraduate catalog academic calendar)",
+        "fall_break": "None. A&M publishes no fall break for Fall 2026; the only autumn closure before Thanksgiving is Labor Day, Monday 7 September 2026 (no classes).",
+        "thanksgiving_break": "Reading day Wednesday 25 November 2026 (no classes); Thanksgiving holiday Thursday 26 - Friday 27 November 2026. Note 1 December 2026 is a \"redefined day\" on which students attend Friday classes.",
+        "term_end": "Last day of classes Thursday 3 December 2026; reading day 4 December; final exams 7-10 December 2026",
+        "blackouts": [
+          "STALE PAGE FLAG: the Visitor Center's closed-dates table still lists 2025-26 closures only (e.g. Labor Day 1 Sep 2025, Thanksgiving 26-28 Nov 2025). No Fall 2026 closure dates have been published, so assume closures on Labor Day 7 Sep 2026 and around Thanksgiving 25-27 Nov 2026 and confirm with visit@tamu.edu / 979-845-5851 before booking."
+        ],
+        "cite": "https://catalog.tamu.edu/undergraduate/academic-calendar/"
+      },
+      "football": [
+        "Sat 5 Sep 2026 vs Missouri State (Kyle Field)",
+        "Sat 12 Sep 2026 vs Arizona State",
+        "Sat 19 Sep 2026 vs Kentucky",
+        "Sat 3 Oct 2026 vs Arkansas",
+        "Sat 17 Oct 2026 vs The Citadel",
+        "Sat 14 Nov 2026 vs Tennessee",
+        "Fri 27 Nov 2026 vs Texas (Friday after Thanksgiving - the single worst lodging weekend in College Station, and it also falls immediately before the 1 December deadline)"
+      ],
+      "travel": {
+        "airport": "CLL (Easterwood Airport, on the A&M campus). CORRECTION to the common assumption of an IAH/United routing: Easterwood's own site says its nonstop service is to Dallas/Fort Worth on American - \"Offering daily nonstop flights to DFW\" and \"With nonstop service to Dallas (DFW), global access is just a connection away.\" So from RDU the realistic itinerary is RDU-DFW-CLL, or fly into IAH/AUS and drive.",
+        "airport_to_campus": "CLL/Easterwood is on the Texas A&M campus itself, a few minutes' drive from central campus. Alternative: drive from IAH (Houston, roughly 100 miles, about 1 hour 45 minutes) or from AUS (Austin, about 106 miles / 1 hour 50 minutes by routing computation).",
+        "drive_from_cary": "Approximately 1,227 road miles one way (routing computation, OSRM open routing engine) - roughly 18-19 hours of driving. Effectively a fly-only destination for a single school visit; only worth driving as part of a longer Texas trip.",
+        "suggested_stay": "2 nights - the general 90-minute Visitor Center tour and a separately-booked engineering informational are unlikely to land on the same morning, and the travel distance leaves no margin for a same-day turnaround",
+        "pair_with": "UT Austin - College Station to Austin is about 106 road miles, roughly 1 hour 50 minutes to 2 hours by car (routing computation), so a single Texas trip covering both is clearly the right structure. Both schools share the 1 December deadline with no early plan, so the trip can be scheduled as late as mid-November - but avoid the week of 23-27 November (A&M Thanksgiving closures, UT Austin's 23-28 November break, and the Fri 27 Nov A&M-Texas game in College Station)."
+      },
+      "cost_notes": "Tours and informationals are free. Visitor parking is paid: for the Zachry Engineering Education Complex, visitors use the Northside Garage, Central Campus Garage or Lot 51. Registration is free but required at least three days ahead. RELLIS tours are free but require a group of at least 10.",
+      "sources": [
+        {
+          "id": "TEXASAM-V1",
+          "url": "https://www.tamu.edu/visit/campus-visits-and-tours.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V2",
+          "url": "https://www.tamu.edu/visit/visitor-center.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V3",
+          "url": "https://admissions.tamu.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V4",
+          "url": "https://recruiter.tamu.edu/portal/campus_visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V5",
+          "url": "https://recruiter.tamu.edu/portal/group_campus_visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V6",
+          "url": "https://engineering.tamu.edu/admissions-and-aid/schedule-a-visit.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V7",
+          "url": "https://recruiter.tamu.edu/portal/enge_tours",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V8",
+          "url": "https://zachry.tamu.edu/tours/self-guided-tour/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V9",
+          "url": "https://engineering.tamu.edu/etid/mxet/index.html",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V10",
+          "url": "https://rellis.tamus.edu/academicalliance/tours/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V11",
+          "url": "https://catalog.tamu.edu/undergraduate/academic-calendar/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V12",
+          "url": "https://12thman.com/sports/football/schedule/2026",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V13",
+          "url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V14",
+          "url": "https://flyeasterwood.com/airlines/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "TEXASAM-V15",
+          "url": "https://flyeasterwood.com/",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "ut-austin": {
+      "visited": false,
+      "deadline": {
+        "date": "2026-12-01",
+        "label": "RD 1 Dec"
+      },
+      "interest": {
+        "level": "none",
+        "quote": "No, UT Austin does not utilize demonstrated interest in the holistic review process.",
+        "basis": "UT Austin admissions."
+      },
+      "book_by": {
+        "when": "Watch weekly",
+        "why": "Cockrell School Fall 2026 registration was not open yet — the portal said \"opens soon\". UT warns not to buy travel before you are confirmed."
+      },
+      "visit_home_url": "https://admissions.utexas.edu/explore/visit-campus/",
+      "registration_url": "https://bealonghorn.admissions.utexas.edu/portal/campus_walking_tour (campus tour); https://bealonghorn.admissions.utexas.edu/portal/engineering_campus (Cockrell in-person info session); https://bealonghorn.admissions.utexas.edu/portal/campus_info_sessions (info session only)",
+      "registration_required": true,
+      "booking_lead_time": "UT tells you not to buy travel until you are confirmed: \"Campus tours fill up quickly, so please wait to book your travel until after you receive a confirmation email about your upcoming reservations at The University of Texas at Austin.\" No numeric lead time is published. Availability is expressed as burnt-orange dates on the portal calendar. Fall 2026 Cockrell engineering sessions were NOT yet open at retrieval: \"Fall 2026 Session Schedule: Registration and information for Fall 2026 Info Sessions opens soon,\" and the in-person engineering portal showed August 2026 with no available dates.",
+      "tours": [
+        {
+          "name": "Campus Tour (information session + guided walking tour)",
+          "days_offered": "Weekdays; specific open days appear as burnt-orange dates on the registration portal calendar",
+          "times": "Start times observed on first-party registration pages: 9:00 AM and 11:00 AM Central. Fall 2026 specific dates were not extractable - the calendar renders client-side below the fold.",
+          "duration": "2 hours total: \"Your visit to campus will start with a 30-minute information session ... Following the presentation is a 90-minute guided walking tour around the heart of campus\"",
+          "audience": "general",
+          "notes": "Eligibility restriction that matters here: \"Campus tours are currently only offered to high school juniors and seniors\" - the applicant qualifies as a senior. Starts at the Covert Admissions Welcome Center, 101 E. 21st St (Perry-Castañeda Library). Nearest parking: Brazos Parking Garage (BRG), 210 E. MLK Blvd.",
+          "cite": "https://bealonghorn.admissions.utexas.edu/portal/campus_walking_tour"
+        },
+        {
+          "name": "Information Session only (no walking tour)",
+          "days_offered": "Per the portal calendar",
+          "times": "NOT PUBLISHED",
+          "duration": "30 minutes",
+          "audience": "general",
+          "notes": "Separate portal from the full tour; useful if tour slots are full.",
+          "cite": "https://bealonghorn.admissions.utexas.edu/portal/campus_info_sessions"
+        },
+        {
+          "name": "Cockrell School of Engineering Undergraduate Info Session (in person)",
+          "days_offered": "NOT PUBLISHED for Fall 2026 - \"Registration and information for Fall 2026 Info Sessions opens soon\"; the in-person portal calendar showed August 2026 with no available dates on 19 August 2026",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "Held in the Engineering Education and Research Center (EER). Advisors present on all 11 engineering majors - directly relevant because UT admits directly to major. \"Attendees are welcome to take a self-guided tour through the Engineering Education and Research Center (EER)\" - so the engineering session gives building access even without a guided lab tour.",
+          "cite": "https://cockrell.utexas.edu/admissions/undergraduate/undergraduate-info-sessions/"
+        },
+        {
+          "name": "Cockrell School Undergraduate Info Session (virtual)",
+          "days_offered": "Per the virtual portal calendar",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "engineering",
+          "notes": "A workable substitute if Fall 2026 in-person dates do not open in time for the trip.",
+          "cite": "https://bealonghorn.admissions.utexas.edu/portal/engineering_virtual"
+        },
+        {
+          "name": "Texas Robotics tour - Anna Hiss Gymnasium (AHG)",
+          "days_offered": "NOT PUBLISHED - scheduled slots only, via the \"Schedule a Tour\" registration link on the Texas Robotics visit page; availability is explicitly limited",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "robotics_lab",
+          "notes": "\"We welcome visitors to explore Anna Hiss Gymnasium, home of Texas Robotics at The University of Texas at Austin.\" Caveats stated on the page: \"Please note that Anna Hiss Gymnasium is an active academic and research facility, not a museum. Our staff provide tours as a way to connect with the community, but availability is limited since these tours are offered in addition to their primary responsibilities.\" Punctuality is enforced: \"Tours begin promptly at the scheduled time ... If you are more than 15 minutes late, we'll be happy to help you reschedule.\" An \"AHG Tour - Independent\" option exists for UT employees/students who do not need a guide. AHG is at 2501 Wichita St.",
+          "cite": "https://robotics.utexas.edu/visit"
+        },
+        {
+          "name": "UT Austin Interest Session / on-campus opportunities calendar",
+          "days_offered": "Per calendar",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Consolidated first-party calendar listing tours plus interest sessions - the single best page to check availability across products.",
+          "cite": "https://bealonghorn.admissions.utexas.edu/register/on_campus_opportunities"
+        },
+        {
+          "name": "Group visits (10-50 students)",
+          "days_offered": "By request",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Request via groupvisitrequest@austin.utexas.edu. STALE PAGE FLAG: the group visit page still displays a notice that the \"Group Visit Calendar for Summer 2023 is now full.\"",
+          "cite": "https://admissions.utexas.edu/explore/visit-campus/"
+        }
+      ],
+      "engineering_specific": "Yes - a separate Cockrell School session, and it is the highest-value item on this campus because UT admits directly to major. The Cockrell School runs its own Undergraduate Info Sessions in the Engineering Education and Research Center (EER), where advisors cover all 11 engineering majors; \"attendees are welcome to take a self-guided tour through the Engineering Education and Research Center (EER).\" It is booked through its own Slate portal, separate from the general campus tour. Status as of 19 August 2026: Fall 2026 in-person sessions are NOT PUBLISHED - the Cockrell page says \"Fall 2026 Session Schedule: Registration and information for Fall 2026 Info Sessions opens soon,\" and a screenshot of the in-person engineering portal showed August 2026 with no available (burnt-orange) dates. A virtual engineering session portal exists as a fallback. Because UT locks you into a major at admission and does not offer class visits in engineering, the Cockrell session plus the Texas Robotics AHG tour is the combination that actually answers the applicant's robotics/AI questions - the general 2-hour campus tour will not.",
+      "robotics_lab_access": "Yes, and it is the strongest robotics access in this batch after Michigan. Texas Robotics offers registered tours of Anna Hiss Gymnasium (2501 Wichita St): \"We welcome visitors to explore Anna Hiss Gymnasium, home of Texas Robotics at The University of Texas at Austin,\" booked through the \"Schedule a Tour\" link on https://robotics.utexas.edu/visit. Expect scarcity and no published schedule: \"availability is limited since these tours are offered in addition to their primary responsibilities,\" and \"Anna Hiss Gymnasium is an active academic and research facility, not a museum.\" Days, times and lead time are NOT PUBLISHED, so email robotics@utexas.edu / submit the scheduling form well before the trip. Secondary access: the self-guided walk through the EER building offered to Cockrell info-session attendees.",
+      "class_visit_possible": "No, not in engineering - Cockrell states it plainly: \"Because we want to maintain the integrity of our classes for our current students, the Cockrell School does not offer classroom visits, but we encourage you to attend one of our special programs for admitted students.\" The substitutes are the Cockrell info session with advisors, the self-guided EER walk, and the Texas Robotics AHG tour.",
+      "calendar": {
+        "term_start": "Monday 24 August 2026 - first class day (Office of the Registrar 2026-27 calendar)",
+        "fall_break": "None published. Labor Day holiday: Monday 7 September 2026.",
+        "thanksgiving_break": "Monday 23 - Saturday 28 November 2026 - no classes. The Office of Admissions separately lists closures on Thursday 26 and Friday 27 November 2026.",
+        "term_end": "Last class day Monday 7 December 2026; final exams 10-12 and 14 December 2026",
+        "blackouts": [
+          "Mon 7 Sep 2026 - Labor Day, Office of Admissions closed",
+          "Thu 26 Nov 2026 - Office of Admissions closed",
+          "Fri 27 Nov 2026 - Office of Admissions closed",
+          "Mon 23 - Sat 28 Nov 2026 - no classes university-wide, so a visit that week would not show campus in session"
+        ],
+        "cite": "https://registrar.utexas.edu/calendars/26-27"
+      },
+      "football": [
+        "Sat 5 Sep 2026 vs Texas State (Darrell K Royal-Texas Memorial Stadium)",
+        "Sat 12 Sep 2026 vs Ohio State",
+        "Sat 19 Sep 2026 vs UTSA",
+        "Sat 17 Oct 2026 vs Florida",
+        "Sat 24 Oct 2026 vs Ole Miss",
+        "Sat 31 Oct 2026 vs Mississippi State",
+        "Sat 21 Nov 2026 vs Arkansas",
+        "(Away: Fri 27 Nov 2026 at Texas A&M - that game drives College Station lodging, not Austin)"
+      ],
+      "travel": {
+        "airport": "AUS (Austin-Bergstrom International). Nonstop from RDU.",
+        "airport_to_campus": "AUS is roughly 8-10 miles southeast of the UT campus, about 20-30 minutes by rideshare. Not stated on the fetched first-party pages - treat as an estimate. On-campus visitor parking: Brazos Parking Garage (BRG), 210 E. MLK Blvd, nearest the Covert Admissions Welcome Center.",
+        "drive_from_cary": "Approximately 1,322 road miles one way (routing computation, OSRM open routing engine) - roughly 19-20 hours of driving. Fly; the nonstop RDU-AUS makes this the easiest of the two Texas campuses to reach.",
+        "suggested_stay": "1 night if only the campus tour and a Cockrell session are booked; 2 nights if the Texas Robotics AHG tour lands on a separate day, which is likely given its limited availability",
+        "pair_with": "Texas A&M (College Station) - about 106 road miles, roughly 1 hour 50 minutes to 2 hours by car (routing computation). Fly RDU-AUS nonstop, drive to College Station, and return from AUS or CLL. Both schools are 1 December deadline with no early plan, so a trip in the first half of November works; avoid 23-28 November (UT has no classes, UT admissions is closed 26-27 November, A&M is closed for Thanksgiving, and the A&M-Texas game on Fri 27 November saturates College Station lodging)."
+      },
+      "cost_notes": "Tours, information sessions and the Cockrell engineering sessions are free. Paid visitor parking applies: Brazos Parking Garage (BRG) for the Welcome Center. No fee-based prospective-student visit programs found. Welcome Center hours 8 a.m. - 5 p.m. weekdays; welcomecenter@austin.utexas.edu, 512-475-7399.",
+      "sources": [
+        {
+          "id": "UTAUSTIN-V1",
+          "url": "https://admissions.utexas.edu/explore/visit-campus/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V2",
+          "url": "https://admissions.utexas.edu/visit/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V3",
+          "url": "https://admissions.utexas.edu/explore/visit-campus/welcome-centers/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V4",
+          "url": "https://bealonghorn.admissions.utexas.edu/portal/campus_walking_tour",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V5",
+          "url": "https://bealonghorn.admissions.utexas.edu/register/?id=a4d69284-abc2-4b01-ad82-dbc21e9e5dc1",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V6",
+          "url": "https://bealonghorn.admissions.utexas.edu/register/on_campus_opportunities",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V7",
+          "url": "https://bealonghorn.admissions.utexas.edu/portal/campus_info_sessions",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V8",
+          "url": "https://cockrell.utexas.edu/admissions/undergraduate/undergraduate-info-sessions/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V9",
+          "url": "https://bealonghorn.admissions.utexas.edu/portal/engineering_campus",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V10",
+          "url": "https://bealonghorn.admissions.utexas.edu/portal/engineering_virtual",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V11",
+          "url": "https://cockrell.utexas.edu/component/content/category/10-admissions/22-undergraduate",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V12",
+          "url": "https://robotics.utexas.edu/visit",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V13",
+          "url": "https://admissions.utexas.edu/apply/frequently-asked-questions/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V14",
+          "url": "https://registrar.utexas.edu/calendars/26-27",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V15",
+          "url": "https://admissions.utexas.edu/contact/",
+          "fetched": "2026-08-19"
+        },
+        {
+          "id": "UTAUSTIN-V16",
+          "url": "https://texaslonghorns.com/sports/football/schedule/2026",
+          "fetched": "2026-08-19"
+        }
+      ]
+    },
+    "nc-state": {
+      "visited": true,
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "EA 1 Nov"
+      },
+      "visited_note": "In Raleigh — 25 minutes from home. Re-visit costs almost nothing if a specific question comes up.",
+      "tours": [],
+      "sources": []
+    },
+    "georgia-tech": {
+      "visited": true,
+      "deadline": {
+        "date": "2026-11-02",
+        "label": "EA 2 Nov"
+      },
+      "visited_note": "Atlanta, ~6 hours by road. EA deadline is 2 November; no further visit needed.",
+      "tours": [],
+      "sources": []
+    }
+  }
+}
