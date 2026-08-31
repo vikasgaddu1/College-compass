@@ -4,8 +4,7 @@ import {
   Layers, Sparkles, AlertTriangle, GraduationCap, Users, DollarSign,
   Columns3, CalendarClock, Award, EyeOff, NotebookPen, TrendingUp,
   Coins, ClipboardCheck, MessageCircle, ListOrdered, Bot,
-  Target, Grid3x3, GitBranch, Cloud, MapPin
-} from "lucide-react";
+  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange} from "lucide-react";
 import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent } from "@/lib/notes";
 import { schools } from "@/lib/data";
@@ -30,6 +29,7 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
     items: [
       { path: "/curriculum", label: "Curriculum & access",   icon: GraduationCap, hint: "AI courses, gates, research" },
       { path: "/robotics",   label: "Robotics paths",         icon: Bot,           hint: "CS-AI vs ME vs BS Robotics" },
+      { path: "/cmu-plan",   label: "CMU four-year plan",    icon: CalendarRange, hint: "Stats+ML + Robotics, semester by semester" },
       { path: "/culture",    label: "Culture & campus",      icon: Users,         hint: "Greek life, ambition, rec" },
       { path: "/cost",       label: "Cost & value",          icon: DollarSign,    hint: "What it costs a NC family" },
       { path: "/scholarships", label: "Scholarships & merit", icon: Coins,        hint: "Merit awards, named scholarships" },
