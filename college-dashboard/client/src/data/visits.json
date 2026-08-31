@@ -210,7 +210,7 @@
         "read_first": [
           {
             "q": "How do I do robotics and AI inside ECE?",
-            "a": "Already published. ECE's own course guide lists 18-461 Introduction to Machine Learning for Engineers, 18-395 Introduction to Computer Vision, 18-370 Fundamentals of Control and 18-475 Autonomous Control Systems, and every ECE course numbered 18-300 or higher counts toward the Coverage requirement. On top of that the Robotics Additional Major is open to students in all colleges at a 3.0 GPA, and the Robotics Minor and Machine Learning Minor are reserved for students OUTSIDE the School of Computer Science — so being in ECE is exactly what qualifies you.",
+            "a": "Already published. ECE's own course guide lists 18-461 Introduction to Machine Learning for Engineers, 18-395 Introduction to Computer Vision, 18-370 Fundamentals of Control and 18-474 Embedded Control Systems, and every ECE course numbered 18-300 or higher counts toward the Coverage requirement. On top of that the Robotics Additional Major is open to students in all colleges at a 3.0 GPA, and the Robotics Minor and Machine Learning Minor are reserved for students OUTSIDE the School of Computer Science — so being in ECE is exactly what qualifies you.",
             "url": "https://www.ece.cmu.edu/academics/bs-in-ece/academic-guide.html"
           },
           {
@@ -264,7 +264,7 @@
           {
             "who": "ECE department tour",
             "priority": "high",
-            "q": "I want to take 18-461 Machine Learning for Engineers, 18-395 Computer Vision and 18-475 Autonomous Control Systems. Do ECE students reliably get seats in those, or do they fill up?",
+            "q": "I want to take 18-461 Machine Learning for Engineers, 18-395 Computer Vision and 18-474 Embedded Control Systems. Do ECE students reliably get seats in those, or do they fill up?",
             "why": "Registration priority follows your primary major, so these are the courses that must be reachable."
           },
           {
@@ -301,7 +301,12 @@
             "q": "Can I send a portfolio of my robotics work?",
             "because": "CMU states plainly: \"Carnegie Mellon doesn't accept supplemental submissions, such as resumes, artwork, portfolios, recording or websites.\""
           }
-        ]
+        ],
+        "_correction": {
+          "date": "2026-08-31",
+          "what": "An earlier research pass reported an ECE course '18-475 Autonomous Control Systems'. No such course exists in CMU's ECE catalog. The real control courses are 18-370 Fundamentals of Control, 18-474 Embedded Control Systems and 18-442 Autonomous Robotics II. Questions referencing 18-475 have been corrected to 18-474.",
+          "verified_against": "http://coursecatalog.web.cmu.edu/schools-colleges/collegeofengineering/departmentofelectricalandcomputerengineering/"
+        }
       },
       "sources": [
         {
