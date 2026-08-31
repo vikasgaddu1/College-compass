@@ -770,7 +770,7 @@
           "rate": 0.19,
           "residency": "all",
           "door": "engineering",
-          "basis": "CMU-published comparison figure",
+          "basis": "CMU-published comparison figure (2015 article — not a current figure)",
           "note": "ME and ECE live here. The Robotics Additional Major is open to all colleges at 3.0 GPA, and the Robotics and ML minors are reserved for non-SCS students."
         },
         {
@@ -778,11 +778,11 @@
           "rate": 0.052,
           "residency": "all",
           "door": "computing",
-          "basis": "350 admitted of 6,756 applicants",
+          "basis": "350 admitted of 6,756 applicants (2015 article — not a current figure)",
           "note": "Houses the BS in Robotics and the BS in Artificial Intelligence."
         }
       ],
-      "unit_admit_note": "Not an official rate table. These come from a CMU publication comparing SCS with the rest of the university, so treat them as indicative.",
+      "unit_admit_note": "Not an official rate table, and NOT current. The 5.2% / 19% comparison traces to a 2015 School of Computer Science article, so treat it as indicative of the shape of the gap rather than as this cycle's numbers. CMU publishes no per-college admit rate; neither do Michigan, Northeastern or Georgia Tech.",
       "unit_admit_source": "https://www.cs.cmu.edu/link/meeting-demand",
       "admission_structure": {
         "applies_to": "college",
@@ -3366,6 +3366,14 @@
           "basis": "Georgia Tech admits by major, and the college you name on the Common App materially changes your odds. Institute-published profiles show only intended-area-of-study mix rather than per-college admit rates: 42% Engineering, 15% Computing, 22% Sciences, 7% Business, 8% Liberal Arts, 6% Design for the Fall 2026 admitted class [GT-S9] (Fall 2025: 44% Engineering, 16% Computing) [GT-S10]. The College of Computing states only that 'Competition remains high, with an admission rate for Computing that is lower than Georgia Tech's already low overall admission rate,' while disclosing that the Fall 2025 cycle drew 66,895 total applications including 13,711 for CS and Computational Media combined, that 1,547 first-year students were offered admission to CS or CM, and that CS alone accounted for 92.7% of College applicants [GT-S8]. That implies a CS+CM admit rate of roughly 11.3% (INFERRED - 1,547/13,711) [GT-S8], i.e. computing sits below the Institute-wide 13.3% [GT-S1]. The widely repeated figures of 8.5% for the College of Computing versus 13.1% for the College of Engineering could NOT be verified from any Georgia Tech source fetched on 2026-08-16 - treat them as unsourced. The second, larger constraint is mobility after admission: change of major into CS was suspended, and as of April 15, 2025 the College of Computing 'updated their change of major process based on semester of matriculation,' with separate rules for students who matriculated in summer 2024 or afterward; the department 'is now prepared to begin accepting Change of Major applications again on a limited basis, which includes students who would like to add Computer Science as a second major' [GT-S7][GT-S8]. Practical consequence: apply directly to the major you want (Computer Science, or a specific engineering major such as Mechanical Engineering); do not plan on entering through another major and switching. Note also that Georgia Tech's CDS marks 'state residency' as Very Important in the review [GT-S1], which is the single biggest structural headwind for a North Carolina applicant."
         },
         "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
+      },
+      "cs_change_of_major_status": {
+        "as_of": "2026-08-31",
+        "status": "partially reopened, 2026-27 process unpublished",
+        "was_recorded_as": "suspended for Summer 2024 and later matriculants",
+        "quote": "The Computer Science department is now prepared to begin accepting Change of Major applications again on a limited basis... Since Computer Science is a space-restricted program, the number of applicants accepted each semester depends on the space available in Computer Science. Students should not assume they will be able to change their major to Computer Science. ... Information about the process to change majors to computer science for the 2026-2027 academic year are forthcoming.",
+        "url": "https://www.cc.gatech.edu/create-application-changing-majors-computer-science",
+        "note": "Applying is unrestricted — Georgia Tech admits to the Institute and an admitted student may confirm a different major. The restriction is on changing major AFTER enrolling, and for a Fall 2027 entrant the process is not yet published. Computational Media publishes no space-restriction language, so it is the more reachable College of Computing door."
       }
     },
     "source_log": {
@@ -6257,7 +6265,7 @@
       "in_state_admit_rate": null,
       "oos_admit_rate": null,
       "is_home_state_nc": false,
-      "cs_gate": "strong",
+      "cs_gate": "none",
       "cs_gate_basis": "\"students who are admitted... in Fall 2023 or later must first be selected for the Computer Science major\" (capacity constraints).",
       "avg_gpa": {
         "value": 3.9,
@@ -6292,13 +6300,21 @@
         },
         "computing": {
           "available": true,
-          "severity": "strong",
-          "basis": "Michigan's binding constraint is the Computer Science major, not the college. U-M's CSE department states: 'Due to capacity constraints, students who are admitted to the University of Michigan in Fall 2023 or later must first be selected for the Computer Science (CS) major before they can declare the major. This selection policy ... is the same for students in both the College of Engineering and the College of Literature, Science, and the Arts (LSA). The selection policy applies only to the CS major and does NOT apply to students seeking to major in the Computer Engineering (CE) or Data Science (DS) programs' [UMICH-S6]. Incoming students request CS 'advance selection' on the Common Application itself, and transfer students cannot switch into CS once on campus [UMICH-S6][UMICH-S7]. Robotics is the opposite story: the Robotics BSE has no capacity cap — students declare after at least one term with a 2.0 GPA [UMICH-S8]. So a robotics-focused applicant should target Robotics BSE (open declaration) and treat CS as the gated option requiring the advance-selection request on the application."
+          "severity": "none",
+          "basis": "CS is open to any College of Engineering or LSA student who meets the declaration requirements. The advance-selection requirement was removed as of Spring 2026."
         },
         "_note": "Severity is per door. The engineering figure comes from the ECE admission research; the computing figure is the researched cs_gate. Only 'strong' moves a tier."
       },
       "demonstrated_interest_note": "Both are true and they are easy to conflate. Michigan's Common Data Set lists 'Level of applicant's interest' as Considered, but its own visit page states: \"Attending an information session is not factored into our review process if you apply to U-M.\" So interest may be read somewhere, but NOT from a campus visit or info session — a visit here has decision value for the applicant, not signalling value.",
-      "demonstrated_interest_note_cite": "https://admissions.umich.edu/explore-visit/visit-campus"
+      "demonstrated_interest_note_cite": "https://admissions.umich.edu/explore-visit/visit-campus",
+      "cs_gate_correction": {
+        "changed": "2026-08-31",
+        "was": "strong — CS required advance selection at application time for Fall 2023+ entrants",
+        "now": "none — the selection requirement was withdrawn",
+        "quote": "Previously, a selection process was implemented to restrict enrollment in the Computer Science major, which required students to apply for selection to the major at the time of their application to the University of Michigan. As teaching capacity has grown and enrollment has stabilized, this requirement has been removed as of Spring 2026.",
+        "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/",
+        "note": "Verified directly against the live CSE page. Search-engine snippets still showed the old policy, and the College of Engineering bulletin no longer excepts CS from normal major declaration. Michigan is now the most open of the four competitive schools on this list, which inverts earlier advice."
+      }
     },
     "source_log": {
       "UMICH-S1": {
