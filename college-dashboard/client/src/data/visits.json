@@ -977,22 +977,28 @@
       "questions": {
         "read_first": [
           {
+            "q": "Do I have to request the computer science major when I apply?",
+            "a": "No — not any more. Michigan removed that requirement: \"As teaching capacity has grown and enrollment has stabilized, this requirement has been removed as of Spring 2026.\" CS is now open to any College of Engineering or LSA student who meets the declaration requirements, so there is nothing to request at application time.",
+            "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/"
+          },
+          {
             "q": "Does visiting help my application?",
             "a": "No — and Michigan says so directly: \"Attending an information session is not factored into our review process if you apply to U-M.\" Visit to decide whether you want it, not to be seen.",
             "url": "https://admissions.umich.edu/explore-visit/visit-campus"
-          },
-          {
-            "q": "Do I pick a major on the application?",
-            "a": "For engineering you enter the College of Engineering undeclared. The exception is computer science: CS applicants must request selection into the major on the Common Application itself.",
-            "url": null
           }
         ],
         "ask": [
           {
             "who": "Admissions counsellor",
             "priority": "high",
-            "q": "I understand engineering students arrive undeclared and declare later, but I have also read that computer science applicants must request the CS major on the Common Application itself. If I am aiming at Electrical or Computer Engineering and robotics, is there anything I have to request at application time, or do I genuinely arrive undeclared?",
-            "why": "Missing a required request at application time would be an unrecoverable mistake."
+            "q": "Your CSE page says the requirement to be selected for the computer science major was removed as of Spring 2026. I want to confirm that applies to me entering in Fall 2027 — is there anything at all I need to request or check a box for when I apply, for either computer science or robotics?",
+            "why": "This changed recently and the old policy is still showing in search results, so it is worth confirming in person rather than trusting a web page."
+          },
+          {
+            "who": "North Campus engineering tour",
+            "priority": "high",
+            "q": "Now that the computer science selection requirement is gone, is there any capacity limit left on declaring Robotics, Electrical Engineering or Computer Engineering after first year — or is declaring genuinely open to anyone in the College of Engineering who passes the courses?",
+            "why": "The removal of one gate does not tell you whether the others exist."
           },
           {
             "who": "Admissions counsellor",
