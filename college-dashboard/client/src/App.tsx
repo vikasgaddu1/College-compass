@@ -27,6 +27,7 @@ import VisitsPage from "@/pages/Visits";
 import OddsPage from "@/pages/Odds";
 import StrategyPage from "@/pages/Strategy";
 import SequencingPage from "@/pages/Sequencing";
+import CmuPlanPage from "@/pages/CmuPlan";
 import SyncPage from "@/pages/Sync";
 import { HiddenSchoolsProvider } from "@/lib/hidden";
 import { NotesProvider } from "@/lib/notes";
@@ -56,6 +57,7 @@ function AppRouter() {
         <Route path="/odds" component={OddsPage} />
         <Route path="/strategy" component={StrategyPage} />
         <Route path="/sequencing" component={SequencingPage} />
+        <Route path="/cmu-plan" component={CmuPlanPage} />
         <Route path="/sync" component={SyncPage} />
         <Route path="/ranking" component={MyRankingPage} />
         <Route path="/notebook" component={NotebookPage} />
