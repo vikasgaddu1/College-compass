@@ -140,16 +140,62 @@
   display: grid;
   grid-template-columns: 260px 1fr;
   grid-template-rows: auto 1fr;
+  height: 100vh;   /* fallback for older mobile browsers */
   height: 100dvh;
 }
 .grid-sidebar { grid-row: 1 / -1; overflow-y: auto; overscroll-behavior: contain; }
 .grid-header  { grid-column: 2; position: sticky; top: 0; z-index: 10; }
 .grid-main    { grid-column: 2; overflow-y: auto; overscroll-behavior: contain; }
 
+/* Mobile: the sidebar becomes a drawer opened from a header button.
+   Without this the site has NO navigation under 900px. */
+.drawer-btn { display: none; }
+
 @media (max-width: 900px) {
-  .grid-dashboard { grid-template-columns: 1fr; }
+  .grid-dashboard { grid-template-columns: 1fr; height: 100vh; height: 100dvh; }
   .grid-sidebar { display: none; }
   .grid-header, .grid-main { grid-column: 1; }
+  .desktop-only { display: none; }
+
+  .drawer-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
+    flex-shrink: 0;
+  }
+
+  .grid-sidebar.drawer-open {
+    display: flex;
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: min(300px, 84vw);
+    z-index: 60;
+    box-shadow: 0 0 40px rgb(0 0 0 / 0.25);
+    animation: drawer-in 0.18s ease-out;
+  }
+}
+
+/* the backdrop only ever renders while the drawer is open; hide it if the
+   viewport is resized back to desktop so it can never trap a click there */
+@media (min-width: 901px) {
+  .drawer-backdrop { display: none; }
+}
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 0.45);
+  z-index: 55;
+}
+
+@keyframes drawer-in {
+  from { transform: translateX(-16px); opacity: 0.6; }
+  to   { transform: translateX(0); opacity: 1; }
 }
 
 .dot { display:inline-block; width: 8px; height: 8px; border-radius: 999px; }
