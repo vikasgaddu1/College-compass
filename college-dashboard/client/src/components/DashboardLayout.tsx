@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import {
   Layers, Sparkles, AlertTriangle, GraduationCap, Users, DollarSign,
   Columns3, CalendarClock, Award, EyeOff, NotebookPen, TrendingUp,
   Coins, ClipboardCheck, MessageCircle, ListOrdered, Bot,
-  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange, Radar} from "lucide-react";
+  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange, Radar, Menu, X} from "lucide-react";
 import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent } from "@/lib/notes";
 import { schools } from "@/lib/data";
@@ -86,6 +86,7 @@ function Logo() {
 
 export function DashboardLayout({ children }: { children: ReactNode }) {
   const [loc] = useLocation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const { hidden, visible, clear } = useHidden();
   const { notes } = useNotes();
   const noteCount = Object.values(notes).filter(hasContent).length;
@@ -97,9 +98,20 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
     .sort((a, b) => b.path.length - a.path.length)[0];
   const active = exact || prefix;
 
+  // close the drawer whenever the route changes, and on Escape
+  useEffect(() => { setDrawerOpen(false); }, [loc]);
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setDrawerOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [drawerOpen]);
+
   return (
     <div className="grid-dashboard">
-      <aside className="grid-sidebar bg-[hsl(var(--sidebar))] text-[hsl(var(--sidebar-foreground))] border-r border-[hsl(var(--sidebar-border))] py-5 px-4 flex flex-col">
+      <aside
+        className={`grid-sidebar bg-[hsl(var(--sidebar))] text-[hsl(var(--sidebar-foreground))] border-r border-[hsl(var(--sidebar-border))] py-5 px-4 flex flex-col${drawerOpen ? " drawer-open" : ""}`}
+      >
         <div className="px-1 pb-5"><Logo /></div>
 
         {nav.map(group => (
@@ -111,7 +123,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
               {group.items.map(({ path, label, icon: Icon, hint }) => {
                 const isActive = active?.path === path;
                 return (
-                  <Link key={path} href={path} className={`side-item ${isActive ? "active" : ""}`}>
+                  <Link key={path} href={path} onClick={() => setDrawerOpen(false)} className={`side-item ${isActive ? "active" : ""}`}>
                     <Icon size={14} strokeWidth={1.8} />
                     <div className="flex-1 min-w-0">
                       <div>{label}</div>
@@ -151,20 +163,31 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
       </aside>
 
       <header className="grid-header bg-[hsl(var(--background))] border-b border-[hsl(var(--border))]">
-        <div className="px-6 py-4 flex items-baseline justify-between">
-          <div>
-            <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))]">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3">
+          <button
+            type="button"
+            className="drawer-btn"
+            aria-label={drawerOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={drawerOpen}
+            onClick={() => setDrawerOpen(v => !v)}
+          >
+            {drawerOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
+          </button>
+          <div className="min-w-0 flex-1">
+            <div className="text-[10px] sm:text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))] truncate">
               For a Fall 2027 college applicant · Broad AI focus
             </div>
-            <h1 className="serif text-[24px] font-semibold leading-tight">{active?.label || "Overview"}</h1>
+            <h1 className="serif text-[19px] sm:text-[24px] font-semibold leading-tight truncate">{active?.label || "Overview"}</h1>
           </div>
-          <div className="text-right text-[11px] text-[hsl(var(--muted-foreground))]">
+          <div className="desktop-only text-right text-[11px] text-[hsl(var(--muted-foreground))]">
             No admissions-chance data used. Fit is about the program and the place.
           </div>
         </div>
       </header>
 
-      <main className="grid-main px-6 py-6">{children}</main>
+      {drawerOpen && <div className="drawer-backdrop" onClick={() => setDrawerOpen(false)} aria-hidden="true" />}
+
+      <main className="grid-main px-4 sm:px-6 py-4 sm:py-6">{children}</main>
     </div>
   );
 }
