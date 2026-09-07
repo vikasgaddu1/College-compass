@@ -1,0 +1,450 @@
+{
+  "compiled": "2026-09-07",
+  "note": "Every course code and requirement verified on first-party catalog pages fetched 2026-09-07. Accreditation is not evaluated — robotics has no professional licence, so it does not gate any robotics career. Confirm requirements with each department before relying on them.",
+  "wpi": {
+    "degree_name": "Bachelor of Science in Robotics Engineering (RBE)",
+    "department": "Robotics Engineering department (Department Head: J. Xiao; Associate Head: G. C. Lewin). Robotics Engineering became a full department at WPI, with 18 core faculty at the time of the announcement.",
+    "total_credits": "15 units minimum (1/3 unit per standard course = 45 standard courses' worth of work); a minor is 2 units (18 credits), which fixes the conversion at 1 unit = 9 credits, so 15 units = 135 semester-hour-equivalents.",
+    "credit_or_unit_system": "WPI measures the degree in units, not semester credits: one standard 7-week course = 1/3 unit, and the academic year runs as four 7-week terms (A and B terms in the fall, C and D terms in the spring, plus an optional E term). Students normally take three courses per 7-week term. Minimum total academic credit for the BS = 15 units; residency requirement = minimum of 8 units completed at WPI.",
+    "elective_structure": "Distribution-requirement model rather than named tracks. Verbatim catalog minima: Mathematics minimum 7/3 units (\"Must include Differential and Integral Calculus, Differential Equations, Linear Algebra, and Probability\"); Basic Science minimum 4/3 units (\"Must include at least 2/3 units in Physics\"); Entrepreneurship minimum 1/3 unit; Social Implications minimum 1/3 unit; \"Engineering Science and Design, including the MQP (Minimum 18/3 Units)\" which must include at least 5/3 units in Robotics Engineering including RBE 2001, RBE 2002, RBE 3001 and RBE 3002 or equivalent (RBE 3100 may not be used), at least 1 unit in Computer Science including Object-Oriented Programming and Software Engineering, at least 2/3 unit in Electrical and Computer Engineering including Embedded Systems, at least 1/3 unit Statics and 1/3 unit Classical Controls, and at least 1 unit of Engineering Science and Design Electives of which at least 2/3 unit must be at the 4000 level or higher. The distribution requirements total 10 or 10 1/3 units depending on double-counting of GOV 2302 / GOV-ID 2314. WPI's RBE catalog page publishes no named concentrations or tracks for the major; the marketing page for the degree advertises optional concentrations and minors generically without naming RBE-specific concentrations.",
+    "declaration_gate": "WPI's published record shows no GPA gate and no internal selection step for the RBE major. First-year candidates apply through the Common Application to WPI (application fee $70, test-optional; letters from a counselor and a teacher). WPI's own degree page tells prospective students: \"Undecided? No problem. Apply now and explore before committing to a specific path.\" First-year advising materials treat 'Undecided' as a normal entry state, with intro courses and FY 1800 (Discovering Majors and Careers) offered to help select a major. Changing or declaring a major/minor/concentration is an administrative request the student initiates in Workday and the Registrar approves; the Registrar publishes Change of Major instructions with no minimum-GPA condition. Net: no published competitive internal admission or GPA threshold to be an RBE major — the strongest claim first-party sources support. WPI does not publish a statement that first-years are 'admitted to the major' in a binding sense.",
+    "flexibility": "Minors are 2 units (18 credits) of thematically related work, with at most 1 unit double-counted toward another degree requirement; MQP credit cannot count toward a minor; multiple minors are allowed (no triple counting). The degree page lists potential minors for RBE students: Computer Science, Data Science, Electrical & Computer Engineering, Mechanical Engineering. The RBE program tracking sheet has a '2nd Major' field and advises that \"Double CS/RBE majors should consider CS 1101/1102\" instead of CS 1005. A Robotics Engineering minor exists for non-RBE majors (approval form emailed to the Chair of the RBE Undergraduate Program Committee). BS/MS lets students double-count up to 12 credits toward both degrees in five years.",
+    "size": "Over 420 undergraduate majors and double majors, and over 180 graduate students, per WPI's Robotics Engineering symposium page. WPI's news announcement of the department's creation cited 374 undergraduate majors (not including double majors), 231 graduate students and 18 core faculty. Institution-wide: 1,300 first-time first-year students enrolled in Fall 2025; 13:1 student-to-faculty ratio. Class sizes for individual RBE courses: not published.",
+    "distinctive": [
+      "The degree is measured in units on a four-term 7-week calendar (A/B/C/D terms), with three courses per term the norm — a structurally different workload rhythm from a semester system.",
+      "Two separate required projects: a 1-unit MQP that \"must be a Capstone Design Experience in Robotics Engineering\" plus a 1-unit IQP done in interdisciplinary teams \"with students not in their major\" on a science-and-society problem.",
+      "A four-course integrated build sequence — RBE 2001/2002/3001/3002 — is required by name in the catalog, so mechanical design, sensing, manipulation (culminating in \"the construction and programming of a vision-guided, multi degree of freedom robotic manipulator\") and navigation are all guaranteed, not elective.",
+      "MQPs can be industry-sponsored, including at the Lincoln Lab and Silicon Valley project centers, and the department publishes the full annual MQP abstract list by team and advisor.",
+      "RBE has been a full department with its own honor society (Rho Beta Epsilon) and 11+ named research labs open to undergraduates."
+    ],
+    "required_core": [
+      {
+        "code": "RBE 1001",
+        "title": "Introduction to Robotics",
+        "credits": "1/3 unit",
+        "purpose": "robotics"
+      },
+      {
+        "code": "RBE 2001",
+        "title": "Unified Robotics I: Mechanical Applications in Robotics",
+        "credits": "1/3 unit",
+        "purpose": "robotics"
+      },
+      {
+        "code": "RBE 2002",
+        "title": "Unified Robotics II: Sensing and Perception in Robotics",
+        "credits": "1/3 unit",
+        "purpose": "robotics"
+      },
+      {
+        "code": "RBE 3001",
+        "title": "Unified Robotics III: Manipulation",
+        "credits": "1/3 unit",
+        "purpose": "robotics"
+      },
+      {
+        "code": "RBE 3002",
+        "title": "Unified Robotics IV: Navigation",
+        "credits": "1/3 unit",
+        "purpose": "robotics"
+      },
+      {
+        "code": "RBE 2020 (or ECE 2049)",
+        "title": "Embedded Systems for Robotics (alt: Embedded Computing in Engineering Design)",
+        "credits": "1/3 unit",
+        "purpose": "ece"
+      },
+      {
+        "code": "MA 1021",
+        "title": "Calculus I",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 1022",
+        "title": "Calculus II",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 1023",
+        "title": "Calculus III",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 1024",
+        "title": "Calculus IV",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 2051",
+        "title": "Differential Equations",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 2071",
+        "title": "Linear Algebra (Matrices and Linear Algebra I)",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "MA 2621 or MA 2631",
+        "title": "Probability",
+        "credits": "1/3 unit",
+        "purpose": "math"
+      },
+      {
+        "code": "PH 1110/1111 (recommended)",
+        "title": "Physics (2/3 unit of Physics required inside the 4/3-unit Basic Science requirement)",
+        "credits": "1/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "PH 1120/1121 (recommended)",
+        "title": "Physics, second course",
+        "credits": "1/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "Other Science (BB/CH/GE/PH)",
+        "title": "2/3 unit additional basic science",
+        "credits": "2/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "CS 1005 (recommended; CS 1101/1102 advised for CS double majors)",
+        "title": "Programming for Engineers / Introduction to Program Design",
+        "credits": "1/3 unit",
+        "purpose": "cs"
+      },
+      {
+        "code": "CS 2102 (example)",
+        "title": "Object-Oriented Design Concepts — the catalog requires Object-Oriented Programming",
+        "credits": "1/3 unit",
+        "purpose": "cs"
+      },
+      {
+        "code": "CS 3733 (example)",
+        "title": "Software Engineering — the catalog requires Software Engineering",
+        "credits": "1/3 unit",
+        "purpose": "cs"
+      },
+      {
+        "code": "ECE 2010 (recommended)",
+        "title": "Introduction to Electrical and Computer Engineering",
+        "credits": "1/3 unit",
+        "purpose": "ece"
+      },
+      {
+        "code": "ES 2501 (example)",
+        "title": "Statics — 1/3 unit of Statics required",
+        "credits": "1/3 unit",
+        "purpose": "me"
+      },
+      {
+        "code": "ES 3011 / ME 3703 / ECE 3012 / AE 2310 (choose)",
+        "title": "Classical Controls — 1/3 unit required (RBE 502 cannot satisfy it)",
+        "credits": "1/3 unit",
+        "purpose": "me"
+      },
+      {
+        "code": "CS 3043/SS 3043, GOV 2302, GOV/ID 2314 or RBE 3100 (choose)",
+        "title": "Social Implications of Technology / Social Implications of Robotics",
+        "credits": "1/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "ETR 1100 / other ETR / BUS 2001 (example)",
+        "title": "Entrepreneurship requirement",
+        "credits": "1/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "Humanities & Arts (5 courses + HU 3900 or HU 3910)",
+        "title": "HUA depth sequence culminating in the Inquiry Seminar or Practicum",
+        "credits": "2 units",
+        "purpose": "other"
+      },
+      {
+        "code": "Social Science (2 courses)",
+        "title": "ECON, ENV, GOV, PSY, SD, SOC, SS, STS, DEV, ID 2050",
+        "credits": "2/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "WPE (4 classes)",
+        "title": "Wellness and Physical Education",
+        "credits": "1/3 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "IQP",
+        "title": "Interactive Qualifying Project",
+        "credits": "1 unit",
+        "purpose": "capstone"
+      },
+      {
+        "code": "MQP",
+        "title": "Major Qualifying Project — must be a Capstone Design Experience in Robotics Engineering",
+        "credits": "1 unit",
+        "purpose": "capstone"
+      },
+      {
+        "code": "Engineering Science & Design Electives",
+        "title": "1 unit of ES&D electives, at least 2/3 unit at the 4000 level or higher",
+        "credits": "1 unit",
+        "purpose": "other"
+      },
+      {
+        "code": "Free Electives",
+        "title": "Free electives",
+        "credits": "1 unit",
+        "purpose": "other"
+      }
+    ],
+    "capstone": {
+      "what": "Verbatim from the catalog: \"The MQP must be a Capstone Design Experience in Robotics Engineering.\" The MQP is 1 unit of the 15-unit degree. Department description: \"With a Major Qualifying Project (MQP), Robotics Engineering students have the chance to perform a professional-level hands-on project in their senior year... This required project combines research, integrative development, and application projects... The MQP requires a substantial part of an academic year, culminating in a project report and poster on Undergraduate Research Projects Showcase.\" Catalog: \"All RBE MQPs must go through the breadth of the design experience, including conceptualization, requirements, design, implementation, evaluation, and documentation... RBE MQPs may be sponsored by industry, including the Lincoln Lab and Silicon Valley project centers, develop from faculty research, or be initiated by students.\"",
+      "examples": "Real 2025 RBE MQPs published by the department: (1) \"A System for Watering and Autonomously Monitoring Plants (SWAMP)\" — mobile robot that localizes with LiDAR, aligns to April tags with a camera and waters ~40 plants in WPI's Gordon Library (advisor G. C. Lewin); (2) \"Advanced Autonomous Tour Guide Robot\" — 'Tori', an autonomous tour-guide robot in Unity Hall with dynamic obstacle-avoiding navigation, voice command + touchscreen HRI, an on-board large language model for campus queries and a custom elevator-button detection model (advisors N. Sanket, G. Lewin, F. Yuan, J. Xiao); (3) \"Ball Catching Drone\" — autonomous quadcopter that intercepts and catches a ball mid-flight using real-time trajectory prediction and motion-capture tracking (advisor N. Sanket); (4) \"Advancing Humanoid Robots\" — Ava, an open-source 3D-printed humanoid, with multi-IMU feedback, thin-film pressure sensors, inverse-kinematics task-space trajectories and a Model Predictive Control framework on a Linear Inverted Pendulum Model; (5) \"PiELo\", a programming language built for swarm robotics (advisor C. Pinciroli).",
+      "cite": "RBE-01, RBE-04, RBE-05"
+    },
+    "ai_ml": "No machine-learning course is required by name. The RBE major requires 5/3 units of RBE including only RBE 2001, 2002, 3001, 3002, and 1 unit of Engineering Science and Design Electives (2/3 unit at 4000+). AI/ML therefore enters as elective choice. Named AI/ML-bearing courses on the RBE major's approved lists: RBE 4701 Artificial Intelligence for Robotics (\"techniques for perception, planning, and actuation including: (i) informed, uninformed, and adversarial search; (ii) reasoning with uncertainty; (iii) reinforcement learning; and (iv) deep learning\"), RBE 4540 Vision-based Robotic Manipulation (grasp planning, 2D/3D vision-based control, point-cloud object detection/segmentation), CS 4341 Introduction to Artificial Intelligence, CS 4342 Machine Learning, CS 4445 Data Mining and Knowledge Discovery in Databases, CS 4433/DS 4433 Big Data Management and Analytics, CS 4100/IMGD 4100 Artificial Intelligence for Interactive Media and Games, ECE 3405 Foundations and Trends in Machine Learning for Engineering. The required RBE 3001 does include \"fundamental concepts of trajectory planning, robot forces and dynamics, computer vision, and control\", so computer vision appears inside the required sequence, but as robotics perception rather than a dedicated ML course. Skills the degree page advertises include building \"neural networks with TensorFlow and PyTorch\".",
+    "hands_on": "Guaranteed by required coursework: the four-course Unified Robotics sequence is lab/build based — RBE 2001 \"Laboratory sessions consist of hands-on exercises and team projects where students design and test mechanical systems for specific tasks\"; RBE 2002 labs \"specify and test a variety of sensors\"; RBE 3001 labs \"culminate in the construction and programming of a vision-guided, multi degree of freedom robotic manipulator\"; RBE 3002 labs are \"directed towards the solution of an open-ended problem over the course of the entire term\"; RBE 1001 \"Laboratory sessions consist of hands-on exercises and team projects where students design and build mobile robots\"; RBE 2020 labs have students \"design and test electronic subsystems interfacing a robot\"; RBE 4815 Industrial Robotics uses \"an industrial robot\" and PLCs. Plus the year-long MQP build. Named department labs students can join: Adaptive and Intelligent Robotics (AIR) Lab, Aerial-robot Control and Perception (ACP) Lab, Automata Lab, Automation and Interventional Medicine (AIM) Lab, Cognitive Medical Technology and Robotics (COMET) Lab, Efficient Learning and Planning for Intelligent Systems (ELPIS) Lab, FuTURE Lab, Human-inspired Robotics (HiRO) Lab, Manipulation and Environmental Robotics (MER) Lab, Medical Fusion Lab, Novel Engineering of Swarm Technologies (NEST) Lab. Named student organizations: WPI Robotics Club (\"competes competitively in both VEXU and in Combat Robotics, with 3lb and 30lb combat robots\"), Rho Beta Epsilon (robotics honor society running workshops and lab help hours), WiRE (Women+ in Robotics Engineering)."
+  },
+  "umich": {
+    "degree_name": "Bachelor of Science in Engineering (B.S.E.) in Robotics",
+    "department": "Robotics (ROB) — a standalone department in the College of Engineering, housed in the Ford Motor Company Robotics Building. The undergraduate major launched in Fall 2022; M.S. and Ph.D. programs date from Fall 2014.",
+    "total_credits": "128 credits minimum; published sample schedule totals 128 across 8 terms (16, 16, 17, 16, 16, 16, 15, 16).",
+    "credit_or_unit_system": "Semester credit hours on a Fall/Winter two-term calendar. \"College of Engineering (CoE) students are required to earn a minimum of 128 Credits Towards Program (CTP).\" Residency: \"At least 50 credits must be earned through the University of Michigan - Ann Arbor campus. At least 30 credits must be at the 300-level or higher in technical courses.\"",
+    "elective_structure": "18 credits minimum of technical electives, split into ≥6 credits of Upper Level Electives (any 300+ ROB course except ROB 490) and 10-12 credits of Flexible Technical Electives. Grade minimums by group are published: CoE Common Requirements C, Program Core C, Technical Electives C, Intellectual Breadth and General Electives D- and pass/fail eligible. Optional named concentrations begin Fall 2026, each ≥12 credits drawn from electives the student already takes (\"Concentrations do not add courses or credits beyond your existing requirements\"): (1) Perception and Reasoning for Robotics — core ROB 330 and EECS 442/ROB 432 Computer Vision; (2) Dynamics and Control of Robots — core ROB 314; (3) Hardware and Sensor Focused Robotics — core ROB 311 and ROB 310; (4) Human-Robot Interaction — core ROB 340; (5) Full Stack Robotic Systems — all six 300-level ROB courses (310, 311, 314, 320, 330, 340) plus two courses from different concentrations. Note the CoE Bulletin's older program text still says \"While we do not offer official concentrations, we have provided several examples...\", so the concentration program is new as of Fall 2026.",
+    "declaration_gate": "A Fall 2027 first-year applicant applies to and is admitted by the College of Engineering, not to the Robotics major. CoE Bulletin, verbatim: \"To give students the opportunity to explore the numerous engineering degrees offered by the College, first-year undergraduate engineering students not transferring from another institution of higher education enter the College without declaring a specific engineering major. None of the majors require any 100-level courses to be taken by a student other than those in the common engineering, math and science core. Students are urged to declare a specific engineering major by the start of their 3rd term of enrollment. Undeclared students cannot register for a 4th term in the College unless they have met with their advisor and developed a plan to select and declare a major within a reasonable time.\" Robotics declaration requirements, verbatim: \"To declare for the BSE major in Robotics, a student must be a College of Engineering student and: 1. Have completed at least one full term at UM Ann Arbor 2. Have an overall UM GPA of 2.0 or better in courses taken at the UM Ann Arbor campus and be in good standing. 3. Have completed with a C or better or earned credit by exam or transfer for at least one course in each of these categories: a. Introductory Linear Algebra (e.g. ROB 101, MATH 214, MATH 217) b. Introductory Engineering Design (e.g., ENGR 100) or Introductory Computing/Programming (e.g., ROB 102, ENGR 101, ENGR 151) c. Introductory Calculus (e.g. MATH 115, MATH 116, MATH 156) d. Calculus-based physics lectures (e.g. PHYSICS 140, PHYSICS 160) or chemistry lectures (e.g. CHEM 130)\" — then \"Email robotics-sso@umich.edu to schedule a declaration appointment.\" Risk profile: the gate is non-competitive and threshold-based (2.0 overall, C-or-better in four foundation categories), not capacity-rationed, so it is low-risk relative to Michigan's capacity-constrained CS major — but it is a real gate, it happens after arrival, and a weak first term (below 2.0 or a D in linear algebra/calculus/physics/programming) delays declaration and therefore access to ROB 204 and the 300-level core, which are prerequisite-chained.",
+    "flexibility": "Dual majors within CoE: \"you must satisfy the requirements for both programs and take at least 14 additional credit hours of pertinent technical coursework beyond what is shared between the two majors (accounting for 142 credits total)\", approval by both departments required, and \"ROB 204 and the ROB 300-level courses you are using to satisfy the Robotics Core requirements cannot be double counted.\" Minors: \"All CoE minors and most LSA minors throughout the University are available to Robotics Undergraduate students if they can meet the minor declaration requirements set by the minor department\"; no cap on number of minors, but \"No course can count towards more than two majors, and no more than one major and one minor.\" Important AI-adjacent constraint: \"Due to capacity constraints in the Computer Science (CS) major, students who are admitted to the University of Michigan after Fall 2023 must first be selected for the CS major before they can declare the major\" — so pairing Robotics with the CS major is itself a selective step, unlike loading up on EECS electives. Accelerated master's: SUGS (BSE + MS in five years).",
+    "size": "\"The program is now home to more than 175 declared robotics majors\" and \"200+ undergraduate students\" on the same department page. Bachelor's degrees granted: 2 (2023), 14 (2024), 40+ (2025); master's 89/103/120+; doctoral 11/14/15+. College-wide bachelor's enrollment Fall 2025: 8,247. Class sizes for individual ROB courses: not published.",
+    "distinctive": [
+      "A standalone Robotics department with its own building — the 134,000 sq ft Ford Motor Company Robotics Building (2021), including a three-story aerial fly zone, high-bay self-driving-car garage, 10,000-gallon marine tank and an outdoor Mars Yard.",
+      "A modular core: ROB 204 gateway plus only 3 of 6 300-level ROB courses, which lets a student weight the degree toward autonomy software, hardware, controls or human-robot interaction — but also lets them skip the hardware-build courses entirely.",
+      "18 credits of technical electives with any 400-level CoE course eligible as a Flexible Technical Elective, which is what opens the deep AI/ML and 500-level robotics catalog to undergraduates.",
+      "Optional named concentrations begin Fall 2026, including Perception and Reasoning for Robotics (ROB 330 + EECS 442/ROB 432) and Full Stack Robotic Systems (all six 300-level ROB courses).",
+      "Very young undergraduate program: major launched Fall 2022, with 2, 14 and 40+ bachelor's degrees granted in 2023, 2024 and 2025 respectively.",
+      "First-year math can be taken inside the department: ROB 101 Computational Linear Algebra (taught in Julia) and ROB 201 Calculus for the Modern Engineer can replace MATH 214 and MATH 115/116/216."
+    ],
+    "required_core": [
+      {
+        "code": "ENGR 100",
+        "title": "Introduction to Engineering",
+        "credits": "4",
+        "purpose": "other"
+      },
+      {
+        "code": "ROB 102 or ENGR 101 or ENGR 151 (or approved equivalent)",
+        "title": "ROB 102 = Introduction to Algorithms and Programming per the CoE Bulletin (the department page renders the same course as \"Introduction to AI and Programming\"); satisfies the CoE Computational Thinking requirement",
+        "credits": "4",
+        "purpose": "cs"
+      },
+      {
+        "code": "ROB 101 or MATH 214 or MATH 217 or MATH 417 or MATH 419 (or approved equivalent)",
+        "title": "ROB 101 = Computational Linear Algebra (Julia; regression, matrix factorization, cameras/LiDAR/IMU, optimization and robot perception)",
+        "credits": "4",
+        "purpose": "math"
+      },
+      {
+        "code": "MATH 115 and MATH 116 (or MATH 120/121 AP)",
+        "title": "Introductory Calculus",
+        "credits": "4 + 4",
+        "purpose": "math"
+      },
+      {
+        "code": "MATH 215 or MATH 216 (ROB 201 may substitute for MATH 115/116/216)",
+        "title": "Intermediate Calculus; ROB 201 = Calculus for the Modern Engineer",
+        "credits": "4",
+        "purpose": "math"
+      },
+      {
+        "code": "PHYSICS 140 + 141",
+        "title": "Physics I with lab",
+        "credits": "5",
+        "purpose": "other"
+      },
+      {
+        "code": "PHYSICS 240 + 241",
+        "title": "Physics II with lab",
+        "credits": "5",
+        "purpose": "other"
+      },
+      {
+        "code": "CHEM 130 + CHEM 125/126 (or CHEM 210 + 211)",
+        "title": "General Chemistry with labs",
+        "credits": "5",
+        "purpose": "other"
+      },
+      {
+        "code": "ROB 204",
+        "title": "Introduction to Human-Robot Systems — the program's gateway course, listed as \"Teamwork in Robotics\" in the requirement group and an enforced prerequisite for ROB 310/311/320/330/340",
+        "credits": "4",
+        "purpose": "robotics"
+      },
+      {
+        "code": "3 of ROB 310 / 311 / 314 / 320 / 330 / 340",
+        "title": "Robotics Core: ROB 310 Robot Sensors and Signals; ROB 311 How to Build Robots and Make Them Move; ROB 314 Introduction to Robot Controls; ROB 320 Robot Operating Systems; ROB 330 Localization, Mapping, and Navigation; ROB 340 Human-Robot Interaction (the department's concentration text renders 340 as \"Human Evaluation of Robots\"). The requirement table lists \"ROB 310, 311, 320, 330, or 340 - choose 3\"; the concentrations text and the current course list add ROB 314 as a sixth 300-level core course.",
+        "credits": "12",
+        "purpose": "robotics"
+      },
+      {
+        "code": "EECS 280",
+        "title": "Discipline Breadth — Data Structures & Programming",
+        "credits": "4",
+        "purpose": "cs"
+      },
+      {
+        "code": "IOE 265 or EECS 301 or BIOMEDE 241 (choose 1)",
+        "title": "Discipline Breadth — Probability, Stats, & Visual",
+        "credits": "3-4",
+        "purpose": "math"
+      },
+      {
+        "code": "EECS 215 or EECS 270 or BIOMEDE 211 (choose 1)",
+        "title": "Discipline Breadth — Electronics & Circuits",
+        "credits": "4",
+        "purpose": "ece"
+      },
+      {
+        "code": "ROB 215 or MECHENG 240 or BIOMEDE 231 (choose 1)",
+        "title": "Discipline Breadth — Dynamics & Mechanics; ROB 215 = Robot Dynamics and Simulation",
+        "credits": "4",
+        "purpose": "me"
+      },
+      {
+        "code": "1 of AEROSP 201, AEROSP 205, AEROSP 288, EECS 216, EECS 281, EECS 351, EECS 370, EECS 373, IOE 333, IOE 434, MATSCIE 220, NAVARCH 270",
+        "title": "Discipline Depth",
+        "credits": "3-4",
+        "purpose": "other"
+      },
+      {
+        "code": "TCHNCLCM 350",
+        "title": "Major design / technical communication; \"TCHNCLCM 350 is a prerequisite for ROB 450\"",
+        "credits": "3",
+        "purpose": "capstone"
+      },
+      {
+        "code": "ROB 450 or EECS 467",
+        "title": "Robotics Capstone (ROB 450); EECS 467 is the approved alternative",
+        "credits": "4",
+        "purpose": "capstone"
+      },
+      {
+        "code": "2 upper-level ROB electives (any 300+ ROB course except ROB 490)",
+        "title": "Upper Level Electives, minimum 6 credits, graded",
+        "credits": "6+",
+        "purpose": "robotics"
+      },
+      {
+        "code": "Flexible Technical Electives",
+        "title": "Any 400-level+ CoE course, any Math/Physics 400-level+, any Discipline Depth course, excess 300-level ROB core, or an approved 200/300-level list (AEROSP 215/225/315/325/335, EECS 200, EECS 203, EECS 270, EECS 376, IOE 366, MATH 215, MATH 216, MATH 217, MECHENG 360, NAVARCH 340)",
+        "credits": "10-12 (18 total technical electives minimum)",
+        "purpose": "other"
+      },
+      {
+        "code": "Intellectual Breadth",
+        "title": "16 credits of Liberal Arts Courses; ≥3 credits Humanities (HU), ≥3 credits at 300-level or higher; up to 4 credits may be Professional or Creative Development (PCDC)",
+        "credits": "16",
+        "purpose": "other"
+      },
+      {
+        "code": "General Electives",
+        "title": "9 credits nominally required; \"CoE degrees require 128 total credits, and more General Elective credits may be needed to achieve this total\"",
+        "credits": "9-12",
+        "purpose": "other"
+      }
+    ],
+    "capstone": {
+      "what": "Verbatim: \"Robotics Capstone The Robotics curriculum culminates in a team-based, senior design capstone course, ROB 450. Students can alternatively satisfy this requirement with EECS 467.\" Course description (ROB 450, 4 credits): \"Primary goal is to challenge students to synthesize the knowledge acquired through their Robotics undergraduate courses at U-M using a systematic and iterative design and analysis process and applying it to solving a real open-ended Robotics problem.\" Enforced prerequisites: junior or senior standing, TCHNCLCM 350, and one of ROB 310/311/320/330/340, minimum grade C. It is a one-term (Winter) 4-credit course, not a year-long project.",
+      "examples": "The department publishes ROB 450 capstone showcases (\"Robotics Capstone Projects | ROB 450 Winter 2026\", \"ROB 450: A sampling of Robotics Capstone projects\") but individual project titles and abstracts are not published in text on the department pages fetched. The university's Robotics Winter Demo Days listing shows the public formats: ROB 450 Capstone expo & demos in the Ford Robotics Building atrium, ROB 311 competition, EECS 467 Autonomous Robotics talks & demos, ROB 430/599 Deep Learning for Perception posters, and ROB 550 Robotic System Lab competition. Named project titles: not published.",
+      "cite": "RBE-18, RBE-20, RBE-21, RBE-29"
+    },
+    "ai_ml": "No machine-learning course is required by name either. ROB 102, whose department-page title is \"Introduction to AI and Programming\" and whose bulletin description covers \"Algorithms and programming for robotics and artificial intelligence in C++\", is only one of three ways to satisfy the CoE Computational Thinking requirement (ROB 102 or ENGR 101 or ENGR 151), so even that AI-flavored intro is not guaranteed. Within the 300-level core, ROB 330 Localization, Mapping, and Navigation delivers probabilistic state estimation and SLAM, and it is one of six options of which only three are required. The AI/ML depth is all elective, and the elective menu is deep and robotics-specific: ROB 429 Robot Learning for Planning and Control, ROB 430 Deep Learning for Robot Perception and Manipulation, EECS 442/ROB 432 Computer Vision, ROB 422/EECS 465 Introduction to Algorithmic Robotics (\"optimization, motion planning, representations of uncertainty, Kalman and particle filters, and point cloud processing\"), ROB 416 Multi-Robot Systems (includes Multi-Agent Reinforcement Learning), ROB 440 Computational Human-Robot Interaction, ROB 498 topic \"3D Robot Perception\", ROB 530 Mobile Robotics: Methods and Algorithms, ROB 535 Self Driving Cars: Perception and Control (\"Topics include deep learning, computer vision, sensor fusion\"), ROB 517/BIOMEDE 517 Sensing and Machine Learning for Neural Interfaces, ROB 543/CSE 543 Ethics for AI and Robotics, EECS 504 Foundations of Computer Vision, EECS 542 Advanced Computer Vision, EECS 598 Action and Perception. The Perception and Reasoning for Robotics concentration (from Fall 2026) is the structured way to stack these: core ROB 330 + EECS 442/ROB 432 plus electives from ROB 416/422/429/430/472/498/530/535 and the EECS vision courses.",
+    "hands_on": "Guaranteed by required coursework: ROB 204 is required; then 3 of the 300-level core, several of which are explicitly build-based — ROB 311 \"Introduces the fundamentals of mechanical design, control, fabrication, actuation, instrumentation, and computer interfaces required to realize robotic systems... 'Hands-on' skills will be emphasized\"; ROB 310 \"prototype, test, and debug various analog and digital circuits; interface a microcontroller to external circuits; learn to design and prototype circuit boards\"; ROB 330 \"Development of full-stack autonomous navigation and mapping for mobile robots\" including SLAM; ROB 320 composes \"full-stack software systems\" for kinematics, planning and simulation. Note that a student may satisfy the core with three software-leaning choices (e.g., 320 + 330 + 340) and never take the hardware-build courses. Elective hands-on: ROB 464/EECS 464 Hands-on Robotics (\"Multiple team projects consisting of design and implementation of a robot... Significant after hours lab time investment\"), ROB 203 Robotics Mechanisms (2 cr, \"Hands-on design, build, and operations of robotic systems... maker-shop skills (3D printing, laser cutting, milling, etc.)\"), ROB 474 Uncrewed Aerial Systems, ROB 472 Marine Robotics, ROB 461 Introduction to Soft Robotics. Facilities in the Ford Motor Company Robotics Building (opened 2021, 134,000 sq ft): three-story fly zone for autonomous aerial vehicles, outdoor obstacle course for walking robots, high-bay garage for self-driving cars, rehabilitation lab with Stewart platform/force plates/dual-tread treadmill, robotics maker space with CNC, 3D printers and shop tools, 10,000-gallon research water tank with motion-capture for marine robotics, outdoor Mars Yard; plus M-Air (10,000 sq ft netted outdoor autonomy facility) and Mcity. The program reports \"300+ MBots supporting our courses\". Named student teams: Michigan ARC (MARC, ARC Robotics/RoboMaster), Michigan Autonomous Aerial Vehicles (MAAV), Michigan Task Based Robotics (MTBR / Hail Robotics, VEX U), MRacing (Formula SAE), STARX exoskeletons, FAMNM, Michigan Engineering Zone, Michigan Mars Rover."
+  },
+  "shared_ground": [
+    "Both are dedicated robotics undergraduate degrees owned by a standalone robotics department, not a concentration inside ME or ECE.",
+    "Both require the same foundation set: calculus sequence, differential equations/intermediate calculus, linear algebra, probability/statistics, two terms of calculus-based physics, and programming.",
+    "Both require a circuits/electronics component and an embedded-systems or sensors-and-signals component. WPI: 2/3 unit ECE including Embedded Systems (RBE 2020 or ECE 2049). Michigan: EECS 215/270/BIOMEDE 211 plus ROB 310 if elected.",
+    "Both require a dynamics/mechanics course (WPI Statics plus Classical Controls; Michigan ROB 215 or MECHENG 240 or BIOMEDE 231).",
+    "Both culminate in a team-based robotics capstone: WPI's MQP \"must be a Capstone Design Experience in Robotics Engineering\"; Michigan's \"curriculum culminates in a team-based, senior design capstone course, ROB 450\".",
+    "Both require a technical-communication or writing-heavy component (WPI HUA + project reports; Michigan TCHNCLCM 350).",
+    "Neither program requires a machine-learning course by name; in both, ML depth comes from electives.",
+    "Both offer an accelerated bachelor's-plus-master's route (WPI BS/MS with up to 12 double-counted credits; Michigan SUGS in five years).",
+    "Both are open to double majors and minors with published double-counting limits.",
+    "Both publish substantial hands-on infrastructure and competitive student teams that build robots (WPI Robotics Club VEXU/combat; Michigan MTBR VEX U, MAAV, MARC)."
+  ],
+  "differences": [
+    {
+      "dimension": "Guaranteed robot-building depth in the required core",
+      "wpi": "Four named build courses are required: RBE 2001 (mechanical design/actuation labs), RBE 2002 (sensor selection and testing labs), RBE 3001 (labs \"culminate in the construction and programming of a vision-guided, multi degree of freedom robotic manipulator\"), RBE 3002 (open-ended term-long navigation problem), plus RBE 1001 on the tracking sheet and an embedded-systems course.",
+      "umich": "One required gateway (ROB 204, human-robot systems) plus 3 of 6 300-level courses (310, 311, 314, 320, 330, 340). The hardware-build course ROB 311 and the circuits/PCB course ROB 310 are optional; a student can satisfy the core with 320 + 330 + 340 and never take them. Deep hardware work is available but elective (ROB 464 Hands-on Robotics, ROB 203, ROB 474, ROB 472, ROB 461).",
+      "why_it_matters_for_a_robotics_ai_job": "For a robotics+AI hire, the portfolio differentiator versus a CS/ML applicant is demonstrated work on real hardware. WPI guarantees that portfolio by curriculum; Michigan requires the student to choose it deliberately, and the default 'autonomy software' path is skippable on hardware.",
+      "cite": "RBE-01, RBE-02, RBE-03, RBE-18, RBE-22"
+    },
+    {
+      "dimension": "Required AI/ML content",
+      "wpi": "Zero required AI/ML courses. Elective AI/ML on the RBE approved lists: RBE 4701 Artificial Intelligence for Robotics (search, reasoning under uncertainty, reinforcement learning, deep learning), RBE 4540 Vision-based Robotic Manipulation, CS 4341 Introduction to Artificial Intelligence, CS 4342 Machine Learning, CS 4445 Data Mining, ECE 3405 Foundations and Trends in Machine Learning for Engineering. Required RBE 3001 includes computer vision as a component. Elective budget: 1 unit of ES&D electives (2/3 unit at 4000+) plus 1 unit of free electives.",
+      "umich": "Zero required AI/ML courses. ROB 102 (AI-flavored intro programming) is one of three options for the CoE Computational Thinking requirement. Elective AI/ML menu is deeper and robotics-specific: ROB 429 Robot Learning for Planning and Control, ROB 430 Deep Learning for Robot Perception and Manipulation, EECS 442/ROB 432 Computer Vision, ROB 422/EECS 465 Introduction to Algorithmic Robotics, ROB 530 Mobile Robotics, ROB 535 Self Driving Cars: Perception and Control, ROB 440 Computational HRI, ROB 517 Sensing and Machine Learning for Neural Interfaces, EECS 504/542/598. Elective budget: 18 credits of technical electives, and from Fall 2026 the Perception and Reasoning for Robotics concentration formalizes the stack.",
+      "why_it_matters_for_a_robotics_ai_job": "Neither degree forces ML, so the decision turns on elective capacity and menu depth. Michigan gives roughly 18 credits of technical electives plus a named perception/learning concentration and 500-level robot-learning courses open to undergraduates; WPI gives about 1 unit of ES&D electives at the 4000 level plus free electives, with AI split between an RBE course and the CS department. If maximum ML-for-robotics coursework is the goal, Michigan's elective architecture supports more of it; if the goal is guaranteed applied perception on hardware, WPI's required sequence does more.",
+      "cite": "RBE-01, RBE-02, RBE-03, RBE-18, RBE-21, RBE-22"
+    },
+    {
+      "dimension": "Capstone scale and duration",
+      "wpi": "MQP = 1 unit of a 15-unit degree, \"requires a substantial part of an academic year\", must be a Capstone Design Experience in Robotics Engineering, may be industry-sponsored (Lincoln Lab, Silicon Valley project centers), and published abstracts show full autonomous systems (SWAMP watering robot, Tori tour-guide robot with on-board LLM, ball-catching drone, Ava humanoid with MPC balance control, PiELo swarm language). Plus a separate 1-unit IQP.",
+      "umich": "ROB 450 Robotics Capstone = one 4-credit Winter-term course out of 128 credits, prerequisite TCHNCLCM 350 plus one 300-level ROB core course, alternatively satisfied by EECS 467. Public expo/demo formats are published; individual project titles are not published in text.",
+      "why_it_matters_for_a_robotics_ai_job": "Interview substance for a new grad is usually one deep, long-horizon system. A year-long MQP with a published abstract, named advisor and teammates is a stronger single artifact than a one-term 4-credit capstone; Michigan students typically supplement with project teams, UROP/SURE research, MDP or ROB 490 directed study.",
+      "cite": "RBE-01, RBE-04, RBE-05, RBE-18, RBE-21, RBE-29"
+    },
+    {
+      "dimension": "How you get into the major",
+      "wpi": "No published GPA gate or internal selection for the RBE major; declaring or changing a major is a Workday request approved by the Registrar, and WPI markets exploration before committing (\"Undecided? No problem. Apply now and explore before committing to a specific path\").",
+      "umich": "Admitted to the College of Engineering without a declared major; \"Students are urged to declare a specific engineering major by the start of their 3rd term of enrollment.\" Robotics declaration needs one full term at Ann Arbor, overall UM GPA ≥ 2.0 in good standing, and C-or-better in linear algebra, engineering design or programming, calculus, and calculus-based physics or chemistry.",
+      "why_it_matters_for_a_robotics_ai_job": "The major itself is not rationed at Michigan, so the risk is timing rather than exclusion: the declaration term plus the ROB 204 → 300-level prerequisite chain compresses the schedule if the first term goes badly. At WPI, program access is settled on day one, so the four-course Unified Robotics sequence can start in year one/two without a gating decision.",
+      "cite": "RBE-07, RBE-12, RBE-18, RBE-24"
+    },
+    {
+      "dimension": "Calendar and project cadence",
+      "wpi": "Four 7-week terms per year (A/B/C/D, plus optional E), three courses per term, degree measured in units (15 units minimum, 1/3 unit per course); required project work is graded separately (IQP 1 unit, MQP 1 unit).",
+      "umich": "Two 14-week semesters, 128 credits, sample schedule of 15-17 credits per term with four 4-credit courses typical.",
+      "why_it_matters_for_a_robotics_ai_job": "The 7-week cadence forces frequent build-test-demo cycles and lets students switch context often; the semester cadence supports longer single-course arcs and heavier theory courses. Neither is strictly better, but it changes how many distinct robot projects appear on a résumé by graduation.",
+      "cite": "RBE-01, RBE-03, RBE-13, RBE-18, RBE-23"
+    },
+    {
+      "dimension": "Non-technical required load",
+      "wpi": "2 units Humanities & Arts (5 courses plus HU 3900/3910 Inquiry Seminar or Practicum), 2/3 unit Social Science, 1/3 unit Social Implications, 1/3 unit Entrepreneurship, 4 Wellness & Physical Education classes, and the 1-unit IQP done with students outside the major.",
+      "umich": "16 credits Intellectual Breadth (≥3 credits Humanities, ≥3 credits at 300-level or higher; up to 4 credits PCDC), 9-12 credits general electives, TCHNCLCM 350. No IQP analogue.",
+      "why_it_matters_for_a_robotics_ai_job": "WPI spends roughly 3 1/3 units (about 10 courses) plus the IQP on non-technical and societal work, which crowds out technical electives; Michigan spends 16 credits of breadth and puts more of the remaining budget into 18 credits of technical electives. That is the main structural reason Michigan can stack more ML courses.",
+      "cite": "RBE-01, RBE-03, RBE-06, RBE-18"
+    },
+    {
+      "dimension": "Pairing the degree with CS/AI credentials",
+      "wpi": "Suggested minors for RBE students: Computer Science, Data Science, Electrical & Computer Engineering, Mechanical Engineering. A minor is 2 units with at most 1 unit double-counted; MQP credit cannot count toward a minor. The tracking sheet explicitly plans for CS/RBE double majors (\"Double CS/RBE majors should consider CS 1101/1102\").",
+      "umich": "All CoE minors and most LSA minors are available if the minor department's declaration requirements are met; dual majors need 14 extra technical credits (142 total) and ROB 204 plus the ROB core used for Robotics Core cannot be double counted. Adding the CS major specifically requires being selected for it because of capacity constraints.",
+      "why_it_matters_for_a_robotics_ai_job": "A CS or DS credential alongside robotics is the cleanest signal for AI-heavy roles. At WPI that pairing is an ordinary advising decision; at Michigan the CS major is a selective step (though CS/EECS courses remain available as electives, and minors are governed by each minor department's own requirements).",
+      "cite": "RBE-03, RBE-07, RBE-11, RBE-12, RBE-18, RBE-27"
+    },
+    {
+      "dimension": "Program maturity and cohort size",
+      "wpi": "Over 420 undergraduate majors and double majors and over 180 graduate students per the department's symposium page; the department announcement cited 374 undergraduate majors, 231 graduate students and 18 core faculty. The department publishes an annual list of MQP abstracts.",
+      "umich": "Major launched Fall 2022; \"more than 175 declared robotics majors\" and \"200+ undergraduate students\"; bachelor's degrees granted 2 (2023), 14 (2024), 40+ (2025); master's and Ph.D. programs since Fall 2014 (89-120+ master's degrees per year).",
+      "why_it_matters_for_a_robotics_ai_job": "WPI has a larger, longer-running undergraduate robotics alumni base to recruit from; Michigan's undergraduate alumni pool is still small but sits on top of a large graduate robotics program and a published employer list (Amazon Robotics, NASA JPL, SpaceX, Tesla, Google, Nuro, Symbotic, and others).",
+      "cite": "RBE-16, RBE-17, RBE-19, RBE-20"
+    },
+    {
+      "dimension": "Physical facilities",
+      "wpi": "11+ named RBE research labs open to undergraduates (AIR, ACP, Automata, AIM, COMET, ELPIS, FuTURE, HiRO, MER, Medical Fusion, NEST), spread across Unity Hall and 50 Prescott.",
+      "umich": "A single purpose-built 134,000 sq ft Ford Motor Company Robotics Building with a three-story aerial fly zone, walking-robot obstacle course, self-driving-car high bay, rehab lab, maker space with CNC and 3D printers, 10,000-gallon marine tank with motion capture, and an outdoor Mars Yard; plus M-Air and Mcity nearby; \"300+ MBots supporting our courses\".",
+      "why_it_matters_for_a_robotics_ai_job": "Facility breadth determines which sub-domains a student can actually build in (aerial, marine, autonomous vehicles, legged). Michigan's single-building concentration covers more physical domains; WPI's strength is medical/surgical, swarm and manipulation labs with undergraduate access.",
+      "cite": "RBE-10, RBE-20, RBE-25"
+    }
+  ],
+  "admission": {
+    "wpi": "Institution-level selectivity, Fall 2025 (Common Data Set 2025-26): 12,355 first-time first-year applicants, 7,647 admitted, 1,300 enrolled — a 61.9% admit rate. Waitlist: 2,293 offered a place, 980 accepted, 460 admitted from it. Application: Common Application, $70 fee, high-school transcript, counselor letter, teacher letter; test-optional. Plans: Early Decision I (deadline November 1, notification by mid-December), Early Decision II, Early Action and Regular Decision. Starting with students joining in fall 2026, \"all students admitted under an Early Decision application plan will be offered a minimum merit-based scholarship of $25,000 per academic year, for up to four years.\" Retention: 95% of the full-time first-time cohort that entered in Fall 2024 was still enrolled in Fall 2025. Major-level admission: WPI publishes no separate selective admission or GPA gate for the Robotics Engineering major; students may enter undecided and declare or change major through a Workday request approved by the Registrar.",
+    "umich": "University-level selectivity, Fall 2025 (U-M Ann Arbor Common Data Set 2025-26): 109,112 first-time first-year applicants (53,044 male + 56,068 female) and 17,915 admitted (7,593 + 10,322) — a 16.4% admit rate. A College-of-Engineering-specific admit rate is not published by the College; the College reports 8,247 bachelor's students enrolled in Fall 2025. Application: Common Application with U-M questions, high-school transcript, School Report, one letter of recommendation, SAT/ACT optional; Nov 1 Early Action, Feb 1 final fall deadline. Review is \"holistic, individualized\" and \"No special class rank, grade point average, test score or other qualification by itself will assure admission.\" The structural fact for a Fall 2027 applicant: admission is to the College of Engineering, not the Robotics major — \"first-year undergraduate engineering students not transferring from another institution of higher education enter the College without declaring a specific engineering major\", and \"Students are urged to declare a specific engineering major by the start of their 3rd term of enrollment.\" Declaring Robotics then requires: \"1. Have completed at least one full term at UM Ann Arbor 2. Have an overall UM GPA of 2.0 or better in courses taken at the UM Ann Arbor campus and be in good standing. 3. Have completed with a C or better or earned credit by exam or transfer for at least one course in each of these categories: a. Introductory Linear Algebra (e.g. ROB 101, MATH 214, MATH 217) b. Introductory Engineering Design (e.g., ENGR 100) or Introductory Computing/Programming (e.g., ROB 102, ENGR 101, ENGR 151) c. Introductory Calculus (e.g. MATH 115, MATH 116, MATH 156) d. Calculus-based physics lectures (e.g. PHYSICS 140, PHYSICS 160) or chemistry lectures (e.g. CHEM 130)\", followed by a declaration appointment (robotics-sso@umich.edu). Robotics is threshold-gated, not capacity-rationed — unlike CS, where \"students who are admitted to the University of Michigan after Fall 2023 must first be selected for the CS major before they can declare the major.\" Also relevant to a NC applicant: for Fall 2025, U-M does not break out in-state versus out-of-state admit rates in the CDS section fetched."
+  }
+}

@@ -29,6 +29,7 @@ import StrategyPage from "@/pages/Strategy";
 import SequencingPage from "@/pages/Sequencing";
 import CmuPlanPage from "@/pages/CmuPlan";
 import RoboticsDegreesPage from "@/pages/RoboticsDegrees";
+import RoboticsComparePage from "@/pages/RoboticsCompare";
 import SyncPage from "@/pages/Sync";
 import { HiddenSchoolsProvider } from "@/lib/hidden";
 import { NotesProvider } from "@/lib/notes";
@@ -60,6 +61,7 @@ function AppRouter() {
         <Route path="/sequencing" component={SequencingPage} />
         <Route path="/cmu-plan" component={CmuPlanPage} />
         <Route path="/robotics-degrees" component={RoboticsDegreesPage} />
+        <Route path="/robotics-compare" component={RoboticsComparePage} />
         <Route path="/sync" component={SyncPage} />
         <Route path="/ranking" component={MyRankingPage} />
         <Route path="/notebook" component={NotebookPage} />

@@ -11,8 +11,6 @@ type Program = {
   home_unit: string;
   url: string;
   launched: string;
-  abet: "EAC" | "ETAC" | "UNKNOWN";
-  abet_detail: string;
   route: string;
   gate: string;
   size: string;
@@ -37,32 +35,6 @@ const CALLOUT_HUE: Record<string, string> = {
   gap: WARN,
   gate: INFO,
 };
-
-function AbetBadge({ state }: { state: Program["abet"] }) {
-  const map = {
-    EAC: { hue: GOOD, text: "ABET engineering", title: "Accredited by ABET's Engineering Accreditation Commission" },
-    ETAC: {
-      hue: WARN,
-      text: "ABET technology",
-      title: "Accredited by ABET's Engineering Technology Accreditation Commission — not an engineering degree",
-    },
-    UNKNOWN: {
-      hue: "220 15% 50%",
-      text: "accreditation unknown",
-      title:
-        "No first-party accreditation statement was found and the program did not appear in the ABET search. This is not a finding that the program is unaccredited.",
-    },
-  }[state];
-  return (
-    <span
-      className="shrink-0 rounded px-1.5 py-[1px] text-[10px] font-medium text-[hsl(var(--foreground))]"
-      style={{ background: `hsl(${map.hue} / 0.15)`, border: `1px solid hsl(${map.hue} / 0.4)` }}
-      title={map.title}
-    >
-      {map.text}
-    </span>
-  );
-}
 
 export default function RoboticsDegreesPage() {
   const programs = data.programs as Program[];
@@ -96,11 +68,6 @@ export default function RoboticsDegreesPage() {
           {counts.total} programs found, of which {counts.new_to_user} are outside the 33-school research set. The
           single most important thing on this page is that these are not all the same kind of degree.
         </p>
-        <div className="flex flex-wrap gap-2 text-[11px]">
-          <span className="rounded-full border border-[hsl(var(--border))] px-2.5 py-1 text-[hsl(var(--muted-foreground))]">
-            {counts.eac} ABET engineering · {counts.etac} ABET technology · {counts.unknown} unknown
-          </span>
-        </div>
       </header>
 
       {/* Callouts: the facts that change a decision */}
@@ -210,7 +177,6 @@ export default function RoboticsDegreesPage() {
               <span className="font-mono text-[10.5px] text-[hsl(var(--muted-foreground))]">
                 {p.state} · {p.control}
               </span>
-              <AbetBadge state={p.abet} />
               {p.in_dataset_slug && (
                 <span
                   className="shrink-0 rounded px-1.5 py-[1px] text-[10px] font-medium text-[hsl(var(--foreground))]"
@@ -301,7 +267,7 @@ export default function RoboticsDegreesPage() {
         <div className="flex items-start gap-2.5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--muted-foreground))]" />
           <p className="text-[11px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-            {data.note} Enumerated from the ABET accredited-program search plus first-party catalog pages.
+            {data.note} Enumerated from a national program search plus first-party catalog pages.
             Compiled {data.compiled}. Admission routes and gates change — confirm with each school before relying
             on them.
           </p>
