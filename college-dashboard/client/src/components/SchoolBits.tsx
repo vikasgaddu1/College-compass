@@ -3,9 +3,22 @@ import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent, statusLabel, statusTone } from "@/lib/notes";
 import { EyeOff, Eye, ExternalLink, StickyNote, Star } from "lucide-react";
 import { ReactNode } from "react";
+import { getApplication, planClass } from "@/lib/applications";
 
 export function FitBadge({ fit }: { fit: string }) {
   return <span className={`chip ${fitClass(fit)}`}>{fit}</span>;
+}
+
+/** Anurag's committed application plan (ED/EA/RD) for a school, if any. */
+export function PlanBadge({ slug, showDeadline }: { slug: string; showDeadline?: boolean }) {
+  const a = getApplication(slug);
+  if (!a) return null;
+  return (
+    <span className={`chip ${planClass(a.plan)} font-semibold`}
+      title={`Applying ${a.plan_label}${a.binding ? " (binding)" : ""} · due ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
+      Applying {a.plan}{showDeadline ? ` · ${a.deadline_label}` : ""}
+    </span>
+  );
 }
 
 export function ArchetypeChips({ codes }: { codes: string[] }) {
@@ -97,6 +110,7 @@ export function SchoolCard({ s, children, onClick }: { s: School; children?: Rea
         </div>
       </div>
       <div className="flex flex-wrap gap-1 mb-2">
+        <PlanBadge slug={s.slug} showDeadline />
         <FitBadge fit={s.fit_classification} />
         <AccessBadge status={s.major_access_status} />
         <MyRatingChip slug={s.slug} />

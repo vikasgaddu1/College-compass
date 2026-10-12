@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import { schools, School } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import deadlinesData from "@/data/deadlines.json";
-import { FitBadge, HideButton } from "@/components/SchoolBits";
+import { FitBadge, HideButton, PlanBadge } from "@/components/SchoolBits";
+import { applications, applicationsBySlug } from "@/lib/applications";
 import { ExternalLink, Info } from "lucide-react";
 
 interface DeadlineRow {
@@ -105,7 +106,12 @@ export default function TimelinePage() {
   const rowsToShow = schools.filter(s => !hidden.has(s.slug));
 
   // Sort by earliest deadline shown
+  // Pin Anurag's applications on top, then sort by earliest deadline shown
   rowsToShow.sort((a,b) => {
+    const pa = applicationsBySlug[a.slug], pb = applicationsBySlug[b.slug];
+    if (pa && !pb) return -1;
+    if (!pa && pb) return 1;
+    if (pa && pb) return pa.deadline.localeCompare(pb.deadline) || a.short.localeCompare(b.short);
     const da = earliest(bySlug[a.slug], enabledRounds);
     const db = earliest(bySlug[b.slug], enabledRounds);
     if (!da && !db) return a.short.localeCompare(b.short);
@@ -127,6 +133,36 @@ export default function TimelinePage() {
           Every deadline is plotted on a single Aug 2026 → June 2027 timeline so you can see when each school's ED, ED II, EA, REA/SCEA, and RD windows land relative to one another. Toggle rounds off to declutter, or hide schools to focus.
         </div>
       </div>
+
+      {/* My applications */}
+      {applications.length > 0 && (
+        <div className="card p-4 border-l-4 border-l-[hsl(var(--primary))]">
+          <div className="serif text-[15px] font-semibold mb-2">My applications</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            {[...applications].sort((a,b)=>a.deadline.localeCompare(b.deadline)).map(a => {
+              const s = schools.find(x => x.slug === a.slug);
+              const d = bySlug[a.slug];
+              const stale = d?.cycle_label?.toLowerCase().includes("previous");
+              const due = new Date(a.deadline + "T00:00:00");
+              const days = Math.ceil((due.getTime() - new Date(new Date().toDateString()).getTime()) / 86400000);
+              return (
+                <div key={a.slug} className="rounded border border-[hsl(var(--border))] p-2.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="serif text-[14px] font-medium truncate">{s?.short ?? a.slug}</div>
+                    <PlanBadge slug={a.slug} />
+                  </div>
+                  <div className="text-[12px] mt-1">
+                    {a.plan_label}{a.binding ? " (binding)" : ""} · due <strong>{a.deadline_label}</strong>
+                    {days >= 0 && <span className="text-[hsl(var(--muted-foreground))]"> · {days === 0 ? "today" : `${days} day${days===1?"":"s"} left`}</span>}
+                  </div>
+                  {d?.aid_priority && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">Aid: {d.aid_priority}</div>}
+                  {(stale || a.note) && <div className="mt-1"><span className="chip fit-conditional">{a.note || d?.cycle_label}</span></div>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {!hasData && (
         <div className="card p-4 border-l-4 border-l-[hsl(var(--accent))]">
@@ -178,13 +214,14 @@ export default function TimelinePage() {
             {/* Rows */}
             {rowsToShow.map(s => {
               const d = bySlug[s.slug];
+              const app = applicationsBySlug[s.slug];
               return (
-                <div key={s.slug} className="grid items-center border-b border-[hsl(var(--border))]/60 hover:bg-[hsl(var(--elevate-1))]"
+                <div key={s.slug} className={`grid items-center border-b border-[hsl(var(--border))]/60 hover:bg-[hsl(var(--elevate-1))] ${app ? "bg-[hsl(var(--elevate-1))] border-l-4 border-l-[hsl(var(--primary))]" : ""}`}
                   style={{ gridTemplateColumns: "220px 1fr 24px" }}>
                   <div className="p-2">
                     <div className="flex items-center gap-1.5">
                       <div className="min-w-0">
-                        <div className="serif text-[13px] font-medium truncate">{s.short}</div>
+                        <div className="serif text-[13px] font-medium truncate flex items-center gap-1">{s.short}{app && <PlanBadge slug={s.slug} />}</div>
                         <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] truncate">{s.city_state}</div>
                       </div>
                     </div>
@@ -201,13 +238,14 @@ export default function TimelinePage() {
                       const x = toXPct(dt);
                       if (x == null) return null;
                       const meta = roundMeta.find(m => m.key === r)!;
+                      const mine = app?.round === r;
                       return (
-                        <div key={r} className="absolute top-1/2 -translate-y-1/2 group"
+                        <div key={r} className={`absolute top-1/2 -translate-y-1/2 group ${mine ? "z-[5]" : ""}`}
                           style={{ left: `calc(${x}% - 6px)`, width: 12, height: 12 }}>
-                          <div className="w-3 h-3 rounded-full ring-2 ring-white shadow-sm"
+                          <div className={`w-3 h-3 rounded-full ring-2 shadow-sm ${mine ? "ring-[hsl(var(--foreground))] scale-150" : "ring-white"}`}
                             style={{ background: meta.color }} />
                           <div className="pointer-events-none absolute z-10 -top-2 left-4 whitespace-nowrap px-2 py-1 rounded bg-[hsl(var(--foreground))] text-[hsl(var(--background))] text-[11px] opacity-0 group-hover:opacity-100 transition-opacity">
-                            {meta.short}: {raw}
+                            {meta.short}: {raw}{mine ? " · Anurag applying" : ""}
                           </div>
                         </div>
                       );
@@ -246,12 +284,12 @@ export default function TimelinePage() {
                   const stale = d.cycle_label && d.cycle_label.toLowerCase().includes("previous");
                   return (
                     <tr key={s.slug}>
-                      <td className="serif font-medium">{s.short}</td>
+                      <td className="serif font-medium"><span className="inline-flex items-center gap-1">{s.short}<PlanBadge slug={s.slug} /></span></td>
                       <td>
                         {stale ? <span className="chip fit-conditional">{d.cycle_label}</span> : <span className="chip fit-top">{d.cycle_label}</span>}
                       </td>
                       {roundMeta.map(r => (
-                        <td key={r.key} className="text-[11.5px] whitespace-nowrap">{(d as any)[r.key] || "—"}</td>
+                        <td key={r.key} className={`text-[11.5px] whitespace-nowrap ${applicationsBySlug[s.slug]?.round === r.key ? "font-semibold bg-[hsl(var(--elevate-2))]" : ""}`}>{(d as any)[r.key] || "—"}</td>
                       ))}
                       <td className="text-[11.5px]">{d.rolling || "—"}</td>
                       <td>
