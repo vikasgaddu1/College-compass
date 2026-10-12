@@ -2,7 +2,7 @@
 
 An evidence-audited dashboard of 25 undergraduate AI/CS programs, prepared for a Fall 2027 college applicant.
 
-**Live site:** https://vikasgaddu1.github.io/college-compass/
+**Live site:** https://vikasgaddu1.github.io/College-compass/
 
 ## What it is
 
