@@ -1,0 +1,10 @@
+{
+  "student": "Anurag",
+  "cycle": "2026-27 (Fall 2027 entry)",
+  "note": "Anurag's chosen application plans. Deadlines mirror deadlines.json; confirm on each school's official page.",
+  "applications": [
+    { "slug": "carnegie-mellon", "plan": "ED", "plan_label": "Early Decision", "round": "ed1", "deadline": "2026-11-02", "deadline_label": "Nov 2 (ED1)", "binding": true, "note": null },
+    { "slug": "michigan", "plan": "EA", "plan_label": "Early Action", "round": "ea", "deadline": "2026-11-01", "deadline_label": "Nov 1 (EA)", "binding": false, "note": "Deadline row is previous-cycle (2025-26) data; confirm on Michigan's site." },
+    { "slug": "wpi", "plan": "EA", "plan_label": "Early Action", "round": "ea", "deadline": "2026-11-01", "deadline_label": "Nov 1 (EA1)", "binding": false, "note": null }
+  ]
+}
