@@ -1,7 +1,9 @@
 import { createContext, useContext, useState, useMemo, useEffect, ReactNode, useCallback } from "react";
 import { schools, School } from "./data";
 
-const STORAGE_KEY = "cc_hidden_schools_v1";
+// Start each researched college set with every school visible. Retire the older
+// 33-school preferences; new hiding choices apply only to this exact college set.
+const STORAGE_KEY = `cc_hidden_schools_v2:${schools.map(s => s.slug).sort().join(",")}`;
 
 /** localStorage is blocked in sandboxed preview iframes (opaque origin), so probe
  *  before relying on it and fall back to in-memory state. Same pattern as ranks/notes. */

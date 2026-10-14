@@ -4,7 +4,7 @@ import {
   Layers, Sparkles, AlertTriangle, GraduationCap, Users, DollarSign,
   Columns3, CalendarClock, Award, EyeOff, NotebookPen, TrendingUp,
   Coins, ClipboardCheck, MessageCircle, ListOrdered, Bot,
-  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange, Radar, Menu, X, Route} from "lucide-react";
+  Target, Grid3x3, Cloud, MapPin, CalendarRange, Radar, Menu, X, Route} from "lucide-react";
 import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent } from "@/lib/notes";
 import { schools } from "@/lib/data";
@@ -49,7 +49,6 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
     items: [
       { path: "/odds",       label: "Applicant odds",        icon: Target,        hint: "Client-side likely/target/reach classifier" },
       { path: "/strategy",   label: "Strategy map",          icon: Grid3x3,       hint: "CDS C7 effort heatmap + interest tracker" },
-      { path: "/sequencing", label: "Sequencing & FRC",      icon: GitBranch,     hint: "Decision dependencies + FRC season overlay" },
     ],
   },
   {
