@@ -23,6 +23,7 @@ import ChecklistPage from "@/pages/Checklist";
 import CultureSignalsPage from "@/pages/CultureSignals";
 import MyRankingPage from "@/pages/MyRanking";
 import RoboticsPathsPage from "@/pages/RoboticsPaths";
+import RoboticsRoutesPage from "@/pages/RoboticsRoutes";
 import VisitsPage from "@/pages/Visits";
 import OddsPage from "@/pages/Odds";
 import StrategyPage from "@/pages/Strategy";
@@ -54,6 +55,7 @@ function AppRouter() {
         <Route path="/compare" component={ComparePage} />
         <Route path="/timeline" component={TimelinePage} />
         <Route path="/checklist" component={ChecklistPage} />
+        <Route path="/routes" component={RoboticsRoutesPage} />
         <Route path="/robotics" component={RoboticsPathsPage} />
         <Route path="/visits" component={VisitsPage} />
         <Route path="/odds" component={OddsPage} />

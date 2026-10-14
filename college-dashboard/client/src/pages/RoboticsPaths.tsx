@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "wouter";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { NoteButton, AbetBadge } from "@/components/SchoolBits";
@@ -261,9 +262,9 @@ export default function RoboticsPathsPage() {
           <Bot size={16}/>
           <div className="text-[11px] tracking-wider uppercase">Robotics paths</div>
         </div>
-        <h2 className="serif text-[22px] font-semibold mt-1">Three routes into robotics — CS-AI, ME, or a dedicated Robotics BS</h2>
+        <h2 className="serif text-[22px] font-semibold mt-1">Mechanical-engineering tracks, early rounds and admit differentials</h2>
         <p className="text-[13.5px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          CS is often the hardest way into robotics. Many schools have a documented ME + Robotics track with no competitive gate, and a growing number offer a <em>dedicated</em> BS in Robotics — WPI (2007), Michigan-Dearborn (2014), Virginia Tech (2020), Michigan (2022), CMU (2023), Maryland-Shady Grove (2024), plus RPI, Purdue Polytechnic, RIT and Kettering. This page compares all three routes at every school on the list.
+          The <Link href="/routes" className="underline">Robotics routes</Link> page is the main view: BS in Robotics vs ECE vs CS at each school, researched October 2026. This page keeps the August research on the mechanical-engineering robotics track, early-round lift and ecosystem depth, for the same 13 schools. Where the two disagree, the Robotics routes page is newer.
         </p>
         <div className="mt-4 flex flex-wrap gap-4 text-[12.5px]">
           <div><span className="num text-[18px] font-semibold text-[hsl(var(--fit-strong))]">{bsRoboticsCount}</span><span className="text-[hsl(var(--muted-foreground))]"> of {Object.keys(roboticsPaths.schools).length} have a dedicated BS Robotics</span></div>
@@ -271,110 +272,6 @@ export default function RoboticsPathsPage() {
           <div><span className="num text-[18px] font-semibold text-[hsl(var(--fit-top))]">{easierCount}</span><span className="text-[hsl(var(--muted-foreground))]"> where robotics is easier admit than CS</span></div>
         </div>
 
-        {/* NEW: Mechatronics fourth-route card */}
-        <div className="mt-5 rounded-lg bg-[hsl(var(--fit-top)/0.08)] border border-[hsl(var(--fit-top)/0.3)] p-4">
-          <div className="flex items-baseline gap-2 mb-2">
-            <Cog size={14} className="text-[hsl(var(--fit-top))]"/>
-            <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--fit-top))]">Mechatronics — the fourth robotics route</div>
-          </div>
-          <p className="text-[13px] leading-relaxed mb-3">
-            Mechatronics = ME + ECE + control/embedded systems, deliberately blended. At some schools it's a full BS, at others a formal ME track, and at most it's absent. When it exists as a real degree, it's often <strong>curricularly closer to robotics than plain ME</strong> and sometimes lives in a less-competitive admissions pool than the traditional engineering college.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">Dedicated BS Mechatronics</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{mechaBS} schools:</strong> Maryland (Shady Grove, launched 2024), NC State (joint w/ UNC Asheville), Kettering, Purdue (Polytechnic), RIT, Penn State (EMET), TAMU (MXET), Northeastern (degree-completion only — not first-year).
-              </div>
-            </div>
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">Easier admit than ME</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{mechaEasier} schools</strong> with measurably easier mechatronics admit: <strong>Purdue Polytechnic Mechatronics ET 54% admit</strong> (vs CoE ME 46%), and <strong>Northeastern Lowell Institute Mechatronics BS</strong> (but that's degree-completion, not freshman). Trade-off at both: ETAC/ABET (engineering technology) accreditation instead of EAC/ABET.
-              </div>
-            </div>
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">Better fit for robotics than ME</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{mechaFit} schools</strong> where mechatronics curriculum is a stronger robotics prep than ME: <strong>Maryland</strong>, <strong>NC State</strong>, <strong>UW Seattle ME-Mechatronics option</strong>, <strong>TAMU MXET</strong>, <strong>Kettering</strong>, <strong>Purdue Polytechnic</strong>, <strong>RIT MET</strong>, <strong>Olin</strong> (whole degree is mechatronics-flavored).
-              </div>
-            </div>
-          </div>
-          <div className="mt-3 text-[11.5px] text-[hsl(var(--muted-foreground))] italic">
-            <AlertTriangle size={10} className="inline text-[hsl(var(--fit-conditional))] mr-1"/>
-            <strong>Watch out:</strong> Virginia Tech's Robotics and Mechatronics major was CLOSED to new declarations in January 2026 — do not apply expecting this route. UW Seattle's Mechatronics option requires a junior-year competitive application (not guaranteed after ME admission).
-          </div>
-          <div className="mt-1.5 text-[11.5px] text-[hsl(var(--muted-foreground))]">
-            <Info size={10} className="inline mr-1 opacity-70"/>
-            For reference: Penn State EMET and TAMU MXET are Engineering Technology (ETAC/ABET) rather
-            than EAC. That shapes how applied the coursework is, but nothing in a robotics or AI career
-            turns on it — see the accreditation panel below.
-          </div>
-        </div>
-
-        {/* Broader strategy card - 3 dimensions beyond CS-vs-ME */}
-        <div className="mt-5 rounded-lg bg-[hsl(var(--fit-strong)/0.06)] border border-[hsl(var(--fit-strong)/0.25)] p-4">
-          <div className="flex items-baseline gap-2 mb-2">
-            <Trophy size={14} className="text-[hsl(var(--fit-strong))]"/>
-            <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--fit-strong))]">Broader admission-strategy levers</div>
-          </div>
-          <p className="text-[13px] leading-relaxed mb-3">
-            Beyond CS-vs-ME framing, three structural levers usually move the needle more than any individual applicant essay: <strong>early-plan timing</strong>, <strong>state residency</strong>, and <strong>which robotics ecosystem you actually land in</strong>.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">Early Decision / Early Action lift</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{earlyLarge} schools</strong> where the early round is ≥2× the RD rate. Biggest: <strong>Northeastern ED ~8.8×</strong>, <strong>Duke ED 3×</strong>, <strong>Swarthmore ED 2.8×</strong>, <strong>UNC EA 2.3×</strong>, <strong>WPI ED 2.2×</strong>.
-              </div>
-            </div>
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">NC residency advantage</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{oosNC} schools</strong> where NC residency is a structural advantage: <strong>UNC-CH</strong> (NC 37% vs OOS 9.6%, 18% OOS cap) and <strong>NC State</strong> (NC 46% vs OOS 34%, 18% cap). Meanwhile UT-Austin, Berkeley, UGA-Tech, UW-Seattle CS all have massive OOS gaps that hurt NC applicants.
-              </div>
-            </div>
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1">Robotics-ecosystem depth</div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{tier1} Tier-1</strong> (world-class robotics research): CMU, MIT, Georgia Tech, Michigan, Berkeley, UT Austin, Maryland. <strong>{tier2} Tier-2</strong>: Penn, UIUC, WPI, JHU, UW Seattle, Texas A&amp;M.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Existing: CS-vs-ME admissions strategy summary */}
-        <div className="mt-3 rounded-lg bg-[hsl(var(--accent)/0.06)] border border-[hsl(var(--accent)/0.25)] p-4">
-          <div className="flex items-baseline gap-2 mb-2">
-            <ShieldCheck size={14} className="text-[hsl(var(--accent))]"/>
-            <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--accent))]">Admissions-strategy summary</div>
-          </div>
-          <p className="text-[13px] leading-relaxed mb-2">
-            Two different questions to keep separate: (1) does applying via robotics/ME give you a <strong>materially different bar at the admissions office</strong>, and (2) once admitted, is the robotics/ME path <strong>less gated internally</strong> than CS?
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="flex items-center gap-1.5 mb-1">
-                <Building2 size={13} className="text-[hsl(var(--fit-top))]"/>
-                <div className="text-[10.5px] uppercase tracking-wider font-medium">University-admissions differential</div>
-              </div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{univMaterial} schools</strong> where robotics/ME is a <em>materially</em> easier admit than CS (CMU, Georgia Tech, UIUC, Berkeley, UW).
-                <strong className="text-[hsl(var(--foreground))]"> {univModest} schools</strong> where it's <em>modestly</em> easier (RIT, Illinois Tech, UT Austin).
-              </div>
-            </div>
-            <div className="rounded-md bg-[hsl(var(--card))] p-3 border border-[hsl(var(--border))]">
-              <div className="flex items-center gap-1.5 mb-1">
-                <Trophy size={13} className="text-[hsl(var(--fit-strong))]"/>
-                <div className="text-[10.5px] uppercase tracking-wider font-medium">Internal-gate differential</div>
-              </div>
-              <div className="text-[12px] leading-snug text-[hsl(var(--muted-foreground))]">
-                <strong className="text-[hsl(var(--foreground))]">{gateMaterial} schools</strong> where the ME/robotics path is materially less gated once you're on campus (CMU CoE, Cornell ME affiliation, Purdue FYE, Georgia Tech, UMD, Berkeley, UW).
-                <span className="block mt-1"><AlertTriangle size={10} className="inline text-[hsl(var(--fit-lower))] mr-1"/> Watch out: Virginia Tech and Florida <em>reverse</em> this — ME is HARDER internally than CS.</span>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="mt-4 flex flex-wrap gap-2 items-center">
           <span className="text-[11px] text-[hsl(var(--muted-foreground))] mr-1">Export {rows.length === Object.keys(roboticsPaths.schools).length ? "all" : `these ${rows.length}`} schools:</span>
           <button onClick={exportJSON} title="Machine-readable JSON with all robotics-path data + citations"

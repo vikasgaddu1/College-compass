@@ -4,7 +4,7 @@ import {
   Layers, Sparkles, AlertTriangle, GraduationCap, Users, DollarSign,
   Columns3, CalendarClock, Award, EyeOff, NotebookPen, TrendingUp,
   Coins, ClipboardCheck, MessageCircle, ListOrdered, Bot,
-  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange, Radar, Menu, X} from "lucide-react";
+  Target, Grid3x3, GitBranch, Cloud, MapPin, CalendarRange, Radar, Menu, X, Route} from "lucide-react";
 import { useHidden } from "@/lib/hidden";
 import { useNotes, hasContent } from "@/lib/notes";
 import { schools } from "@/lib/data";
@@ -14,6 +14,7 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
     section: "Start here",
     items: [
       { path: "/",           label: "Overview",              icon: Layers,        hint: "All schools at a glance" },
+      { path: "/routes",     label: "Robotics routes",       icon: Route,         hint: "BS Robotics vs ECE vs CS, per school" },
       { path: "/shortlist",  label: "Shortlist tiers",       icon: Award,         hint: "Grouped by fit tier" },
     ],
   },
@@ -28,8 +29,8 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
     section: "Dig into detail",
     items: [
       { path: "/curriculum", label: "Curriculum & access",   icon: GraduationCap, hint: "AI courses, gates, research" },
-      { path: "/robotics",   label: "Robotics paths",         icon: Bot,           hint: "CS-AI vs ME vs BS Robotics" },
-      { path: "/robotics-degrees", label: "US robotics degrees", icon: Radar,       hint: "64 programs nationally, sorted by degree type" },
+      { path: "/robotics",   label: "Robotics paths (ME)",    icon: Bot,           hint: "ME tracks, early rounds, admit odds" },
+      { path: "/robotics-degrees", label: "US robotics degrees", icon: Radar,       hint: "Every US robotics BS, for reference" },
       { path: "/robotics-compare", label: "WPI vs Michigan", icon: Columns3,    hint: "The two robotics BS degrees, side by side" },
       { path: "/cmu-plan",   label: "CMU four-year plan",    icon: CalendarRange, hint: "Stats+ML + Robotics, semester by semester" },
       { path: "/culture",    label: "Culture & campus",      icon: Users,         hint: "Greek life, ambition, rec" },
@@ -78,7 +79,7 @@ function Logo() {
       </svg>
       <div className="leading-tight">
         <div className="text-[15px] font-semibold text-[hsl(var(--sidebar-foreground))]">College Compass</div>
-        <div className="text-[11px] text-[hsl(var(--sidebar-foreground)/0.55)]">Undergraduate AI programs</div>
+        <div className="text-[11px] text-[hsl(var(--sidebar-foreground)/0.55)]">Undergraduate robotics routes</div>
       </div>
     </div>
   );
@@ -175,7 +176,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
           </button>
           <div className="min-w-0 flex-1">
             <div className="text-[10px] sm:text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))] truncate">
-              For a Fall 2027 college applicant · Broad AI focus
+              For a Fall 2027 college applicant · Robotics focus
             </div>
             <h1 className="serif text-[19px] sm:text-[24px] font-semibold leading-tight truncate">{active?.label || "Overview"}</h1>
           </div>

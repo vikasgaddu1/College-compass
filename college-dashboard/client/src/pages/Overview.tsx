@@ -8,6 +8,7 @@ import { Search, ArrowUpDown, X, SlidersHorizontal, ArrowRight, CalendarClock } 
 import deadlinesData from "@/data/deadlines.json";
 import scholarshipData from "@/data/scholarships.json";
 import roboticsPaths from "@/data/robotics_paths.json";
+import roboticsRoutes from "@/data/robotics_routes.json";
 import { PersonalPriorities } from "@/components/PersonalPriorities";
 import { useWeights } from "@/lib/weights";
 import { useRanks } from "@/lib/ranks";
@@ -87,13 +88,16 @@ export default function OverviewPage() {
           <div>
             <div className="text-[11px] tracking-widest uppercase text-[hsl(var(--accent))] mb-2">The whole study, one screen</div>
             <h1 className="serif text-[32px] md:text-[38px] font-semibold leading-[1.05] max-w-xl">
-              {schools.length} undergraduate AI programs, audited against what actually matters.
+              {schools.length} schools, one question: the best way into robotics.
             </h1>
             <p className="mt-3 text-[13.5px] text-[hsl(var(--muted-foreground))] max-w-xl leading-relaxed">
-              Not a ranking. A calm, filterable read on where the AI curriculum has real depth, where undergraduates actually get into labs, and where the culture is intense-but-not-cutthroat.
+              Not a ranking. For each school: a dedicated BS in Robotics if it has a real one, otherwise the ECE or CS route, how a first-year actually gets in, and where undergraduates get into robotics labs.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              <Link href="/why" className="chip chip-primary hover:bg-[hsl(var(--primary))] hover:text-white transition-colors inline-flex items-center gap-1">
+              <Link href="/routes" className="chip chip-primary hover:bg-[hsl(var(--primary))] hover:text-white transition-colors inline-flex items-center gap-1">
+                Robotics route at each school <ArrowRight size={12}/>
+              </Link>
+              <Link href="/why" className="chip chip-outline hover:bg-[hsl(var(--elevate-1))] inline-flex items-center gap-1">
                 Why to choose each school <ArrowRight size={12}/>
               </Link>
               <Link href="/drawbacks" className="chip chip-outline hover:bg-[hsl(var(--elevate-1))] inline-flex items-center gap-1">
@@ -116,8 +120,8 @@ export default function OverviewPage() {
           <div className="grid grid-cols-2 gap-3">
             <HeroKpi label="Schools" value={`${allVisible.length}`} sub={hidden.size ? `${hidden.size} hidden` : `all ${schools.length} visible`} />
             <HeroKpi label="Top-fit schools" value={`${allVisible.filter(s=>s.fit_classification==="TOP FIT").length}`} sub="Preliminary fit tier" />
-            <HeroKpi label="With dedicated AI degree" value={`${allVisible.filter(s=>s.archetypes.includes("A")).length}`} sub="Program archetype A" />
-            <HeroKpi label="Direct-admit majors" value={`${allVisible.filter(s=>s.major_access_status==="DIRECT").length}`} sub="No internal gate" />
+            <HeroKpi label="With a BS in Robotics" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.bs_robotics?.kind==="primary_major").length}`} sub="First-year-reachable primary major" />
+            <HeroKpi label="Best via ECE" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.recommended_route==="ece").length}`} sub="No robotics BS, ECE route recommended" />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import data from "@/data/robotics_degrees.json";
+import { schools } from "@/lib/data";
 import { AlertTriangle, Info, CalendarClock, Ban, GitBranch, ExternalLink, Search } from "lucide-react";
 
 type Program = {
@@ -17,6 +18,9 @@ type Program = {
   notes: string;
   in_dataset_slug: string | null;
 };
+
+const ROSTER = new Set(schools.map(s => s.slug));
+const inList = (p: { in_dataset_slug: string | null }) => !!p.in_dataset_slug && ROSTER.has(p.in_dataset_slug);
 
 const DANGER = "0 70% 45%";
 const WARN = "30 75% 45%";
@@ -46,7 +50,7 @@ export default function RoboticsDegreesPage() {
     const needle = q.trim().toLowerCase();
     return programs.filter(p => {
       if (bucket !== "all" && p.bucket !== bucket) return false;
-      if (onlyNew && p.in_dataset_slug) return false;
+      if (onlyNew && inList(p)) return false;
       if (needle) {
         const hay = `${p.institution} ${p.state} ${p.degree_name} ${p.home_unit}`.toLowerCase();
         if (!hay.includes(needle)) return false;
@@ -65,7 +69,7 @@ export default function RoboticsDegreesPage() {
           Undergraduate robotics degrees in the US
         </h1>
         <p className="max-w-3xl text-[13px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-          {counts.total} programs found, of which {counts.new_to_user} are outside the 33-school research set. The
+          {counts.total} programs found, of which {programs.filter(p => !inList(p)).length} are at schools outside the {schools.length} on this list. The
           single most important thing on this page is that these are not all the same kind of degree.
         </p>
       </header>
@@ -177,7 +181,7 @@ export default function RoboticsDegreesPage() {
               <span className="font-mono text-[10.5px] text-[hsl(var(--muted-foreground))]">
                 {p.state} · {p.control}
               </span>
-              {p.in_dataset_slug && (
+              {inList(p) && (
                 <span
                   className="shrink-0 rounded px-1.5 py-[1px] text-[10px] font-medium text-[hsl(var(--foreground))]"
                   style={{ background: `hsl(${INFO} / 0.13)`, border: `1px solid hsl(${INFO} / 0.35)` }}
