@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import data from "@/data/rbe_compare.json";
 import {
-  Info, ChevronDown, ChevronRight, Bot, GraduationCap, GitBranch, Building2,
+  ExternalLink, Info, ChevronDown, ChevronRight, Bot, GraduationCap, GitBranch, Building2,
   AlertTriangle, CheckCircle2, Wrench, BrainCircuit, Users,
 } from "lucide-react";
 
@@ -69,7 +69,7 @@ function CoreList({ core, open, onToggle }: { core: Core[]; open: boolean; onTog
         onClick={onToggle}
         className="flex items-center gap-1 text-[11px] font-medium text-[hsl(var(--foreground))] underline decoration-dotted"
       >
-        <ChevronRight className="h-3.5 w-3.5" /> Show all {core.length} required entries
+        <ChevronRight className="h-3.5 w-3.5" /> Show {core.length} major requirement groups
       </button>
     );
   }
@@ -79,7 +79,7 @@ function CoreList({ core, open, onToggle }: { core: Core[]; open: boolean; onTog
         onClick={onToggle}
         className="mb-2 flex items-center gap-1 text-[11px] font-medium text-[hsl(var(--foreground))] underline decoration-dotted"
       >
-        <ChevronDown className="h-3.5 w-3.5" /> Hide full requirement list
+        <ChevronDown className="h-3.5 w-3.5" /> Hide major requirement groups
       </button>
       <ul className="space-y-1">
         {core.map((c, i) => (
@@ -129,9 +129,9 @@ export default function RoboticsComparePage() {
           BS in Robotics: WPI vs Michigan, side by side
         </h1>
         <p className="max-w-3xl text-[13px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-          The two flagship dedicated robotics degrees, compared on what is actually required, what is
-          guaranteed, and how you get in. Course codes verified on each catalog; accreditation is not
-          evaluated because robotics has no professional licence.
+          Two dedicated robotics degrees, compared on required foundations, elective choices and
+          how you get in. Current official requirements checked October 14, 2026;
+          elective eligibility does not guarantee seats or a future semester offering.
         </p>
       </header>
 
@@ -144,18 +144,18 @@ export default function RoboticsComparePage() {
               Neither degree requires a machine-learning course
             </h2>
             <p className="text-[12.5px] leading-relaxed text-[hsl(var(--foreground))]">
-              This is the most important fact on the page for a robotics-and-AI job target. At WPI, AI/ML
-              enters only through electives (RBE 4701 Artificial Intelligence for Robotics, RBE 4540, CS
-              4341/4342) against a smaller elective budget. At Michigan, the AI-flavoured intro (ROB 102) is
-              only one of three options for a general requirement, but the elective menu is deeper and
-              robotics-specific — ROB 429, ROB 430, EECS 442/ROB 432, ROB 530, ROB 535 — with 18 credits of
-              technical electives and a Perception and Reasoning for Robotics concentration starting Fall
-              2026.
+              Required robotics foundations give both degrees a base in physical systems. AI depth
+              depends on deliberate electives: WPI offers undergraduate RBE 4701, RBE 4744, RBE 4540
+              and CS 4342; Michigan expressly lists ROB 429 and ROB 430 as undergraduate upper-level
+              electives, with ROB 422 and EECS 442/ROB 432 also supporting autonomy and perception.
+              WPI&apos;s minimum elective distribution and Michigan&apos;s 18 technical-elective credits
+              provide different planning structures. [W1][W5][W6][W7][W8][M1][M2]
             </p>
             <p className="text-[11.5px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-              Read that as: WPI guarantees more robot-building, Michigan offers more room to load up on AI.
-              The degree you choose does not by itself deliver the AI depth — the elective plan inside it
-              does, exactly like the CMU plan.
+              For a balanced hardware, controls and autonomy goal, WPI requires its four-course
+              Unified Robotics sequence. At Michigan, choose hardware and controls within the six
+              core options, then use additional core/elective choices for navigation and learning.
+              The optional Full Stack concentration covers all six. [W1][M1]
             </p>
           </div>
         </div>
@@ -167,20 +167,20 @@ export default function RoboticsComparePage() {
           <GitBranch className="h-3.5 w-3.5" /> How you actually get in
         </h2>
         <div className="grid gap-3 lg:grid-cols-2">
-          <Panel hue={WPI_HUE} title="WPI — apply directly, no gate" sub="Fall 2025 Common Data Set">
+          <Panel hue={WPI_HUE} title="WPI — university admission, then declare" sub="Current first-year advising guidance [W9]">
             <p className="text-[11.5px] leading-relaxed text-[hsl(var(--muted-foreground))]">{data.admission.wpi}</p>
           </Panel>
-          <Panel hue={UMICH_HUE} title="Michigan — admit to the College, declare later" sub="Fall 2025 Common Data Set">
+          <Panel hue={UMICH_HUE} title="Michigan — admit to the College, declare later" sub="Current Robotics declaration requirements [M1]">
             <p className="text-[11.5px] leading-relaxed text-[hsl(var(--muted-foreground))]">{data.admission.umich}</p>
           </Panel>
         </div>
         <p className="rounded-md p-2.5 text-[11.5px] leading-relaxed text-[hsl(var(--foreground))]"
            style={{ background: `hsl(${DANGER} / 0.05)`, border: `1px solid hsl(${DANGER} / 0.3)` }}>
-          The asymmetry is stark: a 61.9% admit rate with no further gate at WPI, versus 16.4% at
-          Michigan before any robotics-specific step. But note the direction of Michigan's risk — the
-          major is not rationed. You are admitted to the College of Engineering undeclared, and the
-          Robotics declaration needs one completed term, a 2.0 GPA and C-or-better in the foundation
-          courses. The risk is timing and schedule compression, not exclusion.
+          These are separate steps: university or college admission, major declaration, then course
+          enrollment. WPI prompts major declaration near the end of first-year B-Term. Michigan Robotics
+          requires one completed term, a 2.0 GPA, good standing and all four foundation categories.
+          No reviewed official page publishes a competitive Robotics selection gate, while U-M&apos;s
+          current admissions knowledge base still requires separate CS selection. [W9][M1][M4]
         </p>
       </section>
 
@@ -248,7 +248,7 @@ export default function RoboticsComparePage() {
       {/* DISTINCTIVE */}
       <section className="space-y-2.5">
         <h2 className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
-          <Building2 className="h-3.5 w-3.5" /> What is genuinely distinctive at each
+          <Building2 className="h-3.5 w-3.5" /> What is distinctive at each
         </h2>
         <div className="grid gap-3 lg:grid-cols-2">
           <Panel hue={WPI_HUE} title="WPI" sub="">
@@ -277,7 +277,7 @@ export default function RoboticsComparePage() {
       {/* SHARED GROUND */}
       <section className="space-y-2">
         <h2 className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
-          <Users className="h-3.5 w-3.5" /> Where they are genuinely equivalent ({(data.shared_ground as string[]).length})
+          <Users className="h-3.5 w-3.5" /> Foundations they share ({(data.shared_ground as string[]).length})
         </h2>
         <div className="rounded-lg border border-[hsl(var(--border))] p-3.5">
           <ul className="space-y-1.5">
@@ -295,10 +295,18 @@ export default function RoboticsComparePage() {
         <div className="flex items-start gap-2.5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--muted-foreground))]" />
           <p className="text-[11px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-            {data.note} Admission figures are institution-wide from each Common Data Set 2025-26; Michigan
-            does not publish a College of Engineering admit rate. Compiled {data.compiled}.
+            {data.note} Checked {data.compiled}.
           </p>
         </div>
+        <ul className="mt-3 space-y-1.5 text-[11px] leading-relaxed">
+          {data.sources.map(source => (
+            <li key={source.id}>
+              <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline decoration-dotted">
+                [{source.id}] {source.title}<ExternalLink className="h-3 w-3" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </footer>
     </div>
   );

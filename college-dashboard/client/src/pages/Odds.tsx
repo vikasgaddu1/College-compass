@@ -20,6 +20,7 @@ export default function OddsPage() {
   const [thresholds, setThresholds, resetThresholds] = useOddsThresholds();
   const rigor = computeRigor(profile);
   const [showSettings, setShowSettings] = useState(false);
+  const [useRecommendedRoute, setUseRecommendedRoute] = useState(true);
 
   const visibleSchools = schools.filter(s => !hidden.has(s.slug));
 
@@ -27,10 +28,11 @@ export default function OddsPage() {
     return visibleSchools.map(s => {
       const adm = (s as any).admissions;
       const nc = (roboticsPaths.schools as any)[s.slug]?.nc_applicant_note;
-      const result = classify(adm, nc, profile, thresholds);
+      const routeThresholds = useRecommendedRoute ? { ...thresholds, pathway: s.recommended_admission_door || thresholds.pathway } : thresholds;
+      const result = classify(adm, nc, profile, routeThresholds);
       return { school: s, result, adm };
     });
-  }, [visibleSchools, profile, thresholds]);
+  }, [visibleSchools, profile, thresholds, useRecommendedRoute]);
 
   // How many visible schools call rigor "very important" in CDS C7 -- the honest
   // justification for asking about course load at all.
@@ -102,9 +104,9 @@ export default function OddsPage() {
           <Target size={16}/>
           <div className="text-[11px] tracking-wider uppercase">Applicant odds</div>
         </div>
-        <h2 className="serif text-[22px] font-semibold mt-1">Client-side likelihood classifier</h2>
+        <h2 className="serif text-[22px] font-semibold mt-1">Heuristic admissions tiers for robotics routes</h2>
         <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Enter your profile below; this page classifies each school as Likely / Target / Reach / High Reach based on the researched admissions data + your stats. All computation runs in your browser — profile data never leaves this device (or your Supabase workspace if signed in). Thresholds are heuristics, not truth — adjust them in Settings.
+          These planning tiers combine historical cohort admit rates and adjustable profile rules. They are not individual admission probabilities, guarantees, or robotics-major admit rates. The default uses each school’s recommended robotics admission route; the comparison buttons let you inspect another college. Profile settings stay on this device (or your Supabase workspace if signed in).
         </p>
       </div>
 
@@ -119,13 +121,14 @@ export default function OddsPage() {
         {/* Which door -- the single biggest lever at schools that admit by college */}
         <div className="rounded-md border border-[hsl(var(--accent)/0.35)] bg-[hsl(var(--accent)/0.06)] px-3 py-2.5 mb-3">
           <div className="flex flex-wrap items-center gap-3">
-            <div className="text-[11px] uppercase tracking-wider text-[hsl(var(--accent))]">Which door are you applying through?</div>
-            <div className="flex gap-1">
+            <div className="text-[11px] uppercase tracking-wider text-[hsl(var(--accent))]">Admission route used in this view</div>
+            <div className="flex flex-wrap gap-1">
+              <button onClick={() => setUseRecommendedRoute(true)} className={useRecommendedRoute ? "chip chip-primary" : "chip chip-outline"}>Recommended robotics routes</button>
               {(["engineering","computing"] as const).map(k => (
                 <button key={k}
-                  onClick={() => setThresholds({ pathway: k })}
-                  className={thresholds.pathway === k ? "chip chip-primary" : "chip chip-outline"}>
-                  {k === "engineering" ? "Engineering / ME / ECE" : "Computing / CS / SCS"}
+                  onClick={() => { setUseRecommendedRoute(false); setThresholds({ pathway: k }); }}
+                  className={!useRecommendedRoute && thresholds.pathway === k ? "chip chip-primary" : "chip chip-outline"}>
+                  {k === "engineering" ? "Compare Engineering / ECE" : "Compare Computing / SCS"}
                 </button>
               ))}
             </div>
@@ -136,12 +139,7 @@ export default function OddsPage() {
             </label>
           </div>
           <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] mt-1.5 leading-snug max-w-[880px]">
-            A university-wide admit rate describes nobody at a school that admits by college.
-            The same UW application is roughly <strong className="text-[hsl(var(--foreground))]">2%</strong> through
-            Direct-to-Major CS and <strong className="text-[hsl(var(--foreground))]">37%</strong> through
-            Direct-to-College Engineering for an out-of-state applicant. {unitSchoolCount} schools in
-            view publish a per-college split; {gatedUnpublishedCount} admit by college or major but publish
-            no unit-level rate, and those keep the university figure with a caveat.
+            Published university and college rates describe their reporting cohorts. {unitSchoolCount} schools in view publish a per-college split; {gatedUnpublishedCount} admit by college or major but publish no usable unit rate. Major-entry rules and applicant residency remain separate facts; an aggregate rate does not establish which robotics route is easier to enter.
           </div>
         </div>
 
@@ -264,12 +262,12 @@ export default function OddsPage() {
                 </select>
               </div>
               <div>
-                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Downgrade gated CS</label>
+                <label className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))]">Apply a strong entry-gate adjustment</label>
                 <select className="w-full px-2 py-1 mt-0.5 text-[12px] bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded"
                   value={thresholds.gated_downgrade ? "yes":"no"}
                   onChange={e => setThresholds({ gated_downgrade: e.target.value === "yes" })}>
                   <option value="yes">Yes — downgrade one tier</option>
-                  <option value="no">No — treat CS same as overall</option>
+                  <option value="no">No entry-gate adjustment</option>
                 </select>
               </div>
               <div>
@@ -291,7 +289,7 @@ export default function OddsPage() {
             </div>
             <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] italic">
               Admit rates are decimals (0.35 = 35%). Defaults: Likely ≥35%, Target ≥20%, High-reach &lt;10%. These are user-adjustable heuristics — the tier labels have no external authority.
-              {" "}<strong>Gate severity</strong> defaults to per-door, using the researched gate for whichever door you are applying through. The engineering figure comes from the ECE admission research and the computing figure from <code>cs_gate</code>; only a "strong" gate moves a tier. This matters because waiving the gate on engineering wholesale would be wrong at the schools that route every engineering admit through a competition — Texas A&amp;M ETAM, NC State CODA, Berkeley's change-of-major rules — while it is right at Michigan, whose own constraint is the CS major rather than the college. Schools with no ECE programme at all (UNC-Chapel Hill, Carleton) are labelled as having no engineering door rather than an easy one.
+              {" "}<strong>Gate severity</strong> uses the researched rule for the displayed admission route. A later major-entry gate such as NC State CODA or Purdue T2M is separate from first-year admission. Verify current policy and eligibility; a tier adjustment is only a planning convention.
             </div>
           </div>
         )}
@@ -327,9 +325,8 @@ export default function OddsPage() {
           <div className="text-[11.5px] flex items-start gap-1.5 text-[hsl(var(--fit-lower))]">
             <AlertTriangle size={12} className="mt-0.5 flex-shrink-0"/>
             <div>
-              <strong>Door ordering looks wrong at {doorInversions.length} school{doorInversions.length === 1 ? "" : "s"}.</strong>{" "}
-              The computing door classifies as <em>easier</em> than the engineering door here, which is almost
-              always a sign that the two figures rest on different bases rather than a real difference:{" "}
+              <strong>Check the populations behind these route comparisons.</strong>{" "}
+              A larger computing cohort rate is not evidence that a computing or robotics major is easier for this applicant:{" "}
               {doorInversions.map(d => `${d.short} (engineering ${(d.eng*100).toFixed(1)}%, computing ${(d.comp*100).toFixed(1)}%)`).join("; ")}.
               Check the source notes before trusting either number.
             </div>
@@ -346,7 +343,7 @@ export default function OddsPage() {
                 <th className="text-left w-[220px]">School</th>
                 <th className="text-left w-[110px]">Tier</th>
                 <th className="text-left w-[132px]">You apply to</th>
-                <th className="text-right w-[100px]">Eff. admit</th>
+                <th className="text-right w-[100px]">Historical cohort rate used</th>
                 <th className="text-left">Reason</th>
               </tr>
             </thead>
@@ -360,9 +357,10 @@ export default function OddsPage() {
                 const m = tierMeta[result.tier];
                 return (
                   <tr key={school.slug} style={{ background: m.bg }}>
-                    <td className="serif font-medium">{school.short}<div className="text-[10.5px] text-[hsl(var(--muted-foreground))] font-normal">{school.city_state}</div></td>
+                    <td className="serif font-medium">{school.short}<div className="text-[10.5px] text-[hsl(var(--muted-foreground))] font-normal">{school.degree_name}</div></td>
                     <td><span className="chip chip-outline inline-flex text-[10.5px] font-semibold" style={{ color: m.color }}>{m.label}</span></td>
                     <td className="text-[11px] leading-tight">
+                      <div className="mb-1 font-medium">{useRecommendedRoute ? school.recommended_admission_door || thresholds.pathway : thresholds.pathway} route</div>
                       <StructureCell admissions={adm} />
                     </td>
                     <td className="text-right num">{result.effective_admit_rate !== null ? `${(result.effective_admit_rate*100).toFixed(1)}%` : "—"}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{result.admit_rate_context}</div>
@@ -383,9 +381,9 @@ export default function OddsPage() {
                         </div>
                       )}</td>
                     <td className="text-[11.5px] leading-snug">{result.reason}
-                      {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>gated CS downgrade</span>}
-                      {!result.gated_downgrade_applied && result.cs_gate === "mild" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 55% 48%)" }}>mild CS gate</span>}
-                      {result.cs_gate === "none" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(145 50% 35%)" }}>no CS gate</span>}
+                      {result.gated_downgrade_applied && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 75% 40%)" }}>entry-gate adjustment</span>}
+                      {!result.gated_downgrade_applied && result.cs_gate === "mild" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(30 55% 48%)" }}>mild route gate</span>}
+                      {result.cs_gate === "none" && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(145 50% 35%)" }}>no reported route gate</span>}
                       {result.gpa_moved_tier && <span className="ml-2 chip chip-outline text-[10px] py-0" style={{ color: "hsl(200 70% 38%)" }}>GPA moved tier</span>}
                       {result.gpa?.delta === null && result.gpa?.caveat && (
                         <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-1 italic">{result.gpa.caveat}</div>
@@ -406,13 +404,13 @@ export default function OddsPage() {
         <Info size={11} className="mt-0.5 flex-shrink-0"/>
         <div>
           <strong>How this works.</strong> Admit rates come from each school's Common Data Set, and every count in this paragraph is computed from the loaded data rather than written by hand.
-          Residency splits are hand-verified per school: a <strong>{profile.home_state}</strong> applicant gets the <em>in-state</em> rate at the {facts.homeWithSplit.length} of {facts.home.length} home-state schools that publish one ({facts.homeWithSplit.map(s => `${s.short} ${(( (s as any).admissions.in_state_admit_rate)*100).toFixed(1)}%`).join(", ")}), and the <em>out-of-state</em> rate at the {facts.oosCount} other schools that publish one ({facts.oosPublicCount} public, {facts.oosCount - facts.oosPublicCount} private). Schools with no published split fall back to the overall rate.
+          Published residency splits provide cohort context: a <strong>{profile.home_state}</strong> applicant’s planning view uses the <em>in-state</em> rate at the {facts.homeWithSplit.length} of {facts.home.length} home-state schools that publish one ({facts.homeWithSplit.map(s => `${s.short} ${(( (s as any).admissions.in_state_admit_rate)*100).toFixed(1)}%`).join(", ")}), and the <em>out-of-state</em> rate at the {facts.oosCount} other schools that publish one ({facts.oosPublicCount} public, {facts.oosCount - facts.oosPublicCount} private). Schools with no published split fall back to the overall rate.
           {" "}The test modifier uses CDS C9 and accepts either the SAT or the ACT — whichever you and the school both have — and moves at most one tier in either direction. It only applies when you are submitting; on the "hold" plan a below-25th score is treated as one you would withhold.
-          {" "}The gated-CS downgrade fires on a researched <code>cs_gate</code> value of <em>strong</em> ({facts.strongGates} schools in view), never on schools that state they have no major-level gate, and never on top of a per-college rate that already prices the same obstacle in.
+          {" "}The entry-gate adjustment uses the researched rule for the selected route. Gates and college rates are not an individual applicant’s probability, and the view avoids applying a second downgrade when it already uses a college rate.
           {" "}The GPA modifier compares your figure to each school's published CDS C12 average and moves at most one tier, but <strong>only when the weighting matches</strong> — comparing an unweighted 3.9 against a weighted 4.17 would misread you badly. {facts.gpaPublished} of {visibleSchools.length} schools publish a usable GPA; {facts.gpaUnspecified} of those never state whether it is weighted, so those comparisons are labelled. The other {facts.gpaMissing} publish nothing usable, so GPA cannot move their tier at all.
           {" "}The rigor index is your own self-report and deliberately does <em>not</em> feed the tier. Every threshold is adjustable above.
           <div className="mt-1.5"><strong>Per-college rates and residency.</strong> Where a school publishes admit rates by college, the rate for your chosen door replaces the university figure. Some schools publish that split for <em>all residencies combined</em> while also publishing a separate in-state/out-of-state split for the university — two different measurements. A blended figure can show a door is harder, never that it is easier than your own residency rate; where it would, it is capped and labelled <em>capped</em> in the table. Without that cap, Georgia Tech's computing door (11.3%, blended) read as easier than its published out-of-state rate (10.1%), so picking the harder door made the school look more attainable.</div>
-          <div className="mt-1.5"><strong>Known gaps:</strong> {facts.needsData.length > 0 ? `${facts.needsData.join(", ")} publish${facts.needsData.length === 1 ? "es" : ""} no usable overall admit rate, so ${facts.needsData.length === 1 ? "it shows" : "they show"} as Needs data. ` : ""}Schools that publish no residency split use the overall rate, which understates out-of-state difficulty. Per-college figures marked as inferred in the source notes are shown with that note attached.</div>
+          <div className="mt-1.5"><strong>Known gaps:</strong> {facts.needsData.length > 0 ? `${facts.needsData.join(", ")} publish${facts.needsData.length === 1 ? "es" : ""} no usable overall admit rate, so ${facts.needsData.length === 1 ? "it shows" : "they show"} as Needs data. ` : ""}Schools with no published residency split use the overall cohort rate; the direction of any residency difference is unconfirmed. Inferred or historical college figures must not be read as current major-level odds.</div>
         </div>
       </div>
     </div>

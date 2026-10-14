@@ -11,7 +11,8 @@
       "snow_inches_annual": 44,
       "days_below_freezing": 117,
       "flight_from_rdu_band": "$180-$280",
-      "drive_hours_from_rdu": 7.5
+      "drive_hours_from_rdu": 7.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "cornell": {
       "campus_city": "Ithaca, NY",
@@ -21,7 +22,8 @@
       "snow_inches_annual": 66,
       "days_below_freezing": 130,
       "flight_from_rdu_band": "$280-$500 (connections)",
-      "drive_hours_from_rdu": 11.0
+      "drive_hours_from_rdu": 11.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "purdue": {
       "campus_city": "West Lafayette, IN",
@@ -31,7 +33,8 @@
       "snow_inches_annual": 24,
       "days_below_freezing": 118,
       "flight_from_rdu_band": "$220-$420 (connections)",
-      "drive_hours_from_rdu": 12.5
+      "drive_hours_from_rdu": 12.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "wpi": {
       "campus_city": "Worcester, MA",
@@ -41,7 +44,8 @@
       "snow_inches_annual": 64,
       "days_below_freezing": 133,
       "flight_from_rdu_band": "$180-$320",
-      "drive_hours_from_rdu": 12.5
+      "drive_hours_from_rdu": 12.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "rpi": {
       "campus_city": "Troy, NY",
@@ -51,7 +55,8 @@
       "snow_inches_annual": 63,
       "days_below_freezing": 145,
       "flight_from_rdu_band": "$220-$400 (connections)",
-      "drive_hours_from_rdu": 12.0
+      "drive_hours_from_rdu": 12.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "georgia-tech": {
       "campus_city": "Atlanta, GA",
@@ -61,7 +66,8 @@
       "snow_inches_annual": 2,
       "days_below_freezing": 41,
       "flight_from_rdu_band": "$120-$220",
-      "drive_hours_from_rdu": 6.5
+      "drive_hours_from_rdu": 6.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "michigan": {
       "campus_city": "Ann Arbor, MI",
@@ -71,7 +77,8 @@
       "snow_inches_annual": 42,
       "days_below_freezing": 130,
       "flight_from_rdu_band": "$140-$260",
-      "drive_hours_from_rdu": 12.0
+      "drive_hours_from_rdu": 12.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "johns-hopkins": {
       "campus_city": "Baltimore, MD",
@@ -81,7 +88,8 @@
       "snow_inches_annual": 20,
       "days_below_freezing": 82,
       "flight_from_rdu_band": "$100-$200",
-      "drive_hours_from_rdu": 5.0
+      "drive_hours_from_rdu": 5.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "maryland": {
       "campus_city": "College Park, MD",
@@ -91,7 +99,8 @@
       "snow_inches_annual": 19,
       "days_below_freezing": 71,
       "flight_from_rdu_band": "$100-$220",
-      "drive_hours_from_rdu": 4.5
+      "drive_hours_from_rdu": 4.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "northeastern": {
       "campus_city": "Boston, MA",
@@ -101,7 +110,8 @@
       "snow_inches_annual": 49,
       "days_below_freezing": 96,
       "flight_from_rdu_band": "$140-$280",
-      "drive_hours_from_rdu": 12.5
+      "drive_hours_from_rdu": 12.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "ohio-state": {
       "campus_city": "Columbus, OH",
@@ -111,7 +121,8 @@
       "snow_inches_annual": 22,
       "days_below_freezing": 111,
       "flight_from_rdu_band": "$140-$260",
-      "drive_hours_from_rdu": 9.0
+      "drive_hours_from_rdu": 9.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "nc-state": {
       "campus_city": "Raleigh, NC",
@@ -121,7 +132,8 @@
       "snow_inches_annual": 4,
       "days_below_freezing": 69,
       "flight_from_rdu_band": "N/A (home)",
-      "drive_hours_from_rdu": 0.3
+      "drive_hours_from_rdu": 0.3,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "duke": {
       "campus_city": "Durham, NC",
@@ -131,7 +143,9 @@
       "snow_inches_annual": 4,
       "days_below_freezing": 69,
       "flight_from_rdu_band": "N/A (home)",
-      "drive_hours_from_rdu": 0.3
+      "drive_hours_from_rdu": 0.3,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     }
-  }
+  },
+  "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
 }

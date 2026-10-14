@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Grid3x3, Calendar, Plus, Trash2, MapPin, Mail, MessageSquare } from "lucide-react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
+import { todayIso } from "@/lib/calendar";
 
 // C7 factors in Common Data Set order
 // `short` is what the column header renders. Headers were previously rotated
@@ -97,7 +98,7 @@ export default function StrategyPage() {
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">Where each school actually looks — CDS Section C7</h2>
         <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Every US undergrad reports these 14 factors in Common Data Set C7. The heatmap below shows which schools weight essays vs rigor vs interest vs interview — a fast map of where to invest applicant effort. Below the heatmap: a demonstrated-interest tracker for schools where "level of applicant's interest" is above "not considered".
+          Published Common Data Set C7 entries describe how each school reports considering these factors. They are historical university-level context, not a robotics-major admission formula or evidence that a visit improves an individual applicant’s chance. Below the heatmap: a demonstrated-interest tracker for schools where "level of applicant's interest" is above "not considered".
         </p>
       </div>
 
@@ -136,7 +137,7 @@ export default function StrategyPage() {
                 const c7 = (s as any).admissions?.c7_factors;
                 return (
                   <tr key={s.slug}>
-                    <td className="serif font-medium sticky left-0 z-[1] bg-[hsl(var(--card))]">{s.short}</td>
+                    <td className="serif font-medium sticky left-0 z-[1] bg-[hsl(var(--card))]">{s.short}<div className="text-[10px] font-normal text-[hsl(var(--muted-foreground))]">{s.admissions?.cds_year || "Reporting year unconfirmed"}</div></td>
                     {C7_FACTORS.map(f => {
                       const v = c7?.[f.key];
                       const reported = Boolean(v);
@@ -176,7 +177,7 @@ export default function StrategyPage() {
       <div className="card p-4">
         <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))] mb-3">Demonstrated-interest tracker · schools that track interest</div>
         {trackers.length === 0 ? (
-          <div className="text-[12px] text-[hsl(var(--muted-foreground))] italic">No schools in your visible list track demonstrated interest.</div>
+          <div className="text-[12px] text-[hsl(var(--muted-foreground))] italic">No visible school has a reported C7 interest factor above not considered. Missing data remains unconfirmed.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {trackers.map(s => {
@@ -221,7 +222,7 @@ export default function StrategyPage() {
 
 function AddEntryForm({ slug, onAdd }: { slug: string; onAdd: (e: Omit<InterestEntry, "id">) => void }) {
   const [action, setAction] = useState<InterestAction>("info_session");
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<string>(todayIso);
   const [note, setNote] = useState<string>("");
   return (
     <div className="flex flex-wrap gap-1 items-center">

@@ -1,7 +1,7 @@
 {
   "compiled": "2026-08-19",
   "home_base": "Cary, North Carolina (RDU)",
-  "note": "Every tour day, time, break and closure below comes from the school's own visit pages, registrar calendar or athletics site, fetched 19 August 2026. Where a school had not published a Fall 2026 date, the field says NOT PUBLISHED rather than guessing. Drive times between campuses are routing estimates, not first-party figures.",
+  "note": "Visit guidance reviewed as of October 14, 2026. Earlier suggested trips and events are historical date suggestions; attendance and booking were not verified. Check live registration for remaining slots. The student-selected application plans are unchanged.",
   "constraint": "Anurag can be excused on weekdays, which is what makes this possible: almost every engineering-specific session on this list runs Monday to Friday only.",
   "trips": [
     {
@@ -13,7 +13,7 @@
         "carnegie-mellon"
       ],
       "travel": "Drive ~7.5 h each way, or fly RDU→PIT ($180-$280 band). Drivable in a day.",
-      "why_first": "Top fit, and the only school here where the application itself is a fork: ED forecloses applying to two colleges, and SCS admits near 5.2% against about 19% for the other colleges. He needs to have stood in both places before choosing.",
+      "why_first": "Historical CMU visit suggestion. Apply to SCS for the BS Robotics route or evaluate an Engineering base-major route; old SCS acceptance rates are historical context, not current robotics admission odds.",
       "book": [
         "Campus Visit (tour + admission session) — NOT a Wednesday",
         "ECE department tour, 45-60 min, weekdays only",
@@ -25,7 +25,9 @@
         "Welcome Center closed 10-11 and 17-18 October; academic fall break 12-16 October",
         "Large campus event 26 September",
         "SCS is \"not currently doing in-person visits for prospective students\" — the CS side is recorded sessions only, which is why the engineering tours are the visit"
-      ]
+      ],
+      "planning_status": "past_suggestion_attendance_unknown",
+      "status_note": "Suggested dates have passed as of Oct 14; this does not establish that the trip was booked or attended."
     },
     {
       "id": 2,
@@ -37,7 +39,7 @@
         "wpi"
       ],
       "travel": "Fly RDU→BOS ($140-$280 band). Worcester is about an hour west of Boston; use the MBTA in the city, rent a car for WPI.",
-      "why_first": "Best value on the whole plan: two schools for one missed school day, and the only two of the seven where a visit plausibly earns interest credit. WPI is also the only campus offering prospective students robotics lab access, and it holds a dedicated ABET-accredited BS in Robotics Engineering.",
+      "why_first": "Historical combined Boston/Worcester suggestion. WPI offers an ABET-accredited Robotics Engineering BS; verify current prospective-student lab-tour availability before booking.",
       "book": [
         "Northeastern information session + campus tour, Fri 2 Oct",
         "Northeastern College of Engineering or Khoury CS session if a 3:00 p.m. date lands that week",
@@ -48,7 +50,9 @@
         "WPI has no classes 10-18 October, so a later weekday visit shows an empty campus",
         "Northeastern does not offer class visits",
         "Saturdays cost no school days, which is why this trip only costs one"
-      ]
+      ],
+      "planning_status": "past_suggestion_attendance_unknown",
+      "status_note": "Suggested dates have passed as of Oct 14; this does not establish that the trip was booked or attended."
     },
     {
       "id": 3,
@@ -72,23 +76,29 @@
         "Purdue Early Action Week is 26-29 October, too close to the deadline to travel",
         "Michigan's engineering tour is the scarce item: one confirmed Fall 2026 slot was Fri 11 Sept at 2:00 p.m. and some instances are waitlisted, so book before fixing flights",
         "Purdue also runs a separate \"Discovering Purdue Polytechnic\" session — worth asking for, since Polytechnic is where the robotics technology degree lives (ETAC, not EAC)"
-      ]
+      ],
+      "planning_status": "past_suggestion_attendance_unknown",
+      "status_note": "Suggested dates have passed as of Oct 14; this does not establish that the trip was booked or attended."
     }
   ],
   "dead_week": {
     "dates": "Mon 12 – Sun 18 Oct 2026",
-    "why": "Do not plan travel this week. Carnegie Mellon's fall break is 12-16 October with the Welcome Center also closed 17-18, Purdue's October Break is 12-13, and WPI has no classes at all from 10-18 October between A and B terms. Three of the seven remaining campuses are shut or empty, including the two you most need."
+    "why": "Do not plan travel this week. Carnegie Mellon's fall break is 12-16 October with the Welcome Center also closed 17-18, Purdue's October Break is 12-13, and WPI has no classes at all from 10-18 October between A and B terms. Three of the seven remaining campuses are shut or empty, including the two you most need.",
+    "planning_status": "in_progress"
   },
   "submit_week": {
     "dates": "Mon 26 Oct – Sun 1 Nov 2026",
-    "why": "Reserve for finishing applications, not travel. Five of the seven are due 1-2 November, and a visit is only worth taking if there is still time to write what it taught you into the essays."
+    "why": "Reserve for finishing applications, not travel. Five of the seven are due 1-2 November, and a visit is only worth taking if there is still time to write what it taught you into the essays.",
+    "planning_status": "upcoming"
   },
   "schools": {
     "carnegie-mellon": {
       "visited": false,
       "deadline": {
         "date": "2026-11-02",
-        "label": "ED 2 Nov"
+        "label": "ED1 Nov 2",
+        "source_url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+        "year_inferred": true
       },
       "interest": {
         "level": "none",
@@ -352,24 +362,32 @@
           "url": "https://admission.cmu.edu/register/?id=37934fee-4cd6-4fcd-9ab9-31d767c5a987",
           "fetched": "2026-08-19"
         }
-      ]
+      ],
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "cornell": {
       "visited": true,
       "deadline": {
-        "date": "2026-11-01",
-        "label": "ED 1 Nov"
+        "date": "2027-01-02",
+        "label": "RD Jan 2",
+        "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+        "year_inferred": true
       },
       "visited_note": "Ithaca, New York — already seen, which removes the hardest trip on the list: 11 hours by road, connecting flights only, and a fall break sitting inside the visit window. Cornell also states it does not track demonstrated interest, so nothing is lost by not returning.",
       "tours": [],
       "sources": [],
-      "questions": null
+      "questions": null,
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "northeastern": {
       "visited": false,
       "deadline": {
         "date": "2026-11-01",
-        "label": "ED/EA 1 Nov"
+        "label": "EA Nov 1",
+        "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+        "year_inferred": true
       },
       "interest": {
         "level": "likely",
@@ -596,13 +614,17 @@
           "url": "https://news.northeastern.edu/2025/09/02/faculty-staff/division-i-varsity-sports-trivia/",
           "fetched": "2026-08-19"
         }
-      ]
+      ],
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "wpi": {
       "visited": false,
       "deadline": {
         "date": "2026-11-01",
-        "label": "ED/EA1 1 Nov"
+        "label": "EA1 Nov 1",
+        "source_url": "https://www.wpi.edu/c/hscounselors",
+        "year_inferred": true
       },
       "interest": {
         "level": "counts",
@@ -610,8 +632,8 @@
         "basis": "WPI FAQ — the only school here that says so in prose."
       },
       "book_by": {
-        "when": "Book now",
-        "why": "Fall Open House (Sat 3 Oct) is the last full-day program before the deadline; the 11 Nov open house is after it."
+        "when": "Check remaining slots after Oct 18; Oct 21 virtual preview is a published option to reverify",
+        "why": "September and Oct3events have passed. The Nov11openhouse is after chosen EA I Nov1deadline; do not treat the earlier suggested Oct3trip as upcoming."
       },
       "visit_home_url": "https://www.wpi.edu/admissions/undergraduate/visit",
       "registration_url": "https://www.wpi.edu/admissions/undergraduate/visit/campus/info-sessions-tours",
@@ -719,7 +741,7 @@
         "airport": "Boston Logan International (BOS) - not named on the WPI visit pages fetched. Campus address 100 Institute Road, Worcester, MA 01609; admissions in the Bartlett Center.",
         "airport_to_campus": "NOT PUBLISHED by WPI",
         "drive_from_cary": "UNVERIFIED ESTIMATE ~12 hours (approx. 800 miles). WPI publishes no drive time from North Carolina.",
-        "suggested_stay": "2 nights combined with Northeastern. Best single-trip design inside the window: WPI Fall Open House Saturday 3 October (full day) or Fall Preview Day Saturday 12 September (lab-tour option), plus a Northeastern weekday information session + tour and a college session.",
+        "suggested_stay": "If combining with Northeastern, confirm live weekday/Saturday capacity; prior Sep12/Oct3suggestions are historical and attendance unknown.",
         "pair_with": "northeastern - Worcester is roughly an hour west of Boston. UNVERIFIED ESTIMATE: neither WPI nor Northeastern publishes a campus-to-campus drive time, so the ~1 hour / ~45 mile figure is not sourced to either institution."
       },
       "cost_notes": "Information sessions, tours, Preview Days and Open Houses are free. Parking: 'All visitors must obtain a temporary parking pass when parking on campus' with visitor spaces in the Park Ave Garage, Boynton St Lot and West St Lot; the visit-confirmation page states 'Free visitor parking is available in all spaces in the Park Avenue parking garage' (GPS 151 Salisbury Street) and no permit is needed for weekend visits. Arrive 15-20 minutes early. Contact admissions@wpi.edu, 508-831-5286. [WPI-V10, WPI-V11]",
@@ -853,13 +875,17 @@
           "url": "https://www.wpi.edu/news/calendar",
           "fetched": "2026-08-19"
         }
-      ]
+      ],
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "michigan": {
       "visited": false,
       "deadline": {
         "date": "2026-11-01",
-        "label": "ED/EA 1 Nov"
+        "label": "EA Nov 1",
+        "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+        "year_inferred": false
       },
       "interest": {
         "level": "excluded",
@@ -1098,13 +1124,17 @@
           "url": "https://www.eventbrite.com/e/michigan-engineering-north-campus-tour-tickets-1608511243429",
           "fetched": "2026-08-19"
         }
-      ]
+      ],
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "purdue": {
       "visited": false,
       "deadline": {
         "date": "2026-11-01",
-        "label": "EA 1 Nov"
+        "label": "EA Nov 1",
+        "source_url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
+        "year_inferred": true
       },
       "interest": {
         "level": "likely",
@@ -1346,29 +1376,111 @@
           "url": "https://admissions.purdue.edu/our-state/",
           "fetched": "2026-08-19"
         }
-      ]
+      ],
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "nc-state": {
       "visited": true,
       "deadline": {
         "date": "2026-11-01",
-        "label": "EA 1 Nov"
+        "label": "EA Nov 1",
+        "source_url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+        "year_inferred": false
       },
       "visited_note": "In Raleigh — 25 minutes from home. Re-visit costs almost nothing if a specific question comes up.",
       "tours": [],
       "sources": [],
-      "questions": null
+      "questions": null,
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
     },
     "georgia-tech": {
       "visited": true,
       "deadline": {
         "date": "2026-11-02",
-        "label": "EA 2 Nov"
+        "label": "EA2 Nov 2",
+        "source_url": "https://admission.gatech.edu/first-year/deadlines",
+        "year_inferred": false
       },
       "visited_note": "Atlanta, ~6 hours by road. EA deadline is 2 November; no further visit needed.",
       "tours": [],
       "sources": [],
-      "questions": null
+      "questions": null,
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
+    },
+    "duke": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2027-01-04",
+        "label": "RD Jan 4",
+        "source_url": "https://admissions.duke.edu/apply/",
+        "year_inferred": false
+      }
+    },
+    "johns-hopkins": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2027-01-02",
+        "label": "RD Jan 2",
+        "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+        "year_inferred": false
+      }
+    },
+    "maryland": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "EA Nov 1",
+        "source_url": "https://admissions.umd.edu/apply/application-deadlines",
+        "year_inferred": true
+      }
+    },
+    "ohio-state": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "EA Nov 1",
+        "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+        "year_inferred": true
+      }
+    },
+    "rpi": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2026-12-01",
+        "label": "EA Dec 1",
+        "source_url": "https://undergrad.admissions.rpi.edu/apply",
+        "year_inferred": false
+      }
     }
-  }
+  },
+  "as_of": "2026-10-14",
+  "timezone": "America/New_York"
 }

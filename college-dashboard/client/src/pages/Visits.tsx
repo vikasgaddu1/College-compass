@@ -1,25 +1,12 @@
 import { useMemo, useState } from "react";
 import { schools as allSchools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
+import { todayIso, daysUntil, parseCycleDates } from "@/lib/calendar";
+import deadlinesData from "@/data/deadlines.json";
+import { applicationsBySlug } from "@/lib/applications";
 import visitsRaw from "@/data/visits.json";
 import { FitBadge, NoteButton } from "@/components/SchoolBits";
 import { ExternalLink, CalendarDays, Plane, Car, AlertTriangle, CheckCircle2, Clock } from "lucide-react";
-
-/* ---------------------------------------------------------------------------
- * Campus visit planner.
- *
- * The whole page turns on one date: five of the seven unvisited schools are due
- * 1-2 November 2026, while Texas A&M and UT Austin are 1 December with no early
- * plan. That means the Texas trip belongs AFTER the November wall, which frees
- * three autumn weeks for the schools that actually close first.
- *
- * It deliberately separates two things that get conflated:
- *   interest credit — does the school say a visit counts in review?
- *   decision value  — does seeing it change what he should apply to?
- * Michigan is why. Its Common Data Set lists interest as "Considered", but its
- * visit page says attending an information session is not factored in. High
- * decision value, no interest credit.
- * ------------------------------------------------------------------------- */
 
 const V = visitsRaw as any;
 
@@ -33,15 +20,22 @@ const INTEREST_META: Record<string, { label: string; hue: string; blurb: string 
   none:     { label: "Not tracked",       hue: "var(--muted-foreground)", blurb: "The school states it does not consider demonstrated interest. Visit only if it helps HIM decide." },
 };
 
-function daysUntil(iso?: string) {
-  if (!iso) return null;
-  const today = new Date("2026-08-19T00:00:00");
-  const d = new Date(iso + "T00:00:00");
-  return Math.round((d.getTime() - today.getTime()) / 86400000);
+function tripEndDate(raw: string): string | undefined {
+  // Existing saved itineraries use "Thu 17 – Fri 18 Sep 2026".
+  const last = Array.from(raw.matchAll(/(\d{1,2})\s+([A-Za-z]+)\s+(202[67])/g)).pop();
+  return last ? parseCycleDates(`${last[2]} ${last[1]}, ${last[3]}`)[0] : parseCycleDates(raw).at(-1);
+}
+function visitDeadline(slug: string) {
+  const row = (deadlinesData.rows as any[]).find(r => r.slug === slug);
+  const plan = applicationsBySlug[slug];
+  const events = (row?.events ?? []).filter((e: any) => ["ed1", "ed2", "ea", "rd"].includes(e.round));
+  const event = events.find((e: any) => e.round === plan?.round) ?? events.find((e: any) => e.round === "ea") ?? events[0];
+  return event ? { ...event, year_inferred: event.year_inferred || row.cycle_inferred } : undefined;
 }
 
 export default function VisitsPage() {
   const { isHidden } = useHidden();
+  const today = todayIso();
   const [openTrip, setOpenTrip] = useState<number | null>(1);
   const [openSchool, setOpenSchool] = useState<string | null>(null);
   const [openQ, setOpenQ] = useState<string | null>("carnegie-mellon");
@@ -62,39 +56,33 @@ export default function VisitsPage() {
         <div className="flex items-start gap-2.5">
           <CalendarDays size={18} className="mt-0.5 text-[hsl(var(--accent))]"/>
           <div>
-            <div className="serif text-[17px] font-semibold">Campus visits — now to the deadline</div>
+            <div className="serif text-[17px] font-semibold">Campus visit references & saved itineraries</div>
             <p className="text-[12px] text-[hsl(var(--muted-foreground))] mt-1 max-w-4xl leading-relaxed">
               {V.note}
             </p>
-            <p className="text-[12px] mt-1.5 max-w-4xl leading-relaxed">{V.constraint}</p>
+            <p className="text-[12px] mt-1.5 max-w-4xl leading-relaxed">{V.constraint} These proposed itineraries were prepared {V.compiled || "in August 2026"}; they are not reservations or verified current availability. Today: {today} (America/New_York).</p>
           </div>
         </div>
 
         {/* The structural point */}
         <div className="mt-3 rounded-md p-3 text-[12px] leading-relaxed"
              style={{ background: "hsl(var(--accent) / 0.07)", border: "1px solid hsl(var(--accent) / 0.35)" }}>
-          <strong>The scheduling gift.</strong> Five of the seven are due <strong>1-2 November</strong>. Texas A&amp;M and
-          UT Austin are <strong>1 December with no early plan</strong> — so they are the only two that can be visited{" "}
-          <em>after</em> the November applications are in. Moving Texas to November frees three autumn weeks for the five
-          schools that close first, and leaves four manageable trips.
+          <strong>Replan from today's date.</strong> The September and early October suggestions below are past proposed itineraries. Keep the school questions and trip ideas, then check official tour calendars for a new reservation. Application dates below come from the sourced deadline record; inferred cycle years are marked and have no confirmed countdown.
         </div>
 
         <div className="flex flex-wrap gap-3 mt-3 text-[11.5px]">
           <Stat label="Already visited" value={`${visited.length}`} detail="NC State · Georgia Tech · Cornell"/>
-          <Stat label="Left to see" value={`${planned.length}`} detail="across 4 trips"/>
+          <Stat label="Left to see" value={`${planned.length}`} detail={`across ${V.trips.length} saved trip suggestions`}/>
           <Stat label="School days needed" value={`${V.trips.reduce((a: number, t: any) => a + t.school_days, 0)}`} detail="weekday excuses"/>
-          <Stat label="Weeks to 1 Nov" value="10.6" detail="9 usable travel weeks"/>
+          <Stat label="Weeks to 1 Nov" value={Math.max(0, daysUntil("2026-11-01", today) / 7).toFixed(1)} detail="calendar interval · check each round"/>
         </div>
       </div>
 
       {/* Booking urgency — the actionable bit */}
       <div className="card p-4">
-        <div className="text-[13px] font-medium mb-1">Book in this order — not the order you travel</div>
+        <div className="text-[13px] font-medium mb-1">Historical booking guidance · reconfirm availability</div>
         <p className="text-[11.5px] text-[hsl(var(--muted-foreground))] mb-3 max-w-3xl leading-relaxed">
-          Booking lead times differ by more than a month across these schools, so the first thing to reserve is not the
-          first thing you visit. Michigan releases tours about two months out and some engineering slots are already
-          waitlisted; Carnegie Mellon closes registration 48 hours before, so it is the easiest to book and the hardest
-          to schedule around.
+          These lead-time and booking notes were collected for the original itinerary. A "book now" label is historical guidance, not a live availability check. Use each school's official visit link to confirm the next session.
         </p>
         <div className="space-y-1.5">
           {Object.entries(V.schools)
@@ -107,7 +95,7 @@ export default function VisitsPage() {
               <div key={slug} className="flex items-start gap-2.5 text-[11.5px] py-1.5 border-b border-[hsl(var(--border))] last:border-0">
                 <span className="chip text-[10px] font-semibold whitespace-nowrap shrink-0 w-[168px] justify-center"
                       style={{ color: v.book_by.when.startsWith("Book now") ? "hsl(var(--fit-lower))" : undefined }}>
-                  {v.book_by.when}
+                  Reference: {v.book_by.when}
                 </span>
                 <span className="serif font-medium w-[130px] shrink-0">{byslug[slug]?.short ?? slug}</span>
                 <span className="text-[hsl(var(--muted-foreground))] leading-snug">{v.book_by.why}</span>
@@ -120,6 +108,8 @@ export default function VisitsPage() {
       <div className="space-y-3">
         {V.trips.map((t: any) => {
           const open = openTrip === t.id;
+          const end = tripEndDate(t.dates);
+          const past = Boolean(end && end < today);
           return (
             <div key={t.id} className="card overflow-hidden">
               <button onClick={() => setOpenTrip(open ? null : t.id)}
@@ -130,7 +120,7 @@ export default function VisitsPage() {
                     <span className="serif text-[15px] font-semibold">{t.name}</span>
                   </div>
                   <div className="flex items-center gap-2 text-[11.5px]">
-                    <span className="chip chip-primary text-[10.5px] whitespace-nowrap">{t.dates}</span>
+                    <span className={`chip ${past ? "chip-outline" : "chip-primary"} text-[10.5px] whitespace-nowrap`}>{t.dates} · {past ? "past suggestion" : "proposed / reconfirm"}</span>
                     <span className="chip text-[10.5px] whitespace-nowrap">
                       {t.school_days} school day{t.school_days === 1 ? "" : "s"}
                     </span>
@@ -144,7 +134,7 @@ export default function VisitsPage() {
                       <span key={sl} className="chip chip-outline text-[10.5px] inline-flex items-center gap-1.5">
                         {s?.short ?? sl}
                         <span style={{ color: `hsl(${im.hue})` }} className="font-semibold">· {im.label}</span>
-                        <span className="text-[hsl(var(--muted-foreground))]">· {vs?.deadline?.label}</span>
+                        <span className="text-[hsl(var(--muted-foreground))]">· {visitDeadline(sl)?.date || "deadline pending"}{visitDeadline(sl)?.year_inferred ? " ~ year inferred" : ""}</span>
                       </span>
                     );
                   })}
@@ -163,7 +153,7 @@ export default function VisitsPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                       <div className="text-[11px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-1.5">
-                        Book these
+                        Original booking suggestions
                       </div>
                       <ul className="space-y-1">
                         {t.book.map((b: string, i: number) => (
@@ -222,16 +212,16 @@ export default function VisitsPage() {
 
       {/* If time runs short */}
       <div className="card p-4">
-        <div className="text-[13px] font-medium mb-1">If there is not time for all four</div>
+        <div className="text-[13px] font-medium mb-1">If there is not time for every visit</div>
         <p className="text-[11.5px] text-[hsl(var(--muted-foreground))] mb-2.5 max-w-3xl leading-relaxed">
           Ranked by what you lose by skipping, measured against school days spent. Cut from the bottom.
         </p>
         <ol className="space-y-1.5">
           {[
-            ["Boston — Northeastern + WPI", "1 school day", "Two schools, and the only two where a visit plausibly earns interest credit. WPI is also the only prospective-student robotics lab access on the list. Best ratio by a wide margin — keep this even if you cut everything else."],
-            ["Pittsburgh — Carnegie Mellon", "2 school days", "Top fit, and the choice between the School of Computer Science and the engineering colleges is the highest-stakes decision in the whole application. Worth the days even though CMU gives no interest credit."],
+            ["Boston — Northeastern + WPI", "1 school day", "Two schools on one trip. Compare undergraduate robotics teaching facilities, embedded/control coursework, research entry and co-op or project access. Confirm tour and lab access directly; a published interest factor does not prove a visit changes admission odds."],
+            ["Pittsburgh — Carnegie Mellon", "2 school days", "Top fit, and the primary robotics degree is in the School of Computer Science. Ask how undergraduates enter robotics coursework and labs. A visit can help assess fit even where interest is not considered."],
             ["Midwest — Michigan + Purdue", "3 school days", "Two schools per trip. Purdue's visit may count; Michigan's explicitly does not. If you have to shorten it, do Purdue as a one-night stop for the Engineering Information Session and treat Michigan as optional."],
-            ["Texas — UT Austin + Texas A&M", "3 school days", "Cut first, but only because it is free in the autumn crunch — it happens after the November deadline. A&M's visit may count, UT's does not, and both are 1 December so there is slack."],
+
           ].map(([name, cost, why], i) => (
             <li key={i} className="flex items-start gap-2.5 text-[11.5px] py-1.5 border-b border-[hsl(var(--border))] last:border-0">
               <span className="num font-semibold text-[hsl(var(--accent))] shrink-0 w-4">{i + 1}</span>
@@ -372,6 +362,8 @@ export default function VisitsPage() {
             .map(([slug, v]: any) => {
               const s = byslug[slug];
               const open = openSchool === slug;
+              const deadline = visitDeadline(slug);
+              const days = deadline && !deadline.year_inferred ? daysUntil(deadline.date, today) : null;
               const im = INTEREST_META[v.interest?.level ?? "none"];
               return (
                 <div key={slug} className="border border-[hsl(var(--border))] rounded-md overflow-hidden">
@@ -386,8 +378,9 @@ export default function VisitsPage() {
                           : <span className="chip chip-outline text-[10px]" style={{ color: `hsl(${im.hue})` }} title={im.blurb}>{im.label}</span>}
                       </div>
                       <span className="text-[11px] text-[hsl(var(--muted-foreground))] num">
-                        {v.deadline?.label}
-                        {!v.visited && daysUntil(v.deadline?.date) != null && ` · ${daysUntil(v.deadline?.date)} days`}
+                        {deadline ? `${deadline.label}: ${deadline.date}` : "Current-cycle deadline pending"}
+                        {deadline?.year_inferred && " · year inferred"}
+                        {!v.visited && days != null && (days < 0 ? ` · ${-days} days past` : days === 0 ? " · today" : ` · ${days} days left`)}
                       </span>
                     </div>
                   </button>

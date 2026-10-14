@@ -72,14 +72,16 @@ export default function ChecklistPage() {
                 <h3 className="serif text-[15.5px] font-semibold">{s.short}</h3>
                 <NoteButton slug={s.slug}/>
               </div>
-              <span className="chip chip-outline text-[10px]">{d.cycle}</span>
+              <span className="chip chip-outline text-[10px]">{d.cycle || "Cycle unconfirmed"}</span>
             </div>
-            <div className="text-[12px] text-[hsl(var(--muted-foreground))] mb-3">{d.platform}</div>
+            <div className="text-[12px] text-[hsl(var(--muted-foreground))] mb-2">{d.platform}</div>
+            <div className="text-[11.5px] mb-2"><strong>Robotics route:</strong> {s.degree_name}</div>
+            <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Checked {d.verified_on || "not recorded"} · {(d.verification_status || "pending").replace(/_/g, " ")}</div>
 
             <div className="grid grid-cols-2 gap-2 text-[12px]">
-              <KV label="Supp. essays" value={String(d.supp_essay_count)}/>
+              <KV label="Supp. essays" value={d.supp_essay_count == null ? "Unconfirmed" : String(d.supp_essay_count)}/>
               <KV label="App fee" value={d.fee}/>
-              <KV label="Teacher recs" value={String(d.teacher_recs)}/>
+              <KV label="Teacher recs" value={d.teacher_recs == null ? "Unconfirmed" : String(d.teacher_recs)}/>
               <KV label="Counselor rec" value={d.counselor_rec}/>
               <KV label="Interview" value={d.interview} full/>
             </div>

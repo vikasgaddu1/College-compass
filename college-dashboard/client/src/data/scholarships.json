@@ -1,6 +1,6 @@
 {
-  "note": "Merit and named-award data compiled from each school's official financial-aid / scholarships / honors-college pages, July-August 2026. Every value below has an inline source. Need-based aid lives on the Aid & Outcomes tab.",
-  "compiled_date": "2026-08-16",
+  "note": "Official merit pages checked October 14, 2026. Automatic consideration is not an automatic award. Deadlines for separate scholarships are distinct from admission deadlines. NC residency does not establish citizenship or financial eligibility.",
+  "compiled_date": "2026-10-14",
   "schools": {
     "carnegie-mellon": {
       "offers_merit": "Very limited",
@@ -23,7 +23,12 @@
           "label": "CMU FAQ",
           "url": "https://www.cmu.edu/sfs/faq/index.html"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "No separate Carnegie Scholarship application; FAFSA + CSS required. Preferred aid deadlinesNov15ED /Feb15RD verified on current SFSpage; year mapping inferred.",
+      "eligibility": "Qualified U.S. citizens and permanent residents; middle-income students; satisfactory academic progress.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "cornell": {
       "offers_merit": "None",
@@ -40,7 +45,12 @@
           "label": "Cornell Financial Aid",
           "url": "https://finaid.cornell.edu/grants-and-scholarships"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "No merit scholarship deadline: Cornell awards need-based grant aid only. Domestic aid priority Nov 15 ED / Feb 15 RD.",
+      "eligibility": "Need-based aid; no merit or athletic scholarships.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "purdue": {
       "offers_merit": "Yes",
@@ -50,9 +60,9 @@
       "auto_criteria": "Trustees $16k/yr nonres / $10k res; Presidential $10k nonres / $4k res; automatic, no separate app; Nov 1 deadline; renew 3.00 GPA. About 15% of applicants get merit.",
       "oos_specific": "Trustees & Presidential explicitly larger for out-of-state students.",
       "named_awards": [
-        "Lilly Scholars \u2014 full tuition",
-        "Indy Scholars \u2014 $10,000/yr min",
-        "National Recognition \u2014 $1,000/yr"
+        "Lilly Scholars — full tuition",
+        "Indy Scholars — $10,000/yr min",
+        "National Recognition — $1,000/yr"
       ],
       "generosity": "Generous",
       "note": "Beering is invite-only via Honors College Nov 1 application; Trustees & Presidential are automatic.",
@@ -65,22 +75,27 @@
           "label": "Beering Scholars",
           "url": "https://honors.purdue.edu/scholarship/beering-scholars.php"
         }
-      ]
+      ],
+      "application_deadline": "2026-11-01",
+      "deadline_note": "Complete admission by Nov 1 for university-wide merit. Honors portion by Nov 1 for invitation-based Beering/Stamps consideration. FAFSA priority Apr 15; need-based scholarship timing may differ.",
+      "eligibility": "Nonresident Trustees $16k/year, Presidential $10k/year; competitive review, about 15% of applicants receive merit. Renewability requirements apply.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "wpi": {
       "offers_merit": "Yes",
       "flagship": "Presidential Scholarship",
-      "flagship_amount": "Varies; min $25,000/yr guaranteed for IB Diploma \u226540 (4 yrs)",
+      "flagship_amount": "Varies; min $25,000/yr guaranteed for IB Diploma ≥40 (4 yrs)",
       "ed_specific": "All ED admits from fall 2026 onward receive min $25,000/yr merit ($100k over 4 yrs). Not combinable with the Innovation Award.",
       "auto_criteria": "Presidential is automatic with application (no extra app except FIRST/VEX/REC).",
       "oos_specific": null,
       "named_awards": [
-        "BizTech Emerging Leaders \u2014 $10k-$25k/yr",
-        "Robotics Engineering Scholars \u2014 $10k-$25k/yr",
-        "NCSSS \u2014 $15,000/yr"
+        "BizTech Emerging Leaders — $10k-$25k/yr",
+        "Robotics Engineering Scholars — $10k-$25k/yr",
+        "NCSSS — $15,000/yr"
       ],
       "generosity": "Very generous",
-      "note": "The ED-only $25k+ minimum is unusually generous. Applying ED at WPI has a very real financial upside.",
+      "note": "Student selected EA I, so the binding ED-only $25,000 minimum does not apply. Robotics Engineering Scholars automatic consideration differs from FIRST/VEX/REC separate scholarships.",
       "sources": [
         {
           "label": "WPI Merit",
@@ -89,15 +104,28 @@
         {
           "label": "WPI ED FAQ",
           "url": "https://www.wpi.edu/faq/are-merit-scholarships-offered-early-decision-candidates"
+        },
+        {
+          "label": "WPI FIRST",
+          "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/first-scholarships"
+        },
+        {
+          "label": "WPI aiddeadline",
+          "url": "https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/first-year-students"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "General merit automatic with admissions; Robotics Engineering Scholars require indicated intended major. FIRST/VEX/REC separate applications, but live page still has closed 2025-26 deadlines—Fall 2027 scholarship deadline unpublished.",
+      "eligibility": "Robotics Engineering intended major for Robotics Engineering Scholars; FIRST/VEX/REC team/mentor nomination requirements are award-specific. ED minimum applies to binding ED, not chosen EA I.",
+      "verified_on": "2026-10-14",
+      "verification_status": "partially_verified"
     },
     "rpi": {
       "offers_merit": "Yes",
       "flagship": "Rensselaer Medal",
       "flagship_amount": "$40,000/yr, $160,000 total, 4 yrs (5 for B.Arch)",
       "ed_specific": null,
-      "auto_criteria": "No student application \u2014 high school nominates one junior; nominations due May 1.",
+      "auto_criteria": "No student application — high school nominates one junior; nominations due May 1.",
       "oos_specific": null,
       "named_awards": [
         "Rensselaer Leadership Award",
@@ -105,7 +133,7 @@
         "2024 Bicentennial Award (amounts unpublished)"
       ],
       "generosity": "Generous",
-      "note": "The Medal requires a school nomination in junior year \u2014 talk to your counselor early.",
+      "note": "For this senior applicant, the spring junior-year Medal nomination window has passed unless already nominated. General competitive merit remains relevant; institutional merit awards do not stack.",
       "sources": [
         {
           "label": "Rensselaer Medal",
@@ -115,7 +143,12 @@
           "label": "RPI Scholarships",
           "url": "https://financialaid.rpi.edu/types-aid/scholarships"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "Medal is high-school nomination in spring of junior year, not a new senior-year application. General merit reviewed with admission; verify award-specific cycle deadlines.",
+      "eligibility": "Medalists must be admitted and enroll; $40,000/year four years. RPI awards highest qualifying merit award, not multiple institutional merit awards stacked.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page_medal_nomination_already_passed"
     },
     "georgia-tech": {
       "offers_merit": "Very limited",
@@ -138,22 +171,26 @@
           "label": "GT Catalog",
           "url": "https://catalog.gatech.edu/academics/special-academic-programs/stamps-presidents-scholarship-program/"
         }
-      ]
+      ],
+      "application_deadline": "2026-11-02",
+      "deadline_note": "NC applicant uses EA2 Nov 2 for Stamps/Gold consideration; no separate initial scholarship application. EA2 document deadline Nov 16; scores Dec 8.",
+      "eligibility": "Generally new U.S. citizen/permanent-resident first-year students; rare international exceptions.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "michigan": {
       "offers_merit": "Very limited",
-      "flagship": "Stamps + LSA merit (Shipman, Bentley)",
-      "flagship_amount": "LSA up to $15k/yr in-state, $25k/yr OOS; Stamps $20k/yr (18 freshmen/yr)",
+      "flagship": "College-specific scholarships; Engineering eligibility unresolved",
+      "flagship_amount": "LSA historical award amounts must not be presented as Engineering awards",
       "ed_specific": null,
-      "auto_criteria": "Only ~40 LSA merit awards/yr; automatic from LSA application; Nov 1 EA gives best consideration.",
-      "oos_specific": "LSA merit is higher for OOS ($25k vs $15k/yr).",
+      "auto_criteria": "LSA prospective students submit a separate scholarship application after admission; Engineering awards require college-specific verification.",
+      "oos_specific": "Nonresident aid is limited and college-specific.",
       "named_awards": [
-        "Stamps \u2014 $20,000/yr, 18 freshmen/yr",
-        "Shipman (amount unpublished)",
-        "Bentley (amount unpublished)"
+        "Engineering scholarship opportunities—verify college eligibility",
+        "LSA donor scholarships (LSA students only)"
       ],
       "generosity": "Minimal",
-      "note": "For OOS students especially: Michigan is not a merit-aid destination. Apply for financial reasons only if you meet need thresholds.",
+      "note": "Robotics Engineering applicants should use Engineering scholarship information. LSA official page states 2027-28 applications open after admission.",
       "sources": [
         {
           "label": "LSA Prospective",
@@ -163,21 +200,26 @@
           "label": "LSA Merit",
           "url": "https://lsa.umich.edu/scholarships/prospective-students/merit-scholarships.html"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "Engineering awards must be checked with Engineering. LSA separate Four-Year Renewable Scholarship application opens after admission for 2027-28; do not treat LSA awards as Engineering awards.",
+      "eligibility": "College- and donor-specific; NC applicant is nonresident. LSA merit supports LSA students, not a substitute for Engineering eligibility.",
+      "verified_on": "2026-10-14",
+      "verification_status": "partially_verified"
     },
     "johns-hopkins": {
       "offers_merit": "Very limited",
       "flagship": "Hodson Trust Scholarship",
-      "flagship_amount": "~2/3 of tuition (English page: \"significant portion of annual tuition\")",
+      "flagship_amount": "Current official page does not publish a fixed Hodson award amount",
       "ed_specific": null,
-      "auto_criteria": "Less than 20 freshmen each year; all applicants auto-considered, no app; notified with admission; renew 3.0 GPA.",
+      "auto_criteria": "Automatically considered with admission; Hodson Trust renewable four years with GPA≥3.0. Current page does not publish recipient count or a fixed award amount.",
       "oos_specific": null,
       "named_awards": [
         "Charles R. Westgate Engineering Scholarship (4 yrs, Whiting School)",
         "Hodson-Gilliam Success Scholarship (need-based)"
       ],
       "generosity": "Minimal",
-      "note": "JHU is essentially need-only for most students. Hodson goes to fewer than 20 freshmen a year.",
+      "note": "Hodson Trust is merit-based; Hodson-Gilliam Success also considers financial need. Do not use unverified historical recipient-count claims.",
       "sources": [
         {
           "label": "JHU Merit",
@@ -187,7 +229,12 @@
           "label": "JHU SFS",
           "url": "https://sfs.jhu.edu/types-of-aid/scholarships/"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "Automatically considered with admission application; no separate initial merit application.",
+      "eligibility": "Award-specific; Hodson academic/personal achievement and leadership, renewable criteria apply.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "maryland": {
       "offers_merit": "Yes",
@@ -197,12 +244,12 @@
       "auto_criteria": "President's $2,000-$20,000/yr for 4 yrs (in- and out-of-state); Dean's $1,500 or $4,500/yr for 2 yrs (in-state only, ~400/yr, not renewable).",
       "oos_specific": "President's open to OOS students; Dean's is in-state only.",
       "named_awards": [
-        "President's Scholarship \u2014 $2k-$20k/yr, 4 yrs",
-        "Dean's Scholarship \u2014 $1.5k or $4.5k/yr, 2 yrs (in-state only)",
+        "President's Scholarship — $2k-$20k/yr, 4 yrs",
+        "Dean's Scholarship — $1.5k or $4.5k/yr, 2 yrs (in-state only)",
         "Honors College admission via Banneker/Key"
       ],
       "generosity": "Generous",
-      "note": "EA deadline is a hard gate \u2014 miss it and you're out for merit.",
+      "note": "EA deadline is a hard gate — miss it and you're out for merit.",
       "sources": [
         {
           "label": "UMD Merit",
@@ -212,7 +259,12 @@
           "label": "Banneker/Key",
           "url": "https://admissions.umd.edu/page/bkscholarship"
         }
-      ]
+      ],
+      "application_deadline": "2026-11-01",
+      "deadline_note": "Admission application AND all materials due Nov 1 for merit; no separate initial application. Banneker/Key semifinalist interviews follow; page still shows 2026 interview dates, not 2027 dates.",
+      "eligibility": "U.S. citizens and eligible noncitizens; fall entrants. President’s eligible for NC residents; Dean’s restricted to Maryland residents.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "northeastern": {
       "offers_merit": "Yes",
@@ -223,7 +275,7 @@
       "oos_specific": null,
       "named_awards": [
         "Torch Scholars (full tuition/fees/housing/meals + Summer Immersion; requires non-family nomination)",
-        "Oakland Opportunity (full tuition/housing/meals, \u226410/yr)",
+        "Oakland Opportunity (full tuition/housing/meals, ≤10/yr)",
         "National Merit & National Recognition awards"
       ],
       "generosity": "Generous (breadth confirmed, amounts unpublished)",
@@ -233,7 +285,12 @@
           "label": "Northeastern Merit",
           "url": "https://admissions.northeastern.edu/cost-financial-aid/merit-scholarships/"
         }
-      ]
+      ],
+      "application_deadline": "2027-01-01",
+      "deadline_note": "General merit: admission by Jan 1; no separate initial application. Select Stamps candidates invited to video application. Torch requires nomination; exact current deadline must be checked.",
+      "eligibility": "Award- and entry-program-specific; do not infer Oakland/Torch eligibility solely from NC residency.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "ohio-state": {
       "offers_merit": "Yes",
@@ -248,7 +305,7 @@
         "Land Grant Opportunity (full COA, 88 Ohio students/yr)"
       ],
       "generosity": "Very generous",
-      "note": "For OOS students: National Buckeye is essentially automatic and materially reduces cost.",
+      "note": "National Buckeye offers automatic consideration by Nov 1, not guaranteed selection; budget the published sticker cost until an award is offered.",
       "sources": [
         {
           "label": "OSU Merit",
@@ -258,17 +315,22 @@
           "label": "OSU Aid Renewal",
           "url": "https://sfa.osu.edu/incoming-freshmen/accept-aid/view-your-aid/accept-scholarships"
         }
-      ]
+      ],
+      "application_deadline": "2026-11-01",
+      "deadline_note": "Complete admission by Nov 1 for most merit. Stamps Eminence separate essay/video application due Nov 9; indicate Honors or Scholars interest. National Buckeye automatic consideration, competitive award.",
+      "eligibility": "Non-Ohio applicant eligible to compete for National Buckeye, not Ohio-resident President’s Ohio/Land Grant awards. University merit excludes international students.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "nc-state": {
       "offers_merit": "Yes",
       "flagship": "Park Scholarship",
-      "flagship_amount": "\u2248$129k in-state / \u2248$244k OOS over 4 yrs (tuition, fees, room/board, books, travel, computer, enrichment)",
+      "flagship_amount": "≈$129k in-state / ≈$244k OOS over 4 yrs (tuition, fees, room/board, books, travel, computer, enrichment)",
       "ed_specific": null,
       "auto_criteria": "~38/yr, any discipline; semifinalists get guaranteed University Honors Program invitation.",
-      "oos_specific": "Park value is scaled up for OOS (\u2248$244k).",
+      "oos_specific": "Park value is scaled up for OOS (≈$244k).",
       "named_awards": [
-        "Goodnight Scholarships \u2014 $25,000/yr \u00d7 4 (NC residents, STEM, AGI \u2264$120k)"
+        "Goodnight Scholarships — $25,000/year ×4 (NC residents; eligible STEM/STEM education; household income ≤$150,000)"
       ],
       "generosity": "Generous",
       "note": "Park is extremely selective but comprehensive. Goodnight is a strong NC-STEM alternative.",
@@ -280,33 +342,47 @@
         {
           "label": "Goodnight",
           "url": "https://goodnight.ncsu.edu/first-year/"
+        },
+        {
+          "label": "Park separate application",
+          "url": "https://park.ncsu.edu/apply/"
         }
-      ]
+      ],
+      "application_deadline": "2026-11-01",
+      "deadline_note": "Park: separate scholarship application AND NC State EA due Nov 1, 2026. Goodnight invitation mid-December; self-nomination closes Dec 1; application due mid-January (exact date not published), finalist interview Feb 27, 2027.",
+      "eligibility": "Park selection based on scholarship, leadership, service and character. Goodnight: NC resident, eligible STEM/STEM education major, household income ≤$150,000; invitation not guaranteed.",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "duke": {
       "offers_merit": "Yes",
       "flagship": "A.B. Duke Scholarship",
-      "flagship_amount": "\u2248$315,000 over 4 yrs (full tuition + summer stipends + enrichment)",
+      "flagship_amount": "Full tuition, mandatory fees, room and board for four years (Duke-administered merit; amounts vary with annual costs)",
       "ed_specific": null,
-      "auto_criteria": "No separate application for Duke-administered merit \u2014 all admits are auto-considered for A.B. Duke, Robertson, and Benjamin N. Duke Scholarships.",
+      "auto_criteria": "Duke-administered merit awards require no separate application; Robertson has a separate application/selection process.",
       "oos_specific": null,
       "named_awards": [
-        "Robertson Scholars \u2014 full-ride across Duke AND UNC (joint program)",
-        "A.B. Duke Scholarship \u2014 ~$315k / 4 yrs",
+        "Robertson Scholars — full-ride across Duke AND UNC (joint program)",
+        "A.B. Duke Scholarship — ~$315k / 4 yrs",
         "Benjamin N. Duke Scholarship (Carolinas students, full tuition + stipends)"
       ],
       "generosity": "Generous",
-      "note": "Robertson is a marquee scholarship nationally \u2014 the only cross-institutional full-ride between Duke and UNC. A.B. Duke has no separate application.",
+      "note": "Robertson is a marquee scholarship nationally — the only cross-institutional full-ride between Duke and UNC. A.B. Duke has no separate application.",
       "sources": [
         {
-          "label": "Duke Merit Scholarships",
-          "url": "https://ousf.duke.edu/scholarships"
+          "label": "Duke merit scholarships",
+          "url": "https://ousf.duke.edu/merit-scholarships/"
         },
         {
-          "label": "Robertson Scholars",
-          "url": "https://registrar.unc.edu/robertson-scholars/"
+          "label": "Duke Robertson program",
+          "url": "https://ousf.duke.edu/merit-scholarships/robertson-scholars-program/"
         }
-      ]
+      ],
+      "application_deadline": null,
+      "deadline_note": "Duke-administered merit: no separate application. Robertson is a separate program; current program deadline could not be verified, so prior Nov 15 is not a confirmed 2026 deadline.",
+      "eligibility": "Award-specific; Benjamin N. Duke focuses on North/South Carolina students. Selection is highly competitive.",
+      "verified_on": "2026-10-14",
+      "verification_status": "partially_verified"
     }
   }
 }

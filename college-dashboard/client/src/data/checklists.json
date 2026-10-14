@@ -1,12 +1,12 @@
 {
-  "note": "Application requirements compiled from each school's official admissions pages (Fall 2027 = 2026-27 cycle). Prompt text lives in the Common App member section for some schools and is n.a. here.",
-  "compiled_date": "2026-08-16",
+  "note": "Official requirements checked October 14, 2026. School supplements are counted separately from the Common App personal essay. Optional or program-specific submissions are identified. Recheck prompts in the actual application before submitting.",
+  "compiled_date": "2026-10-14",
   "schools": {
     "carnegie-mellon": {
       "cycle": "2026-27",
       "platform": "Common App only",
       "supp_essay_count": 3,
-      "prompts": "Passion behind your major; how you define a successful college experience; anything else to emphasize.",
+      "prompts": "Three short-answer questions in the Common App Writing Supplement. Exact current wording and word limits must be checked in the Common App; the public requirements page verifies the count.",
       "teacher_recs": 1,
       "counselor_rec": "Yes (Counselor Evaluation)",
       "interview": "Not offered generally (CFA programs interview/audition)",
@@ -17,18 +17,20 @@
           "label": "CMU requirements",
           "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_count_exact_portal_prompts_unresolved"
     },
     "cornell": {
       "cycle": "2026-27",
       "platform": "Common App (QuestBridge finalists via portal)",
       "supp_essay_count": "1-6 (varies by college)",
-      "prompts": "Engineering is heaviest at 6 essays (2\u00d7200w + 4\u00d7100w). A&S: passion for learning + College alignment (3000ch). CALS: why this major + why CALS (2500ch). AAP: interests \u2192 major, creative project for B.Arch.",
+      "prompts": "Engineering is heaviest at 6 essays (2×200w + 4×100w). A&S: passion for learning + College alignment (3000ch). CALS: why this major + why CALS (2500ch). AAP: interests → major, creative project for B.Arch.",
       "teacher_recs": 2,
       "counselor_rec": "Yes",
       "interview": "Not offered",
       "fee": "$85",
-      "special": "Portfolio/design supplement for some programs; optional music supplement",
+      "special": "Duffield Engineering: two200-word and four100-word essays. Central admissions lists domestic ED aid priority Nov15; Engineering page lists Nov21—use earlier priority and verify with aid office. Program portfolios only if applicable.",
       "sources": [
         {
           "label": "Cornell first-year",
@@ -38,24 +40,28 @@
           "label": "Cornell Engineering",
           "url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "purdue": {
       "cycle": "2026-27",
       "platform": "Common App",
-      "supp_essay_count": 2,
-      "prompts": "How Purdue supports your interests, in and out of the classroom (\u2264250 w); your reasons for pursuing the major you selected (\u2264250 w).",
+      "supp_essay_count": "2 required (+ conditional alternate-major response; Honors adds4)",
+      "prompts": "How Purdue opportunities support your interests in and out of the classroom (≤250 words); reasons for your chosen major and chosen campus, Indianapolis or West Lafayette (≤250 words). An alternate major adds another conditional250-word response. Honors applicants answer four additional prompts, each≤200 words.",
       "teacher_recs": 0,
       "counselor_rec": "No",
       "interview": "Not offered",
       "fee": "$60",
-      "special": "Honors College adds 4 essays",
+      "special": "Honors College adds four essays; submit complete application by Nov 1. SAT, ACT or CLT scores expected; exceptional cases may submit without scores.",
       "sources": [
         {
           "label": "Purdue essay",
           "url": "https://admission.purdue.edu/apply/essay.php"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "wpi": {
       "cycle": "2026-27",
@@ -72,24 +78,28 @@
           "label": "WPI how to apply",
           "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "rpi": {
       "cycle": "2026-27",
       "platform": "Common App or RPI Application",
       "supp_essay_count": "0 general; program-specific for some majors",
       "prompts": "B.S./M.D.: reasons for pursuing medicine. Architecture: why architecture. Electronic Arts/GSAS/Music: interests, goals, and portfolio.",
-      "teacher_recs": "n.a.",
-      "counselor_rec": "n.a.",
+      "teacher_recs": "1 letter from a counselor OR teacher (preferably math/science)",
+      "counselor_rec": "May satisfy the single letter requirement; separate counselor recommendation not specified",
       "interview": "Not offered domestically (InitialView for intl; optional GLIMPSE video)",
-      "fee": "$70",
+      "fee": "$70; waived for applications submitted by Dec 1 and for Rensselaer Medalists (per current apply page)",
       "special": "Architecture portfolio required; GSAS/Electronic Arts/Music portfolios; optional 60-90s GLIMPSE video",
       "sources": [
         {
           "label": "RPI apply",
           "url": "https://undergrad.admissions.rpi.edu/apply"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "georgia-tech": {
       "cycle": "2026-27",
@@ -105,14 +115,20 @@
         {
           "label": "GT deadlines",
           "url": "https://admission.gatech.edu/first-year/deadlines"
+        },
+        {
+          "label": "Georgia Tech 2026-27 personal essays",
+          "url": "https://admission.gatech.edu/first-year/personal-essays"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "michigan": {
       "cycle": "2026-27",
       "platform": "Common App",
       "supp_essay_count": 2,
-      "prompts": "Contributing to U-M's goal of developing leaders and citizens who challenge the present and enrich the future (100-300 w); what attracts you to your specific college/school and how its curriculum supports your interests (100-500 w).",
+      "prompts": "Contributing to U-M’s leaders and citizens who challenge the present and enrich the future (100–300 words); unique qualities of your college/school and how its curriculum supports your interests (100–550 words).",
       "teacher_recs": 1,
       "counselor_rec": "Yes",
       "interview": "Not offered",
@@ -120,10 +136,12 @@
       "special": "Portfolio/artistic profile for SMTD, Stamps, Taubman",
       "sources": [
         {
-          "label": "UMich essays",
+          "label": "Michigan current essay questions",
           "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "johns-hopkins": {
       "cycle": "2026-27",
@@ -131,22 +149,24 @@
       "supp_essay_count": 1,
       "prompts": "What you've learned engaging with people whose experiences differ from yours, and how it shaped your thinking about building bridges and working with others (350 w).",
       "teacher_recs": 2,
-      "counselor_rec": "n.a.",
+      "counselor_rec": "Yes (included in secondary school report)",
       "interview": "Not offered",
       "fee": "$70",
-      "special": "Optional Schoolhouse.world portfolio; ED Agreement; Certification of Finances for international",
+      "special": "SAT or ACT required for Homewood first-year applicants; optional Schoolhouse.world portfolio; ED agreement. Supplemental bridge-building essay 350 words verified for2026-27.",
       "sources": [
         {
           "label": "JHU deadlines",
           "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "maryland": {
       "cycle": "2026-27",
       "platform": "Common App or ApplyWeb",
-      "supp_essay_count": 1,
-      "prompts": "Choose one of UMD's essay questions to share your personality and experiences.",
+      "supp_essay_count": "Common App personal essay plus required UMD short answers; exact current portal prompts must be checked",
+      "prompts": "Do not use the academic-experiences transfer prompt for a first-year application. Verify the first-year short-answer prompts in the Common App / ApplyWeb portal.",
       "teacher_recs": 1,
       "counselor_rec": "Yes",
       "interview": "Not offered",
@@ -157,7 +177,9 @@
           "label": "UMD apply",
           "url": "https://admissions.umd.edu/apply/freshman-applicants"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "partially_verified_prompt_count_unresolved"
     },
     "northeastern": {
       "cycle": "2026-27",
@@ -174,7 +196,9 @@
           "label": "NEU required materials",
           "url": "https://admissions.northeastern.edu/application-information/required-materials/"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "ohio-state": {
       "cycle": "2026-27",
@@ -191,41 +215,47 @@
           "label": "OSU apply",
           "url": "https://undergrad.osu.edu/apply/freshmen-columbus/common-app"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "nc-state": {
       "cycle": "2026-27",
       "platform": "Common App or Coalition on Scoir",
-      "supp_essay_count": "1 required (+1 optional Honors)",
-      "prompts": "Explain why you selected the academic program(s) and why you want to study them at NC State (required); Honors: optional essay \u2264500 w.",
+      "supp_essay_count": "1 required program-interest response (+ optional Honors application essay)",
+      "prompts": "Explain why you selected the academic program(s) and why you want to study them at NC State; Honors applicants answer the separate prompt, maximum 600 words.",
       "teacher_recs": 0,
-      "counselor_rec": "No \u2014 counselor endorsements dropped as of fall 2022",
+      "counselor_rec": "No — counselor endorsements dropped as of fall 2022",
       "interview": "Not offered generally (Design/some depts interview by invitation)",
       "fee": "$85",
-      "special": "Portfolio for studio-based majors via wolfPAW, Nov 1 deadline",
+      "special": "Honors application due Nov 1. EA application complete and NC residency through RDS confirmed by Nov 10 for end-of-December NC notification.",
       "sources": [
         {
           "label": "NC State apply",
           "url": "https://admissions.ncsu.edu/apply/first-year/"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "duke": {
       "cycle": "2026-27",
       "platform": "Common App or QuestBridge",
       "supp_essay_count": "2 required + 1 optional",
-      "prompts": "Essay 1: Why Duke (250 words). Essay 2: Choose from prompts on personal identity, intellectual curiosity, or community. Optional 3rd essay for QuestBridge or specific majors.",
+      "prompts": "Two required 250-word responses: Why Duke and Communities. One optional 250-word response from Viewpoints and experiences, Difference of opinion, or Something you are excited about.",
       "teacher_recs": 2,
       "counselor_rec": "Yes",
       "interview": "Alumni interview offered (optional)",
       "fee": "$85",
-      "special": "Test-optional (not reinstated per CDS C8). Robertson Scholars requires separate application (Nov 15).",
+      "special": "Pratt requires at least one recommendation from a math or science teacher. Test-optional for 2026-27. Robertson scholarship has a separate selection/application process; confirm its current deadline with the program.",
       "sources": [
         {
-          "label": "Duke Apply",
-          "url": "https://admissions.duke.edu/apply/first-year-applicants/"
+          "label": "Duke current-cycle requirements",
+          "url": "https://admissions.duke.edu/apply/"
         }
-      ]
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     }
   }
 }

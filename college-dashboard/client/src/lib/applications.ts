@@ -4,6 +4,7 @@ export type AppPlan = "ED" | "EA" | "RD";
 export interface Application {
   slug: string;
   plan: AppPlan;
+  plan_short?: string;
   plan_label: string;
   round: string;
   deadline: string;

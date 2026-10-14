@@ -55,6 +55,8 @@ export default function CostPage() {
       color: fitColor[s.fit_classification] || "hsl(var(--muted))",
       inState: s.state === "NC" && s.is_public,
       slug: s.slug,
+      year: s.cost_asof || "year unconfirmed",
+      note: s.cost_note || "Budget scope unconfirmed",
     }))
     .sort((a,b) => a.cost - b.cost);
 
@@ -67,11 +69,11 @@ export default function CostPage() {
   const priciest = costData[costData.length - 1];
 
   const valueData = list
-    .filter(s => s.cost_for_nc_resident != null && s.axes.program_depth != null)
+    .filter(s => s.cost_for_nc_resident != null && s.axes.foundations != null)
     .map(s => ({
       name: s.short,
       cost: s.cost_for_nc_resident!,
-      depth: s.axes.program_depth!,
+      depth: s.axes.foundations!,
       research: s.axes.research_access ?? 3,
       outcomes: s.axes.outcomes ?? 3,
       fit: s.fit_classification,
@@ -123,7 +125,7 @@ export default function CostPage() {
       <div className="card p-4">
         <div className="serif text-[17px] font-semibold mb-1">Cost & value, from a North Carolina family's viewpoint</div>
         <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] max-w-3xl leading-relaxed">
-          Cost is <strong>total published cost of attendance</strong>: tuition + fees + housing + food. Public NC schools show in-state cost; other publics show out-of-state; privates show published sticker. This is the number <em>before</em> financial aid — most of the private schools here have generous aid, so the effective cost can be much lower.
+          These are <strong>published annual student budgets</strong> before aid. NC State uses the NC resident budget; other public universities use nonresident budgets. The year and included expenses appear on each row; some budgets include books, travel and personal expenses beyond direct charges. Fall 2027 prices may not yet be published. Use each school’s Net Price Calculator for your family’s estimate.
         </div>
       </div>
 
@@ -149,7 +151,7 @@ export default function CostPage() {
             <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: 12, borderRadius: 6 }}
               formatter={(v: any, _n, p: any) => [
                 `${fmtCost(v as number)}${p.payload.inState ? " (in-state NC)" : ""}`,
-                "Cost of attendance"
+                `Published budget · ${p.payload.year}`
               ]}/>
             <Bar dataKey="cost" radius={[0, 3, 3, 0]}>
               {costData.map((d, i) => <Cell key={i} fill={d.color}/>)}
@@ -168,7 +170,7 @@ export default function CostPage() {
 
       {/* Value scatter (bigger version than overview) */}
       <div className="card p-4">
-        <div className="text-[13px] font-medium mb-1">Value map · sticker price vs. AI curriculum depth</div>
+        <div className="text-[13px] font-medium mb-1">Value map · sticker price vs. engineering foundations</div>
         <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-3">
           Up-and-to-the-left is more program for less money. Aid can dramatically move the horizontal axis; this shows the published starting point.
         </div>
@@ -180,7 +182,7 @@ export default function CostPage() {
               label={{ value: "Cost of attendance (for a NC resident)", position: "bottom", offset: 5, style: { fontSize: 11, fill: "hsl(var(--muted-foreground))" }}}/>
             <YAxis type="number" dataKey="depth" domain={[1, 5]}
               tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} axisLine={false} tickLine={false}
-              label={{ value: "AI curriculum depth (1-5)", angle: -90, position: "insideLeft", style: { fontSize: 11, fill: "hsl(var(--muted-foreground))", textAnchor: "middle" }}}/>
+              label={{ value: "Engineering foundations (1-5)", angle: -90, position: "insideLeft", style: { fontSize: 11, fill: "hsl(var(--muted-foreground))", textAnchor: "middle" }}}/>
             <ZAxis range={[100, 100]}/>
             <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: 12, borderRadius: 6 }}
               content={(props: any) => {
@@ -191,7 +193,7 @@ export default function CostPage() {
                     <div className="serif font-semibold text-[13px]">{p.name}</div>
                     <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1 space-y-0.5">
                       <div>Cost: <span className="num font-medium text-[hsl(var(--foreground))]">{fmtCost(p.cost)}</span></div>
-                      <div>AI depth: <span className="num font-medium text-[hsl(var(--foreground))]">{p.depth.toFixed(1)}/5</span></div>
+                      <div>Foundations: <span className="num font-medium text-[hsl(var(--foreground))]">{p.depth.toFixed(1)}/5</span></div>
                       <div>Research access: <span className="num font-medium text-[hsl(var(--foreground))]">{p.research.toFixed(1)}/5</span></div>
                       <div>Outcomes: <span className="num font-medium text-[hsl(var(--foreground))]">{p.outcomes.toFixed(1)}/5</span></div>
                       <div className="pt-1"><FitBadge fit={p.fit}/></div>
@@ -210,13 +212,11 @@ export default function CostPage() {
       <div className="card p-4">
         <div className="text-[13px] font-medium mb-1">Robotics depth vs. cost</div>
         <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-3 max-w-3xl leading-relaxed">
-          The value map above plots <em>AI</em> curriculum depth. Robotics is scored separately and the two
-          pull apart — a school can be near the top on AI and near the bottom on robotics — so this plots
-          what the money buys on the robotics side specifically. Vertical axis is researched robotics
-          curriculum; <strong>bubble size is robotics access</strong> (labs, teams and undergraduate
-          research you can actually get into). Below the dashed line a school has fewer than
-          {" "}{MIN_ROBOTICS_CURRICULUM}/5 robotics coursework, the bar the balanced shortlist uses before it
-          will auto-pick a school.
+          Compare the published budget with the recommended route’s robotics curriculum.
+          <strong> Bubble size is robotics access</strong>: documented undergraduate project and research
+          routes, with positions and seats subject to selection. The dashed {MIN_ROBOTICS_CURRICULUM}/5 line
+          marks the structured-curriculum evidence bar used for automatic shortlist suggestions; it is
+          not a course count or an official university ranking.
         </div>
         <ResponsiveContainer width="100%" height={400}>
           <ScatterChart margin={{ top: 20, right: 30, left: 10, bottom: 20 }}>
@@ -245,7 +245,7 @@ export default function CostPage() {
                       <div>Cost: <span className="num font-medium text-[hsl(var(--foreground))]">{fmtCost(p.cost)}</span></div>
                       <div>Robotics curriculum: <span className="num font-medium text-[hsl(var(--foreground))]">{p.curriculum.toFixed(1)}/5</span></div>
                       <div>Robotics access: <span className="num font-medium text-[hsl(var(--foreground))]">{p.access.toFixed(1)}/5</span></div>
-                      {p.courses != null && <div>Undergraduate robotics courses: <span className="num font-medium text-[hsl(var(--foreground))]">{p.courses}</span></div>}
+                      {p.courses != null && <div>Catalog course options: <span className="num font-medium text-[hsl(var(--foreground))]">{p.courses}</span></div>}
                       <div>Credential: <span className="font-medium text-[hsl(var(--foreground))]">{p.credential ? String(p.credential).replace(/_/g, " ") : "none"}</span></div>
                       <div className="pt-1"><FitBadge fit={p.fit}/></div>
                     </div>
@@ -277,13 +277,7 @@ export default function CostPage() {
         <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] pt-3 leading-relaxed border-t border-[hsl(var(--border))] mt-2">
           <strong className="text-[hsl(var(--foreground))]">Best value ({frontierRows.length} ringed and named):</strong>{" "}
           {frontierRows.map(d => `${d.name} (${fmtCost(d.cost)}, robotics ${d.curriculum.toFixed(0)}/5)`).join(" · ")}.
-          {" "}Nothing on this list is both cheaper and stronger on robotics than these — every other school is
-          beaten outright on one axis or the other. Read UNC-Chapel Hill with care: it is the cheapest point on
-          the axis, but it has no electrical or computer engineering department and no ABET-accredited
-          engineering degree, so what robotics coursework exists sits inside other departments.
-          That is a statement about published sticker price only:
-          aid moves the horizontal axis a long way at the private schools, so re-read this after net-price
-          figures rather than before.
+          {" "}These points meet the displayed price/curriculum frontier among visible schools. Curriculum and access scores are research judgments, and budgets can cover different years. Financial aid, route requirements and course access can change the comparison; use current net-price estimates before an affordability decision.
         </div>
       </div>
 
@@ -298,18 +292,20 @@ export default function CostPage() {
                 <th className="text-right">In-state</th>
                 <th className="text-right">Out-of-state / private</th>
                 <th className="text-right">Cost for NC resident</th>
+                <th>Budget year & scope</th>
                 <th>Housing guarantee</th>
                 <th className="w-8"></th>
               </tr>
             </thead>
             <tbody>
-              {list.sort((a,b) => (a.cost_for_nc_resident ?? 0) - (b.cost_for_nc_resident ?? 0)).map(s => (
+              {[...list].sort((a,b) => (a.cost_for_nc_resident ?? 0) - (b.cost_for_nc_resident ?? 0)).map(s => (
                 <tr key={s.slug}>
                   <td className="serif font-medium">{s.short}<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{s.city_state}</div></td>
                   <td><FitBadge fit={s.fit_classification}/></td>
                   <td className="num text-right">{fmtCost(s.cost_total_instate)}</td>
                   <td className="num text-right">{fmtCost(s.cost_total_outofstate)}</td>
                   <td className="num text-right font-medium">{fmtCost(s.cost_for_nc_resident)}</td>
+                  <td className="text-[11px] max-w-[320px]"><div className="font-medium">{s.cost_asof || "Year unconfirmed"}</div><div className="text-[hsl(var(--muted-foreground))] mt-1">{s.cost_note || "Verify included expenses with the school."}</div></td>
                   <td className="text-[11.5px] max-w-[220px]">{s.housing_guarantee}</td>
                   <td><HideButton slug={s.slug} compact/></td>
                 </tr>

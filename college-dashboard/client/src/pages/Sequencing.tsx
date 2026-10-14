@@ -2,6 +2,9 @@ import { useMemo, useState } from "react";
 import { GitBranch, AlertTriangle, Info, Trophy, Plus, Trash2 } from "lucide-react";
 import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
+import deadlinesData from "@/data/deadlines.json";
+import { dateUTC, daysUntil } from "@/lib/calendar";
+import { applicationsBySlug } from "@/lib/applications";
 
 type PlanKind = "ED I" | "ED II" | "EA" | "RD";
 interface Event {
@@ -10,6 +13,7 @@ interface Event {
   notify: string | null;       // ISO
   deadlineText?: string;       // original prose, for tooltips
   notifyText?: string;
+  label?: string;
   approx?: boolean;            // date was fuzzy ("mid-December") and got snapped
 }
 
@@ -30,6 +34,7 @@ const PLAN_COLORS: Record<PlanKind, string> = {
 export default function SequencingPage() {
   const { hidden } = useHidden();
   const visible = schools.filter(s => !hidden.has(s.slug));
+  const [onlySelectedPlans, setOnlySelectedPlans] = useState(true);
   const [teamEvents, setTeamEvents] = useState<{ id: string; label: string; date: string }[]>(() => {
     try { return JSON.parse(window.localStorage.getItem("frc-team-events") || "[]"); } catch { return []; }
   });
@@ -39,42 +44,41 @@ export default function SequencingPage() {
   const events = useMemo(() => {
     const out: Event[] = [];
     visible.forEach(s => {
-      const dd = (s as any).admissions?.decision_dates;
-      if (!dd) return;
-      // Use the normalized *_iso fields; the raw fields are prose
-      // ("November 1 [MIT-S4]", "mid-December 2026") and are kept for tooltips.
-      const plans: [PlanKind, string, string][] = [
-        ["ED I",  "ed1", "ed1"],
-        ["ED II", "ed2", "ed2"],
-        ["EA",    "ea",  "ea"],
-        ["RD",    "rd",  "rd"],
-      ];
-      plans.forEach(([plan, dk]) => {
-        const iso = dd[`${dk}_deadline_iso`];
-        if (!iso) return;
-        out.push({
-          slug: s.slug, short: s.short, plan,
-          deadline: iso,
-          notify: dd[`${dk}_notify_iso`] || null,
-          deadlineText: dd[`${dk}_deadline`],
-          notifyText: dd[`${dk}_notify`],
-          approx: Boolean(dd[`${dk}_deadline_approx`] || dd[`${dk}_notify_approx`]),
+      const row = (deadlinesData.rows as any[]).find(r => r.slug === s.slug);
+      const dd = s.admissions?.decision_dates as any;
+      if (!row || !dd) return;
+      const plans: Record<string, PlanKind> = { ed1: "ED I", ed2: "ED II", ea: "EA", rd: "RD" };
+      (row.events ?? []).forEach((e: any) => {
+        const selected = applicationsBySlug[s.slug];
+        if (onlySelectedPlans && (!selected || selected.round !== e.round || selected.deadline !== e.date)) return;
+        const plan = plans[e.round];
+        if (!plan || !e.source_url || !e.verified_on || !/2027|2026.?27/.test(e.cycle ?? "")) return;
+        const notifyText = dd[`${e.round}_notify`] as string | undefined;
+        // A window such as "mid-December" is not an exact notification day.
+        // EA II is a separate event; do not reuse the EA I notification.
+        const exactNotify = !/mid|late|early|by|before|after|;|\(EA/i.test(notifyText ?? "")
+          && !dd[`${e.round}_notify_approx`]
+          && !(e.round === "ea" && /II|2/.test(e.label));
+        out.push({ slug: s.slug, short: s.short, plan, label: onlySelectedPlans ? selected.plan_short ?? selected.plan_label : e.label,
+          deadline: e.date, notify: exactNotify ? dd[`${e.round}_notify_iso`] ?? null : null,
+          deadlineText: `${e.label}: ${e.date}`, notifyText,
+          approx: Boolean(e.year_inferred || row.cycle_inferred),
         });
       });
     });
     return out.sort((a, b) => a.deadline.localeCompare(b.deadline));
-  }, [visible]);
+  }, [visible, onlySelectedPlans]);
 
   // Compute earliest & latest dates in the visible plan
   const bounds = useMemo(() => {
-    const dates: string[] = [];
+    const dates: string[] = teamEvents.map(e => e.date);
     events.forEach(e => { dates.push(e.deadline); if (e.notify) dates.push(e.notify); });
     if (dates.length === 0) return { start: "2026-09-01", end: "2027-05-15" };
     const sorted = [...dates].sort();
     return { start: earlier(sorted[0], "2026-09-01"), end: later(sorted[sorted.length-1], "2027-05-15") };
-  }, [events]);
+  }, [events, teamEvents]);
 
-  const timelineDays = daysBetween(bounds.start, bounds.end);
+  const timelineDays = Math.max(1, daysBetween(bounds.start, bounds.end));
   const xForDate = (isoDate: string) => {
     const d = daysBetween(bounds.start, isoDate);
     return (d / timelineDays) * 100;   // percentage
@@ -90,7 +94,7 @@ export default function SequencingPage() {
       if (!a.notify) return;
       ed2.forEach(b => {
         if (a.slug !== b.slug && b.deadline < a.notify!) {
-          out.push(`${a.short} ED I notifies ${a.notify} — AFTER ${b.short} ED II deadline ${b.deadline}. If ED I is a deny, you may miss ED II here.`);
+          out.push(`${a.short} ED I notifies ${a.notify} — AFTER ${b.short} ED II deadline ${b.deadline}. Prepare the second application while the first decision is pending; confirm the notification date.`);
         }
       });
     });
@@ -109,7 +113,7 @@ export default function SequencingPage() {
       const md = e.deadline.slice(5); // MM-DD
       FRC_BANDS.forEach(b => {
         if (md >= b.start && md <= b.end) {
-          out.push(`${e.short} ${e.plan} deadline ${e.deadline} falls inside FRC ${b.label}.`);
+          out.push(`${e.short} ${e.plan} deadline ${e.deadline} falls inside the illustrative FRC ${b.label} window; confirm the actual team calendar.`);
         }
       });
     });
@@ -125,8 +129,12 @@ export default function SequencingPage() {
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">The application calendar as a dependency graph</h2>
         <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Vertical bands show FIRST Robotics build + competition windows (approximate). Deadlines and notify dates are plotted from each school's own <code>decision_dates</code>. Conflicts (ED I notify falling after an ED II deadline elsewhere, or any deadline landing inside an FRC band) are called out below.
+          Vertical bands are illustrative FIRST Robotics season windows, not a confirmed event calendar. Sourced application dates are plotted; ~ marks an inferred cycle year. Only exact notification days are plotted, and published windows remain in tooltips. Add your team's confirmed dates below; verify round timing before using a dependency warning.
         </p>
+        <label className="mt-3 flex items-center gap-2 text-[12px]">
+          <input type="checkbox" checked={onlySelectedPlans} onChange={e => setOnlySelectedPlans(e.target.checked)} />
+          Show only my selected application plans
+        </label>
       </div>
 
       {/* Team events editor */}
@@ -178,7 +186,7 @@ export default function SequencingPage() {
             const xd = xForDate(ev.deadline);
             const xn = ev.notify ? xForDate(ev.notify) : null;
             return (
-              <div key={`${ev.slug}-${ev.plan}`} className="absolute" style={{ top: `${y}px`, left: 0, right: 0, height: 20 }}>
+              <div key={`${ev.slug}-${ev.plan}-${ev.deadline}`} className="absolute" style={{ top: `${y}px`, left: 0, right: 0, height: 20 }}>
                 {/* deadline → notify segment */}
                 {xn !== null && (
                   <div className="absolute h-[2px] rounded" style={{ top: 8, left: `${xd}%`, width: `${xn - xd}%`, background: PLAN_COLORS[ev.plan], opacity: 0.4 }}/>
@@ -191,8 +199,8 @@ export default function SequencingPage() {
                 )}
                 {/* label */}
                 <div className="absolute text-[10.5px] font-medium whitespace-nowrap" style={{ top: 1, left: `min(calc(${xd}% + 6px), calc(100% - 150px))`, color: PLAN_COLORS[ev.plan] }}>
-                  {ev.short} <span className="opacity-70">{ev.plan}</span>
-                  {ev.approx && <span className="opacity-60" title="School publishes an approximate window (e.g. 'mid-December'); date snapped for plotting"> ~</span>}
+                  {ev.short} <span className="opacity-70" title={ev.notifyText ? `Notification: ${ev.notifyText}` : "Notification date pending"}>{ev.label || ev.plan}</span>
+                  {ev.approx && <span className="opacity-60" title="Published month/day mapped to this cycle; year inferred"> ~</span>}
                 </div>
               </div>
             );
@@ -210,9 +218,9 @@ export default function SequencingPage() {
 
       {/* Conflicts */}
       <div className="card p-4">
-        <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))] mb-2">Conflicts & dependencies</div>
+        <div className="text-[11px] tracking-wider uppercase text-[hsl(var(--muted-foreground))] mb-2">Advisory conflicts & dependencies</div>
         {conflicts.length === 0 ? (
-          <div className="text-[12px] text-[hsl(var(--muted-foreground))] italic flex items-center gap-1"><Info size={12}/> No conflicts detected across visible schools.</div>
+          <div className="text-[12px] text-[hsl(var(--muted-foreground))] italic flex items-center gap-1"><Info size={12}/> No conflicts detected among plotted dates. Unpublished notification windows are not evaluated.</div>
         ) : (
           <ul className="space-y-1.5 text-[11.5px]">
             {conflicts.map((c, i) => (
@@ -240,22 +248,21 @@ function TeamEventForm({ onAdd }: { onAdd: (e: { label: string; date: string }) 
 // -- Date helpers --------------------------------------------------------
 
 function daysBetween(a: string, b: string): number {
-  const da = new Date(a).getTime(), db = new Date(b).getTime();
-  return Math.max(1, Math.round((db - da) / (1000 * 60 * 60 * 24)));
+  return daysUntil(b, a);
 }
 function earlier(a: string, b: string): string { return a < b ? a : b; }
 function later(a: string, b: string): string { return a > b ? a : b; }
 function monthTicks(startISO: string, endISO: string): { iso: string; label: string }[] {
   const out: { iso: string; label: string }[] = [];
-  const s = new Date(startISO); s.setDate(1);
-  const e = new Date(endISO);
+  const s = dateUTC(startISO); s.setUTCDate(1);
+  const e = dateUTC(endISO);
   const cur = new Date(s);
   while (cur <= e) {
     out.push({
-      iso: `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,"0")}-01`,
-      label: cur.toLocaleString(undefined, { month: "short" }) + (cur.getMonth() === 0 ? ` '${String(cur.getFullYear()).slice(2)}` : ""),
+      iso: `${cur.getUTCFullYear()}-${String(cur.getUTCMonth()+1).padStart(2,"0")}-01`,
+      label: cur.toLocaleString(undefined, { month: "short", timeZone: "UTC" }) + (cur.getUTCMonth() === 0 ? ` '${String(cur.getUTCFullYear()).slice(2)}` : ""),
     });
-    cur.setMonth(cur.getMonth()+1);
+    cur.setUTCMonth(cur.getUTCMonth()+1);
   }
   return out;
 }

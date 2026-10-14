@@ -11,32 +11,32 @@
   },
   "WPI-S3": {
     "url": "https://www.wpi.edu/admissions/undergraduate/apply",
-    "title": "Apply \u2014 WPI Undergraduate Admissions (deadlines and notification windows)",
+    "title": "Apply — WPI Undergraduate Admissions (deadlines and notification windows)",
     "fetched": "2026-08-16"
   },
   "WPI-S4": {
     "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to",
-    "title": "How to Apply \u2014 WPI ($70 fee; 'WPI is a test-optional institution')",
+    "title": "How to Apply — WPI ($70 fee; 'WPI is a test-optional institution')",
     "fetched": "2026-08-16"
   },
   "WPI-S5": {
     "url": "https://www.wpi.edu/admissions/undergraduate/what-we-look-for",
-    "title": "What We Look For \u2014 WPI (avg GPA 3.92, top 9% rank, course requirements)",
+    "title": "What We Look For — WPI (avg GPA 3.92, top 9% rank, course requirements)",
     "fetched": "2026-08-16"
   },
   "WPI-S6": {
     "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to/test-optional-admissions",
-    "title": "Test-Optional Admissions \u2014 WPI",
+    "title": "Test-Optional Admissions — WPI",
     "fetched": "2026-08-16"
   },
   "WPI-S7": {
     "url": "https://wpi.cleancatalog.net/sites/default/files/pdf/academic_page/admission-to-wpi.pdf",
-    "title": "Admission to WPI \u2014 WPI academic catalog (PDF)",
+    "title": "Admission to WPI — WPI academic catalog (PDF)",
     "fetched": "2026-08-16"
   },
   "WPI-S8": {
     "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/robotics-scholarships",
-    "title": "Robotics Scholarships \u2014 WPI (FIRST/VEX scholarship terms)",
+    "title": "Robotics Scholarships — WPI (FIRST/VEX scholarship terms)",
     "fetched": "2026-08-16"
   },
   "WPI-S9": {
@@ -46,22 +46,22 @@
   },
   "WPI-S10": {
     "url": "https://www.wpi.edu/academics/departments/robotics-engineering",
-    "title": "Robotics Engineering \u2014 WPI department page",
+    "title": "Robotics Engineering — WPI department page",
     "fetched": "2026-08-16"
   },
   "WPI-S11": {
     "url": "https://www.wpi.edu/academics/departments/robotics-engineering/academics/major-project",
-    "title": "Major Qualifying Project \u2014 WPI Robotics Engineering",
+    "title": "Major Qualifying Project — WPI Robotics Engineering",
     "fetched": "2026-08-16"
   },
   "WPI-S12": {
     "url": "https://wp.wpi.edu/journal/articles/practicepoint-on-the-cutting-edge/",
-    "title": "PracticePoint: On the Cutting Edge \u2014 WPI Journal",
+    "title": "PracticePoint: On the Cutting Edge — WPI Journal",
     "fetched": "2026-08-16"
   },
   "WPI-S13": {
     "url": "https://www.wpi.edu/admissions/undergraduate/apply/international-students",
-    "title": "International Students \u2014 WPI (InitialView/Vericant interviews)",
+    "title": "International Students — WPI (InitialView/Vericant interviews)",
     "fetched": "2026-08-16"
   },
   "WPI-S14": {
@@ -76,37 +76,37 @@
   },
   "CMU-S2": {
     "url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
-    "title": "Application Plans and Deadlines \u2014 CMU Undergraduate Admission",
+    "title": "Application Plans and Deadlines — CMU Undergraduate Admission",
     "fetched": "2026-08-16"
   },
   "CMU-S3": {
     "url": "https://www.cmu.edu/admission/admission/preparing-for-college/common-admission-terms",
-    "title": "Common Admission Terms \u2014 CMU (no interviews, no demonstrated interest, no early action)",
+    "title": "Common Admission Terms — CMU (no interviews, no demonstrated interest, no early action)",
     "fetched": "2026-08-16"
   },
   "CMU-S4": {
     "url": "https://www.cmu.edu/admission/admission/standardized-testing",
-    "title": "Standardized Testing \u2014 CMU Undergraduate Admission (by-college policy)",
+    "title": "Standardized Testing — CMU Undergraduate Admission (by-college policy)",
     "fetched": "2026-08-16"
   },
   "CMU-S5": {
     "url": "https://www.cs.cmu.edu/link/meeting-demand",
-    "title": "Meeting Demand \u2014 The Link, CMU School of Computer Science (SCS admit rate <5.2% vs 19%)",
+    "title": "Meeting Demand — The Link, CMU School of Computer Science (SCS admit rate <5.2% vs 19%)",
     "fetched": "2026-08-16"
   },
   "CMU-S6": {
     "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements",
-    "title": "Undergraduate Admission Requirements \u2014 CMU (three short-answer questions)",
+    "title": "Undergraduate Admission Requirements — CMU (three short-answer questions)",
     "fetched": "2026-08-16"
   },
   "CMU-S7": {
     "url": "https://www.cmu.edu/sfs/financial-aid/types/scholarships-and-grants/index.html",
-    "title": "Scholarships and Grants \u2014 CMU Student Financial Services",
+    "title": "Scholarships and Grants — CMU Student Financial Services",
     "fetched": "2026-08-16"
   },
   "CMU-S8": {
     "url": "https://www.ri.cmu.edu/about/",
-    "title": "About \u2014 Carnegie Mellon Robotics Institute",
+    "title": "About — Carnegie Mellon Robotics Institute",
     "fetched": "2026-08-16"
   },
   "CMU-S9": {
@@ -121,7 +121,7 @@
   },
   "UMICH-S2": {
     "url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
-    "title": "First-Year Application Plans \u2014 U-M Office of Undergraduate Admissions",
+    "title": "First-Year Application Plans — U-M Office of Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "UMICH-S3": {
@@ -131,42 +131,42 @@
   },
   "UMICH-S4": {
     "url": "https://admissions.umich.edu/apply/first-year-applicants/requirements-deadlines/application-changes",
-    "title": "Application Changes \u2014 U-M (new Early Decision; test-optional for 2026 cycle; essay requirements)",
+    "title": "Application Changes — U-M (new Early Decision; test-optional for 2026 cycle; essay requirements)",
     "fetched": "2026-08-16"
   },
   "UMICH-S5": {
     "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions",
-    "title": "Essay Questions \u2014 U-M Office of Undergraduate Admissions",
+    "title": "Essay Questions — U-M Office of Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "UMICH-S6": {
     "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/",
-    "title": "Undergraduate Admissions \u2014 U-M Computer Science and Engineering (CS capacity selection policy)",
+    "title": "Undergraduate Admissions — U-M Computer Science and Engineering (CS capacity selection policy)",
     "fetched": "2026-08-16"
   },
   "UMICH-S7": {
     "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/cs-advance-selection-for-incoming-students/",
-    "title": "CS Advance Selection for Incoming Students \u2014 U-M CSE",
+    "title": "CS Advance Selection for Incoming Students — U-M CSE",
     "fetched": "2026-08-16"
   },
   "UMICH-S8": {
     "url": "https://robotics.umich.edu/about/",
-    "title": "About \u2014 U-M Robotics Department",
+    "title": "About — U-M Robotics Department",
     "fetched": "2026-08-16"
   },
   "UMICH-S9": {
     "url": "https://robotics.umich.edu/news/2021/michigan-ford-open-world-class-robotics-complex/",
-    "title": "Michigan and Ford open world-class robotics complex \u2014 U-M Robotics",
+    "title": "Michigan and Ford open world-class robotics complex — U-M Robotics",
     "fetched": "2026-08-16"
   },
   "UMICH-S10": {
     "url": "https://scholarships.engin.umich.edu/undergraduate/new-students/",
-    "title": "Scholarships for New Students \u2014 U-M College of Engineering",
+    "title": "Scholarships for New Students — U-M College of Engineering",
     "fetched": "2026-08-16"
   },
   "UMICH-S11": {
     "url": "https://admissions.umich.edu/costs-aid/financial-aid",
-    "title": "Financial Aid \u2014 U-M (May 1 enrollment deposit deadline)",
+    "title": "Financial Aid — U-M (May 1 enrollment deposit deadline)",
     "fetched": "2026-08-16"
   },
   "OLIN-S1": {
@@ -176,42 +176,42 @@
   },
   "OLIN-S2": {
     "url": "https://www.olin.edu/admission/apply/admission-process",
-    "title": "Admission Process \u2014 Olin College (Fall 2027 deadlines, Candidates' Weekend 2027 dates)",
+    "title": "Admission Process — Olin College (Fall 2027 deadlines, Candidates' Weekend 2027 dates)",
     "fetched": "2026-08-16"
   },
   "OLIN-S3": {
     "url": "https://www.olin.edu/admission-financial-aid-apply/what-we-are-looking",
-    "title": "What We Are Looking For \u2014 Olin College (275-300 CW invitations, virtual interviews)",
+    "title": "What We Are Looking For — Olin College (275-300 CW invitations, virtual interviews)",
     "fetched": "2026-08-16"
   },
   "OLIN-S4": {
     "url": "https://www.olin.edu/admission/faq",
-    "title": "Admission FAQ \u2014 Olin College (testing requirement suspended through the 2026-27 cycle)",
+    "title": "Admission FAQ — Olin College (testing requirement suspended through the 2026-27 cycle)",
     "fetched": "2026-08-16"
   },
   "OLIN-S5": {
     "url": "https://www.olin.edu/admission/profile-class-2028",
-    "title": "Profile of the Class of 2028 \u2014 Olin College",
+    "title": "Profile of the Class of 2028 — Olin College",
     "fetched": "2026-08-16"
   },
   "OLIN-S6": {
     "url": "https://www.olin.edu/blogs/ins-and-outs-college-supplemental-essay",
-    "title": "The Ins and Outs of the College Supplemental Essay \u2014 Olin admissions blog",
+    "title": "The Ins and Outs of the College Supplemental Essay — Olin admissions blog",
     "fetched": "2026-08-16"
   },
   "OLIN-S7": {
     "url": "https://www.olin.edu/admission-financial-aid-connect/counselor-resources",
-    "title": "Counselor Resources \u2014 Olin College (single deadline, no early plans)",
+    "title": "Counselor Resources — Olin College (single deadline, no early plans)",
     "fetched": "2026-08-16"
   },
   "OLIN-S8": {
     "url": "https://www.olin.edu/admission-financial-aid-afford/aid-scholarships",
-    "title": "Understanding Your Aid \u2014 Olin College (Olin Tuition Scholarship $10,000/year)",
+    "title": "Understanding Your Aid — Olin College (Olin Tuition Scholarship $10,000/year)",
     "fetched": "2026-08-16"
   },
   "OLIN-S9": {
     "url": "https://www.olin.edu/about",
-    "title": "About \u2014 Olin College (E:Robo concentration; 2024 Grand Prize and 2026 drone award)",
+    "title": "About — Olin College (E:Robo concentration; 2024 Grand Prize and 2026 drone award)",
     "fetched": "2026-08-16"
   },
   "OLIN-S10": {
@@ -221,37 +221,37 @@
   },
   "KETT-S1": {
     "url": "https://www.kettering.edu/apply",
-    "title": "Apply \u2014 Kettering University (priority dates, required coursework, test-optional, personal essays)",
+    "title": "Apply — Kettering University (priority dates, required coursework, test-optional, personal essays)",
     "fetched": "2026-08-16"
   },
   "KETT-S2": {
     "url": "https://www.kettering.edu/admissions-aid/financial-aid-affordability/financial-aid/types-of-aid/scholarships",
-    "title": "Scholarships \u2014 Kettering University (robotics scholarship up to $5,000/year, February 15 deadline)",
+    "title": "Scholarships — Kettering University (robotics scholarship up to $5,000/year, February 15 deadline)",
     "fetched": "2026-08-16"
   },
   "KETT-S3": {
     "url": "https://www.kettering.edu/robotics/first-at-kettering",
-    "title": "FIRST Robotics \u2014 Kettering University ($5.5 million in robotics scholarships since 1999)",
+    "title": "FIRST Robotics — Kettering University ($5.5 million in robotics scholarships since 1999)",
     "fetched": "2026-08-16"
   },
   "KETT-S4": {
     "url": "https://www.kettering.edu/admissions-aid",
-    "title": "Admissions & Aid \u2014 Kettering University (100% of first-year students receive a scholarship)",
+    "title": "Admissions & Aid — Kettering University (100% of first-year students receive a scholarship)",
     "fetched": "2026-08-16"
   },
   "KETT-S5": {
     "url": "https://www.kettering.edu/transfer-faqs",
-    "title": "Transfer FAQs \u2014 Kettering University ('Kettering University is test-optional for all students')",
+    "title": "Transfer FAQs — Kettering University ('Kettering University is test-optional for all students')",
     "fetched": "2026-08-16"
   },
   "KETT-S6": {
     "url": "https://www.kettering.edu/new-student-orientation",
-    "title": "New Student Orientation \u2014 Kettering University (A-section / B-section calendar)",
+    "title": "New Student Orientation — Kettering University (A-section / B-section calendar)",
     "fetched": "2026-08-16"
   },
   "KETT-S7": {
     "url": "https://www.kettering.edu/admissions-aid/international-students",
-    "title": "International Students \u2014 Kettering University (Duolingo spoken interview requirement)",
+    "title": "International Students — Kettering University (Duolingo spoken interview requirement)",
     "fetched": "2026-08-16"
   },
   "KETT-S8": {
@@ -276,7 +276,7 @@
   },
   "RIT-S2": {
     "url": "https://www.rit.edu/admissions/first-year/early-decision",
-    "title": "Early Decision \u2014 RIT Admissions and Aid",
+    "title": "Early Decision — RIT Admissions and Aid",
     "fetched": "2026-08-16"
   },
   "RIT-S3": {
@@ -286,22 +286,22 @@
   },
   "RIT-S4": {
     "url": "https://www.rit.edu/admissions/accepted-undergraduate-students",
-    "title": "Accepted Undergraduate Students \u2014 RIT (deposit deadlines by plan)",
+    "title": "Accepted Undergraduate Students — RIT (deposit deadlines by plan)",
     "fetched": "2026-08-16"
   },
   "RIT-S5": {
     "url": "https://www.rit.edu/admissions/aid/merit-based-scholarships",
-    "title": "Merit-Based Scholarships \u2014 RIT (RIT/FIRST Scholarship $14,000/year, not stackable)",
+    "title": "Merit-Based Scholarships — RIT (RIT/FIRST Scholarship $14,000/year, not stackable)",
     "fetched": "2026-08-16"
   },
   "RIT-S6": {
     "url": "https://www.rit.edu/first-scholarship",
-    "title": "FIRST Scholarship Application \u2014 RIT (redirects to join.rit.edu application form; Fall 2027 term option)",
+    "title": "FIRST Scholarship Application — RIT (redirects to join.rit.edu application form; Fall 2027 term option)",
     "fetched": "2026-08-16"
   },
   "RIT-S7": {
     "url": "https://www.rit.edu/ntid/admissions/first-year-application",
-    "title": "First-Year Application checklist \u2014 RIT/NTID (essay description, $65 fee, test-optional for all programs, ACT Science recommendation for STEM)",
+    "title": "First-Year Application checklist — RIT/NTID (essay description, $65 fee, test-optional for all programs, ACT Science recommendation for STEM)",
     "fetched": "2026-08-16"
   },
   "RHIT-S1": {
@@ -311,12 +311,12 @@
   },
   "RHIT-S2": {
     "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
-    "title": "First-year Application & Deadlines \u2014 Rose-Hulman",
+    "title": "First-year Application & Deadlines — Rose-Hulman",
     "fetched": "2026-08-16"
   },
   "RHIT-S3": {
     "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
-    "title": "Admission Requirements \u2014 Rose-Hulman (course expectations, test policy)",
+    "title": "Admission Requirements — Rose-Hulman (course expectations, test policy)",
     "fetched": "2026-08-16"
   },
   "RHIT-S4": {
@@ -326,12 +326,12 @@
   },
   "RHIT-S5": {
     "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/international-students.html",
-    "title": "International Students \u2014 Rose-Hulman (InitialView interviews)",
+    "title": "International Students — Rose-Hulman (InitialView interviews)",
     "fetched": "2026-08-16"
   },
   "RHIT-S6": {
     "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-ranked-no-1-for-27th-consecutive-year-as-nations-best-undergraduate-engineering-college-in-u-s-news-and-world-report.html",
-    "title": "Rose-Hulman Ranked No. 1 for 27th Consecutive Year \u2014 Rose-Hulman news",
+    "title": "Rose-Hulman Ranked No. 1 for 27th Consecutive Year — Rose-Hulman news",
     "fetched": "2026-08-16"
   },
   "RHIT-S7": {
@@ -341,17 +341,17 @@
   },
   "RHIT-S8": {
     "url": "https://www.rose-hulman.edu/visit/preview-rose/seniors/admissions.html",
-    "title": "Admissions Next Steps \u2014 Preview Rose (apply by Nov. 1 for maximum scholarship consideration)",
+    "title": "Admissions Next Steps — Preview Rose (apply by Nov. 1 for maximum scholarship consideration)",
     "fetched": "2026-08-16"
   },
   "RHIT-S9": {
     "url": "https://www.rose-hulman.edu/academics/educational-outreach/student-resources/first-robotics.html",
-    "title": "First Robotics \u2014 Rose-Hulman educational outreach",
+    "title": "First Robotics — Rose-Hulman educational outreach",
     "fetched": "2026-08-16"
   },
   "RHIT-S10": {
     "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/financial-aid-basics/cost-and-financial-aid/index.html",
-    "title": "Cost and Financial Aid / Rose-Hulman Ventures \u2014 Rose-Hulman",
+    "title": "Cost and Financial Aid / Rose-Hulman Ventures — Rose-Hulman",
     "fetched": "2026-08-16"
   },
   "NCSU-S1": {
@@ -361,47 +361,47 @@
   },
   "NCSU-S2": {
     "url": "https://admissions.ncsu.edu/apply/deadlines/",
-    "title": "Dates and Deadlines \u2014 NC State Undergraduate Admissions",
+    "title": "Dates and Deadlines — NC State Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "NCSU-S3": {
     "url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
-    "title": "Admission Updates for 2027 First-Year Applicants \u2014 NC State Undergraduate Admissions",
+    "title": "Admission Updates for 2027 First-Year Applicants — NC State Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "NCSU-S4": {
     "url": "https://admissions.ncsu.edu/apply/first-year/",
-    "title": "First-Year Applicants \u2014 NC State Undergraduate Admissions (required short answer question)",
+    "title": "First-Year Applicants — NC State Undergraduate Admissions (required short answer question)",
     "fetched": "2026-08-16"
   },
   "NCSU-S5": {
     "url": "https://admissions.ncsu.edu/apply/first-year/application-review/",
-    "title": "First-Year Application Review \u2014 NC State ('What We Look For')",
+    "title": "First-Year Application Review — NC State ('What We Look For')",
     "fetched": "2026-08-16"
   },
   "NCSU-S6": {
     "url": "https://engr.ncsu.edu/admissions/",
-    "title": "Admissions \u2014 NC State College of Engineering (Engineering First Year Program; intended major has no effect)",
+    "title": "Admissions — NC State College of Engineering (Engineering First Year Program; intended major has no effect)",
     "fetched": "2026-08-16"
   },
   "NCSU-S7": {
     "url": "https://www.northcarolina.edu/apps/policy/doc.php?id=789",
-    "title": "UNC Policy Manual 700.1.3 \u2014 nonresident undergraduate enrollment caps (18% for NC State)",
+    "title": "UNC Policy Manual 700.1.3 — nonresident undergraduate enrollment caps (18% for NC State)",
     "fetched": "2026-08-16"
   },
   "NCSU-S8": {
     "url": "https://engr.ncsu.edu/robotics/",
-    "title": "Robotics at NC State \u2014 College of Engineering",
+    "title": "Robotics at NC State — College of Engineering",
     "fetched": "2026-08-16"
   },
   "NCSU-S9": {
     "url": "https://studentservices.ncsu.edu/finances/scholarships-and-financial-aid/apply-for-scholarships-and-financial-aid/",
-    "title": "Apply for Scholarships and Financial Aid \u2014 NC State Student Services Center (PackASSIST, February 15 priority)",
+    "title": "Apply for Scholarships and Financial Aid — NC State Student Services Center (PackASSIST, February 15 priority)",
     "fetched": "2026-08-16"
   },
   "NCSU-S10": {
     "url": "https://park.ncsu.edu/apply/",
-    "title": "Apply \u2014 NC State Park Scholarships (reviews NC State's short-answer and optional short-answer essays)",
+    "title": "Apply — NC State Park Scholarships (reviews NC State's short-answer and optional short-answer essays)",
     "fetched": "2026-08-16"
   },
   "NCSU-S11": {
@@ -416,137 +416,137 @@
   },
   "UNC-S2": {
     "url": "https://admissions.unc.edu/apply/types-of-applications/first-year/",
-    "title": "First-Year Application \u2014 UNC Undergraduate Admissions (deadlines, two short answers, 2026-27 test policy)",
+    "title": "First-Year Application — UNC Undergraduate Admissions (deadlines, two short answers, 2026-27 test policy)",
     "fetched": "2026-08-16"
   },
   "UNC-S3": {
     "url": "https://admissions.unc.edu/apply/decisions/",
-    "title": "Decisions \u2014 UNC Undergraduate Admissions",
+    "title": "Decisions — UNC Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "UNC-S4": {
     "url": "https://www.unc.edu/posts/2025/07/23/carolina-moves-up-admissions-decision-notifications-for-nc-early-applicants/",
-    "title": "Carolina moves up admissions decision notifications for NC early applicants \u2014 UNC-Chapel Hill",
+    "title": "Carolina moves up admissions decision notifications for NC early applicants — UNC-Chapel Hill",
     "fetched": "2026-08-16"
   },
   "UNC-S5": {
     "url": "https://www.unc.edu/posts/2025/12/18/carolina-delivers-first-nc-admissions-decisions-a-month-sooner/",
-    "title": "Carolina delivers first in-state admissions decisions a month sooner \u2014 UNC-Chapel Hill",
+    "title": "Carolina delivers first in-state admissions decisions a month sooner — UNC-Chapel Hill",
     "fetched": "2026-08-16"
   },
   "UNC-S6": {
     "url": "https://www.northcarolina.edu/apps/policy/doc.php?id=789",
-    "title": "UNC Policy Manual 700.1.3 \u2014 nonresident undergraduate enrollment caps (18% for UNC-Chapel Hill)",
+    "title": "UNC Policy Manual 700.1.3 — nonresident undergraduate enrollment caps (18% for UNC-Chapel Hill)",
     "fetched": "2026-08-16"
   },
   "UNC-S7": {
     "url": "https://admissions.unc.edu/application-prompts-for-2024-2025/",
-    "title": "Application Prompts for 2024-2025 \u2014 UNC Undergraduate Admissions",
+    "title": "Application Prompts for 2024-2025 — UNC Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "UNC-S8": {
     "url": "https://admissionslawsuit.unc.edu/about/admissions/",
-    "title": "About Admissions \u2014 UNC-Chapel Hill admissions lawsuit site (43.1% in-state vs 8.2% out-of-state)",
+    "title": "About Admissions — UNC-Chapel Hill admissions lawsuit site (43.1% in-state vs 8.2% out-of-state)",
     "fetched": "2026-08-16"
   },
   "UNC-S9": {
     "url": "https://www.unc.edu/posts/2026/07/01/collaboration-is-key-for-carolinas-newest-school/",
-    "title": "Collaboration is key for Carolina's newest school \u2014 UNC School of Data and Information Sciences launch",
+    "title": "Collaboration is key for Carolina's newest school — UNC School of Data and Information Sciences launch",
     "fetched": "2026-08-16"
   },
   "UNC-S10": {
     "url": "https://robotics.cs.unc.edu/",
-    "title": "Computational Robotics Research Group \u2014 UNC Computer Science",
+    "title": "Computational Robotics Research Group — UNC Computer Science",
     "fetched": "2026-08-16"
   },
   "UNC-S11": {
     "url": "https://catalog.unc.edu/undergraduate/programs-study/applied-sciences-engineering-minor/",
-    "title": "Applied Sciences and Engineering Minor \u2014 UNC Catalog (COMP 581 Introduction to Robotics)",
+    "title": "Applied Sciences and Engineering Minor — UNC Catalog (COMP 581 Introduction to Robotics)",
     "fetched": "2026-08-16"
   },
   "UNC-S12": {
     "url": "https://admissions.unc.edu/apply/special-opportunities/",
-    "title": "Special Opportunities \u2014 UNC Undergraduate Admissions",
+    "title": "Special Opportunities — UNC Undergraduate Admissions",
     "fetched": "2026-08-16"
   },
   "UNC-S13": {
     "url": "https://studentaid.unc.edu/faq/when-will-i-be-notified-if-i-will-be-receiving-a-non-need-basedmerit-scholarship-from-unc-chapel-hill/",
-    "title": "Academic scholarship notification \u2014 UNC Office of Scholarships and Student Aid",
+    "title": "Academic scholarship notification — UNC Office of Scholarships and Student Aid",
     "fetched": "2026-08-16"
   },
   "UNC-S14": {
     "url": "https://www.unc.edu/posts/2024/03/01/undergraduate-data-science-degree-programs-approved/",
-    "title": "Undergraduate data science degree programs approved \u2014 UNC-Chapel Hill",
+    "title": "Undergraduate data science degree programs approved — UNC-Chapel Hill",
     "fetched": "2026-08-16"
   },
-  "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) \u2014 https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
-  "DUKE-S2": "Duke University Common Data Set 2024-2025 (PDF) \u2014 https://ir.provost.duke.edu/sites/default/files/CDS-2024-25-Final-2.pdf",
-  "DUKE-S3": "Duke Undergraduate Admissions, 'Apply' (deadlines, essays, testing, interviews) \u2014 https://admissions.duke.edu/apply/",
-  "DUKE-S4": "Duke Pratt School of Engineering, Undergraduate Research \u2014 https://pratt.duke.edu/academics/undergrad/research/",
-  "DUKE-S5": "Duke Bass Connections, Student FAQ \u2014 https://bassconnections.duke.edu/get-involved/students/student-faq/",
-  "DUKE-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "DUKE-S7": "Duke Robotics (Pratt), Students page \u2014 https://robotics.pratt.duke.edu/students",
-  "DUKE-S8": "Duke Bass Connections, Project Teams \u2014 https://bassconnections.duke.edu/project-teams/",
-  "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) \u2014 https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
-  "CORNELL-S2": "Cornell Undergraduate Admissions, First-Year Applicants \u2014 https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-  "CORNELL-S3": "Cornell Admissions, First-Year Duffield Engineering Applicants \u2014 https://admissions.cornell.edu/first-year-duffield-engineering-applicants (see also https://www.duffield.cornell.edu/admissions/first-year-applicants/)",
-  "CORNELL-S4": "Cornell Admissions, First-Year Arts & Sciences Applicants \u2014 https://admissions.cornell.edu/first-year-arts-sciences-applicants",
-  "CORNELL-S5": "Robotics @ Cornell \u2014 https://robotics.cornell.edu/",
-  "CORNELL-S6": "Cornell Bowers CIS, Computer Science Research Areas \u2014 https://www.cs.cornell.edu/research",
-  "CORNELL-S7": "EmPRISE Lab, Cornell CS \u2014 http://emprise.cs.cornell.edu/",
-  "CORNELL-S8": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "CORNELL-S9": "Cornell School of Electrical and Computer Engineering, Research Groups \u2014 https://www.duffield.cornell.edu/ece/research-groups/",
-  "JHU-S1": "Johns Hopkins University Common Data Set 2025-2026 (PDF) \u2014 https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
-  "JHU-S2": "JHU Undergraduate Admissions, Application Deadlines & Requirements \u2014 https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-  "JHU-S3": "JHU Admissions (Hopkins Insider), 'Advice For Crafting Your Supplemental Essay' \u2014 2026-2027 Hopkins Supplemental Essay Prompt \u2014 https://apply.jhu.edu/hopkins-insider/advice-for-crafting-your-supplemental-essay/",
-  "JHU-S4": "Laboratory for Computational Sensing and Robotics, About \u2014 https://lcsr.jhu.edu/about/",
-  "JHU-S5": "LCSR, Lab Links \u2014 https://lcsr.jhu.edu/lab-links/",
-  "JHU-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "JHU-S7": "JHU Whiting School of Engineering, Russell Taylor faculty profile \u2014 https://engineering.jhu.edu/faculty/russell-taylor/",
-  "JHU-S8": "LCSR, Faculty \u2014 https://lcsr.jhu.edu/faculty/ ; LCSR archived news (Krieger/IMERSE, Iordachita/AMIRo) \u2014 https://lcsr.jhu.edu/archived-news/",
-  "NEU-S1": "Northeastern University Common Data Set 2024-2025 (PDF) \u2014 https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
-  "NEU-S2": "Northeastern Undergraduate Admissions, Required Materials \u2014 https://admissions.northeastern.edu/application-information/required-materials/",
-  "NEU-S3": "Northeastern Undergraduate Admissions, Admissions Deadlines & Decisions \u2014 https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
-  "NEU-S4": "Northeastern College of Engineering, Undergraduate Co-op \u2014 https://coe.northeastern.edu/academics-experiential-learning/co-op-experiential-learning/co-op/undergraduate-co-op/",
-  "NEU-S5": "Northeastern College of Engineering, Institute for Experiential Robotics \u2014 https://coe.northeastern.edu/coe-research/research-centers-institutes/institute-for-experiential-robotics/",
-  "NEU-S6": "Northeastern Global News, 'Inside the Institute for Experiential Robotics' New Lab in EXP' \u2014 https://news.northeastern.edu/2023/11/27/experiential-robotics-institute-exp/",
-  "NEU-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "NEU-S8": "Northeastern Co-op Undergraduate Student Handbook (PDF) \u2014 https://www.northeastern.edu/wp-content/uploads/Co-op-Undergrad-Student-Handbook-2026.pdf",
-  "NEU-S9": "Institute for Experiential Robotics \u2014 https://robotics.northeastern.edu/home-3/",
-  "SWAT-S1": "Swarthmore College Common Data Set 2025-2026 (PDF) \u2014 https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
-  "SWAT-S2": "Swarthmore Admissions, Apply as a First-Year Student (2026-2027 supplemental prompts) \u2014 https://www.swarthmore.edu/admissions-aid/apply-a-first-year-student",
-  "SWAT-S3": "Swarthmore Admissions, Application Materials & Deadlines \u2014 https://www.swarthmore.edu/admissions-aid/application-materials-deadlines",
-  "SWAT-S4": "Swarthmore Engineering, ABET Accreditation \u2014 https://www.swarthmore.edu/engineering/abet-accreditation",
-  "SWAT-S5": "Swarthmore Engineering, FAQs \u2014 https://www.swarthmore.edu/engineering/faqs",
-  "SWAT-S6": "Swarthmore Engineering, Engineering and Liberal Arts \u2014 https://www.swarthmore.edu/engineering/engineering-and-liberal-arts",
-  "SWAT-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) \u2014 https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
-  "CARL-S2": "Carleton Admissions, Application Materials & Steps \u2014 https://www.carleton.edu/admissions/apply/steps/materials/",
-  "CARL-S3": "Carleton Academic Catalog, Admissions \u2014 https://www.carleton.edu/catalog/current/admissions/",
-  "CARL-S4": "Carleton Computer Science, Requirements for the CS major \u2014 https://www.carleton.edu/computer-science/major/requirements/",
-  "CARL-S5": "Carleton Academic Catalog 2025-26, Computer Science (courses incl. CS 294/394 Directed Research) \u2014 https://www.carleton.edu/catalog/current/departments/cs/",
-  "CARL-S6": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "CARL-S7": "Carleton 3-2 Engineering Program, Sample Course Schedule with Computer Science Major \u2014 https://www.carleton.edu/engineering/course-schedules/computer-science/",
-  "PENN-S1": "University of Pennsylvania Common Data Set 2025-2026 (via Penn IRA, Box-hosted PDF, dated 23 June 2026) \u2014 https://ira.upenn.edu/penn-numbers/common-data-set",
-  "PENN-S2": "Penn Undergraduate Admissions, First-Year Applicants (Fall 2027 entry deadlines) \u2014 https://admissions.upenn.edu/how-to-apply/first-year-applicants",
-  "PENN-S3": "Penn Undergraduate Admissions, Testing \u2014 https://admissions.upenn.edu/how-to-apply/preparing-your-application/testing",
-  "PENN-S4": "Penn Undergraduate Admissions, Writing \u2014 '2026-27 Short Answer and Essay Prompts' \u2014 https://admissions.upenn.edu/how-to-apply/preparing-your-application/writing",
-  "PENN-S5": "GRASP Lab Facilities (faculty/student counts, subgroups, undergraduate involvement) \u2014 https://www.grasp.upenn.edu/about/facilities/",
-  "PENN-S6": "Penn Engineering, 'NATO Explores the Future of Robotics at Penn's GRASP Lab' \u2014 https://www.engineering.upenn.edu/stories/nato-explores-the-future-of-robotics-at-penns-grasp-lab/",
-  "PENN-S7": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "PENN-S8": "GRASP Lab, Undergraduate Research \u2014 https://www.grasp.upenn.edu/academics/undergraduate-research/",
-  "PENN-S9": "GRASP Lab, History \u2014 https://www.grasp.upenn.edu/about/history/",
-  "MIT-S1": "MIT Institutional Research, 2025-26 Common Data Set \u2014 https://ir.mit.edu/projects/2025-26-common-data-set/",
-  "MIT-S2": "MIT Admissions, Admissions Statistics (Class of 2029) \u2014 https://mitadmissions.org/apply/process/stats/",
-  "MIT-S3": "MIT Admissions, Essays, Activities & Academics \u2014 https://mitadmissions.org/apply/firstyear/essays-activities-academics/",
-  "MIT-S4": "MIT Admissions, Deadlines & Requirements \u2014 https://mitadmissions.org/apply/firstyear/deadlines-requirements/",
-  "MIT-S5": "MIT Admissions, Interview \u2014 https://mitadmissions.org/apply/firstyear/interview/",
-  "MIT-S6": "MIT UROP, About (participation statistics) \u2014 https://urop.mit.edu/about/",
-  "MIT-S7": "MIT Course Catalog, Undergraduate Research Opportunities Program \u2014 https://catalog.mit.edu/mit/undergraduate-education/academic-research-options/undergraduate-research-opportunities-program/",
-  "MIT-S8": "MIT CSAIL Alliances, CSAIL by the Numbers \u2014 https://cap.csail.mit.edu/engage/why-csail-alliances/csail-numbers",
-  "MIT-S9": "FIRST, Scholarships resource page \u2014 https://www.firstinspires.org/resources/library/scholarships",
-  "MIT-S10": "MIT Department of Mechanical Engineering, '2.007 Forever!' \u2014 https://meche.mit.edu/news-media/2007-forever",
-  "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) \u2014 https://web.mit.edu/webcast/2.007/",
+  "DUKE-S1": "Duke University Common Data Set 2025-2026 (PDF) — https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
+  "DUKE-S2": "Duke University Common Data Set 2024-2025 (PDF) — https://ir.provost.duke.edu/sites/default/files/CDS-2024-25-Final-2.pdf",
+  "DUKE-S3": "Duke Undergraduate Admissions, 'Apply' (deadlines, essays, testing, interviews) — https://admissions.duke.edu/apply/",
+  "DUKE-S4": "Duke Pratt School of Engineering, Undergraduate Research — https://pratt.duke.edu/academics/undergrad/research/",
+  "DUKE-S5": "Duke Bass Connections, Student FAQ — https://bassconnections.duke.edu/get-involved/students/student-faq/",
+  "DUKE-S6": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "DUKE-S7": "Duke Robotics (Pratt), Students page — https://robotics.pratt.duke.edu/students",
+  "DUKE-S8": "Duke Bass Connections, Project Teams — https://bassconnections.duke.edu/project-teams/",
+  "CORNELL-S1": "Cornell University Common Data Set 2025-2026 (XLSX) — https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
+  "CORNELL-S2": "Cornell Undergraduate Admissions, First-Year Applicants — https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+  "CORNELL-S3": "Cornell Admissions, First-Year Duffield Engineering Applicants — https://admissions.cornell.edu/first-year-duffield-engineering-applicants (see also https://www.duffield.cornell.edu/admissions/first-year-applicants/)",
+  "CORNELL-S4": "Cornell Admissions, First-Year Arts & Sciences Applicants — https://admissions.cornell.edu/first-year-arts-sciences-applicants",
+  "CORNELL-S5": "Robotics @ Cornell — https://robotics.cornell.edu/",
+  "CORNELL-S6": "Cornell Bowers CIS, Computer Science Research Areas — https://www.cs.cornell.edu/research",
+  "CORNELL-S7": "EmPRISE Lab, Cornell CS — http://emprise.cs.cornell.edu/",
+  "CORNELL-S8": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "CORNELL-S9": "Cornell School of Electrical and Computer Engineering, Research Groups — https://www.duffield.cornell.edu/ece/research-groups/",
+  "JHU-S1": "Johns Hopkins University Common Data Set 2025-2026 (PDF) — https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
+  "JHU-S2": "JHU Undergraduate Admissions, Application Deadlines & Requirements — https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+  "JHU-S3": "JHU Admissions (Hopkins Insider), 'Advice For Crafting Your Supplemental Essay' — 2026-2027 Hopkins Supplemental Essay Prompt — https://apply.jhu.edu/hopkins-insider/advice-for-crafting-your-supplemental-essay/",
+  "JHU-S4": "Laboratory for Computational Sensing and Robotics, About — https://lcsr.jhu.edu/about/",
+  "JHU-S5": "LCSR, Lab Links — https://lcsr.jhu.edu/lab-links/",
+  "JHU-S6": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "JHU-S7": "JHU Whiting School of Engineering, Russell Taylor faculty profile — https://engineering.jhu.edu/faculty/russell-taylor/",
+  "JHU-S8": "LCSR, Faculty — https://lcsr.jhu.edu/faculty/ ; LCSR archived news (Krieger/IMERSE, Iordachita/AMIRo) — https://lcsr.jhu.edu/archived-news/",
+  "NEU-S1": "Northeastern University Common Data Set 2024-2025 (PDF) — https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
+  "NEU-S2": "Northeastern Undergraduate Admissions, Required Materials — https://admissions.northeastern.edu/application-information/required-materials/",
+  "NEU-S3": "Northeastern Undergraduate Admissions, Admissions Deadlines & Decisions — https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+  "NEU-S4": "Northeastern College of Engineering, Undergraduate Co-op — https://coe.northeastern.edu/academics-experiential-learning/co-op-experiential-learning/co-op/undergraduate-co-op/",
+  "NEU-S5": "Northeastern College of Engineering, Institute for Experiential Robotics — https://coe.northeastern.edu/coe-research/research-centers-institutes/institute-for-experiential-robotics/",
+  "NEU-S6": "Northeastern Global News, 'Inside the Institute for Experiential Robotics' New Lab in EXP' — https://news.northeastern.edu/2023/11/27/experiential-robotics-institute-exp/",
+  "NEU-S7": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "NEU-S8": "Northeastern Co-op Undergraduate Student Handbook (PDF) — https://www.northeastern.edu/wp-content/uploads/Co-op-Undergrad-Student-Handbook-2026.pdf",
+  "NEU-S9": "Institute for Experiential Robotics — https://robotics.northeastern.edu/home-3/",
+  "SWAT-S1": "Swarthmore College Common Data Set 2025-2026 (PDF) — https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
+  "SWAT-S2": "Swarthmore Admissions, Apply as a First-Year Student (2026-2027 supplemental prompts) — https://www.swarthmore.edu/admissions-aid/apply-a-first-year-student",
+  "SWAT-S3": "Swarthmore Admissions, Application Materials & Deadlines — https://www.swarthmore.edu/admissions-aid/application-materials-deadlines",
+  "SWAT-S4": "Swarthmore Engineering, ABET Accreditation — https://www.swarthmore.edu/engineering/abet-accreditation",
+  "SWAT-S5": "Swarthmore Engineering, FAQs — https://www.swarthmore.edu/engineering/faqs",
+  "SWAT-S6": "Swarthmore Engineering, Engineering and Liberal Arts — https://www.swarthmore.edu/engineering/engineering-and-liberal-arts",
+  "SWAT-S7": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "CARL-S1": "Carleton College Common Data Set 2025-2026 (PDF) — https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
+  "CARL-S2": "Carleton Admissions, Application Materials & Steps — https://www.carleton.edu/admissions/apply/steps/materials/",
+  "CARL-S3": "Carleton Academic Catalog, Admissions — https://www.carleton.edu/catalog/current/admissions/",
+  "CARL-S4": "Carleton Computer Science, Requirements for the CS major — https://www.carleton.edu/computer-science/major/requirements/",
+  "CARL-S5": "Carleton Academic Catalog 2025-26, Computer Science (courses incl. CS 294/394 Directed Research) — https://www.carleton.edu/catalog/current/departments/cs/",
+  "CARL-S6": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "CARL-S7": "Carleton 3-2 Engineering Program, Sample Course Schedule with Computer Science Major — https://www.carleton.edu/engineering/course-schedules/computer-science/",
+  "PENN-S1": "University of Pennsylvania Common Data Set 2025-2026 (via Penn IRA, Box-hosted PDF, dated 23 June 2026) — https://ira.upenn.edu/penn-numbers/common-data-set",
+  "PENN-S2": "Penn Undergraduate Admissions, First-Year Applicants (Fall 2027 entry deadlines) — https://admissions.upenn.edu/how-to-apply/first-year-applicants",
+  "PENN-S3": "Penn Undergraduate Admissions, Testing — https://admissions.upenn.edu/how-to-apply/preparing-your-application/testing",
+  "PENN-S4": "Penn Undergraduate Admissions, Writing — '2026-27 Short Answer and Essay Prompts' — https://admissions.upenn.edu/how-to-apply/preparing-your-application/writing",
+  "PENN-S5": "GRASP Lab Facilities (faculty/student counts, subgroups, undergraduate involvement) — https://www.grasp.upenn.edu/about/facilities/",
+  "PENN-S6": "Penn Engineering, 'NATO Explores the Future of Robotics at Penn's GRASP Lab' — https://www.engineering.upenn.edu/stories/nato-explores-the-future-of-robotics-at-penns-grasp-lab/",
+  "PENN-S7": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "PENN-S8": "GRASP Lab, Undergraduate Research — https://www.grasp.upenn.edu/academics/undergraduate-research/",
+  "PENN-S9": "GRASP Lab, History — https://www.grasp.upenn.edu/about/history/",
+  "MIT-S1": "MIT Institutional Research, 2025-26 Common Data Set — https://ir.mit.edu/projects/2025-26-common-data-set/",
+  "MIT-S2": "MIT Admissions, Admissions Statistics (Class of 2029) — https://mitadmissions.org/apply/process/stats/",
+  "MIT-S3": "MIT Admissions, Essays, Activities & Academics — https://mitadmissions.org/apply/firstyear/essays-activities-academics/",
+  "MIT-S4": "MIT Admissions, Deadlines & Requirements — https://mitadmissions.org/apply/firstyear/deadlines-requirements/",
+  "MIT-S5": "MIT Admissions, Interview — https://mitadmissions.org/apply/firstyear/interview/",
+  "MIT-S6": "MIT UROP, About (participation statistics) — https://urop.mit.edu/about/",
+  "MIT-S7": "MIT Course Catalog, Undergraduate Research Opportunities Program — https://catalog.mit.edu/mit/undergraduate-education/academic-research-options/undergraduate-research-opportunities-program/",
+  "MIT-S8": "MIT CSAIL Alliances, CSAIL by the Numbers — https://cap.csail.mit.edu/engage/why-csail-alliances/csail-numbers",
+  "MIT-S9": "FIRST, Scholarships resource page — https://www.firstinspires.org/resources/library/scholarships",
+  "MIT-S10": "MIT Department of Mechanical Engineering, '2.007 Forever!' — https://meche.mit.edu/news-media/2007-forever",
+  "MIT-S11": "MIT 2.007 Design and Manufacturing I (course webcast page) — https://web.mit.edu/webcast/2.007/",
   "GT-S1": "Georgia Tech Common Data Set 2025-2026 (PDF) - https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
   "GT-S2": "Georgia Tech Institutional Research CDS index - https://irp.gatech.edu/common-data-set",
   "GT-S3": "Georgia Tech Undergraduate Admission, First-Year Deadlines (2026-2027 Important Dates) - https://admission.gatech.edu/first-year/deadlines",
@@ -643,5 +643,356 @@
   "RPI-S5": "RPI School of Engineering, B.S. in Robotics Engineering - https://eng.rpi.edu/bs-robotics-engineering",
   "RPI-S6": "FIRST scholarship portal (Pearson Futures), Rensselaer Polytechnic Institute - FIRST - https://futures.pearson.com/scholarships/276a7624-4636-40db-90c0-9ae15e1e7837",
   "RPI-S7": "RPI Financial Aid, Scholarships (no FIRST award listed) - https://financialaid.rpi.edu/types-aid/scholarships",
-  "RPI-S8": "RPI Undergraduate Admissions, First-year application FAQs (self-reported scores, official document handling) - https://undergrad.admissions.rpi.edu/apply/first-year-applicants/application-frequently-asked-questions"
+  "RPI-S8": "RPI Undergraduate Admissions, First-year application FAQs (self-reported scores, official document handling) - https://undergrad.admissions.rpi.edu/apply/first-year-applicants/application-frequently-asked-questions",
+  "FIN-CARNEGIE-MELLON-DEADLINES": {
+    "url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-CARNEGIE-MELLON-COST": {
+    "url": "https://www.cmu.edu/sfs/tuition/undergraduate/index.html",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "First-year campus resident, full 2026-27 cost of attendance: tuition $69,702; billed tuition, fees and living expenses $91,214; total $93,614 includes books, personal expenses and travel allowances. Required health insurance is an additional $3,093 unless waived."
+  },
+  "FIN-CARNEGIE-MELLON-CDS": {
+    "url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds_2025_full_pdf.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 34867,
+      "admitted": 3859,
+      "enrolled": 1804
+    },
+    "quote": "Total first-time, first-year (freshman) who applied:                  21,054     12,942      871          0            34,867\n\n Total first-time, first-year (freshman) who were admitted:            2,140      1,628       91           0            3,859\n\n Total full-time, first-time first-year (freshman) who enrolled:       1,060      700         44           0            1804\n\n Total part-time, first-time first-year (freshman) who enrolled:       0          0           0            0            0\n\n\n\n\nC2. First-time, first-year (freshman) wait-listed students:\nStudents who met admission requirements but whose final admission was contingent on space availability\n\n Do you have a policy of placing students on a waiting list?                                                    Yes\n If yes, please answer the questions below for Fall 2024 admissions:\n Number of qualified applicant offered a place on waiting list:                                                 7,117\n\n Number of wait-listed students who accepted a place on the list:                                               4,937\n\n Number of wait-listed students admitted:                                                                       36\n\n Is your wait-list ranked?                                                                                      No\n\n If yes, do you release that information to students?                                                           N/A\n\n Do you release that information to school counselor?                                                           N/A\n\n\n\n\nCARNEGIE MELLON UNIVERISITY COMMON DATA SET 2025-2026                                                                                6\n\fC.",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-CARNEGIE-MELLON-REQUIREMENTS": {
+    "url": "https://www.cmu.edu/admission/admission/undergraduate-admission-requirements",
+    "title": "Official undergraduate requirements; supplemental question count",
+    "fetched": "2026-10-14",
+    "quote": "Common Application Essay\nCommon Application Writing Supplement\nThis includes three short-answer questions\n*Carnegie Mellon accepts fee waivers from students who meet one of the indicators of economic need as outlined on the Common Application.\nAdditional Requirements\nFor All Applicants\nIf admitted, you must provide proof of meeting all requirements"
+  },
+  "FIN-CORNELL-DEADLINES": {
+    "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-CORNELL-COST": {
+    "url": "https://finaid.cornell.edu/cost-to-attend",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 annual endowed-college / non-New York resident contract-college cost is $99,734. Regional transportation varies and is not included in the numerical total. Required Student Health Plan coverage is extra unless waived."
+  },
+  "FIN-CORNELL-CDS": {
+    "url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 72523,
+      "admitted": 6077,
+      "enrolled": 3827
+    },
+    "quote": "C1 | First-time, first-year students: Provide the number of degree-seeking, first-time, first-year students who applied, were admitted, and enrolled (full- or part-time) in Fall 2025. \nTotal first-time, first-year males who applied | 36834\nTotal first-time, first-year females who applied | 35687\nTotal first-time, first-year students of unknown sex who applied | 2\nTotal first-time, first-year males who were admitted | 2794\nTotal first-time, first-year females who were admitted | 3282\nTotal first-time, first-year students of unknown sex who were admitted | 1\nTotal first-time, first-year males who enrolled | 1806\nTotal first-time, first-year females who enrolled | 2020\nTotal first-time, first-year students of unknown sex who enrolled | 1\nTotal first-time, first-year (degree-seeking) who applied | 12978 | 40979 | 18566 | 0 | 72523\nTotal first-time, first-year (degree-seeking) who were admitted | 1720 | 3693 | 664 | 0 | 6077\nTotal first-time, first-year (degree-seeking) who enrolled | 1190 | 2248 | 389 | 0 | 3827\nSubmitting ACT Scores | 0.13 | 486",
+    "verification_method": "official downloaded XLSX sectionC parsed with openpyxl",
+    "quote_format": "Exact cell text and cached numeric values from official XLSX; cell separators normalized as vertical bars."
+  },
+  "FIN-DUKE-DEADLINES": {
+    "url": "https://admissions.duke.edu/apply/",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-DUKE-COST": {
+    "url": "https://financialaid.duke.edu/how-aid-calculated/cost-attendance/",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 first-year nine-month cost of attendance is $103,180–$103,975. The published range varies with domestic transportation and $60 Pratt dues; the maximum is not a personalized North Carolina budget."
+  },
+  "FIN-DUKE-CDS": {
+    "url": "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 55541,
+      "admitted": 2910,
+      "enrolled": 1749
+    },
+    "quote": "Total first-time, first-year males who applied                                 25,641\n     Total first-time, first-year females who applied                               29,900\n     Total first-time, first-year students of unknown sex who applied\n\n                        First-Time, First-Year Student Admits                        Total\n     Total first-time, first-year males who were admitted                            1,390\n     Total first-time, first-year females who were admitted                          1,520\n     Total first-time, first-year students of unknown sex who were admitted\n\n                      First-Time, First-Year Student Enrollees                       Total\n     Total first-time, first-year males who enrolled                                  833\n     Total first-time, first-year females who enrolled                                916\n     Total first-time, first-year students of unknown sex who enrolled\n\n                First-Time, First-Year Student Enrollees by Status                   Total\n     Total full-time, first-time, first-year males who enrolled                       833\n     Total part-time, first-time, first-year males who enrolled\n     Total full-time, first-time, first-year females who enrolled                     916\n     Total part-time, first-time, first-year females who enrolled\n     Total full-time, first-time, first-year students of unknown sex who enrolled\n     Total part-time, first-time, first-year students of unknown sex who enrolled\n\n     If available, please provide residency breakdowns for total applicants, admits, and enrolled students: Fall 2025\n     Please report based on known physical address at time of application.\n",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-GEORGIA-TECH-DEADLINES": {
+    "url": "https://admission.gatech.edu/first-year/deadlines",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-GEORGIA-TECH-COST": {
+    "url": "https://finaid.gatech.edu/costs/undergraduate-costs",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 first-year domestic non-Georgia on-campus two-semester cost is $55,314. The current university page also publishes an estimated 2027-28 first-year nonresident on-campus budget of $55,018; it is an estimate, not a final tuition commitment."
+  },
+  "FIN-GEORGIA-TECH-CDS": {
+    "url": "https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 66881,
+      "admitted": 8921,
+      "enrolled": 4070
+    },
+    "quote": "Total first-time, first-year males who applied                                       44,517\n         Total first-time, first-year females who applied                                     22,363\n         Total first-time, first-year students of unknown sex who applied                        1\n\n                              First-Time, First-Year Student Admits                            Total\n         Total first-time, first-year males who were admitted                                  4,937\n         Total first-time, first-year females who were admitted                                3,983\n         Total first-time, first-year students of unknown sex who were admitted                  1\n\n                             First-Time, First-Year Student Enrollees                          Total\n         Total first-time, first-year males who enrolled                                       2,340\n         Total first-time, first-year females who enrolled                                     1,730\n         Total first-time, first-year students of unknown sex who enrolled                       1\n\n                       First-Time, First-Year Student Enrollees by Status                      Total\n         Total full-time, first-time, first-year males who enrolled                            2,340\n         Total part-time, first-time, first-year males who enrolled                              0\n         Total full-time, first-time, first-year females who enrolled                          1,730\n         Total part-time, first-time, first-year females who enrolled                            0\n         Total full-time, first-time, first-year students of unknown sex who enrolled            1\n ",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-GEORGIA-TECH-CURRENT": {
+    "url": "https://admission.gatech.edu/first-year/deadlines",
+    "title": "Current-cycle official requirements/deadlines",
+    "fetched": "2026-10-14",
+    "quote": "2026-2027 Important Dates\nEarly Action 1\nEarly Action 2\nRegular Decision\nApplication Opens\nAugust 1\nAugust 1\nAugust 1\nApplication Deadline\nOctober 15\nNovember 2\nJanuary 6\nDocument Deadline\nOctober 30\nNovember 16\nJanuary 22\nSelf-Reported Test Scores Deadline\nNovember 16\nDecember 8\nJanuary 22\nDecision Release\nEarly December\nLate January\nMid-March\nDeposit Deadline\nMay 1\nMay 1\nMay 1\nImportant Information to Note:\nAll deadlines are 11:59 p.m. in your time zone.\nIf your transcript is not available by the document deadline, submit it as soon as possible.\nThe document deadline is for additional submissions outside of your Common Application. These documents could include school reports, transcripts, recommendations, required or optional portfolios , International Student language proficiency interviews, or any other required school information.\nSelf-reported test scores should be submitted by the dates above. To learn more about how we consider testing in the admission process, please see more details on our standardized tests page.\nEarly Action Deadlines\nEarly Action Deadlines\nAn Early Action application to Georgia Tech is non-binding. The application review process is the same in both Early Action and Regular Decision plans.\nEarly Action 1 – This application deadline is for Georgia students. Applications from students who attend a Georgia high school or Georgia residents living outside the state.\nEarly Action 2 – This application deadline is for non-Georgia students. Applications from students who attend a high school outside Georgia (including international) and are not Georgia residents are eligible for the Early Action 2 plan.\nStudents with incomplete Early Action files may complete their application and be considered for admission in Regular Decision. Applications not completed by the document and self-reported test score deadline for Regular Decision will be closed.\nRegular Decision Deadline\nRegular Decision Deadline\nThis is the last date to apply for first-year admission. The application review process is the same in both Early Action and Regular Decision plans.\nThe Regular Decision plan is open to both Georgia and non-Georgia students.\nStudents with incomplete Early Action files may complete their application and be considered for admission in Regular Decisio"
+  },
+  "FIN-JOHNS-HOPKINS-DEADLINES": {
+    "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-JOHNS-HOPKINS-COST": {
+    "url": "https://apply.jhu.edu/tuition-aid/estimate-your-college-costs/",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "Official admissions page gives an approximate 2026-27 total cost of $95,000. The stored exact $94,858 was not reverified; obtain the detailed SFS budget for an exact replacement."
+  },
+  "FIN-JOHNS-HOPKINS-CDS": {
+    "url": "https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 50259,
+      "admitted": 3072,
+      "enrolled": 1378
+    },
+    "quote": "Total first-time, first-year males who applied                                        21916\n     Total first-time, first-year females who applied                                      28298\n     Total first-time, first-year students of unknown sex who applied                        45\n\n                           First-Time, First-Year Student Admits                            Total\n     Total first-time, first-year males who were admitted                                   1402\n     Total first-time, first-year females who were admitted                                 1659\n     Total first-time, first-year students of unknown sex who were admitted                  11\n\n                         First-Time, First-Year Student Enrollees                           Total\n     Total first-time, first-year males who enrolled                                         643\n     Total first-time, first-year females who enrolled                                       732\n     Total first-time, first-year students of unknown sex who enrolled                        3\n\n                   First-Time, First-Year Student Enrollees by Status                       Total\n     Total full-time, first-time, first-year males who enrolled                              643\n     Total part-time, first-time, first-year males who enrolled                               0\n     Total full-time, first-time, first-year females who enrolled                            732\n     Total part-time, first-time, first-year females who enrolled                             0\n     Total full-time, first-time, first-year students of unknown sex who enrolled             3\n     Total part-time, first-time, first-year students of",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-JOHNS-HOPKINS-CURRENT": {
+    "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+    "title": "Current-cycle official requirements/deadlines",
+    "fetched": "2026-10-14",
+    "quote": "Application Deadline\nNovember 1, 2026\nJanuary 2, 2027\nJanuary 2, 2027\nMarch 1, 2027\nFinancial Aid Deadline\nNovember 15, 2026\nJanuary 15, 2027\nJanuary 15, 2027\nMarch 15, 2027\nDecision Release\nDecember 11, 2026\nFebruary 12, 2027\nMarch 24, 2027\nMay 14, 2027\nReply-By Date\nJanuary 15, 2027\nFebruary 26, 2027\nMay 1, 2027\nJune 1, 2027\nApply now through the Common Application\nApply now through Coalition on Scoir\nApplication Checklist\nSubmit Through the Common Application or Coalition on Scoir\nYour completed application\nLearn More\nOpen\nClose\nA completed application through Common Application or Coalition on Scoir will include your high school transcript, activities list inclusive of family or work responsibilities, list of academic achievements and honors, personal essay (known as the personal statement), parent or guardian information, the Hopkins supplement, and standardized test scores.\nThe Hopkins supplement, which includes our supplemental essay\nLearn More\nOpen\nClose\n2026–2027 Supplemental Essay Prompt\nAt Johns Hopkins, community is built through dialogue, collaboration, and a willingness to engage across differences.\nWhether on campus or in the broader world, community depends on bridge builders who can listen to differing perspectives, challenge their own assumptions, or work together toward shared goals.\nDrawing on your own experiences, what have you learned about engaging across differences and how has it shaped the way you think about building bridges, enhancing community, and working with others? (350-word limit)\nView our Hopkins Insider article on this year’s supplemental essay\nApplying to Biomedical Engineering (BME):\nIf you are interested in applying to our biomedical engineering program, be sure to indicate it as your first-choice major. There is no separate application process.\nStudents are admitted to BME based on evaluation of credentials and space available. It is possible to be admitted to the university without acceptance to the BME major. If you are accepted into the BME major, you’ll be notified at the time of decision release. If you are admitted to the university but not to the BME major, you may select any other intended major in the Whiting School of Engineering or Krieger School of Arts & Sciences.\nThe $70 application fee or fee waiver\nLearn "
+  },
+  "FIN-MARYLAND-DEADLINES": {
+    "url": "https://admissions.umd.edu/apply/application-deadlines",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-MARYLAND-COST": {
+    "url": "https://financialaid.umd.edu/resources-policies/cost-attendance",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 non-Maryland resident annual on-campus undergraduate estimated full budget is $65,520, including indirect expenses. Check engineering differential charges for the chosen robotics route."
+  },
+  "FIN-MARYLAND-CDS": {
+    "url": "https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 67101,
+      "admitted": 30218,
+      "enrolled": 6559
+    },
+    "quote": "C1 | First-time, first-year students: Provide the number of degree-seeking, first-time, first-year students who applied, were admitted, and enrolled (full- or part-time) in Fall 2025. \nTotal first-time, first-year males who applied | 33095\nTotal first-time, first-year females who applied | 34006\nTotal first-time, first-year students of unknown sex who applied | 0\nTotal first-time, first-year males who were admitted | 14151\nTotal first-time, first-year females who were admitted | 16067\nTotal first-time, first-year students of unknown sex who were admitted | 0\nTotal first-time, first-year males who enrolled | 3163\nTotal first-time, first-year females who enrolled | 3396\nTotal first-time, first-year students of unknown sex who enrolled | 0\nTotal first-time, first-year (degree-seeking) who applied | 18487 | 48614 | 67101\nTotal first-time, first-year (degree-seeking) who were admitted | 8075 | 22143 | 30218\nTotal first-time, first-year (degree-seeking) who enrolled | 4133 | 2426 | 6559\nSubmitting ACT Scores | 0.07 | 464",
+    "verification_method": "official downloaded XLSX sectionC parsed with openpyxl",
+    "quote_format": "Exact cell text and cached numeric values from official XLSX; cell separators normalized as vertical bars."
+  },
+  "FIN-MICHIGAN-DEADLINES": {
+    "url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-MICHIGAN-COST": {
+    "url": "https://finaid.umich.edu/getting-started/estimating-costs",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "Engineering robotics budget remains unresolved. Official 2026-27 LSA nonresident annual budgets are $88,394 lower division and $93,096 upper division; these cannot be labeled as Engineering costs. Registrar Engineering query returned HTTP 403."
+  },
+  "FIN-MICHIGAN-CDS": {
+    "url": "https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 109112,
+      "admitted": 17915,
+      "enrolled": 8178
+    },
+    "quote": "Total first-time, first-year males who applied                           53,044\n Total first-time, first-year females who applied                         56,068\n Total first-time, first-year students of unknowns gender who applied\n\n\n\n                   First-Time, First-Year Student Admits                   Total\n Total first-time, first-year males who were admitted                     7,593\n Total first-time, first-year females who were admitted                   10,322\n Total first-time, first-year students of unknown sex who were admitted\n\f                                          Common Data Set 2025-2026\n\n\n                 First-Time, First-Year Student Enrollees                        Total\n Total first-time, first-year males who enrolled                                 3,499\n Total first-time, first-year females who enrolled                               4,679\n Total first-time, first-year students of unknown sex who enrolled\n\n\n           First-Time, First-Year Student Enrollees by Status                    Total\n Total full-time, first-time, first-year males who enrolled                      3,487\n Total part-time, first-time, first-year males who enrolled                        12\n Total full-time, first-time, first-year females who enrolled                    4,660\n Total part-time, first-time, first-year females who enrolled                      19\n Total full-time, first-time, first-year students of unknown sex who\n enrolled\n Total part-time, first-time, first-year students of unknown sex who\n enrolled\n\n\nIf available, please provide residency breakdowns for total applicants, admits, and\nenrolled students: Fall 2025\n\nPlease report based on known physical addres",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-MICHIGAN-CURRENT": {
+    "url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+    "title": "Current-cycle official requirements/deadlines",
+    "fetched": "2026-10-14",
+    "quote": "Early Decision\nApplication Deadline: Nov. 1\nFinancial Aid Deadline: Nov. 15\nDecision Date: By Dec. 24\nCommitment Date: Jan. 6\nEarly Decision (ED) is a binding plan. Students who participate in the Early Decision plan will apply by Nov. 1 and can expect a decision notification by the end of December. This plan allows highly qualified students, who know that the University of Michigan is their top choice institution, to affirm their commitment to the university earlier in the annual application cycle.\nFinancial aid packages for students who submitted their CSS Profile and FAFSA by Nov. 15 will follow closely after decision release.\nEarly Decision ​​is appropriate for students who are committed to attending ​U​-M if they are admitted. The applicant, a parent or guardian, and the high school counselor must sign the Early Decision Agreement, indicating the student’s commitment to attend ​U​-M if offered admission. If the student is admitted to ​U​-M through Early Decision, they must immediately withdraw applications to all other colleges and universities.\nStudents who participate in Early Decision could receive these possible outcomes: admit, deny, or postpone. Students postponed will no longer have a binding commitment if admitted.\nAll admissions decisions will be posted on Enrollment Connect.\nFAQs\nWhy has U-M made the decision to offer an ED plan?\nThe introduction of ED will allow highly qualified students who know that the University of Michigan is their top choice institution to affirm their commitment to the university earlier in the annual application cycle.\nWhat is the ED agreement that must be signed by the student, parent/guardian, and counselor?\nThe ED Agreement is included in the Common App and indicates the student’s commitment to attend ​U​-M if offered admission. You can find more information on how to complete the agreement on the Common App website\nHow will financial aid packages be determined for students applying for ED?\nThe FAFSA will be available on Oct.1, 2026. Students must complete the FAFSA and CSS Profile by the Nov. 15 deadline to receive a financial aid package if admitted in ED.\nThe U-M Net Price Calculator is available to help students and families explore the cost of a U-M education and make informed decisions as you plan for college.\n"
+  },
+  "FIN-NC-STATE-DEADLINES": {
+    "url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-NC-STATE-COST": {
+    "url": "https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 North Carolina resident on-campus undergraduate full budget is $28,490: tuition/fees $9,247, books $642, housing $8,738, food $6,684, personal $1,650, transportation $1,485, loan fees $44. Verify differential tuition for the chosen Engineering route."
+  },
+  "FIN-NC-STATE-CDS": {
+    "url": "https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2024-25.v3.pdf",
+    "title": "Official Common Data Set 2024-25 (C1 entering cohort Fall2024)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2024",
+    "counts": {
+      "applied": 44043,
+      "admitted": 18201,
+      "enrolled": null
+    },
+    "quote": "Total first-time, first-year men who applied                                                 21260\n              Total first-time, first-year women who applied                                               22783\n              Total first-time, first-year of another gender who applied                                      0\n              Total first-time, first-year of unknown gender who applied                                      0\n\n                          FIRST-TIME, FIRST-YEAR STUDENT ADMITS                                            TOTAL\n              Total first-time, first-year men who were admitted                                            7977\n              Total first-time, first-year women who were admitted                                         10404\n              Total first-time, first-year of another gender who were admitted                                0\n\n              Total first-time, first-year of unknown gender who were admitted                                0\n\n                          FIRST-TIME, FIRST-YEAR STUDENT ENROLLEES                                         TOTAL\n              Total first-time, first-year men who enrolled                                                 2826\n              Total first-time, first-year women who enrolled                                               2565\n              Total first-time, first-year of another gender who enrolled                                     0\n              Total first-time, first-year of unknown gender who enrolled                                     0\n\n                   FIRST-TIME, FIRST-YEAR STUDENT ENROLLEES BY STATUS                                     TOTAL\n              Total fu",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-NC-STATE-CURRENT": {
+    "url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+    "title": "Current-cycle official requirements/deadlines",
+    "fetched": "2026-10-14",
+    "quote": "Early Action Decision Timeline for North Carolina Residents\nFor the fall 2027 application cycle, NC State plans to release Early Action admission decisions for North Carolina residents by the end of December.\nTo qualify for this earlier notification, students must:\nSubmit their Early Action application by November 1.\nHave a complete application on file with the Office of Undergraduate Admissions by November 10.\nBe confirmed as a North Carolina resident through the Residency Determination Service (RDS) by November 10. Students can provide their Residency Classification Number (RCN) on their application or add it later through their wolfPAW portal by the deadline.\nAll other Early Action applicants who have a complete application on file by November 10 will receive an admission decision by January 31.\nApplication Review\nSelecting a First and Second Choice Program\nWe strongly recommend that students select first and second choice academic programs that genuinely interest them. While many students are admitted to their first-choice program, some are offered admission to their second choice. If you are admitted to your second choice, you will want to be sure it’s one you are excited to pursue.\nNot sure where to start? Focus 2 Apply helps you explore how your strengths and interests align with different NC State majors and future career paths. Take the career assessment at go.ncsu.edu/focus2apply.\nMath Preparation for First-Year Applicants\nTo prepare for the academic rigor of college-level courses, we strongly recommend that all high school students take pre-calculus. To be a competitive applicant for a STEM or business-related program, pre-calculus is the minimum requirement. To ensure you are fully prepared for the advanced math coursework you will encounter in these fields, we will expect you to continue progressing in math each year and take calculus if it is available to you.\nTest Score Policy for 2027 Applicants\nFirst-year students applying for spring or fall 2027 with a weighted GPA of 2.8 or above (a B- average) are not required to submit SAT or ACT scores. You will have the option to indicate on your Common App or Coalition on Scoir application if you would like your scores used in our review process. In these cases, test scores will only be used to enhance "
+  },
+  "FIN-NORTHEASTERN-DEADLINES": {
+    "url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-NORTHEASTERN-COST": {
+    "url": "https://admissions.northeastern.edu/cost-financial-aid/",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 Boston first-year annual direct and indirect estimate is $98,322: tuition $71,050, fees $1,650, housing $13,612, food $9,210, books $1,000, personal $900, transportation $900. Other entry pathways have different budgets."
+  },
+  "FIN-NORTHEASTERN-CDS": {
+    "url": "https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
+    "title": "Official Common Data Set 2024-25 (C1 entering cohort Fall2024)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2024",
+    "counts": {
+      "applied": 98425,
+      "admitted": 5133,
+      "enrolled": 2759
+    },
+    "quote": "Total first-time, first-year men who applied                                42,678\n     Total first-time, first-year women who applied                              55,719\n     Total first-time, first-year another gender who applied\n     Total first-time, first-year unknown gender who applied                        28\n\n                    First-Time, First-Year Student Admits                         Total\n     Total first-time, first-year men who were admitted                           2,058\n     Total first-time, first-year women who were admitted                         3,074\n     Total first-time, first-year another gender who were admitted\n     Total first-time, first-year unknown gender who were admitted                  1\n\n            First-Time, First-Year Student Enrollees by Status                    Total\n     Total full-time, first-time, first-year men who enrolled                     1,089\n     Total part-time, first-time, first-year men who enrolled\n     Total full-time, first-time, first-year women who enrolled                   1,667\n     Total part-time, first-time, first-year women who enrolled\n     Total full-time, first-time, first-year another gender who enrolled\n     Total part-time, first-time, first-year another gender who enrolled\n     Total full-time, first-time, first-year unknown gender who enrolled            3\n     Total part-time, first-time, first-year unknown gender who enrolled\n\n     If available, please provide residency breakdowns for total applicants, admits, and enrolled students: Fall 2024\n     Please report based on known physical address at time of application.\n\n                   First-Time, First-Year Student Applicants            ",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "FIN-OHIO-STATE-DEADLINES": {
+    "url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-OHIO-STATE-COST": {
+    "url": "https://undergrad.osu.edu/cost-and-aid/basic-costs",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "Official 2026-27 first-year Columbus nonresident billed expenses are $44,271 tuition/fees plus $15,738 housing/food, totaling $60,009. Books, personal and travel expenses are additional. The stored $64,858 full budget was not fully verified."
+  },
+  "FIN-OHIO-STATE-CDS": {
+    "url": "https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 81392,
+      "admitted": 40047,
+      "enrolled": 8248
+    },
+    "quote": "Official PDF page13 visual: menapplied39,510/women41,882; menadmitted19,444/women20,603; menenrolled3,872/women4,376. C1 specifies Fall2025.",
+    "verification_method": "official PDF visual inspection"
+  },
+  "FIN-PURDUE-DEADLINES": {
+    "url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-PURDUE-COST": {
+    "url": "https://www.purdue.edu/treasurer/finance/bursar-office/tuition/fee-rates-2026-2027/undergraduate-tuition-and-fees-2026-2027/",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 West Lafayette nonresident CS/Data Science/Engineering full budget is $53,438, including the $4,050 annual program differential. General nonresident budget is $49,388. Robotics Engineering Technology in Polytechnic has separate program fees and must be costed independently."
+  },
+  "FIN-PURDUE-CDS": {
+    "url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 87220,
+      "admitted": 37881,
+      "enrolled": 9656
+    },
+    "quote": "C1 | First-time, first-year students: Provide the number of degree-seeking, first-time, first-year students who applied, were admitted, \nTotal first-time, first-year males who applied | 53833\nTotal first-time, first-year females who applied | 33387\nTotal first-time, first-year students of unknown sex who applied\nTotal first-time, first-year males who were admitted | 21509\nTotal first-time, first-year females who were admitted | 16372\nTotal first-time, first-year students of unknown sex who were admitted\nTotal first-time, first-year males who enrolled | 5708\nTotal first-time, first-year females who enrolled | 3948\nTotal first-time, first-year students of unknown sex who enrolled\nTotal first-time, first-year (degree-seeking) who applied | 12040 | 58853 | 16327 | 87220\nTotal first-time, first-year (degree-seeking) who were admitted | 8559 | 25650 | 3672 | 37881\nTotal first-time, first-year (degree-seeking) who enrolled | 4303 | 4827 | 526 | 9656\nSubmitting ACT Scores | 0.22649130074565038 | 2187",
+    "verification_method": "official downloaded XLSX sectionC parsed with openpyxl",
+    "quote_format": "Exact cell text and cached numeric values from official XLSX; cell separators normalized as vertical bars."
+  },
+  "FIN-RPI-DEADLINES": {
+    "url": "https://undergrad.admissions.rpi.edu/apply",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_current_cycle"
+  },
+  "FIN-RPI-COST": {
+    "url": "https://financialaid.rpi.edu/cost-attendance",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 undergraduate full budget is $90,076: tuition $66,300, fees $1,676, food/housing $18,870, books $1,410, personal $1,280, transportation $540. A required laptop can add approximately $2,000. Check insurance requirements separately."
+  },
+  "FIN-RPI-CURRENT": {
+    "url": "https://undergrad.admissions.rpi.edu/apply",
+    "title": "Current-cycle official requirements/deadlines",
+    "fetched": "2026-10-14",
+    "quote": "Application Options - Fall 2027*FAFSA and CSS Profile required ONLY if seeking need-based aid. Priority filing dates only; delays in filing generally do not exclude you from aid eligibility.\nAdmission PlanApplication Due DateBindingNotification DateFAFSA & CSS Profile Priority Filing Date*\nEarly Decision INovember 1YesDecember 12November 15\nEarly ActionDecember 1NoJanuary 30December 15\nEarly Decision IIJanuary 6YesJanuary 16January 8\nRegular DecisionJanuary 15NoMarch 6January 31\nB.S./M.D. Program November 1NoEarly AprilNovember 15\nApplication Checklist (First-Year Applicants)\nOther applicant checklists:\nInternational Students - Additional Requirements\nTransfer Applicants Checklist\nPhysician-Scientist (B.S./M.D.) Program Application Checklist\nTranscript Submission Guidelines\nAll Applicants: Your school must send an official high school transcript. We also require transcripts for other classes like dual enrollment/college courses, or self-study classes, that do not have grades of attainment recorded on your high school transcript. Please work with your school counselor so all your academic work is reflected to support your application.\nEarly Decision Applicants: Send your first quarter or trimester grades (or a mid-semester progress report) to our office as soon as they are available. Alternatively, you can upload an unofficial report card or progress report through your application portal.\nLetter of Recommendation\nRequest a letter of recommendation from a counselor or teacher, preferably a math or science teacher who knows you well.\nTest Optional for Fall 2027 Applicants\nAny student who applies to attend Rensselaer Polytechnic Institute as an undergraduate in the fall of 2027 will be able to choose whether or not to submit SAT or ACT scores.\nApplicants to the Physician-Scientist (B.S./M.D.) Program must submit official scores.\nMore information\nTest Score Reporting Guidelines (Optional for Fall 2027)\nSelf-Reporting: Most students can self-report test scores either on their application or through the application portal (available after submission).\nOfficial Scores: Enrolling students must send official scores from the testing agency if they haven’t already. Scores on an official high school transcript will also be considered official.\nApplicants to the Physician-"
+  },
+  "FIN-WPI-DEADLINES": {
+    "url": "https://www.wpi.edu/c/hscounselors",
+    "title": "Official first-year application plans/deadlines",
+    "fetched": "2026-10-14",
+    "verification_status": "verified_month_day_cycle_inferred"
+  },
+  "FIN-WPI-COST": {
+    "url": "https://www.wpi.edu/admissions/tuition-aid/cost-attendance",
+    "title": "Official cost of attendance / undergraduate tuition",
+    "fetched": "2026-10-14",
+    "quote": "2026-27 first-year on-campus budget is $87,570: tuition $63,936, fees $1,502, housing $10,660, food $9,072, books $1,200, personal $1,200. The published resident transportation line is not applicable; required health insurance costs another $2,945 unless waived."
+  },
+  "FIN-WPI-CDS": {
+    "url": "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
+    "title": "Official Common Data Set 2025-26 (C1 entering cohort Fall2025)",
+    "fetched": "2026-10-14",
+    "cohort": "Fall2025",
+    "counts": {
+      "applied": 12355,
+      "admitted": 7647,
+      "enrolled": 1300
+    },
+    "quote": "Total first-time, first-year students who applied            8,522      3,820          13     12,355\n      Total first-time, first-year students admitted            5,158      2,482            7     7,647\n      Total first-time, first-year students enrolled             948         350            2     1,300\n Full-time, first-time, first-year students enrolled             948         350            2     1,300\n Part-time, first-time, first-year students enrolled\n\n\n\n                                       Fall 2025    In-State     Out-of-State    International   Total\n        Total first-time, first-year who applied        3,920           6,735           1,700    12,355\n           Total first-time, first-year admitted        2,571           4,414             662     7,647\n            Total first-time, first-year enrolled        605               629             66     1,300\n\n\nC2.      First-time, first-year wait-listed students (students who met admission\nrequirements but whose final admission was contingent on space availability)\nDo you have a policy of placing students on a waiting list? Yes ☒                No ☐\n\nIf yes, please answer the questions below for Fall 2025 admissions:\n\n Number of qualified applicants offered a place on waiting list                                   2,293\n\n Number accepting a place on waiting list                                                           980\n\n Number of wait-listed students admitted                                                            460\n\n\nIs your waiting list ranked?                                       Yes ☐    No ☒\nIf yes, do you release that information to students?               Yes ☐    No ☐\nDo you release that in",
+    "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  }
 }

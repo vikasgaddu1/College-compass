@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import data from "@/data/robotics_degrees.json";
 import { schools } from "@/lib/data";
+import { useHidden } from "@/lib/hidden";
 import { AlertTriangle, Info, CalendarClock, Ban, GitBranch, ExternalLink, Search } from "lucide-react";
 
 type Program = {
@@ -11,7 +12,7 @@ type Program = {
   bucket: string;
   home_unit: string;
   url: string;
-  launched: string;
+  launched?: string;
   route: string;
   gate: string;
   size: string;
@@ -41,36 +42,40 @@ const CALLOUT_HUE: Record<string, string> = {
 };
 
 export default function RoboticsDegreesPage() {
-  const programs = data.programs as Program[];
-  const [bucket, setBucket] = useState<string>("robotics_engineering");
-  const [onlyNew, setOnlyNew] = useState(false);
+  const { hidden } = useHidden();
+  const programs = useMemo(() => (data.programs as Program[]).filter(p => inList(p) && !hidden.has(p.in_dataset_slug!)), [hidden]);
+  const [bucket, setBucket] = useState<string>("all");
   const [q, setQ] = useState("");
 
   const shown = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return programs.filter(p => {
       if (bucket !== "all" && p.bucket !== bucket) return false;
-      if (onlyNew && inList(p)) return false;
       if (needle) {
         const hay = `${p.institution} ${p.state} ${p.degree_name} ${p.home_unit}`.toLowerCase();
         if (!hay.includes(needle)) return false;
       }
       return true;
     });
-  }, [programs, bucket, onlyNew, q]);
+  }, [programs, bucket, q]);
 
   const meta = (data.bucket_meta as Record<string, { label: string; blurb: string }>)[bucket];
-  const counts = data.counts as any;
+  const visibleSchools = new Set(programs.map(p => p.in_dataset_slug)).size;
+  const primaryRobotics = programs.filter(p => p.bucket === "robotics_engineering").length;
+  const eceRoutes = programs.filter(p => p.bucket === "ece_robotics_route").length;
+  const technologyOptions = programs.filter(p => p.bucket === "robotics_engineering_technology").length;
+  const counts = { total: programs.length, by_bucket: Object.fromEntries((data.bucket_order as string[]).map(b => [b, programs.filter(p => p.bucket === b).length])) };
 
   return (
     <div className="space-y-7">
       <header className="space-y-3">
         <h1 className="serif text-[22px] font-semibold leading-tight text-[hsl(var(--foreground))]">
-          Undergraduate robotics degrees in the US
+          Robotics degree routes across the selected schools
         </h1>
         <p className="max-w-3xl text-[13px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-          {counts.total} programs found, of which {programs.filter(p => !inList(p)).length} are at schools outside the {schools.length} on this list. The
-          single most important thing on this page is that these are not all the same kind of degree.
+          {visibleSchools} visible schools · {primaryRobotics} primary robotics degrees · {eceRoutes} recommended ECE routes.
+          {technologyOptions > 0 && <> {technologyOptions} additional engineering technology option{technologyOptions === 1 ? "" : "s"} shown separately.</>}
+          {" "}The degree title, curriculum and entry gate matter: Purdue’s Robotics Engineering Technology is a separate credential from its recommended Computer Engineering route.
         </p>
       </header>
 
@@ -151,15 +156,13 @@ export default function RoboticsDegreesPage() {
             <input
               value={q}
               onChange={e => setQ(e.target.value)}
+              aria-label="Filter robotics degree routes"
               placeholder="Filter by school, state or degree"
               className="w-56 bg-transparent text-[11.5px] text-[hsl(var(--foreground))] outline-none placeholder:text-[hsl(var(--muted-foreground))]"
             />
           </div>
-          <label className="flex cursor-pointer items-center gap-1.5 text-[11.5px] text-[hsl(var(--foreground))]">
-            <input type="checkbox" checked={onlyNew} onChange={e => setOnlyNew(e.target.checked)} />
-            Only ones not already in my 33-school set
-          </label>
-          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">{shown.length} shown</span>
+
+          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">{shown.length} degree entries shown; hidden schools are excluded</span>
         </div>
       </section>
 
@@ -181,12 +184,13 @@ export default function RoboticsDegreesPage() {
               <span className="font-mono text-[10.5px] text-[hsl(var(--muted-foreground))]">
                 {p.state} · {p.control}
               </span>
+              <span className="chip chip-outline text-[10px]">{(data.bucket_meta as Record<string, { label: string }>)[p.bucket]?.label.split(" — ")[0] ?? p.bucket}</span>
               {inList(p) && (
                 <span
                   className="shrink-0 rounded px-1.5 py-[1px] text-[10px] font-medium text-[hsl(var(--foreground))]"
                   style={{ background: `hsl(${INFO} / 0.13)`, border: `1px solid hsl(${INFO} / 0.35)` }}
                 >
-                  already in my set
+                  selected school
                 </span>
               )}
             </div>
@@ -250,30 +254,13 @@ export default function RoboticsDegreesPage() {
         ))}
       </section>
 
-      {/* Excluded */}
-      <section className="space-y-2">
-        <h2 className="text-[11px] font-semibold uppercase tracking-wide text-[hsl(var(--muted-foreground))]">
-          Checked and ruled out ({(data.excluded as any[]).length})
-        </h2>
-        <div className="rounded-lg border border-[hsl(var(--border))] p-3.5">
-          <ul className="space-y-1.5">
-            {(data.excluded as any[]).map(e => (
-              <li key={e.institution} className="text-[11.5px] leading-relaxed">
-                <span className="font-medium text-[hsl(var(--foreground))]">{e.institution}</span>
-                <span className="text-[hsl(var(--muted-foreground))]"> — {e.why}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <footer className="rounded-lg border border-[hsl(var(--border))] p-4">
         <div className="flex items-start gap-2.5">
           <Info className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--muted-foreground))]" />
           <p className="text-[11px] leading-relaxed text-[hsl(var(--muted-foreground))]">
-            {data.note} Enumerated from a national program search plus first-party catalog pages.
-            Compiled {data.compiled}. Admission routes and gates change — confirm with each school before relying
-            on them.
+            {data.note} This explorer covers the selected schools only; it does not enumerate programs nationwide.
+            Research snapshot: {data.compiled}. Source dates and inaccessible-page limits are recorded in the route research.
+            Admission gates, electives and project access can change before Fall 2027.
           </p>
         </div>
       </footer>

@@ -1,314 +1,276 @@
 {
-  "compiled": "2026-08-31",
-  "degree": "BS in Statistics and Machine Learning (Dietrich College) + Additional Major in Robotics (Robotics Institute)",
-  "assumption": "B grades in the required courses, as specified.",
-  "note": "Every course code, prerequisite and Fall/Spring offering above comes from the CMU course catalog. Dietrich general-education requirements were not researched, so they appear as labelled placeholders rather than invented courses, each estimated at 9 units.",
-  "fulltime_rule": "Students are considered full time if registered for 36 or more units.",
-  "registration_rule": "In order to ensure that students do not have to compete for access to their required courses, registration priority is given to students who are registering for courses in their primary major. Although the university encourages the exploration of other disciplines, access to courses outside a student's primary major (including those courses that fulfill requirements for an additional major, minor, etc.) is on a space-available basis and is not guaranteed.",
-  "semesters": [
+  "compiled": "2026-10-14",
+  "degree": "Bachelor of Science in Robotics (BSR), School of Computer Science",
+  "degree_kind": "Primary major",
+  "minimum_units": 360,
+  "note": "Current 2026\u201327 requirements checked October 14, 2026. This is a requirement map for a Fall 2027 applicant, not an advisor-approved semester schedule. Future offerings, prerequisites and seats must be confirmed. [C1][C4]",
+  "entry": "Apply to the School of Computer Science. SCS first-years are considered for Robotics at first-year major declaration; RI describes declaration at the end of first year and says to take spring mini-course 16-180 first. The catalog labels 16-180 recommended, not required. [C2][C1]",
+  "balance_summary": "The primary BSR requires mechanical/electronic robot building, feedback control, kinematics, computer vision and a senior systems/capstone sequence. Add planning and machine learning deliberately through electives. [C1][C4]",
+  "requirements": [
     {
-      "term": "Year 1 · Fall 2027",
-      "courses": [
-        {
-          "code": "15-112",
-          "title": "Fundamentals of Programming and Computer Science",
-          "units": 12,
-          "role": "major core",
-          "note": "The gateway. Everything downstream depends on it."
-        },
-        {
-          "code": "21-120",
-          "title": "Differential and Integral Calculus",
-          "units": 10,
-          "role": "major core"
-        },
-        {
-          "code": "36-200",
-          "title": "Reasoning with Data",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "—",
-          "title": "Dietrich general education / first-year writing",
-          "units": 9,
-          "role": "placeholder",
-          "note": "Dietrich's gen-ed requirements were not researched — confirm with an advisor."
-        }
-      ],
-      "why": "Nothing robotics-specific yet. The only job this semester has is to get 15-112 done, because it unlocks the entire chain.",
-      "units": 40
+      "name": "Computing foundation",
+      "detail": "07-128 First Year Seminar; 15-122 Principles of Imperative Computation; 15-213 Introduction to Computer Systems; 15-251 Great Ideas in Theoretical Computer Science. This is the BSR core, rather than the former AI-degree description.",
+      "sources": [
+        "C1"
+      ]
     },
     {
-      "term": "Year 1 · Spring 2028",
-      "courses": [
-        {
-          "code": "15-122",
-          "title": "Principles of Imperative Computation",
-          "units": 12,
-          "role": "major core",
-          "note": "Prereq 15-112 (min C). This is the single most load-bearing course in the plan."
-        },
-        {
-          "code": "21-122",
-          "title": "Integration and Approximation",
-          "units": 10,
-          "role": "supporting",
-          "note": "Not strictly required by the major, but 16-299 controls requires it. Take it now."
-        },
-        {
-          "code": "36-202",
-          "title": "Methods for Statistics & Data Science",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "16-281",
-          "title": "General Robotics",
-          "units": 9,
-          "role": "robotics additional major",
-          "note": "Spring only. Prereq is just 15-112 (min C), so this is the EARLIEST possible robotics entry — and it is one of the two courses 16-450 later requires."
-        }
-      ],
-      "why": "16-281 lands in the first year purely because it is Spring-only and gates 16-450 three years later. Getting it early also means declaring the Additional Major early, which matters for registration priority.",
-      "units": 40
+      "name": "Mathematics",
+      "detail": "15-151 (or 21-127 if unavailable), 16-211 Foundational Mathematics of Robotics, 21-120, 21-122, 21-241, and one approved probability course.",
+      "sources": [
+        "C1"
+      ]
     },
     {
-      "term": "Year 2 · Fall 2028",
-      "courses": [
-        {
-          "code": "21-241",
-          "title": "Matrices and Linear Transformations",
-          "units": 11,
-          "role": "major core",
-          "note": "Prereq for 10-301, 16-384, 16-385 and 16-421. Second most load-bearing course here."
-        },
-        {
-          "code": "21-256",
-          "title": "Multivariate Analysis",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "21-127",
-          "title": "Concepts of Mathematics",
-          "units": 12,
-          "role": "major core"
-        },
-        {
-          "code": "36-350",
-          "title": "Statistical Computing",
-          "units": 9,
-          "role": "major core",
-          "note": "Placed early so that a robotics elective can sit in Year 3 Spring instead."
-        }
-      ],
-      "why": "A maths-heavy semester on purpose: 21-241 has to be finished before 10-301 and the whole perception line opens up.",
-      "units": 41
+      "name": "Required robotics",
+      "detail": "Choose 16-280 Intelligent Robot Systems or 16-281 General Robotics; then 16-220, 16-299, 16-384, 16-385, 16-450 and 16-474. The listed core courses are 12 units each.",
+      "sources": [
+        "C1",
+        "C4"
+      ]
     },
     {
-      "term": "Year 2 · Spring 2029",
-      "courses": [
-        {
-          "code": "10-301",
-          "title": "Introduction to Machine Learning",
-          "units": 12,
-          "role": "major core",
-          "note": "CMU states 10-301 'is recommended for undergraduates who are not SCS majors' — this is the version open to him, not 10-315."
-        },
-        {
-          "code": "16-299",
-          "title": "Introduction to Feedback Control Systems",
-          "units": 9,
-          "role": "robotics additional major",
-          "critical": true,
-          "note": "Spring only. Prereqs 15-122 and 21-122, both already done. 16-450 needs a minimum grade of B here — taking it now leaves a full year to retake if the grade comes in at B-minus."
-        },
-        {
-          "code": "36-225",
-          "title": "Introduction to Probability Theory",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "—",
-          "title": "Dietrich general education",
-          "units": 9,
-          "role": "placeholder"
-        }
-      ],
-      "why": "The pivotal semester. Controls is deliberately two years before it is needed, because it is the one course where a B-minus would collapse the robotics credential.",
-      "units": 39
+      "name": "Electives and research",
+      "detail": "Three general robotics electives, plus one general SCS elective of at least 9 units at 200-level or above, subject to exclusions. 16-3xx/4xx robotics electives are pre-approved. Up to 12 units of 16-597 or 99-270 can satisfy robotics electives. Graduate and non-RI electives need prior program-director approval.",
+      "sources": [
+        "C1"
+      ]
     },
     {
-      "term": "Year 3 · Fall 2029",
-      "courses": [
-        {
-          "code": "16-384",
-          "title": "Robot Kinematics and Dynamics",
-          "units": 9,
-          "role": "robotics additional major",
-          "note": "Fall only. Prereq satisfied by 21-241 or 15-122."
-        },
-        {
-          "code": "36-226",
-          "title": "Introduction to Statistical Inference",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "36-401",
-          "title": "Modern Regression",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "15-351",
-          "title": "Algorithms and Advanced Data Structures",
-          "units": 12,
-          "role": "major core",
-          "note": "The non-SCS algorithms route; 15-451 is the SCS version."
-        }
-      ],
-      "why": "Statistics core and the mechanics half of robotics run in parallel. No Spring-only course is at risk here.",
-      "units": 39
-    },
-    {
-      "term": "Year 3 · Spring 2030",
-      "courses": [
-        {
-          "code": "36-402",
-          "title": "Advanced Methods for Data Analysis",
-          "units": 9,
-          "role": "major core"
-        },
-        {
-          "code": "16-831",
-          "title": "Introduction to Robot Learning",
-          "units": 9,
-          "role": "robotics additional major",
-          "note": "The tenth robotics course, filling the second elective slot. Runs Fall and Spring with no published prerequisites, and pairs naturally with 10-403 the same semester."
-        },
-        {
-          "code": "10-403",
-          "title": "Deep Reinforcement Learning & Control",
-          "units": 12,
-          "role": "ML advanced elective",
-          "note": "Spring only. Prereq 10-301, already done. This single course is the best learning-plus-control bridge in the catalog and it fills the major's required ML Advanced Elective slot."
-        },
-        {
-          "code": "16-350",
-          "title": "Planning Techniques for Robotics",
-          "units": 9,
-          "role": "robotics additional major",
-          "note": "Spring only. No published prerequisites."
-        }
-      ],
-      "why": "The AI half gets its depth here. 10-403 does double duty — it satisfies a required major slot and counts as robotics-relevant learning.",
-      "units": 39
-    },
-    {
-      "term": "Year 4 · Fall 2030",
-      "courses": [
-        {
-          "code": "16-450",
-          "title": "Robotics Systems Engineering",
-          "units": 12,
-          "role": "robotics additional major",
-          "critical": true,
-          "note": "Fall only, and the hard gate: requires (16-281 or 16-280) AND a minimum grade of B in 16-299. Both are behind him by now."
-        },
-        {
-          "code": "16-385",
-          "title": "Computer Vision",
-          "units": 12,
-          "role": "robotics additional major",
-          "note": "Fills the sensing/perception requirement. CMU notes 'This course is for undergraduate students only.'"
-        },
-        {
-          "code": "16-362",
-          "title": "Mobile Robot Algorithms Laboratory",
-          "units": 12,
-          "role": "robotics additional major",
-          "note": "Fall only. Chosen as the hands-on requirement because it publishes no prerequisites — 16-220 Robot Building Practices would additionally require a physics course the major does not include."
-        }
-      ],
-      "why": "Three Fall-only robotics courses land together here, which is unavoidable — 16-450 and 16-362 run in Fall only, and 16-385 has to precede the capstone. At 36 units this is exactly full-time with no room spare, so no elective is placed alongside them.",
-      "units": 36
-    },
-    {
-      "term": "Year 4 · Spring 2031",
-      "courses": [
-        {
-          "code": "16-474",
-          "title": "Robotics Capstone",
-          "units": 12,
-          "role": "robotics additional major",
-          "critical": true,
-          "note": "Spring only. Prereq 16-450 (min C). This is the portfolio piece employers will actually ask about."
-        },
-        {
-          "code": "—",
-          "title": "Advanced Data Analysis elective (36-xxx)",
-          "units": 9,
-          "role": "major elective"
-        },
-        {
-          "code": "—",
-          "title": "Advanced Data Analysis elective (36-xxx)",
-          "units": 9,
-          "role": "major elective",
-          "note": "Both 36-xxx advanced electives sit here because they require 36-401 and 36-402 first."
-        },
-        {
-          "code": "—",
-          "title": "Ethics requirement for the Additional Major in Robotics",
-          "units": 9,
-          "role": "robotics additional major",
-          "note": "The Robotics curriculum includes an ethics requirement; the approved list was not captured in research — confirm the options with the Robotics Institute."
-        }
-      ],
-      "why": "Capstone semester. Everything else is deliberately light so the capstone gets real time.",
-      "units": 39
+      "name": "Ethics, science and breadth",
+      "detail": "One ethics choice: 16-161 or 16-735. At least 36 units of science/engineering in four courses, including a lab and two courses from one department; at least 63 units of humanities/arts; Core@CMU and remaining electives to reach the 360-unit minimum.",
+      "sources": [
+        "C1"
+      ]
     }
   ],
-  "total_units_planned": 313,
+  "progression": [
+    {
+      "title": "Build the foundation",
+      "detail": "Programming, calculus, linear algebra, probability and 16-211 prepare the core. Take a physics course in time for 16-220. Placement credit changes the sequence; use the catalog sample only as an example.",
+      "sources": [
+        "C1",
+        "C4"
+      ]
+    },
+    {
+      "title": "Work with real robot systems",
+      "detail": "16-220 develops CAD, fabrication, PCB and microcontroller skills; 16-299 uses both simulation and a real robot; 16-384 includes robot-arm programming; 16-385 develops perception. These are required rather than optional hardware promises.",
+      "sources": [
+        "C1",
+        "C4"
+      ]
+    },
+    {
+      "title": "Deepen autonomy and learning",
+      "detail": "Consider 16-350 planning and 10-315 machine learning for SCS majors, then a prepared advanced choice such as 10-403 reinforcement learning and control. Confirm which elective slot each course satisfies before relying on it.",
+      "sources": [
+        "C1",
+        "C4"
+      ]
+    },
+    {
+      "title": "Integrate, test and demonstrate",
+      "detail": "The curriculum places 16-450 in senior fall and 16-474 in senior spring. The capstone refines, builds, integrates, tests and demonstrates the system designed in 16-450. This is the published sequence, not a forecast of 2030\u201331 seats.",
+      "sources": [
+        "C1",
+        "C4"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "code": "16-220",
+      "title": "Robot Building Practices",
+      "units": 12,
+      "role": "Required hardware",
+      "preparation": "C or better in 15-122 and 33-121 or 33-141; catalog term label: Fall.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-299",
+      "title": "Introduction to Feedback Control Systems",
+      "units": 12,
+      "role": "Required controls",
+      "preparation": "15-122 and 21-122. PID, LQR, Kalman filtering, planning and reinforcement learning; simulation and real robot work. Catalog: Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-384",
+      "title": "Robot Kinematics and Dynamics",
+      "units": 12,
+      "role": "Required mechanics",
+      "preparation": "Catalog accepts 21-241 or 24-311 or 15-122 (C) or listed introductory robotics/ECE alternatives. Catalog: Fall.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-385",
+      "title": "Computer Vision",
+      "units": 12,
+      "role": "Required perception",
+      "preparation": "Undergraduates only. 15-122 and approved combinations of linear algebra with multivariable mathematics, 16-211 or ECE preparation. Catalog: Fall and Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-450 \u2192 16-474",
+      "title": "Robotics Systems Engineering \u2192 Robotics Capstone",
+      "units": 24,
+      "role": "Required senior integration",
+      "preparation": "16-450 requires an introductory robotics option and B or better in a listed controls course. 16-474 requires C or better in 16-450. Catalog: Fall \u2192 Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-350",
+      "title": "Planning Techniques for Robotics",
+      "units": 12,
+      "role": "Autonomy elective candidate",
+      "preparation": "The description expects introductory robotics, programming and data structures even though it lists no enforced prerequisite. Catalog: Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "10-315",
+      "title": "Introduction to Machine Learning (SCS Majors)",
+      "units": 12,
+      "role": "AI elective candidate",
+      "preparation": "Designed for SCS undergraduates; C-level programming, mathematical foundations, probability and linear-algebra prerequisites. Catalog: Fall and Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "10-403",
+      "title": "Deep Reinforcement Learning & Control",
+      "units": 12,
+      "role": "Advanced AI elective candidate",
+      "preparation": "C or better in an approved introductory ML course, including 10-315 or 10-301. Confirm the BSR elective slot. Catalog: Spring.",
+      "sources": [
+        "C4"
+      ]
+    },
+    {
+      "code": "16-362",
+      "title": "Mobile Robot Algorithms Laboratory",
+      "units": 12,
+      "role": "Autonomy software elective",
+      "preparation": "Current description builds an individual multirotor simulator in Python/C++; it is not evidence of a guaranteed hardware-build project. Requires substantial programming/math preparation. Catalog: Fall.",
+      "sources": [
+        "C4"
+      ]
+    }
+  ],
   "risks": [
     {
-      "risk": "A straight-B average sits exactly on the 3.0 line — twice",
-      "detail": "The Additional Major in Robotics requires a 3.0 GPA to apply and 'a minimum 3.0 QPA in the Additional Major curriculum is required for graduation'. Straight B is exactly 3.00, so a single B-minus in any of the ten robotics courses puts the credential below the graduation threshold. This is the tightest constraint in the whole plan.",
-      "mitigation": "Treat the robotics courses as the ones to over-perform in, not the statistics core. The statistics core has no QPA gate attached to it; the robotics curriculum does.",
-      "severity": "high"
+      "risk": "Entry route matters",
+      "detail": "Non-SCS BSR transfer requires overall QPA 3.0, QPA 3.6 across six specified foundation/core courses, an essay and available space. The courses are probability, 21-127, 15-122, 15-213, 15-251 and one approved sophomore RI course. Transfer is not guaranteed.",
+      "severity": "high",
+      "sources": [
+        "C3"
+      ]
     },
     {
-      "risk": "16-450 requires a minimum grade of B, not a pass",
-      "detail": "Its prerequisites are '(16-311 Min. grade B or 16-280 or 16-281) and (16-299 Min. grade B or 18-370 Min. grade B or 24-451 Min. grade B)'. A B-minus in 16-299 blocks 16-450, which blocks 16-474, which ends the Additional Major.",
-      "mitigation": "This is why 16-299 sits in Year 2 Spring rather than Year 3. Because 16-299 is Spring-only and 16-450 is Fall-only, taking controls in Year 2 leaves a full extra Spring to retake it and still reach 16-450 on time. Taking it in Year 3 removes that buffer entirely.",
-      "severity": "high"
+      "risk": "Two official instructions conflict on controls timing",
+      "detail": "RI\u2019s Additional Major page says controls can be concurrent with 16-450. The current course catalog requires B or better in a completed listed controls course. Plan conservatively around the catalog prerequisite and confirm any override with RI.",
+      "severity": "high",
+      "sources": [
+        "C4",
+        "C5"
+      ]
     },
     {
-      "risk": "None of these robotics seats are guaranteed to him",
-      "detail": "In order to ensure that students do not have to compete for access to their required courses, registration priority is given to students who are registering for courses in their primary major. Although the university encourages the exploration of other disciplines, access to courses outside a student's primary major (including those courses that fulfill requirements for an additional major, minor, etc.) is on a space-available basis and is not guaranteed.",
-      "mitigation": "Declare the Additional Major as early as the 3.0 permits — 16-299's own description says priority goes to computer science majors with a robotics major or minor, so the declaration is what moves him into the named priority group. Ask about seat availability on the Pittsburgh visit; it is already on his question list.",
-      "severity": "high"
+      "risk": "Graduate electives and outside-major seats are conditional",
+      "detail": "The BSR catalog requires prior approval for graduate/non-RI robotics electives and notes that elective choices depend on prerequisites and seats. A listed course or absent prerequisite does not guarantee enrollment.",
+      "severity": "medium",
+      "sources": [
+        "C1"
+      ]
     },
     {
-      "risk": "Year 4 Fall is three robotics project courses at once",
-      "detail": "16-450, 16-362 and 16-385 total 36 units in a single semester — exactly full-time with nothing spare, and all three are demanding project courses. CMU sets normal load per department and permits an overload of up to 12 units only with advisor approval.",
-      "mitigation": "Already partly mitigated by placing no elective alongside them. If it still looks heavy when he gets there, 16-385 Computer Vision runs in both Fall and Spring, so it is the one shiftable course in the robotics set and can move to Year 3 Spring.",
-      "severity": "medium"
-    },
-    {
-      "risk": "Double-counting rules are unknown",
-      "detail": "16-385 is on both the major's ML Advanced Elective list and the robotics sensing requirement, and 10-403 is similarly dual-purpose. CMU's concentration rules elsewhere mention a minimum of non-double-counted units, but no double-counting rule for this specific pairing was found.",
-      "mitigation": "Ask the Statistics advisor before relying on any course to satisfy two requirements.",
-      "severity": "medium"
+      "risk": "Additional-major alternatives need their own graduation audit",
+      "detail": "A Statistics and Machine Learning or ECE primary degree has its own graduation and general-education requirements. Do not assume that completing the robotics courses proves that either degree can be finished in eight semesters.",
+      "severity": "high",
+      "sources": [
+        "C5"
+      ]
     }
   ],
-  "fallback": {
-    "name": "Minor in Robotics",
-    "why": "If the B grades slip, this is the retreat. It requires 'a minimum 2.5 QPA in the Minor curriculum' rather than 3.0, and it does not require 16-450 or 16-474 — so it survives exactly the failure that would end the Additional Major.",
-    "cost": "Minors are transcript-only: 'Minors are not listed on a diploma, although they do appear on an official transcript.' The Additional Major does appear on the diploma. That difference is the reason to aim for the Additional Major first.",
-    "also": "The Minor in Machine Learning requires only a C or better in every course, so it is safe under a straight-B assumption and is worth holding as a guaranteed-looking credential either way."
-  }
+  "alternatives": [
+    {
+      "name": "ECE + Additional Major in Robotics",
+      "detail": "A hardware-oriented alternative from the College of Engineering. The additional major is open to any CMU department, requires a 3.0 application GPA and 3.0 robotics-curriculum QPA to graduate, and has separate application and double-counting rules. It is not the primary BSR.",
+      "sources": [
+        "C5"
+      ]
+    },
+    {
+      "name": "Statistics and Machine Learning + Additional Major",
+      "detail": "An AI-heavy Dietrich alternative requiring a separate full graduation audit, additional-major admission and reliable course access. The previous eight-semester template is retired; choose this route only if statistics is independently a desired primary major.",
+      "sources": [
+        "C5"
+      ]
+    },
+    {
+      "name": "Robotics minor or SCS concentration",
+      "detail": "The catalog lists the Robotics minor for non-SCS students with a declared primary major and a Robotics concentration for SCS students. They are distinct credentials with smaller requirements than the BSR or additional major.",
+      "sources": [
+        "C6",
+        "C1"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "C1",
+      "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/robotics-bs/",
+      "title": "CMU 2026\u201327: Robotics BS curriculum",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    },
+    {
+      "id": "C2",
+      "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/how-to-apply/",
+      "title": "RI: BSR application and declaration",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    },
+    {
+      "id": "C3",
+      "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/transfer-guidelines/",
+      "title": "RI: BSR transfer guidelines",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    },
+    {
+      "id": "C4",
+      "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+      "title": "CMU 2026\u201327: SCS course descriptions",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    },
+    {
+      "id": "C5",
+      "url": "https://www.ri.cmu.edu/education/academic-programs/additional-major-in-robotics/",
+      "title": "RI: Additional Major in Robotics",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    },
+    {
+      "id": "C6",
+      "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/minors/robotics-minor/",
+      "title": "CMU 2026\u201327: non-SCS Robotics minor",
+      "checked": "2026-10-14",
+      "status": "freshly read official source"
+    }
+  ]
 }

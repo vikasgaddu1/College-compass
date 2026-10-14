@@ -4,7 +4,7 @@ import { useHidden } from "@/lib/hidden";
 import admissionsData from "@/data/admissions_context.json";
 import { FileText, Home, Globe, Plane, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
 
-type Ctx = typeof admissionsData.schools[keyof typeof admissionsData.schools];
+type Ctx = typeof admissionsData.schools[keyof typeof admissionsData.schools] & { verified_on?: string; verification_status?: string; intl_year?: string; study_abroad_year?: string };
 
 /** Compact context strip surfaced on Culture & Cost tabs. Testing policy,
  *  housing, international share, and study-abroad rate for every visible
@@ -24,7 +24,7 @@ export function AdmissionsContextStrip() {
         <div className="flex items-center gap-2">
           <FileText size={14} className="text-[hsl(var(--accent))]" />
           <div className="text-[13px] font-medium">Admissions context · testing, housing, international share</div>
-          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">Fall 2027 cycle · from each school's IR pages</span>
+          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">Testing for Fall 2027 · other context has its own reporting year</span>
         </div>
         {open ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
       </button>
@@ -46,9 +46,11 @@ export function AdmissionsContextStrip() {
                 <tr key={s.slug}>
                   <td className="sticky left-0 z-[1] bg-[hsl(var(--card))]">
                     <div className="serif font-medium text-[12.5px]">{s.short}</div>
+                    <div className="text-[10px] text-[hsl(var(--muted-foreground))]">Checked {d.verified_on || "not recorded"}<br/>{(d.verification_status || "pending").replace(/_/g, " ")}</div>
                   </td>
                   <td className="text-[11.5px] leading-snug">
                     <div>{d.testing}</div>
+                    <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mt-1">Recommended: {s.degree_name}</div>
                     {d.testing_source && (
                       <a href={d.testing_source} target="_blank" rel="noopener"
                         className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5 mt-0.5">
@@ -56,8 +58,8 @@ export function AdmissionsContextStrip() {
                       </a>
                     )}
                   </td>
-                  <td className="text-right num text-[12px]">{d.intl_pct != null ? `${d.intl_pct}%` : <span className="text-[hsl(var(--muted-foreground))]">n.a.</span>}</td>
-                  <td className="text-right num text-[12px]">{d.study_abroad_pct != null ? `${d.study_abroad_pct}%` : <span className="text-[hsl(var(--muted-foreground))]">n.a.</span>}</td>
+                  <td className="text-right num text-[12px]">{d.intl_pct != null ? <>{d.intl_pct}%<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{d.intl_year || "year unconfirmed"}</div></> : <span className="text-[hsl(var(--muted-foreground))]">n.a.</span>}</td>
+                  <td className="text-right num text-[12px]">{d.study_abroad_pct != null ? <>{d.study_abroad_pct}%<div className="text-[10px] text-[hsl(var(--muted-foreground))]">{d.study_abroad_year || "year unconfirmed"}</div></> : <span className="text-[hsl(var(--muted-foreground))]">n.a.</span>}</td>
                   <td className="text-[11.5px] leading-snug">
                     <div>{d.housing_req}</div>
                     <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{d.housing_years}</div>

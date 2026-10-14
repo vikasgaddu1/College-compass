@@ -14,9 +14,7 @@ const bandTone: Record<string, { bg: string; fg: string; label: string }> = {
   "n.a.":      { bg: "hsl(0 0% 97%)",    fg: "hsl(0 0% 60%)",    label: "n.a." },
 };
 
-/** Compact big-tech alumni-footprint heatmap for the Careers tab.
- *  Sourced from College Transitions LinkedIn analyses; LinkedIn People
- *  pages are blocked so exact counts are not available. */
+/** Historical CS/general-tech company context; not robotics placement evidence. */
 export function AlumniStrip() {
   const { hidden } = useHidden();
   const [open, setOpen] = useState(true);
@@ -33,8 +31,8 @@ export function AlumniStrip() {
         className="w-full p-3 flex items-center justify-between hover:bg-[hsl(var(--elevate-1))]">
         <div className="flex items-center gap-2">
           <Building2 size={14} className="text-[hsl(var(--accent))]" />
-          <div className="text-[13px] font-medium">Alumni footprint at big AI / tech companies</div>
-          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">Qualitative bands · LinkedIn pages block exact counts</span>
+          <div className="text-[13px] font-medium">Historical CS / tech company alumni context</div>
+          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">Qualitative bands · compiled {alumniData.compiled_date}</span>
         </div>
         {open ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
       </button>
@@ -46,7 +44,7 @@ export function AlumniStrip() {
                 <tr>
                   <th className="sticky left-0 z-[2] w-[160px]">School</th>
                   {companies.map(c => <th key={c} className="text-center min-w-[70px]">{c}</th>)}
-                  <th className="min-w-[280px]">Notable</th>
+                  <th className="min-w-[280px]">Historical source summary</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,7 +72,8 @@ export function AlumniStrip() {
             </table>
           </div>
           <div className="p-3 text-[10.5px] text-[hsl(var(--muted-foreground))] border-t border-[hsl(var(--border))]">
-            <strong>Band scale (relative to these schools):</strong> Very high = top-tier feeder · High = 500+/900+/&quot;hundreds&quot; · Moderate = named significant employer · Low = &lt;100 · n.a. = no evidence.
+            <div className="mb-2">{alumniData.robotics_scope_note}</div>
+            <strong>Original qualitative band scale:</strong> Very high = original top-feeder category · High = source-described hundreds · Moderate = named employer · Low = small footprint · n.a. = no documented band. These are historical categories, not exact counts for this shortlist.
             {" "}Sources: College Transitions LinkedIn-derived tech-feeder counts, Resume Genius Nov 2025 LinkedIn Alumni analysis, workforce.ai OpenAI alma-mater ranking, school first-destination reports.
           </div>
         </>

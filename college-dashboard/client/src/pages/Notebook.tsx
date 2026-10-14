@@ -134,7 +134,7 @@ export default function NotebookPage() {
           <div>
             <div className="serif text-[18px] font-semibold">Your notebook</div>
             <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] max-w-2xl leading-relaxed">
-              Everything you've written across the dashboard, grouped by the status you gave each school. Notes save automatically as you type — click any school card to add or edit its note.
+              Your notes and ratings, grouped by the status you gave each school. Use them to weigh robotics routes, campus visits and your own preferences. Notes save automatically as you type — click a note button to add or edit a school’s note.
             </div>
           </div>
         </div>

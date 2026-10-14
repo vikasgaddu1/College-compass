@@ -11,7 +11,7 @@ export default function SyncPage() {
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">Sign in to sync + share with a counselor</h2>
         <p className="text-[13px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Sign in with a magic link to sync notes across devices and invite a counselor as a viewer or editor. The site remains fully usable signed-out with everything cached in localStorage on this device. Applicant personal data (GPA, scores, name) never leaves your Supabase workspace — it is not embedded in the dashboard code.
+          Sign in with a magic link to sync your school notes across devices and invite a counselor as a viewer or editor. You can also use the notebook signed out with notes saved in this browser when local storage is available. Your notes, ratings and sharing choices remain yours; syncing does not change the researched robotics recommendations.
         </p>
       </div>
       <SyncPanel/>

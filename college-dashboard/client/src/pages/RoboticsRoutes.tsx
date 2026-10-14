@@ -7,6 +7,7 @@ import { Bot, Cpu, Code2, Award, ExternalLink, AlertTriangle, CheckCircle2, Chev
 
 type RouteKey = "bs_robotics" | "ece" | "cs";
 type Course = { code: string; title: string };
+type AiCourse = Course & { url: string; access_note: string };
 type Route = {
   degree_names: string[];
   home_unit: string;
@@ -41,7 +42,10 @@ type SchoolRoutes = {
   ecosystem: string;
   tradeoff: string;
   corrections_to_existing: string[];
-  sources: { url: string; supports: string }[];
+  ai_electives?: AiCourse[];
+  verified_on?: string;
+  verification_note?: string;
+  sources: { url: string; supports: string; verified_on?: string; verification_note?: string }[];
 };
 
 const ROUTES = data.schools as unknown as Record<string, SchoolRoutes>;
@@ -62,7 +66,7 @@ const KIND_LABEL: Record<BsRobotics["kind"], string> = {
 
 function entryLabel(v: boolean | null) {
   if (v === true) return { text: "Direct admit as a first-year", tone: "var(--fit-top)" };
-  if (v === false) return { text: "Admit to college, declare later", tone: "var(--fit-conditional)" };
+  if (v === false) return { text: "Major declared after admission", tone: "var(--fit-conditional)" };
   return { text: "Entry not confirmed", tone: "var(--muted-foreground)" };
 }
 
@@ -94,19 +98,20 @@ export default function RoboticsRoutesPage() {
           <Bot size={16} />
           <div className="text-[11px] tracking-wider uppercase">Robotics routes</div>
         </div>
-        <h2 className="serif text-[22px] font-semibold mt-1">Which degree gets him into robotics at each school</h2>
+        <h2 className="serif text-[22px] font-semibold mt-1">Robotics degrees with hardware, controls and AI</h2>
         <p className="text-[13.5px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[860px]">
           Three ways in: a dedicated <strong>BS in Robotics</strong> where the school has a real one, otherwise the{" "}
           <strong>ECE route</strong> (electrical or computer engineering plus its controls/robotics track) or the{" "}
           <strong>CS route</strong> (computer science plus its robotics courses). Each school shows all three, how a
-          first-year actually gets into each, and the one we recommend. Researched 13 October 2026 from each
-          university's own catalog, department and admissions pages.
+          first-year enters the program, the recommended route, and undergraduate AI choices with their access limits.
+          This comparison covers the 13 selected schools for Fall 2027 entry by a North Carolina resident.
+          Research snapshot: {data.compiled_date}; school-specific source notes appear below.
         </p>
 
         <div className="mt-4 flex flex-wrap gap-5 text-[12.5px]">
           <div>
             <span className="num text-[18px] font-semibold" style={{ color: `hsl(var(--fit-top))` }}>{withRealBs}</span>
-            <span className="text-[hsl(var(--muted-foreground))]"> of {all.length} have a first-year-reachable BS in Robotics</span>
+            <span className="text-[hsl(var(--muted-foreground))]"> of {all.length} have a primary undergraduate robotics degree</span>
           </div>
           {(Object.keys(META) as RouteKey[]).map(k => (
             <div key={k}>
@@ -164,7 +169,7 @@ export default function RoboticsRoutesPage() {
                     <a href={`#route-${s.slug}`} className="hover:underline">{s.short}</a>
                   </td>
                   {cell("bs_robotics", b.offered ? `${b.degree_name ?? "Yes"}${b.kind !== "primary_major" ? ` (${KIND_LABEL[b.kind].toLowerCase()})` : ""}` : "None")}
-                  {cell("ece", r.ece.robotics_track ? shortTrack(r.ece.robotics_track) : "No named track")}
+                  {cell("ece", r.ece.robotics_track ? shortTrack(r.ece.robotics_track) : "ECE electives / robotics projects")}
                   {cell("cs", r.cs.robotics_track ? shortTrack(r.cs.robotics_track) : "No named track")}
                   <td className="p-3 align-top text-[hsl(var(--muted-foreground))]">{r.robotics_minor ? shortTrack(r.robotics_minor.name) : "None"}</td>
                 </tr>
@@ -217,7 +222,7 @@ function SchoolRoutesCard({ short, cityState, r }: { short: string; cityState: s
       <div className="mt-2 rounded-md p-3 text-[13px] leading-relaxed" style={{ background: `hsl(${rec.hue} / 0.07)`, border: `1px solid hsl(${rec.hue} / 0.25)` }}>
         <div className="font-medium">{r.site_degree}</div>
         <div className="text-[hsl(var(--muted-foreground))] mt-1">{r.recommended_summary}</div>
-        <div className="mt-2 text-[12px]"><span className="font-medium">Backup inside this school:</span> <span className="text-[hsl(var(--muted-foreground))]">{r.alternative}</span></div>
+        <div className="mt-2 text-[12px]"><span className="font-medium">Alternative inside this school:</span> <span className="text-[hsl(var(--muted-foreground))]">{r.alternative}</span></div>
         <div className="mt-1 text-[12px] flex gap-1.5">
           <AlertTriangle size={12} className="shrink-0 mt-0.5" style={{ color: "hsl(var(--fit-conditional))" }} />
           <span><span className="font-medium">Trade-off:</span> <span className="text-[hsl(var(--muted-foreground))]">{r.tradeoff}</span></span>
@@ -228,6 +233,21 @@ function SchoolRoutesCard({ short, cityState, r }: { short: string; cityState: s
         <BsPanel b={r.bs_robotics} recommended={r.recommended_route === "bs_robotics"} />
         <RoutePanel k="ece" route={r.ece} recommended={r.recommended_route === "ece"} />
         <RoutePanel k="cs" route={r.cs} recommended={r.recommended_route === "cs"} />
+      </div>
+
+      <div className="mt-3 rounded-md border border-[hsl(var(--border))] p-3 text-[12px]">
+        <div className="text-[10.5px] uppercase tracking-wider font-medium mb-1 inline-flex items-center gap-1"><Code2 size={11} /> AI course choices</div>
+        <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-2">Undergraduate options to pair with robotics. Check prerequisites, major restrictions and the degree’s elective rules before planning a course.</div>
+        {r.ai_electives?.length ? (
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+            {r.ai_electives.map(c => (
+              <li key={c.code + c.url} className="leading-snug">
+                <a href={c.url} target="_blank" rel="noreferrer" className="font-medium hover:underline inline-flex items-center gap-1">{c.code} · {c.title} <ExternalLink size={10} className="shrink-0" /></a>
+                <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">{c.access_note}</div>
+              </li>
+            ))}
+          </ul>
+        ) : <div className="text-[hsl(var(--muted-foreground))]">Undergraduate AI electives and access conditions still need confirmation for this route.</div>}
       </div>
 
       <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 text-[12px]">
@@ -248,25 +268,30 @@ function SchoolRoutesCard({ short, cityState, r }: { short: string; cityState: s
         </div>
       </div>
 
-      <button onClick={() => setOpen(o => !o)} className="mt-3 text-[11.5px] inline-flex items-center gap-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]">
+      {(r.verified_on || r.verification_note) && (
+        <div className="mt-3 text-[11px] text-[hsl(var(--muted-foreground))] leading-relaxed">
+          {r.verified_on && <span className="font-medium">Research snapshot: {r.verified_on}. </span>}{r.verification_note}
+        </div>
+      )}
+      <button aria-expanded={open} aria-controls={`route-sources-${r.slug}`} onClick={() => setOpen(o => !o)} className="mt-3 text-[11.5px] inline-flex items-center gap-1 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]">
         {open ? <ChevronUp size={12} /> : <ChevronDown size={12} />} {open ? "Hide" : "Show"} sources ({r.sources.length})
         {r.corrections_to_existing.length > 0 && ` and ${r.corrections_to_existing.length} corrections to earlier research`}
       </button>
       {open && (
-        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3 text-[11.5px]">
+        <div id={`route-sources-${r.slug}`} className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3 text-[11.5px]">
           <ul className="space-y-1">
             {r.sources.map(src => (
               <li key={src.url + src.supports} className="leading-snug">
                 <a href={src.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">
                   {host(src.url)} <ExternalLink size={10} />
                 </a>{" "}
-                <span className="text-[hsl(var(--muted-foreground))]">· {src.supports}</span>
+                <span className="text-[hsl(var(--muted-foreground))]">· {src.supports}{src.verified_on ? ` · checked ${src.verified_on}` : ""}{src.verification_note ? ` · ${src.verification_note}` : ""}</span>
               </li>
             ))}
           </ul>
           {r.corrections_to_existing.length > 0 && (
             <div>
-              <div className="font-medium mb-1">Corrected from the August research</div>
+              <div className="font-medium mb-1">Research corrections and access cautions</div>
               <ul className="list-disc pl-4 space-y-1 text-[hsl(var(--muted-foreground))]">
                 {r.corrections_to_existing.map(c => <li key={c}>{c}</li>)}
               </ul>

@@ -45,7 +45,7 @@ export default function CulturePage() {
       <div className="card p-4">
         <div className="serif text-[17px] font-semibold mb-1">Culture, community, and quality of life</div>
         <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] max-w-3xl">
-          Two questions this view answers: <em>can I have a great social life without Greek life?</em> and <em>is the intense pace healthy or cutthroat?</em> The four text columns on the left carry the raw wording from the underlying research so nothing is hidden behind a color.
+          Two questions this view answers: <em>can I have a great social life without Greek life?</em> and <em>is the intense pace healthy or cutthroat?</em> The four text columns on the left retain the underlying campus research. These general campus ratings support your preferences; they do not establish undergraduate robotics-course or lab access. Dated claims should be checked before a decision.
         </div>
       </div>
 

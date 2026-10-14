@@ -12,19 +12,13 @@ export default function HiddenPage() {
   const [profile] = useApplicantProfile();
   const [thresholds] = useOddsThresholds();
 
-  // Two balanced shortlists, one per application door.
-  //
-  // Which door you enter through is not a labelling detail: the same application
-  // is ~19% to CMU's other seven colleges and 5.2% to SCS, ~21% to Grainger
-  // Engineering and 7.4% to UIUC CS, 37% to UW's Direct-to-College Engineering
-  // and 2% to Direct-to-Major CS for a non-resident. One list averaged those two
-  // realities into a single answer that described neither route.
+  // Compare route-specific shortlist heuristics without treating historical rates as personal odds.
   const eceFocus = useMemo(
-    () => buildRoboticsFocus(profile, { ...thresholds, pathway: "engineering" }, DEFAULT_FOCUS_SPEC),
+    () => buildRoboticsFocus(profile, { ...thresholds, pathway: "engineering" }, DEFAULT_FOCUS_SPEC, schools, false),
     [profile, thresholds],
   );
   const csFocus = useMemo(
-    () => buildRoboticsFocus(profile, { ...thresholds, pathway: "computing" }, DEFAULT_FOCUS_SPEC),
+    () => buildRoboticsFocus(profile, { ...thresholds, pathway: "computing" }, DEFAULT_FOCUS_SPEC, schools, false),
     [profile, thresholds],
   );
   const hasScore = profile.sat != null || profile.act != null;
@@ -50,14 +44,14 @@ export default function HiddenPage() {
     };
   }, [eceFocus, csFocus]);
 
-  // Quick presets — grouped by shortlist tier
-  const groups: { key: string; label: string; slugs: string[]; hint: string }[] = [
-    { key: "strongest", label: "Focus on strongest fits only", slugs: schools.filter(s => s.shortlist_group === "strongest").map(s=>s.slug), hint: "8 schools" },
-    { key: "topplus",   label: "Strongest + strong alternatives", slugs: schools.filter(s => ["strongest","alternative"].includes(s.shortlist_group)).map(s=>s.slug), hint: "16 schools" },
-    { key: "nc",        label: "North Carolina publics only", slugs: schools.filter(s => s.state === "NC").map(s=>s.slug), hint: "NC State + UNC" },
-    { key: "dedicated", label: "Only schools with a dedicated AI degree", slugs: schools.filter(s => s.archetypes.includes("A")).map(s=>s.slug), hint: "Archetype A" },
-    { key: "direct",    label: "Direct-admit CS/AI only", slugs: schools.filter(s => s.major_access_status === "DIRECT").map(s=>s.slug), hint: "No internal gate" },
+  const presets = [
+    { key: "strongest", label: "Focus on strongest fits only", slugs: schools.filter(s => s.shortlist_group === "strongest").map(s => s.slug) },
+    { key: "topplus", label: "Strongest + strong alternatives", slugs: schools.filter(s => ["strongest", "alternative"].includes(s.shortlist_group)).map(s => s.slug) },
+    { key: "nc", label: "North Carolina publics only", slugs: schools.filter(s => s.state === "NC" && s.is_public).map(s => s.slug) },
+    { key: "dedicated", label: "Primary robotics degree routes", slugs: schools.filter(s => s.archetypes.includes("A")).map(s => s.slug) },
+    { key: "direct", label: "Routes with no recorded major gate", slugs: schools.filter(s => s.major_access_status === "DIRECT").map(s => s.slug) },
   ];
+  const groups = presets.map(p => ({ ...p, hint: `${p.slugs.length} school${p.slugs.length === 1 ? "" : "s"}` }));
 
   return (
     <div className="space-y-4">
@@ -78,27 +72,25 @@ export default function HiddenPage() {
       <div className="card p-4">
         <div className="flex items-baseline gap-2 text-[hsl(var(--accent))]">
           <Bot size={15}/>
-          <div className="text-[11px] tracking-wider uppercase">Robotics + AI focus</div>
+          <div className="text-[11px] tracking-wider uppercase">Robotics focus · supporting AI</div>
         </div>
         <div className="serif text-[17px] font-semibold mt-1">
-          Two balanced shortlists — one per application door
+          Two route-based shortlist suggestions
         </div>
         <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] mt-1.5 max-w-3xl leading-relaxed">
-          Which door you apply through changes the odds by an order of magnitude at some schools,
-          so a single list averaged two realities into an answer that described neither. Each list
-          below is {DEFAULT_FOCUS_SPEC.high_reach} high reach · {DEFAULT_FOCUS_SPEC.reach} reach ·{" "}
-          {DEFAULT_FOCUS_SPEC.target} target · {DEFAULT_FOCUS_SPEC.likely} likely, tiered by the same
-          heuristic the <Link href="/odds" className="underline">Applicant odds</Link> page uses —
-          per-college admit rates where a school publishes them, residency applied, and a CS-gate
-          downgrade that only bites on the computing door. Within a tier, schools are ranked by
-          researched robotics strength rather than prestige.
+          These suggestions compare engineering and computing routes within the same {schools.length}-school list.
+          Each aims for {DEFAULT_FOCUS_SPEC.high_reach} high reach · {DEFAULT_FOCUS_SPEC.reach} reach ·{" "}
+          {DEFAULT_FOCUS_SPEC.target} target · {DEFAULT_FOCUS_SPEC.likely} likely, using the{" "}
+          <Link href="/odds" className="underline">Applicant odds</Link> page’s planning heuristic.
+          Historical admission rates describe their published population, not your admission probability or
+          a robotics-major advantage. Check each degree’s entry gate and select schools manually as needed.
+          Robotics curriculum and undergraduate access guide the ranking within each tier.
         </div>
 
         {!hasScore && (
           <div className="mt-3 text-[12px] rounded border border-[hsl(var(--fit-top)/0.4)] bg-[hsl(var(--fit-top)/0.08)] px-3 py-2">
-            No test score saved yet, so tiers are based on admit rates alone. Add it on the{" "}
-            <Link href="/odds" className="underline">Applicant odds</Link> page to sharpen the split —
-            it stays on this device.
+            No test score is saved, so these tiers use historical admissions context. Add one on the{" "}
+            <Link href="/odds" className="underline">Applicant odds</Link> page to add context; the resulting tiers remain a heuristic.
           </div>
         )}
 
@@ -108,7 +100,7 @@ export default function HiddenPage() {
               On both routes · {routeSplit.both.length}
             </div>
             <div>{routeSplit.both.join(", ") || "—"}</div>
-            <div className="text-[hsl(var(--muted-foreground))] mt-1">Safe to apply to either way.</div>
+            <div className="text-[hsl(var(--muted-foreground))] mt-1">Included by both route heuristics; review each degree’s entry requirements.</div>
           </div>
           <div className="rounded border border-[hsl(var(--border))] px-2.5 py-2">
             <div className="text-[10px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-0.5">
@@ -135,14 +127,14 @@ export default function HiddenPage() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <RouteShortlist
           title="ECE / engineering route"
-          blurb="Applying through the college of engineering — ME, ECE, first-year engineering. A CS-specific gate does not raise this admission bar, but it remains a risk to reaching the major later."
+          blurb="Engineering-route context for robotics, ECE/CE or first-year engineering. Admission unit, later major declaration and course access can differ; check the school’s documented route."
           icon={<Wrench size={14}/>}
           focus={eceFocus}
           onFocus={hideAllExcept}
         />
         <RouteShortlist
           title="CS / computing route"
-          blurb="Applying directly to computer science or a computing college. Where a school publishes a per-college rate this uses it, and the CS gate applies here."
+          blurb="Computing-route context for CS autonomy and perception. Any published college or major rate describes that population; cross-department controls and hardware courses may add prerequisites."
           icon={<Cpu size={14}/>}
           focus={csFocus}
           onFocus={hideAllExcept}
@@ -246,12 +238,12 @@ function RouteShortlist({ title, blurb, icon, focus, onFocus }: {
                         <AbetBadge credential={p.school.robotics_credential} compact />
                       </span>
                       <span className="num text-[11px] text-[hsl(var(--muted-foreground))]">
-                        robotics {(p.school.axes.robotics_curriculum ?? 0).toFixed(0)}/{(p.school.axes.robotics_access ?? 0).toFixed(0)}
+                        robotics {formatRoboticsAxis(p.school.axes.robotics_curriculum)}/{formatRoboticsAxis(p.school.axes.robotics_access)}
                         {p.rate != null && <> · {(p.rate*100).toFixed(1)}%</>}
                       </span>
                     </div>
                     <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">
-                      {p.context !== "overall" ? p.context : "overall admit rate"}
+                      {p.context !== "overall" ? p.context : "historical overall admit rate"}
                     </div>
                     {/* A real obstacle to getting in keeps the alert treatment. */}
                     {p.caveat && (
@@ -317,9 +309,13 @@ function RouteShortlist({ title, blurb, icon, focus, onFocus }: {
             .sort((a, b) => (b.robotics_curriculum ?? 0) - (a.robotics_curriculum ?? 0))
             .map(b => b.school.short)
             .join(", ")}.
-          Several are excellent for AI and stay selectable by hand.
+          You can still select any school manually based on your own priorities.
         </div>
       )}
     </div>
   );
+}
+
+function formatRoboticsAxis(value: number | null | undefined) {
+  return value == null ? "?" : value.toFixed(1);
 }
