@@ -85,6 +85,7 @@ export default function HiddenPage() {
           Historical admission rates describe their published population, not your admission probability or
           a robotics-major advantage. Check each degree’s entry gate and select schools manually as needed.
           Robotics curriculum and undergraduate access guide the ranking within each tier.
+          {" "}Fit ordering averages the documented dimensions; missing evidence is omitted, so partial ratings are less certain.
         </div>
 
         {!hasScore && (

@@ -71,7 +71,7 @@ export default function VisitsPage() {
         </div>
 
         <div className="flex flex-wrap gap-3 mt-3 text-[11.5px]">
-          <Stat label="Already visited" value={`${visited.length}`} detail="NC State · Georgia Tech · Cornell"/>
+          <Stat label="Already visited" value={`${visited.length}`} detail={visited.map(slug => byslug[slug]?.short).filter(Boolean).join(" · ") || "No attendance recorded"}/>
           <Stat label="Left to see" value={`${planned.length}`} detail={`across ${V.trips.length} saved trip suggestions`}/>
           <Stat label="School days needed" value={`${V.trips.reduce((a: number, t: any) => a + t.school_days, 0)}`} detail="weekday excuses"/>
           <Stat label="Weeks to 1 Nov" value={Math.max(0, daysUntil("2026-11-01", today) / 7).toFixed(1)} detail="calendar interval · check each round"/>

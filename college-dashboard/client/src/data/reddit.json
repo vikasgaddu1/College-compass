@@ -19,23 +19,6 @@
       "vibe": "Serious about CS; culture is heads-down and self-selecting.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
-    "cornell": {
-      "sub": "r/Cornell",
-      "members": "~68k",
-      "praises": [
-        "Beautiful campus, gorges are famous",
-        "Diverse across colleges",
-        "Undergrad research strong for an Ivy"
-      ],
-      "complaints": [
-        "Ithaca weather brutal",
-        "\"Suicide school\" reputation persists",
-        "CS overcrowded and grade-deflated",
-        "Greek life dominates undergrad social scene"
-      ],
-      "vibe": "Nature-loving and academically intense; students split on whether they love or tolerate it.",
-      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
-    },
     "purdue": {
       "sub": "r/Purdue",
       "members": "~45k",
@@ -116,23 +99,6 @@
         "Some CS classes overcrowded"
       ],
       "vibe": "Confident, athletic-social, academically strong.",
-      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
-    },
-    "johns-hopkins": {
-      "sub": "r/jhu",
-      "members": "~24k",
-      "praises": [
-        "Pre-med + BME reputation is unmatched",
-        "Undergrads get real research access",
-        "Baltimore is underrated"
-      ],
-      "complaints": [
-        "Grade grubbing culture",
-        "Party scene minimal — students describe it as quiet",
-        "Charles Village safety flagged",
-        "Housing not guaranteed past year 2"
-      ],
-      "vibe": "Studious and quiet; pre-professional grinders.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "maryland": {
@@ -217,6 +183,22 @@
       ],
       "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
+    },
+    "rose-hulman": {
+      "sub": "Not researched",
+      "members": "Unknown",
+      "praises": [],
+      "complaints": [],
+      "vibe": "No sourced campus sentiment summary is available for this entry.",
+      "robotics_scope_note": "No Reddit anecdotes or commuter/residential conclusions imported. Confirm campus experience from reliable student-life evidence or a visit."
+    },
+    "michigan-dearborn": {
+      "sub": "Not researched",
+      "members": "Unknown",
+      "praises": [],
+      "complaints": [],
+      "vibe": "No sourced campus sentiment summary is available for this entry.",
+      "robotics_scope_note": "No Reddit anecdotes or commuter/residential conclusions imported. Confirm campus experience from reliable student-life evidence or a visit."
     }
   },
   "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."

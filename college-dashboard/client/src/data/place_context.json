@@ -14,17 +14,6 @@
       "drive_hours_from_rdu": 7.5,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
-    "cornell": {
-      "campus_city": "Ithaca, NY",
-      "nearest_airport": "ITH",
-      "temp_low_jan_f": 14,
-      "temp_high_jul_f": 80,
-      "snow_inches_annual": 66,
-      "days_below_freezing": 130,
-      "flight_from_rdu_band": "$280-$500 (connections)",
-      "drive_hours_from_rdu": 11.0,
-      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
-    },
     "purdue": {
       "campus_city": "West Lafayette, IN",
       "nearest_airport": "IND",
@@ -78,17 +67,6 @@
       "days_below_freezing": 130,
       "flight_from_rdu_band": "$140-$260",
       "drive_hours_from_rdu": 12.0,
-      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
-    },
-    "johns-hopkins": {
-      "campus_city": "Baltimore, MD",
-      "nearest_airport": "BWI",
-      "temp_low_jan_f": 26,
-      "temp_high_jul_f": 88,
-      "snow_inches_annual": 20,
-      "days_below_freezing": 82,
-      "flight_from_rdu_band": "$100-$200",
-      "drive_hours_from_rdu": 5.0,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "maryland": {
@@ -145,6 +123,28 @@
       "flight_from_rdu_band": "N/A (home)",
       "drive_hours_from_rdu": 0.3,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
+    },
+    "rose-hulman": {
+      "campus_city": "Terre Haute, Indiana",
+      "nearest_airport": "Unverified",
+      "temp_low_jan_f": null,
+      "temp_high_jul_f": null,
+      "snow_inches_annual": null,
+      "days_below_freezing": null,
+      "flight_from_rdu_band": "Not researched",
+      "drive_hours_from_rdu": null,
+      "robotics_scope_note": "Campus location inherited from programme records; travel and climate estimates were not supplied without verified sources."
+    },
+    "michigan-dearborn": {
+      "campus_city": "Dearborn, MI",
+      "nearest_airport": "Unverified",
+      "temp_low_jan_f": null,
+      "temp_high_jul_f": null,
+      "snow_inches_annual": null,
+      "days_below_freezing": null,
+      "flight_from_rdu_band": "Not researched",
+      "drive_hours_from_rdu": null,
+      "robotics_scope_note": "Campus location inherited from programme records; travel and climate estimates were not supplied without verified sources."
     }
   },
   "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."

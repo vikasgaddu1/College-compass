@@ -1,13 +1,13 @@
 import applicationsData from "@/data/applications.json";
 
-export type AppPlan = "ED" | "EA" | "RD";
+export type AppPlan = "ED" | "EA" | "RD" | "PENDING";
 export interface Application {
   slug: string;
   plan: AppPlan;
   plan_short?: string;
   plan_label: string;
   round: string;
-  deadline: string;
+  deadline: string | null;
   deadline_label: string;
   binding: boolean;
   note: string | null;

@@ -14,18 +14,6 @@
       "verified_on": "2026-10-14",
       "verification_status": "testing_verified_other_context_historical"
     },
-    "cornell": {
-      "testing": "Required (Fall 2026+)",
-      "testing_source": "https://admissions.cornell.edu/policies/standardized-testing-policy",
-      "intl_pct": 9.5,
-      "intl_year": "2024-25",
-      "study_abroad_pct": null,
-      "housing_req": "Yes with exemptions",
-      "housing_years": "2",
-      "housing_note": "64% of undergrads / 65% of first-years in college housing",
-      "verified_on": "2026-10-14",
-      "verification_status": "testing_verified_other_context_historical"
-    },
     "purdue": {
       "testing": "SAT, ACT or CLT scores expected; exceptional no-test applications allowed. Submit scores when available.",
       "testing_source": "https://admissions.purdue.edu/become-student/guide/",
@@ -86,19 +74,6 @@
       "housing_req": "No",
       "housing_years": "No requirement",
       "housing_note": "~97% of first-year students choose Michigan Housing",
-      "verified_on": "2026-10-14",
-      "verification_status": "testing_verified_other_context_historical"
-    },
-    "johns-hopkins": {
-      "testing": "Required",
-      "testing_source": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/standardized-testing/",
-      "intl_pct": 14.4,
-      "intl_year": "2025-26",
-      "study_abroad_pct": 25,
-      "study_abroad_year": "Current",
-      "housing_req": "Yes with exemptions",
-      "housing_years": "2",
-      "housing_note": "Due to space limitations, unable to provide university housing for upper-class students",
       "verified_on": "2026-10-14",
       "verification_status": "testing_verified_other_context_historical"
     },
@@ -163,6 +138,40 @@
       "housing_note": "East Campus freshmen; 3-year on-campus guarantee; strong residential community.",
       "verified_on": "2026-10-14",
       "verification_status": "testing_verified_other_context_historical"
+    },
+    "rose-hulman": {
+      "testing": "Test-optional in inherited August 2026 evidence; confirm current cycle",
+      "testing_source": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+      "intl_pct": 8.9,
+      "intl_year": "Fall 2025 (2025–26 CDS; historical)",
+      "study_abroad_pct": null,
+      "housing_req": "Historical first-year requirement; current rule pending",
+      "housing_years": "Historical: 1",
+      "housing_note": "Inherited record describes first-year residence with a local commuting exception. Current housing availability, participation and campus social experience have not been refreshed.",
+      "reviewed_on": "2026-10-14",
+      "verified_on": "2026-08-16",
+      "verification_status": "historical_evidence_pending_current_confirmation",
+      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed.",
+      "source_urls": [
+        "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf",
+        "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html"
+      ]
+    },
+    "michigan-dearborn": {
+      "testing": "Historically test-optional; Fall 2027 policy unverified",
+      "testing_source": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/high-school-counselors/admissions-criteria",
+      "intl_pct": null,
+      "intl_year": "Unknown",
+      "study_abroad_pct": null,
+      "study_abroad_year": "Unknown",
+      "housing_req": null,
+      "housing_years": null,
+      "housing_note": "Current housing options, residence participation and policies unknown; no campus-style conclusion is supported by the inherited audit.",
+      "residency_admission_note": "No residency-specific rate or quantified disadvantage established.",
+      "verification_status": "historical_pending_current_recheck",
+      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed."
     }
-  }
+  },
+  "selection_updated_on": "2026-10-14",
+  "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }

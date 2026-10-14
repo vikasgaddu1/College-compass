@@ -9,14 +9,15 @@ export function FitBadge({ fit }: { fit: string }) {
   return <span className={`chip ${fitClass(fit)}`}>{fit}</span>;
 }
 
-/** Anurag's committed application plan (ED/EA/RD) for a school, if any. */
+/** Selected application plan, or a pending round for a newly added school. */
 export function PlanBadge({ slug, showDeadline }: { slug: string; showDeadline?: boolean }) {
   const a = getApplication(slug);
   if (!a) return null;
+  const pending = a.plan === "PENDING";
   return (
     <span className={`chip ${planClass(a.plan)} font-semibold`}
-      title={`Applying ${a.plan_label}${a.binding ? " (binding)" : ""} · due ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
-      Applying {a.plan_short ?? a.plan}{showDeadline ? ` · ${a.deadline_label}` : ""}
+      title={`${pending ? "Plan pending" : `Applying ${a.plan_label}${a.binding ? " (binding)" : ""}`} · ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
+      {pending ? "Plan pending" : `Applying ${a.plan_short ?? a.plan}`}{showDeadline ? ` · ${a.deadline_label}` : ""}
     </span>
   );
 }

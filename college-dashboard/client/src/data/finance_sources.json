@@ -87,66 +87,6 @@
       "final_url": "https://www.cmu.edu/sfs/tuition/undergraduate/index.html"
     },
     {
-      "school": "cornell",
-      "id": "CORNELL-S1",
-      "url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
-      "checked_at_utc": "2026-10-14T04:19:58Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx"
-    },
-    {
-      "school": "cornell",
-      "id": "Cornell first-year",
-      "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-      "checked_at_utc": "2026-10-14T04:19:59Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants"
-    },
-    {
-      "school": "cornell",
-      "id": "Cornell Financial Aid",
-      "url": "https://finaid.cornell.edu/grants-and-scholarships",
-      "checked_at_utc": "2026-10-14T04:19:59Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://finaid.cornell.edu/grants-and-scholarships"
-    },
-    {
-      "school": "cornell",
-      "id": "Cornell Engineering",
-      "url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/",
-      "checked_at_utc": "2026-10-14T04:19:59Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/"
-    },
-    {
-      "school": "cornell",
-      "id": "cost_candidate",
-      "url": "https://finaid.cornell.edu/cost-to-attend",
-      "checked_at_utc": "2026-10-14T04:19:59Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://finaid.cornell.edu/cost-to-attend"
-    },
-    {
       "school": "duke",
       "id": "DUKE-S1",
       "url": "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
@@ -309,77 +249,6 @@
       "verified_on": "2026-10-14",
       "http_status": 200,
       "final_url": "https://finaid.gatech.edu/costs/undergraduate-costs"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "JHU-S1",
-      "url": "https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "JHU deadlines",
-      "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "JHU-S3",
-      "url": "https://apply.jhu.edu/hopkins-insider/advice-for-crafting-your-supplemental-essay/",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://apply.jhu.edu/hopkins-insider/advice-for-crafting-your-supplemental-essay/"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "JHU Merit",
-      "url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/merit-scholarships/",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/merit-scholarships/"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "JHU SFS",
-      "url": "https://sfs.jhu.edu/types-of-aid/scholarships/",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://sfs.jhu.edu/types-of-aid/scholarships/"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "cost_candidate",
-      "url": "https://apply.jhu.edu/tuition-aid/tuition-costs/",
-      "checked_at_utc": "2026-10-14T04:20:00Z",
-      "tls_verified": true,
-      "status": "failed",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "error": "HTTP Error 404: Not Found"
     },
     {
       "school": "maryland",
@@ -1095,30 +964,6 @@
       "final_url": "https://ousf.duke.edu/merit-scholarships/robertson-scholars-program/"
     },
     {
-      "school": "johns-hopkins",
-      "id": "JHU tuition budget",
-      "url": "https://apply.jhu.edu/tuition-aid/estimate-your-college-costs/",
-      "checked_at_utc": "2026-10-14T04:22:32Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://apply.jhu.edu/tuition-aid/estimate-your-college-costs/"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "Hodson",
-      "url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/need-based-scholarships/hodson-scholars/",
-      "checked_at_utc": "2026-10-14T04:22:32Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/need-based-scholarships/hodson-scholars/"
-    },
-    {
       "school": "michigan",
       "id": "Michigan cost",
       "url": "https://finaid.umich.edu/getting-started/estimating-costs",
@@ -1285,18 +1130,6 @@
       "final_url": "https://www.cmu.edu/career/documents/first-destination/cpdc-first-destination-rescaled-with-bleed-final-accessible.pdf"
     },
     {
-      "school": "cornell",
-      "id": "outcomes current source",
-      "url": "https://career.cornell.edu/career-statistics-and-outcomes/",
-      "checked_at_utc": "2026-10-14T04:23:27Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://career.cornell.edu/career-statistics-and-outcomes/"
-    },
-    {
       "school": "purdue",
       "id": "outcomes current source",
       "url": "https://www.cs.purdue.edu/corporate/placement/index.html",
@@ -1354,18 +1187,6 @@
       "source_type": "official_university_or_university-linked",
       "verified_on": "2026-10-14",
       "error": "HTTP Error 403: Forbidden"
-    },
-    {
-      "school": "johns-hopkins",
-      "id": "outcomes current source",
-      "url": "https://imagine.jhu.edu/our-student-outcomes/",
-      "checked_at_utc": "2026-10-14T04:23:27Z",
-      "tls_verified": true,
-      "status": "fetched",
-      "source_type": "official_university_or_university-linked",
-      "verified_on": "2026-10-14",
-      "http_status": 200,
-      "final_url": "https://illd.jhu.edu/"
     },
     {
       "school": "maryland",
@@ -1592,6 +1413,22 @@
       "verified_on": "2026-10-14",
       "http_status": 200,
       "final_url": "https://www.purdue.edu/treasurer/finance/bursar-office/tuition/fee-rates-2026-2027/undergraduate-tuition-and-fees-2026-2027/"
+    },
+    {
+      "school": "rose-hulman",
+      "id": "rose-hulman-CURRENT-PENDING",
+      "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html",
+      "status": "not_retrieved_current_confirmation_pending",
+      "verified_on": null,
+      "note": "No current financial figures reused; current source retrieval is blocked in the running environment."
+    },
+    {
+      "school": "michigan-dearborn",
+      "id": "michigan-dearborn-CURRENT-PENDING",
+      "url": "https://umdearborn.edu/financial-aid/scholarships",
+      "status": "not_retrieved_current_confirmation_pending",
+      "verified_on": null,
+      "note": "No current financial figures reused; current source retrieval is blocked in the running environment."
     }
   ],
   "note": "Source access does not itself verify every field. Facts requiring query-only or inaccessible data remain explicitly unresolved."

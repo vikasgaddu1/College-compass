@@ -94,7 +94,7 @@ export default function TimelinePage() {
     const pa = applicationsBySlug[a.slug], pb = applicationsBySlug[b.slug];
     if (pa && !pb) return -1;
     if (!pa && pb) return 1;
-    if (pa && pb) return pa.deadline.localeCompare(pb.deadline) || a.short.localeCompare(b.short);
+    if (pa && pb) return (pa.deadline ?? "9999-12-31").localeCompare(pb.deadline ?? "9999-12-31") || a.short.localeCompare(b.short);
     const da = earliest(bySlug[a.slug], enabledRounds);
     const db = earliest(bySlug[b.slug], enabledRounds);
     if (!da && !db) return a.short.localeCompare(b.short);
@@ -122,11 +122,11 @@ export default function TimelinePage() {
         <div className="card p-4 border-l-4 border-l-[hsl(var(--primary))]">
           <div className="serif text-[15px] font-semibold mb-2">My applications</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            {[...applications].sort((a,b)=>a.deadline.localeCompare(b.deadline)).map(a => {
+            {[...applications].sort((a,b)=>(a.deadline ?? "9999-12-31").localeCompare(b.deadline ?? "9999-12-31")).map(a => {
               const s = schools.find(x => x.slug === a.slug);
               const d = bySlug[a.slug];
               const verified = currentEvents(d).find(e => e.round === a.round && e.date === a.deadline && !e.year_inferred && !d?.cycle_inferred);
-              const days = daysUntil(a.deadline, today);
+              const days = a.deadline ? daysUntil(a.deadline, today) : null;
               return (
                 <div key={a.slug} className="rounded border border-[hsl(var(--border))] p-2.5">
                   <div className="flex items-center justify-between gap-2">
@@ -134,11 +134,11 @@ export default function TimelinePage() {
                     <PlanBadge slug={a.slug} />
                   </div>
                   <div className="text-[12px] mt-1">
-                    {a.plan_label}{a.binding ? " (binding)" : ""} · due <strong>{a.deadline_label}</strong>
-                    {verified && <span className="text-[hsl(var(--muted-foreground))]"> · {days < 0 ? `${-days} days past` : days === 0 ? "today" : `${days} day${days===1?"":"s"} left`}</span>}
+                    {a.plan_label}{a.binding ? " (binding)" : ""} · {a.deadline ? "due " : ""}<strong>{a.deadline_label}</strong>
+                    {verified && days !== null && <span className="text-[hsl(var(--muted-foreground))]"> · {days < 0 ? `${-days} days past` : days === 0 ? "today" : `${days} day${days===1?"":"s"} left`}</span>}
                   </div>
                   {d?.aid_priority && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">Aid: {d.aid_priority}</div>}
-                  {(!verified || a.note) && <div className="mt-1"><span className="chip fit-conditional">{!verified ? "Saved plan date · cycle confirmation pending" : a.note}</span></div>}
+                  {(!verified || a.note) && <div className="mt-1"><span className="chip fit-conditional">{a.plan === "PENDING" ? "Round and deadline unconfirmed" : !verified ? "Saved plan date · cycle confirmation pending" : a.note}</span>{a.plan === "PENDING" && a.note && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">{a.note}</div>}</div>}
                 </div>
               );
             })}

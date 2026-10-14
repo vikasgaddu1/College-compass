@@ -61,64 +61,6 @@
       "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
-      "slug": "cornell",
-      "cycle_label": "2026-27",
-      "ed1": "Nov 1",
-      "ed2": null,
-      "ea": null,
-      "rea_scea": null,
-      "rd": "Jan 2",
-      "rolling": "no",
-      "notify_ed1": "mid-December",
-      "notify_ed2": "—",
-      "notify_ea": "—",
-      "notify_rd": "late March",
-      "aid_priority": "Nov 15 (ED) / Feb 15 (RD)",
-      "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_month_day_cycle_inferred",
-      "cycle_inferred": true,
-      "events": [
-        {
-          "round": "ed1",
-          "label": "Early Decision I application",
-          "date": "2026-11-01",
-          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": true
-        },
-        {
-          "round": "rd",
-          "label": "Regular Decision application",
-          "date": "2027-01-02",
-          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": true
-        },
-        {
-          "round": "materials",
-          "label": "ED supporting materials",
-          "date": "2026-11-13",
-          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": true
-        },
-        {
-          "round": "materials",
-          "label": "RD supporting materials",
-          "date": "2027-01-19",
-          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": true
-        }
-      ],
-      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
-    },
-    {
       "slug": "duke",
       "cycle_label": "2026-27",
       "ed1": "Nov 2, 2026",
@@ -216,73 +158,6 @@
           "label": "RD supporting documents and scores",
           "date": "2027-01-22",
           "source_url": "https://admission.gatech.edu/first-year/deadlines",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": false
-        }
-      ],
-      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
-    },
-    {
-      "slug": "johns-hopkins",
-      "cycle_label": "2026-27",
-      "ed1": "Nov 1, 2026",
-      "ed2": "Jan 2, 2027",
-      "ea": null,
-      "rea_scea": null,
-      "rd": "Jan 2, 2027",
-      "rolling": "no",
-      "notify_ed1": "Dec 11, 2026",
-      "notify_ed2": "Feb 12, 2027",
-      "notify_ea": "—",
-      "notify_rd": "Mar 24, 2027",
-      "aid_priority": "Nov 15, 2026 (ED I); Jan 15, 2027 (ED II/RD)",
-      "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_current_cycle",
-      "cycle_inferred": false,
-      "events": [
-        {
-          "round": "ed1",
-          "label": "Early Decision I application",
-          "date": "2026-11-01",
-          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": false
-        },
-        {
-          "round": "ed2",
-          "label": "Early Decision II application",
-          "date": "2027-01-02",
-          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": false
-        },
-        {
-          "round": "rd",
-          "label": "Regular Decision application",
-          "date": "2027-01-02",
-          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": false
-        },
-        {
-          "round": "aid_priority",
-          "label": "ED I aid application",
-          "date": "2026-11-15",
-          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-          "verified_on": "2026-10-14",
-          "cycle": "2026-27",
-          "year_inferred": false
-        },
-        {
-          "round": "aid_priority",
-          "label": "ED II / RD aid application",
-          "date": "2027-01-15",
-          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
           "verified_on": "2026-10-14",
           "cycle": "2026-27",
           "year_inferred": false
@@ -809,6 +684,48 @@
         }
       ],
       "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
+    },
+    {
+      "slug": "rose-hulman",
+      "cycle_label": "Fall 2027 — current dates pending",
+      "ed1": null,
+      "ed2": null,
+      "ea": "Nov 1 (historical reference; current cycle unconfirmed)",
+      "rea_scea": null,
+      "rd": "Feb 1 (historical reference; current cycle unconfirmed)",
+      "rolling": null,
+      "notify_ed1": null,
+      "notify_ed2": null,
+      "notify_ea": null,
+      "notify_rd": null,
+      "aid_priority": null,
+      "source_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+      "verified_on": null,
+      "historical_source_date": "2026-08-18",
+      "verification_status": "historical_reference_pending_current_confirmation",
+      "cycle_inferred": true,
+      "events": []
+    },
+    {
+      "slug": "michigan-dearborn",
+      "cycle_label": "Fall 2027 — current dates pending",
+      "ed1": null,
+      "ed2": null,
+      "ea": null,
+      "rea_scea": null,
+      "rd": null,
+      "rolling": "Historically rolling; confirm current deadlines",
+      "notify_ed1": null,
+      "notify_ed2": null,
+      "notify_ea": null,
+      "notify_rd": null,
+      "aid_priority": null,
+      "source_url": "https://umdearborn.edu/admissions",
+      "verified_on": null,
+      "historical_source_date": "2026-08-18",
+      "verification_status": "historical_reference_pending_current_confirmation",
+      "cycle_inferred": true,
+      "events": []
     }
   ]
 }

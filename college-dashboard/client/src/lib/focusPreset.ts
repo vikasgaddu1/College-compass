@@ -78,14 +78,24 @@ export const MIN_ROBOTICS_CURRICULUM = 4;
  * Undergraduate robotics curriculum/access carry 65%, hands-on projects 15%,
  * foundations 10%, and supporting AI coursework 10%. A lab's research domain
  * does not establish that its undergraduate courses or lab seats are accessible.
+ * Missing dimensions are omitted and the remaining weights normalized. Such
+ * partial-evidence scores carry less certainty than a fully documented score.
  */
 export function roboticsAiFit(s: School): number {
   const ax = s.axes;
-  const rc = ax.robotics_curriculum ?? 0;
-  const ra = ax.robotics_access ?? 0;
-
-  let fit = rc * 0.40 + ra * 0.25 + (ax.hands_on ?? 0) * 0.15
-    + (ax.foundations ?? 0) * 0.10 + (ax.program_depth ?? 0) * 0.10;
+  const dimensions: [number | null | undefined, number][] = [
+    [ax.robotics_curriculum, 40], [ax.robotics_access, 25],
+    [ax.hands_on, 15], [ax.foundations, 10], [ax.program_depth, 10],
+  ];
+  let weightedSum = 0;
+  let knownWeight = 0;
+  for (const [score, weight] of dimensions) {
+    if (score == null) continue;
+    weightedSum += score * weight;
+    knownWeight += weight;
+  }
+  if (knownWeight === 0) return 0;
+  let fit = weightedSum / knownWeight;
 
   // Available but behind a later competitive application: rank slightly lower.
   if (s.robotics_pathway_risk?.severity === "internal_gate") fit -= 0.25;

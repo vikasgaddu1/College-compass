@@ -30,28 +30,6 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
-    "cornell": {
-      "offers_merit": "None",
-      "flagship": null,
-      "flagship_amount": null,
-      "ed_specific": null,
-      "auto_criteria": null,
-      "oos_specific": null,
-      "named_awards": [],
-      "generosity": "None (need-only)",
-      "note": "\"No merit aid or athletic scholarships are awarded at Cornell.\"",
-      "sources": [
-        {
-          "label": "Cornell Financial Aid",
-          "url": "https://finaid.cornell.edu/grants-and-scholarships"
-        }
-      ],
-      "application_deadline": null,
-      "deadline_note": "No merit scholarship deadline: Cornell awards need-based grant aid only. Domestic aid priority Nov 15 ED / Feb 15 RD.",
-      "eligibility": "Need-based aid; no merit or athletic scholarships.",
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
     "purdue": {
       "offers_merit": "Yes",
       "flagship": "Beering Scholarship",
@@ -207,35 +185,6 @@
       "verified_on": "2026-10-14",
       "verification_status": "partially_verified"
     },
-    "johns-hopkins": {
-      "offers_merit": "Very limited",
-      "flagship": "Hodson Trust Scholarship",
-      "flagship_amount": "Current official page does not publish a fixed Hodson award amount",
-      "ed_specific": null,
-      "auto_criteria": "Automatically considered with admission; Hodson Trust renewable four years with GPA≥3.0. Current page does not publish recipient count or a fixed award amount.",
-      "oos_specific": null,
-      "named_awards": [
-        "Charles R. Westgate Engineering Scholarship (4 yrs, Whiting School)",
-        "Hodson-Gilliam Success Scholarship (need-based)"
-      ],
-      "generosity": "Minimal",
-      "note": "Hodson Trust is merit-based; Hodson-Gilliam Success also considers financial need. Do not use unverified historical recipient-count claims.",
-      "sources": [
-        {
-          "label": "JHU Merit",
-          "url": "https://apply.jhu.edu/tuition-aid/types-of-financial-aid/merit-scholarships/"
-        },
-        {
-          "label": "JHU SFS",
-          "url": "https://sfs.jhu.edu/types-of-aid/scholarships/"
-        }
-      ],
-      "application_deadline": null,
-      "deadline_note": "Automatically considered with admission application; no separate initial merit application.",
-      "eligibility": "Award-specific; Hodson academic/personal achievement and leadership, renewable criteria apply.",
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
     "maryland": {
       "offers_merit": "Yes",
       "flagship": "Banneker/Key Scholarship",
@@ -383,6 +332,57 @@
       "eligibility": "Award-specific; Benjamin N. Duke focuses on North/South Carolina students. Selection is highly competitive.",
       "verified_on": "2026-10-14",
       "verification_status": "partially_verified"
+    },
+    "rose-hulman": {
+      "offers_merit": "Yes (historically documented; current terms pending)",
+      "flagship": "Noblitt Scholars Program (historical lead)",
+      "flagship_amount": null,
+      "ed_specific": null,
+      "auto_criteria": "Historical evidence describes automatic general-merit consideration with admission; current amounts and renewal rules pending confirmation. FIRST is a separate competitive award.",
+      "oos_specific": null,
+      "named_awards": [
+        "FIRST Robotics Scholarship (competitive; current amount pending confirmation)",
+        "Competition Teams Scholarship (separate award; current terms pending confirmation)"
+      ],
+      "generosity": "Unverified",
+      "note": "Historical FIRST evidence describes two $10,000-per-year scholarships renewable up to $40,000 over four years; current award count, amount, deadline, renewal and stacking need confirmation. Participation is not an automatic award. The historical Provost award is tied to biology/chemistry/biochemistry and is not assumed available to CE.",
+      "application_deadline": null,
+      "deadline_note": "Historical FIRST deadline was February 1; current-cycle deadline unconfirmed. Competition Teams historically used a separate April 1 date.",
+      "eligibility": "Historical FIRST rules describe admitted high-school FIRST participants and a separate applicant-portal application. Confirm current eligibility and award terms.",
+      "sources": [
+        {
+          "label": "Scholarships (inherited August 16, 2026 evidence)",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html",
+          "verified_on": "2026-08-16"
+        }
+      ],
+      "reviewed_on": "2026-10-14",
+      "verified_on": "2026-08-16",
+      "verification_status": "historical_evidence_pending_current_confirmation"
+    },
+    "michigan-dearborn": {
+      "offers_merit": "Historical awards documented; current availability unknown",
+      "flagship": null,
+      "flagship_amount": null,
+      "ed_specific": null,
+      "auto_criteria": null,
+      "oos_specific": null,
+      "named_awards": [],
+      "generosity": "Unknown",
+      "note": "Earlier nonresident award amounts conflict with an inaccessible-source report, so no current amount, eligibility, renewal, stacking or automatic award is asserted. Confirm institutional nonresident merit separately from CECS awards. Michigan-resident aid must not be assumed to apply to a North Carolina applicant.",
+      "application_deadline": null,
+      "deadline_note": "Current admission, scholarship and aid dates need confirmation; inherited aid-priority records conflict.",
+      "eligibility": null,
+      "sources": [
+        {
+          "label": "Scholarships (current check pending)",
+          "url": "https://umdearborn.edu/financial-aid/scholarships"
+        }
+      ],
+      "verification_status": "historical_pending_current_recheck",
+      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed."
     }
-  }
+  },
+  "selection_updated_on": "2026-10-14",
+  "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }

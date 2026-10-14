@@ -6,7 +6,7 @@ See [ROBOTICS_RESEARCH.md](ROBOTICS_RESEARCH.md) for the complete review and all
 
 ## Current facts versus historical context
 
-Official degree/curriculum, entry, scholarship and deadline sources were read again. Some current pages show month/day without an explicit entry year; those calendar events retain `year_inferred: true`. Exact published notification bounds are labeled “by”, while vague windows have null ISO dates rather than fabricated release days. Future seat availability and graduation schedules are never guaranteed.
+Official degree/curriculum, entry, scholarship and deadline sources for the eleven retained schools were read again in the October refresh. Rose-Hulman and Michigan-Dearborn use corrected August 2026 evidence with current checks pending. Some current pages show month/day without an explicit entry year; those calendar events retain `year_inferred: true`. Exact published notification bounds are labeled “by”, while vague windows have null ISO dates rather than fabricated release days. Future seat availability and graduation schedules are never guaranteed.
 
 Historical campus culture, Reddit/community membership, travel context and alumni/company bands retain their original compilation dates. They were not relabeled as current robotics outcomes. Historical source-log entries remain alongside the new readings.
 
@@ -25,5 +25,7 @@ The ACT-share copying error was corrected using accessible CDS tables; unknown s
 Aid/net-price population denominators and years remain explicit. Historical IPEDS averages are not personalized aid estimates. Career reports distinguish mean from median, CS from Engineering/university-wide scope, cohort year and response coverage. No CS salary is represented as a robotics salary.
 
 ## Validation
+
+The selected list now includes Rose-Hulman and Michigan-Dearborn in place of Cornell and Johns Hopkins. These two entries use audited August 2026 university-source records, not fresh October retrievals. Their unknown current budgets, scholarship amounts, application deadlines, major-entry guarantees and campus/social figures remain null or explicitly unconfirmed. Dearborn's earlier commuter, student-origin and quiet-campus claims were removed because no supporting citation could be traced. New application plans remain pending until rounds and dates are selected and verified.
 
 Run `npm test`, `npm run check` and `npm run build` from `college-dashboard`. Automated regressions check roster consistency, distinct credential/campus routes, route-specific scoring and source scope, preserved application plans, and calendar behavior. Browser checks exercise all existing routes and representative interactive flows. Source access failures and curriculum/advising conflicts are documented instead of replaced with invented facts.
