@@ -5,7 +5,10 @@ import { NoteButton } from "@/components/SchoolBits";
 import scholarshipData from "@/data/scholarships.json";
 import { Coins, Award, ExternalLink, Search, Filter } from "lucide-react";
 
-type Sch = typeof scholarshipData.schools[keyof typeof scholarshipData.schools];
+type Sch = typeof scholarshipData.schools[keyof typeof scholarshipData.schools] & {
+  application_deadline?: string | null; deadline_note?: string; eligibility?: string; verified_on?: string; verification_status?: string;
+  named_deadlines?: { label?: string; award?: string; date?: string | null; application_deadline?: string | null; note?: string; source_url?: string; year_inferred?: boolean }[];
+};
 
 const generosityOrder: Record<string, number> = {
   "Very generous": 6, "Generous": 5, "Modest": 4, "Very limited": 3,
@@ -64,7 +67,7 @@ export default function ScholarshipsPage() {
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">Where merit money is actually on the table</h2>
         <p className="text-[13.5px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Not every school offers merit aid. This page shows the flagship merit award at each school, plus named / competitive awards, ED-specific bonuses, and out-of-state-only awards for the public universities. All figures come from each school's official aid or scholarships pages, and every entry links back to the source.
+          Not every school offers merit aid. This page shows the flagship merit award at each school, plus named / competitive awards, ED-specific bonuses, and out-of-state-only awards for the public universities. Each entry shows its source, eligibility and deadline verification status. An award offered to binding ED applicants does not apply to EA/RD applicants. ED restricts the ability to compare aid offers; review affordability before committing.
         </p>
         <div className="mt-4 flex flex-wrap gap-4 text-[12.5px]">
           <div><span className="num text-[18px] font-semibold">{totalWithMerit}</span><span className="text-[hsl(var(--muted-foreground))]"> of {Object.keys(scholarshipData.schools).length} offer merit</span></div>
@@ -99,7 +102,7 @@ export default function ScholarshipsPage() {
 
       {/* Footer / source */}
       <div className="card p-3 text-[11px] text-[hsl(var(--muted-foreground))]">
-        Compiled {scholarshipData.compiled_date} from each school's official pages. Amounts change every cycle — always confirm on the school's own page before applying.
+        Reviewed {scholarshipData.compiled_date}; each card records its verification status. A missing Fall 2027 date means confirm the scholarship application with the school.
       </div>
     </div>
   );
@@ -133,10 +136,18 @@ function ScholarshipCard({ school, data }: { school: School; data: Sch }) {
 
       {data.ed_specific && (
         <div className="mt-3 border-l-2 border-[hsl(var(--accent))] pl-3">
-          <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--accent))]">Bonus for ED applicants</div>
+          <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--accent))]">Binding ED award terms</div>
           <div className="text-[13px] mt-0.5">{data.ed_specific}</div>
         </div>
       )}
+
+      <div className="mt-3 rounded-md border border-[hsl(var(--border))] p-2.5 text-[12px] space-y-1">
+        <div><strong>Application deadline:</strong> {data.application_deadline || "No confirmed date"}</div>
+        {data.deadline_note && <div className="text-[11.5px] text-[hsl(var(--muted-foreground))]">{data.deadline_note}</div>}
+        {data.eligibility && <div><strong>Eligibility:</strong> {data.eligibility}</div>}
+        {data.named_deadlines?.map((d, i) => <div key={i}>{d.label || d.award}: {d.date || d.application_deadline || "date pending"}{d.year_inferred ? " · year inferred" : ""}{d.note ? ` · ${d.note}` : ""}{d.source_url && <a className="ml-1 text-[hsl(var(--accent))] hover:underline" href={d.source_url} target="_blank" rel="noreferrer noopener">source</a>}</div>)}
+        <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">Checked {data.verified_on || "not recorded"} · {(data.verification_status || "pending").replace(/_/g, " ")}</div>
+      </div>
 
       {data.auto_criteria && (
         <div className="mt-3">

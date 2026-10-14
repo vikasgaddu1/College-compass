@@ -1,9 +1,10 @@
 import { schools, School, shortlistLabel, stripSourceTags } from "@/lib/data";
+import { useHidden } from "@/lib/hidden";
 import { SchoolCard, ArchetypeChips, AxisBar, CostChip } from "@/components/SchoolBits";
 
 const order: School["shortlist_group"][] = ["strongest","alternative","reserve","weakened"];
 const blurb: Record<string,string> = {
-  strongest: "Best combination of AI-program depth, real undergraduate access, and campus fit.",
+  strongest: "Balanced robotics curriculum, real undergraduate participation, and campus fit.",
   alternative: "Each brings a specific distinct advantage — different size, cost, or approach.",
   reserve: "Cleared the candidate screen but not carried to the shortlist. Held for consideration.",
   weakened: "Looked promising initially, but deeper research surfaced a decisive weakness.",
@@ -16,16 +17,17 @@ const tone: Record<string, string> = {
 };
 
 export default function ShortlistPage() {
+  const { hidden } = useHidden();
   return (
     <div className="space-y-6">
       <div className="card p-4">
-        <div className="serif text-[18px] font-semibold mb-1">The final shortlist, grouped by fit tier</div>
+        <div className="serif text-[18px] font-semibold mb-1">Robotics fit groups, for comparison</div>
         <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] max-w-3xl leading-relaxed">
           These groupings come from the underlying research report. No admissions probability is used — grouping is based only on documented program strengths, undergraduate access, and campus fit. Hidden schools are excluded automatically.
         </div>
       </div>
       {order.map(group => {
-        const list = schools.filter(s => s.shortlist_group === group);
+        const list = schools.filter(s => !hidden.has(s.slug) && s.shortlist_group === group);
         return (
           <section key={group} className={`border-l-4 pl-4 -ml-4 ${tone[group]}`}>
             <div className="flex items-baseline gap-3">
@@ -39,10 +41,10 @@ export default function ShortlistPage() {
                   <div className="text-[12px] text-[hsl(var(--muted-foreground))] mb-2 line-clamp-2">{s.degree_name}</div>
                   <ArchetypeChips codes={s.archetypes} />
                   <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3">
-                    <AxisBar value={s.axes.program_depth} label="AI curriculum" />
-                    <AxisBar value={s.axes.research_access} label="Research access" />
                     <AxisBar value={s.axes.robotics_curriculum ?? null} label="Robotics curriculum" />
                     <AxisBar value={s.axes.robotics_access ?? null} label="Robotics access" />
+                    <AxisBar value={s.axes.hands_on} label="Hands-on projects" />
+                    <AxisBar value={s.axes.program_depth} label="AI electives (supporting)" />
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
                     <CostChip s={s} />

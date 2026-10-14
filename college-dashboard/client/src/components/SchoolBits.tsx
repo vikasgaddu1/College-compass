@@ -16,7 +16,7 @@ export function PlanBadge({ slug, showDeadline }: { slug: string; showDeadline?:
   return (
     <span className={`chip ${planClass(a.plan)} font-semibold`}
       title={`Applying ${a.plan_label}${a.binding ? " (binding)" : ""} · due ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
-      Applying {a.plan}{showDeadline ? ` · ${a.deadline_label}` : ""}
+      Applying {a.plan_short ?? a.plan}{showDeadline ? ` · ${a.deadline_label}` : ""}
     </span>
   );
 }
@@ -205,41 +205,36 @@ export function SourceLinks({ urls }: { urls: string[] }) {
 /* ------------------------------------------------------------------ *
  * ABET accreditation badge for robotics-titled credentials.
  *
- * This is neutral background, deliberately styled as such. Robotics and AI are
- * unlicensed fields — no certificate or licence depends on which ABET
- * commission accredited the degree, and employers and CS/robotics graduate
- * programs do not filter on it. The commission still tells you something real
- * about the flavour of the coursework (theory-heavy vs applied), so it is worth
- * recording; it is not worth flagging in red. The one case where it genuinely
- * bites — PE licensure — belongs to civil, structural and building-systems
- * work, not to this applicant's path.
+ * Record the verified commission as degree context. It is not a robotics
+ * placement metric, and requirements can vary by employer, graduate program
+ * and licensing jurisdiction.
  * ------------------------------------------------------------------ */
 
 const ABET_META: Record<string, { label: string; hue: string; blurb: string }> = {
   EAC: {
     label: "ABET EAC — engineering",
     hue: "var(--fit-strong)",
-    blurb: "Accredited as an engineering degree: theory and calculus-heavy. Also the cleanest route to PE licensure, which robotics and AI work does not require.",
+    blurb: "Accredited by ABET’s Engineering Accreditation Commission. Compare the actual robotics curriculum and access separately; licensing requirements depend on the jurisdiction.",
   },
   ETAC: {
     label: "ABET ETAC — engineering technology",
     hue: "var(--score-unk)",
-    blurb: "Accredited as engineering technology: applied and hands-on rather than theory-heavy. Not a factor for robotics or AI roles — it matters mainly for PE licensure or a traditional engineering master's, where it can mean some catch-up coursework.",
+    blurb: "Accredited by ABET’s Engineering Technology Accreditation Commission. This is a different credential from EAC engineering; check prerequisites for any graduate program or licensed role you plan to pursue.",
   },
   CAC: {
     label: "ABET CAC — computing",
     hue: "var(--fit-strong)",
-    blurb: "Accredited as a computing program rather than an engineering one. Well matched to software and AI paths; not an engineering-licensure route.",
+    blurb: "Accredited by ABET’s Computing Accreditation Commission. Controls, embedded hardware and robotics design coverage still depend on the actual course plan.",
   },
   NOT_ABET_ACCREDITED: {
     label: "No ABET accreditation",
     hue: "var(--score-unk)",
-    blurb: "This degree has not sought ABET accreditation, which is common and unremarkable at strong CS schools. The curriculum is still theory-heavy, and robotics and AI hiring and graduate admissions do not look at ABET. The only real consequence is that it is not a PE licensure route.",
+    blurb: "This credential is recorded as not ABET accredited. That alone does not establish its robotics depth or outcomes; check its curriculum and any employer, graduate-program or licensing requirements.",
   },
   "n.a.": {
     label: "Accreditation unverified",
     hue: "var(--score-unk)",
-    blurb: "No first-party accreditation statement was found for this credential. Rarely consequential for a robotics or AI path, but confirm with the department if you care about licensure.",
+    blurb: "No verified accreditation statement is recorded for this credential. Confirm its current status with the department before relying on it.",
   },
 };
 

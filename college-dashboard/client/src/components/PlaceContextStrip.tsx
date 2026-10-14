@@ -23,7 +23,7 @@ export function PlaceContextStrip() {
         <div className="flex items-center gap-2">
           <Cloud size={14} className="text-[hsl(var(--accent))]" />
           <div className="text-[13px] font-medium">Getting there + being there · weather, drive time, flight cost from RDU</div>
-          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">NOAA normals + Google Flights bands</span>
+          <span className="text-[11px] text-[hsl(var(--muted-foreground))]">Historical estimates · {placeData.compiled_date}</span>
         </div>
         {open ? <ChevronDown size={14}/> : <ChevronRight size={14}/>}
       </button>
@@ -64,6 +64,7 @@ export function PlaceContextStrip() {
           </table>
           <div className="p-3 text-[10.5px] text-[hsl(var(--muted-foreground))] border-t border-[hsl(var(--border))]">
             {placeData.note}
+            <div className="mt-2">{placeData.robotics_scope_note}</div>
           </div>
         </div>
       )}

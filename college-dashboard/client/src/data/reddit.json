@@ -6,7 +6,7 @@
       "sub": "r/cmu",
       "members": "~35k",
       "praises": [
-        "SCS is the CS mecca \u2014 unmatched depth",
+        "SCS is the CS mecca — unmatched depth",
         "Faculty are top researchers, students get direct access",
         "Career outcomes speak for themselves"
       ],
@@ -16,7 +16,8 @@
         "Mental health crisis flagged repeatedly",
         "Grade inflation is not a thing here"
       ],
-      "vibe": "Serious about CS; culture is heads-down and self-selecting."
+      "vibe": "Serious about CS; culture is heads-down and self-selecting.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "cornell": {
       "sub": "r/Cornell",
@@ -32,7 +33,8 @@
         "CS overcrowded and grade-deflated",
         "Greek life dominates undergrad social scene"
       ],
-      "vibe": "Nature-loving and academically intense; students split on whether they love or tolerate it."
+      "vibe": "Nature-loving and academically intense; students split on whether they love or tolerate it.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "purdue": {
       "sub": "r/Purdue",
@@ -48,7 +50,8 @@
         "Winters are cold and gray",
         "CS advising uneven"
       ],
-      "vibe": "Practical, engineering-first, unpretentious."
+      "vibe": "Practical, engineering-first, unpretentious.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "wpi": {
       "sub": "r/WPI",
@@ -63,7 +66,8 @@
         "7-week terms are relentless",
         "Counseling wait times flagged"
       ],
-      "vibe": "Tight-knit, project-driven, self-selecting engineering culture."
+      "vibe": "Tight-knit, project-driven, self-selecting engineering culture.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "rpi": {
       "sub": "r/RPI",
@@ -79,7 +83,8 @@
         "Winter is long and grey",
         "Post-COVID budget cuts felt"
       ],
-      "vibe": "Committed engineers who love the school but not the town or admin."
+      "vibe": "Committed engineers who love the school but not the town or admin.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "georgia-tech": {
       "sub": "r/gatech",
@@ -90,11 +95,12 @@
         "Sports + Greek scene is real Big-Ten energy"
       ],
       "complaints": [
-        "Rigor is intense \u2014 \"getting out\" is a meme",
+        "Rigor is intense — \"getting out\" is a meme",
         "Advising ratios stretched thin",
         "Housing not guaranteed after freshman year"
       ],
-      "vibe": "Big, energetic, high-workload; students earn their degrees."
+      "vibe": "Big, energetic, high-workload; students earn their degrees.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "michigan": {
       "sub": "r/uofm",
@@ -109,7 +115,8 @@
         "Greek life is prominent socially",
         "Some CS classes overcrowded"
       ],
-      "vibe": "Confident, athletic-social, academically strong."
+      "vibe": "Confident, athletic-social, academically strong.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "johns-hopkins": {
       "sub": "r/jhu",
@@ -121,11 +128,12 @@
       ],
       "complaints": [
         "Grade grubbing culture",
-        "Party scene minimal \u2014 students describe it as quiet",
+        "Party scene minimal — students describe it as quiet",
         "Charles Village safety flagged",
         "Housing not guaranteed past year 2"
       ],
-      "vibe": "Studious and quiet; pre-professional grinders."
+      "vibe": "Studious and quiet; pre-professional grinders.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "maryland": {
       "sub": "r/UMD",
@@ -140,7 +148,8 @@
         "Mental-health services overwhelmed",
         "Frats have visible presence"
       ],
-      "vibe": "Ambitious, DC-adjacent, big-school energy."
+      "vibe": "Ambitious, DC-adjacent, big-school energy.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "northeastern": {
       "sub": "r/NEU",
@@ -156,7 +165,8 @@
         "Grade deflation flagged",
         "Global campus dilution complaints"
       ],
-      "vibe": "Career-focused; Boston-loving; co-op-first identity."
+      "vibe": "Career-focused; Boston-loving; co-op-first identity.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "ohio-state": {
       "sub": "r/OSU",
@@ -171,7 +181,8 @@
         "Advising uneven",
         "Getting into CS is competitive"
       ],
-      "vibe": "Massive, athletic, community-oriented; not for those wanting a small feel."
+      "vibe": "Massive, athletic, community-oriented; not for those wanting a small feel.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "nc-state": {
       "sub": "r/NCSU",
@@ -186,7 +197,8 @@
         "Greek life visible but not dominant",
         "Housing not always guaranteed"
       ],
-      "vibe": "Practical engineering culture with strong in-state alumni network."
+      "vibe": "Practical engineering culture with strong in-state alumni network.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "duke": {
       "sub": "r/Duke",
@@ -203,7 +215,9 @@
         "Housing wear-and-tear complaints",
         "Durham is 'meh' beyond campus for some students"
       ],
-      "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat."
+      "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     }
-  }
+  },
+  "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
 }

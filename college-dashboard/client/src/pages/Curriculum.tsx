@@ -3,12 +3,16 @@ import { School, scoreGroups, schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { ScoreCell, FitBadge, AccessBadge, ArchetypeChips, HideButton, NoteButton } from "@/components/SchoolBits";
 import { ChevronRight, ChevronDown, Bot, Wrench } from "lucide-react";
-import roboticsPaths from "@/data/robotics_paths.json";
+import roboticsRoutes from "@/data/robotics_routes.json";
 import { Link } from "wouter";
 
 const columns = [
-  { key: "ai_curriculum_breadth", label: "AI breadth" },
-  { key: "ai_curriculum_depth", label: "AI depth" },
+  { key: "robotics_curriculum", label: "Robotics curriculum", axis: true },
+  { key: "robotics_access", label: "Robotics UG access", axis: true },
+  { key: "project_based_learning", label: "Build projects" },
+  { key: "robotics_autonomy_options", label: "Autonomy options" },
+  { key: "ai_curriculum_breadth", label: "AI elective breadth" },
+  { key: "ai_curriculum_depth", label: "AI elective depth" },
   { key: "emerging_ai_topics", label: "LLMs / agents / RL" },
   { key: "course_availability", label: "Courses run" },
   { key: "curricular_flexibility", label: "Flexibility" },
@@ -17,10 +21,6 @@ const columns = [
   { key: "undergraduate_research_access", label: "UG research" },
   { key: "faculty_mentorship", label: "Faculty" },
   { key: "computing_resources", label: "GPU / compute" },
-  { key: "project_based_learning", label: "Projects" },
-  { key: "robotics_autonomy_options", label: "Robotics (overall)" },
-  { key: "robotics_curriculum", label: "Robotics courses", axis: true },
-  { key: "robotics_access", label: "Robotics access", axis: true },
   { key: "industry_preparation", label: "Industry prep" },
   { key: "graduate_school_preparation", label: "Grad-school prep" },
   { key: "fourplusone_quality", label: "4+1" },
@@ -30,7 +30,7 @@ type Sort = { key: string; asc: boolean };
 
 export default function CurriculumPage() {
   const { hidden } = useHidden();
-  const [sort, setSort] = useState<Sort>({ key: "ai_curriculum_depth", asc: false });
+  const [sort, setSort] = useState<Sort>({ key: "robotics_curriculum", asc: false });
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const rows = useMemo(() => {
@@ -156,8 +156,10 @@ function ExpandedRow({ s }: { s: School }) {
           <div>{s.primary_structural_risk}</div>
         </div>
         <div>
-          <Label>Notable AI institute</Label>
-          <div>{s.notable_ai_institute || "—"}</div>
+          <Label>Robotics research setting</Label>
+          <div>{s.robotics_access_detail?.institute_or_center || "—"}</div>
+          <Label>How undergraduates participate</Label>
+          <div>{s.robotics_access_detail?.undergrad_access_mode || "Access not verified"}</div>
 
           <Label>UG research program</Label>
           <div>{s.notable_undergraduate_research_program || "—"}</div>
@@ -191,28 +193,8 @@ function Label({ children }: { children: any }) {
 }
 
 function RoboticsCell({ slug }: { slug: string }) {
-  const d = (roboticsPaths.schools as any)[slug];
-  if (!d) return <span className="text-[hsl(var(--muted-foreground))] text-[11px]">—</span>;
-  const hasBS = d.has_bs_robotics?.startsWith("Yes");
-  const hasME = !!d.me_robotics_track_name;
-  const easier = d.robotics_easier_than_cs === "Yes";
-  return (
-    <Link href="/robotics" className="flex flex-col gap-0.5 text-[10.5px] hover:opacity-80" title={d.robotics_easier_than_cs_reason || undefined}>
-      {hasBS ? (
-        <span className="inline-flex items-center gap-0.5 text-[hsl(var(--fit-strong))] font-medium">
-          <Bot size={10}/> BS Robotics
-        </span>
-      ) : (
-        <span className="text-[hsl(var(--muted-foreground))]">No BS</span>
-      )}
-      {hasME && (
-        <span className="inline-flex items-center gap-0.5 text-[hsl(var(--accent))]">
-          <Wrench size={10}/> ME track
-        </span>
-      )}
-      {easier && (
-        <span className="text-[hsl(var(--fit-top))] font-medium">Easier via ME</span>
-      )}
-    </Link>
-  );
+  const r = (roboticsRoutes.schools as any)[slug];
+  if (!r) return <span className="text-[10.5px]">Route not verified</span>;
+  const label = r.recommended_route === "bs_robotics" ? "Primary robotics major" : r.recommended_route === "ece" ? "ECE + robotics" : "CS + robotics";
+  return <Link href="/routes" className="text-[10.5px] hover:underline" title={r.recommended_summary}>{label}</Link>;
 }

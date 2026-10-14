@@ -18,7 +18,7 @@ import { AlertTriangle, Info } from "lucide-react";
  */
 
 const criticalKeys: Record<string, string> = {
-  ai_curriculum_depth: "AI curriculum depth",
+  ai_curriculum_depth: "AI elective depth (supporting)",
   emerging_ai_topics: "Modern AI (LLMs, agents, RL)",
   undergraduate_research_access: "Undergrad research access",
   faculty_mentorship: "Faculty mentorship",
@@ -43,6 +43,11 @@ function findWeaknesses(s: School): Weakness[] {
     else if (v == null && note && !note.toLowerCase().startsWith("—"))
       out.push({ key: k, label, score: null, note, kind: "unknown" });
   }
+  for (const key of ["robotics_curriculum", "robotics_access"] as const) {
+    const value = s.axes[key] ?? null;
+    const detail = key === "robotics_curriculum" ? s.robotics_curriculum_detail : s.robotics_access_detail;
+    if (value == null || value <= 2) out.push({ key, label: key === "robotics_curriculum" ? "Robotics curriculum" : "Undergraduate robotics access", score: value, note: detail?.score_basis || "Evidence not verified", kind: value == null ? "unknown" : "weak" });
+  }
   // Weak first, then unknowns, then most-important-fields first
   return out.sort((a,b) => {
     if (a.kind !== b.kind) return a.kind === "weak" ? -1 : 1;
@@ -57,7 +62,7 @@ function walkAwayIf(s: School): string {
   const concern = (s.biggest_concern || "").toLowerCase();
   const bits: string[] = [];
   if (/(gate|coda|lep|selection|change of major|entrance to major|codo|internal admit)/i.test(risk))
-    bits.push("you need certainty of getting into the CS/AI major on day one");
+    bits.push("you need certainty of entering the recommended robotics route without a later gate");
   if (/(cutthroat|stress|workload|misery|pressure|competitive)/i.test(concern) || /(cutthroat|stress|misery)/i.test(risk))
     bits.push("you want a low-pressure college experience");
   if (/(greek|frat|sorority)/i.test(concern) || /(greek|frat|sorority)/i.test(risk))
@@ -67,7 +72,7 @@ function walkAwayIf(s: School): string {
   if (/(cost|expensive|price|tuition)/i.test(concern))
     bits.push("cost is your primary constraint");
   if (/(rotation|frequency|not offered|thin|weak)/i.test(concern))
-    bits.push("you need every advanced AI course guaranteed each year");
+    bits.push("you need the advanced robotics and supporting electives offered on a guaranteed schedule");
   if (/(unverified|unpublished|unknown|unk)/i.test(concern) && bits.length === 0)
     bits.push("you can't wait for evidence to be confirmed");
   if (bits.length === 0) bits.push("the concern below would truly stop you");

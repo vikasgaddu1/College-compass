@@ -2,13 +2,15 @@ import { createContext, useContext, useState, ReactNode, useMemo, useCallback, u
 import { School } from "./data";
 
 /**
- * Personal-priorities weighting. The user can weight each of the 7 aggregate
+ * Personal-priorities weighting. The user can weight each of the 9 aggregate
  * axes from 0-5 (0 = "don't care", 5 = "must have"). We compute a personal
  * score per school as the weighted average of their axis scores, and expose
  * that so the Overview page can sort or highlight by it.
  */
 
 export type AxisKey =
+  | "robotics_curriculum"
+  | "robotics_access"
   | "program_depth"
   | "foundations"
   | "hands_on"
@@ -20,7 +22,9 @@ export type AxisKey =
 export type Weights = Record<AxisKey, number>;
 
 export const axisMeta: { key: AxisKey; label: string; blurb: string }[] = [
-  { key: "program_depth",     label: "AI curriculum depth", blurb: "Breadth of AI courses, LLMs/agents, current availability" },
+  { key: "robotics_curriculum", label: "Robotics curriculum", blurb: "Undergraduate controls, sensing, embedded systems, autonomy and robotics design" },
+  { key: "robotics_access", label: "Robotics access", blurb: "Documented undergraduate robotics projects, teams and research routes; lab seats are not guaranteed" },
+  { key: "program_depth",     label: "Supporting AI coursework", blurb: "Machine learning, vision, planning and AI electives alongside the robotics core" },
   { key: "research_access",   label: "Research & faculty access", blurb: "Undergrad research programs, faculty mentorship, compute" },
   { key: "hands_on",          label: "Hands-on projects", blurb: "Project-based courses, robotics, technical clubs" },
   { key: "foundations",       label: "CS & math foundations", blurb: "Rigor of the required foundations sequence" },
@@ -30,10 +34,12 @@ export const axisMeta: { key: AxisKey; label: string; blurb: string }[] = [
 ];
 
 const DEFAULT_WEIGHTS: Weights = {
-  program_depth: 4,
+  robotics_curriculum: 5,
+  robotics_access: 5,
+  program_depth: 2,
   research_access: 4,
-  hands_on: 3,
-  foundations: 3,
+  hands_on: 5,
+  foundations: 4,
   ambition_healthy: 3,
   campus_life: 3,
   outcomes: 3,
@@ -66,7 +72,7 @@ export function WeightsProvider({ children }: { children: ReactNode }) {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) return DEFAULT_WEIGHTS;
       const parsed = JSON.parse(raw);
-      // Validate: must have all 7 keys as numbers 0-5
+      // Preserve valid saved priorities; supply new robotics axes from defaults.
       const cleaned: Weights = { ...DEFAULT_WEIGHTS };
       for (const k of Object.keys(DEFAULT_WEIGHTS) as AxisKey[]) {
         const v = parsed[k];

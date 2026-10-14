@@ -27,6 +27,7 @@ export interface School {
   major_access_status: "DIRECT" | "GATED" | "MIXED" | "UNK";
   major_access_full: string;
   recommended_major_route: string;
+  recommended_admission_door?: "engineering" | "computing";
   alternative_route: string;
   primary_structural_risk: string;
   notable_ai_institute: string;
@@ -118,6 +119,7 @@ export interface School {
   shortlist_group: "strongest" | "alternative" | "reserve" | "weakened";
   distance_from_rdu: string;
   outcomes?: SchoolOutcomes | null;
+  admissions?: Record<string, any>;
 }
 
 export interface SchoolOutcomes {
@@ -152,6 +154,8 @@ export interface SchoolOutcomes {
   cs_pct_continuing_edu: string | null;
   source_urls: string[];
   notes?: string;                              // free-form caveats
+  salary_statistic?: "mean" | "median" | "unknown";
+  career_scope_note?: string;
 }
 
 // Fields whose prose we clean of source-ID tags for display.
@@ -217,18 +221,18 @@ export const schools: School[] = (raw as unknown as School[]).map(s => {
 });
 
 export const archetypeLabels: Record<string, string> = {
-  A: "Dedicated AI",
-  B: "Deep CS + AI",
-  C: "AI + Robotics",
-  D: "Undergrad-centered",
-  E: "Large AI ecosystem",
+  A: "Primary robotics degree",
+  B: "ECE / CE robotics route",
+  C: "CS autonomy / perception route",
+  D: "Integrated undergraduate projects",
+  E: "Robotics research ecosystem",
 };
 
 export const scoreGroups: { key: string; label: string; short: string; keys: string[] }[] = [
   {
     key: "program_depth",
-    label: "AI curriculum depth & breadth",
-    short: "AI curriculum",
+    label: "Supporting AI coursework",
+    short: "AI electives",
     keys: [
       "ai_curriculum_breadth",
       "ai_curriculum_depth",

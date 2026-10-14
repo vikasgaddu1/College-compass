@@ -1,16 +1,18 @@
 {
   "note": "Testing policy, international share, housing, and study-abroad data from each school's official admissions/IR pages, July-August 2026. Every value has an inline source in the source markdown.",
-  "compiled_date": "2026-08-16",
+  "compiled_date": "2026-10-14",
   "schools": {
     "carnegie-mellon": {
-      "testing": "Varies by college \u2014 SCS Required; Engineering/Dietrich/Heinz/MCS/Tepper test-flexible; CFA test-optional",
+      "testing": "Varies by college — SCS Required; Engineering/Dietrich/Heinz/MCS/Tepper test-flexible; CFA test-optional",
       "testing_source": "https://www.cmu.edu/admission/admission/standardized-testing",
       "intl_pct": 22.3,
       "intl_year": "2025-26",
       "study_abroad_pct": null,
       "housing_req": "Yes with exemptions",
       "housing_years": "Up to 4",
-      "housing_note": "Guarantee lapses if you skip Room Selection"
+      "housing_note": "Guarantee lapses if you skip Room Selection",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "cornell": {
       "testing": "Required (Fall 2026+)",
@@ -20,10 +22,12 @@
       "study_abroad_pct": null,
       "housing_req": "Yes with exemptions",
       "housing_years": "2",
-      "housing_note": "64% of undergrads / 65% of first-years in college housing"
+      "housing_note": "64% of undergrads / 65% of first-years in college housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "purdue": {
-      "testing": "Expected/effectively required \u2014 90% of 2025 applicants submitted",
+      "testing": "SAT, ACT or CLT scores expected; exceptional no-test applications allowed. Submit scores when available.",
       "testing_source": "https://admissions.purdue.edu/become-student/guide/",
       "intl_pct": 9.9,
       "intl_year": "2024-25",
@@ -31,7 +35,9 @@
       "study_abroad_year": "2016-17 (dated)",
       "housing_req": "No",
       "housing_years": "None",
-      "housing_note": "42% of undergrads in college housing"
+      "housing_note": "42% of undergrads in college housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "wpi": {
       "testing": "Test-optional (was test-blind 2021-2024)",
@@ -42,7 +48,9 @@
       "study_abroad_year": "Current",
       "housing_req": "Yes",
       "housing_years": "2 (fall 2026+ entrants)",
-      "housing_note": "96% of first-years in college housing"
+      "housing_note": "96% of first-years in college housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "rpi": {
       "testing": "Test-optional (Fall 2027 applicants); B.S./M.D. requires scores",
@@ -52,7 +60,9 @@
       "study_abroad_pct": null,
       "housing_req": "Yes with exemptions",
       "housing_years": "2 required",
-      "housing_note": "Sophomore requirement unusually strict; Greek-housing waiver available"
+      "housing_note": "Sophomore requirement unusually strict; Greek-housing waiver available",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "georgia-tech": {
       "testing": "Required (no in-state/OOS diff, CLT not accepted)",
@@ -63,17 +73,21 @@
       "study_abroad_year": "Current",
       "housing_req": "No",
       "housing_years": "No guarantee",
-      "housing_note": "Waitlist possible; 92% of first-years still in college housing"
+      "housing_note": "Waitlist possible; 92% of first-years still in college housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "michigan": {
-      "testing": "Test-optional (Fall 2027 cycle)",
-      "testing_source": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/Article/7490/Test-optional-Policy-for-SAT-and-ACT",
+      "testing": "Test-optional for 2027 application cycle (explicit official knowledge-base policy)",
+      "testing_source": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/ArticleDet?ID=7490",
       "intl_pct": 7.1,
       "intl_year": "2025-26",
       "study_abroad_pct": null,
       "housing_req": "No",
       "housing_years": "No requirement",
-      "housing_note": "~97% of first-year students choose Michigan Housing"
+      "housing_note": "~97% of first-year students choose Michigan Housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "johns-hopkins": {
       "testing": "Required",
@@ -84,7 +98,9 @@
       "study_abroad_year": "Current",
       "housing_req": "Yes with exemptions",
       "housing_years": "2",
-      "housing_note": "Due to space limitations, unable to provide university housing for upper-class students"
+      "housing_note": "Due to space limitations, unable to provide university housing for upper-class students",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "maryland": {
       "testing": "Test-optional (through Spring/Fall 2027)",
@@ -95,7 +111,9 @@
       "study_abroad_year": "Current",
       "housing_req": "No",
       "housing_years": "No requirement",
-      "housing_note": "May 1, 2026 agreement return needed to be guaranteed for 2026-27"
+      "housing_note": "Historical 2026-27 agreement date; do not apply a May 1, 2026 deadline to Fall 2027. Verify 2027 housing guarantee and agreement deadline when available.",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "northeastern": {
       "testing": "Test-optional",
@@ -105,7 +123,9 @@
       "study_abroad_pct": null,
       "housing_req": "Yes with exemptions",
       "housing_years": "2 required, continuing students not guaranteed",
-      "housing_note": "Many juniors/seniors rent in Boston"
+      "housing_note": "Many juniors/seniors rent in Boston",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "ohio-state": {
       "testing": "Required",
@@ -116,27 +136,33 @@
       "study_abroad_year": "Current",
       "housing_req": "Yes with exemptions",
       "housing_years": "2 (contract term)",
-      "housing_note": "Requirement is space-contingent"
+      "housing_note": "Requirement is space-contingent",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "nc-state": {
-      "testing": "Conditional \u2014 test-optional if weighted GPA \u22652.8; required (17+ ACT/930+ SAT) if <2.8",
-      "testing_source": "https://admissions.ncsu.edu/apply/first-year/test-score-consideration-in-admission-decisions/",
+      "testing": "Optional with weighted GPA ≥2.8; required ACT or SAT below 2.8. Current first-year policy also permits voluntary CLT reporting.",
+      "testing_source": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
       "intl_pct": 2.4,
       "intl_year": "2025-26",
       "study_abroad_pct": null,
       "housing_req": "Yes with exemptions",
       "housing_years": "1",
-      "housing_note": "97% of first-years in college housing"
+      "housing_note": "97% of first-years in college housing",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     },
     "duke": {
-      "testing": "Test-optional (not reinstated per CDS C8)",
-      "testing_source": "https://admissions.duke.edu/apply/first-year-applicants/",
+      "testing": "Test-optional for 2026-2027 first-year admissions cycle (explicit current university policy)",
+      "testing_source": "https://admissions.duke.edu/apply/",
       "intl_pct": 10.0,
       "intl_year": "2024-25 CDS",
       "study_abroad_pct": null,
-      "housing_req": "Yes \u2014 2 years required (East Campus freshmen, then West/Central)",
+      "housing_req": "Yes — 2 years required (East Campus freshmen, then West/Central)",
       "housing_years": "3 guaranteed",
-      "housing_note": "East Campus freshmen; 3-year on-campus guarantee; strong residential community."
+      "housing_note": "East Campus freshmen; 3-year on-campus guarantee; strong residential community.",
+      "verified_on": "2026-10-14",
+      "verification_status": "testing_verified_other_context_historical"
     }
   }
 }

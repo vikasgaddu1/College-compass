@@ -28,15 +28,15 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
   {
     section: "Dig into detail",
     items: [
-      { path: "/curriculum", label: "Curriculum & access",   icon: GraduationCap, hint: "AI courses, gates, research" },
-      { path: "/robotics",   label: "Robotics paths (ME)",    icon: Bot,           hint: "ME tracks, early rounds, admit odds" },
-      { path: "/robotics-degrees", label: "US robotics degrees", icon: Radar,       hint: "Every US robotics BS, for reference" },
+      { path: "/curriculum", label: "Curriculum & access",   icon: GraduationCap, hint: "Robotics courses, route access, research" },
+      { path: "/robotics",   label: "Entry & alternatives",    icon: Bot,           hint: "ECE / CS gates and optional ME routes" },
+      { path: "/robotics-degrees", label: "Degree routes", icon: Radar,       hint: "Degree types at the 13 schools" },
       { path: "/robotics-compare", label: "WPI vs Michigan", icon: Columns3,    hint: "The two robotics BS degrees, side by side" },
-      { path: "/cmu-plan",   label: "CMU four-year plan",    icon: CalendarRange, hint: "Stats+ML + Robotics, semester by semester" },
+      { path: "/cmu-plan",   label: "CMU Robotics BS",    icon: CalendarRange, hint: "Primary Robotics BS and alternative routes" },
       { path: "/culture",    label: "Culture & campus",      icon: Users,         hint: "Greek life, ambition, rec" },
       { path: "/cost",       label: "Cost & value",          icon: DollarSign,    hint: "What it costs a NC family" },
       { path: "/scholarships", label: "Scholarships & merit", icon: Coins,        hint: "Merit awards, named scholarships" },
-      { path: "/outcomes",   label: "Aid, outcomes & careers", icon: TrendingUp,   hint: "Net price, grad rates, CS careers" },
+      { path: "/outcomes",   label: "Aid, outcomes & careers", icon: TrendingUp,   hint: "Net price, grad rates, scoped careers" },
       { path: "/culture-signals", label: "Culture signals",  icon: MessageCircle, hint: "Reddit sentiment · anecdotal" },
       { path: "/compare",    label: "Side-by-side compare",  icon: Columns3,      hint: "Pick 2-4 and diff them" },
       { path: "/timeline",   label: "Application timeline",  icon: CalendarClock, hint: "ED / EA / RD deadlines" },
@@ -158,7 +158,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
             </div>
           )}
           <div className="text-[9.5px] text-[hsl(var(--sidebar-foreground)/0.4)] mt-3 px-1 leading-relaxed">
-            Fall 2027 entry · Data through Aug 2026
+            Fall 2027 entry · Reviewed Oct 14, 2026
           </div>
         </div>
       </aside>
@@ -181,7 +181,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
             <h1 className="serif text-[19px] sm:text-[24px] font-semibold leading-tight truncate">{active?.label || "Overview"}</h1>
           </div>
           <div className="desktop-only text-right text-[11px] text-[hsl(var(--muted-foreground))]">
-            No admissions-chance data used. Fit is about the program and the place.
+            Robotics fit is qualitative. Admissions statistics describe past cohorts.
           </div>
         </div>
       </header>

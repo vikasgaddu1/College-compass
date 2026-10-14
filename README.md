@@ -1,34 +1,37 @@
 # College Compass
 
-An evidence-audited dashboard of 13 universities, prepared for a Fall 2027 applicant whose goal is robotics.
+A robotics-first comparison of 13 universities for Fall 2027 entry, with AI as supporting coursework. Official programme, catalogue, admissions, scholarship, budget and accessible Common Data Set sources were reviewed on **October 14, 2026**.
+
+The selected schools are Carnegie Mellon, Cornell, Duke, Georgia Tech, Johns Hopkins, Maryland College Park, Michigan Ann Arbor, NC State, Northeastern, Ohio State, Purdue West Lafayette, RPI and WPI.
 
 **Live site:** https://vikasgaddu1.github.io/College-compass/
 
-## What it is
+Start with **Robotics routes**: the primary robotics degree where available, otherwise the recommended ECE/CE route, its CS alternative, actual entry restrictions, and undergraduate AI choices with prerequisites/permissions. Four schools have primary robotics degrees; Purdue’s engineering-technology option is separate. All comparison pages use the same selected-school recommendations.
 
-The school list is fixed at 13: Carnegie Mellon, Cornell, Duke, Georgia Tech, Johns Hopkins, NC State, Northeastern, Purdue, RPI, Ohio State, Maryland, Michigan and WPI.
+The strongest integrated project route is WPI Robotics Engineering; Michigan Robotics BSE offers the broad public-university alternative; CMU Robotics BS is the research-intensive aspirational route through SCS. NC State EE Controls and Robotics is the local-value option. These are qualitative recommendations, not admission or financial guarantees.
 
-The **Robotics routes** page is the main view. For each school it shows a dedicated BS in Robotics where one exists, the ECE route and the CS route, with the robotics track and key courses in each, how a first-year actually gets in, any robotics minor, and the recommended route. That research (October 2026) lives in `college-dashboard/client/src/data/robotics_routes.json`, with source links per route.
+Read [the research review](ROBOTICS_RESEARCH.md) for all 13 recommendations, official links, important corrections and unresolved source conflicts. [Data verification](DATA_VERIFICATION.md) explains historical versus current figures.
 
-Interactive dashboard that lets you filter, sort, and compare the 13 schools on:
+## Development
 
-- Robotics route (BS Robotics / ECE / CS), curriculum depth, undergraduate research access, and hands-on/project ecosystem
-- Financial aid, net price by family income band, and Common Data Set data
-- Graduation rates and career outcomes for CS graduates
-- Campus culture: Greek life, ambition, non-Greek social scene, rec facilities
-- Application timeline (ED / EA / RD deadlines for the Fall 2027 cycle)
-- Program-fit "why to choose" and "biggest drawback" narratives
-- Personal notes, ratings, and status per school (saved in your browser)
+Node 20.19+ (the cloud environment uses 20.19.5) and npm:
 
-## Data sources
+```bash
+cd college-dashboard
+npm ci
+npm test
+npm run check
+npm run dev
+```
 
-- 1,430 individually logged sources: official university pages, Common Data Sets, IPEDS, first-destination outcomes reports, and official admissions calendars
-- Data snapshot: July 29, 2026 (research) + August 15, 2026 (deadlines and outcomes) + October 13, 2026 (robotics routes)
+The development server defaults to port 5000. `npm run build` builds the static Vite client and local Express server; `npm start` serves the production output. GitHub Pages CI builds the static client and runs data/TypeScript validation before deployment. Root `index.html`, `404.html` and `assets/` are a generated static snapshot of the client, refreshed with this change.
 
-## Notes storage
+## Personal data and optional sync
 
-Notes save to `localStorage` in your browser. They are **local to this device** — use the Notebook tab's *Export JSON* / *Import JSON* buttons to move them between your laptop, phone, or school computer.
+Notes, ratings, priorities, hidden schools and rankings stay in browser localStorage. Use the Notebook export/import controls to move notes between devices. The selected plans are CMU ED1; EA at NC State, Northeastern, Purdue, Ohio State, UMD, RPI, Michigan and WPI (EA1); Georgia Tech EA2; and RD at Cornell, Johns Hopkins and Duke.
 
-## Static site
+Supabase sync and counselor sharing are optional; see [SUPABASE_SETUP.md](SUPABASE_SETUP.md). The dashboard works signed out without credentials. Do not put service-role keys or other secrets in the client.
 
-This is a pure static SPA (Vite + React + Tailwind + Recharts). No backend, no telemetry, no accounts.
+## Data limitations
+
+Costs retain academic year, residency and programme scope; most are 2026–27. Georgia Tech already publishes a 2027–28 estimate. Current Engineering budgets, course permissions, future seats and some scholarship dates remain unverified where sources were inaccessible. CS/company outcomes and older campus sentiment are labeled historical context and are not treated as robotics placement evidence.

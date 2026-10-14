@@ -3,6 +3,8 @@ import { schools, School, stripSourceTags } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { FitBadge, ArchetypeChips, AccessBadge, HideButton, CostChip, AxisBar, NoteButton, MyRatingChip } from "@/components/SchoolBits";
 import { Sparkles, ChevronRight } from "lucide-react";
+import roboticsRoutes from "@/data/robotics_routes.json";
+import { roboticsAiFit } from "@/lib/focusPreset";
 
 /**
  * "Why to choose" — a story per school built entirely from the concrete
@@ -16,9 +18,11 @@ import { Sparkles, ChevronRight } from "lucide-react";
  */
 
 // The scores that most often indicate a "signature strength" (a 5 here is worth mentioning)
-const strengthKeys: { key: string; label: string; icon: string }[] = [
-  { key: "ai_curriculum_depth", label: "Deep AI curriculum", icon: "🧠" },
-  { key: "ai_curriculum_breadth", label: "Broad AI coverage", icon: "📚" },
+const strengthKeys: { key: string; label: string; icon: string; axis?: boolean }[] = [
+  { key: "robotics_curriculum", label: "Balanced robotics coursework", icon: "🦾", axis: true },
+  { key: "robotics_access", label: "Undergraduate robotics participation", icon: "🛠️", axis: true },
+  { key: "ai_curriculum_depth", label: "AI elective depth (supporting)", icon: "🧠" },
+  { key: "ai_curriculum_breadth", label: "AI elective breadth (supporting)", icon: "📚" },
   { key: "emerging_ai_topics", label: "LLMs / agents / RL taught", icon: "🤖" },
   { key: "undergraduate_research_access", label: "Undergrads get into labs", icon: "🔬" },
   { key: "faculty_mentorship", label: "Real faculty mentorship", icon: "👥" },
@@ -42,9 +46,9 @@ const strengthKeys: { key: string; label: string; icon: string }[] = [
 // Extract top strengths from a school (score >= 4)
 function pickStrengths(s: School, threshold = 4) {
   return strengthKeys
-    .map(k => ({ ...k, score: s.scores[k.key], note: s.score_notes[k.key] || "" }))
+    .map(k => ({ ...k, score: k.axis ? (s.axes as any)[k.key] : s.scores[k.key], note: k.axis ? ((k.key === "robotics_curriculum" ? s.robotics_curriculum_detail : s.robotics_access_detail)?.score_basis || "") : s.score_notes[k.key] || "" }))
     .filter(x => typeof x.score === "number" && (x.score as number) >= threshold)
-    .sort((a, b) => (b.score as number) - (a.score as number));
+    .sort((a, b) => Number(Boolean(b.axis)) - Number(Boolean(a.axis)) || (b.score as number) - (a.score as number));
 }
 
 export default function WhyChoosePage() {
@@ -54,10 +58,9 @@ export default function WhyChoosePage() {
   const list = useMemo(() => {
     const arr = schools.filter(s => !hidden.has(s.slug));
     if (sortBy === "name") arr.sort((a,b) => a.short.localeCompare(b.short));
-    else if (sortBy === "depth") arr.sort((a,b) => (b.axes.program_depth ?? 0) - (a.axes.program_depth ?? 0));
+    else if (sortBy === "depth") arr.sort((a,b) => (b.axes.robotics_curriculum ?? 0) - (a.axes.robotics_curriculum ?? 0));
     else {
-      const rank: Record<string, number> = { "TOP FIT": 3, "STRONG FIT": 2, "CONDITIONAL FIT": 1, "LOWER FIT": 0 };
-      arr.sort((a,b) => (rank[b.fit_classification] ?? 0) - (rank[a.fit_classification] ?? 0) || a.short.localeCompare(b.short));
+      arr.sort((a,b) => roboticsAiFit(b) - roboticsAiFit(a) || a.short.localeCompare(b.short));
     }
     return arr;
   }, [hidden, sortBy]);
@@ -81,8 +84,8 @@ export default function WhyChoosePage() {
           <span className="text-[hsl(var(--muted-foreground))] mr-2">Sort</span>
           <select value={sortBy} onChange={e=>setSortBy(e.target.value as any)}
             className="text-[12px] py-1 px-2 rounded border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
-            <option value="fit">Fit tier</option>
-            <option value="depth">AI curriculum depth</option>
+            <option value="fit">Robotics evidence fit</option>
+            <option value="depth">Robotics curriculum</option>
             <option value="name">School name</option>
           </select>
         </div>
@@ -142,8 +145,8 @@ export default function WhyChoosePage() {
               {/* Institute + program facts */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11.5px] pt-1">
                 <FactBox label="Degree route" value={stripSourceTags(s.degree_name)} />
-                {s.notable_ai_institute && s.notable_ai_institute !== "—" &&
-                  <FactBox label="AI research home" value={stripSourceTags(s.notable_ai_institute)} />}
+                {s.robotics_access_detail?.institute_or_center &&
+                  <FactBox label="Robotics research setting" value={stripSourceTags(s.robotics_access_detail.institute_or_center)} />}
                 {s.notable_undergraduate_research_program && s.notable_undergraduate_research_program !== "—" &&
                   <FactBox label="UG research program" value={stripSourceTags(s.notable_undergraduate_research_program)} />}
                 {s.fourplusone_available && s.fourplusone_available.toLowerCase().startsWith("y") &&
@@ -154,17 +157,17 @@ export default function WhyChoosePage() {
               <div className="pt-1">
                 <div className="text-[11px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-1.5">Program profile</div>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1">
-                  <AxisBar value={s.axes.program_depth} label="AI curriculum" />
-                  <AxisBar value={s.axes.research_access} label="Research access" />
                   <AxisBar value={s.axes.robotics_curriculum ?? null} label="Robotics curriculum" />
                   <AxisBar value={s.axes.robotics_access ?? null} label="Robotics access" />
+                  <AxisBar value={s.axes.hands_on} label="Hands-on projects" />
+                  <AxisBar value={s.axes.program_depth} label="AI electives (supporting)" />
                   <AxisBar value={s.axes.hands_on} label="Hands-on" />
                   <AxisBar value={s.axes.ambition_healthy} label="Healthy ambition" />
                 </div>
                 <RoboticsDomainChips domains={s.robotics_domains} />
               </div>
 
-              <EcePanel ece={(s as any).ece} />
+              <EcePanel slug={s.slug} />
 
               <ChevronRight size={12} className="opacity-0"/> {/* spacer */}
             </div>
@@ -196,7 +199,8 @@ export function RoboticsDomainChips({ domains }: { domains?: Record<string, { co
   if (strong.length === 0 && present.length === 0) return null;
   return (
     <div className="pt-2">
-      <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-1">Robotics focus areas</div>
+      <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] mb-1">Robotics research / course areas</div>
+      <p className="text-[10px] text-[hsl(var(--muted-foreground))] mb-1">Research presence provides context; it does not guarantee an undergraduate lab place or course seat.</p>
       <div className="flex flex-wrap gap-1">
         {strong.map(([k, v]) => (
           <span key={k} className="chip text-[10.5px] py-0"
@@ -226,140 +230,13 @@ function FactBox({ label, value }: { label: string; value: string }) {
 }
 
 
-/* ------------------------------------------------------------------------- *
- * ECE as an alternative door.
- *
- * The list was built around CS/AI, but ECE is usually EAC-accredited
- * engineering and is often a less gated admit than CS while still carrying
- * controls, embedded systems, perception and hardware for ML. Two cautions are
- * surfaced deliberately rather than buried: schools with no ECE at all, and
- * schools whose NEW ECE degree is not yet EAC-accredited.
- * ------------------------------------------------------------------------- */
-
-const EASIER_META: Record<string, { label: string; hue: string; blurb: string }> = {
-  yes: {
-    label: "Easier door than CS",
-    hue: "var(--fit-strong)",
-    blurb: "Published evidence shows the ECE route is less gated than CS here.",
-  },
-  same: {
-    label: "Same door as CS",
-    hue: "var(--muted-foreground)",
-    blurb: "Admission does not distinguish ECE from CS at this school.",
-  },
-  no: {
-    label: "Harder than CS",
-    hue: "var(--fit-lower)",
-    blurb: "The ECE route is the more competitive of the two here.",
-  },
-  unpublished: {
-    label: "Not published",
-    hue: "var(--score-unk)",
-    blurb:
-      "This school admits by unit but publishes no per-unit rate, so whether ECE is easier than CS is genuinely unknown — verify with admissions.",
-  },
-};
-
-const STRUCTURE_LABEL: Record<string, string> = {
-  combined_ece: "Combined ECE department",
-  separate_ee_and_cpe: "Separate EE and CpE degrees",
-  ee_only: "Electrical engineering only",
-  eecs_combined_with_cs: "EECS — fused with CS",
-  none: "No ECE program",
-};
-
-const COVERS_LABEL: Record<string, string> = {
-  controls: "Controls",
-  embedded: "Embedded",
-  perception_cv: "Perception / CV",
-  signal_processing: "Signal processing",
-  ml_hardware: "ML hardware",
-  power: "Power",
-  vlsi: "VLSI",
-};
-
-function EcePanel({ ece }: { ece?: any }) {
-  if (!ece) return null;
-
-  const easier = String(ece.door?.easier_than_cs ?? "unpublished");
-  const meta = EASIER_META[easier] ?? EASIER_META.unpublished;
-  const covers: string[] = Array.isArray(ece.robotics_ai?.covers) ? ece.robotics_ai.covers : [];
-  const courseCount = ece.robotics_ai?.course_count ?? 0;
-  const conc = ece.robotics_ai?.concentration_name;
-  const abetPending = ece.abet?.pending_or_absent === true;
-
-  // No ECE at all is the single most decision-relevant state, so it replaces
-  // the panel rather than rendering an empty shell.
-  if (ece.exists === false) {
-    return (
-      <div className="mt-2 rounded-md border border-dashed p-2.5"
-           style={{ borderColor: "hsl(var(--fit-lower))" }}>
-        <div className="text-[11px] uppercase tracking-wider font-semibold mb-1"
-             style={{ color: "hsl(var(--fit-lower))" }}>
-          ECE route · none
-        </div>
-        <p className="text-[11.5px] leading-snug">{stripSourceTags(ece.vs_cs)}</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="mt-2 rounded-md border p-2.5"
-         style={{ borderColor: "hsl(var(--border))", background: "hsl(var(--muted) / 0.35)" }}>
-      <div className="flex items-baseline justify-between gap-2 mb-1.5 flex-wrap">
-        <div className="text-[11px] uppercase tracking-wider font-semibold text-[hsl(var(--muted-foreground))]">
-          ECE route
-        </div>
-        <span className="chip chip-outline text-[10px] font-semibold"
-              style={{ color: `hsl(${meta.hue})` }}
-              title={`${meta.blurb}${ece.door?.easier_than_cs_basis ? "\n\n" + ece.door.easier_than_cs_basis : ""}`}>
-          {meta.label}
-        </span>
-      </div>
-
-      <div className="flex flex-wrap gap-1 mb-1.5 items-center">
-        <span className="chip text-[10px]">{STRUCTURE_LABEL[ece.structure] ?? ece.structure}</span>
-        <span className="chip text-[10px]"
-              style={ece.abet?.eac_accredited
-                ? { color: "hsl(var(--fit-strong))" }
-                : { color: "hsl(var(--fit-lower))" }}
-              title={ece.abet?.quote || undefined}>
-          {ece.abet?.eac_accredited ? "ABET EAC" : abetPending ? "ABET pending / absent" : "Not EAC"}
-        </span>
-        {courseCount > 0 && (
-          <span className="chip text-[10px]">{courseCount} robotics/AI course{courseCount === 1 ? "" : "s"}</span>
-        )}
-      </div>
-
-      {abetPending && ece.abet?.quote && (
-        <p className="text-[10.5px] leading-snug mb-1.5 pl-2 border-l-2"
-           style={{ borderColor: "hsl(var(--fit-lower))", color: "hsl(var(--fit-lower))" }}>
-          {stripSourceTags(ece.abet.quote)}
-        </p>
-      )}
-
-      {conc && (
-        <div className="text-[11px] mb-1">
-          <span className="text-[hsl(var(--muted-foreground))]">Track: </span>{stripSourceTags(conc)}
-        </div>
-      )}
-
-      {covers.length > 0 && (
-        <div className="flex flex-wrap gap-1 mb-1.5">
-          {covers.map(c => (
-            <span key={c} className="chip chip-outline text-[9.5px]">{COVERS_LABEL[c] ?? c}</span>
-          ))}
-        </div>
-      )}
-
-      {ece.door?.how_you_enter && (
-        <p className="text-[11px] leading-snug text-[hsl(var(--muted-foreground))] mb-1">
-          <span className="font-medium text-[hsl(var(--foreground))]">Getting in: </span>
-          {stripSourceTags(ece.door.how_you_enter)}
-        </p>
-      )}
-
-      {ece.vs_cs && <p className="text-[11.5px] leading-snug">{stripSourceTags(ece.vs_cs)}</p>}
-    </div>
-  );
+function EcePanel({ slug }: { slug: string }) {
+  const r = (roboticsRoutes.schools as any)[slug];
+  if (!r) return null;
+  return <div className="mt-2 rounded-md border border-[hsl(var(--border))] p-3 text-[11.5px] space-y-2">
+    <div className="font-medium">Recommended route · hardware, controls and autonomy</div>
+    <p className="leading-relaxed">{r.recommended_summary}</p>
+    <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">{r.tradeoff}</p>
+    <a href={r.recommended_route === "bs_robotics" ? r.bs_robotics.url : r[r.recommended_route].url} target="_blank" rel="noreferrer" className="text-[hsl(var(--accent))] hover:underline">Official program page</a>
+  </div>;
 }

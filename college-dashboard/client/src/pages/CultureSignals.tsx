@@ -26,13 +26,14 @@ export default function CultureSignalsPage() {
       <div className="card p-5">
         <div className="flex items-baseline gap-2 text-[hsl(var(--accent))]">
           <MessageCircle size={16}/>
-          <div className="text-[11px] tracking-wider uppercase">Reddit sentiment · ANECDOTAL</div>
+          <div className="text-[11px] tracking-wider uppercase">Historical Reddit sentiment · ANECDOTAL</div>
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">What students say about each school</h2>
+        <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">Original compilation: {redditData.compiled_date}; sentiment and membership counts were not refreshed.</div>
         <div className="rounded-md bg-[hsl(var(--elevate-1))] p-3 mt-3 flex gap-2 text-[12px] items-start max-w-[820px]">
           <AlertTriangle size={14} className="text-[hsl(var(--fit-conditional))] shrink-0 mt-0.5"/>
           <div className="leading-relaxed">
-            <strong>Read as anecdotes, not evidence.</strong> Every bullet here is drawn from recent posts in each school's subreddit. It captures the community's vibe — not verified truth. Verify anything decision-relevant against the school's own pages, official surveys, or a campus visit.
+            <strong>Dated anecdotes, not a robotics-fit rating.</strong> {redditData.robotics_scope_note} Check decision-relevant claims against official surveys, university policy or a campus visit.
           </div>
         </div>
       </div>
@@ -55,7 +56,7 @@ export default function CultureSignalsPage() {
                 <h3 className="serif text-[15.5px] font-semibold">{s.short}</h3>
                 <NoteButton slug={s.slug}/>
               </div>
-              <span className="text-[11px] text-[hsl(var(--muted-foreground))]">{d.sub} · {d.members}</span>
+              <span className="text-[11px] text-[hsl(var(--muted-foreground))]">{d.sub} · {d.members} (historical)</span>
             </div>
 
             <div className="rounded-md bg-[hsl(var(--elevate-1))] p-2.5 text-[12.5px] italic leading-relaxed mb-3">

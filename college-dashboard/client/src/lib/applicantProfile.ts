@@ -265,9 +265,8 @@ export interface GpaComparison {
  *
  * This is the part that matters. Comparing an unweighted 3.9 against Georgia
  * Tech's WEIGHTED 4.17 average would understate the applicant badly, so a
- * comparison is only returned when the bases line up. Twelve of the eighteen
- * schools that publish a GPA never state their weighting; for those, a figure at
- * or below 4.0 is compared against the unweighted GPA and explicitly flagged.
+ * comparison is only returned when the bases line up. When a school does not
+ * state its weighting, the average remains context and cannot change a tier.
  */
 export function compareGpa(admissions: any, profile: ApplicantProfile): GpaComparison {
   const raw = admissions?.avg_gpa;
@@ -303,24 +302,9 @@ export function compareGpa(admissions: any, profile: ApplicantProfile): GpaCompa
       school_basis: basis, applicant_used: profile.gpa_uw, applicant_basis: "unweighted", caveat: null };
   }
 
-  // basis unspecified
-  if (avg > 4.0) {
-    // Cannot be an unweighted 4.0-scale figure; treat as weighted if we can.
-    if (profile.gpa_w == null) {
-      return { ...empty, school_avg: avg, school_basis: basis,
-        caveat: `Average ${avg.toFixed(2)} exceeds 4.0, so it must be weighted, but the school does not say so. Enter your weighted GPA to compare.` };
-    }
-    return { delta: Math.round((profile.gpa_w - avg) * 100) / 100, school_avg: avg,
-      school_basis: basis, applicant_used: profile.gpa_w, applicant_basis: "weighted",
-      caveat: "The school does not state its weighting; treated as weighted because the average exceeds 4.0." };
-  }
-  if (profile.gpa_uw == null) {
-    return { ...empty, school_avg: avg, school_basis: basis,
-      caveat: `This school does not state whether its ${avg.toFixed(2)} average is weighted. Enter your unweighted GPA for the closest comparison.` };
-  }
-  return { delta: Math.round((profile.gpa_uw - avg) * 100) / 100, school_avg: avg,
-    school_basis: basis, applicant_used: profile.gpa_uw, applicant_basis: "unweighted",
-    caveat: "The school does not state its weighting; compared against your unweighted GPA." };
+  // An unspecified weighting/scale cannot support a numerical tier adjustment.
+  return { ...empty, school_avg: avg, school_basis: basis,
+    caveat: "The school does not identify a comparable GPA scale; the reported average is context only and does not move the planning tier." };
 }
 
 /**
@@ -356,6 +340,8 @@ export interface UnitRate {
   door: "engineering" | "computing" | "other";
   basis?: string;
   note?: string;
+  year?: number;
+  current_for_cycle?: boolean;
 }
 
 /**
@@ -382,10 +368,13 @@ export function pickUnitRate(
   pathway: "engineering" | "computing",
 ): UnitPick | null {
   const units: UnitRate[] = Array.isArray(admissions?.unit_admit_rates)
-    ? admissions.unit_admit_rates : [];
+    && admissions.unit_rates_official !== false
+    ? admissions.unit_admit_rates.filter((u: UnitRate) => u.current_for_cycle !== false && !/inferred|historical|not a current figure/i.test(u.basis ?? "")) : [];
   if (!units.length) return null;
 
-  const inHome = profile.home_state === "NC" && Boolean(admissions?.is_home_state_nc);
+  const inHome = admissions?.school_state
+    ? profile.home_state.trim().toUpperCase() === String(admissions.school_state).toUpperCase()
+    : profile.home_state === "NC" && Boolean(admissions?.is_home_state_nc);
   const wantRes = inHome ? "in_state" : "oos";
   const relevant = units.filter(u => u.door === pathway);
   if (!relevant.length) return null;
@@ -427,7 +416,9 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
 
   const inState = coerceRate(admissions.in_state_admit_rate);
   const oosRate = coerceRate(admissions.oos_admit_rate);
-  const inHomeState = profile.home_state === "NC" && Boolean(admissions.is_home_state_nc);
+  const inHomeState = admissions.school_state
+    ? profile.home_state.trim().toUpperCase() === String(admissions.school_state).toUpperCase()
+    : profile.home_state === "NC" && Boolean(admissions.is_home_state_nc);
 
   if (inHomeState && inState !== null) {
     rate = inState;
@@ -438,9 +429,8 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   }
 
   // Per-college / per-program override. This is the point of the whole feature:
-  // at CMU the engineering door is ~19% and SCS is ~5.2%; at UW the same
-  // application is ~37% via Direct-to-College Engineering and ~2% via
-  // Direct-to-Major CS for a non-resident.
+  // Only sourced, published college/program rates are eligible. Historic
+  // comparisons and inferred rates cannot substitute for the current door.
   let unit: UnitRate | null = null;
   let unit_residency_blended = false;
   let unit_clamped_to: number | null = null;
@@ -585,7 +575,7 @@ export function classify(admissions: any, nc_note: string | undefined, profile: 
   // door classified HARDER than its computing door, because the gate landed on
   // engineering while computing's own per-college rate exempted it.
   // Per-door severity. `gate_by_door.engineering` comes from the ECE admission
-  // research (which established the engineering-side gate for all 33 schools);
+  // research for the selected schools;
   // `gate_by_door.computing` is the researched cs_gate. Only "strong" moves a
   // tier, so behaviour is unchanged -- what changes is WHICH door is strong.
   const doorGate = t.use_door_gates

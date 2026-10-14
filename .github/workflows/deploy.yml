@@ -27,6 +27,11 @@ jobs:
       - name: Install
         working-directory: college-dashboard
         run: npm ci
+      - name: Validate data and TypeScript
+        working-directory: college-dashboard
+        run: |
+          npm test
+          npm run check
       - name: Build
         working-directory: college-dashboard
         env:

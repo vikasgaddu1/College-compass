@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { schools } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import { useWeights, axisMeta, AxisKey } from "@/lib/weights";
 import { Sliders, RotateCcw, ChevronRight, ChevronDown, Trophy } from "lucide-react";
 import { Link } from "wouter";
 
-/** Collapsible panel that lets the user weight the seven aggregate axes 0-5,
+/** Collapsible panel that lets the user weight the nine aggregate axes 0-5,
  *  and shows the top 8 schools by personal score.  */
 export function PersonalPriorities() {
   const { weights, setWeight, reset, personalScore, isCustomized } = useWeights();
@@ -61,7 +60,7 @@ export function PersonalPriorities() {
               ))}
             </div>
             <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-3 leading-relaxed">
-              Sliders save automatically to your browser. Schools with insufficient evidence on a weighted axis are skipped for that axis only.
+              Robotics curriculum and access lead the default weights; supporting AI coursework is a separate factor. Sliders save automatically to your browser, preserving your existing choices. Schools with insufficient evidence on a weighted axis are skipped for that axis only.
             </div>
           </div>
 
@@ -71,7 +70,7 @@ export function PersonalPriorities() {
               <Trophy size={13} className="text-[hsl(var(--accent))]"/>
               <div className="text-[12.5px] font-medium">Top matches for your priorities</div>
             </div>
-            <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Among visible schools, ranked by your weighted score. Fit tiers still apply — this is not a substitute for reading each profile.</div>
+            <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Among visible schools, ranked by your weighted evidence scores. Personal preferences, dated campus context and historical CS outcomes do not guarantee robotics access or placement.</div>
             <div className="space-y-1">
               {ranked.map((r, i) => (
                 <Link key={r.s.slug} href="/why"
@@ -102,7 +101,7 @@ function WeightSlider({ axisKey, label, blurb, value, onChange }:
   const dots = [0, 1, 2, 3, 4, 5];
   const importanceLabel = ["Skip", "Barely", "A little", "Somewhat", "A lot", "Must-have"][value];
   return (
-    <div>
+    <div data-axis={axisKey}>
       <div className="flex items-baseline justify-between">
         <div className="text-[12px] font-medium">{label}</div>
         <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{importanceLabel}</div>
@@ -110,7 +109,7 @@ function WeightSlider({ axisKey, label, blurb, value, onChange }:
       <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-tight mb-1">{blurb}</div>
       <div className="flex items-center gap-1">
         {dots.map(d => (
-          <button key={d} onClick={() => onChange(d)} title={`${d}: ${["Skip","Barely","A little","Somewhat","A lot","Must-have"][d]}`}
+          <button key={d} onClick={() => onChange(d)} aria-label={`${label}: ${d}`} aria-pressed={d === value} title={`${d}: ${["Skip","Barely","A little","Somewhat","A lot","Must-have"][d]}`}
             className={`flex-1 h-2 rounded ${d <= value ? "bg-[hsl(var(--accent))]" : "bg-[hsl(var(--muted))]"} hover:opacity-90`}
             style={{ minWidth: 22 }}/>
         ))}

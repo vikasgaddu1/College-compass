@@ -1,5 +1,6 @@
 import { useMemo, useState, useRef } from "react";
 import { schools, stripSourceTags } from "@/lib/data";
+import { roboticsAiFit } from "@/lib/focusPreset";
 import { useRanks } from "@/lib/ranks";
 import { useHidden } from "@/lib/hidden";
 import { useNotes } from "@/lib/notes";
@@ -55,7 +56,13 @@ export default function MyRankingPage() {
     if (fromIdx < 0 || toIdx < 0) { onDragEnd(); return; }
     order.splice(fromIdx, 1);
     order.splice(toIdx, 0, dragSlug);
-    reorder(order);
+    // Reorder visible positions while preserving hidden and archived school ranks.
+    const visibleSlots = new Set(order);
+    let nextVisible = 0;
+    const fullOrder = Object.entries(ranks)
+      .sort((a, b) => a[1] - b[1])
+      .map(([slug]) => visibleSlots.has(slug) ? order[nextVisible++] : slug);
+    reorder(fullOrder);
     onDragEnd();
   };
 
@@ -168,17 +175,10 @@ export default function MyRankingPage() {
   };
 
   const suggestFromEvidence = () => {
-    // Pre-fill ranking with schools ordered by best_fit_reason strength as a starting draft
-    const order = [...visibleSchools].sort((a, b) => {
-      const fitOrder: Record<string, number> = { "TOP FIT": 0, "STRONG FIT": 1, "CONDITIONAL FIT": 2, "LOWER FIT": 3 };
-      const af = fitOrder[a.fit_classification] ?? 4;
-      const bf = fitOrder[b.fit_classification] ?? 4;
-      if (af !== bf) return af - bf;
-      // Tiebreak by axes.program_depth
-      const ap = (a.axes?.program_depth ?? 0);
-      const bp = (b.axes?.program_depth ?? 0);
-      return bp - ap;
-    }).map(s => s.slug);
+    // This explicit action seeds a draft; saved personal ranks are never changed on load.
+    const order = [...visibleSchools].sort((a, b) =>
+      roboticsAiFit(b) - roboticsAiFit(a) || a.short.localeCompare(b.short)
+    ).map(s => s.slug);
     reorder(order);
   };
 
@@ -192,10 +192,10 @@ export default function MyRankingPage() {
         </div>
         <h2 className="serif text-[22px] font-semibold mt-1">Rank the schools by your own priorities</h2>
         <p className="text-[13.5px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
-          Drag rows to reorder, use the up/down arrows, or type a number to set an exact rank. Your ranking saves to this browser. Once you've ranked schools, every list on the dashboard can be sorted by "My rank."
+          Drag rows to reorder, use the up/down arrows, or type a number to set an exact rank. Your ranking saves to this browser. The Overview can be sorted by "My ranking"; your order stays separate from the researched program scores.
         </p>
         <div className="mt-4 flex flex-wrap gap-3 items-center">
-          <div className="chip chip-primary"><ListOrdered size={11}/> {rankedCount} of {visibleSchools.length} ranked</div>
+          <div className="chip chip-primary"><ListOrdered size={11}/> {rankedList.length} of {visibleSchools.length} visible schools ranked</div>
           {rankedCount === 0 && (
             <button onClick={suggestFromEvidence}
               className="chip chip-outline inline-flex items-center gap-1 hover:bg-[hsl(var(--elevate-1))]">

@@ -103,6 +103,8 @@ function AidTab({ list }: { list: School[] }) {
       name: s.short,
       value: s.outcomes!.avg_net_price_48_to_75k!,
       sticker: s.cost_for_nc_resident || 0,
+      budgetYear: s.cost_asof || "year unconfirmed",
+      netYear: (s.outcomes as any)?.net_price_year || (s.outcomes as any)?.ipeds_year || "historical IPEDS year; see source",
       fit: s.fit_classification,
       color: fitColor[s.fit_classification] || "hsl(var(--muted))",
     }))
@@ -114,14 +116,14 @@ function AidTab({ list }: { list: School[] }) {
         <Stat label="Meet full demonstrated need" value={`${meets} / ${list.length}`} tone="pos" sub="Reported yes"/>
         <Stat label="Need-blind admission" value={`${blind} / ${list.length}`} sub="For domestic applicants"/>
         <Stat label="Avg. institutional need grant" value={fmtCost(avgGrant)} sub="Across schools that report it"/>
-        <Stat label="Avg. net price (all students)" value={fmtCost(avgNetAll)} sub="IPEDS, all first-year aid recipients"/>
+        <Stat label="Avg. net price (all students)" value={fmtCost(avgNetAll)} sub="Historical IPEDS aid-recipient population"/>
       </div>
 
       {midBand.length > 0 && (
         <div className="card p-4">
           <div className="text-[13px] font-medium mb-1">Net price for a family earning $48k–$75k</div>
           <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-3">
-            The gray bar is sticker COA for reference — the gap between the two is the aid a middle-income family typically receives. Use each school's Net Price Calculator to run your own family's numbers.
+            The gray bar is published sticker COA for reference. These historical IPEDS aid-recipient averages and current budgets cover different years and populations. The IPEDS population includes multiple residencies and is not specific to the recommended robotics route or an NC applicant; their difference is not your expected aid. Use each school's Net Price Calculator with your family's numbers.
           </div>
           <ResponsiveContainer width="100%" height={Math.max(320, midBand.length * 30)}>
             <BarChart data={midBand} layout="vertical" margin={{ top: 5, right: 72, left: 12, bottom: 5 }} barCategoryGap={6}
@@ -135,14 +137,14 @@ function AidTab({ list }: { list: School[] }) {
                 content={(props: any) => {
                   if (!props.active || !props.payload?.length) return null;
                   const d = props.payload[0].payload;
-                  const savings = d.sticker - d.value;
+
                   return (
                     <div className="p-2 rounded" style={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }}>
                       <div className="serif font-semibold text-[13px]">{d.name}</div>
                       <div className="text-[11.5px] mt-1 space-y-0.5">
-                        <div>Sticker: <span className="num">{fmtCost(d.sticker)}</span></div>
-                        <div>Net for $48-75k: <span className="num font-semibold text-[hsl(var(--fit-top))]">{fmtCost(d.value)}</span></div>
-                        {savings > 0 && <div>Effective aid: <span className="num text-[hsl(var(--accent))]">{fmtCost(savings)}</span></div>}
+                        <div>Published budget ({d.budgetYear}): <span className="num">{fmtCost(d.sticker)}</span></div>
+                        <div>Historical net ({d.netYear}): <span className="num font-semibold text-[hsl(var(--fit-top))]">{fmtCost(d.value)}</span></div>
+                        <div>IPEDS aid-recipient average; all residencies, not an NC applicant estimate.</div>
                       </div>
                     </div>
                   );
@@ -189,8 +191,9 @@ function AidTab({ list }: { list: School[] }) {
                     <td>
                       <div className="serif font-medium">{s.short}</div>
                       <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{s.city_state}</div>
+                      {(o as any).aid_statistics_note && <div className="mt-1 text-[10.5px] text-[hsl(var(--muted-foreground))] max-w-[300px]">{(o as any).aid_statistics_note}</div>}
                     </td>
-                    <td className="text-[11px]">{o.cds_year || "n.a."}</td>
+                    <td className="text-[11px]">{o.cds_year || "Year unconfirmed"}{(o as any).latest_cds_report_year && (o as any).latest_cds_report_year !== o.cds_year && <div className="text-[10px] text-[hsl(var(--muted-foreground))]">Latest report {(o as any).latest_cds_report_year}; values retain their source year</div>}</td>
                     <td>{yesNoChip(o.meets_full_need)}</td>
                     <td>{yesNoChip(o.need_blind)}</td>
                     <td className="text-[11.5px] text-right num">{o.pct_receiving_need_aid || "n.a."}</td>
@@ -223,7 +226,7 @@ function AidTab({ list }: { list: School[] }) {
       <div className="card overflow-hidden">
         <div className="p-3 border-b border-[hsl(var(--border))]">
           <div className="text-[13px] font-medium">Average net price by family income band</div>
-          <div className="text-[11px] text-[hsl(var(--muted-foreground))]">IPEDS data. Family income = the household income reported on the FAFSA.</div>
+          <div className="text-[11px] text-[hsl(var(--muted-foreground))]">Historical IPEDS federal-aid-recipient population; household income is reported on FAFSA. Reporting year and residency mix may differ from today’s NC-resident budget. These figures are not a Fall 2027 award estimate.</div>
         </div>
         <div className="overflow-x-auto">
           <table className="dense w-full">
@@ -291,7 +294,7 @@ function PersistenceTab({ list }: { list: School[] }) {
         <div className="card p-4">
           <div className="text-[13px] font-medium mb-1">4-year vs. 6-year graduation rate</div>
           <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-3">
-            4-year is the more meaningful metric for finishing on time. The gap between 4-year and 6-year shows how many take an extra year — often for co-ops, double majors, or difficulty passing gate courses.
+            Four-year and six-year completion rates describe historical cohorts. Program length, co-op choices and reporting years differ, so compare each school’s context before treating a difference as a program outcome.
           </div>
           <ResponsiveContainer width="100%" height={Math.max(340, grad4.length * 28)}>
             <BarChart data={grad4} layout="vertical" margin={{ top: 5, right: 60, left: 12, bottom: 5 }} barGap={2} barCategoryGap={6}>
@@ -351,55 +354,20 @@ function PersistenceTab({ list }: { list: School[] }) {
 
 function CareersTab({ list }: { list: School[] }) {
   const withSalary = list.filter(s => s.outcomes?.cs_median_starting_salary != null);
-  const salaryData = withSalary
-    .map(s => ({
-      name: s.short,
-      salary: s.outcomes!.cs_median_starting_salary!,
-      scope: s.outcomes!.cs_salary_scope || "",
-      color: fitColor[s.fit_classification] || "hsl(var(--muted))",
-    }))
-    .sort((a,b) => b.salary - a.salary);
-
-  const median = (() => {
-    const nums = salaryData.map(d => d.salary).sort((a,b) => a-b);
-    return nums.length ? nums[Math.floor(nums.length/2)] : null;
-  })();
-
+  const reporting = (statistic: string) => withSalary.filter(s => (s.outcomes?.salary_statistic || "unknown") === statistic).length;
   return (
     <div className="space-y-4">
       <AlumniStrip />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <Stat label="Schools reporting CS salary" value={String(withSalary.length)} sub={`of ${list.length}`}/>
-        <Stat label="Median CS starting salary" value={fmtCost(median)} sub="Across reporting schools" tone="pos"/>
-        <Stat label="Highest reported" value={salaryData[0] ? fmtCost(salaryData[0].salary) : "—"} sub={salaryData[0]?.name}/>
-        <Stat label="Lowest reported" value={salaryData.length ? fmtCost(salaryData[salaryData.length-1].salary) : "—"} sub={salaryData[salaryData.length-1]?.name}/>
+        <Stat label="Reported salary records" value={String(withSalary.length)} sub={`of ${list.length} · differing populations`}/>
+        <Stat label="Median records" value={String(reporting("median"))} sub="Source identifies the statistic"/>
+        <Stat label="Mean records" value={String(reporting("mean"))} sub="Source identifies the statistic"/>
+        <Stat label="Statistic unconfirmed" value={String(reporting("unknown"))} sub="No assumed mean or median"/>
       </div>
-
-      {salaryData.length > 0 && (
-        <div className="card p-4">
-          <div className="text-[13px] font-medium mb-1">Median starting salary for CS / AI graduates</div>
-          <div className="text-[11px] text-[hsl(var(--muted-foreground))] mb-3">
-            From each school's own first-destination report. Scope varies — some report CS-BS specific, some report the whole engineering college. Salaries reflect knowledge rates below 100% — see the table for the surveyed share.
-          </div>
-          <ResponsiveContainer width="100%" height={Math.max(320, salaryData.length * 26)}>
-            <BarChart data={salaryData} layout="vertical" margin={{ top: 5, right: 60, left: 12, bottom: 5 }} barCategoryGap={4}>
-              <CartesianGrid strokeDasharray="2 4" stroke="hsl(var(--border))" horizontal={false}/>
-              <XAxis type="number" tickFormatter={v => `$${Math.round(v/1000)}k`}
-                tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} axisLine={false} tickLine={false}/>
-              <YAxis type="category" dataKey="name" width={132} interval={0}
-                tick={{ fill: "hsl(var(--foreground))", fontSize: 11 }} axisLine={false} tickLine={false}/>
-              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: 12, borderRadius: 6 }}
-                formatter={(v: any, _n: any, p: any) => [`${fmtCost(v as number)} (${p.payload.scope || "scope unknown"})`, "Median salary"]}/>
-              <Bar dataKey="salary" radius={[0,3,3,0]}>
-                {salaryData.map((d, i) => <Cell key={i} fill={d.color}/>)}
-                <LabelList dataKey="salary" position="right" formatter={(v:any) => `$${Math.round(v/1000)}k`}
-                  style={{ fontSize: 10.5, fill: "hsl(var(--muted-foreground))" }}/>
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      )}
+      <div className="card p-4 text-[12px] text-[hsl(var(--muted-foreground))] leading-relaxed">
+        These historical first-destination reports describe different majors, colleges and reporting years. Read the population, statistic and knowledge rate on each card. They do not establish earnings for the recommended robotics route, and no salary ranking is calculated across unlike scopes.
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {list.map(s => {
@@ -415,7 +383,7 @@ function CareersTab({ list }: { list: School[] }) {
                   <div className="text-[11px] text-[hsl(var(--muted-foreground))]">
                     {o.first_dest_year ? `Class of ${o.first_dest_year}` : ""}
                     {o.first_dest_knowledge_rate ? ` · ${o.first_dest_knowledge_rate} knowledge rate` : ""}
-                    {o.first_dest_year && parseInt(o.first_dest_year) < 2023 && (
+                    {o.first_dest_year && parseInt(o.first_dest_year) < 2025 && (
                       <span className="chip chip-outline ml-2 text-[9.5px] py-0 px-1 border-[hsl(var(--fit-conditional))] text-[hsl(var(--fit-conditional))]">stale</span>
                     )}
                   </div>
@@ -426,12 +394,14 @@ function CareersTab({ list }: { list: School[] }) {
                 </div>
               </div>
 
+              <div className="text-[11.5px] text-[hsl(var(--muted-foreground))] mb-3 leading-relaxed">{o.cs_salary_scope || "Population scope unconfirmed"}{o.career_scope_note ? ` · ${o.career_scope_note}` : " · No robotics-specific outcome established."}</div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[12px]">
                 {o.cs_median_starting_salary != null && (
                   <div>
-                    <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] flex items-center gap-1"><TrendingUp size={10}/> Median CS salary</div>
+                    <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] flex items-center gap-1"><TrendingUp size={10}/> Reported salary · {o.salary_statistic || "statistic unknown"}</div>
                     <div className="serif text-[18px] font-semibold num">{fmtCost(o.cs_median_starting_salary)}</div>
-                    <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{o.cs_salary_scope}</div>
+                    <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{o.cs_salary_scope || "Population scope unconfirmed"}</div>
+                    {o.career_scope_note && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">{o.career_scope_note}</div>}
                   </div>
                 )}
                 {o.cs_pct_continuing_edu && (
@@ -444,7 +414,7 @@ function CareersTab({ list }: { list: School[] }) {
 
               {hasEmployers && (
                 <div className="mt-3">
-                  <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] flex items-center gap-1 mb-1"><Briefcase size={10}/> Top CS/AI employers</div>
+                  <div className="text-[10.5px] uppercase tracking-wider text-[hsl(var(--muted-foreground))] flex items-center gap-1 mb-1"><Briefcase size={10}/> Employers in the source report</div>
                   <div className="flex flex-wrap gap-1">
                     {o.cs_top_employers.map((e,i) => (
                       <span key={i} className="chip chip-outline text-[11px]">{e}</span>

@@ -4,7 +4,7 @@ import { useHidden } from "@/lib/hidden";
 import { FitBadge, AccessBadge, ArchetypeChips, ShortlistPill, NoteButton, MyRatingChip, AbetBadge } from "@/components/SchoolBits";
 import { X, GitCompare, StickyNote, Bot, Wrench, ExternalLink, Trophy } from "lucide-react";
 import { useNotes, statusLabel, hasContent } from "@/lib/notes";
-import roboticsPaths from "@/data/robotics_paths.json";
+import roboticsRoutes from "@/data/robotics_routes.json";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Legend, Tooltip,
 } from "recharts";
@@ -89,7 +89,8 @@ const rows: { label: string; get: (s: School) => any; cmp?: (s: School) => strin
   { label: "Recommended route", get: s => s.recommended_major_route },
   { label: "Alternative route", get: s => s.alternative_route },
   { label: "Primary structural risk", get: s => s.primary_structural_risk },
-  { label: "Notable AI institute", get: s => s.notable_ai_institute || "—" },
+  { label: "Robotics research setting", get: s => s.robotics_access_detail?.institute_or_center || "—" },
+  { label: "Undergraduate robotics participation", get: s => s.robotics_access_detail?.undergrad_access_mode || "Not verified" },
   { label: "UG research program", get: s => s.notable_undergraduate_research_program || "—" },
   { label: "4+1 available", get: s => `${s.fourplusone_available}${s.fourplusone_name ? " · " + s.fourplusone_name : ""}` },
   { label: "Cost (in-state)", get: s => fmtCost(s.cost_total_instate) },
@@ -102,12 +103,12 @@ const rows: { label: string; get: (s: School) => any; cmp?: (s: School) => strin
   { label: "4-year graduation rate", get: s => s.outcomes?.grad_rate_4yr != null ? `${s.outcomes.grad_rate_4yr}%` : "n.a." },
   { label: "6-year graduation rate", get: s => s.outcomes?.grad_rate_6yr != null ? `${s.outcomes.grad_rate_6yr}%` : "n.a." },
   { label: "Freshman retention", get: s => s.outcomes?.retention_rate != null ? `${s.outcomes.retention_rate}%` : "n.a." },
-  { label: "Median CS starting salary", get: s => {
+  { label: "Historical reported starting salary (scope varies)", get: s => {
       const o = s.outcomes;
       if (!o?.cs_median_starting_salary) return "n.a.";
-      return `${fmtCost(o.cs_median_starting_salary)}${o.cs_salary_scope ? " (" + o.cs_salary_scope + ")" : ""}`;
+      return `${fmtCost(o.cs_median_starting_salary)}${o.cs_salary_scope ? " (" + o.cs_salary_scope + ")" : " (scope unknown)"}${o.first_dest_year ? " · cohort " + o.first_dest_year : ""}; not a robotics salary`;
     } },
-  { label: "Top CS/AI employers", get: s => (s.outcomes?.cs_top_employers?.slice(0,6).join(", ") || "n.a.") },
+  { label: "Historical reported employers (CS/context)", get: s => (s.outcomes?.cs_top_employers?.slice(0,6).join(", ") || "n.a.") },
   { label: "Top grad-school destinations", get: s => (s.outcomes?.cs_top_grad_schools?.slice(0,5).join(", ") || "n.a.") },
   { label: "Travel from Raleigh (RDU)", get: s => s.distance_from_rdu },
   { label: "Housing guarantee", get: s => s.housing_guarantee },
@@ -148,7 +149,7 @@ function ScoreOutOfFive({ v }: { v: number | null }) {
 export default function ComparePage() {
   const { hidden } = useHidden();
   const { getNote } = useNotes();
-  const [picked, setPicked] = useState<string[]>([]);
+  const [picked, setPicked] = useState<string[]>(() => ["wpi", "michigan", "carnegie-mellon", "nc-state"].filter(slug => !hidden.has(slug)));
   const [showNotes, setShowNotes] = useState(true);
 
   const available = useMemo(() =>
@@ -156,14 +157,14 @@ export default function ComparePage() {
       .sort((a,b) => a.short.localeCompare(b.short)),
   [hidden, picked]);
 
-  const selected = picked.map(p => schools.find(s => s.slug === p)!).filter(Boolean);
+  const selected = picked.filter(slug => !hidden.has(slug)).map(p => schools.find(s => s.slug === p)!).filter(Boolean);
   const add = (slug: string) => { if (picked.length < MAX) setPicked([...picked, slug]); };
   const remove = (slug: string) => setPicked(picked.filter(x => x !== slug));
 
   const radarData = useMemo(() => {
     return scoreGroups.map(g => {
       const row: any = { axis: g.short };
-      selected.forEach(s => { row[s.short] = (s.axes as any)[g.key] ?? 0; });
+      selected.forEach(s => { row[s.short] = (s.axes as any)[g.key] ?? null; });
       return row;
     });
   }, [selected]);
@@ -356,261 +357,36 @@ export default function ComparePage() {
 // -------------------- Robotics-paths comparison strip --------------------
 
 function RoboticsPathsStrip({ selected, seriesColors }: { selected: School[]; seriesColors: string[] }) {
-  const rows = selected.map(s => ({ s, d: (roboticsPaths.schools as any)[s.slug] }));
-  // Only render if at least one selected school has any robotics data
-  if (!rows.some(r => r.d)) return null;
-
-  return (
-    <div className="card overflow-hidden">
-      <div className="p-3 border-b border-[hsl(var(--border))] flex items-center gap-2">
-        <Bot size={14} className="text-[hsl(var(--accent))]"/>
-        <div className="text-[13px] font-medium">Robotics paths at these schools</div>
-        <span className="text-[11px] text-[hsl(var(--muted-foreground))]">CS-AI vs ME + Robotics vs dedicated BS Robotics</span>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="dense w-full">
-          <thead>
-            <tr>
-              <th className="w-[200px] sticky left-0 z-[2]">Path attribute</th>
-              {rows.map(({ s }, i) => (
-                <th key={s.slug} className="serif font-semibold text-[13px]" style={{ color: seriesColors[i] }}>{s.short}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {/* Row: dedicated BS */}
-            <RoboRow label="Dedicated BS Robotics" rows={rows} render={({ d }) => {
-              if (!d || !String(d.has_bs_robotics || "").startsWith("Yes")) {
-                return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              }
-              return (
-                <div className="space-y-0.5">
-                  <div className="text-[12.5px] font-medium leading-tight">{d.bs_robotics_name}</div>
-                  <div className="flex flex-wrap gap-1 text-[10px]">
-                    {d.bs_robotics_admit && (
-                      <span className="chip chip-outline text-[10px] py-0" title="Admission mechanism">
-                        {d.bs_robotics_admit === "Not published" ? "admit unpublished" : `${d.bs_robotics_admit} admit`}
-                      </span>
-                    )}
-                    {d.bs_robotics_year_started && <span className="chip chip-outline text-[10px] py-0">est. {d.bs_robotics_year_started}</span>}
-                    {d.bs_robotics_size && <span className="chip chip-outline text-[10px] py-0">{d.bs_robotics_size} majors</span>}
-                  </div>
-                  {d.bs_robotics_url && (
-                    <a href={d.bs_robotics_url} target="_blank" rel="noopener"
-                      className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">
-                      Program page <ExternalLink size={8}/>
-                    </a>
-                  )}
-                </div>
-              );
-            }}/>
-            {/* Row: ME + Robotics track */}
-            <RoboRow label="ME + Robotics track" rows={rows} render={({ d }) => {
-              if (!d || !d.me_robotics_track_name) {
-                return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              }
-              return (
-                <div className="space-y-0.5">
-                  <div className="text-[12.5px] font-medium leading-tight">{d.me_robotics_track_name}</div>
-                  {d.me_robotics_courses && d.me_robotics_courses.length > 0 && (
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">
-                      {d.me_robotics_courses.slice(0, 3).join(" · ")}
-                      {d.me_robotics_courses.length > 3 ? ` (+${d.me_robotics_courses.length - 3})` : ""}
-                    </div>
-                  )}
-                  {d.me_robotics_url && (
-                    <a href={d.me_robotics_url} target="_blank" rel="noopener"
-                      className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">
-                      Track page <ExternalLink size={8}/>
-                    </a>
-                  )}
-                </div>
-              );
-            }}/>
-            {/* Row: easier than CS? */}
-            <RoboRow label="Easier than CS?" rows={rows} render={({ d }) => {
-              if (!d || !d.robotics_easier_than_cs) {
-                return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              }
-              const color =
-                d.robotics_easier_than_cs === "Yes" ? "hsl(145 55% 35%)" :
-                d.robotics_easier_than_cs === "No" ? "hsl(0 60% 45%)" :
-                "hsl(30 60% 40%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>
-                    <Trophy size={10}/> {d.robotics_easier_than_cs}
-                  </span>
-                  {d.robotics_easier_than_cs_reason && (
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug italic">
-                      {d.robotics_easier_than_cs_reason}
-                    </div>
-                  )}
-                </div>
-              );
-            }}/>
-            {/* Row: alt paths + notes */}
-            <RoboRow label="Alt paths & notes" rows={rows} render={({ d }) => {
-              if (!d || !d.ecs_robotics_alt) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              return <div className="text-[11.5px] leading-snug">{d.ecs_robotics_alt}</div>;
-            }}/>
-            {/* NEW: Row: university-admissions differential */}
-            <RoboRow label="Univ-admissions differential" rows={rows} render={({ d }) => {
-              if (!d || !d.university_admit_differential) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const v = d.university_admit_differential;
-              const label =
-                v === "YES-MATERIAL" ? "Materially easier via robotics/ME" :
-                v === "YES-MODEST" ? "Modestly easier via robotics/ME" :
-                v === "SAME" ? "Same bar" :
-                v === "MORE_GATED" ? "ME/robotics HARDER" :
-                v === "NOT_PUBLISHED" ? "Not published" : "N/A";
-              const color =
-                v === "YES-MATERIAL" ? "hsl(145 55% 35%)" :
-                v === "YES-MODEST" ? "hsl(30 60% 40%)" :
-                v === "MORE_GATED" ? "hsl(0 60% 45%)" : "hsl(0 0% 50%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>{label}</span>
-                  {d.university_admit_differential_reason && (
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.university_admit_differential_reason}</div>
-                  )}
-                  {d.university_admit_differential_source && (
-                    <a href={d.university_admit_differential_source} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">source <ExternalLink size={8}/></a>
-                  )}
-                </div>
-              );
-            }}/>
-            {/* NEW: Row: internal-gate differential */}
-            <RoboRow label="Internal-gate differential" rows={rows} render={({ d }) => {
-              if (!d || !d.internal_gate_differential) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const v = d.internal_gate_differential;
-              const label =
-                v === "YES-MATERIAL" ? "ME/robotics materially less gated" :
-                v === "YES-MODEST" ? "ME/robotics modestly less gated" :
-                v === "SAME" ? "Same gate" :
-                v === "MORE_GATED" ? "ME/robotics HARDER internally" :
-                v === "NOT_PUBLISHED" ? "Not published" : "N/A";
-              const color =
-                v === "YES-MATERIAL" ? "hsl(145 55% 35%)" :
-                v === "YES-MODEST" ? "hsl(30 60% 40%)" :
-                v === "MORE_GATED" ? "hsl(0 60% 45%)" : "hsl(0 0% 50%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>{label}</span>
-                  {d.internal_gate_differential_reason && (
-                    <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.internal_gate_differential_reason}</div>
-                  )}
-                  {d.internal_gate_differential_source && (
-                    <a href={d.internal_gate_differential_source} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">source <ExternalLink size={8}/></a>
-                  )}
-                </div>
-              );
-            }}/>
-            {/* NEW: Row: admission strategy summary */}
-            <RoboRow label="Admissions strategy" rows={rows} render={({ d }) => {
-              if (!d || !d.admission_strategy) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              return <div className="text-[11.5px] leading-snug italic">{d.admission_strategy}</div>;
-            }}/>
-            {/* NEW: Row: ED/EA lift */}
-            <RoboRow label="ED/EA rate lift" rows={rows} render={({ d }) => {
-              if (!d || !d.early_admit_lift_verdict) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const v = d.early_admit_lift_verdict;
-              const label = v === "LARGE" ? "Large (≥2× RD)" : v === "MODERATE" ? "Moderate (1.3-2×)" : v === "SMALL" ? "Small (<1.3×)" : v === "NONE" ? "No plan or no lift" : "Not published";
-              const color = v === "LARGE" ? "hsl(145 55% 35%)" : v === "MODERATE" ? "hsl(30 60% 40%)" : v === "SMALL" ? "hsl(30 40% 55%)" : "hsl(0 0% 50%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>{label}</span>
-                  {d.best_early_deadline && <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">{d.best_early_deadline}</div>}
-                  {d.early_admit_lift_reason && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.early_admit_lift_reason}</div>}
-                  {d.early_admit_lift_source && <a href={d.early_admit_lift_source} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">source <ExternalLink size={8}/></a>}
-                </div>
-              );
-            }}/>
-            {/* NEW: Row: NC residency / OOS gap */}
-            <RoboRow label="NC residency effect" rows={rows} render={({ d }) => {
-              if (!d || !d.oos_gap_verdict) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const isNCAdv = (d.nc_applicant_note || "").includes("MAJOR ADVANTAGE") || (d.nc_applicant_note || "").includes("friendliest");
-              const v = d.oos_gap_verdict;
-              const label = isNCAdv ? "NC = MAJOR advantage" :
-                v === "MASSIVE" ? "Massive OOS gap (hurts NC)" :
-                v === "LARGE"   ? "Large OOS gap (hurts NC)" :
-                v === "MODERATE"? "Moderate OOS gap" :
-                v === "SMALL"   ? "Near parity" :
-                v === "NONE"    ? "No residency preference" : "Not published";
-              const color = isNCAdv ? "hsl(145 60% 32%)" :
-                v === "MASSIVE" ? "hsl(0 60% 45%)" :
-                v === "LARGE"   ? "hsl(0 50% 50%)" :
-                v === "MODERATE"? "hsl(30 60% 40%)" : "hsl(0 0% 50%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>{label}</span>
-                  {d.nc_applicant_note && <div className="text-[11px] text-[hsl(var(--muted-foreground))] leading-snug">{d.nc_applicant_note}</div>}
-                  {d.oos_gap_reason && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.oos_gap_reason}</div>}
-                  {d.oos_gap_source && <a href={d.oos_gap_source} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">source <ExternalLink size={8}/></a>}
-                </div>
-              );
-            }}/>
-            {/* NEW: Row: Mechatronics route */}
-            <RoboRow label="Mechatronics route" rows={rows} render={({ d }) => {
-              if (!d || (!d.has_mechatronics_bs && !d.has_mechatronics_track)) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const admit = d.mechatronics_admit_vs_me;
-              const adv = d.mechatronics_advantage_verdict;
-              const admitLabel = admit === "EASIER-MATERIAL" ? "Easier admit than ME" :
-                admit === "EASIER-MODEST" ? "Modestly easier" :
-                admit === "SAME" ? "Same admit as ME" :
-                admit === "HARDER" ? "Harder than ME" :
-                admit === "NOT_PUBLISHED" ? "Admit not published" : "";
-              const admitColor = admit === "EASIER-MATERIAL" ? "hsl(145 55% 35%)" : admit === "HARDER" ? "hsl(0 60% 45%)" : "hsl(0 0% 50%)";
-              const advLabel = adv === "STRONG_ROBOTICS_FIT" ? "Better robotics fit than ME" : adv === "COMPARABLE" ? "Comparable to ME" : adv === "WEAKER_THAN_ME" ? "Weaker than ME" : "";
-              const advColor = adv === "STRONG_ROBOTICS_FIT" ? "hsl(145 55% 35%)" : adv === "WEAKER_THAN_ME" ? "hsl(0 60% 45%)" : "hsl(0 0% 50%)";
-              return (
-                <div className="space-y-0.5">
-                  {d.mechatronics_bs_name && (
-                    <div className="text-[12.5px] font-medium leading-tight">{d.mechatronics_bs_name}</div>
-                  )}
-                  <div className="flex flex-wrap gap-1">
-                    {admitLabel && <span className="chip chip-outline text-[10px] py-0" style={{ color: admitColor }}>{admitLabel}</span>}
-                    {advLabel && <span className="chip chip-outline text-[10px] py-0" style={{ color: advColor }}>{advLabel}</span>}
-                  </div>
-                  {d.mechatronics_summary && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.mechatronics_summary}</div>}
-                  {d.mechatronics_bs_url && <a href={d.mechatronics_bs_url} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">program <ExternalLink size={8}/></a>}
-                </div>
-              );
-            }}/>
-            {/* NEW: Row: robotics ecosystem tier */}
-            <RoboRow label="Robotics ecosystem" rows={rows} render={({ d }) => {
-              if (!d || !d.robotics_ecosystem_tier) return <span className="text-[hsl(var(--muted-foreground))]">—</span>;
-              const v = d.robotics_ecosystem_tier;
-              const label = v === "TIER_1" ? "Tier 1 — world-class" : v === "TIER_2" ? "Tier 2 — strong depth" : v === "TIER_3" ? "Tier 3 — solid" : "Tier 4 — limited";
-              const color = v === "TIER_1" ? "hsl(145 55% 35%)" : v === "TIER_2" ? "hsl(30 60% 40%)" : v === "TIER_3" ? "hsl(0 0% 45%)" : "hsl(0 0% 55%)";
-              return (
-                <div className="space-y-0.5">
-                  <span className="chip chip-outline inline-flex items-center gap-1 text-[10.5px]" style={{ color }}>{label}</span>
-                  {d.robotics_ecosystem_reason && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug italic">{d.robotics_ecosystem_reason}</div>}
-                  {d.undergrad_research_program && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug"><strong>UROP:</strong> {d.undergrad_research_program}</div>}
-                  {d.coop_pipeline && <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] leading-snug"><strong>Co-op:</strong> {d.coop_pipeline}</div>}
-                  {d.robotics_ecosystem_source && <a href={d.robotics_ecosystem_source} target="_blank" rel="noopener" className="text-[10px] text-[hsl(var(--accent))] hover:underline inline-flex items-center gap-0.5">source <ExternalLink size={8}/></a>}
-                </div>
-              );
-            }}/>
-          </tbody>
-        </table>
-      </div>
+  const routeRows = selected.map(s => ({ s, r: (roboticsRoutes.schools as any)[s.slug] }));
+  const attributes = [
+    { label: "Recommended robotics route", value: (r: any) => r.recommended_summary },
+    { label: "Primary robotics degree / other credential", value: (r: any) => r.bs_robotics.offered ? `${r.bs_robotics.degree_name} · ${String(r.bs_robotics.kind).replace(/_/g, " ")}. ${r.bs_robotics.entry ?? "Entry not verified"}` : "No dedicated robotics bachelor's degree" },
+    { label: "ECE route: hardware, embedded systems and controls", value: (r: any) => `${r.ece.degree_names.join(" / ")} · ${r.ece.robotics_track ?? "Elective-built route"}. ${r.ece.entry}` },
+    { label: "ECE key courses", value: (r: any) => r.ece.key_courses.map((c: any) => `${c.code} ${c.title}`).join(" · ") },
+    { label: "CS route: autonomy and supporting AI", value: (r: any) => `${r.cs.degree_names.join(" / ")} · ${r.cs.robotics_track ?? "Elective-built route"}. ${r.cs.entry}` },
+    { label: "CS key courses", value: (r: any) => r.cs.key_courses.map((c: any) => `${c.code} ${c.title}`).join(" · ") },
+    { label: "Robotics minor / certificate", value: (r: any) => r.robotics_minor ? `${r.robotics_minor.name}. ${r.robotics_minor.open_to}` : "None verified" },
+    { label: "Robotics setting", value: (r: any) => r.ecosystem },
+    { label: "Route trade-off", value: (r: any) => r.tradeoff },
+  ];
+  return <div className="card overflow-hidden">
+    <div className="p-3 border-b border-[hsl(var(--border))]">
+      <div className="text-[13px] font-medium inline-flex items-center gap-2"><Bot size={14}/> Robotics routes at these schools</div>
+      <p className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">Primary Robotics BS, ECE and CS routes use the same current evidence as the Robotics routes page. Key courses are examples; prerequisites, permission and seats still apply.</p>
     </div>
-  );
-}
-
-function RoboRow({ label, rows, render }: {
-  label: string;
-  rows: { s: School; d: any }[];
-  render: (row: { s: School; d: any }) => any;
-}) {
-  return (
-    <tr>
-      <td className="sticky left-0 bg-[hsl(var(--card))] font-medium text-[11.5px] text-[hsl(var(--muted-foreground))]">{label}</td>
-      {rows.map((row, i) => (
-        <td key={i} className="align-top max-w-[280px]">{render(row)}</td>
-      ))}
-    </tr>
-  );
+    <div className="overflow-x-auto"><table className="dense w-full"><thead><tr>
+      <th className="w-[220px] sticky left-0 z-[2]">Route attribute</th>
+      {routeRows.map(({s}, i) => <th key={s.slug} className="serif font-semibold" style={{ color: seriesColors[i] }}>{s.short}</th>)}
+    </tr></thead><tbody>
+      {attributes.map(attribute => <tr key={attribute.label}>
+        <td className="sticky left-0 bg-[hsl(var(--card))] text-[11.5px] font-medium">{attribute.label}</td>
+        {routeRows.map(({s,r}) => <td key={s.slug} className="align-top text-[11.5px] leading-relaxed max-w-[280px]">{r ? attribute.value(r) : "Not verified"}</td>)}
+      </tr>)}
+      <tr><td className="sticky left-0 bg-[hsl(var(--card))] text-[11.5px] font-medium">Official route sources</td>
+        {routeRows.map(({s,r}) => <td key={s.slug}><div className="flex flex-wrap gap-2">
+          {r?.sources?.map((source: any, i: number) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="text-[10.5px] hover:underline text-[hsl(var(--accent))]" title={source.supports}>Source {i+1}</a>)}
+        </div></td>)}
+      </tr>
+    </tbody></table></div>
+  </div>;
 }

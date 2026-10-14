@@ -55,7 +55,6 @@ export interface FocusResult {
   belowBar: { school: School; tier: OddsTier; robotics_curriculum: number | null; why: string }[];
 }
 
-const DOMAIN_MAX = 20; // 10 domains x 2 points for "strong"
 
 /**
  * Minimum researched robotics-curriculum score for a school to be auto-picked
@@ -67,46 +66,33 @@ const DOMAIN_MAX = 20; // 10 domains x 2 points for "strong"
  * concentration, degree or capstone, yet auto-picked because it was one of only
  * two schools in the REACH band. A quota is not evidence.
  *
- * 4 is the level at which the research notes show real robotics coursework —
- * roughly eight or more undergraduate courses, usually with a credential or a
- * capstone attached. Schools below the bar stay fully available to select by
+ * 4 represents a documented, structured robotics route with degree-applicable
+ * coursework and a credential or design/project pathway. It is not a course
+ * count. Schools below the bar stay fully available to select by
  * hand, and are listed with the reason.
  */
 export const MIN_ROBOTICS_CURRICULUM = 4;
 
 /**
  * Composite robotics + AI strength, 0-5.
- * Robotics carries the most weight (the point of the preset), then general
- * program depth and research access, then how broadly the school covers the ten
- * researched robotics subdomains.
+ * Undergraduate robotics curriculum/access carry 65%, hands-on projects 15%,
+ * foundations 10%, and supporting AI coursework 10%. A lab's research domain
+ * does not establish that its undergraduate courses or lab seats are accessible.
  */
 export function roboticsAiFit(s: School): number {
   const ax = s.axes;
   const rc = ax.robotics_curriculum ?? 0;
   const ra = ax.robotics_access ?? 0;
 
-  const dom = s.robotics_domains ?? {};
-  const strong = Object.values(dom).filter(d => d.coverage === "strong").length;
-  const present = Object.values(dom).filter(d => d.coverage === "present").length;
-  const breadth = ((strong * 2 + present) / DOMAIN_MAX) * 5;
-
-  const core = [ax.program_depth, ax.research_access]
-    .filter((v): v is number => typeof v === "number");
-  const coreAvg = core.length ? core.reduce((a, b) => a + b, 0) / core.length : 0;
-
-  let fit = ((rc + ra) / 2) * 0.45 + coreAvg * 0.35 + breadth * 0.20;
+  let fit = rc * 0.40 + ra * 0.25 + (ax.hands_on ?? 0) * 0.15
+    + (ax.foundations ?? 0) * 0.10 + (ax.program_depth ?? 0) * 0.10;
 
   // Available but behind a later competitive application: rank slightly lower.
   if (s.robotics_pathway_risk?.severity === "internal_gate") fit -= 0.25;
 
-  // ABET commission deliberately does NOT affect this score. Robotics and AI are
-  // unlicensed: no certificate or licence depends on which commission accredited
-  // the degree, and employers and CS and robotics graduate programs do not filter
-  // on it. An ETAC degree is more applied and less theoretical, which is worth
-  // knowing when comparing curricula -- it is surfaced as context on the school,
-  // not as a ranking penalty. The one case where the commission genuinely binds
-  // is PE licensure, which belongs to civil and structural work rather than to
-  // this path.
+  // Accreditation is contextual rather than an automatic ranking penalty.
+  // Engineering and engineering technology have different curricula; graduate
+  // programs, employers and licensing boards set their own eligibility rules.
 
   return Math.round(fit * 100) / 100;
 }
@@ -131,18 +117,24 @@ export function buildRoboticsFocus(
   thresholds: OddsThresholds,
   spec: FocusSpec = DEFAULT_FOCUS_SPEC,
   pool: School[] = schools,
+  useRecommendedDoor = true,
 ): FocusResult {
   const excluded: FocusResult["excluded"] = [];
   const belowBar: FocusResult["belowBar"] = [];
   const scored: FocusPick[] = [];
 
   for (const s of pool) {
+    if (!useRecommendedDoor && s.recommended_admission_door && s.recommended_admission_door !== thresholds.pathway) {
+      excluded.push({ school: s, why: "The recorded robotics curriculum score describes a different primary application route. Compare the alternative credential manually; its fit is not automatically borrowed." });
+      continue;
+    }
     const why = hardExclusion(s);
     if (why) {
       excluded.push({ school: s, why });
       continue;
     }
-    const r = classify((s as any).admissions, (s as any).nc_applicant_note, profile, thresholds);
+    const routeThresholds = { ...thresholds, pathway: useRecommendedDoor ? (s.recommended_admission_door ?? thresholds.pathway) : thresholds.pathway };
+    const r = classify((s as any).admissions, (s as any).nc_applicant_note, profile, routeThresholds);
     if (r.tier === "NEEDS_DATA") continue; // never recommend on absent data
 
     // Odds alone must not put a school on a robotics shortlist.
@@ -215,16 +207,16 @@ function buildAccreditationNote(s: School): string | null {
   if (cred?.abet_commission === "ETAC") {
     return (
       `${cred.program_name} is ABET engineering technology (ETAC) rather than engineering (EAC) — ` +
-      `applied and hands-on rather than theory-heavy. Not a factor for robotics or AI roles; it ` +
-      `matters mainly for PE licensure or a traditional engineering master's.` +
+      `applied and hands-on. Compare its mathematics, design and controls requirements with ` +
+      `the engineering route, and check the prerequisites of any intended graduate program or licensure board.` +
       (cred.eac_alternative ? ` EAC alternative here: ${cred.eac_alternative}` : "")
     );
   }
   if (cred?.abet_commission === "NOT_ABET_ACCREDITED") {
     return (
-      `${cred.program_name} is not ABET-accredited. The curriculum is still theory-heavy, and ` +
-      `robotics and AI hiring and graduate admissions do not look at ABET — the only real ` +
-      `consequence is that it is not a PE licensure route.`
+      `${cred.program_name} has no verified ABET accreditation in this dataset. Review the degree's ` +
+      `curriculum and the requirements of prospective graduate programs or licensing boards; absence of ` +
+      `accreditation does not by itself establish curriculum quality or employer eligibility.`
     );
   }
   return null;

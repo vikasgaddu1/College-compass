@@ -1,6 +1,6 @@
 {
   "cycle": "2026-27 (Fall 2027 entry)",
-  "note": "Every row grounded in the school's own admissions page, fetched July 29, 2026. Michigan's official page still describes the previous (Fall 2026) cycle \u2014 that row is flagged.",
+  "note": "Official university pages checked October 14, 2026 for Fall 2027 entry. Dates lacking an explicit cycle year are identified as cycle-inferred. Application, supporting-material, aid and scholarship dates are separate events. Notification windows are not invented exact dates.",
   "rows": [
     {
       "slug": "carnegie-mellon",
@@ -12,11 +12,53 @@
       "rd": "Jan 4",
       "rolling": "no",
       "notify_ed1": "by Dec 15",
-      "notify_ed2": "\u2014",
-      "notify_ea": "\u2014",
+      "notify_ed2": "—",
+      "notify_ea": "—",
       "notify_rd": "no later than Apr 1",
-      "aid_priority": "Nov 15 (ED) / Feb 15 (RD)",
-      "source_url": "https://www.cmu.edu/admission/admission/application-plans-deadlines"
+      "aid_priority": "Nov 15 (ED preferred); Feb 15 (RD preferred)",
+      "source_url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-02",
+          "source_url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-04",
+          "source_url": "https://www.cmu.edu/admission/admission/application-plans-deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED preferred FAFSA + CSS",
+          "date": "2026-11-15",
+          "source_url": "https://www.cmu.edu/sfs/financial-aid/prospective-student/index.html",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "RD preferred FAFSA + CSS",
+          "date": "2027-02-15",
+          "source_url": "https://www.cmu.edu/sfs/financial-aid/prospective-student/index.html",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "cornell",
@@ -28,11 +70,53 @@
       "rd": "Jan 2",
       "rolling": "no",
       "notify_ed1": "mid-December",
-      "notify_ed2": "\u2014",
-      "notify_ea": "\u2014",
+      "notify_ed2": "—",
+      "notify_ea": "—",
       "notify_rd": "late March",
       "aid_priority": "Nov 15 (ED) / Feb 15 (RD)",
-      "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants"
+      "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-02",
+          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "materials",
+          "label": "ED supporting materials",
+          "date": "2026-11-13",
+          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "materials",
+          "label": "RD supporting materials",
+          "date": "2027-01-19",
+          "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "duke",
@@ -42,7 +126,35 @@
       "rea_scea": null,
       "ea": null,
       "rd": "Jan 4, 2027",
-      "aid_priority": "Jan 4, 2027"
+      "aid_priority": "Nov 15 (ED); RD priority—verify on Duke aid page",
+      "source_url": "https://admissions.duke.edu/apply/",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-02",
+          "source_url": "https://admissions.duke.edu/apply/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-04",
+          "source_url": "https://admissions.duke.edu/apply/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window",
+      "rolling": "no",
+      "notify_ed1": "mid-December",
+      "notify_rd": "late March / early April"
     },
     {
       "slug": "georgia-tech",
@@ -53,12 +165,63 @@
       "rea_scea": null,
       "rd": "Jan 6",
       "rolling": "no",
-      "notify_ed1": "\u2014",
-      "notify_ed2": "\u2014",
+      "notify_ed1": "—",
+      "notify_ed2": "—",
       "notify_ea": "late January",
       "notify_rd": "mid-March",
       "aid_priority": "Jan 31 (GT App + FAFSA + CSS)",
-      "source_url": "https://admission.gatech.edu/first-year/deadlines"
+      "source_url": "https://admission.gatech.edu/first-year/deadlines",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ea",
+          "label": "Early Action application (NC applicant: EA2)",
+          "date": "2026-11-02",
+          "source_url": "https://admission.gatech.edu/first-year/deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-06",
+          "source_url": "https://admission.gatech.edu/first-year/deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "materials",
+          "label": "EA2 supporting documents",
+          "date": "2026-11-16",
+          "source_url": "https://admission.gatech.edu/first-year/deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "materials",
+          "label": "EA2 self-reported SAT/ACT scores",
+          "date": "2026-12-08",
+          "source_url": "https://admission.gatech.edu/first-year/deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "materials",
+          "label": "RD supporting documents and scores",
+          "date": "2027-01-22",
+          "source_url": "https://admission.gatech.edu/first-year/deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "johns-hopkins",
@@ -71,10 +234,61 @@
       "rolling": "no",
       "notify_ed1": "Dec 11, 2026",
       "notify_ed2": "Feb 12, 2027",
-      "notify_ea": "\u2014",
+      "notify_ea": "—",
       "notify_rd": "Mar 24, 2027",
       "aid_priority": "Nov 15, 2026 (ED I); Jan 15, 2027 (ED II/RD)",
-      "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
+      "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "ed2",
+          "label": "Early Decision II application",
+          "date": "2027-01-02",
+          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-02",
+          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED I aid application",
+          "date": "2026-11-15",
+          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED II / RD aid application",
+          "date": "2027-01-15",
+          "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "maryland",
@@ -84,29 +298,113 @@
       "ea": "Nov 1",
       "rea_scea": null,
       "rd": "Jan 20",
-      "rolling": "yes \u2014 space-available after Jan 20",
-      "notify_ed1": "\u2014",
-      "notify_ed2": "\u2014",
+      "rolling": "yes — space-available after Jan 20",
+      "notify_ed1": "—",
+      "notify_ed2": "—",
       "notify_ea": "by Feb 1",
       "notify_rd": "by Apr 1",
       "aid_priority": "FAFSA priority Mar 1",
-      "source_url": "https://admissions.umd.edu/apply/application-deadlines"
+      "source_url": "https://admissions.umd.edu/apply/application-deadlines",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.umd.edu/apply/application-deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-20",
+          "source_url": "https://admissions.umd.edu/apply/application-deadlines",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "michigan",
-      "cycle_label": "2025-26 previous cycle",
+      "cycle_label": "2026-27",
       "ed1": "Nov 1",
       "ed2": null,
       "ea": "Nov 1",
       "rea_scea": null,
       "rd": "Feb 1",
       "rolling": "no",
-      "notify_ed1": "by end of December",
-      "notify_ed2": "\u2014",
-      "notify_ea": "by end of January",
-      "notify_rd": "by early April",
-      "aid_priority": "Nov 15 (ED) / Dec 15 suggested / Mar 1 deadline",
-      "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans"
+      "notify_ed1": "by Dec 24",
+      "notify_ed2": "—",
+      "notify_ea": "by Jan 29",
+      "notify_rd": "by Apr 2",
+      "aid_priority": "Nov 15, 2026 (ED); Dec 15 suggested (EA/RD); Mar 1 final (EA/RD)",
+      "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-02-01",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED FAFSA and CSS",
+          "date": "2026-11-15",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "EA/RD suggested FAFSA + CSS",
+          "date": "2026-12-15",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "EA/RD final financial aid deadline",
+          "date": "2027-03-01",
+          "source_url": "https://admissions.umich.edu/apply/first-year-applicants/first-year-application-plans",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "nc-state",
@@ -117,12 +415,55 @@
       "rea_scea": null,
       "rd": "Jan 15",
       "rolling": "no",
-      "notify_ed1": "\u2014",
-      "notify_ed2": "\u2014",
+      "notify_ed1": "—",
+      "notify_ed2": "—",
       "notify_ea": "by end of December (NC residents); Jan 31 others",
-      "notify_rd": "Mar 31",
+      "notify_rd": "Mar 31 (current first-year page)",
       "aid_priority": "FAFSA priority Mar 1",
-      "source_url": "https://admissions.ncsu.edu/apply/first-year/"
+      "source_url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-15",
+          "source_url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "materials",
+          "label": "Complete EA file and confirm NC residency through RDS",
+          "date": "2026-11-10",
+          "source_url": "https://admissions.ncsu.edu/admission-updates-for-2027-applicants/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "scholarship",
+          "label": "Separate Park Scholarship application (also submit NC State EA)",
+          "date": "2026-11-01",
+          "source_url": "https://park.ncsu.edu/apply/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window",
+      "note": "For the NC resident early-December notification window, application and NC residency confirmation through RDS must both be complete by Nov 10, 2026."
     },
     {
       "slug": "northeastern",
@@ -138,7 +479,49 @@
       "notify_ea": "by Feb 15",
       "notify_rd": "by Apr 1",
       "aid_priority": "FAFSA+CSS: Nov 15 / Dec 1 / Jan 15 / Feb 15",
-      "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/"
+      "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ed2",
+          "label": "Early Decision II application",
+          "date": "2027-01-01",
+          "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-01",
+          "source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "ohio-state",
@@ -149,12 +532,64 @@
       "rea_scea": null,
       "rd": "Jan 15, 2027",
       "rolling": "no",
-      "notify_ed1": "\u2014",
-      "notify_ed2": "\u2014",
+      "notify_ed1": "—",
+      "notify_ed2": "—",
       "notify_ea": "Dec 11, 2026 (OH residents/Stamps); Jan 22, 2027 (non-Ohio)",
       "notify_rd": "Mar 5, 2027",
       "aid_priority": "Feb 1 aid priority",
-      "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step"
+      "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-15",
+          "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "materials",
+          "label": "Recommended latest order date for previously taken official SAT/ACT scores",
+          "date": "2026-10-16",
+          "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "scholarship",
+          "label": "Separate Stamps Eminence application",
+          "date": "2026-11-09",
+          "source_url": "https://undergrad.osu.edu/cost-and-aid/merit-based-scholarships",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "materials",
+          "label": "Last published ACT test date for EA; request official score delivery when registering",
+          "date": "2026-10-17",
+          "source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window",
+      "note": "Engineering and merit consideration require the Nov 1 complete-application deadline. Official SAT/ACT scores must arrive by Nov 1; order existing scores by Oct 16; latest EA tests Oct 3 SAT / Oct 17 ACT. Non-Ohio EA notification Jan 22, except Stamps Eminence applicants Dec 11."
     },
     {
       "slug": "purdue",
@@ -165,12 +600,54 @@
       "rea_scea": null,
       "rd": "Jan 15",
       "rolling": "no",
-      "notify_ed1": "\u2014",
-      "notify_ed2": "\u2014",
+      "notify_ed1": "—",
+      "notify_ed2": "—",
       "notify_ea": "Jan 15",
       "notify_rd": "between Jan 15 and Mar 31",
       "aid_priority": "FAFSA priority Apr 15; Dec 15 for need-based",
-      "source_url": "https://admissions.purdue.edu/become-student/application-status/"
+      "source_url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-15",
+          "source_url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "Purdue scholarship priority application (additional instructions pending)",
+          "date": "2026-12-15",
+          "source_url": "https://admissions.purdue.edu/deadlines/financial-aid-scholarship-deadlines/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "FAFSA priority filing",
+          "date": "2027-04-15",
+          "source_url": "https://admissions.purdue.edu/deadlines/financial-aid-scholarship-deadlines/",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "rpi",
@@ -185,8 +662,50 @@
       "notify_ed2": "Jan 16",
       "notify_ea": "Jan 30",
       "notify_rd": "Mar 6",
-      "aid_priority": "Nov 15 / Dec 15 / Jan 9 / Jan 31",
-      "source_url": "https://undergrad.admissions.rpi.edu/apply/applying-early"
+      "aid_priority": "Nov 15 / Dec 15 / Jan 9 / Jan 31 (ED I / EA / ED II / RD; current published table)",
+      "source_url": "https://undergrad.admissions.rpi.edu/apply",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_current_cycle",
+      "cycle_inferred": false,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://undergrad.admissions.rpi.edu/apply",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-12-01",
+          "source_url": "https://undergrad.admissions.rpi.edu/apply",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "ed2",
+          "label": "Early Decision II application",
+          "date": "2027-01-06",
+          "source_url": "https://undergrad.admissions.rpi.edu/apply",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-15",
+          "source_url": "https://undergrad.admissions.rpi.edu/apply",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
       "slug": "wpi",
@@ -201,8 +720,95 @@
       "notify_ed2": "mid-February",
       "notify_ea": "late Jan (EA1); late Feb (EA2)",
       "notify_rd": "late March",
-      "aid_priority": "Dec 1 / Feb 1 / Mar 1 (previous-cycle labels)",
-      "source_url": "https://www.wpi.edu/c/hscounselors"
+      "aid_priority": "Nov 1, 2026 (ED I); Dec 1, 2026 (EA I); Feb 1, 2027 (ED II / EA II); Mar 1, 2027 (RD)",
+      "source_url": "https://www.wpi.edu/c/hscounselors",
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://www.wpi.edu/c/hscounselors",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2026-11-01",
+          "source_url": "https://www.wpi.edu/c/hscounselors",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ed2",
+          "label": "Early Decision II application",
+          "date": "2027-01-05",
+          "source_url": "https://www.wpi.edu/c/hscounselors",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ea",
+          "label": "Early Action application",
+          "date": "2027-01-05",
+          "source_url": "https://www.wpi.edu/c/hscounselors",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-02-01",
+          "source_url": "https://www.wpi.edu/c/hscounselors",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED I FAFSA and CSS",
+          "date": "2026-11-01",
+          "source_url": "https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/first-year-students",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "EA I FAFSA and CSS",
+          "date": "2026-12-01",
+          "source_url": "https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/first-year-students",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED II / EA II FAFSA and CSS",
+          "date": "2027-02-01",
+          "source_url": "https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/first-year-students",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        },
+        {
+          "round": "aid_priority",
+          "label": "RD FAFSA and CSS",
+          "date": "2027-03-01",
+          "source_url": "https://www.wpi.edu/admissions/tuition-aid/applying-for-aid/first-year-students",
+          "verified_on": "2026-10-14",
+          "cycle": "2026-27",
+          "year_inferred": false
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     }
   ]
 }

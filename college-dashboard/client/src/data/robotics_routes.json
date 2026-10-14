@@ -1,6 +1,6 @@
 {
-  "note": "Robotics routes at each of the 13 schools: a dedicated BS in robotics where one exists, the ECE route, and the CS route, with the recommended route for a Fall 2027 entrant. Researched 13 October 2026 from each university's own catalog, department and admissions pages; every route carries its source links. Where a fact could not be confirmed it is null or flagged in the notes.",
-  "compiled_date": "2026-10-13",
+  "note": "Current official programme and course sources were reviewed on October 14, 2026. Robotics is primary; AI choices support perception, planning and learning. Course permissions, future seats, new-program outcomes and conflicting official guidance remain explicit.",
+  "compiled_date": "2026-10-14",
   "route_labels": {
     "bs_robotics": "BS in Robotics",
     "ece": "ECE route",
@@ -11,13 +11,13 @@
       "slug": "carnegie-mellon",
       "name": "Carnegie Mellon University",
       "recommended_route": "bs_robotics",
-      "recommended_summary": "Apply to the School of Computer Science, say in the essay that the B.S. in Robotics is the goal, and declare it at the end of first year.",
+      "recommended_summary": "Apply to SCS with the primary B.S. in Robotics as the goal, then declare during the first year. [CMU-R26-2]",
       "bs_robotics": {
         "offered": true,
         "degree_name": "Bachelor of Science in Robotics (BSR)",
         "kind": "primary_major",
         "home_unit": "Robotics Institute, School of Computer Science",
-        "entry": "High-school applicants must first be admitted to the School of Computer Science and should mention robotics in the essay. SCS first-years declare the BSR at the end of first year, after the spring mini-course 16-180 Concepts in Robotics.",
+        "entry": "Admitted to SCS first, then considered for BSR during first-year major declaration. Non-SCS BSR transfer requires 3.0 overall QPA, 3.6 across six specified foundational/core courses, an essay and available space; transfer is not guaranteed. [CMU-R26-2][CMU-R26-10]",
         "first_year_direct_admit": false,
         "notes": "Launched Fall 2023 as a primary major. CMU's launch announcement expected about 25 students a year; no cap or GPA rule is published for SCS first-years. Students in other CMU colleges can transfer in only in limited numbers, after sophomore year and six core robotics courses. Not ABET-accredited (CMU's ABET list covers its engineering degrees, not SCS).",
         "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/how-to-apply/"
@@ -47,7 +47,7 @@
           }
         ],
         "entry": "Applicants to the College of Engineering are admitted directly to a department such as ECE, or as undecided.",
-        "first_year_direct_admit": true,
+        "first_year_direct_admit": false,
         "notes": "ECE has five areas of concentration (Device Science and Nanofabrication, Signals and Systems, Circuits, Hardware Systems, Software Systems); none is named robotics. Controls sits in Signals and Systems and embedded systems in Software Systems. Robotics depth comes from adding the Additional Major in Robotics.",
         "url": "https://ece.cmu.edu/academics/bs-in-ece/academic-guide.html"
       },
@@ -76,7 +76,7 @@
           }
         ],
         "entry": "Direct admission to the School of Computer Science at application; SCS students can move between SCS majors from spring of sophomore year.",
-        "first_year_direct_admit": true,
+        "first_year_direct_admit": false,
         "notes": "The same SCS admission also opens the BS in Robotics, so CS is the fallback inside the same door rather than a separate application.",
         "url": "http://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/"
       },
@@ -95,41 +95,109 @@
       "sources": [
         {
           "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/",
-          "supports": "BSR is a primary major, launched Fall 2023"
+          "supports": "BSR is a primary major, launched Fall 2023",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/how-to-apply/",
-          "supports": "SCS admission, declare end of first year, 16-180"
+          "supports": "SCS admission, declare end of first year, 16-180",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cmu.edu/news/stories/archives/2023/september/carnegie-mellon-university-launches-bachelor-of-science-in-robotics",
-          "supports": "expected cohort size ~25/year"
+          "supports": "expected cohort size ~25/year",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cmu.edu/admission/majors-programs/school-of-computer-science/robotics",
-          "supports": "apply through SCS; additional major open to all"
+          "supports": "apply through SCS; additional major open to all",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.ri.cmu.edu/education/academic-programs/additional-major-in-robotics/",
-          "supports": "additional major rules and 16-xxx courses"
+          "supports": "additional major rules and 16-xxx courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "http://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/",
-          "supports": "minor and SCS-only concentration in robotics"
+          "supports": "minor and SCS-only concentration in robotics",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://ece.cmu.edu/academics/bs-in-ece/academic-guide.html",
-          "supports": "ECE areas and 18-xxx courses"
+          "supports": "ECE areas and 18-xxx courses",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/",
+          "supports": "Robotics Program < Carnegie Mellon University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+          "supports": "School of Computer Science Courses < Carnegie Mellon University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/robotics/robotics-bs/",
+          "supports": "Robotics, B.S. < Carnegie Mellon University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://www.ri.cmu.edu/education/academic-programs/bachelor-of-science-in-robotics/transfer-guidelines/",
+          "supports": "Transfer Guidelines - Robotics Institute Carnegie Mellon University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/minors/robotics-minor/",
+          "supports": "Robotics, Minor < Carnegie Mellon University",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "B.S. in Robotics (School of Computer Science; declare end of first year)",
-      "alternative": "BS Electrical and Computer Engineering (College of Engineering, direct admit) + Additional Major in Robotics"
+      "alternative": "BS Electrical and Computer Engineering (College of Engineering, direct admit) + Additional Major in Robotics",
+      "verification_date": "2026-10-14",
+      "verification_status": "fresh_official_core",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "RI Additional Major instructions allow controls concurrently with 16-450, while the current course catalog lists a B-level controls prerequisite; confirm any override with RI.",
+        "Exact non-SCS additional-major seat priority and course access remain conditional.",
+        "A Statistics/ML alternative needs its own complete primary-degree, general-education and unit audit.",
+        "ABET status was not independently confirmed in this audit; future offerings are not guaranteed."
+      ],
+      "ai_electives": [
+        {
+          "code": "16-385",
+          "title": "Computer Vision",
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "16-350",
+          "title": "Planning Techniques for Robotics",
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "10-403",
+          "title": "Deep Reinforcement Learning & Control",
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "10-315",
+          "title": "Introduction to Machine Learning (SCS Majors)",
+          "url": "https://coursecatalog.web.cmu.edu/schools-colleges/schoolofcomputerscience/courses/",
+          "access_note": "Current undergraduate catalogue option; prerequisites, degree-plan approval and registration capacity apply."
+        }
+      ]
     },
     "cornell": {
       "slug": "cornell",
       "name": "Cornell University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply to Cornell Engineering with Electrical and Computer Engineering as the intended major and add the Robotics minor; ECE lists robotics as a concentration, cross-lists the core robotics courses, and has a milder affiliation gate than CS.",
+      "recommended_summary": "ECE balances circuits/digital hardware with embedded systems, current ECE3200 ML, ECE4240 robot perception, ECE4250 control/estimation, cross-listed robotics and required CDE build work. The Robotics minor adds interdisciplinary structure; its courses need adviser pre-approval. Current CS AI/vision/robot-learning listings limit enrollment to CS majors, so those are alternatives requiring verified access, not guaranteed ECE options.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -233,69 +301,129 @@
       "sources": [
         {
           "url": "https://robotics.cornell.edu/",
-          "supports": "no robotics major; minor open to all; project teams"
+          "supports": "no robotics major; minor open to all; project teams",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.duffield.cornell.edu/admissions/admissions-faqs/",
-          "supports": "apply to college not major; major chosen sophomore year"
+          "supports": "apply to college not major; major chosen sophomore year",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://courses.cornell.edu/programs/electrical-computer-engineering-bs/",
-          "supports": "ECE degree, robotics concentration, affiliation gate, core and CDE courses"
+          "supports": "ECE degree, robotics concentration, affiliation gate, core and CDE courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.duffield.cornell.edu/ece/major/",
-          "supports": "ECE students start undeclared"
+          "supports": "ECE students start undeclared",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://courses.cornell.edu/programs/computer-science-bs/",
-          "supports": "CS BS affiliation rules; no robotics track"
+          "supports": "CS BS affiliation rules; no robotics track",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.cs.cornell.edu/bachelor-science-computer-science/apply",
-          "supports": "CS BS affiliation thresholds and timing"
+          "supports": "CS BS affiliation thresholds and timing",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.cs.cornell.edu/bachelor-arts-computer-science/apply",
-          "supports": "CS BA admission to A&S, not major"
+          "supports": "CS BA admission to A&S, not major",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.duffield.cornell.edu/mae/degree/robotics-minor-requirements/",
-          "supports": "Robotics minor structure, eligibility, course list"
+          "supports": "Robotics minor structure, eligibility, course list",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://classes.cornell.edu/browse/roster/FA26/class/ECE/4770",
-          "supports": "Foundations of Robotics cross-listed CS 4750/ECE 4770/MAE 4760"
+          "supports": "Foundations of Robotics cross-listed CS 4750/ECE 4770/MAE 4760",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://classes.cornell.edu/browse/roster/SP24/class/ECE/4160",
-          "supports": "Fast Robots ECE 4160 / MAE 4190"
+          "supports": "Fast Robots ECE 4160 / MAE 4190",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://classes.cornell.edu/browse/roster/SP26/class/MAE/5180",
-          "supports": "Autonomous Mobile Robots cross-listings CS 4758/ECE 4180/MAE 4180"
+          "supports": "Autonomous Mobile Robots cross-listings CS 4758/ECE 4180/MAE 4180",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://classes.cornell.edu/browse/roster/SP24/class/CS/4756",
-          "supports": "CS 4756 Robot Learning"
+          "supports": "CS 4756 Robot Learning",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://classes.cornell.edu/browse/roster/SP25/class/CS/4670",
-          "supports": "CS 4670 Introduction to Computer Vision"
+          "supports": "CS 4670 Introduction to Computer Vision",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.duffield.cornell.edu/student-project-teams/active-project-teams/",
-          "supports": "robotics project teams"
+          "supports": "robotics project teams",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.cornell.edu/programs/robotics-minor/",
+          "supports": "Robotics (Minor) | Cornell University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.cornell.edu/courses/ece/",
+          "supports": "Electrical & Computer Engineering (ECE) | Cornell University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.cornell.edu/courses/cs/",
+          "supports": "Computer Science (CS) | Cornell University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.cornell.edu/courses/mae/",
+          "supports": "Mechanical & Aerospace Engineering (MAE) | Cornell University",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "BS Electrical and Computer Engineering (Cornell Engineering) + Robotics minor",
-      "alternative": "BS Computer Science (Engineering) + Robotics minor; the core robotics courses are cross-listed in CS"
+      "alternative": "BS Computer Science (Engineering) + Robotics minor; the core robotics courses are cross-listed in CS",
+      "ece_entry": "At least C+ in: MATH 2930 or MATH 2940, PHYS 2213, and one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300.\nMust have a GPA ≥ 2.5 in (if completed): MATH 1920, MATH 2930, MATH 2940, PHYS 2213, ENGRD 2110, ECE 2400/ENGRD 2140, ECE 2300/ENGRD 2300, ECE 2100/ENGRD 2100, ECE 2720/ENGRD 2720. Apply to Engineering, not a major; catalog encourages sophomore-fall affiliation and requires affiliation by fifth semester. Admissions FAQ describes selection in sophomore spring.",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall 2027 curriculum, prerequisites, offerings, seat restrictions and cross-major enrollment must be confirmed from the 2027-28 catalog/roster once published.",
+        "Prerequisites marked null are unknown; do not display them as unrestricted access.",
+        "No research, team or makerspace slot is guaranteed by existence of a lab or program.",
+        "Resolve affiliation timing discrepancies (third semester vs second semester of sophomore year vs by start of fifth semester) against current authoritative policy.",
+        "Resolve CS 4700 vs CS 3700 current AI numbering and exact robotics-minor approved list; existing route and school data disagree.",
+        "Verify Robotics minor exclusion for students already completing CS/ECE/ME minors and precise specialization requirements.",
+        "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change."
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE 3200",
+          "title": "Foundations Machine Learning",
+          "url": "https://catalog.cornell.edu/courses/ece/",
+          "access_note": "Prerequisites: MATH 1910 and MATH 2940."
+        },
+        {
+          "code": "ECE 4240",
+          "title": "Robot Perception",
+          "url": "https://catalog.cornell.edu/courses/ece/",
+          "access_note": "Prerequisites: ENGRD 2112; MATH 2940; MATH 4710 or ENGRD 2700 or ENGRD 2720."
+        }
+      ]
     },
     "duke": {
       "slug": "duke",
       "name": "Duke University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply to the Pratt School of Engineering and plan to declare the BSE in Electrical and Computer Engineering, adding the Robotics & Automation Undergraduate Certificate, because Duke has no robotics bachelor's and ECE gives the controls, embedded and robotics prerequisites (ECE 280L for ECE 383L) that the certificate builds on.",
+      "recommended_summary": "Pratt ECE provides required circuits, digital/computer systems and signals foundations; the Robotics & Automation certificate adds robotics and build work with controls, ML and perception electives. ECE naturally supplies the stored prerequisite for ECE 383L. CS in Trinity supplies stronger software/AI emphasis but needs extra engineering prerequisites for the same robotics core.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -388,81 +516,141 @@
       "sources": [
         {
           "url": "https://admissions.duke.edu/resources/",
-          "supports": "Apply to Trinity or Pratt; neither easier"
+          "supports": "Apply to Trinity or Pratt; neither easier",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://pratt.duke.edu/undergrad/degrees/bse",
-          "supports": "Pratt majors; no robotics major; declare after first year"
+          "supports": "Pratt majors; no robotics major; declare after first year",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergraduate.bulletins.duke.edu/pages/XxAyh86HqynixoDfGMur",
-          "supports": "ECE BSE requirements, 2026-27"
+          "supports": "ECE BSE requirements, 2026-27",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergraduate.bulletins.duke.edu/pages/h5mSghLMWmQHd4lGKsDy",
-          "supports": "Pratt major declaration timing, no GPA gate"
+          "supports": "Pratt major declaration timing, no GPA gate",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://ece.duke.edu/academics/undergrad/concentrations/",
-          "supports": "ECE concentrations: ML, Software Engineering"
+          "supports": "ECE concentrations: ML, Software Engineering",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergraduate.bulletins.duke.edu/courses/0036071",
-          "supports": "ECE 383L title and prerequisites"
+          "supports": "ECE 383L title and prerequisites",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ecelab.pratt.duke.edu/labs/ece-459",
-          "supports": "ECE 459 Introduction to Embedded Systems"
+          "supports": "ECE 459 Introduction to Embedded Systems",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/",
-          "supports": "Robotics certificate requirements and courses"
+          "supports": "Robotics certificate requirements and courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.duke.edu/students/certificate-programs",
-          "supports": "Certificate open to all Duke undergrads"
+          "supports": "Certificate open to all Duke undergrads",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://robotics.duke.edu/students/courses",
-          "supports": "Duke robotics course list"
+          "supports": "Duke robotics course list",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://robotics.duke.edu/students",
-          "supports": "Undergrad research, Duke Robotics Club"
+          "supports": "Undergrad research, Duke Robotics Club",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.duke.edu/",
-          "supports": "Duke Robotics program, labs, MEng only degree"
+          "supports": "Duke Robotics program, labs, MEng only degree",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://cs.duke.edu/undergraduate/degrees/BS",
-          "supports": "CS BS requirements, concentrations, declaration"
+          "supports": "CS BS requirements, concentrations, declaration",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://cs.duke.edu/undergraduate/degrees/BS/concentrations/ai-ml",
-          "supports": "AI/ML concentration; COMPSCI 590 Robot Learning"
+          "supports": "AI/ML concentration; COMPSCI 590 Robot Learning",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://cs.duke.edu/courses/introduction-artificial-intelligence",
-          "supports": "COMPSCI 370D covers robotics, planning"
+          "supports": "COMPSCI 370D covers robotics, planning",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cs.duke.edu/courses/introduction-computer-vision",
-          "supports": "COMPSCI 527 Introduction to Computer Vision"
+          "supports": "COMPSCI 527 Introduction to Computer Vision",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://trinity.duke.edu/undergraduate/academic-policies/transfer-to-from-pratt",
-          "supports": "Trinity-Pratt transfer after one semester"
+          "supports": "Trinity-Pratt transfer after one semester",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         }
       ],
       "site_degree": "BSE Electrical and Computer Engineering (Pratt) + Robotics & Automation certificate",
-      "alternative": "BS Computer Science (Trinity) + Robotics & Automation certificate; needs an extra engineering prerequisite for the core course"
+      "alternative": "BS Computer Science (Trinity) + Robotics & Automation certificate; needs an extra engineering prerequisite for the core course",
+      "ece_entry": "Apply to Pratt School of Engineering; Duke says neither school/program is easier to enter. Pratt degree page says declare major during summer after first year. No GPA/cap gate is stated on the retrieved degree page; absence of a published gate is not a guarantee.",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall 2027 curriculum, prerequisites, offerings, seat restrictions and cross-major enrollment must be confirmed from the 2027-28 catalog/roster once published.",
+        "Prerequisites marked null are unknown; do not display them as unrestricted access.",
+        "No research, team or makerspace slot is guaranteed by existence of a lab or program.",
+        "Verify ECE 459, ECE 580/588, COMPSCI 527 and each special-topics course prerequisites, undergraduate enrollment and term offerings.",
+        "Verify which certificate courses overlap with the ECE degree and whether Robot Studio is an ECE approved design elective.",
+        "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change."
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE 580",
+          "title": "Introduction to Machine Learning",
+          "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/",
+          "access_note": "Current undergraduate catalogue option; prerequisites, degree-plan approval and registration capacity apply."
+        },
+        {
+          "code": "COMPSCI 370D",
+          "title": "Introduction to Artificial Intelligence",
+          "url": "https://cs.duke.edu/courses/introduction-artificial-intelligence",
+          "access_note": "COMPSCI 201 and one of COMPSCI230, COMPSCI231D, COMPSCI232, 200-level MATH or200-level STA"
+        },
+        {
+          "code": "COMPSCI 371",
+          "title": "Elements of Machine Learning",
+          "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/",
+          "access_note": "Current undergraduate catalogue option; prerequisites, degree-plan approval and registration capacity apply."
+        },
+        {
+          "code": "COMPSCI 527",
+          "title": "Introduction to Computer Vision",
+          "url": "https://cs.duke.edu/courses/introduction-computer-vision",
+          "access_note": "Mathematics221,218 or216; Mathematics212; Mathematics230 or Statistical Science230; Computer Science101; Computer Science230."
+        },
+        {
+          "code": "ME 555 / ECE 590 / COMPSCI 590 [topic]",
+          "title": "Robot Learning",
+          "url": "https://mems.duke.edu/academics/certificates/robotics-undergrad/",
+          "access_note": "For undergraduates: undergraduate Intro to Robotics. Number is special topics; exact section/title, undergraduate eligibility and repeat offering must be verified. Do not count every ME 555/ECE 590/COMPSCI 590 section as a regular robotics course."
+        }
+      ]
     },
     "georgia-tech": {
       "slug": "georgia-tech",
       "name": "Georgia Institute of Technology",
       "recommended_route": "ece",
-      "recommended_summary": "Apply with Computer Engineering (or Electrical Engineering) as the primary major and plan on the Robotics & Autonomous Systems thread, because GT has no robotics BS, the ECE thread gives a formal controls-plus-robotics core, and ECE stays reachable by internal change of major while CS does not.",
+      "recommended_summary": "List Computer Engineering as the primary intended major, then choose Robotics & Autonomous Systems plus Distributed System & Software Design. Add ECE4252 machine learning and ECE4560 automation/robotics or ECE4580 vision through the thread/elective plan.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -555,7 +743,7 @@
         "url": "https://catalog.gatech.edu/programs/minor-robotics/"
       },
       "ecosystem": "The Institute for Robotics and Intelligent Machines (IRIM) is the campus robotics hub, undergraduates can do robotics research for credit through Vertically Integrated Projects (VIP), and RoboJackets fields BattleBots, RoboNav, RoboCup, RoboRacing and RoboWrestling teams.",
-      "tradeoff": "Choosing ECE closes the door to the BS in CS, since first-years admitted after Summer 2024 cannot switch into it, so the robotics AI and planning side (CS 3630, CS 4649) has to come through electives or the Robotics minor.",
+      "tradeoff": "CS cannot be a later fallback. Robotics/ML/vision choices are elective and need a sequenced degree plan; nonmajor CS course seats and robot-specific capstone allocation are unverified.",
       "corrections_to_existing": [
         "No robotics BS exists, but the existing recommendation (CS with AI + Systems and Architecture threads) is not robotics-oriented; the robotics-relevant CS pairing is Embedded Devices & Artificial Intelligence, which includes CS 3630, CS 4649 and CS 4476.",
         "Calling CS access 'DIRECT, no internal gate' is misleading: first-years admitted Summer 2024 or later cannot change their major to the BS in CS, so CS must be the primary major listed at application.",
@@ -567,85 +755,261 @@
       "sources": [
         {
           "url": "https://ece.gatech.edu/robotics-autonomous-systems-thread",
-          "supports": "ECE robotics thread requirements"
+          "supports": "ECE robotics thread requirements",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/electrical-engineering-bs/",
-          "supports": "EE thread pairings incl. Robotics & Autonomous Systems (2026-27)"
+          "supports": "EE thread pairings incl. Robotics & Autonomous Systems (2026-27)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/computer-engineering-bs/",
-          "supports": "CmpE pairings with Robotics & Autonomous Systems (2026-27)"
+          "supports": "CmpE pairings with Robotics & Autonomous Systems (2026-27)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/coursesaz/ece/",
-          "supports": "ECE course codes and titles"
+          "supports": "ECE course codes and titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/computer-science-bs/",
-          "supports": "CS threads, two-thread rule, C-or-better rule"
+          "supports": "CS threads, two-thread rule, C-or-better rule",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/artificial-intelligence-embedded-devices-computer-science-bs/",
-          "supports": "Embedded Devices & AI thread courses"
+          "supports": "Embedded Devices & AI thread courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/coursesaz/cs/",
-          "supports": "CS course codes and titles"
+          "supports": "CS course codes and titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cc.gatech.edu/undergraduate-academic-policies-procedures-and-forms",
-          "supports": "No change of major into CS for Summer 2024+ first-years"
+          "supports": "No change of major into CS for Summer 2024+ first-years",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admission.gatech.edu/first-year/major-selection",
-          "supports": "Intended major chosen on Common App, weighed in review"
+          "supports": "Intended major chosen on Common App, weighed in review",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admission.gatech.edu/first-year/major-confirmation",
-          "supports": "Major confirmation by May 15"
+          "supports": "Major confirmation by May 15",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.me.gatech.edu/change-your-major",
-          "supports": "One unrestricted major change before 60 hours"
+          "supports": "One unrestricted major change before 60 hours",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.me.gatech.edu/change-your-major-0",
-          "supports": "ME change-of-major 3.0 GPA rule and first-year exemption"
+          "supports": "ME change-of-major 3.0 GPA rule and first-year exemption",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/minor-robotics/",
-          "supports": "Robotics minor structure and electives"
+          "supports": "Robotics minor structure and electives",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/programs/mechanical-engineering-automation-robotic-systems-bs/",
-          "supports": "ME Automation and Robotic Systems concentration"
+          "supports": "ME Automation and Robotic Systems concentration",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admission.gatech.edu/images/pdf/2025/FY-admitted-profile-full-2025.pdf",
-          "supports": "No per-college admit rates published"
+          "supports": "No per-college admit rates published",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.gatech.edu/",
-          "supports": "IRIM; only MS/PhD robotics degrees"
+          "supports": "IRIM; only MS/PhD robotics degrees",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.gatech.edu/academics/special-academic-programs/vertically-integrated-projects-program",
-          "supports": "VIP program exists (search result)"
+          "supports": "VIP program exists (search result)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robojackets.org/",
-          "supports": "RoboJackets competition teams"
+          "supports": "RoboJackets competition teams",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
+        },
+        {
+          "url": "https://www.gatech.edu/academics/degrees/bachelors/robotics-minor",
+          "supports": "Robotics (Minor)",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://www.me.gatech.edu/files/ug/me4451.pdf",
+          "supports": "ME 4451 Robotics syllabus",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://research.gatech.edu/robotics/robotics-research-facilities",
+          "supports": "Research Neighborhoods | Institute for Robotics and Intelligent Machines",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://osp.gatech.edu/sites/default/files/documents/irim-facilities-for-nsf.pdf",
+          "supports": "IRIM facilities and equipment inventory (NSF)",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://www.ic.gatech.edu/robotics",
+          "supports": "Robotics | School of Interactive Computing",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://vip.gatech.edu/",
+          "supports": "VIP &#8211; Vertically Integrated Projects",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://lab-idar.gatech.edu/vip/",
+          "supports": "VIP &#8211; Laboratory for Intelligent Decision and Autonomous Robots",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://ae.gatech.edu/browser-directory",
+          "supports": "Main Directory | Daniel Guggenheim School of Aerospace Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://saferoboticslab.me.gatech.edu/faqs/robo-course-guide/",
+          "supports": "ROBO Course Guide &#8211; Robot Danger Lab",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "supports": "Bachelor of Science in Computer Engineering - Distributed System &amp; Software Design and Robotics &amp; Autonomous Systems | Georgia Tech Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.gatech.edu/programs/computing-hardware-emerging-architectures-robotics-autonomous-systems-computer-engineering-bs/",
+          "supports": "Bachelor of Science in Computer Engineering - Computing Hardware &amp; Emerging Architectures and Robotics &amp; Autonomous Systems  | Georgia Tech Catalog",
+          "verified_on": "2026-10-14"
         }
       ],
-      "site_degree": "BS Computer Engineering or BS Electrical Engineering, Robotics & Autonomous Systems thread",
-      "alternative": "BS Computer Science, Devices + Intelligence threads (CS 3630); must be the major at application, no switching in later"
+      "site_degree": "BS Computer Engineering — Robotics & Autonomous Systems + Distributed System & Software Design threads",
+      "alternative": "BS Electrical Engineering with Robotics & Autonomous Systems thread; or BS Computer Science, Embedded Devices & Artificial Intelligence threads, if AI/perception/software is the priority (list CS at application).",
+      "curriculum_and_access_evidence": [
+        {
+          "code": "ECE2031",
+          "title": "Digital Design Laboratory",
+          "category": "hardware",
+          "role": "Required",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE2035",
+          "title": "Programming for Hardware/Software Systems",
+          "category": "hardware/software",
+          "role": "Required",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE2040",
+          "title": "Circuit Analysis",
+          "category": "hardware",
+          "role": "Required",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE3550",
+          "title": "Feedback Control Systems",
+          "category": "controls",
+          "role": "Required by robotics thread",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4550",
+          "title": "Control System Design",
+          "category": "controls/project",
+          "role": "Required by robotics thread",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4560",
+          "title": "Introduction to Automation and Robotics",
+          "category": "robotics",
+          "role": "Robotics-thread pick-list option",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4252",
+          "title": "Fundamentals of Machine Learning (FunML)",
+          "category": "AI/ML",
+          "role": "Robotics-thread pick-list option",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4580",
+          "title": "Computational Computer Vision",
+          "category": "AI/perception",
+          "role": "Robotics-thread pick-list option",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4180",
+          "title": "Embedded Systems Design",
+          "category": "embedded/project",
+          "role": "Advanced-software pick-list option",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "CS3651",
+          "title": "Prototyping Intelligent Devices",
+          "category": "embedded/project",
+          "role": "Advanced-software pick-list option",
+          "source": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 course seats/offering frequency, actual nonmajor access to CS3630/CS4649/CS4476, robotics capstone project allocation and thread-specific degree audit.",
+        "No supported major/college-specific first-year admit-rate comparison; avoid claiming an ECE/ME application is easier than CS from unverified percentages.",
+        "Any robotics-specific labs placement is an opportunity rather than guaranteed access."
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE4252",
+          "title": "Fundamentals of Machine Learning (FunML)",
+          "url": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access_note": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE4580",
+          "title": "Computational Computer Vision",
+          "url": "https://catalog.gatech.edu/programs/distributed-system-software-design-robotics-autonomous-systems-computer-engineering-bs/",
+          "access_note": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        }
+      ]
     },
     "johns-hopkins": {
       "slug": "johns-hopkins",
       "name": "Johns Hopkins University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply listing Electrical Engineering (or Computer Engineering) as the intended major, then follow the ECE Robotics focus area and add the LCSR Robotics minor, since no robotics BS exists and ECE's catalog focus area already combines controls, embedded systems, perception, and CS/ME robotics courses.",
+      "recommended_summary": "BS Computer Engineering has the same ECE electronics/signals/design core as EE plus required intermediate programming and data structures. Both have an optional Robotics study focus area and a two-term ECE capstone. Add selectable controls, robot sensors/mechatronics, machine perception, embedded AI and sensor-based robotics; the interdisciplinary minor gives transcript recognition. EE is the controls/sensing alternative and CS is the software/planning alternative. Primary ordering is analyst judgment, not an admissions advantage.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -689,7 +1053,7 @@
             "title": "Capstone Design Project I"
           }
         ],
-        "entry": "JHU admits students to the whole university, not to a major. Biomedical Engineering is the only exception. A first-year declares EE or CompE after enrolling. There is no published GPA cap or capacity gate.",
+        "entry": "Computer Engineering is a primary undergraduate degree in Whiting Engineering. The reviewed catalogue provides its 126-credit plan; programme-specific first-year admission odds and current declaration procedures were not published in the accessible sources. Confirm intended-major procedures with admissions.",
         "first_year_direct_admit": false,
         "notes": "Both BS degrees require 126 credits under the 2026-27 catalog for Fall 2026 entrants. The Robotics focus area list also pulls in EN.530.420 Robot Sensors/Actuators, EN.530.421 Mechatronics, EN.601.461 Computer Vision and EN.601.463 Algorithms for Sensor-Based Robotics. Those count as the 'Other Engineering' courses the degree requires (at least 6 credits). They also meet the minor's rule of 6+ credits from outside the home department. Introduction to Mechatronics is listed as 520.240 on the focus-area page but as 520.241 on an instructor page. Its exact code is unverified, so it is left out of key_courses. Admission does not bind you to a major, so 'ECE' here means the intended major listed on the application.",
         "url": "https://engineering.jhu.edu/ece/academics/undergraduate-studies/degree-options/study-focus-areas-for-undergraduates"
@@ -746,65 +1110,143 @@
       "sources": [
         {
           "url": "https://apply.jhu.edu/frequently-asked-questions/",
-          "supports": "university-wide admission; BME only direct-admit major; not bound to listed major"
+          "supports": "university-wide admission; BME only direct-admit major; not bound to listed major",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://apply.jhu.edu/academics/majors-minors-programs/robotics",
-          "supports": "robotics offered as a minor, not a major"
+          "supports": "robotics offered as a minor, not a major",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://lcsr.jhu.edu/education/undergraduate-minors/robotics-minor/",
-          "supports": "robotics minor requirements and eligibility"
+          "supports": "robotics minor requirements and eligibility",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://lcsr.jhu.edu/education/bs-mse",
-          "supports": "BS/MSE combined program details and deadlines"
+          "supports": "BS/MSE combined program details and deadlines",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://engineering.jhu.edu/ece/academics/undergraduate-studies/degree-options/",
-          "supports": "BS EE and BS CompE, 126 credits; combined program 3.5 GPA"
+          "supports": "BS EE and BS CompE, 126 credits; combined program 3.5 GPA",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://engineering.jhu.edu/ece/academics/undergraduate-studies/degree-options/study-focus-areas-for-undergraduates",
-          "supports": "ECE Robotics focus area course list"
+          "supports": "ECE Robotics focus area course list",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/electrical-engineering-bachelor-science/electrical-engineering-bachelor-science.pdf",
-          "supports": "2026-27 EE requirements; 520.454, 520.468, 520.498 codes; focus areas"
+          "supports": "2026-27 EE requirements; 520.454, 520.468, 520.498 codes; focus areas",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/computer-engineering-bachelor-science/computer-engineering-bachelor-science.pdf",
-          "supports": "2026-27 CompE requirements; Robotics focus area; 530.420/421"
+          "supports": "2026-27 CompE requirements; Robotics focus area; 530.420/421",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/computer-science/computer-science.pdf",
-          "supports": "CS course codes/titles 601.463, 601.461, 601.464, 601.455, 601.456"
+          "supports": "CS course codes/titles 601.463, 601.461, 601.464, 601.455, 601.456",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.cs.jhu.edu/academic-programs/undergraduate-studies/undergraduate-academics/advising-manual/",
-          "supports": "BS CS 120 credits, CAC accreditation, Robotics focus area, BA pre-2025 only"
+          "supports": "BS CS 120 credits, CAC accreditation, Robotics focus area, BA pre-2025 only",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.cs.jhu.edu/academic-programs/undergraduate-studies/undergraduate-academics/current-undergraduate-students/",
-          "supports": "CS declaration steps; Robotics Path guide"
+          "supports": "CS declaration steps; Robotics Path guide",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://imagine.jhu.edu/organizations/the-johns-hopkins-robotics-club/",
-          "supports": "Robotics Club, LCSR Robotorium access"
+          "supports": "Robotics Club, LCSR Robotorium access",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://giving.jhu.edu/story/mars-rover-team",
-          "supports": "Hopkinauts Mars Rover Team, University Rover Challenge"
+          "supports": "Hopkinauts Mars Rover Team, University Rover Challenge",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
+        },
+        {
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
+          "supports": "Electrical and Computer Engineering | Johns Hopkins University Academic Catalogue",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/mechanical-engineering/",
+          "supports": "Mechanical Engineering | Johns Hopkins University Academic Catalogue",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/computer-science/",
+          "supports": "Computer Science | Johns Hopkins University Academic Catalogue",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/robotics-computational-sensing/robotics-minor/",
+          "supports": "Robotics, Minor | Johns Hopkins University Academic Catalogue",
+          "verified_on": "2026-10-14"
         }
       ],
-      "site_degree": "BS Electrical Engineering or Computer Engineering, Robotics focus area + LCSR Robotics minor",
-      "alternative": "BS Computer Science, Robotics focus area + LCSR Robotics minor"
+      "site_degree": "BS Computer Engineering + optional Robotics study focus area + LCSR Robotics minor",
+      "alternative": "BS Electrical Engineering + Robotics focus area/minor for more controls and sensing; BS Computer Science + Robotics focus area/minor for algorithms, planning and perception, adding engineering control/dynamics courses.",
+      "ece_entry": "Live CS declaration: SIS form, four-year plan, departmental review and advisor approval; no GPA/cap threshold stated, and secondary-major/minor declarations pause before/during registration. Prior admissions FAQ said university-wide admission except BME, but its current page returns403; preserve as older policy pending re-verification.",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall 2027 curriculum, prerequisites, offerings, seat restrictions and cross-major enrollment must be confirmed from the 2027-28 catalog/roster once published.",
+        "Prerequisites marked null are unknown; do not display them as unrestricted access.",
+        "No research, team or makerspace slot is guaranteed by existence of a lab or program.",
+        "Verify whether optional study focus area appears on the transcript; do not describe it as a formal concentration credential without policy evidence.",
+        "Verify prerequisites of controls, perception, embedded AI, robot sensing/actuation and EN.601.463; current stored summaries omit them.",
+        "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change.",
+        "LCSR current course-to-minor-code list, REU eligibility/dates, lab-access policies, Robotics Club/Hopkinauts and current university-wide admissions policy remain unverified because their official pages returnedHTTP403.",
+        "2026-27 minor catalog expressly refers students to LCSR for the current approved course list; a plausible robotics course is not automatically approved in a minor category."
+      ],
+      "ai_electives": [
+        {
+          "code": "EN.520.465",
+          "title": "Machine Perception",
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
+          "access_note": "Prerequisite(s): Students can only receive credit for EN.520.465 or EN.520.665, but not both.;(AS.110.202 OR AS.110.212) AND (EN.553.291 OR EN.553.385 OR AS.110.201) AND (EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421)"
+        },
+        {
+          "code": "EN.520.440",
+          "title": "Machine Intelligence on Embedded Systems",
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
+          "access_note": "Prerequisite(s): EN.520.412 OR EN.520.612 OR EN.601.475 OR EN.601.675 OR EN.601.676 OR EN.601.482 OR EN.601.682 OR EN.601.486 OR EN.601.686 OR EN.520.439 OR EN.520.659 OR EN.520.650"
+        },
+        {
+          "code": "EN.601.461",
+          "title": "Computer Vision",
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/computer-science/",
+          "access_note": "Prerequisite(s): Students may receive credit for only one of EN.601.461, EN.601.661.;(EN.553.310 OR EN.553.311 OR ((EN.553.420 OR EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 AS.250.205)"
+        },
+        {
+          "code": "EN.601.464",
+          "title": "Artificial Intelligence",
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/computer-science/",
+          "access_note": "Prerequisite(s): Students may receive credit for only one of EN.601.464, EN.601.664.;EN.601.226"
+        },
+        {
+          "code": "EN.520.241",
+          "title": "Introduction to Mechatronics: Sensing, Processing, Learning and Actuation",
+          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
+          "access_note": "Safety training; EN.520.230 AND EN.520.231"
+        }
+      ]
     },
     "nc-state": {
       "slug": "nc-state",
       "name": "North Carolina State University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply to the College of Engineering (all first-years enter Engineering First Year), list Electrical Engineering as the intended major, then CODA into the BS in Electrical Engineering and declare the Controls and Robotics Concentration, the only named robotics program on the Raleigh campus.",
+      "recommended_summary": "Apply to Engineering First Year with Electrical Engineering intended; CODA into EE, then select Controls and Robotics. Build the elective plan around ECE441 robot motion planning, ECE455 industrial robotics, ECE411 ML or ECE425 deep learning, plus embedded/digital control electives.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -887,8 +1329,8 @@
         "url": "https://csc.ncsu.edu/academics/undergrad/undergraduate-degree-tracks"
       },
       "robotics_minor": null,
-      "ecosystem": "College of Engineering Robotics Initiative (launched 2025, launch director Helen Huang, with the CLEAR Core and planned robotics space in Engineering Building II and Research Building IV), and student teams RoboPack, BattlePack Combat Robotics and AquaPack.",
-      "tradeoff": "The student is not admitted to ECE as a freshman: he must earn a strong CODA GPA in year one to win a capped EE seat, and the robotics concentration is controls- and hardware-heavy, with less robot software and perception than the CS Robotics Track.",
+      "ecosystem": "College of Engineering Robotics Initiative; ARoS laboratory accepts NC State student-volunteer applications; student teams include BattlePack, RoboPack and AquaPack. Legacy CRIM URLs now return HTTP410; planned robotics minor is not yet a verified catalog offering.",
+      "tradeoff": "CODA placement and course sequencing. Formal concentration requires control foundations plus chosen robotics/AI electives, rather than every robotics course. Graduate courses need separate eligibility; AI concentration cannot formally combine with CSC Robotics Track.",
       "corrections_to_existing": [
         "CODA Success courses: from Spring 2026 PY 205 is a 4-credit course and PY 206 is no longer required when the 4-credit PY 205 is taken; the EE catalog lists MA 141, MA 241, CH 101, CH 102 and PY 205 as CODA courses.",
         "The existing plan to take the CS AI Concentration conflicts with robotics: the CSC Robotics Track page states AI Concentration students are not eligible for the Robotics Track.",
@@ -903,81 +1345,270 @@
       "sources": [
         {
           "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
-          "supports": "EE Controls and Robotics Concentration 2026-27 requirements"
+          "supports": "EE Controls and Robotics Concentration 2026-27 requirements",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/",
-          "supports": "list of EE and CpE concentrations"
+          "supports": "list of EE and CpE concentrations",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/eceelectives/eceelectives.pdf",
-          "supports": "ECE elective list incl. ECE 436, 441, 455"
+          "supports": "ECE elective list incl. ECE 436, 441, 455",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/course-descriptions/ece/",
-          "supports": "ECE course codes and titles"
+          "supports": "ECE course codes and titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/course-descriptions/csc/",
-          "supports": "CSC course codes, titles, CSC 441/451 cross-listing"
+          "supports": "CSC course codes, titles, CSC 441/451 cross-listing",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/undergraduate/engineering/computer-science/computer-science-bs/",
-          "supports": "CS BS 2026-27, CODA entry, restricted electives, elective tracks"
+          "supports": "CS BS 2026-27, CODA entry, restricted electives, elective tracks",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/undergraduate/engineering/computer-science/",
-          "supports": "CS concentrations and minor"
+          "supports": "CS concentrations and minor",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.ncsu.edu/undergraduate/engineering/computer-science/artificial-intelligence-concentration",
-          "supports": "AI concentration requirements"
+          "supports": "AI concentration requirements",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://csc.ncsu.edu/academics/undergrad/undergraduate-degree-tracks",
-          "supports": "CS Robotics Track courses, AI-concentration exclusion"
+          "supports": "CS Robotics Track courses, AI-concentration exclusion",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engr.ncsu.edu/academics/undergrad/coda/",
-          "supports": "CODA rules, guarantee, ranking, timing"
+          "supports": "CODA rules, guarantee, ranking, timing",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engr.ncsu.edu/?p=187",
-          "supports": "all first-years admitted to Engineering First Year"
+          "supports": "all first-years admitted to Engineering First Year",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engr.ncsu.edu/?p=1149372",
-          "supports": "CODA statistics 2025-26 links"
+          "supports": "CODA statistics 2025-26 links",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.ncsu.edu/tour/undergraduate-journey/",
-          "supports": "EFY to ECE via CODA"
+          "supports": "EFY to ECE via CODA",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engr.ncsu.edu/mechatronics/joint/",
-          "supports": "JEM mechatronics at UNC Asheville, ABET EAC"
+          "supports": "JEM mechatronics at UNC Asheville, ABET EAC",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engr.ncsu.edu/robotics/",
-          "supports": "Robotics Initiative, Helen Huang, CLEAR Core"
+          "supports": "Robotics Initiative, Helen Huang, CLEAR Core",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://news.ncsu.edu/?p=1533759",
-          "supports": "planned robotics minor, student robotics teams"
+          "supports": "planned robotics minor, student robotics teams",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.ncsu.edu/?p=267038",
-          "supports": "planned minor, teams RoboPack, BattlePack, AquaPack"
+          "supports": "planned minor, teams RoboPack, BattlePack, AquaPack",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.ncsu.edu/course-descriptions/mae/",
+          "supports": "Mechanical &amp; Aerospace Engr (MAE) &lt; North Carolina State University",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://engr.ncsu.edu/news/2024/01/19/asheville-based-mechatronics-engineering-program-produces-well-rounded-engineers-and-a-close-community/",
+          "supports": "Asheville-based mechatronics engineering program produces well-rounded engineers and a close community | College of Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://research.ece.ncsu.edu/aros/",
+          "supports": "Home | ARoS Lab",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://ece.ncsu.edu/research/centers/",
+          "supports": "Labs and Centers - Electrical and Computer Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://cals.ncsu.edu/psi/ai-at-the-n-c-psi/",
+          "supports": "AI at the N.C. PSI | N.C. Plant Sciences Initiative",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://engr.ncsu.edu/news/2022/06/28/aerial-robotics-club-continues-longstanding-participation-in-auvsi-suas-competition/",
+          "supports": "Aerial Robotics Club continues longstanding participation in AUVSI SUAS competition | College of Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://ece.ncsu.edu/2005/ncsu-places-3rd-at-auvsi-uav-competition/",
+          "supports": "NCSU places 3rd at AUVSI UAV competition - Electrical and Computer Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://cals.ncsu.edu/news/robopack-nc-state-university/",
+          "supports": "Run With the RoboPack | College of Agriculture and Life Sciences",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://research.ece.ncsu.edu/aros/project/",
+          "supports": "Projects | ARoS Lab",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://engr.ncsu.edu/news/2024/06/17/n-c-psi-advances-ai-for-agriculture/",
+          "supports": "N.C. PSI Advances AI for Agriculture | N.C. Plant Sciences Initiative",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://research.ncsu.edu/defense-security/our-capabilities/",
+          "supports": "Our Capabilities | Defense and Security Institute",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/computer-engineering-embedded-systems-concentration-bs/",
+          "supports": "Computer Engineering (BS): Embedded Systems Concentration &lt; North Carolina State University",
+          "verified_on": "2026-10-14"
         }
       ],
-      "site_degree": "BS Electrical Engineering, Controls and Robotics Concentration (Engineering First Year, then CODA)",
-      "alternative": "BS Computer Science + Robotics Track (via CODA); the track can't be combined with the AI concentration"
+      "site_degree": "BS Electrical Engineering — Controls and Robotics Concentration (EFY then CODA)",
+      "alternative": "BS Computer Engineering with embedded-systems focus; BS Computer Science Robotics Track after CODA (nontranscript completion-letter track, unavailable to AI concentration students). Asheville JEM is a separate campus/admission route.",
+      "curriculum_and_access_evidence": [
+        {
+          "code": "ECE308",
+          "title": "Elements of Control Systems",
+          "category": "controls",
+          "role": "Required concentration foundation",
+          "source": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE441",
+          "title": "Robot Motion Planning",
+          "category": "robotics/autonomy",
+          "role": "Concentration required-elective option",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE455",
+          "title": "Industrial Robotic Systems",
+          "category": "robotics/hardware",
+          "role": "Concentration required-elective option",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "EE/CpE/BME/JEM majors only; ECE308 prerequisite"
+        },
+        {
+          "code": "ECE411",
+          "title": "Introduction to Machine Learning",
+          "category": "AI/ML",
+          "role": "Concentration required-elective option",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE425",
+          "title": "Neural Networks and Deep Learning",
+          "category": "AI/deep learning",
+          "role": "Concentration required-elective option",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "400-level ECE425/CSC425 cross-listed with500level. Choose UG number; required programming/linear algebra/multivariable/statistics prerequisites"
+        },
+        {
+          "code": "ECE436",
+          "title": "Digital Control Systems",
+          "category": "controls",
+          "role": "Open-elective option",
+          "source": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE306",
+          "title": "Introduction to Embedded Systems",
+          "category": "embedded",
+          "role": "Open-elective option",
+          "source": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE460",
+          "title": "Embedded System Architectures",
+          "category": "embedded",
+          "role": "Concentration required-elective option",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE456",
+          "title": "Mechatronics",
+          "category": "mechatronics",
+          "role": "Catalog course; approved elective status uncertain",
+          "source": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE484/ECE485",
+          "title": "Electrical and Computer Engineering Senior Design I/II",
+          "category": "capstone",
+          "role": "Required two-semester design (entrepreneurship alternatives exist)",
+          "source": "https://catalog.ncsu.edu/undergraduate/engineering/electrical-computer/electrical-engineering-bs-controls-robotics-concentration/",
+          "access": "Student teams address faculty/industry engineering problem; robotics project not guaranteed"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "CODA placement is department/capacity dependent; sharing CODA does not prove EE and CS have equal admission odds or identical cutoffs.",
+        "ECE456 Mechatronics is catalog-listed but not found on the existing approved ECE elective list; advisor approval and scheduling are unverified.",
+        "Graduate ECE555 Autonomous Robot Systems and MAE544 Real Time Robotics do not establish ordinary undergraduate availability.",
+        "New robotics initiative and planned minor must not be represented as an existing minor/major without current catalog confirmation.",
+        "CS Robotics Track still describes CSC495 special topics while catalog now has named CSC451; reconcile updated track substitutions with an advisor.",
+        "Concentration overview mentions advanced digital controls, but plan requirements force MA305/405 and ECE308 plus6credits chosen from ECE411/425/441/455/460 and12openelective credits; ECE436 is an open elective rather than clearly required by the formal table."
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE441",
+          "title": "Robot Motion Planning",
+          "url": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access_note": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE411",
+          "title": "Introduction to Machine Learning",
+          "url": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access_note": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ECE425",
+          "title": "Neural Networks and Deep Learning",
+          "url": "https://catalog.ncsu.edu/course-descriptions/ece/",
+          "access_note": "400-level ECE425/CSC425 cross-listed with500level. Choose UG number; required programming/linear algebra/multivariable/statistics prerequisites"
+        }
+      ]
     },
     "northeastern": {
       "slug": "northeastern",
       "name": "Northeastern University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply for BS Computer Engineering, or for the combined Computer Engineering and Computer Science major, and add the Robotics Minor. Northeastern has no robotics bachelor's degree, and the ECE route has the most robotics courses, starting with a required embedded robotics course.",
+      "recommended_summary": "Apply to Computer Engineering or combined Computer Engineering and Computer Science. The 2026-27 catalog requires embedded design, probability, engineering linear algebra and a two-term ECE capstone. Robotics Minor explicitly permits controls, navigation, vision and machine-learning electives; maximum 50% overlap with the major.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -1085,77 +1716,127 @@
       "sources": [
         {
           "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/",
-          "supports": "ECE degree list; no robotics BS or concentration (2026-27)"
+          "supports": "ECE degree list; no robotics BS or concentration (2026-27)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/computer-engineering-bscompe/",
-          "supports": "BSCmpE requirements, EECE 2160, electives, 133 hours"
+          "supports": "BSCmpE requirements, EECE 2160, electives, 133 hours",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/computer-engineering-computer-science-bscompe/",
-          "supports": "Combined CmpE and CS major, 140 hours, two colleges"
+          "supports": "Combined CmpE and CS major, 140 hours, two colleges",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/robotics-minor/",
-          "supports": "Robotics Minor requirements, open to all"
+          "supports": "Robotics Minor requirements, open to all",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/computer-information-science/computer-science/bscs/",
-          "supports": "BSCS concentrations; CS 4610 within AI and Systems"
+          "supports": "BSCS concentrations; CS 4610 within AI and Systems",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/computer-information-science/",
-          "supports": "Khoury BS degrees; no AI or robotics major"
+          "supports": "Khoury BS degrees; no AI or robotics major",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/course-descriptions/eece/",
-          "supports": "EECE course titles and prerequisites"
+          "supports": "EECE course titles and prerequisites",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/course-descriptions/cs/",
-          "supports": "CS course titles and prerequisites"
+          "supports": "CS course titles and prerequisites",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/degrees-majors-minors/",
-          "supports": "Declare major on admission; change-of-major rules"
+          "supports": "Declare major on admission; change-of-major rules",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admissions.northeastern.edu/application-information/frequently-asked-admissions-questions/",
-          "supports": "Program ranking, combined major selection, Explore"
+          "supports": "Program ranking, combined major selection, Explore",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://coe.northeastern.edu/academics-experiential-learning/undergraduate-studies/undergraduate-academic-advising/change-major/",
-          "supports": "Engineering change-of-major criteria"
+          "supports": "Engineering change-of-major criteria",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.khoury.northeastern.edu/information-for-overview/current-undergrad/undergraduate-advising-academic-support/academic-policies",
-          "supports": "Khoury change-of-major criteria"
+          "supports": "Khoury change-of-major criteria",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.northeastern.edu/professional-studies/bachelors-postbaccalaureate/lowell-institute-school/",
-          "supports": "No Mechatronics BS listed in 2026-27"
+          "supports": "No Mechatronics BS listed in 2026-27",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.northeastern.edu/experiential-learning/",
-          "supports": "ECE co-op pattern and robotics employers"
+          "supports": "ECE co-op pattern and robotics employers",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.northeastern.edu/learning/",
-          "supports": "IER 40+ labs; NU Robotics Club"
+          "supports": "IER 40+ labs; NU Robotics Club",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://news.northeastern.edu/2026/05/21/university-rover-challenge-team/",
-          "supports": "Mars Rover team; prior third-place finish"
+          "supports": "Mars Rover team; prior third-place finish",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "BS Computer Engineering (or combined Computer Engineering and Computer Science) + Robotics minor",
-      "alternative": "BS Computer Science + Robotics minor, with CS 4610 Robotics as an elective"
+      "alternative": "BS Computer Science + Robotics minor, with CS 4610 Robotics as an elective",
+      "fresh_findings": [
+        "Current2026-27 plainCE133credits, combinedCE+CS140credits;combined has2 EECE technical electives,plainCE4;both capstone4791/4792.",
+        "Robotics minor open universitywide:ME3460+one embedded/digital option+three electives; maximum50% credits overlap major. Explicit ML/CV/control elective listings establish undergraduate degree-access route; prerequisites still apply.",
+        "Probability EECE3468 and differential equations/linear algebra MATH2341 are required CE/combined. Old CS optional-math concern cannot describe selected CE route.",
+        "Old Mechatronics URL redirects to Lowell Institute School list showing Advanced Manufacturing SystemsBS. No current first-year Mechatronics route established.",
+        "ECE co-op page says usually2-3 six-month co-ops and lists Amazon Robotics/iRobot; no mandatory five-year duration."
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 cohort curriculum and course availability",
+        "Lab-placement seats, prerequisites and application deadlines",
+        "Major-specific admit rate; no causal ease claim justified"
+      ],
+      "ai_electives": [
+        {
+          "code": "EECE 5644",
+          "title": "Introduction to Machine Learning and Pattern Recognition",
+          "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/robotics-minor/",
+          "access_note": "Listed Robotics minor elective; prerequisites apply. At most 50% of minor credits may overlap with the major."
+        },
+        {
+          "code": "EECE 5639",
+          "title": "Computer Vision",
+          "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/robotics-minor/",
+          "access_note": "Listed Robotics minor elective; verify course prerequisites and available seats."
+        },
+        {
+          "code": "CS 4100",
+          "title": "Principles of Artificial Intelligence",
+          "url": "https://catalog.northeastern.edu/undergraduate/engineering/electrical-computer/robotics-minor/",
+          "access_note": "Published minor option; complete its CS prerequisites before registration."
+        }
+      ]
     },
     "purdue": {
       "slug": "purdue",
       "name": "Purdue University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply to First-Year Engineering at West Lafayette and move into Electrical Engineering with the Automatic Control concentration. This gives an EAC-accredited degree with controls, embedded and robotics courses, and ECE is not on Purdue's list of capacity-limited majors.",
+      "recommended_summary": "Apply to First-Year Engineering at West Lafayette, then transition to Computer Engineering. Required/core ECE 36200 embedded microprocessors and ECE 36800 data structures provide hardware/software balance. Add controls, ECE robotics and AI electives subject to the cohort plan. The Computer Engineering AI/ML concentration exists; Automatic Control concentration is for Electrical Engineering.",
       "bs_robotics": {
         "offered": true,
         "degree_name": "Robotics Engineering Technology (BS)",
@@ -1168,40 +1849,31 @@
       },
       "ece": {
         "degree_names": [
-          "BS Electrical Engineering (BSEE)",
-          "BS Computer Engineering (BSCmpE)"
+          "BS Computer Engineering"
         ],
         "home_unit": "College of Engineering, Elmore Family School of Electrical and Computer Engineering",
-        "robotics_track": "Automatic Control concentration (listed for EE); an AI and Machine Learning concentration is also offered for both EE and CmpE",
+        "robotics_track": "AI and Machine Learning concentration (CE); robotics/control electives require cohort-plan approval",
         "key_courses": [
-          {
-            "code": "ECE 38200",
-            "title": "Feedback System Analysis and Design"
-          },
-          {
-            "code": "ECE 30800",
-            "title": "Systems Simulation and Control Laboratory"
-          },
-          {
-            "code": "ECE 48300",
-            "title": "Digital Control Systems Analysis and Design"
-          },
-          {
-            "code": "ECE 56900",
-            "title": "Introduction to Robotic Systems"
-          },
           {
             "code": "ECE 36200",
             "title": "Microprocessor Systems and Interfacing"
           },
           {
+            "code": "ECE 36800",
+            "title": "Data Structures"
+          },
+          {
             "code": "ECE 47300",
             "title": "Introduction to Artificial Intelligence"
+          },
+          {
+            "code": "ECE 47700",
+            "title": "Digital Systems Senior Project"
           }
         ],
-        "entry": "At West Lafayette, students are admitted to First-Year Engineering, not to ECE. After finishing the FYE requirements, they list a first and second choice in Transition to Major (T2M), and most get their first choice.",
+        "entry": "FYE/T2M: West Lafayette engineering begins in First-Year Engineering. Choose Computer Engineering in Transition to Major; no direct first-year CE admission at West Lafayette. The T2M page’s 93-95% historical first-choice placement is an aggregate, not a CE guarantee.",
         "first_year_direct_admit": false,
-        "notes": "The capacity-limited majors in T2M are ME, AAE, BME and MDE. ECE is not on that list, and no minimum GPA for ECE is published. ECE prefers CS 15900 as the FYE selective. Both degrees are EAC/ABET accredited. ECE 56900 is a 500-level course, and the Automatic Control concentration proposal lists it as a selective. Purdue Indianapolis admits students directly into engineering majors.",
+        "notes": "The Automatic Control concentration belongs to Electrical Engineering, not CE. CE supplies hardware/software balance; verify which controls/robotics electives count in the cohort plan. The T2M page reports historical 93–95% first-choice placement, not a CE guarantee.",
         "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum"
       },
       "cs": {
@@ -1241,100 +1913,142 @@
         "ABET-ETAC accreditation belongs to the Manufacturing Engineering Technology program. Robotics Engineering Technology is listed as one of that program's majors, not as a separately accredited program.",
         "The ECE knowledge base lists the Automatic Control concentration for EE only, not for both BSEE and BSCmpE. The AI and Machine Learning concentration is offered in both.",
         "Purdue ME does list undergraduate concentrations: Dynamical Systems Modeling and Analysis; Energy Processes and Systems; Manufacturing; Microelectronics and Semiconductors. None is in robotics, and ME lists no robotics minor.",
-        "The advice to go through FYE into ME is risky because ME is capacity-limited in T2M (along with AAE, BME and MDE). The '93-95% get first choice' figure is not on current T2M pages, which say only that most students get their first choice.",
         "CS CODO has no published hard GPA threshold. It is space-available only, a 3.00 or higher GPA gets the highest consideration, CS 18000 is required, and decisions cannot be appealed.",
-        "The undergraduate CS robotics course is now CS 45800 Introduction To Robotics (since Fall 2024). The Robotics Accelerator page still lists it under the old number, CS 49000."
+        "The undergraduate CS robotics course is now CS 45800 Introduction To Robotics (since Fall 2024). The Robotics Accelerator page still lists it under the old number, CS 49000.",
+        "The current T2M page does publish historical 93–95% first-choice placement. It is an aggregate for students meeting minimum requirements, not a specific-major guarantee."
       ],
       "sources": [
         {
           "url": "https://polytechnic.purdue.edu/degrees/robotics-engineering-technology",
-          "supports": "ROET degree, concentrations, West Lafayette, Degree in 3"
+          "supports": "ROET degree, concentrations, West Lafayette, Degree in 3",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://polytechnic.purdue.edu/academic-accreditation/manufacturing-engineering-technology-program",
-          "supports": "ETAC accreditation; ROET listed as major under MFET program"
+          "supports": "ETAC accreditation; ROET listed as major under MFET program",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admissions.purdue.edu/majors/robotics-engineering-technology/",
-          "supports": "ROET is a Polytechnic BS major, West Lafayette"
+          "supports": "ROET is a Polytechnic BS major, West Lafayette",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://old.polytechnic.purdue.edu/sites/default/files/advising-worksheets/ROET%20worksheet.pdf",
-          "supports": "ROET course codes (2024-25 plan)"
+          "supports": "ROET course codes (2024-25 plan)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.admissions.purdue.edu/become-student/guide",
-          "supports": "first-year applicants pick a primary major; reviewed by program"
+          "supports": "first-year applicants pick a primary major; reviewed by program",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum",
-          "supports": "BSEE/BSCmpE, EAC accreditation, concentrations list"
+          "supports": "BSEE/BSCmpE, EAC accreditation, concentrations list",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Resources/Knowledge-Base",
-          "supports": "Automatic Control listed as EE concentration"
+          "supports": "Automatic Control listed as EE concentration",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/Curriculum/Courses-by-Area",
-          "supports": "ECE control and robotics course codes/titles"
+          "supports": "ECE control and robotics course codes/titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/Intranet/Apps/EFDReview/Documents/EFD_38-22/pyDownloadFile",
-          "supports": "Automatic Control concentration core and selectives"
+          "supports": "Automatic Control concentration core and selectives",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admissions.purdue.edu/majors/electrical-engineering/",
-          "supports": "West Lafayette entry via First-Year Engineering"
+          "supports": "West Lafayette entry via First-Year Engineering",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/current-students/academic/advising/t2m",
-          "supports": "T2M process, capacity-limited majors, ECE prefers CS 15900"
+          "supports": "T2M process, capacity-limited majors, ECE prefers CS 15900",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/current-students/academic/advising/t2m/t2m-faq",
-          "supports": "most get first choice; ME/AAE/BME at capacity"
+          "supports": "most get first choice; ME/AAE/BME at capacity",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cs.purdue.edu/undergraduate/curriculum/track-mI-fall2023.html",
-          "supports": "Machine Intelligence track courses incl. CS 45800"
+          "supports": "Machine Intelligence track courses incl. CS 45800",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cs.purdue.edu/corporate/announcements/cs458.html",
-          "supports": "CS 45800 Introduction to Robotics, Fall 2024, track credit"
+          "supports": "CS 45800 Introduction to Robotics, Fall 2024, track credit",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://cs.purdue.edu/academic-programs/courses/2025_fall_courses.html",
-          "supports": "CS 37300, 45800, 47100, 48900 titles"
+          "supports": "CS 37300, 45800, 47100, 48900 titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cs.purdue.edu/undergraduate/codo-requirements.html",
-          "supports": "CS CODO rules: space-available, no appeal"
+          "supports": "CS CODO rules: space-available, no appeal",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/ME/Undergraduate/Minors",
-          "supports": "ME concentrations; no robotics minor"
+          "supports": "ME concentrations; no robotics minor",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.purdue.edu/robotics/education.html",
-          "supports": "robotics courses across departments"
+          "supports": "robotics courses across departments",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.purdue.edu/Engr/Academics/Undergraduate/PEPC/PEPC-Groups/ARC",
-          "supports": "Autonomous Robotics Club, RISE expo"
+          "supports": "Autonomous Robotics Club, RISE expo",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.purdue.edu/robotics/LoRE/index.html",
-          "supports": "League of Robotic Engineers club"
+          "supports": "League of Robotic Engineers club",
+          "verified_on": "2026-10-14"
         }
       ],
-      "site_degree": "BS Electrical Engineering, Automatic Control concentration (First-Year Engineering, then Transition to Major)",
-      "alternative": "BS Robotics Engineering Technology (Polytechnic, direct admit, engineering-technology degree) or BS Computer Science, Machine Intelligence track"
+      "site_degree": "BS Computer Engineering (West Lafayette First-Year Engineering, then Transition to Major), robotics/control and AI/ML electives",
+      "alternative": "BS Robotics Engineering Technology (Polytechnic, direct admit, engineering-technology degree) or BS Computer Science, Machine Intelligence track",
+      "fresh_findings": [
+        "The current T2M main page states 93% to 95% first-choice placement over the past five years for students meeting minimum requirements. The prior route audit incorrectly claimed the statistic was absent. It is historical aggregate placement, not a major admission guarantee.",
+        "T2M main and FAQ pages show different advising GPA thresholds (2.5 versus 2.8) and capacity lists. Those figures are advising criteria, not published CE admission cutoffs. West Lafayette enters FYE; Indianapolis direct admission is a separate campus policy.",
+        "The current ECE curriculum links Computer Engineering AI/ML and Electrical Engineering Automatic Control separately. The CE core page lists ECE 36200 Microprocessor Systems and Interfacing and ECE 36800 Data Structures.",
+        "Official admissions verifies Robotics Engineering Technology BS at West Lafayette in Polytechnic. Its program page offers optional AI and Software, Autonomy and UXVs, Mechanisms and Controls, and other concentrations.",
+        "The accreditation page lists Robotics Engineering Technology among majors under the ETAC-accredited Manufacturing Engineering Technology program. Do not label it an EAC engineering degree or independently accredited Robotics program."
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 cohort curriculum and course availability",
+        "Lab-placement seats, prerequisites and application deadlines",
+        "Major-specific admit rate; no causal ease claim justified"
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE 47300",
+          "title": "Introduction to Artificial Intelligence",
+          "url": "https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/CourseInfo/courseInfo.html",
+          "access_note": "Published Computer Engineering course-area option; confirm current cohort degree applicability and prerequisites. The AI/ML concentration is linked officially, but its current catalogue requirements were inaccessible."
+        }
+      ]
     },
     "rpi": {
       "slug": "rpi",
       "name": "Rensselaer Polytechnic Institute",
       "recommended_route": "bs_robotics",
-      "recommended_summary": "Apply for the new B.S. in Robotics Engineering (ROBT). It is a real first-year major in the School of Engineering, run jointly by ECSE and MANE, and it shares its early courses with EE and CSE, so switching later stays easy.",
+      "recommended_summary": "Apply to the primary BS in Robotics Engineering (ROBT). The official sample curriculum includes embedded control, robot programming, manipulation, mobile robotics and planning, control lecture/lab, mechatronics, an AI/ML elective and robotics capstone. Confirm the new program’s accreditation status and Fall 2027 course capacity.",
       "bs_robotics": {
         "offered": true,
         "degree_name": "B.S. in Robotics Engineering",
@@ -1426,77 +2140,120 @@
       "sources": [
         {
           "url": "https://eng.rpi.edu/bs-robotics-engineering",
-          "supports": "BS Robotics Engineering exists; joint ECSE+MANE; Class of 2030 can choose ROBT; NYSED approval"
+          "supports": "BS Robotics Engineering exists; joint ECSE+MANE; Class of 2030 can choose ROBT; NYSED approval",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://eng.rpi.edu/bs-robotics-engineering/bs-robotics-engineering-curriculum",
-          "supports": "ROBT sample curriculum and course codes"
+          "supports": "ROBT sample curriculum and course codes",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://eng.rpi.edu/bs-robotics-engineering/research-faculty",
-          "supports": "CSCMS center, robotics research areas"
+          "supports": "CSCMS center, robotics research areas",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://eng.rpi.edu/bs-robotics-engineering/hands-learning-and-facilities",
-          "supports": "Robotics Teaching Lab, MILL, Forge, Mercer X-Lab"
+          "supports": "Robotics Teaching Lab, MILL, Forge, Mercer X-Lab",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://eng.rpi.edu/bs-robotics-engineering/student-experience-opportunities",
-          "supports": "RPI Robotics Club, RPai, URP"
+          "supports": "RPI Robotics Club, RPai, URP",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://morningmail.rpi.edu/node/26524",
-          "supports": "Sept 2026 info session on new major and minor"
+          "supports": "Sept 2026 info session on new major and minor",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://compsci.rpi.edu/events/robotics-engineering-major-info-session",
-          "supports": "new Robotics Engineering degree info session"
+          "supports": "new Robotics Engineering degree info session",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ecse.rpi.edu/academics/undergraduate-programs",
-          "supports": "EE and CSE majors; Robotics and Automation focus area courses"
+          "supports": "EE and CSE majors; Robotics and Automation focus area courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ecse.rpi.edu/control_autonomy",
-          "supports": "ECSE robotics/control course list and offering terms"
+          "supports": "ECSE robotics/control course list and offering terms",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://faculty.rpi.edu/kimberly-oakes",
-          "supports": "Robotics I renamed; cross-listings"
+          "supports": "Robotics I renamed; cross-listings",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://catalog.rpi.edu/preview_course_nopop.php?catoid=26&coid=61363",
-          "supports": "MANE 4560 Robotics I cross-listed with ECSE 4480, CSCI 4480 (2023-24)"
+          "supports": "MANE 4560 Robotics I cross-listed with ECSE 4480, CSCI 4480 (2023-24)",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://catalog.rpi.edu/preview_program.php?catoid=26&poid=7416",
-          "supports": "CS track names incl. Vision, Graphics, Robotics, and Visualization (2023-24)"
+          "supports": "CS track names incl. Vision, Graphics, Robotics, and Visualization (2023-24)",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://compsci.rpi.edu/programs/bs-computer-science",
-          "supports": "CS tracks from Fall 2023; C- in CSCI 1200 rule for switchers"
+          "supports": "CS tracks from Fall 2023; C- in CSCI 1200 rule for switchers",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.cs.rpi.edu/~stewart/",
-          "supports": "CSCI 4270 Computational Vision"
+          "supports": "CSCI 4270 Computational Vision",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cs.rpi.edu/academics/courses/fall05/ai/",
-          "supports": "CSCI 4150 Introduction to Artificial Intelligence (old course page)"
+          "supports": "CSCI 4150 Introduction to Artificial Intelligence (old course page)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergrad.admissions.rpi.edu/prospective-students/prospective-students-frequently-asked-questions",
-          "supports": "declare major or undeclared engineering on application"
+          "supports": "declare major or undeclared engineering on application",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "B.S. in Robotics Engineering (new joint ECSE + MANE major, first class Fall 2026)",
-      "alternative": "B.S. Electrical Engineering or Computer and Systems Engineering, Robotics and Automation focus area"
+      "alternative": "B.S. Electrical Engineering or Computer and Systems Engineering, Robotics and Automation focus area",
+      "fresh_findings": [
+        "The official primary ROBT major is NYSED-approved and invites incoming Class of 2030 to choose ROBT and enroll in ROBT 1010 in Fall 2026. Current students can add or switch subject to compatibility.",
+        "The official ROBT sample curriculum includes hardware, controls, autonomy, capstone, a required AI/ML choice, and explicitly recommended CSCI 4270 Computational Vision. AI evidence is degree-applicable, not just a research topic.",
+        "The current robotics program page makes no ABET claim. Accreditation remains unverified; remove the contradictory EAC claim and avoid asserting a future accreditation outcome.",
+        "The ECSE fallback Robotics and Automation focus area requires ECSE 4480 plus two of ECSE 4490, ECSE 4850, ECSE 4170 or ENGR 4710. EE and Computer and Systems Engineering list ECSE 4900 Multidisciplinary Capstone."
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 cohort curriculum and course availability",
+        "Lab-placement seats, prerequisites and application deadlines",
+        "Major-specific admit rate; no causal ease claim justified"
+      ],
+      "ai_electives": [
+        {
+          "code": "ECSE 4840 / ECSE 4850 / MANE 4962",
+          "title": "Machine Learning / Deep Learning elective choice",
+          "url": "https://eng.rpi.edu/bs-robotics-engineering",
+          "access_note": "The official ROBT sample curriculum requires one AI/ML elective from these choices; prerequisites and availability apply."
+        },
+        {
+          "code": "CSCI 4270",
+          "title": "Computational Vision",
+          "url": "https://eng.rpi.edu/bs-robotics-engineering",
+          "access_note": "Explicitly recommended multidisciplinary technical elective in the ROBT curriculum; check registration prerequisites."
+        }
+      ]
     },
     "ohio-state": {
       "slug": "ohio-state",
       "name": "The Ohio State University",
       "recommended_route": "ece",
-      "recommended_summary": "Apply to Electrical and Computer Engineering (BSECE), because first-years enter the major directly with no later application, and ECE owns the core robotics course (ECE 5463) plus the Control domain with feedback, state-space control and vehicle autonomy.",
+      "recommended_summary": "Apply to Electrical and Computer Engineering at Columbus; ECE direct admission is documented from Autumn 2023. Select Control-domain electives and ECE 5307 Machine Learning. The Robotics and Autonomous Systems Minor requires 12 credits distinct from the major, with prerequisites intact. Reconfirm Fall 2027 entry policy.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -1594,77 +2351,120 @@
       "sources": [
         {
           "url": "https://advising.engineering.osu.edu/current-students/applying-your-major",
-          "supports": "ECE Space Available; CSE Limited Space list; process being retired"
+          "supports": "ECE Space Available; CSE Limited Space list; process being retired",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://advising.engineering.osu.edu/change-pre-major",
-          "supports": "Only AERO, BME, ME marked limited-capacity"
+          "supports": "Only AERO, BME, ME marked limited-capacity",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://oaa.osu.edu/sites/default/files/uploads/caa/meetings/2022-23/03-01-2023/COE%2520Admission%2520to%2520Major%2520Update%25202022-23.pdf",
-          "supports": "ECE direct admit for first-years from 2023"
+          "supports": "ECE direct admit for first-years from 2023",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://oaa.osu.edu/sites/default/files/documents/College_Direct_Enrollment_Update_Info_Item.pdf",
-          "supports": "CSE/CIS pre-majors direct-enrolled Autumn 2025"
+          "supports": "CSE/CIS pre-majors direct-enrolled Autumn 2025",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cse.osu.edu/current-students/undergraduate/majors",
-          "supports": "CSE degrees; auto admission 2025-26, revisited yearly"
+          "supports": "CSE degrees; auto admission 2025-26, revisited yearly",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cse.osu.edu/undergraduate/admission-major",
-          "supports": "Pick CSE (Pre) on Common App; no later switching in"
+          "supports": "Pick CSE (Pre) on Common App; no later switching in",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cse.osu.edu/bscse-and-bscis-specializations",
-          "supports": "CSE specializations; AI specialization courses"
+          "supports": "CSE specializations; AI specialization courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergrad.osu.edu/majors-and-academics/majors/detail/39",
-          "supports": "First-years start in pre-CSE"
+          "supports": "First-years start in pre-CSE",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.osu.edu/futurestudents/undergrad/academicareas",
-          "supports": "Seven ECE domains; core and elective hours"
+          "supports": "Seven ECE domains; core and elective hours",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.osu.edu/control-domain-electives",
-          "supports": "Control domain course list"
+          "supports": "Control domain course list",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://syllabi.engineering.osu.edu/sites/default/files/pdfs/basic_course_overview/ECE_5463_basic.pdf",
-          "supports": "ECE 5463 title, undergrad-level, topics"
+          "supports": "ECE 5463 title, undergrad-level, topics",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://engineering.osu.edu/major/electrical",
-          "supports": "BSECE degree name, EE and CpE programs"
+          "supports": "BSECE degree name, EE and CpE programs",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://mae.osu.edu/academics/robotics-minor",
-          "supports": "RAS minor requirements, no application"
+          "supports": "RAS minor requirements, no application",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://engineering.osu.edu/node/45164",
-          "supports": "BSET regional-campus only, robotics course"
+          "supports": "BSET regional-campus only, robotics course",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.osu.edu/news/2024/08/buckeye-engineers-make-splash-underwater-robotics-competition",
-          "supports": "Underwater Robotics Team RoboSub 2024 results"
+          "supports": "Underwater Robotics Team RoboSub 2024 results",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://news.osu.edu/buckeyes-continue-winning-ways-at-ecocar-competition/",
-          "supports": "Ohio State EcoCAR team exists"
+          "supports": "Ohio State EcoCAR team exists",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "BS Electrical and Computer Engineering (direct admit), Control electives + Robotics and Autonomous Systems minor",
-      "alternative": "BS Computer Science and Engineering, Artificial Intelligence specialization + Robotics and Autonomous Systems minor"
+      "alternative": "BS Computer Science and Engineering, Artificial Intelligence specialization + Robotics and Autonomous Systems minor",
+      "fresh_findings": [
+        "RAS minor page requires12credits distinct from major/additional minors and says approved course list does not override prerequisites. Advising essential if taking ECE courses through major instead.",
+        "ECE5307 ML is explicitly on RAS list with ECE-major enrollment prerequisite;CSE5524 vision prerequisiteCSE2331 or senior/graduate standing.",
+        "ECE control-domain official page lists3551/5551/5553.",
+        "CSE automatic admission is explicitly2025-26 only and to be revisited2026-27;2027policy unknown.2023College memo establishes direct admission for majors outside Big4 including ECE;2025memo describes extension to all except BME then. Do not retain old annualGPAcutoff blanket for ECE or promise2027CSE auto admit."
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 cohort curriculum and course availability",
+        "Lab-placement seats, prerequisites and application deadlines",
+        "Major-specific admit rate; no causal ease claim justified"
+      ],
+      "ai_electives": [
+        {
+          "code": "ECE 5307",
+          "title": "Introduction to Machine Learning for ECE",
+          "url": "https://mae.osu.edu/academics/robotics-minor",
+          "access_note": "ECE-major enrollment restriction plus programming, linear algebra and statistics prerequisites. The minor needs 12 credits distinct from the major."
+        },
+        {
+          "code": "CSE 5524",
+          "title": "Computer Vision for Human-Computer Interaction",
+          "url": "https://mae.osu.edu/academics/robotics-minor",
+          "access_note": "CSE 2331 or senior/graduate standing; the minor does not waive prerequisites."
+        }
+      ]
     },
     "maryland": {
       "slug": "maryland",
       "name": "University of Maryland, College Park",
       "recommended_route": "ece",
-      "recommended_summary": "Apply with Electrical Engineering or Computer Engineering as the first-choice major and plan on the Robotics and Autonomous Systems minor. ECE has the most robotics coursework at College Park, which has no robotics BS. Under the Fall 2027 rules EE and CpE are high-demand majors, so confirm with the Clark School how a direct admit's major is handled.",
+      "recommended_summary": "Apply listing Electrical Engineering (Computer Engineering is a hardware/software alternative). Plan ENEE460/461 controls, ENEE452 embedded systems, ENEE436 ML and ENEE408I robotics capstone, and apply to the selective RAS minor when eligible.",
       "bs_robotics": {
         "offered": false,
         "degree_name": null,
@@ -1708,9 +2508,9 @@
             "title": "Robotics Project Laboratory"
           }
         ],
-        "entry": "Apply to UMD naming Electrical or Computer Engineering. Engineering is a Limited Enrollment Program: direct admits to the Clark School pass a 45-credit review (C- or better in MATH141, PHYS161 and chemistry, 2.0 GPA). For students entering Fall 2027 or later, EE and CpE are high-demand majors with a competitive review, and the LEP page says meeting the minimums does not guarantee the major; students not placed go to General Engineering. Moving in later from another major needs B- in MATH141 and PHYS161, a 3.0 GPA and the same selective review.",
+        "entry": "Apply listing EE or Computer Engineering. Engineering is an LEP. Fall2027 policy explicitly gives direct Clark freshmen a 45-credit review with C- gateway grades and2.0 GPA. Transfers and current UMD students changing into EE/CpE face B- in MATH141/PHYS161, C- chemistry,3.0 GPA and selective major-specific holistic review. The freshman section does not itself state that direct EE/CpE admits must re-compete; confirm any unclear direct-major sequencing with Clark.",
         "first_year_direct_admit": null,
-        "notes": "There is no named robotics concentration. EE lists Controls as one of six informal sub-discipline areas for electives. ENEE408I is the robotics capstone. ENEE467 is open only to students in the Robotics and Autonomous Systems minor and requires ENAE450. Both degrees are ABET EAC-accredited. In this ECE department, students need departmental permission to register for major courses. The Fall 2027 rules are new, so confirm how a direct admit's major is handled with the Clark School (transfer_engr@umd.edu).",
+        "notes": "No named robotics concentration. Controls/embedded/ML and autonomous-robot capstone options are official undergraduate electives. ENEE436 is restricted to eligible ECE/ML-notation students with permission and is credit-equivalent to CMSC422. RAS robotics-course access has conflicting official minor AND permission versus minor OR permission wording; confirm any nonminor override.",
         "url": "https://lep.umd.edu/engineering-after27.html"
       },
       "cs": {
@@ -1753,7 +2553,7 @@
         "url": "https://robotics.umd.edu/minor"
       },
       "ecosystem": "The Maryland Robotics Center (Institute for Systems Research) lists 47 faculty from 8 departments and about 20 affiliated labs. The student club Robotics at Maryland runs the Qubo RoboSub, Testudog quadruped and Terraformers rover teams.",
-      "tradeoff": "Under the new Fall 2027 rules even a direct admit is not guaranteed EE or CpE, and the hands-on robotics courses ENEE467 and CMSC477 are open only to students admitted to the competitive Robotics and Autonomous Systems minor (3.0 GPA). Confirm with the Clark School how a direct admit's major is handled.",
+      "tradeoff": "Switching into EE/CpE is selective for Fall2027 entrants. RAS minor is limited participation (3.0GPA,30credits,foursemesters remaining). Catalog and MRC page disagree on department-permission access for nonminor robotics core courses.",
       "corrections_to_existing": [
         "The existing data treats the BS in Mechatronics Engineering as a robotics BS ('has_bs_robotics: Yes'). It is not robotics-named. It is an upper-division program at the Universities at Shady Grove: first-years can enter only the Pre-Mechatronics pre-major at College Park and move to Shady Grove after 60 credits. College Park has no robotics BS.",
         "bs_robotics_year_started 2024 could not be verified on any UMD page; the program pages call it 'newly established' with no year.",
@@ -1765,120 +2565,315 @@
         "ENEE463 Digital Control Systems and ENEE469 Topics in Controls do not appear in ECE's current regularly-offered elective lists; the only current ENEE469 listed is ENEE469Q Quantum Controls.",
         "The Maryland Robotics Center now lists 47 faculty from 8 departments, 3 multi-user labs and 20 affiliated labs. The existing figures were about 26 labs and 50+ faculty from 10 departments.",
         "Mechatronics Engineering is listed in ecs_robotics_alt as run 'from Fall 2024'. That date is unverified, and the program is not ABET-accredited per the Clark School catalog.",
-        "Fall 2027 rules: EE and CpE are high-demand majors and the LEP page says admission to them is not guaranteed even after the 45-credit gateway review (checked again 13 Oct 2026)."
+        "Fall 2027 high-demand selective review is explicitly described for transfers and current students switching majors. Direct Clark freshmen have a gateway review; the available pages do not establish selective re-placement for every direct EE/CE freshman."
       ],
       "sources": [
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/",
-          "supports": "Clark School major list (no robotics major); ABET exceptions incl. Mechatronics"
+          "supports": "Clark School major list (no robotics major); ABET exceptions incl. Mechatronics",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/engineering.pdf",
-          "supports": "ABET exception text; Shady Grove only offers 300/400-level; 60-credit pre-major limit"
+          "supports": "ABET exception text; Shady Grove only offers 300/400-level; 60-credit pre-major limit",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/universities-shady-grove/engineering/",
-          "supports": "Pre-Mechatronics pre-major for first-years; 60-credit rule"
+          "supports": "Pre-Mechatronics pre-major for first-years; 60-credit rule",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/universities-shady-grove/engineering/mechatronics-engineering/mechatronics-engineering.pdf",
-          "supports": "Mechatronics admission (60 credits); ENMT372/380/450 robotics courses"
+          "supports": "Mechatronics admission (60 credits); ENMT372/380/450 robotics courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://shadygrove.usmd.edu/academics/degree-programs/bs-mechatronics-engineering",
-          "supports": "Mechatronics is an upper-division junior-year transfer program; fall only"
+          "supports": "Mechatronics is an upper-division junior-year transfer program; fall only",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://mechatronics.umd.edu/node/160",
-          "supports": "Mechatronics fall-only admission via prerequisites"
+          "supports": "Mechatronics fall-only admission via prerequisites",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://lep.umd.edu/engineering-after27.html",
-          "supports": "Engineering LEP for Fall 2027+ entrants; high-demand majors incl. EE/CpE"
+          "supports": "Engineering LEP for Fall 2027+ entrants; high-demand majors incl. EE/CpE",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://lep.umd.edu/",
-          "supports": "List of LEPs; general LEP rules"
+          "supports": "List of LEPs; general LEP rules",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://lep.umd.edu/computerscience-after2024.html",
-          "supports": "CS LEP direct-admit review and internal transfer rules"
+          "supports": "CS LEP direct-admit review and internal transfer rules",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://undergrad.cs.umd.edu/cs-lep-faq-effective-fall-2024",
-          "supports": "CS 600 freshman seats; ~100 transfer seats/yr"
+          "supports": "CS 600 freshman seats; ~100 transfer seats/yr",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://admissions.umd.edu/academics/limited-enrollment-programs",
-          "supports": "Most LEP applicants admitted to preferred major"
+          "supports": "Most LEP applicants admitted to preferred major",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/computer-mathematical-natural-sciences/computer-science/computer-science-major/computer-science-major.pdf",
-          "supports": "CS specializations; upper-level areas; CMSC472 title"
+          "supports": "CS specializations; upper-level areas; CMSC472 title",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://app.testudo.umd.edu/soc/202608/CMSC",
-          "supports": "CMSC421/422/426 titles and prerequisites"
+          "supports": "CMSC421/422/426 titles and prerequisites",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://app.testudo.umd.edu/soc/202601/CMSC/CMSC477",
-          "supports": "CMSC477 title; RAS minor restriction"
+          "supports": "CMSC477 title; RAS minor restriction",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/electrical-engineering-major/",
-          "supports": "BSEE ABET EAC accreditation"
+          "supports": "BSEE ABET EAC accreditation",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/electrical-and-computer/computer-engineering-major/",
-          "supports": "BS CpE ABET EAC accreditation; no named track"
+          "supports": "BS CpE ABET EAC accreditation; no named track",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.umd.edu/undergrad/ee-technical-electives",
-          "supports": "EE elective categories; ENEE460/461/436/452/408I; Controls sub-discipline"
+          "supports": "EE elective categories; ENEE460/461/436/452/408I; Controls sub-discipline",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://ece.umd.edu/undergraduate/current-students/courses/electives",
-          "supports": "Regularly offered ENEE electives"
+          "supports": "Regularly offered ENEE electives",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://app.testudo.umd.edu/soc/202608/ENEE/ENEE467",
-          "supports": "ENEE467 title; RAS minor restriction"
+          "supports": "ENEE467 title; RAS minor restriction",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://app.testudo.umd.edu/soc/202608/ENEE/ENEE408I",
-          "supports": "ENEE408I exact title and description"
+          "supports": "ENEE408I exact title and description",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/engineering/robotics-autonomous-systems-minor/robotics-autonomous-systems-minor.pdf",
-          "supports": "RAS minor eligible majors, core and elective courses"
+          "supports": "RAS minor eligible majors, core and elective courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.umd.edu/minor",
-          "supports": "RAS minor application, 3.0 GPA, 30 credits, limited participation"
+          "supports": "RAS minor application, 3.0 GPA, 30 credits, limited participation",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.umd.edu/",
-          "supports": "Maryland Robotics Center size; minor is only undergrad robotics credential"
+          "supports": "Maryland Robotics Center size; minor is only undergrad robotics credential",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics-at-maryland.pages.umd.edu/team/qubo/",
-          "supports": "Robotics at Maryland teams: Qubo, Testudog, Terraformers"
+          "supports": "Robotics at Maryland teams: Qubo, Testudog, Terraformers",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umd.edu/news/story/new-undergraduate-minor-in-robotics-and-autonomous-systems",
+          "supports": "New undergraduate minor in robotics and autonomous systems | Maryland Robotics Center",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umd.edu/education",
+          "supports": "Education | Maryland Robotics Center",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enmt/",
+          "supports": "ENMT - Mechatronics Engineering | University of Maryland Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://eng.umd.edu/robotics",
+          "supports": "Robotics Research at the Clark School | A. James Clark School of Engineering, University of Maryland",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umd.edu/facilities",
+          "supports": "Facilities | Maryland Robotics Center",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://www.facilities.robotics.umd.edu/index.html",
+          "supports": "MRC Facilities | Maryland Robotics Center - Facilities",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://me.umd.edu/research/institutes-labs-centers",
+          "supports": "Institutes, Centers & Labs | Department of Mechanical Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://eng.umd.edu/research-facilities",
+          "supports": "Research Facilities | A. James Clark School of Engineering, University of Maryland",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umd.edu/get-involved",
+          "supports": "Get Involved | Maryland Robotics Center",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umd.edu/opportunities/student-teams",
+          "supports": "Student Teams | Maryland Robotics Center",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics-at-maryland.pages.umd.edu/",
+          "supports": "Robotics at Maryland",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://eng.umd.edu/news/story/passing-the-torch-maryland-robotics-centerrsquos-next-chapter",
+          "supports": "Passing the Torch: Maryland Robotics Center’s Next Chapter | A. James Clark School of Engineering, University of Maryland",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://enme.umd.edu/course-schedule/course/ENME480",
+          "supports": "ENME480: Introduction to Robotics | Department of Mechanical Engineering",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enee/",
+          "supports": "ENEE - Electrical &amp; Computer Engineering | University of Maryland Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/cmsc/",
+          "supports": "CMSC - Computer Science | University of Maryland Catalog",
+          "verified_on": "2026-10-14"
         }
       ],
-      "site_degree": "BS Electrical Engineering or Computer Engineering + Robotics and Autonomous Systems minor",
-      "alternative": "BS Computer Science (direct admit) + Robotics and Autonomous Systems minor"
+      "site_degree": "BS Electrical Engineering + Robotics and Autonomous Systems Minor (selective)",
+      "alternative": "BS Computer Engineering + selective RAS minor for stronger CS systems; BS Computer Science + RAS minor for AI/perception/planning, subject to CS LEP admission.",
+      "curriculum_and_access_evidence": [
+        {
+          "code": "ENEE460",
+          "title": "Control Systems",
+          "category": "controls",
+          "role": "Technical elective",
+          "source": "https://ece.umd.edu/undergrad/ee-technical-electives",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ENEE461",
+          "title": "Control Systems Laboratory",
+          "category": "controls/project",
+          "role": "Advanced laboratory choice",
+          "source": "https://ece.umd.edu/undergrad/ee-technical-electives",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ENEE452",
+          "title": "Embedded Systems",
+          "category": "embedded",
+          "role": "Technical elective (department lists spring only)",
+          "source": "https://ece.umd.edu/undergrad/ee-technical-electives",
+          "access": "Undergraduate catalog course; prerequisites and registration rules apply; future seats unverified"
+        },
+        {
+          "code": "ENEE436",
+          "title": "Foundations of Machine Learning",
+          "category": "AI/ML",
+          "role": "Technical elective",
+          "source": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enee/",
+          "access": "ECE department permission and EE/CpE or ECE ML-notation eligibility; ENEE436 and CMSC422 are credit-equivalent"
+        },
+        {
+          "code": "ENEE408I",
+          "title": "Capstone Design Project: Autonomous Control of Interacting Robots",
+          "category": "robotics/capstone",
+          "role": "Senior-design option",
+          "source": "https://app.testudo.umd.edu/soc/202608/ENEE/ENEE408I",
+          "access": "Capstone-specific project seats, prerequisites and department approval; not every ECE student is assigned this project"
+        },
+        {
+          "code": "ENME480",
+          "title": "Introduction to Robotics",
+          "category": "robotics",
+          "role": "RAS minor core",
+          "source": "https://robotics.umd.edu/minor",
+          "access": "Minor membership or department permission per MRC page"
+        },
+        {
+          "code": "ENAE450",
+          "title": "Robotics Programming",
+          "category": "robot software/ROS",
+          "role": "RAS minor core",
+          "source": "https://robotics.umd.edu/minor",
+          "access": "Minor membership or department permission per MRC page"
+        },
+        {
+          "code": "ENEE467",
+          "title": "Robotics Project Laboratory",
+          "category": "hardware/controls project",
+          "role": "RAS minor core",
+          "source": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enee/",
+          "access": "Catalog: minor AND department permission. MRC: minor OR permission; nonminor override uncertain"
+        },
+        {
+          "code": "CMSC477",
+          "title": "Robotics Perception and Planning",
+          "category": "AI/autonomy",
+          "role": "RAS minor core",
+          "source": "https://academiccatalog.umd.edu/undergraduate/approved-courses/cmsc/",
+          "access": "Catalog: minor AND department permission. MRC: minor OR permission with CMSC420 for nonminor CS students; confirm override"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Fall2027 engineering LEP policy applies to the target class: resolve exact sequencing of direct Clark admission, 45-credit review and high-demand EE/CpE placement before labeling direct admission to the major as guaranteed.",
+        "Do not count ENEE408I every semester or promise robot-specific capstone assignment without current schedule/project access.",
+        "Shady Grove Mechatronics degree accreditation/start date and any updated undergraduate program launch need fresh official confirmation.",
+        "Official catalog vs MRC page disagree on nonminor permission overrides for ENEE467/CMSC477. ENEE436 and CMSC422 are credit-equivalent, so do not claim both can count as distinct ML courses."
+      ],
+      "ai_electives": [
+        {
+          "code": "ENEE436",
+          "title": "Foundations of Machine Learning",
+          "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/enee/",
+          "access_note": "ECE department permission and EE/CpE or ECE ML-notation eligibility; ENEE436 and CMSC422 are credit-equivalent"
+        },
+        {
+          "code": "CMSC477",
+          "title": "Robotics Perception and Planning",
+          "url": "https://academiccatalog.umd.edu/undergraduate/approved-courses/cmsc/",
+          "access_note": "Catalog: minor AND department permission. MRC: minor OR permission with CMSC420 for nonminor CS students; confirm override"
+        }
+      ]
     },
     "michigan": {
       "slug": "michigan",
       "name": "University of Michigan, Ann Arbor",
       "recommended_route": "bs_robotics",
-      "recommended_summary": "Apply to the College of Engineering and plan to declare the B.S.E. in Robotics. It is a real first-year-reachable robotics major with no published cap, and it avoids the CS selection gate.",
+      "recommended_summary": "Apply to CoE, then declare Robotics. For balanced depth, intentionally include ROB 310/311 hardware, ROB 314 controls and ROB 330 navigation among core/elective choices. [MICH-R26-1][MICH-R26-6]",
       "bs_robotics": {
         "offered": true,
         "degree_name": "B.S.E. in Robotics",
         "kind": "primary_major",
         "home_unit": "Robotics Department, College of Engineering",
-        "entry": "First-years apply to the College of Engineering, not to Robotics. After at least one full term on campus, with a 2.0 U-M GPA, good standing, and a C or better in intro linear algebra, programming or design, calculus, and physics or chemistry, they book a declaration appointment with Robotics advising.",
+        "entry": "College of Engineering admission, then Robotics declaration after at least one Ann Arbor term, 2.0 GPA, good standing and C-or-better/placement credit in the required foundation categories. CS has a separate selection process.",
         "first_year_direct_admit": false,
         "notes": "Launched Fall 2022. More than 175 declared majors. Declaring requires meeting eligibility rules, not a competitive selection; no cap is published. The College of Engineering degree table lists it as not ABET-accredited (EE and Computer Engineering are EAC-accredited). Five optional concentrations start Fall 2026: Perception and Reasoning, Dynamics and Control, Hardware and Sensors, Human-Robot Interaction, and Full Stack Robotic Systems. External transfers can enter Robotics directly starting Winter 2026. Core includes ROB 204, three of six 300-level core courses (ROB 310, 311, 314, 320, 330, 340), and the ROB 450 Robotics Capstone; 128 credits.",
         "url": "https://robotics.umich.edu/academics/undergraduate/degree-requirements/"
@@ -1918,7 +2913,7 @@
         ],
         "entry": "First-years are admitted to the College of Engineering and declare EE or Computer Engineering under the standard college rules: one full term, 2.0 GPA, good standing, C or better in calculus, physics or chemistry, and intro engineering courses. No advance selection is required.",
         "first_year_direct_admit": false,
-        "notes": "No formal robotics concentration was found for EE or Computer Engineering; the EECS bulletin lists control systems among EE concentration areas. EECS 367 is cross-listed as ROB 380, EECS 464 as ROB 464, and EECS 465 as ROB 422, so ECE students take the same robotics courses as Robotics majors. Both degrees are ABET EAC-accredited. The EE major page could not be opened to confirm its current list of paths.",
+        "notes": "EE and CE are hardware-oriented alternatives; Robotics is the primary recommendation. CS selection is a separate requirement and was not verified as removed.",
         "url": "https://bulletin.engin.umich.edu/courses/eecs/"
       },
       "cs": {
@@ -1975,84 +2970,136 @@
       "sources": [
         {
           "url": "https://robotics.umich.edu/academics/undergraduate/degree-requirements/",
-          "supports": "Robotics declaration rules, core courses, concentrations"
+          "supports": "Robotics declaration rules, core courses, concentrations",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://robotics.umich.edu/academics/undergraduate/",
-          "supports": "First-years apply to CoE; 175+ majors; transfer from Winter 2026"
+          "supports": "First-years apply to CoE; 175+ majors; transfer from Winter 2026",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://bulletin.engin.umich.edu/depts/rob/",
-          "supports": "B.S.E. in Robotics launched Fall 2022; minor is a future goal"
+          "supports": "B.S.E. in Robotics launched Fall 2022; minor is a future goal",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://robotics.umich.edu/news/2026/five-new-concentrations-for-undergraduate-robotics-major",
-          "supports": "Five optional concentrations (March 2026)"
+          "supports": "Five optional concentrations (March 2026)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://bulletin.engin.umich.edu/courses/robotics-courses",
-          "supports": "ROB course titles and EECS cross-listings"
+          "supports": "ROB course titles and EECS cross-listings",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://robotics.umich.edu/academics/courses/complete-course-list/",
-          "supports": "ROB course titles"
+          "supports": "ROB course titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://bulletin.engin.umich.edu/ug-ed/degrees/",
-          "supports": "ABET status: Robotics and CS no; EE and CE EAC"
+          "supports": "ABET status: Robotics and CS no; EE and CE EAC",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://bulletin.engin.umich.edu/rules/declare-change-major",
-          "supports": "CoE declaration rules; CS selection for Fall 2023+ admits"
+          "supports": "CoE declaration rules; CS selection for Fall 2023+ admits",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://bulletin.engin.umich.edu/eecs/",
-          "supports": "EECS declaration, EE concentration areas, EE minor"
+          "supports": "EECS declaration, EE concentration areas, EE minor",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://bulletin.engin.umich.edu/courses/eecs/",
-          "supports": "EECS course titles and ROB cross-listings"
+          "supports": "EECS course titles and ROB cross-listings",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://ece.engin.umich.edu/academics/course-information/course-descriptions/",
-          "supports": "EECS 460, 461, 464, 467, 373 titles"
+          "supports": "EECS 460, 461, 464, 467, 373 titles",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/Article/7515/Computer-Science-Major",
-          "supports": "CS selection policy (updated June 2026)"
+          "supports": "CS selection policy (updated June 2026)",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/ArticleDet?ID=7445",
-          "supports": "CS selection still stated (updated Aug 2026)"
+          "supports": "CS selection still stated (updated Aug 2026)",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://cse.engin.umich.edu/academics/undergraduate/admissions/cs-for-current-u-m-students",
-          "supports": "Enrolled Discoverer pathway"
+          "supports": "Enrolled Discoverer pathway",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://cse.engin.umich.edu/academics/undergraduate/computer-science-lsa-vs-computer-science-engineering",
-          "supports": "CS degree names (BS LSA, BSE Eng)"
+          "supports": "CS degree names (BS LSA, BSE Eng)",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://lsa.umich.edu/lsa/academics/majors-minors/computer-science-major.html",
-          "supports": "Winter 2026 LSA CS page drops selection wording"
+          "supports": "Winter 2026 LSA CS page drops selection wording",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://robotics.umich.edu/academics/undergraduate/sure/",
+          "supports": "Summer Undergraduate Research in Engineering (SURE) | Michigan Robotics",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "B.S.E. in Robotics (College of Engineering; declare after first term)",
-      "alternative": "B.S.E. Electrical Engineering or Computer Engineering with robotics and controls electives"
+      "alternative": "B.S.E. Electrical Engineering or Computer Engineering with robotics and controls electives",
+      "verification_date": "2026-10-14",
+      "verification_status": "fresh_official_core",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Detailed Fall 2027 CS advance-selection/discoverer rules remain blocked on CSE/bulletin; the official admissions knowledge base currently confirms selection is required.",
+        "Individual ROB enforced prerequisites and reserved seats were not provided by the fetched department course table.",
+        "Michigan accreditation degree bulletin returned 403; inherited accreditation claim is not freshly verified.",
+        "First-year UROP/MDP eligibility was not freshly reverified.",
+        "The SURE page publishes Summer 2026 dates; Summer 2027 dates remain unknown."
+      ],
+      "ai_electives": [
+        {
+          "code": "ROB 429",
+          "title": "Robot Learning for Planning and Control",
+          "url": "https://robotics.umich.edu/academics/courses/complete-course-list/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "ROB 430",
+          "title": "Deep Learning for Robot Perception and Manipulation",
+          "url": "https://robotics.umich.edu/academics/courses/complete-course-list/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "ROB 432 / EECS 442",
+          "title": "Computer Vision",
+          "url": "https://robotics.umich.edu/academics/courses/complete-course-list/",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        }
+      ]
     },
     "wpi": {
       "slug": "wpi",
       "name": "Worcester Polytechnic Institute",
       "recommended_route": "bs_robotics",
-      "recommended_summary": "Apply intending the BS in Robotics Engineering: it is a full, ABET (EAC)-accredited primary major with a four-course Unified Robotics core, and WPI lets first-years declare it with no published gate.",
+      "recommended_summary": "Apply intending BS Robotics Engineering, then declare during the first year. Keep its required hardware/controls/navigation base and add prepared undergraduate AI electives. [WPI-R26-1][WPI-R26-7]",
       "bs_robotics": {
         "offered": true,
         "degree_name": "Bachelor of Science in Robotics Engineering",
         "kind": "primary_major",
         "home_unit": "Robotics Engineering Department",
-        "entry": "Students apply to WPI as a whole through one first-year application, then declare a major near the end of B-Term (about mid-first-year). No GPA cutoff or capacity limit for declaring is published.",
-        "first_year_direct_admit": true,
+        "entry": "University admission followed by first-year major declaration, usually near the end of B Term. No separate competitive RBE declaration gate was found in the reviewed official guidance.",
+        "first_year_direct_admit": false,
         "notes": "Accredited by the Engineering Accreditation Commission of ABET under General Criteria. Core is RBE 2001, 2002, 3001 and 3002, plus a robotics MQP capstone, 1 unit of CS, 2/3 unit of ECE (embedded systems), statics and classical controls. Strictly speaking WPI admits to the university, not the major; 'direct admit' here means a first-year can declare RBE freely. Program start year and enrollment size were not verified on WPI pages.",
         "url": "https://wpi.cleancatalog.net/robotics-engineering/robotics-engineering-major"
       },
@@ -2089,7 +3136,7 @@
           }
         ],
         "entry": "Same as all WPI majors: admitted to the university, then declare ECE near the end of B-Term of the first year. No published gate.",
-        "first_year_direct_admit": true,
+        "first_year_direct_admit": false,
         "notes": "One combined ECE degree (no separate EE and CompE BS). EAC-accredited. The 2026-27 catalog lists no formal concentration, and no ECE course is robotics-specific; robotics depth would come from RBE electives or the Robotics Engineering minor.",
         "url": "https://wpi.cleancatalog.net/electrical-and-computer-engineering/electrical-and-computer-engineering-major"
       },
@@ -2123,7 +3170,7 @@
           }
         ],
         "entry": "Same as all WPI majors: admitted to the university, then declare CS (or AI) near the end of B-Term of the first year. No published gate.",
-        "first_year_direct_admit": true,
+        "first_year_direct_admit": false,
         "notes": "The CS catalog has no computer vision or robotics course; RBE 4540, RBE 4701 and RBE 4744 appear on the CS major page only under the science/engineering requirement, not the CS requirement. The BS AI appears to be new (WPI announced it in early 2026; launch year not confirmed). CS ABET status was not verified.",
         "url": "https://wpi.cleancatalog.net/computer-science/computer-science-major"
       },
@@ -2147,75 +3194,162 @@
       "sources": [
         {
           "url": "https://wpi.cleancatalog.net/robotics-engineering/robotics-engineering-major",
-          "supports": "RBE BS requirements, 2026-27"
+          "supports": "RBE BS requirements, 2026-27",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/robotics-engineering",
-          "supports": "RBE course codes and titles"
+          "supports": "RBE course codes and titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/sites/default/files/2026-05/RBE-2030_fillable.pdf",
-          "supports": "RBE tracking sheet, supporting courses"
+          "supports": "RBE tracking sheet, supporting courses",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/departments/robotics-engineering/abet-accreditation",
-          "supports": "RBE BS EAC/ABET accreditation"
+          "supports": "RBE BS EAC/ABET accreditation",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/engineering/accreditation",
-          "supports": "ECE and RBE BS EAC-accredited"
+          "supports": "ECE and RBE BS EAC-accredited",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/study/robotics-engineering-bs",
-          "supports": "Undecided applicants welcome; minors"
+          "supports": "Undecided applicants welcome; minors",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/student-experience/first-year-experience/course-registration",
-          "supports": "Declare major end of B-Term"
+          "supports": "Declare major end of B-Term",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/electrical-and-computer-engineering/electrical-and-computer-engineering-major",
-          "supports": "ECE BS, no concentration"
+          "supports": "ECE BS, no concentration",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/electrical-and-computer-engineering",
-          "supports": "ECE course titles"
+          "supports": "ECE course titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/computer-science/computer-science-major",
-          "supports": "CS BS, cybersecurity concentration only"
+          "supports": "CS BS, cybersecurity concentration only",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/computer-science",
-          "supports": "CS course titles"
+          "supports": "CS course titles",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/study/artificial-intelligence-bs",
-          "supports": "BS AI with Robotics concentration"
+          "supports": "BS AI with Robotics concentration",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://wpi.cleancatalog.net/robotics-engineering/robotics-engineering-minor",
-          "supports": "Robotics minor requirements"
+          "supports": "Robotics minor requirements",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/study/robotics-engineering-minor",
-          "supports": "Minor open to non-RBE majors"
+          "supports": "Minor open to non-RBE majors",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://www.wpi.edu/academics/departments/robotics-engineering/research",
-          "supports": "15 named RBE labs, PracticePoint"
+          "supports": "15 named RBE labs, PracticePoint",
+          "verified_on": "2026-10-14"
         },
         {
           "url": "https://mywpi.wpi.edu/WRC",
-          "supports": "Robotics Club VEXU and Combat teams"
+          "supports": "Robotics Club VEXU and Combat teams",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
         },
         {
           "url": "https://www.wpi.edu/news/announcements/wpi-team-competing-final-round-nasa-lunabotics-competition",
-          "supports": "2024 Lunabotics MQP team"
+          "supports": "2024 Lunabotics MQP team",
+          "verification_note": "Earlier source reference; not independently reverified in this review."
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4701",
+          "supports": "RBE 4701 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4744",
+          "supports": "RBE 4744 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4540",
+          "supports": "RBE 4540 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-3001",
+          "supports": "RBE 3001 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-3002",
+          "supports": "RBE 3002 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/computer-science/cs-4342",
+          "supports": "CS 4342 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
+        },
+        {
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-2020",
+          "supports": "RBE 2020 | Worcester Polytechnic Institute Undergraduate Catalog",
+          "verified_on": "2026-10-14"
         }
       ],
       "site_degree": "B.S. in Robotics Engineering (ABET-accredited primary major)",
-      "alternative": "BS Artificial Intelligence with the Robotics concentration, or BS ECE / CS + Robotics Engineering minor"
+      "alternative": "BS Artificial Intelligence with the Robotics concentration, or BS ECE / CS + Robotics Engineering minor",
+      "verification_date": "2026-10-14",
+      "verification_status": "fresh_official_core",
+      "verified_on": "2026-10-14",
+      "verification_note": "Current official programme/course sources reviewed; future offerings and registration access remain conditional.",
+      "unresolved": [
+        "Class of 2031 tracking sheet was not found in the current material; use the 2026–27 catalog as the dated basis.",
+        "Category I/II rotation is a minimum frequency, not a future term or seat guarantee.",
+        "Early paid research eligibility was not freshly reverified; lab counts do not guarantee undergraduate access."
+      ],
+      "ai_electives": [
+        {
+          "code": "RBE 4701",
+          "title": "Artificial Intelligence for Robotics",
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4701",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "RBE 4540",
+          "title": "Vision-based Robotic Manipulation",
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4540",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "RBE 4744",
+          "title": "Deep Learning for Perception",
+          "url": "https://wpi.cleancatalog.net/robotics-engineering/rbe-4744",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        },
+        {
+          "code": "CS 4342",
+          "title": "Machine Learning",
+          "url": "https://wpi.cleancatalog.net/computer-science/cs-4342",
+          "access_note": "Published undergraduate elective; consult the current catalogue for prerequisites and degree applicability."
+        }
+      ]
     }
   }
 }

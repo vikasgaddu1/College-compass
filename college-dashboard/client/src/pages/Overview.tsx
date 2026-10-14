@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
-import { schools, School, stripSourceTags } from "@/lib/data";
+import { schools, School, stripSourceTags, archetypeLabels } from "@/lib/data";
 import { useHidden } from "@/lib/hidden";
 import {
   SchoolCard, ArchetypeChips, AxisBar, CostChip, ShortlistPill, AidChip,
 } from "@/components/SchoolBits";
 import { Search, ArrowUpDown, X, SlidersHorizontal, ArrowRight, CalendarClock } from "lucide-react";
 import deadlinesData from "@/data/deadlines.json";
+import { todayIso, dateUTC, daysUntil, parseCycleDates } from "@/lib/calendar";
 import scholarshipData from "@/data/scholarships.json";
-import roboticsPaths from "@/data/robotics_paths.json";
 import roboticsRoutes from "@/data/robotics_routes.json";
 import { PersonalPriorities } from "@/components/PersonalPriorities";
 import { useWeights } from "@/lib/weights";
@@ -33,7 +33,7 @@ export default function OverviewPage() {
   const { personalScore, isCustomized } = useWeights();
   const { ranks, rankedCount } = useRanks();
   const [q, setQ] = useState("");
-  const [sort, setSort] = useState<SortKey>(rankedCount > 0 ? "my_rank" : isCustomized ? "personal_score" : "fit_rank");
+  const [sort, setSort] = useState<SortKey>(rankedCount > 0 ? "my_rank" : isCustomized ? "personal_score" : "robotics_curriculum");
   const [asc, setAsc] = useState(false);
   const [regionFilter, setRegionFilter] = useState<string[]>([]);
   const [accessFilter, setAccessFilter] = useState<string[]>([]);
@@ -44,7 +44,7 @@ export default function OverviewPage() {
   const filtered = useMemo(() => {
     const ql = q.toLowerCase().trim();
     let list = schools.filter(s => {
-      if (ql && !(`${s.name} ${s.short} ${s.city_state} ${s.notable_ai_institute} ${s.degree_name}`.toLowerCase().includes(ql))) return false;
+      if (ql && !(`${s.name} ${s.short} ${s.city_state} ${s.robotics_access_detail?.institute_or_center ?? ""} ${s.degree_name} ${s.recommended_major_route}`.toLowerCase().includes(ql))) return false;
       if (regionFilter.length && !regionFilter.includes(s.region)) return false;
       if (accessFilter.length && !accessFilter.includes(s.major_access_status)) return false;
       if (archFilter.length && !archFilter.some(a => s.archetypes.includes(a))) return false;
@@ -119,14 +119,35 @@ export default function OverviewPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <HeroKpi label="Schools" value={`${allVisible.length}`} sub={hidden.size ? `${hidden.size} hidden` : `all ${schools.length} visible`} />
-            <HeroKpi label="Top-fit schools" value={`${allVisible.filter(s=>s.fit_classification==="TOP FIT").length}`} sub="Preliminary fit tier" />
-            <HeroKpi label="With a BS in Robotics" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.bs_robotics?.kind==="primary_major").length}`} sub="First-year-reachable primary major" />
+            <HeroKpi label="Robotics engineering technology" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.bs_robotics?.kind==="engineering_technology").length}`} sub="A distinct degree type; Purdue Polytechnic" />
+            <HeroKpi label="Primary robotics majors" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.bs_robotics?.kind==="primary_major").length}`} sub="Primary robotics majors; Purdue technology is separate" />
             <HeroKpi label="Best via ECE" value={`${allVisible.filter(s=>(roboticsRoutes.schools as any)[s.slug]?.recommended_route==="ece").length}`} sub="No robotics BS, ECE route recommended" />
           </div>
         </div>
       </div>
 
       {/* ===== CHARTS ROW ===== */}
+      <div className="card p-4 space-y-3">
+        <div className="serif text-[17px] font-semibold">Start with these different robotics routes</div>
+        <p className="text-[12px] text-[hsl(var(--muted-foreground))]">Compare hardware, sensing and controls with autonomy and supporting AI electives. These are qualitative starting points; major entry, elective seats and lab places depend on each route's rules.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            { slug: "wpi", reason: "Integrated robot-building and required projects in an established robotics engineering degree." },
+            { slug: "michigan", reason: "A broad Robotics BSE combining engineering foundations with selectable robotics depth." },
+            { slug: "carnegie-mellon", reason: "An ambitious primary Robotics BS in SCS; apply to that school for this degree." },
+            { slug: "nc-state", reason: "In-state value through Electrical Engineering's Controls and Robotics concentration, after CODA." },
+          ].filter(choice => !hidden.has(choice.slug)).map(choice => {
+            const school = schools.find(s => s.slug === choice.slug);
+            if (!school) return null;
+            return <div key={choice.slug} className="rounded border border-[hsl(var(--border))] p-3 text-[12px]">
+              <Link href="/routes" className="font-semibold hover:underline">{school.short}</Link>
+              <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">{school.degree_name}</div>
+              <p className="mt-1.5 leading-relaxed">{choice.reason}</p>
+            </div>;
+          })}
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <FitDistribution />
         <ArchetypeCounts />
@@ -145,7 +166,7 @@ export default function OverviewPage() {
           <div className="relative flex-1 min-w-[220px]">
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[hsl(var(--muted-foreground))]" />
             <input value={q} onChange={e=>setQ(e.target.value)}
-              placeholder="Search name, city, degree, AI institute…"
+              placeholder="Search name, city, robotics degree or route…"
               className="w-full pl-9 pr-3 py-2 text-[13px] rounded bg-[hsl(var(--muted))] border border-[hsl(var(--border))] focus:outline-none focus:ring-1 focus:ring-[hsl(var(--accent))]"/>
           </div>
           <div className="flex items-center gap-1.5 text-[12px]">
@@ -159,7 +180,9 @@ export default function OverviewPage() {
               <option value="name">Name</option>
               <option value="cost_for_nc_resident">Cost for NC resident</option>
               <option value="undergrad_enrollment">Size</option>
-              <option value="program_depth">AI curriculum</option>
+              <option value="robotics_curriculum">Robotics curriculum</option>
+              <option value="robotics_access">Undergraduate robotics access</option>
+              <option value="program_depth">AI electives (supporting)</option>
               <option value="research_access">Research access</option>
               <option value="hands_on">Hands-on</option>
               <option value="campus_life">Campus life</option>
@@ -184,7 +207,7 @@ export default function OverviewPage() {
           {["A","B","C","D","E"].map(a => (
             <Toggle key={a} on={archFilter.includes(a)}
               onClick={()=>setArchFilter(v => v.includes(a) ? v.filter(x=>x!==a) : [...v, a])}
-              title={{A:"Dedicated AI",B:"Deep CS+AI",C:"AI+Robotics",D:"Undergrad-centered",E:"Large AI ecosystem"}[a as "A"|"B"|"C"|"D"|"E"]}>{a}</Toggle>
+              title={archetypeLabels[a]}>{a}</Toggle>
           ))}
           <Sep />
           <span className="text-[hsl(var(--muted-foreground))]">Size</span>
@@ -213,8 +236,8 @@ export default function OverviewPage() {
             <div className="text-[12px] text-[hsl(var(--muted-foreground))] mb-2 line-clamp-2">{s.degree_name}</div>
             <ArchetypeChips codes={s.archetypes} />
             <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mt-3">
-              <AxisBar value={s.axes.program_depth} label="AI curriculum" />
-              <AxisBar value={s.axes.research_access} label="Research access" />
+              <AxisBar value={s.axes.robotics_curriculum ?? null} label="Robotics curriculum" />
+              <AxisBar value={s.axes.robotics_access ?? null} label="Robotics access" />
               <AxisBar value={s.axes.hands_on} label="Hands-on" />
               <AxisBar value={s.axes.campus_life} label="Campus life" />
             </div>
@@ -265,17 +288,11 @@ export default function OverviewPage() {
 /* ---------- Hero + small helpers ---------- */
 
 function RoboticsChip({ slug }: { slug: string }) {
-  const d = (roboticsPaths.schools as any)[slug];
-  if (!d) return null;
-  const hasBS = d.has_bs_robotics?.startsWith("Yes");
-  const easier = d.robotics_easier_than_cs === "Yes";
-  if (!hasBS && !easier) return null;
-  return (
-    <Link href="/robotics" className={`chip inline-flex items-center gap-1 ${hasBS ? "chip-primary" : "chip-outline"}`}
-      title={hasBS ? `Dedicated BS Robotics: ${d.bs_robotics_name}` : "Robotics is an easier admit than CS here"}>
-      🤖 {hasBS ? "BS Robotics" : "Easier via ME"}
-    </Link>
-  );
+  const r = (roboticsRoutes.schools as any)[slug];
+  if (!r) return null;
+  const text = r.recommended_route === "bs_robotics" ? "Primary robotics major"
+    : r.recommended_route === "ece" ? "ECE + robotics" : "CS + robotics";
+  return <Link href="/routes" className="chip chip-outline text-[10px]" title={r.recommended_summary}>{text}</Link>;
 }
 
 function ScholarshipChip({ slug }: { slug: string }) {
@@ -321,33 +338,9 @@ const roundMeta: Record<Round, { short: string; color: string; long: string }> =
   rd:       { short: "RD",        long: "Regular Decision",              color: "hsl(var(--primary))" },
 };
 
-function parseDate(raw: string | null | undefined): Date | null {
-  if (!raw) return null;
-  const s = raw.trim();
-  if (!s || s === "—" || /^n\.a/i.test(s) || /^none$/i.test(s) || /^rolling/i.test(s)) return null;
-  const iso = /^(\d{4})-(\d{2})-(\d{2})/.exec(s);
-  if (iso) return new Date(+iso[1], +iso[2] - 1, +iso[3]);
-  const long = /^([A-Za-z]+)\.?\s+(\d{1,2})(?:,\s*(\d{4}))?/.exec(s);
-  if (long) {
-    const ix = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"].indexOf(long[1].slice(0,3).toLowerCase());
-    if (ix < 0) return null;
-    const y = long[3] ? +long[3] : (ix >= 7 ? 2026 : 2027);
-    return new Date(y, ix, +long[2]);
-  }
-  return null;
-}
-
-function daysBetween(a: Date, b: Date): number {
-  return Math.round((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24));
-}
-
 function UpcomingDeadlines() {
   const { hidden } = useHidden();
-  // App is anchored to Fall 2027 entry, so pin "today" to the study's data date
-  // (July 29 2026) rather than real wall-clock — dates in the deadline dataset
-  // are for the 2026-27 cycle and would otherwise look "in the past" during
-  // your reading window in 2026.
-  const anchor = new Date(2026, 7, 15); // Aug 15, 2026
+  const today = todayIso();
 
   const rows = (deadlinesData.rows || []) as any[];
   const items: { slug: string; short: string; round: Round; label: string; date: Date; daysAway: number; cycle: string }[] = [];
@@ -355,19 +348,20 @@ function UpcomingDeadlines() {
     if (hidden.has(r.slug)) continue;
     const school = schools.find(s => s.slug === r.slug);
     if (!school) continue;
-    for (const key of Object.keys(roundMeta) as Round[]) {
-      const dt = parseDate(r[key]);
-      if (!dt) continue;
-      const days = daysBetween(anchor, dt);
+    const events = Array.isArray(r.events) ? r.events : (Object.keys(roundMeta) as Round[]).flatMap(round =>
+      parseCycleDates(r[round]).map(date => ({ round, date, label: r[round] }))
+    );
+    for (const event of events) {
+      if (!(event.round in roundMeta)) continue;
       items.push({
-        slug: r.slug, short: school.short,
-        round: key, label: r[key],
-        date: dt, daysAway: days, cycle: r.cycle_label,
+        slug: r.slug, short: school.short, round: event.round as Round,
+        label: event.label, date: dateUTC(event.date),
+        daysAway: daysUntil(event.date, today), cycle: r.cycle_label,
       });
     }
   }
 
-  const upcoming = items.filter(i => i.daysAway >= -14).sort((a,b) => a.daysAway - b.daysAway).slice(0, 10);
+  const upcoming = items.filter(i => i.daysAway >= 0).sort((a,b) => a.daysAway - b.daysAway).slice(0, 10);
 
   return (
     <div className="card p-4">
@@ -381,7 +375,7 @@ function UpcomingDeadlines() {
           Full timeline <ArrowRight size={11}/>
         </Link>
       </div>
-      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Sorted by how far away each deadline is from Aug 15, 2026. Colors match the timeline page's rounds.</div>
+      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Days remaining from today ({today}, America/New_York). Research reviewed October 14, 2026.</div>
       {upcoming.length === 0 ? (
         <div className="text-[12px] text-[hsl(var(--muted-foreground))] py-4 text-center">No upcoming deadlines for visible schools.</div>
       ) : (
@@ -393,7 +387,7 @@ function UpcomingDeadlines() {
               : i.daysAway === 0 ? "today"
               : i.daysAway < 30 ? `in ${i.daysAway}d`
               : `in ${Math.round(i.daysAway/30)}mo`;
-            const dateStr = i.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+            const dateStr = i.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
             return (
               <Link key={`${i.slug}-${i.round}-${ix}`} href="/timeline"
                 className="flex items-center gap-2 py-1 px-1.5 rounded hover:bg-[hsl(var(--elevate-1))] cursor-pointer">
@@ -447,7 +441,7 @@ function FitDistribution() {
 
 function ArchetypeCounts() {
   const { visible } = useHidden();
-  const labels: Record<string,string> = { A:"Dedicated AI", B:"Deep CS+AI", C:"AI+Robotics", D:"Undergrad-centered", E:"Large AI ecosystem" };
+  const labels = archetypeLabels;
   const data = ["A","B","C","D","E"].map(k => ({
     code: k, label: labels[k],
     count: visible.filter(s => s.archetypes.includes(k)).length,
@@ -472,30 +466,30 @@ function ArchetypeCounts() {
   );
 }
 
-/* ---------- CHART: Cost vs AI curriculum depth scatter ---------- */
+/* ---------- CHART: Historical sticker cost vs robotics curriculum ---------- */
 
 function ValueScatter() {
   const { visible } = useHidden();
   const data = visible
-    .filter(s => s.cost_for_nc_resident != null && s.axes.program_depth != null)
+    .filter(s => s.cost_for_nc_resident != null && s.axes.robotics_curriculum != null)
     .map(s => ({
-      name: s.short, x: s.cost_for_nc_resident, y: s.axes.program_depth,
+      name: s.short, x: s.cost_for_nc_resident, y: s.axes.robotics_curriculum,
       fit: s.fit_classification, color: fitColor[s.fit_classification] || "hsl(var(--muted))",
     }));
   return (
     <div className="card p-4">
-      <div className="text-[12.5px] font-medium mb-1">Value map · cost vs. AI depth</div>
-      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Up-and-left is more program for less money. In-state cost used for NC publics.</div>
+      <div className="text-[12.5px] font-medium mb-1">Value map · cost vs. robotics curriculum</div>
+      <div className="text-[10.5px] text-[hsl(var(--muted-foreground))] mb-3">Historical sticker budgets and an ordinal curriculum score; compare aid and route access separately.</div>
       <ResponsiveContainer width="100%" height={180}>
         <ScatterChart margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
           <CartesianGrid strokeDasharray="2 4" stroke="hsl(var(--border))"/>
           <XAxis type="number" dataKey="x" tickFormatter={(v)=>`$${Math.round(v/1000)}k`}
             tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 10 }} axisLine={false} tickLine={false} name="Cost"/>
-          <YAxis type="number" dataKey="y" domain={[1,5]} tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 10 }} axisLine={false} tickLine={false} width={26} name="AI depth"/>
+          <YAxis type="number" dataKey="y" domain={[1,5]} tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 10 }} axisLine={false} tickLine={false} width={26} name="Robotics curriculum"/>
           <ZAxis range={[70, 70]} />
           <Tooltip cursor={{ strokeDasharray: "3 3" }}
             contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: 12, borderRadius: 6 }}
-            formatter={(v: any, k: any) => k === "x" ? [`$${(v as number).toLocaleString()}`, "Cost"] : [v, "AI depth"]}
+            formatter={(v: any, k: any) => k === "x" ? [`$${(v as number).toLocaleString()}`, "Cost"] : [v, "Robotics curriculum"]}
             labelFormatter={(_, payload: any) => payload?.[0]?.payload?.name || ""}/>
           <Scatter data={data}>
             {data.map((d, i) => <Cell key={i} fill={d.color}/>)}
