@@ -994,5 +994,12 @@
     },
     "quote": "Total first-time, first-year students who applied            8,522      3,820          13     12,355\n      Total first-time, first-year students admitted            5,158      2,482            7     7,647\n      Total first-time, first-year students enrolled             948         350            2     1,300\n Full-time, first-time, first-year students enrolled             948         350            2     1,300\n Part-time, first-time, first-year students enrolled\n\n\n\n                                       Fall 2025    In-State     Out-of-State    International   Total\n        Total first-time, first-year who applied        3,920           6,735           1,700    12,355\n           Total first-time, first-year admitted        2,571           4,414             662     7,647\n            Total first-time, first-year enrolled        605               629             66     1,300\n\n\nC2.      First-time, first-year wait-listed students (students who met admission\nrequirements but whose final admission was contingent on space availability)\nDo you have a policy of placing students on a waiting list? Yes ☒                No ☐\n\nIf yes, please answer the questions below for Fall 2025 admissions:\n\n Number of qualified applicants offered a place on waiting list                                   2,293\n\n Number accepting a place on waiting list                                                           980\n\n Number of wait-listed students admitted                                                            460\n\n\nIs your waiting list ranked?                                       Yes ☐    No ☒\nIf yes, do you release that information to students?               Yes ☐    No ☐\nDo you release that in",
     "verification_method": "official downloaded PDF sectionC1 extracted with pdftotext"
+  },
+  "DBN-S1": {
+    "url": "https://umdearborn.edu/sites/default/files/unmanaged/pdf/ire/cds-2024-2025.pdf",
+    "title": "UM-Dearborn CDS 2024–25, inherited Fall 2024 counts",
+    "fetched": null,
+    "status": "inherited_reference_not_freshly_retrieved",
+    "note": "The older admission record cited this source ID without a retained source-log record; counts are historical and current verification is pending."
   }
 }

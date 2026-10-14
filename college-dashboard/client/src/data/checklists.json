@@ -21,29 +21,6 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_count_exact_portal_prompts_unresolved"
     },
-    "cornell": {
-      "cycle": "2026-27",
-      "platform": "Common App (QuestBridge finalists via portal)",
-      "supp_essay_count": "1-6 (varies by college)",
-      "prompts": "Engineering is heaviest at 6 essays (2×200w + 4×100w). A&S: passion for learning + College alignment (3000ch). CALS: why this major + why CALS (2500ch). AAP: interests → major, creative project for B.Arch.",
-      "teacher_recs": 2,
-      "counselor_rec": "Yes",
-      "interview": "Not offered",
-      "fee": "$85",
-      "special": "Duffield Engineering: two200-word and four100-word essays. Central admissions lists domestic ED aid priority Nov15; Engineering page lists Nov21—use earlier priority and verify with aid office. Program portfolios only if applicable.",
-      "sources": [
-        {
-          "label": "Cornell first-year",
-          "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants"
-        },
-        {
-          "label": "Cornell Engineering",
-          "url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/"
-        }
-      ],
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
     "purdue": {
       "cycle": "2026-27",
       "platform": "Common App",
@@ -143,25 +120,6 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
-    "johns-hopkins": {
-      "cycle": "2026-27",
-      "platform": "Common App or Coalition on Scoir",
-      "supp_essay_count": 1,
-      "prompts": "What you've learned engaging with people whose experiences differ from yours, and how it shaped your thinking about building bridges and working with others (350 w).",
-      "teacher_recs": 2,
-      "counselor_rec": "Yes (included in secondary school report)",
-      "interview": "Not offered",
-      "fee": "$70",
-      "special": "SAT or ACT required for Homewood first-year applicants; optional Schoolhouse.world portfolio; ED agreement. Supplemental bridge-building essay 350 words verified for2026-27.",
-      "sources": [
-        {
-          "label": "JHU deadlines",
-          "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
-        }
-      ],
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
     "maryland": {
       "cycle": "2026-27",
       "platform": "Common App or ApplyWeb",
@@ -256,6 +214,53 @@
       ],
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
+    },
+    "rose-hulman": {
+      "cycle": "Fall 2027 (current requirements pending confirmation)",
+      "platform": "Common App or Rose-Hulman application",
+      "supp_essay_count": "Unknown for current cycle; historical checklist states no separate supplemental prompt",
+      "prompts": "Current prompts pending confirmation",
+      "teacher_recs": "Historical: one teacher/counselor/principal recommendation; confirm current requirement",
+      "counselor_rec": "Historical checklist says no separate counselor recommendation; confirm current requirement",
+      "interview": "Historically optional Glimpse video for domestic U.S. students and InitialView for students abroad; no-penalty rules require current confirmation.",
+      "fee": null,
+      "special": "Historical optional 60–90 second Glimpse video. Confirm current application fields, recommendations and fee before submission.",
+      "sources": [
+        {
+          "label": "Rose-Hulman process",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html"
+        }
+      ],
+      "reviewed_on": "2026-10-14",
+      "verified_on": "2026-08-16",
+      "verification_status": "historical_evidence_pending_current_confirmation",
+      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed.",
+      "historical_fee": "$65; current fee pending confirmation"
+    },
+    "michigan-dearborn": {
+      "cycle": "2026-27 (Fall 2027 entry; requirements unverified)",
+      "platform": "Confirm current application platform with admissions",
+      "supp_essay_count": null,
+      "prompts": null,
+      "teacher_recs": null,
+      "counselor_rec": null,
+      "interview": null,
+      "fee": null,
+      "special": "Confirm current platform, fee, transcript/course prerequisites, writing and recommendations with admissions. Earlier sources conflict on essays and recommendations; no blanket waiver or guarantee is inferred from GPA or CDS factor treatment.",
+      "sources": [
+        {
+          "label": "First-year application (current check pending)",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/incoming-first-year-students/apply-admission-first-year"
+        },
+        {
+          "label": "Admission criteria (scope unresolved)",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/high-school-counselors/admissions-criteria"
+        }
+      ],
+      "verification_status": "historical_pending_current_recheck",
+      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed."
     }
-  }
+  },
+  "selection_updated_on": "2026-10-14",
+  "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }

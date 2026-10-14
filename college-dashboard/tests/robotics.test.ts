@@ -12,10 +12,41 @@ const selected = schools.map(s => s.slug).sort();
 test("all school comparison datasets cover exactly the selected thirteen", () => {
   assert.equal(selected.length, 13);
   assert.equal(new Set(selected).size, 13);
-  for (const name of ["robotics_routes", "robotics_paths", "scholarships", "checklists", "admissions_context"]) {
+  for (const name of ["robotics_routes", "robotics_paths", "scholarships", "checklists", "admissions_context", "reddit", "alumni"]) {
     assert.deepEqual(Object.keys(data(name).schools).sort(), selected, name);
   }
   assert.deepEqual(data("outcomes").rows.map((r: any) => r.slug).sort(), selected, "outcomes");
+});
+
+test("the comparison includes the two approved robotics additions and excludes WVU", () => {
+  assert.ok(selected.includes("rose-hulman"));
+  assert.ok(selected.includes("michigan-dearborn"));
+  assert.ok(!selected.includes("wvu"));
+  assert.ok(!selected.includes("cornell"));
+  assert.ok(!selected.includes("johns-hopkins"));
+  assert.deepEqual(data("deadlines").rows.map((r: any) => r.slug).sort(), selected);
+  assert.deepEqual(Object.keys(data("place_context").cities).sort(), selected);
+});
+
+test("new school routes keep historical evidence separate from unverified current facts", () => {
+  const rose = schools.find(s => s.slug === "rose-hulman")!;
+  const dearborn = schools.find(s => s.slug === "michigan-dearborn")!;
+  assert.ok(rose && dearborn);
+  assert.match(rose.degree_name, /Computer Engineering/);
+  assert.match(rose.degree_name, /Robotics/);
+  assert.match(dearborn.degree_name, /Robotics Engineering/);
+  assert.equal(rose.admissions?.pct_submitting_act, 0.165);
+  for (const school of [rose, dearborn]) {
+    assert.equal(school.cost_for_nc_resident, null);
+    assert.equal(school.cost_total_outofstate, null);
+    assert.match(school.evidence_confidence, /historical|August|2026-08/i);
+  }
+  assert.equal(dearborn.major_access_status, "UNK");
+  assert.equal(data("robotics_routes").schools["michigan-dearborn"].bs_robotics.first_year_direct_admit, null);
+  assert.equal(dearborn.axes.campus_life, null);
+  assert.doesNotMatch(JSON.stringify(dearborn), /100% commuter|commuter-oriented|campus (?:gets|is) (?:very )?quiet|95% of graduates stay/i);
+  assert.equal(data("robotics_routes").schools["rose-hulman"].recommended_route, "ece");
+  assert.equal(data("robotics_routes").schools["michigan-dearborn"].recommended_route, "bs_robotics");
 });
 
 test("displayed primary credentials no longer describe the former AI major", () => {
@@ -41,6 +72,16 @@ test("robotics foundations beat an AI-only ecosystem in the robotics fit score",
   const strongRobotics = { axes: { robotics_curriculum: 5, robotics_access: 5, hands_on: 5, foundations: 5, program_depth: 1, research_access: 1 } } as School;
   const strongAi = { axes: { robotics_curriculum: 2, robotics_access: 2, hands_on: 2, foundations: 5, program_depth: 5, research_access: 5 }, robotics_domains: Object.fromEntries(Array.from({length: 10}, (_, i) => [String(i), {coverage: "strong"}])) } as School;
   assert.ok(roboticsAiFit(strongRobotics) > roboticsAiFit(strongAi));
+});
+
+test("missing fit evidence is omitted while an explicit zero still counts", () => {
+  const complete = { axes: { robotics_curriculum: 4, robotics_access: 4, hands_on: 4, foundations: 4, program_depth: 4 } } as School;
+  const partial = { ...complete, axes: { ...complete.axes, foundations: null } };
+  assert.equal(roboticsAiFit(complete), 4);
+  assert.equal(roboticsAiFit(partial), 4);
+  assert.equal(roboticsAiFit({ ...complete, axes: { ...complete.axes, foundations: 0 } }), 3.6);
+  const dearborn = schools.find(s => s.slug === "michigan-dearborn")!;
+  assert.equal(roboticsAiFit(dearborn), 3.88);
 });
 
 test("historical college rates cannot be used as current admission rates", () => {
@@ -96,9 +137,15 @@ test("published current-cycle deadline events have real dates and source provena
 test("all thirteen applications match the user's selected rounds", () => {
   const plans = data("applications").applications;
   assert.equal(plans.length, 13);
-  const expected = {"carnegie-mellon":"ED1","nc-state":"EA","northeastern":"EA","purdue":"EA","ohio-state":"EA","maryland":"EA","rpi":"EA","michigan":"EA","wpi":"EA1","georgia-tech":"EA2","cornell":"RD","johns-hopkins":"RD","duke":"RD"};
+  const expected = {"carnegie-mellon":"ED1","nc-state":"EA","northeastern":"EA","purdue":"EA","ohio-state":"EA","maryland":"EA","rpi":"EA","michigan":"EA","wpi":"EA1","georgia-tech":"EA2","rose-hulman":"Pending","michigan-dearborn":"Pending","duke":"RD"};
   assert.deepEqual(Object.fromEntries(plans.map((a: any) => [a.slug,a.plan_short])), expected);
   assert.deepEqual(plans.filter((a: any) => a.binding).map((a: any) => a.slug), ["carnegie-mellon"]);
   assert.equal(plans.find((a: any) => a.slug === "georgia-tech").deadline, "2026-11-02");
   assert.equal(plans.find((a: any) => a.slug === "rpi").deadline, "2026-12-01");
+  for (const slug of ["rose-hulman", "michigan-dearborn"]) {
+    const plan = plans.find((a: any) => a.slug === slug);
+    assert.equal(plan.deadline, null);
+    assert.equal(plan.plan, "PENDING");
+    assert.equal(data("deadlines").rows.find((r: any) => r.slug === slug).events.length, 0);
+  }
 });

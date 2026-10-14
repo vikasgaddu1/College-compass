@@ -51,11 +51,11 @@ export function PlaceContextStrip() {
                     <div>{d.campus_city}</div>
                     <div className="text-[10.5px] text-[hsl(var(--muted-foreground))]">{d.nearest_airport}</div>
                   </td>
-                  <td className="text-right num text-[12px]" style={{ color: d.temp_low_jan_f < 20 ? "hsl(210 60% 45%)" : undefined }}>{d.temp_low_jan_f}°F</td>
-                  <td className="text-right num text-[12px]" style={{ color: d.temp_high_jul_f > 88 ? "hsl(20 65% 45%)" : undefined }}>{d.temp_high_jul_f}°F</td>
-                  <td className="text-right num text-[12px]" style={{ color: d.snow_inches_annual >= 50 ? "hsl(210 60% 45%)" : undefined }}>{d.snow_inches_annual === 0 ? "—" : `${d.snow_inches_annual}"`}</td>
+                  <td className="text-right num text-[12px]" style={{ color: d.temp_low_jan_f != null && d.temp_low_jan_f < 20 ? "hsl(210 60% 45%)" : undefined }}>{d.temp_low_jan_f == null ? "Unverified" : `${d.temp_low_jan_f}°F`}</td>
+                  <td className="text-right num text-[12px]" style={{ color: d.temp_high_jul_f != null && d.temp_high_jul_f > 88 ? "hsl(20 65% 45%)" : undefined }}>{d.temp_high_jul_f == null ? "Unverified" : `${d.temp_high_jul_f}°F`}</td>
+                  <td className="text-right num text-[12px]" style={{ color: d.snow_inches_annual != null && d.snow_inches_annual >= 50 ? "hsl(210 60% 45%)" : undefined }}>{d.snow_inches_annual == null ? "Unverified" : `${d.snow_inches_annual}"`}</td>
                   <td className="text-right num text-[12px]">
-                    {d.drive_hours_from_rdu < 1 ? "in-town" : d.drive_hours_from_rdu <= 6 ? `${d.drive_hours_from_rdu}h drive` : `${d.drive_hours_from_rdu}h`}
+                    {d.drive_hours_from_rdu == null ? "Unverified" : d.drive_hours_from_rdu < 1 ? "in-town" : d.drive_hours_from_rdu <= 6 ? `${d.drive_hours_from_rdu}h drive` : `${d.drive_hours_from_rdu}h`}
                   </td>
                   <td className="text-[11.5px] num">{d.flight_from_rdu_band}</td>
                 </tr>

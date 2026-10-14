@@ -48,20 +48,6 @@
       "note": "#1 feeder by alumni share at Google (2.62%), Meta (1.36%), Apple (1.15%), Nvidia (0.55%); #4 at OpenAI+Anthropic (255)",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
-    "cornell": {
-      "bands": {
-        "Google": "Very high",
-        "Meta": "Very high",
-        "Amazon": "High",
-        "Microsoft": "High",
-        "Apple": "High",
-        "Nvidia": "Moderate",
-        "OpenAI": "High",
-        "Anthropic": "Moderate"
-      },
-      "note": "#9 feeder (403); named in workforce.ai's OpenAI top-10",
-      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
-    },
     "purdue": {
       "bands": {
         "Google": "Moderate",
@@ -130,20 +116,6 @@
         "Anthropic": "Low"
       },
       "note": "#3 in raw volume (561); Microsoft is Michigan's #1 tech employer",
-      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
-    },
-    "johns-hopkins": {
-      "bands": {
-        "Google": "Moderate",
-        "Meta": "Moderate",
-        "Amazon": "Moderate",
-        "Microsoft": "Moderate",
-        "Apple": "Low",
-        "Nvidia": "Low",
-        "OpenAI": "Low",
-        "Anthropic": "Low"
-      },
-      "note": "Defense/health-heavy top employers; no top-5 finishes at any big-tech company",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
     "maryland": {
@@ -215,6 +187,34 @@
       },
       "note": "Strong Northeast/Bay Area alumni network; smaller footprint than public peers due to Duke's size",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
+    },
+    "rose-hulman": {
+      "bands": {
+        "Google": "n.a.",
+        "Meta": "n.a.",
+        "Amazon": "n.a.",
+        "Microsoft": "n.a.",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "No source-backed company-alumni or robotics-placement bands researched for this entry.",
+      "robotics_scope_note": "Unknown company footprint; no job-placement inference is made."
+    },
+    "michigan-dearborn": {
+      "bands": {
+        "Google": "n.a.",
+        "Meta": "n.a.",
+        "Amazon": "n.a.",
+        "Microsoft": "n.a.",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "No source-backed company-alumni or robotics-placement bands researched for this entry.",
+      "robotics_scope_note": "Unknown company footprint; no job-placement inference is made."
     }
   },
   "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."

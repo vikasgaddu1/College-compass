@@ -193,6 +193,7 @@ export default function MyRankingPage() {
         <h2 className="serif text-[22px] font-semibold mt-1">Rank the schools by your own priorities</h2>
         <p className="text-[13.5px] text-[hsl(var(--muted-foreground))] mt-2 leading-relaxed max-w-[820px]">
           Drag rows to reorder, use the up/down arrows, or type a number to set an exact rank. Your ranking saves to this browser. The Overview can be sorted by "My ranking"; your order stays separate from the researched program scores.
+          {" "}The suggested fit ordering averages the documented dimensions; missing evidence is omitted, so partial ratings are less certain.
         </p>
         <div className="mt-4 flex flex-wrap gap-3 items-center">
           <div className="chip chip-primary"><ListOrdered size={11}/> {rankedList.length} of {visibleSchools.length} visible schools ranked</div>

@@ -1,7 +1,7 @@
 {
   "compiled": "2026-08-19",
   "home_base": "Cary, North Carolina (RDU)",
-  "note": "Visit guidance reviewed as of October 14, 2026. Earlier suggested trips and events are historical date suggestions; attendance and booking were not verified. Check live registration for remaining slots. The student-selected application plans are unchanged.",
+  "note": "Existing visit suggestions remain historical. Rose-Hulman and Michigan-Dearborn have unscheduled visit-question entries. Attendance for removed colleges is retained in archived records and excluded from active comparison counts.",
   "constraint": "Anurag can be excused on weekdays, which is what makes this possible: almost every engineering-specific session on this list runs Monday to Friday only.",
   "trips": [
     {
@@ -79,6 +79,44 @@
       ],
       "planning_status": "past_suggestion_attendance_unknown",
       "status_note": "Suggested dates have passed as of Oct 14; this does not establish that the trip was booked or attended."
+    },
+    {
+      "id": 4,
+      "name": "Terre Haute, Indiana — Rose-Hulman",
+      "dates": "Dates not selected",
+      "school_days": 0,
+      "schools": [
+        "rose-hulman"
+      ],
+      "travel": "Confirm current transport and campus tour availability before planning.",
+      "why_first": "Assess the new robotics curriculum option and actual undergraduate course/project access.",
+      "book": [
+        "Find a current official campus visit and ask whether an engineering adviser or robotics teaching-lab visit is available."
+      ],
+      "watch": [
+        "No itinerary, reservation, school-day estimate or registration slot has been confirmed."
+      ],
+      "planning_status": "unscheduled_candidate_visit",
+      "status_note": "New comparison entry; visit planning remains unconfirmed."
+    },
+    {
+      "id": 5,
+      "name": "Dearborn, MI — Michigan-Dearborn",
+      "dates": "Dates not selected",
+      "school_days": 0,
+      "schools": [
+        "michigan-dearborn"
+      ],
+      "travel": "Confirm current transport and campus tour availability before planning.",
+      "why_first": "Assess the new robotics curriculum option and actual undergraduate course/project access.",
+      "book": [
+        "Find a current official campus visit and ask whether an engineering adviser or robotics teaching-lab visit is available."
+      ],
+      "watch": [
+        "No itinerary, reservation, school-day estimate or registration slot has been confirmed."
+      ],
+      "planning_status": "unscheduled_candidate_visit",
+      "status_note": "New comparison entry; visit planning remains unconfirmed."
     }
   ],
   "dead_week": {
@@ -363,21 +401,6 @@
           "fetched": "2026-08-19"
         }
       ],
-      "temporal_audit_on": "2026-10-14",
-      "booking_verification_status": "live_registration_not_verified"
-    },
-    "cornell": {
-      "visited": true,
-      "deadline": {
-        "date": "2027-01-02",
-        "label": "RD Jan 2",
-        "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
-        "year_inferred": true
-      },
-      "visited_note": "Ithaca, New York — already seen, which removes the hardest trip on the list: 11 hours by road, connecting flights only, and a fall break sitting inside the visit window. Cornell also states it does not track demonstrated interest, so nothing is lost by not returning.",
-      "tours": [],
-      "sources": [],
-      "questions": null,
       "temporal_audit_on": "2026-10-14",
       "booking_verification_status": "live_registration_not_verified"
     },
@@ -1424,20 +1447,6 @@
         "year_inferred": false
       }
     },
-    "johns-hopkins": {
-      "visited": null,
-      "visit_home_url": null,
-      "registration_url": null,
-      "booking_verification_status": "not_researched",
-      "temporal_audit_on": "2026-10-14",
-      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
-      "deadline": {
-        "date": "2027-01-02",
-        "label": "RD Jan 2",
-        "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
-        "year_inferred": false
-      }
-    },
     "maryland": {
       "visited": null,
       "visit_home_url": null,
@@ -1479,8 +1488,99 @@
         "source_url": "https://undergrad.admissions.rpi.edu/apply",
         "year_inferred": false
       }
+    },
+    "rose-hulman": {
+      "visited": null,
+      "visit_home_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html",
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No student attendance or booking record supplied.",
+      "robotics_lab_access": "Confirm prospective-student access to undergraduate robotics teaching labs and projects directly.",
+      "questions": {
+        "read_first": [],
+        "dont_ask": [],
+        "ask": [
+          {
+            "who": "Engineering adviser",
+            "q": "Can you map the recommended robotics route and AI electives into a four-year plan, including prerequisites and course rotations?",
+            "why": "The comparison uses inherited curriculum evidence; current cohort requirements and degree applicability need confirmation."
+          },
+          {
+            "who": "Admissions counsellor",
+            "q": "What is the current first-year application route, and which major, transcript and deadline requirements apply?",
+            "why": "University eligibility and admission to a specific major should be confirmed separately."
+          },
+          {
+            "who": "Student life adviser",
+            "q": "What housing choices, residence participation and evening/weekend activities are available to students moving from out of state?",
+            "why": "Student origins and campus activity have not been verified; no commuter or quiet-campus conclusion is assumed."
+          }
+        ]
+      }
+    },
+    "michigan-dearborn": {
+      "visited": null,
+      "visit_home_url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/incoming-first-year-students/apply-admission-first-year",
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No student attendance or booking record supplied.",
+      "robotics_lab_access": "Confirm prospective-student access to undergraduate robotics teaching labs and projects directly.",
+      "questions": {
+        "read_first": [],
+        "dont_ask": [],
+        "ask": [
+          {
+            "who": "Engineering adviser",
+            "q": "Can you map the recommended robotics route and AI electives into a four-year plan, including prerequisites and course rotations?",
+            "why": "The comparison uses inherited curriculum evidence; current cohort requirements and degree applicability need confirmation."
+          },
+          {
+            "who": "Admissions counsellor",
+            "q": "What is the current first-year application route, and which major, transcript and deadline requirements apply?",
+            "why": "University eligibility and admission to a specific major should be confirmed separately."
+          },
+          {
+            "who": "Student life adviser",
+            "q": "What housing choices, residence participation and evening/weekend activities are available to students moving from out of state?",
+            "why": "Student origins and campus activity have not been verified; no commuter or quiet-campus conclusion is assumed."
+          }
+        ]
+      }
     }
   },
   "as_of": "2026-10-14",
-  "timezone": "America/New_York"
+  "timezone": "America/New_York",
+  "archived_school_visits": {
+    "cornell": {
+      "visited": true,
+      "deadline": {
+        "date": "2027-01-02",
+        "label": "RD Jan 2",
+        "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+        "year_inferred": true
+      },
+      "visited_note": "Ithaca, New York — already seen, which removes the hardest trip on the list: 11 hours by road, connecting flights only, and a fall break sitting inside the visit window. Cornell also states it does not track demonstrated interest, so nothing is lost by not returning.",
+      "tours": [],
+      "sources": [],
+      "questions": null,
+      "temporal_audit_on": "2026-10-14",
+      "booking_verification_status": "live_registration_not_verified"
+    },
+    "johns-hopkins": {
+      "visited": null,
+      "visit_home_url": null,
+      "registration_url": null,
+      "booking_verification_status": "not_researched",
+      "temporal_audit_on": "2026-10-14",
+      "note": "No existing student attendance or booking record; verify official prospective-student visit options before scheduling.",
+      "deadline": {
+        "date": "2027-01-02",
+        "label": "RD Jan 2",
+        "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+        "year_inferred": false
+      }
+    }
+  }
 }

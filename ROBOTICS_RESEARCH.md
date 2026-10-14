@@ -1,6 +1,6 @@
 # Robotics research review — October 14, 2026
 
-Scope: the fixed 13 universities, Fall 2027 entry, a North Carolina resident, and a balanced goal of hardware, controls, autonomy and supporting AI. Official programme pages, current catalogues, first-year admissions, scholarships, cost budgets and accessible Common Data Sets were read again. The saved ledgers contain 334 distinct successfully retrieved official/source-linked URLs; a successful retrieval alone is not a guarantee that every historical claim on a page was reverified.
+Scope: the selected 13 universities, Fall 2027 entry, a North Carolina resident, and a balanced goal of hardware, controls, autonomy and supporting AI. Rose-Hulman and Michigan-Dearborn now replace Cornell and Johns Hopkins; WVU is excluded. Eleven retained schools use the October 14 official-source review. The two additions use audited August 2026 evidence with current verification pending; their source notes and unknown fields remain explicit.
 
 ## Recommendations
 
@@ -9,10 +9,8 @@ WPI Robotics Engineering is the strongest integrated project-based starting poin
 | University | Recommended application/major route | Supporting AI choices |
 |---|---|---|
 | Carnegie Mellon | B.S. in Robotics (School of Computer Science; declare end of first year) | 16-385 Computer Vision; 16-350 Planning Techniques for Robotics; 10-403 Deep Reinforcement Learning & Control |
-| Cornell | BS Electrical and Computer Engineering (Cornell Engineering) + Robotics minor | ECE 3200 Foundations Machine Learning; ECE 4240 Robot Perception |
 | Duke | BSE Electrical and Computer Engineering (Pratt) + Robotics & Automation certificate | ECE 580 Introduction to Machine Learning; COMPSCI 370D Introduction to Artificial Intelligence; COMPSCI 371 Elements of Machine Learning |
 | Georgia Tech | BS Computer Engineering — Robotics & Autonomous Systems + Distributed System & Software Design threads | ECE4252 Fundamentals of Machine Learning (FunML); ECE4580 Computational Computer Vision |
-| Johns Hopkins | BS Computer Engineering + optional Robotics study focus area + LCSR Robotics minor | EN.520.465 Machine Perception; EN.520.440 Machine Intelligence on Embedded Systems; EN.601.461 Computer Vision |
 | Maryland | BS Electrical Engineering + Robotics and Autonomous Systems Minor (selective) | ENEE436 Foundations of Machine Learning; CMSC477 Robotics Perception and Planning |
 | Michigan | B.S.E. in Robotics (College of Engineering; declare after first term) | ROB 429 Robot Learning for Planning and Control; ROB 430 Deep Learning for Robot Perception and Manipulation; ROB 432 / EECS 442 Computer Vision |
 | NC State | BS Electrical Engineering — Controls and Robotics Concentration (EFY then CODA) | ECE441 Robot Motion Planning; ECE411 Introduction to Machine Learning; ECE425 Neural Networks and Deep Learning |
@@ -20,15 +18,17 @@ WPI Robotics Engineering is the strongest integrated project-based starting poin
 | Ohio State | BS Electrical and Computer Engineering (direct admit), Control electives + Robotics and Autonomous Systems minor | ECE 5307 Introduction to Machine Learning for ECE; CSE 5524 Computer Vision for Human-Computer Interaction |
 | Purdue | BS Computer Engineering (West Lafayette First-Year Engineering, then Transition to Major), robotics/control and AI/ML electives | ECE 47300 Introduction to Artificial Intelligence |
 | RPI | B.S. in Robotics Engineering (new joint ECSE + MANE major, first class Fall 2026) | ECSE 4840 / ECSE 4850 / MANE 4962 Machine Learning / Deep Learning elective choice; CSCI 4270 Computational Vision |
+| Rose-Hulman | BS Computer Engineering + Multidisciplinary Robotics minor (historical evidence) | CSSE 461 Computer Vision; CSSE 463 Image Recognition — access and degree applicability pending |
+| Michigan-Dearborn | BSE Robotics Engineering (historical evidence; current entry unconfirmed) | ECE 434 Introduction to Machine Learning; ECE 479 Artificial Intelligence — degree applicability pending |
 | WPI | B.S. in Robotics Engineering (ABET-accredited primary major) | RBE 4701 Artificial Intelligence for Robotics; RBE 4540 Vision-based Robotic Manipulation; RBE 4744 Deep Learning for Perception |
 
 ## How to interpret the comparisons
 
-Four selected schools have primary robotics degrees: CMU, Michigan, WPI and RPI. Purdue Polytechnic’s Robotics Engineering Technology BS is a separate applied technology option, not a fifth EAC engineering robotics programme and not the recommended Computer Engineering degree. The explorer contains 14 credential entries for 13 schools.
+Five selected schools have primary robotics degrees: CMU, Michigan Ann Arbor, Michigan-Dearborn, WPI and RPI. Purdue Polytechnic’s Robotics Engineering Technology BS is a separate applied technology option, not a sixth engineering robotics programme and not the recommended Computer Engineering degree. The explorer contains 14 credential entries for 13 schools.
 
-The fit formula is 40% undergraduate robotics curriculum, 25% undergraduate robotics access, 15% hands-on projects, 10% foundations and 10% supporting AI. Scores are analyst assessments on a 1–5 scale, not school-published rankings. A dedicated integrated robotics core scores 5; a structured ECE/CE route with robotics electives/credential and design work generally scores 4. Purdue CE has a lower evidence-based curriculum score because its current controls/robotics elective applicability could not be fully verified. ROET coursework and graduate robotics offerings are not borrowed to inflate it. A research institute’s breadth does not imply undergraduate course or lab access.
+The fit formula is 40% undergraduate robotics curriculum, 25% undergraduate robotics access, 15% hands-on projects, 10% foundations and 10% supporting AI. Missing dimensions are omitted and the remaining weights normalized; partial-evidence scores are less certain than fully documented ratings. Scores are analyst assessments on a 1–5 scale, not school-published rankings. A dedicated integrated robotics core scores 5; a structured ECE/CE route with robotics electives/credential and design work generally scores 4. Purdue CE has a lower evidence-based curriculum score because its current controls/robotics elective applicability could not be fully verified. ROET coursework and graduate robotics offerings are not borrowed to inflate it. A research institute’s breadth does not imply undergraduate course or lab access.
 
-Admission tiers remain planning heuristics using the stated cohort and population. The 2015 CMU college comparison and explicitly inferred Georgia Tech computing rates are excluded. Unknown GPA weighting cannot shift a tier. Comparing early-round cohorts does not establish a causal benefit of ED or an easier major. User-selected plans now cover all 13: CMU ED1; NC State, Northeastern, Purdue, Ohio State, UMD, RPI, Michigan and WPI EA (WPI EA1); Georgia Tech EA2; Cornell, Johns Hopkins and Duke RD.
+Admission tiers remain planning heuristics using the stated cohort and population. The 2015 CMU college comparison and explicitly inferred Georgia Tech computing rates are excluded. Unknown GPA weighting cannot shift a tier. Comparing early-round cohorts does not establish a causal benefit of ED or an easier major. Eleven schools retain the selected plans: CMU ED1; NC State, Northeastern, Purdue, Ohio State, UMD, RPI, Michigan and WPI EA (WPI EA1); Georgia Tech EA2; Duke RD. Rose-Hulman and Michigan-Dearborn have pending rounds and deadlines rather than assumed application choices.
 
 ## Important verified corrections and remaining limits
 
@@ -40,13 +40,6 @@ Primary route source: https://www.ri.cmu.edu/education/academic-programs/bachelo
 
 Full route sources, quotations and unavailable-source records: `college-dashboard/client/src/data/research_audit.json` → `schools.carnegie-mellon`.
 
-### Cornell University
-
-Recommend ECE plus the Robotics minor. Current CS AI/vision/robot-learning courses have CS-major restrictions; use home-ECE options where possible. ECE 3200 is a current ML course, while the minor list still names ECE 4200: substitution approval is not assumed. Central admissions and Engineering aid pages give different ED aid dates; the earlier November 15 priority is retained with the discrepancy noted.
-
-Primary route source: https://courses.cornell.edu/programs/electrical-computer-engineering-bs/
-
-Full route sources, quotations and unavailable-source records: `college-dashboard/client/src/data/research_audit.json` → `schools.cornell`.
 
 ### Duke University
 
@@ -64,13 +57,6 @@ Primary route source: https://ece.gatech.edu/robotics-autonomous-systems-thread
 
 Full route sources, quotations and unavailable-source records: `college-dashboard/client/src/data/research_audit.json` → `schools.georgia-tech`.
 
-### Johns Hopkins University
-
-Recommend Computer Engineering, with Electrical Engineering controls/sensing and CS software/autonomy as alternatives. The current catalogue provides undergraduate hardware, control, perception and embedded-learning courses. The minor requires a lab-coded course; a three-lab-credit rule was not established. Several admissions/research/team endpoints denied automated access.
-
-Primary route source: https://engineering.jhu.edu/ece/academics/undergraduate-studies/degree-options/study-focus-areas-for-undergraduates
-
-Full route sources, quotations and unavailable-source records: `college-dashboard/client/src/data/research_audit.json` → `schools.johns-hopkins`.
 
 ### University of Maryland, College Park
 
@@ -135,6 +121,22 @@ University admission precedes first-year major declaration. Required Unified Rob
 Primary route source: https://wpi.cleancatalog.net/robotics-engineering/robotics-engineering-major
 
 Full route sources, quotations and unavailable-source records: `college-dashboard/client/src/data/research_audit.json` → `schools.wpi`.
+
+### Rose-Hulman Institute of Technology
+
+Recommend Computer Engineering plus the Multidisciplinary Robotics minor; EE is the controls/sensing alternative. Inherited August 2026 evidence links embedded systems, ECE 320 controls, mobile robotics and multidisciplinary design. AI/vision elective access, capstone substitution, quarter-by-quarter course rotations and the current cohort plan need confirmation. No dedicated robotics BS is claimed. Current finances, scholarship amounts and application dates remain unknown; older November 1 EA and February 1 RD dates are reference only.
+
+Primary route source: https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/computer-engineering-bs/
+
+Source dates and outstanding checks: `college-dashboard/client/src/data/research_audit.json` → `schools.rose-hulman`.
+
+### University of Michigan-Dearborn
+
+Recommend the BSE Robotics Engineering. The inherited 125-semester-credit plan includes controls, embedded computing, manipulation, mobile robots, robot vision and ECE 4987/4988 capstone. ECE 434 ML and ECE 479 AI are departmental options whose applicability needs confirmation. Current major entry is unverified: historical university eligibility language does not prove guaranteed robotics admission. Housing, student origins and campus activity are unknown; the older commuter/quiet-campus claims were removed. No Ann Arbor resources or outcomes are transplanted to Dearborn.
+
+Primary route source: https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/
+
+Source dates and outstanding checks: `college-dashboard/client/src/data/research_audit.json` → `schools.michigan-dearborn`.
 
 ## Costs, aid and outcomes
 

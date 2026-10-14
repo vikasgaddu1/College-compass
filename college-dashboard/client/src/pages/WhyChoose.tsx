@@ -77,6 +77,7 @@ export default function WhyChoosePage() {
             <div className="serif text-[18px] font-semibold">Why to choose — the case for each school</div>
             <div className="text-[12.5px] text-[hsl(var(--muted-foreground))] max-w-2xl leading-relaxed">
               Every school on this list has at least one thing it does uniquely well. This page distills the sharpest reasons to pick each one — with the concrete fact behind each claim.
+              {" "}Fit ordering averages the documented dimensions; missing evidence is omitted, so partial ratings are less certain.
             </div>
           </div>
         </div>

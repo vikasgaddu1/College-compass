@@ -548,121 +548,6 @@
         "Early paid research eligibility was not freshly reverified; lab counts do not guarantee undergraduate access."
       ]
     },
-    "cornell": {
-      "recommended_degree": "BS Electrical and Computer Engineering (Cornell Engineering) + Robotics minor",
-      "recommended_route": "ece",
-      "sources": [
-        {
-          "url": "https://courses.cornell.edu/programs/electrical-computer-engineering-bs/",
-          "title": "Electrical and Computer Engineering (BS) | Cornell University",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "The Electrical and Computer Engineering program is accredited by the Engineering Accreditation Commission of ABET. The Electrical and Computer Engineering major (ECE), leading to a B.S. degree, provides a foundation that reflects the broad scope of this engineering discipline.\nConcentrations include computer architecture and organization, embedded systems; robotics; power systems and control; communications, networks, information theory and coding, signal processing and optimization; electronic circuits, VLSI, solid state physics and devices, MEMs, nanotechnology, lasers and optoelectronics; electromagnetics, radiophysics, space sciences, and plasmas.",
-            "At least C+ in: MATH 2930 or MATH 2940, PHYS 2213, and one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300.\nMust have a GPA ≥ 2.5 in (if completed): MATH 1920, MATH 2930, MATH 2940, PHYS 2213, ENGRD 2110, ECE 2400/ENGRD 2140, ECE 2300/ENGRD 2300, ECE 2100/ENGRD 2100, ECE 2720/ENGRD 2720.",
-            "Culminating Design Experience (CDE) Course\nSelect one of the following:\nECE 4530Analog Integrated Circuit Design4\nECE 4740Introduction to Digital (VLSI) Design4\nECE 4760Digital Systems Design Using Microcontrollers4\nECE 4670Digital Communication System Design4\nECE 4750Computer Architecture4 Course List\nCode Title Hours"
-          ]
-        },
-        {
-          "url": "https://www.duffield.cornell.edu/admissions/admissions-faqs/",
-          "title": "Frequently Asked Questions | Cornell Duffield Engineering",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "Do I have to apply to a particular major? If so, what if I change my mind later?\nNo, you do not apply to a particular major; you apply to the college.\nWhen you apply to Duffield Engineering, you can indicate an intended major if you wish.\nYou do not officially select your major until the second semester of your sophomore year.\nIt is not uncommon for students to change their minds about what area of engineering they’d like to specialize in."
-          ]
-        },
-        {
-          "url": "https://catalog.cornell.edu/programs/robotics-minor/",
-          "title": "Robotics (Minor) | Cornell University",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "Program Description\nThe robotics minor covers the fundamentals of designing, building and programming robots, and in addition requires students to dive deeper in a specific area of robotics.\nAll undergraduates, except those completing minors in Electrical and Computer Engineering (ECE), Mechanical Engineering (ME), or Computer Science (CS). Pre-approval of minor plan is required.\nAcademic Standards\nGrade Requirements\nEach course must be completed with a grade of C or better to count toward the minor.\nMinor Requirements\nSix distinct courses including at least three"
-          ]
-        },
-        {
-          "url": "https://www.duffield.cornell.edu/mae/degree/robotics-minor-requirements/",
-          "title": "Minor in Robotics | Sibley School of Mechanical and Aerospace Engineering | Cornell Duffield Engineering",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "All undergraduates, except those completing minors in Electrical and Computer Engineering, Mechanical Engineering, or Computer Science.\nStudents must earn a grade of C or better in each course in the minor.\nCourse Requirements\nSix distinct courses including:\nAt least three courses from Group A\nThree courses from a single category within Group B\nMechanical Engineering majors may not count MAE 3780 if it is used to satisfy the Mechanical Engineering circuits requirement\nStudents may petition to use one semester of independent research (minimum 3 credits of CS 4999 or ECE 4999 or INFO 4900 or MAE 4900) in lieu of one group B course. Such petitions must include a short description of the project and a note from the faculty advisor commenting on the robotics aspect of the project.",
-            "Group B: Intelligence",
-            "Group B: Modeling, Dynamics, and Control"
-          ]
-        },
-        {
-          "url": "https://catalog.cornell.edu/courses/ece/",
-          "title": "Electrical & Computer Engineering (ECE) | Cornell University",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "ECE 3140 - Embedded Systems (4 Credits)\nCrosslisted with CS 3420\nAn introduction to the design of embedded systems, with an emphasis on understanding the interaction between hardware, software, and the physical world. Topics covered include assembly language programming, interrupts, I/O, concurrency management, scheduling, resource management, and real-time constraints.\nPrerequisites: ECE 2300 or ENGRD 2300.\nEnrollment Information: Recommended prerequisites: ECE 2400 or ENGRD 2140.\nLast Four Terms Offered: Fall 2026, Spring 2026, Spring 2025, Spring 2024\nSchedule of Classes",
-            "ECE 3200 - Foundations Machine Learning (4 Credits)\nThis is an introductory course in machine learning (ML) that covers basic theory, algorithms, and applications. The class will develop a principled understanding of the various facets of ML and encompass fundamental (supervised and unsupervised) ML primitives that underpin modern technologies. Specifically, the learning theory content will cover the statistical learning paradigm, empirical risk minimization, generalization, bias-variance tradeoff, regularization, and validation. The supervised learning chapter will cover regression, the maximum likelihood principle, generalized linear models, support vector machines, and naïve Bayes. Unsupervised learning methods will include clustering, k-means, EM algorithm, factor analysis, and other dimensionality reduction techniques. The final few lectures will be devoted to large language models and the generative pre-trained transformer (GPT) architecture, as well as topics in ethics and fairness in machine learning. Our treatment of the material will start from theoretical principles, and build up towards implementation and applications dealing with text data, handwriting, music, images, etc. To that end, the course will incorporate a programming.\nPrerequisites: MATH 1910 and MATH 2940.\nForbidden Overlaps: CS 3780, CS 5780, ECE 3200, ECE 5420, ORIE 3741, ORIE 5741, STSCI 3740, STSCI 5740\nLast Four Terms Offered: Spring 2026, Spring 2025, Spring 2010\nSchedule of Classes",
-            "ECE 4160 - Fast Robots (4 Credits)\nCrosslisted with MAE 4190\nThe course focus is on systems level design and implementation of fast and dynamic autonomous robots. With the recent DIY movement, design of kinematic robots is largely becoming a software challenge. In dynamic robots, however, any latency or noise can be detrimental. We will design a fast autonomous car, explore dynamic behaviors, acting forces, sensors, and reactive control on an embedded processor, as well as the benefit of partial off-board computation. Students will learn how to derive design specifications from abstract problem descriptions and gain familiarity with rapid prototyping techniques, system debugging, system evaluation, and online dissemination of work.\nEnrollment Information: Enrollment limited to: Engineering juniors.\nLast Four Terms Offered: Spring 2026, Spring 2025, Spring 2024, Spring 2023\nLearning Outcomes:\nStudents will learn how to robustly integrate systems consisting of electronics, software, and mechanics operating in the real world.\nStudents will learn how to translate probabilistic control and planning methods to practical robots with hardware and processing constraints.\nStudents will learn how to disseminate their work to their peers and an engineering audience.\nStudents will learn how to predict the likely social and environmental effects of their design.\nSchedule of Classes"
-          ]
-        },
-        {
-          "url": "https://catalog.cornell.edu/courses/cs/",
-          "title": "Computer Science (CS) | Cornell University",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "CS 3700 - Foundations of AI Reasoning and Decision-Making (3 Credits)\nIntroduction to major topics in artificial intelligence, including heuristic search, game-playing, knowledge representation and reasoning, planning, probabilistic inference, sequential decision-making and reinforcement learning.\nPrerequisites: CS 2110 or ENGRD 2110; CS 2800; or permission of instructor.\nEnrollment Information: Enrollment limited to: Computer Science majors.\nDistribution Requirements: (SMR-AS)\nLast Four Terms Offered: Fall 2026, Spring 2026, Fall 2025, Spring 2025\nSchedule of Classes",
-            "CS 3780 - Introduction to Machine Learning (4 Credits)\nThe course provides an introduction to machine learning, focusing on supervised learning and its theoretical foundations. Topics include regularized linear models, boosting, kernels, deep networks, generative models, online learning, and ethical questions arising in ML applications.\nPrerequisites: STSCI 3080 or CS 2800 or ECON 3130 or ENGRD 2700 or MATH 4710; MATH 2210 or MATH 2310 or MATH 2940; MATH 1110 or MATH 1910; CS 2110.\nForbidden Overlaps: CS 3780, CS 5780, ECE 3200, ECE 5420, ORIE 3741, ORIE 5741, STSCI 3740, STSCI 5740\nEnrollment Information: Enrollment limited to: Computer Science majors.\nCourse Fee: Course Fee, $30.\nDistribution Requirements: (OPHLS-AG), (SDS-AS)\nLast Four Terms Offered: Fall 2026, Spring 2026, Fall 2025, Spring 2025\nSchedule of Classes",
-            "CS 4756 - Robot Learning (4 Credits)\nHow do we get robots out of the labs and into the real world with all it's complexities? Robots must solve two fundamental problems -- (1) Perception: Sense the world using different modalities and (2) Decision making: Act in the world by reasoning over decisions and their consequences. Machine learning promises to solve both problems in a scalable way using data. However, it has fallen short when it comes to robotics. This course dives deep into robot learning, looks at fundamental algorithms and challenges, and case-studies of real-world applications from self-driving to manipulation.\nPrerequisites: CS 2800; STSCI 3080 or ECON 3130 or MATH 4710 or ENGRD 2700; MATH 2940; MATH 1920; CS 2110.\nEnrollment Information: Enrollment limited to: Computer Science majors.\nLast Four Terms Offered: Spring 2026, Spring 2025, Fall 2024, Spring 2024\nLearning Outcomes:\nImitation and interactive no-regret learning that handle distribution shifts, exploration/exploitation.\nPractical reinforcement learning leveraging both model predictive control and model-free methods.\nLearning perception models using probabilistic inference and 2D/3D deep learning.\nFrontiers in learning from human feedback (RLHF), planning with LLMs, human motion forecasting and offline reinforcement learning.\nSchedule of Classes"
-          ]
-        },
-        {
-          "url": "https://catalog.cornell.edu/courses/mae/",
-          "title": "Mechanical & Aerospace Engineering (MAE) | Cornell University",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "MAE 3260 - System Dynamics (4 Credits)\nDynamic behavior of mechanical systems: modeling, analysis techniques, and applications; vibrations of single- and multidegree- of-freedom systems; feedback control systems. Computer simulation and experimental studies of vibration and control systems.\nPrerequisites: MATH 2930; MATH 2940; MAE 2030.\nEnrollment Information: Enrollment limited to: juniors and seniors.\nLast Four Terms Offered: Fall 2026, Fall 2025, Fall 2024, Fall 2023\nLearning Outcomes:\nStudent will be able to build an accurate dynamic model of a complex mechanical or electromechanical system by a divide-and-conquer approach that makes use of physics, constitutive laws, geometry, and whatever other information one may have about the system.\nStudents will be able to use linear and nonlinear system simulation and analysis tools to study transient and frequency response of systems.\nStudents will be able to use modern dynamics and control lab equipment to measure, record and analyze system response.\nStudents will be able to choose appropriate values for model parameters to meet passive or open-loop performance specifications on dynamic response.\nStudents will be able to design closed-loop feedback controllers to meet performance specifications on dynamic response.\nSchedule of Classes",
-            "MAE 4780 - Feedback Control Systems (4 Credits)\nThis course covers the analysis and design of linear feedback systems in both the frequency and time domains. The course includes a laboratory that examines modeling and control of representative dynamic processes. The frequency domain aspects are analyzed via Laplace transforms, transfer functions, root locus, and frequency response methods. The time domain aspects are analyzed via state space models, stability, controllability, observability, state feedback, and observers.\nPrerequisites: CHEME 3720 or MAE 3260.\nLast Four Terms Offered: Fall 2026, Fall 2025, Spring 2025, Fall 2023\nLearning Outcomes:\nStudents will be able to obtain the linearization of a non-linear system about an operating point.\nStudents will be able to construct a transfer function representation of a linear dynamical system.\nStudents will be able to manipulate block diagrams and transfer functions.\nStudents will be able to understand the relationship between a linear system and its frequency response, and know how to construct a Bode plot.\nStudents will be able to know how to design traditional controllers such as Proportional, Integral, Derivate (PID), and Lead-Lag.\nStudents will be able to understand the concepts of stability, including gain and phase margins and Nyquist stability condition.\nStudents will be able to design control systems in the frequency domain using state space and Bode/Nyquist techniques.\nStudents will be able to design control systems in the time domain using state space and Root Locus techniques.\nStudents will be able to analyze con",
-            "MAE 4320 - Integrated Micro Sensors and Actuators: Bridging the Physical and Digital Worlds (4 Credits)\nCrosslisted with ECE 4320\nIntroduction to micro and nano devices that allow the digital world to both sense and actuate in the physical world. Design and analysis of modern MEMS/NEMS (Micro/Nano Electromechanical Systems) touch, accelerometers, gyroscopes, pressure, microphones, neural probe sensors. Design and analysis of electrostatic, piezoelectric, thermal, and magnetic actuators for frequency control and micro robotic applications. This is an interdisciplinary course drawing from mechanics, materials, solid state devices, CMOS electronics, and micro and nano fabrication. The students design, fabricate, and test a microsensor chip to implement class concepts.\nPrerequisites: ECE 2100.\nLast Four Terms Offered: Spring 2026, Fall 2024, Spring 2023, Spring 2022\nLearning Outcomes:\nBe able to design and model a digital app-based electronic interface to integrated sensors.\nBe able to model spring-mass equivalent models of micro/nano fabricated structures, using analysis and finite-element analysis software.\nBe able to use individual fabrication steps into a device fabrication process flow.\nBe able to design and model electromechanical models of planar surface micromachined accelerometers and gyroscopes.\nBe able to design membrane based sensors and actuators such as pressure monitors and microphones.\nSchedule of Classes"
-          ]
-        },
-        {
-          "url": "https://classes.cornell.edu/browse/roster/FA26/class/ECE/4770",
-          "title": "Class Roster - Fall 2026 - ECE 4770",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "Foundations of Robotics\nCourse Description\nCourse information provided by the 2026-2027 Catalog.\nRobotics is interdisciplinary and draws inspiration from many different fields towards solving a variety of tasks in real-world environments using physical systems. This course is a challenging introduction to basic computational concepts used broadly in robotics. By the end of this course, students should have a fundamental understanding of how the different sub-fields of robotics such as kinematics, state-estimation, motion planning, and controls come together to develop intelligent behaviors in physical robotic systems. The mathematical basis of each area will be emphasized, and concepts will be motivated using common robotics applications. Students will be evaluated using a mixture of theoretical and programming exercises throughout the semester.\nPrerequisites CS 1112; CS 2110; CS 2800; MATH 1920; MATH 2940; or equivalents.\nDistribution Requirements (SMR-AS)"
-          ]
-        },
-        {
-          "url": "https://www.duffield.cornell.edu/student-project-teams/active-project-teams/",
-          "title": "Active Project Teams | Cornell Duffield Engineering",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "Explore Our Teams\nAguaClara Cornell\nCombat Robotics @ Cornell\nCornell AppDev\nCornell Assistive Technologies\nCornell Autonomous Sailboat Team\nCornell Baja Racing\nCornell University Biomedical Device\nCornell ChemE Car\nCornell Concrete Canoe\nCornell Custom Silicon Systems\nCornell Data Science\nCornell DEBUT\nCornell Digital Tech & Innovation\nCornell Design Build Fly\nCornell Electric Vehicles\nCornell Engineering World Health\nCornell University Extended Reality (CUXR)\nHack4Impact Cornell\nCornell Hyperloop\nCornell iGem\nCornell Mars Rover\nCornell Nexus\nCornell FSAE Racing\nCornell Rocketry\nCSalt\nCornell Seismic Design\nCornell Steel Bridge\nCornell University Autonomous Underwater Vehicle\nCornell University Unmanned Air Systems\nCornell AutoBoat\nCU Autonomous Drone"
-          ]
-        }
-      ],
-      "unresolved": [
-        "Fall 2027 curriculum, prerequisites, offerings, seat restrictions and cross-major enrollment must be confirmed from the 2027-28 catalog/roster once published.",
-        "Prerequisites marked null are unknown; do not display them as unrestricted access.",
-        "No research, team or makerspace slot is guaranteed by existence of a lab or program.",
-        "Resolve affiliation timing discrepancies (third semester vs second semester of sophomore year vs by start of fifth semester) against current authoritative policy.",
-        "Resolve CS 4700 vs CS 3700 current AI numbering and exact robotics-minor approved list; existing route and school data disagree.",
-        "Verify Robotics minor exclusion for students already completing CS/ECE/ME minors and precise specialization requirements.",
-        "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change."
-      ]
-    },
     "duke": {
       "recommended_degree": "BSE Electrical and Computer Engineering (Pratt) + Robotics & Automation certificate",
       "recommended_route": "ece",
@@ -765,90 +650,6 @@
         "Verify ECE 459, ECE 580/588, COMPSCI 527 and each special-topics course prerequisites, undergraduate enrollment and term offerings.",
         "Verify which certificate courses overlap with the ECE degree and whether Robot Studio is an ECE approved design elective.",
         "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change."
-      ]
-    },
-    "johns-hopkins": {
-      "recommended_degree": "BS Computer Engineering + optional Robotics study focus area + LCSR Robotics minor",
-      "recommended_route": "ece",
-      "sources": [
-        {
-          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/",
-          "title": "Electrical and Computer Engineering | Johns Hopkins University Academic Catalogue",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "EN.520.241. Introduction to Mechatronics: Sensing, Processing, Learning and Actuation. 3 Credits.\nIntroduction to Mechatronics is mostly hands-on, interdisciplinary design class consisting of lectures about key topics in mechatronics, and lab activities aimed at building basic professional competence. After completing the labs, the course will be focused on a final mini-project for the remainder of the semester. This course will encourage and emphasize active collaboration with classmates. Each team will plan. design, manufacture and/or build, test, and demonstrate a robotic system that meets the specified objectives.\nPrerequisite(s): Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter 458083 in the Search box to locate the appropriate module.;EN.520.230 AND EN.520.231\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)",
-            "EN.520.353. Control Systems. 4 Credits.\nModeling, analysis, and an introduction to design for feedback control systems. Topics include state space and transfer function representations, stability, controllability, observability, and state feedback control.\nPrerequisite(s): EN.520.214 OR EN.530.343 OR (EN.580.243 AND EN.580.246)\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)",
-            "EN.520.454. Control Systems Design. 3 Credits.\nClassical and modern control systems design methods. Topics include formulation of design specifications, classical design of compensators, state variable and observer based feedback. Computers are used extensively for design, and laboratory experiments are included.\nPrerequisite(s): (EN.553.291 OR EN.553.385 OR AS.110.201 or AS.110.212) AND EN.520.353\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)"
-          ]
-        },
-        {
-          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/mechanical-engineering/",
-          "title": "Mechanical Engineering | Johns Hopkins University Academic Catalogue",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "EN.530.420. Robot Sensors/Actuators. 4 Credits.\nIntroduction to modeling and use of actuators and sensors in mechatronic design. Topics include electric motors, solenoids, micro-actuators, position sensors, and proximity sensors.\nPrerequisite(s): Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter Laboratory Safety Introductory Course in the Search Box to access the proper course. Click here to access the Laboratory Safety Introductory Course;((AS.171.101 AND AS.171.102) OR (AS.171.107 AND AS.171.108) OR (AS.171.101 AND AS.171.108) OR (AS.171.107 AND AS.171.102) OR (EN.530.123 AND EN.530.124)) AND ((AS.110.106 OR AS.110.108) AND (AS.110.107 OR AS.110.109) AND (AS.110.202 OR AS.110.211) AND (EN.553.291 OR AS.110.302) AND ((EN.530.241 AND EN.530.243) OR (EN.520.230 AND EN.520.231)))\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)",
-            "EN.530.421. Mechatronics. 3 Credits.\nStudents from various engineering disciplines are divided into groups of two to three students. These groups each develop a microprocessor-controlled electromechanical device, such as a mobile robot. The devices compete against each other in a final design competition. Topics for competition vary from year to year. Class instruction includes fundamentals of mechanism kinematics, creativity in the design process, an overview of motors and sensors, and interfacing and programming microprocessors.\nPrerequisite(s): Students must have completed Lab Safety training prior to registering for this class. To access the tutorial, login to myLearning and enter ASEN in the Search Box to access the proper course. Click here to access the Laboratory Safety Introductory Course;EN.530.420 OR EN.520.240 OR EN.520.340 or permission of the instructor.\nDistribution Area: Engineering",
-            "EN.530.424. Dynamics of Robots and Spacecraft. 3 Credits.\nAn introduction to Lagrangian mechanics with application to robot and spacecraft dynamics and control. Topics include rigid body kinematics, efficient formulation of equations of motion, stability theory, and Hamilton's principle.\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)"
-          ]
-        },
-        {
-          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/computer-science/",
-          "title": "Computer Science | Johns Hopkins University Academic Catalogue",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "EN.601.461. Computer Vision. 3 Credits.\nThis course provides an overview of fundamental methods in computer vision from a computational perspective. Methods studied include: camera systems and their modelling, computation of 3-D geometry from binocular stereo, motion, and photometric stereo, and objectrecognition, image segmentation, and activity analysis. Elements of machine vision and biological vision are also included. The ePortfolio tag(s) on this course signify that there are one or more assignments offered in the course that provide students with the opportunity to be assessed for proficiency in completion of the relevant ePortfolio requirement(s).\nPrerequisite(s): Students may receive credit for only one of EN.601.461, EN.601.661.;(EN.553.310 OR EN.553.311 OR ((EN.553.420 OR EN.553.421) AND (EN.553.430 OR EN.553.431)) AND (AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295)) AND (EN.500.112 OR EN.500.113 OR EN.500.114 OR EN.601.220 AS.250.205)\nDistribution Area: Engineering, Quantitative and Mathematical Sciences\nAS Foundational Abilities: Science and Data (FA2)\nEN Foundational Abilities: Writing ePortfolio (FA1.1eP),\nOral Communication ePortfolio (FA1.2eP),\nConceiving of and Realizing Projects ePortfolio (FA6eP)",
-            "EN.601.463. Algorithms for Sensor-Based Robotics. 3 Credits.\nThis course surveys the development of robotic systems for navigating in an environment from an algorithmic perspective. It will cover basic kinematics, configuration space concepts, motion planning, and localization and mapping. It will describe these concepts in the context of the ROS software system, and will present examples relevant to mobile platforms, manipulation, robotics surgery, and human-machine systems.\nPrerequisite(s): Students may receive credit for only one of EN.601.463, EN.601.663.;(AS.110.201 OR AS.110.212 OR EN.553.291 OR EN.553.295) AND (AS.110.202 OR AS.110.211) AND EN.601.226 AND (EN.553.211 OR EN.553.310 OR EN.553.311 OR EN.553.420 OR EN.553.421)\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)",
-            "EN.601.464. Artificial Intelligence. 3 Credits.\nThe course situates the study of Artificial Intelligence (AI) first in the broader context of Cognitive Science (i.e., human intelligence) and then treats in-depth principles and methods for reasoning, planning, and learning, including both conventional methods and recent deep learning approaches. The class is recommended for all scientists and engineers with a genuine curiosity about how to build an AI system (in particular, an intelligent agent) that can learn, reason about, and interact with the world and other agents. Strong programming skills and a solid mathematical foundation are expected. Students will be asked to complete both programming assignments and writing assignments. Students can only receive credit for one of 601.464/664.\nPrerequisite(s): Students may receive credit for only one of EN.601.464, EN.601.664.;EN.601.226\nDistribution Area: Engineering\nAS Foundational Abilities: Science and Data (FA2)"
-          ]
-        },
-        {
-          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/robotics-computational-sensing/robotics-minor/",
-          "title": "Robotics, Minor | Johns Hopkins University Academic Catalogue",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "The faculty of the Laboratory for Computational Sensing and Robotics (LCSR), in collaboration with the academic departments and centers of the Whiting School of Engineering, offers a robotics minor in order to provide a structure in which undergraduate students at Johns Hopkins University can advance their knowledge in robotics while receiving recognition on their transcript for this pursuit. The minor is not “owned” by any one department, but rather it is managed by the LCSR itself. Any student from any department within the university can work toward the minor.\nRobotics is fundamentally integrative and multidisciplinary. Therefore, any candidate for the robotics minor must develop a set of core skills that cut across these disciplines, as well as obtain advanced supplementary skills. The required Core Skills include:\nRobot kinematics and dynamics (R)\nSystems theory, signal processing, and control (S)\nComputation and sensing (C)\nSupplementary advanced skills may be obtained in specialized applications, such as space, medicine, or marine systems; or in one of the three core skills listed above.\nPlease visit the program's website for current course listings and full minor policies. The Full Minor Course Listing section of the program's website outlines which courses fulfill each requirement. Please always check the website for the most up-to-date listing of courses. Note that all core areas must be covered, but that any advanced/supplementary courses can be chosen from the list, allowing students to balance breadth and depth in their studies.\nDeclaring the Minor\nStudents int"
-          ]
-        },
-        {
-          "url": "https://www.cs.jhu.edu/academic-programs/undergraduate-studies/undergraduate-academics/current-undergraduate-students/",
-          "title": "Resources for Undergrads - Department of Computer Science",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "Students interested in declaring a CS major or minor will need to:\nSubmit a major/minor change/declaration request form on SIS (“Registration” > “Online Forms” > “Add a Major or Minor”).\nIf you are changing your first major from KSAS to WSE, you will then need to meet with Engineering Advising to get a new academic advisor.\nComplete a 4-year plan to demonstrate how you will meet the requirements alongside any other majors/minors you have using one of the CS major or minor worksheets in the section above (Academic Resources, Worksheets, and Forms).\nMake an appointment with either Lyn Doan or Abigail Fanara to review your plan and get departmental approval.\nYour professional academic advisor will then need to provide the final approval step online. Contact them if there seems to be a delay after meeting with one of us.\nNOTE: CS 2nd major and minor declarations will not be approved during the month preceding course registration or during registration week.\nStay Connected"
-          ]
-        },
-        {
-          "url": "https://e-catalogue.jhu.edu/engineering/full-time-residential-programs/degree-programs/electrical-computer-engineering/computer-engineering-bachelor-science/computer-engineering-bachelor-science.pdf",
-          "title": "Computer Engineering, Bachelor of Science          1",
-          "status": "reviewed_official_source",
-          "retrieved_on": "2026-10-14",
-          "http_status": 200,
-          "quotations": [
-            "                                                                              REQUIREMENT\nECE Focus Areas for Undergraduate                                             All WSE primary majors are required to complete a First-Year Seminar\nStudies                                                                       (FYS) or a Design Cornerstone course with a grade of Satisfactory (S).\n\nECE Students have a lot of flexibility as it relates to their studies. They   The ﬁrst-year seminar requirement is waived for students who transfer\nhave the ability to craft a program that is as broad or as speciﬁc as they    into the university after the ﬁrst year. These students must still complete\nwish. Students who want to deepen their knowledge can do so in seven          the minimum number of required credits to graduate.\ndifferent areas of the discipline. They are:\n                                                                              Code               Title                                            Credits\n1. Computing Systems\n                                                                              One FYS or Design Cornerstone course                                     2-3\n2. Integrated Circuits and Microsystems\n                                                                              Total Credits                                                            2-3\n3. Machine Learning and Artiﬁcial Intelligence\n4. Medical Imaging                                                            FOUNDATIONAL ABILITIES REQUIREMENTS\n5. Photonics and Optoelectronics                  ",
-            "ECE CORE COURSES\n                                                                                   Code                Title                                           Credits\n   or EN.601.230 Mathematical Foundations for Computer Science\n                                                                                   EN.520.137          First Year ECE Design                                  4\nEN.553.311         Intermediate Probability and Statistics (FA2                4\n                   Requirement)                                                    EN.520.142          Digital Systems Fundamentals (FA6eP - project 1)       3\n   or EN.553.420 Probability                                                       EN.520.214          Signals and Systems                                    4\n   or EN.553.421 Honors Probability                                                EN.520.230          Mastering Electronics                                  3\n                                                                                   EN.520.231          Mastering Electronics Laboratory                       2\nTotal Credits                                                             24\n                                                                                   EN.520.498          Capstone Design Project l (FA5eP, FA6eP - project      3\n                                                                                                       2)\n\f4        Computer Engineering, Bachelor of Science\n\n\n\nEN.520.499          Capstone Design Project ll (FA1.1eP, FA1.2eP,          3    EN",
-            "The information below describes the academic requirements for students\n                                                                              entering JHU as degree-seeking students in Fall 2026. Students who\nThe Electrical and Computer Engineering (ECE) Department takes a              entered JHU as degree-seeking students prior to Fall 2026 should view the\nhuman-centric approach to research and education, with a focus on             appropriate archived catalogue (https://e-catalogue.jhu.edu/archive/).\napplications in speech processing, medical imaging, bio-photonics,\n                                                                              Students must meet the University requirements and the Whiting School\ncomputer-integrated surgery, renewable energy, human inspired\n                                                                              of Engineering requirements (see Requirements for a Bachelor's Degree\nelectronic systems for perception and cognition, and other cutting-edge\n                                                                              (https://e-catalogue.jhu.edu/ksas-wse/undergraduate-policies/academic-\ntechnologies that address real-world problems. Our courses cover wide-\n                                                                              policies/requirements-bachelors-degree/) in this catalogue), as well as\nranging topics in three broad areas: signal, systems, and control; electro-\n                                        "
-          ]
-        }
-      ],
-      "unresolved": [
-        "Fall 2027 curriculum, prerequisites, offerings, seat restrictions and cross-major enrollment must be confirmed from the 2027-28 catalog/roster once published.",
-        "Prerequisites marked null are unknown; do not display them as unrestricted access.",
-        "No research, team or makerspace slot is guaranteed by existence of a lab or program.",
-        "Verify whether optional study focus area appears on the transcript; do not describe it as a formal concentration credential without policy evidence.",
-        "Verify prerequisites of controls, perception, embedded AI, robot sensing/actuation and EN.601.463; current stored summaries omit them.",
-        "Fall 2027 requirements are not verified: available documents describe 2026-27/current or prior offerings. Future offerings, seat access and minor approval remain subject to change.",
-        "LCSR current course-to-minor-code list, REU eligibility/dates, lab-access policies, Robotics Club/Hopkinauts and current university-wide admissions policy remain unverified because their official pages returnedHTTP403.",
-        "2026-27 minor catalog expressly refers students to LCSR for the current approved course list; a plausible robotics course is not automatically approved in a minor category."
       ]
     },
     "georgia-tech": {
@@ -3135,6 +2936,724 @@
         "Lab-placement seats, prerequisites and application deadlines",
         "Major-specific admit rate; no causal ease claim justified"
       ]
+    },
+    "rose-hulman": {
+      "recommended_degree": "BS Computer Engineering + Multidisciplinary Minor in Robotics",
+      "recommended_route": "ece",
+      "reviewed_on": "2026-10-14",
+      "verification_status": "inherited_evidence_current_fetch_blocked",
+      "sources": [
+        {
+          "url": "https://www.rose-hulman.edu/academics/academic-affairs/irpa/reports/2025-26-Academic-Year-CDS.pdf",
+          "source_ids": [
+            "RHIT-S1"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+          "source_ids": [
+            "RHIT-S2",
+            "ROSE-HULMAN-E7"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16",
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/application-evaluation-criteria.html",
+          "source_ids": [
+            "RHIT-S3",
+            "ROSE-HULMAN-E8"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16",
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html",
+          "source_ids": [
+            "RHIT-S4"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/international-students.html",
+          "source_ids": [
+            "RHIT-S5"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-ranked-no-1-for-27th-consecutive-year-as-nations-best-undergraduate-engineering-college-in-u-s-news-and-world-report.html",
+          "source_ids": [
+            "RHIT-S6"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-launches-unified-computer-science-major-with-new-ai-cybersecurity-and-data-science-specializations.html",
+          "source_ids": [
+            "RHIT-S7"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/visit/preview-rose/seniors/admissions.html",
+          "source_ids": [
+            "RHIT-S8"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/educational-outreach/student-resources/first-robotics.html",
+          "source_ids": [
+            "RHIT-S9"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/financial-aid-basics/cost-and-financial-aid/index.html",
+          "source_ids": [
+            "RHIT-S10"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-16"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/academic-departments/electrical-computer-engineering/index.html",
+          "source_ids": [
+            "ROSE-HULMAN-E1"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/academic-departments/electrical-computer-engineering/majors-and-minors.html",
+          "source_ids": [
+            "ROSE-HULMAN-E2"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/electrical-engineering-bs/",
+          "source_ids": [
+            "ROSE-HULMAN-E3"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/computer-engineering-bs/",
+          "source_ids": [
+            "ROSE-HULMAN-E4"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/academic-affairs/irpa/accreditation/index.html",
+          "source_ids": [
+            "ROSE-HULMAN-E5"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/robotics/teams-and-minor.html",
+          "source_ids": [
+            "ROSE-HULMAN-E6",
+            "ROSE-R2"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18",
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/minors-certificates/multidiscpln-minor-robotics-minor/",
+          "source_ids": [
+            "ROSE-R1"
+          ],
+          "status": "blocked_by_environment_network_policy",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": 403,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/courses/ece/",
+          "source_ids": [
+            "ROSE-R3"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/courses/me/",
+          "source_ids": [
+            "ROSE-R4"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/BIC/teams-and-clubs.html",
+          "source_ids": [
+            "ROSE-R5"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/academic-departments/mechanical-engineering/index.html",
+          "source_ids": [
+            "ROSE-R6"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/news/2025/rose-hulman-team-makes-it-to-the-top-10-of-the-nasa-lunar-autonomy-challenge.html",
+          "source_ids": [
+            "ROSE-R7"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://rose-hulman.edu/class/csse/robotics/curriculum.htm",
+          "source_ids": [
+            "ROSE-R8"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/financial-aid/financial-aid-basics/financial-aid-faqs.html",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/computer-science-bs/",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/courses/csse/",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/minors-certificates/artificial-intelligence-minor/",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.rose-hulman.edu/catalog/graduate-programs-study/",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/academics/course-catalog/2024-2025/multidisciplinary-minors.pdf",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://www.rose-hulman.edu/campus-life/student-services/registrar/registration-services/change-of-major.html",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        }
+      ],
+      "unresolved": [
+        "Current course plan and AI elective applicability",
+        "Current application and major entry requirements",
+        "Current cost, scholarships and outcomes",
+        "Current housing and student-origin evidence"
+      ],
+      "corrections": [
+        "Recommend CE plus robotics minor rather than CS plus AI minor for balanced physical robotics.",
+        "Rose-Hulman has graduate programs; the inherited undergraduate-only/no-research assertion is unsupported.",
+        "Count cross-listed ME/CSSE 435 once and preserve quarter-credit units.",
+        "Do not assume robotics senior design is an additional capstone; inherited summaries differ on substitution.",
+        "FIRST scholarships are competitive and require confirmation; they are not automatic cost discounts."
+      ]
+    },
+    "michigan-dearborn": {
+      "recommended_degree": "Bachelor of Science in Engineering in Robotics Engineering",
+      "recommended_route": "bs_robotics",
+      "reviewed_on": "2026-10-14",
+      "verification_status": "inherited_evidence_current_fetch_blocked",
+      "sources": [
+        {
+          "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E1"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/academics/program/electrical-engineering-bse",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E2"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/academics/program/computer-engineering-bse",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E3"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/about-um-dearborn/accreditations",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E4"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E5",
+            "UMD-R1"
+          ],
+          "status": "blocked_by_environment_network_policy",
+          "historical_retrieval_dates": [
+            "2026-08-18",
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": 403,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/electrical-engineering/",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E6"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/coursesaz/ece/",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E7",
+            "UMD-R10"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18",
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/admissions/freshman-student-admission/",
+          "source_ids": [
+            "MICHIGAN-DEARBORN-E8"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-18"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/undergraduate-programs/bse-robotics-engineering",
+          "source_ids": [
+            "UMD-R2"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/laboratories",
+          "source_ids": [
+            "UMD-R3"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/departments/industrial-and-manufacturing-systems-engineering/laboratories",
+          "source_ids": [
+            "UMD-R4"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/research/institute-advanced-vehicle-systems",
+          "source_ids": [
+            "UMD-R5"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/life-cecs/laboratories-facilities",
+          "source_ids": [
+            "UMD-R6"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/mechatronics-robotics/",
+          "source_ids": [
+            "UMD-R7"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/departments/mechanical-engineering/undergraduate-programs/program-tracks-and-undergraduate",
+          "source_ids": [
+            "UMD-R8"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/departments/electrical-and-computer-engineering/undergraduate-programs/41-robotics-engineering",
+          "source_ids": [
+            "UMD-R9"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs/life-cecs/student-clubs-organizations",
+          "source_ids": [
+            "UMD-R11"
+          ],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [
+            "2026-08-17"
+          ],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/financial-aid/scholarships",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/admissions",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/sites/default/files/unmanaged/pdf/career-services/2023-24-post-graduation-outcomes.pdf",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/high-school-counselors/admissions-criteria",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/sites/default/files/unmanaged/pdf/ire/cds-2024-2025.pdf",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/cecs",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        },
+        {
+          "url": "https://umdearborn.edu/campus-life/housing",
+          "source_ids": [],
+          "status": "not_fetched",
+          "historical_retrieval_dates": [],
+          "freshly_retrieved": false,
+          "http_status": null,
+          "quotations": []
+        }
+      ],
+      "unresolved": [
+        "Current course plan and AI elective applicability",
+        "Current application and major entry requirements",
+        "Current cost, scholarships and outcomes",
+        "Current housing and student-origin evidence"
+      ],
+      "corrections": [
+        "Removed unsupported housing, student-origin and campus-activity assertions and their low social scores.",
+        "University-level GPA eligibility is not a verified robotics-major guarantee; all first-year direct-admit fields are unknown.",
+        "No residency or major admission advantage is inferred from student composition, institutional factors or aggregate rates.",
+        "Research-lab existence is separate from undergraduate course access and sponsored research placement.",
+        "Historical degree-specific accreditation and course evidence are labeled with their inherited dates; no October 2026 fresh verification is claimed.",
+        "Removed current cost, nonresident merit, graduation and placement claims lacking applicable-year or cohort/scope support."
+      ]
     }
-  }
+  },
+  "selection_note": "Selected 13 updated with Rose-Hulman and Michigan-Dearborn; their August 2026 inherited evidence was audited, not newly fetched. Removed-school source history remains in Git."
 }
