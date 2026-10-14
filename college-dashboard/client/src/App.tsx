@@ -1,4 +1,4 @@
-import { Switch, Route, Router } from "wouter";
+import { Switch, Route, Router, Redirect } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -27,7 +27,6 @@ import RoboticsRoutesPage from "@/pages/RoboticsRoutes";
 import VisitsPage from "@/pages/Visits";
 import OddsPage from "@/pages/Odds";
 import StrategyPage from "@/pages/Strategy";
-import SequencingPage from "@/pages/Sequencing";
 import CmuPlanPage from "@/pages/CmuPlan";
 import RoboticsDegreesPage from "@/pages/RoboticsDegrees";
 import RoboticsComparePage from "@/pages/RoboticsCompare";
@@ -60,7 +59,7 @@ function AppRouter() {
         <Route path="/visits" component={VisitsPage} />
         <Route path="/odds" component={OddsPage} />
         <Route path="/strategy" component={StrategyPage} />
-        <Route path="/sequencing" component={SequencingPage} />
+        <Route path="/sequencing"><Redirect to="/timeline" replace /></Route>
         <Route path="/cmu-plan" component={CmuPlanPage} />
         <Route path="/robotics-degrees" component={RoboticsDegreesPage} />
         <Route path="/robotics-compare" component={RoboticsComparePage} />

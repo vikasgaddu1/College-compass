@@ -6,6 +6,9 @@ paths=re.findall(r'<Route path="([^"]+)"', (repo/'client/src/App.tsx').read_text
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
  context=b.new_context(viewport={'width':1440,'height':1000})
+ # Older saved exclusions must not narrow the new 13-school default.
+ legacy_hidden=[s['slug'] for s in json.loads((repo/'client/src/data/schools.json').read_text())[:4]]
+ context.add_init_script('localStorage.setItem("cc_hidden_schools_v1",'+json.dumps(json.dumps(legacy_hidden))+');')
  page=context.new_page();errors=[];failed=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.on('requestfailed',lambda r:failed.append({'url':r.url,'failure':r.failure}))
@@ -41,8 +44,21 @@ with sync_playwright() as p:
  assert 'Applying ED1' in text and 'Applying EA2' in text
  assert len(json.loads((repo/'client/src/data/applications.json').read_text())['applications'])==13
  page.goto('http://127.0.0.1:5000/#/sequencing',wait_until='networkidle')
- expect(page.get_by_label('Show only my selected application plans')).to_be_checked()
- assert 'EA2' in page.locator('body').inner_text()
+ expect(page).to_have_url('http://127.0.0.1:5000/#/timeline')
+ expect(page.get_by_role('heading',name='Application timeline',exact=True)).to_be_visible()
+ expect(page.locator('a[href="#/sequencing"]')).to_have_count(0)
+ page.goto('http://127.0.0.1:5000/#/odds',wait_until='networkidle')
+ expect(page.locator('tbody tr')).to_have_count(13)
+ page.goto('http://127.0.0.1:5000/#/hidden',wait_until='networkidle')
+ page.get_by_title('Hide this school from every view',exact=True).first.click()
+ page.goto('http://127.0.0.1:5000/#/odds',wait_until='networkidle')
+ expect(page.locator('tbody tr')).to_have_count(12)
+ page.reload(wait_until='networkidle')
+ expect(page.locator('tbody tr')).to_have_count(12)
+ page.get_by_role('button',name='Restore all 1 hidden',exact=True).click()
+ expect(page.locator('tbody tr')).to_have_count(13)
+ page.reload(wait_until='networkidle')
+ expect(page.locator('tbody tr')).to_have_count(13)
  page.goto('http://127.0.0.1:5000/#/cmu-plan',wait_until='networkidle')
  assert '360' in page.locator('body').inner_text();assert 'Stats & ML core' not in page.locator('body').inner_text()
  page.goto('http://127.0.0.1:5000/#/outcomes',wait_until='networkidle')
@@ -58,7 +74,7 @@ with sync_playwright() as p:
  assert not errors,errors
  unexpected=[r for r in failed if not r['url'].startswith(('https://fonts.googleapis.com/','https://fonts.gstatic.com/'))]
  assert not unexpected,unexpected
- summary={'pages_rendered':len(result),'pages':result,'interactive_checks':['robotics filters4/9/13','AI elective/access notes','note persistence','selected13degreeexplorer','timeline multiple rounds','CMU360units','career statistic labels','scholarship deadlines/income','mobile robotics rendering'],'javascript_errors':errors,'external_font_failures':failed}
+ summary={'pages_rendered':len(result),'pages':result,'interactive_checks':['robotics filters4/9/13','AI elective/access notes','note persistence','selected13degreeexplorer','timeline multiple rounds','sequencing redirects to timeline','legacy hidden preferences reset','new hide and restore persist','CMU360units','career statistic labels','scholarship deadlines/income','mobile robotics rendering'],'javascript_errors':errors,'external_font_failures':failed}
  Path('/tmp/college-compass-browser-result.json').write_text(json.dumps(summary,indent=2))
  print(json.dumps(summary))
  b.close()
