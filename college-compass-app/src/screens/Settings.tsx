@@ -121,7 +121,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
                 </span>
               }
               label="Continue with ChatGPT"
-              hint={auth.configured() ? "Required for research and chat" : "Sign-in is being enabled for this app"}
+              hint={auth.configured() ? "Required for research and chat" : "Available in the iPhone app; web sign-in awaits OpenAI approval"}
               chevron
               onClick={() => navigate("/")}
               disabled={!auth.configured()}

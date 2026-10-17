@@ -3,7 +3,7 @@
  * Strategy:
  *   - cache-first (with background refresh) for the app shell and data/colleges.json
  *   - network-first (cache fallback) for everything else same-origin
- *   - never touches /functions/ (Supabase edge) or api.openai.com, or non-GET requests
+ *   - never touches /functions/ (Supabase edge), api.openai.com, callback.html (OAuth redirect), or non-GET requests
  */
 const VERSION = "v1";
 const CACHE = `cc2-${VERSION}`;
@@ -32,7 +32,12 @@ self.addEventListener("activate", (event) => {
 });
 
 function isShellRequest(req, url) {
-  if (req.mode === "navigate") return true;
+  // Only navigations to the app itself get the cached SPA shell. Other pages in scope
+  // (privacy.html, support.html) are separate documents and must not be replaced by index.html.
+  if (req.mode === "navigate") {
+    const root = new URL(SCOPE).pathname;
+    return url.pathname === root || url.pathname === root + "index.html";
+  }
   if (url.pathname.endsWith("/data/colleges.json")) return true;
   if (url.pathname.startsWith(new URL(SCOPE).pathname + "assets/")) return true; // hashed build assets
   return SHELL.some((p) => new URL(p, SCOPE).href === url.href);
@@ -73,5 +78,7 @@ self.addEventListener("fetch", (event) => {
   if (url.hostname === "api.openai.com") return;
   if (url.pathname.includes("/functions/")) return;
   if (url.origin !== self.location.origin) return;
+  // The OAuth redirect page carries a one-time code and must always run its own script.
+  if (url.pathname.endsWith("/callback.html")) return;
   event.respondWith(isShellRequest(req, url) ? cacheFirst(req) : networkFirst(req));
 });

@@ -1,0 +1,57 @@
+name: App end-to-end test
+
+# Runs the production web build of college-compass-app through the full flow
+# (ChatGPT sign-in, onboarding, planner, parallel research, ranking, detail, Ask)
+# with OpenAI's endpoints mocked in their documented wire formats.
+
+on:
+  push:
+    branches: [main, app-e2e]
+    paths:
+      - "college-compass-app/**"
+      - ".github/workflows/app-e2e.yml"
+  pull_request:
+    paths:
+      - "college-compass-app/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: college-compass-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: college-compass-app/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          npm ci
+          python -m pip install --upgrade pip
+          python -m pip install playwright cryptography
+          python -m playwright install --with-deps chromium
+      - name: Unit tests
+        run: npm test
+      - name: End-to-end flow
+        env:
+          E2E_OUT: ${{ runner.temp }}/e2e-screens
+        run: npm run e2e
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-screenshots
+          path: ${{ runner.temp }}/e2e-screens
+          retention-days: 7
+          if-no-files-found: ignore

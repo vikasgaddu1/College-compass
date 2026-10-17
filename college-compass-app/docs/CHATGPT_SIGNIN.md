@@ -253,3 +253,14 @@ the build.**
   is a planned follow-up.
 - **Research accuracy:** the AI can be wrong. Every college shows its data year, sources, confidence
   and notes, and the prompts forbid inventing figures (null plus a note instead).
+
+## 8. End-to-end test (no OpenAI access needed)
+
+`npm run e2e` builds the production web bundle with a test client ID, serves it with `vite preview`
+and runs `e2e/full-flow.py` (Python Playwright, Chromium, iPhone 13 viewport). It mocks the authorize,
+token and JWKS endpoints and `/v1/models` + `/v1/responses` at the network layer in the formats above
+(302 redirect with code + state, PKCE S256 check, an RS256 ID token signed with a per-run key, SSE
+function-call and text streams), then drives sign-in → all onboarding questions → planner → parallel
+research agents (≤ 3 colleges per call, ≤ 4 in flight, overlap measured) → list → detail → Ask →
+reload. Sign-in runs with the service worker already in control, which guards the redirect page
+(`callback.html`) against being replaced by the cached app shell. Details: `e2e/README.md`.

@@ -11,7 +11,8 @@
     "typecheck": "tsc -b --noEmit",
     "build:ios": "tsc -b && BUILD_TARGET=ios vite build",
     "cap:sync": "npm run build:ios && npx cap sync ios",
-    "cap:open": "npx cap open ios"
+    "cap:open": "npx cap open ios",
+    "e2e": "bash e2e/run.sh"
   },
   "dependencies": {
     "@capacitor/app": "^6.0.3",
