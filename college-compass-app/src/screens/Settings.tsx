@@ -5,7 +5,7 @@ import { MANAGE_USAGE_URL, auth, describeError, devKey as readDevKey, setDevApiK
 import { TIERS, majorLabel, stateName } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
 import { ConfirmSheet, Sheet } from "@/components/Sheet";
-import { Banner, Button, Group, Row } from "@/components/ui";
+import { Banner, Button, Group, Row, Segmented } from "@/components/ui";
 import { IconCheck, IconChat, IconExternal, IconPerson } from "@/components/icons";
 
 const APP_VERSION = "0.1.0";
@@ -151,6 +151,16 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
               chevron
               onClick={() => navigate("/onboarding/1")}
             />
+            <div className="px-4 py-3">
+              <div className="text-[15px] mb-2">Colleges per research run</div>
+              <Segmented
+                label="Colleges per research run"
+                value={String(prefs.researchCount ?? 12) as "6" | "12" | "18"}
+                options={[{ id: "6", label: "6 · quick" }, { id: "12", label: "12" }, { id: "18", label: "18" }]}
+                onChange={(v) => setPrefs({ researchCount: Number(v) as 6 | 12 | 18 })}
+              />
+              <div className="text-[13px] text-[color:var(--text-muted)] mt-2">More colleges take longer and use more of your ChatGPT plan.</div>
+            </div>
             <Row label="Re-run research" hint={prefs.researchedAt ? `Last run ${new Date(prefs.researchedAt).toLocaleDateString()} · ${colleges.length} colleges` : "Not run yet"} chevron onClick={() => navigate("/research")} disabled={!connected && !demo} />
           </>
         ) : (

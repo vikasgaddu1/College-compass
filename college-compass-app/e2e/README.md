@@ -28,7 +28,7 @@ schemas). Install missing packages with `pip install --break-system-packages cry
    4.35, SAT 1420, rigor, activities, Nursing + Public health, "pediatrics", $30k budget + $75k–$110k
    income, South/Mid-Atlantic, large, suburb, either, EA only, not first-gen, priority sliders via
    keyboard, "University of North Carolina at Chapel Hill") and checks the saved profile.
-3. **Research.** Planner (1 call) → 13 colleges → research agents in batches of 3 with 4 in flight;
+3. **Research.** Planner (1 call) → 12 colleges (the default research size) → research agents in batches of 3 with 4 in flight;
    each research response is held for `E2E_RESEARCH_DELAY` (1.5 s) so overlap is measurable.
 4. **List.** Tier sections, an odds band (`NN–NN%`) on every card, the student's own pick present.
 5. **Detail.** "You vs. them", the odds-factor breakdown, plans & deadlines, the nursing program.

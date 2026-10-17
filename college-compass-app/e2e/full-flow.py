@@ -384,8 +384,8 @@ class MockOpenAI:
             self.check(body.get("tool_choice") == "required", f"planner tool_choice={body.get('tool_choice')}")
             self.check(WANTED in user_text, "planner input should list the student's own pick")
             m = re.search(r"Propose exactly (\d+) additional", user_text)
-            self.check(bool(m) and int(m.group(1)) == 14, "planner should be asked to top 1 pick up to 15")
-            args = {"candidates": [{"name": FIXTURES[i]["name"], "state": FIXTURES[i]["state"], "why": why, "expected_tier": tier} for i, tier, why in PLANNED]}
+            self.check(bool(m) and int(m.group(1)) == 11, "planner should be asked to top 1 pick up to the default 12")
+            args = {"candidates": [{"name": FIXTURES[i]["name"], "state": FIXTURES[i]["state"], "why": why, "expected_tier": tier} for i, tier, why in PLANNED[: int(m.group(1)) if m else len(PLANNED)]]}
             self.validate(fns, "propose_colleges", args)
             self.planner_calls.append({"start": t_start - self.t0, "count": len(args["candidates"])})
             await self.send(route, function_call_events("propose_colleges", namespace, args, body["model"], self))
@@ -665,12 +665,12 @@ class Flow:
         await self.shot("research-in-progress")
         await expect(page.get_by_text("Research complete")).to_be_visible(timeout=60_000)
         self.ok()
-        total = 1 + len(PLANNED)
+        total = 1 + min(len(PLANNED), 11)  # default research size is 12 (1 wanted + 11 planned)
         await expect(page.get_by_text(f"{total} of {total} colleges researched.")).to_be_visible()
         await expect(page.get_by_text(f"{total} candidates chosen")).to_be_visible()
         await expect(page.get_by_text("Couldn't research")).to_have_count(0)
         lanes = page.locator(".cc-card", has=page.get_by_text(re.compile(r"^Agent \d+$")))
-        await expect(lanes).to_have_count(5)
+        await expect(lanes).to_have_count(-(-total // 3))  # one lane per batch of 3
         await self.shot("research-complete")
         await page.get_by_role("button", name="See my list").click()
 
@@ -777,7 +777,7 @@ async def main() -> int:
             assert len(mock.planner_calls) == 1, f"planner calls: {len(mock.planner_calls)}"
             assert all("end" in c for c in rc), "a research call never finished"
             researched = [n for c in rc for n in c["names"]]
-            expected = [WANTED] + [FIXTURES[i]["name"] for i, _, _ in PLANNED]
+            expected = [WANTED] + [FIXTURES[i]["name"] for i, _, _ in PLANNED[:11]]
             assert sorted(researched) == sorted(expected), f"researched {researched}"
             assert all(len(c["names"]) <= 3 for c in rc), "a research call carried more than 3 colleges"
             overlaps = sum(1 for i, a in enumerate(rc) for b in rc[i + 1:] if a["start"] < b["end"] and b["start"] < a["end"])
