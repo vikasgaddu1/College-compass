@@ -40,6 +40,20 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
     private var delivered = false
     private var pendingStart: CAPPluginCall?
     private var connections: [ObjectIdentifier: NWConnection] = [:]
+    /// CI self-test: listen without a JS call and log events (launch argument `-ccLoopbackSelfTest`).
+    private var selfTest = false
+
+    /// Starts the listener without a JS caller and logs `CC_LOOPBACK ...` lines. Used only by the
+    /// iOS Simulator smoke test in CI to prove the 127.0.0.1 callback works inside a real iOS runtime.
+    func startSelfTest() {
+        queue.async {
+            self.teardown(rejectPendingWith: "Superseded by a new sign-in.")
+            self.generation += 1
+            self.delivered = false
+            self.selfTest = true
+            self.listen(ports: [Self.defaultPort, 0], generation: self.generation)
+        }
+    }
 
     // MARK: - Plugin methods
 
@@ -70,10 +84,12 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
     // MARK: - Listener
 
     private func listen(ports: [UInt16], generation gen: Int) {
-        guard gen == generation, let call = pendingStart else { return }
+        guard gen == generation, pendingStart != nil || selfTest else { return }
+        let call = pendingStart
         guard let requested = ports.first else {
             pendingStart = nil
-            call.reject("Couldn't open a local port for ChatGPT sign-in.")
+            call?.reject("Couldn't open a local port for ChatGPT sign-in.")
+            if selfTest { NSLog("CC_LOOPBACK failed") }
             return
         }
         let remaining = Array(ports.dropFirst())
@@ -99,10 +115,11 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
             case .ready:
                 guard !attempt.settled else { return }
                 attempt.settled = true
-                guard gen == self.generation, let call = self.pendingStart else {
+                guard gen == self.generation, self.pendingStart != nil || self.selfTest else {
                     newListener?.cancel()
                     return
                 }
+                let call = self.pendingStart
                 let actual = newListener?.port?.rawValue ?? requested
                 guard actual != 0 else {
                     newListener?.cancel()
@@ -112,7 +129,8 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
                 }
                 self.port = actual
                 self.pendingStart = nil
-                call.resolve(["port": Int(actual)])
+                call?.resolve(["port": Int(actual)])
+                if self.selfTest { NSLog("CC_LOOPBACK ready port=%d", Int(actual)) }
             case .failed, .waiting:
                 // Port in use / not available: try the next candidate (only before ready).
                 newListener?.cancel()
@@ -232,6 +250,7 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
         if shouldNotify { delivered = true } // single callback, even if the page is reloaded
         respond(on: connection, status: "200 OK", contentType: "text/html; charset=utf-8", body: Self.successPage) { [weak self] in
             guard shouldNotify, let self = self else { return }
+            if self.selfTest { NSLog("CC_LOOPBACK callback %@", url) }
             self.notifyListeners("callback", data: ["url": url])
         }
     }
