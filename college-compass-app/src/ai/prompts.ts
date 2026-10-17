@@ -28,6 +28,7 @@ void _majorsExhaustive;
 export const TIERS = ["high_reach", "reach", "target", "likely", "safety"] as const satisfies readonly Tier[];
 export const PLAN_KINDS = ["ED", "ED2", "EA", "REA", "RD", "Rolling", "Priority"] as const;
 export const TEST_POLICIES = ["required", "optional", "blind", "considered", "unknown"] as const;
+export const COA_BASES = ["out_of_state", "in_state", "same", "unknown"] as const;
 export const LOCALES = ["city", "suburb", "town", "rural"] as const;
 export const OWNERSHIPS = ["public", "private_nonprofit"] as const;
 export const CONFIDENCE = ["high", "medium", "low"] as const;
@@ -238,7 +239,8 @@ const collegeSchema = obj({
   test_policy: enm(TEST_POLICIES, "Policy for the student's entry cycle: required / optional / blind (not considered) / considered (used if sent, e.g. some publics) / unknown."),
   tuition_in_state: nint("Annual tuition + required fees, in-state (privates: same as out-of-state)."),
   tuition_out_of_state: nint("Annual tuition + required fees, out-of-state."),
-  cost_of_attendance: nint("Published total cost of attendance for an on-campus first-year (out-of-state for publics)."),
+  cost_of_attendance: nint("Published total cost of attendance for an on-campus first-year. For public colleges prefer the OUT-of-state budget, and always fill tuition_in_state and tuition_out_of_state so the app can derive the other one."),
+  cost_of_attendance_basis: enm(COA_BASES, "Which budget cost_of_attendance is: out_of_state, in_state, or same (privates: one price for everyone). unknown if the source doesn't say."),
   avg_net_price: nint("Average annual net price after grants (College Scorecard / IPEDS)."),
   net_price_by_income: incomeSchema,
   grad_rate_6yr: nnum("Six-year graduation rate 0–1."),

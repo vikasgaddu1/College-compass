@@ -109,7 +109,7 @@ def college(name, short, city, state, ownership, locale, url, lat, lon, size, ad
         "sat_25": sat[0] if sat else None, "sat_75": sat[1] if sat else None,
         "act_25": act[0] if act else None, "act_75": act[1] if act else None,
         "test_policy": test_policy, "tuition_in_state": t_in, "tuition_out_of_state": t_out,
-        "cost_of_attendance": coa, "avg_net_price": avg_net,
+        "cost_of_attendance": coa, "cost_of_attendance_basis": "out_of_state" if ownership == "public" else "same", "avg_net_price": avg_net,
         "net_price_by_income": dict(zip(["0_30k", "30_48k", "48_75k", "75_110k", "110k_plus"],
                                         [int(round(avg_net * f, -2)) for f in nbi_f])),
         "grad_rate_6yr": grad, "retention_rate": ret, "median_earnings_10yr": earn,

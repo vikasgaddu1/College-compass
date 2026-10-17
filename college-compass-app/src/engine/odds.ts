@@ -18,6 +18,12 @@ import { majorLabel } from "./labels";
 
 /** Admit rate assumed when research found none (typical US four-year college). */
 export const DEFAULT_ADMIT_RATE = 0.65;
+/**
+ * Without a researched admit rate we can't tell a 10% school from a 90% one, so the estimate is
+ * capped here: never shown as "likely" or "safety" on a guessed starting point. (Seen in a real run:
+ * UNC Chapel Hill's CDS tables didn't extract and the uncapped estimate read "likely 61–92%".)
+ */
+export const UNKNOWN_ADMIT_P_CAP = 0.5;
 /** Final probability clamp. Nobody is ever shown 0% or 100%. */
 export const P_MIN = 0.01;
 export const P_MAX = 0.95;
@@ -208,7 +214,7 @@ export function estimateOdds(college: College, profile: StudentProfile): OddsRes
   factors.push({
     label:
       base.source === "default"
-        ? "We couldn't find their admit rate, so we started from a typical college (about 65%)"
+        ? "We couldn't find their admit rate, so this is only a rough guess (capped at 50%)"
         : `Starting point: they admit about ${fmtPct(admit)} of applicants`,
     effect: "neutral",
     logit_delta: r2(L),
@@ -400,12 +406,15 @@ export function estimateOdds(college: College, profile: StudentProfile): OddsRes
     cap01 = Math.min(P_MAX, ULTRA_SELECTIVE_MULTIPLIER * admit);
     caveats.push("Very selective — even top applicants are usually turned down, so treat this as a reach for anyone.");
   }
+  if (base.source === "default") cap01 = Math.min(cap01, UNKNOWN_ADMIT_P_CAP);
   const capP = (x: number) => clamp(x, P_MIN, Math.max(P_MIN, cap01));
   const p = capP(sigmoid(L));
 
   const confidence: OddsResult["confidence"] = forceLow ? "low" : conf >= CONF_HIGH_MIN ? "high" : conf >= CONF_MEDIUM_MIN ? "medium" : "low";
   const hw = BAND_HALF_WIDTH[confidence];
-  const low = Math.min(p, capP(sigmoid(L - hw)));
+  let low = Math.min(p, capP(sigmoid(L - hw)));
+  // A guessed starting point can be far off in either direction: keep the band honestly wide.
+  if (base.source === "default") low = Math.min(low, TIER_CUTS.reach);
   const high = Math.max(p, capP(sigmoid(L + hw)));
 
   let tier: Tier = ultra ? "high_reach" : tierFromP(p);

@@ -33,3 +33,52 @@ describe("estimateNetPrice", () => {
     expect(estimateNetPrice(broken, baseProfile()).value).toBe(20000);
   });
 });
+
+describe("in-state student, published out-of-state budget (real-run regression)", () => {
+  // East Carolina University as researched live: COA is the nonresident budget.
+  const ecu = blankCollege({ name: "East Carolina University", state: "NC", ownership: "public", cost_of_attendance: 42850, tuition_in_state: 7789, tuition_out_of_state: 24555 });
+
+  it("takes the tuition difference back off for an NC resident", () => {
+    const r = estimateNetPrice(ecu, baseProfile({ home_state: "NC" }));
+    expect(r.value).toBe(26100);
+    expect(r.note).toMatch(/in-state estimate/);
+  });
+
+  it("leaves the out-of-state student at the published budget", () => {
+    const r = estimateNetPrice(ecu, baseProfile({ home_state: "VA" }));
+    expect(r.value).toBe(42900);
+  });
+
+  it("flags it when in-state tuition is unknown", () => {
+    const unc = blankCollege({ state: "NC", ownership: "public", cost_of_attendance: 70264, tuition_in_state: null, tuition_out_of_state: 49602 });
+    const r = estimateNetPrice(unc, baseProfile({ home_state: "NC" }));
+    expect(r.value).toBe(70300);
+    expect(r.note).toMatch(/looks out-of-state/);
+  });
+
+  it("does not touch a COA that already looks in-state", () => {
+    const c = blankCollege({ state: "NC", ownership: "public", cost_of_attendance: 26000, tuition_in_state: 7789, tuition_out_of_state: 24555 });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(26000);
+  });
+});
+
+describe("explicit cost_of_attendance_basis (no threshold guessing)", () => {
+  // Out-of-state budget with low living costs: below the $12k fallback margin.
+  const cheap = { state: "NC", ownership: "public" as const, cost_of_attendance: 30000, tuition_in_state: 8000, tuition_out_of_state: 22000 };
+
+  it("in-state student: removes the tuition difference when the basis says out_of_state", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "out_of_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(16000);
+  });
+
+  it("out-of-state student: does not add the difference twice when the basis says out_of_state", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "out_of_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "VA" })).value).toBe(30000);
+  });
+
+  it("in_state basis: in-state student pays it as is, out-of-state adds the difference", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "in_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(30000);
+    expect(estimateNetPrice(c, baseProfile({ home_state: "VA" })).value).toBe(44000);
+  });
+});
