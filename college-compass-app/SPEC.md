@@ -27,7 +27,13 @@ college-compass-app/
 ## Stack
 Vite 5 + React 18 + TS strict + Tailwind 3, hand-built components, vitest, hash routing (`src/lib/router.ts`), PWA. `App` is a **named export** from `src/app/App.tsx`. `npm run build` type-checks all of `src/**`.
 
-## Sign in with ChatGPT (browser-only, no database)
+## Sign in with ChatGPT (no database)
+
+Two modes:
+- **iOS app — self-serve open-source path (works today, no OpenAI approval):** `client_id=dynamic_agent_client` + `agent_name_hint=College Compass` + a per-device `ext_agent_host_id` (urn:uuid) on first sign-in; OpenAI returns the issued `client_id` (oaiapp_…) with the code, which the app saves and reuses. Redirect is an HTTP loopback `http://127.0.0.1:<port>/auth/callback` served by the in-app `LoopbackAuth` Capacitor plugin (NWListener bound to 127.0.0.1, port 1455 preferred). Verified: OpenAI's authorize page accepts these parameters ("Use ChatGPT to sign in to College Compass"); CI launches the app in the iOS Simulator and checks the callback listener. ChatGPT Plus/Pro is required for plan usage.
+- **Web/PWA — partner path:** needs a client ID from OpenAI's interest form (below).
+
+### Partner path details
 - OIDC Authorization Code + PKCE (S256) + state + nonce, generated in the browser (Web Crypto), kept in `localStorage` (`cc2:oauth_pending`, 10-minute expiry) until the callback — sessionStorage does not survive the hand-off back from SFSafariViewController.
 - Endpoints: authorize `https://auth.openai.com/api/accounts/authorize`, token `https://auth.openai.com/api/accounts/oauth/token`, JWKS `https://auth.openai.com/.well-known/jwks.json`, issuer `https://auth.openai.com`.
 - Scopes: `openid profile email offline_access resource.invoke chatgpt.tokens.use.direct`, `resource=https://api.openai.com/v1`.

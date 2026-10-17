@@ -5,7 +5,7 @@ name: iOS app (Capacitor)
 
 on:
   push:
-    branches: [app-v2, main, app-oss-signin]
+    branches: [app-v2, main]
     paths:
       - "college-compass-app/**"
       - ".github/workflows/ios.yml"
