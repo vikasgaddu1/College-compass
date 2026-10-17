@@ -111,7 +111,7 @@ export interface AuthDeps {
 
 const defaultDeps = (): AuthDeps => ({
   platform,
-  fetch: (...a) => globalThis.fetch(...a),
+  fetch: (...a) => platform.httpFetch(...a),
   now: () => Date.now(),
   clientId,
   tokenRelay,

@@ -10,6 +10,7 @@
  * dropped, retried once and remembered for a week on this device.
  */
 import { load, remove, save } from "../lib/storage";
+import { httpFetch, isNative } from "../platform";
 import { AiError, type AiCallResult, type AiClient, type AiConnection, type AiFunctionTool } from "../types";
 import { auth as authSingleton, type ChatGPTAuth } from "./auth";
 import { DEV_DEFAULT_MODEL, KEYS, MANAGE_USAGE_URL, RESPONSES_URL } from "./config";
@@ -157,6 +158,11 @@ function stripNamespace(name: string): string {
   return i >= 0 ? name.slice(i + 1) : name;
 }
 
+/** api.openai.com blocks browser (CORS) calls made with ChatGPT tokens; only the app can make them. */
+function webPlanError(): AiCallError {
+  return new AiCallError("unsupported", "OpenAI only accepts ChatGPT-plan requests from the College Compass iPhone app, not from a web page. Open the app to run research, or try the demo here.");
+}
+
 // ───────────────────────────── client ─────────────────────────────
 
 export interface CompassAiClient extends AiClient {
@@ -170,7 +176,7 @@ export interface CompassAiClient extends AiClient {
 
 export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps> = {}): CompassAiClient {
   const d: ClientDeps = {
-    fetch: (...a) => globalThis.fetch(...a),
+    fetch: (...a) => httpFetch(...a),
     now: () => Date.now(),
     sleep: defaultSleep,
     devKey: getDevApiKey,
@@ -285,7 +291,14 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
     const conn = resolve();
     const signal = o.signal;
     if (signal?.aborted) throw abortError(signal);
-    const model = o.model || (await defaultModel());
+    let model: string;
+    try {
+      model = o.model || (await defaultModel());
+    } catch (e) {
+      // Model discovery (GET /v1/models) is CORS-blocked the same way on the web, and it runs first.
+      if (conn.kind === "chatgpt" && !isNative() && (e as { code?: string })?.code === "network") throw webPlanError();
+      throw e;
+    }
     const caps = capsFor(conn.kind);
     const startMode: ToolMode = caps.tool_mode ?? (conn.kind === "chatgpt" ? "namespace" : "flat");
     let refreshed = false;
@@ -309,6 +322,10 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
         });
       } catch {
         if (signal?.aborted) throw abortError(signal);
+        if (conn.kind === "chatgpt" && !isNative()) {
+          // api.openai.com blocks browser (CORS) calls made with ChatGPT tokens; only the app can make them.
+          throw webPlanError();
+        }
         throw new AiCallError("network", "Couldn't reach OpenAI. Check your connection and try again.");
       }
 

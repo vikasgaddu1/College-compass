@@ -85,7 +85,7 @@ jobs:
 
       # Boots a simulator and proves the self-serve ChatGPT sign-in callback works inside a real
       # iOS runtime: the app (launched with -ccLoopbackSelfTest) must answer on 127.0.0.1:1455.
-      - name: Simulator smoke test (127.0.0.1 sign-in callback)
+      - name: Simulator smoke test (127.0.0.1 sign-in callback + native OpenAI HTTP)
         run: |
           set -euo pipefail
           APP="$RUNNER_TEMP/DerivedData/Build/Products/Debug-iphonesimulator/App.app"
@@ -94,7 +94,7 @@ jobs:
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
           xcrun simctl install "$UDID" "$APP"
-          xcrun simctl launch "$UDID" "$BUNDLE_ID" -ccLoopbackSelfTest
+          xcrun simctl launch "$UDID" "$BUNDLE_ID" -ccLoopbackSelfTest -ccNativeHttpSelfTest
           status=000
           for i in $(seq 1 45); do
             status=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:1455/ || true)
@@ -107,6 +107,14 @@ jobs:
           echo "GET /auth/callback -> $code"
           test "$code" = "200"
           grep -q "Signed in to College Compass" "$RUNNER_TEMP/body.html"
+          # Native HTTP (OpenAI calls bypass WebView CORS): unauthenticated GET /v1/models must come
+          # back 401 from api.openai.com, and a cancelled request must abort.
+          DATA=$(xcrun simctl get_app_container "$UDID" "$BUNDLE_ID" data)
+          OUT="$DATA/Documents/cc_nativehttp_selftest.txt"
+          for i in $(seq 1 45); do [ -s "$OUT" ] && break; sleep 2; done
+          cat "$OUT"
+          grep -qx "status=401" "$OUT"
+          grep -qx "cancel=ABORTED" "$OUT"
           xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK"' || true
           xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
 
