@@ -205,7 +205,7 @@ export function Research() {
       : status === "researching"
         ? demo
           ? "Demo mode: loading sample research."
-          : "Agents are reading each college's Common Data Set, costs and deadlines. This usually takes 3–5 minutes."
+          : "Agents are reading each college's Common Data Set, costs and deadlines. This usually takes 2–4 minutes."
         : `${done.length} of ${total} colleges researched${failures.length ? `, ${failures.length} failed` : ""}.`;
 
   return (

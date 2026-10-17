@@ -670,7 +670,7 @@ class Flow:
         await expect(page.get_by_text(f"{total} colleges picked")).to_be_visible()
         await expect(page.get_by_text("Couldn't research")).to_have_count(0)
         lanes = page.locator("[data-lane]", has=page.get_by_text(re.compile(r"^Agent \d+$")))
-        await expect(lanes).to_have_count(-(-total // 2))  # one lane per batch of 2
+        await expect(lanes).to_have_count(total)  # one agent (lane) per college
         await self.shot("research-complete")
         await page.get_by_role("button", name="See my list").click()
 
@@ -783,7 +783,7 @@ async def main() -> int:
             overlaps = sum(1 for i, a in enumerate(rc) for b in rc[i + 1:] if a["start"] < b["end"] and b["start"] < a["end"])
             peak = concurrency(rc)
             assert overlaps >= 1, "research calls never overlapped"
-            assert 2 <= peak <= 8, f"peak research calls in flight = {peak} (expected 2–8)"
+            assert 2 <= peak <= 12, f"peak research calls in flight = {peak} (expected 2–12)"
             assert planner_before_research(mock), "research started before the planner finished"
             assert len(mock.chat_calls) == 1
             status = 0

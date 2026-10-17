@@ -9,8 +9,8 @@ import { IconBell, IconCheck, IconClose, IconWarning } from "./icons";
 
 export type ResearchPhase = "planning" | "researching" | "done" | "stopped";
 
-/** A full run (planner + agents) usually lands around four minutes. */
-export const EXPECTED_RUN_MS = 4 * 60_000;
+/** A full run (planner + agents in one wave) took about three minutes in live runs. */
+export const EXPECTED_RUN_MS = 3 * 60_000;
 /** The planner alone is about half a minute. */
 export const EXPECTED_PLAN_MS = 30_000;
 

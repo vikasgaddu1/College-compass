@@ -2,7 +2,7 @@
  * Research orchestration: plan (if needed) → research in parallel batches → resolve all.
  *
  * - Planner tops the student's own picks up to `target_count` (default 15).
- * - Batches of `batch_size` (default 2) colleges per agent call, `concurrency` (default 8) in flight.
+ * - Batches of `batch_size` (default 1) colleges per agent call, `concurrency` (default 12) in flight.
  * - Per batch: one retry (for whatever is still missing), then split into single-college calls.
  * - Fresh cache hits (< 30 days, normalized name) are reused without a call.
  * - Fatal errors (usage limit, sign-in, unsupported) stop everything: an `error` event is emitted and
@@ -184,11 +184,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       try { opts.onEvent(e); } catch { /* UI handler errors must not break research */ }
     };
     const target = clampInt(opts.target_count, 1, 40, 15);
-    // Live timing (ChatGPT plan, web search): one agent took ~130 s for 1 college and ~270 s for 3,
-    // while faster models / low effort dropped or got wrong key figures (e.g. admit rate). So keep
-    // the model and research effort, and go wide: 2 colleges per agent, up to 8 agents at once.
-    const batchSize = clampInt(opts.batch_size, 1, 5, 2);
-    const concurrency = clampInt(opts.concurrency, 1, 8, 8);
+    // Live timing (ChatGPT plan, web search, 6 colleges): 3 per agent 306 s, 2 per agent 303 s,
+    // 1 per agent (6 agents) 176 s with the same sources and figures. Faster models / low effort
+    // dropped or got wrong key figures (e.g. admit rate), so keep the model and research effort and
+    // go wide: 1 college per agent, up to 12 agents at once (a default 12-college run is one wave).
+    const batchSize = clampInt(opts.batch_size, 1, 5, 1);
+    const concurrency = clampInt(opts.concurrency, 1, 12, 12);
 
     // Internal controller so a fatal error stops in-flight calls too.
     const ctrl = new AbortController();

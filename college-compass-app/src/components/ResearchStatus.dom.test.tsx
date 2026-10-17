@@ -18,7 +18,7 @@ describe("PhaseSteps", () => {
     render(<PhaseSteps phase="researching" total={12} done={3} failed={1} elapsedMs={90_000} />);
     expect(screen.getByText("12 colleges picked")).toBeTruthy();
     expect(screen.getByText("3 of 12 done, 1 failed")).toBeTruthy();
-    expect(screen.getByText("about 3 min left")).toBeTruthy();
+    expect(screen.getByText("about 2 min left")).toBeTruthy();
   });
 
   it("never shows a negative estimate", () => {

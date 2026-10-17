@@ -134,14 +134,14 @@ describe("research.run", () => {
     for (const c of research) expect(c.reasoning).toBeUndefined();
   });
 
-  it("skips the planner when enough colleges were named, and goes wide by default (2 per agent, up to 8 agents)", async () => {
+  it("skips the planner when enough colleges were named, and goes wide by default (1 per agent, up to 12 agents)", async () => {
     const m = mockClient({ delayMs: 15 });
     const { r } = setup(m);
     const out = await r.run({ profile: baseProfile(), wanted: names(18), target_count: 15, onEvent: () => {} });
     expect(m.calls.some((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME)).toBe(false);
     expect(out).toHaveLength(18);
-    expect(m.stats().researchCalls).toBe(9);
-    expect(m.stats().maxInFlight).toBe(8);
+    expect(m.stats().researchCalls).toBe(18);
+    expect(m.stats().maxInFlight).toBe(12);
   });
 
   it("retries a failed batch once, then splits into single-college calls", async () => {
@@ -165,7 +165,7 @@ describe("research.run", () => {
   it("retries only the colleges missing from a partial answer", async () => {
     const m = mockClient({ research: (ns, n) => researchResult(n === 1 ? ns.slice(0, 2) : ns) });
     const { r } = setup(m);
-    const out = await r.run({ profile: baseProfile(), wanted: ["Alpha University", "Beta College", "Gamma Institute"], target_count: 3, onEvent: () => {} });
+    const out = await r.run({ profile: baseProfile(), wanted: ["Alpha University", "Beta College", "Gamma Institute"], target_count: 3, batch_size: 3, onEvent: () => {} });
     expect(out).toHaveLength(3);
     expect(m.stats().researchCalls).toBe(2);
     const second = m.calls.filter((c) => c.tools?.[0]?.name === RESEARCH_TOOL_NAME)[1]!;

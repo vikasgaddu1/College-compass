@@ -12,9 +12,9 @@ describe("formatElapsed", () => {
 });
 
 describe("describeRemaining", () => {
-  it("counts down from the ~4 minute expectation", () => {
-    expect(describeRemaining(0)).toBe("about 4 min left");
-    expect(describeRemaining(60_000)).toBe("about 3 min left");
+  it("counts down from the ~3 minute expectation", () => {
+    expect(describeRemaining(0)).toBe("about 3 min left");
+    expect(describeRemaining(60_000)).toBe("about 2 min left");
     expect(describeRemaining(EXPECTED_RUN_MS - 70_000)).toBe("about 1 min left");
   });
   it("switches to 'less than a minute', then 'almost done' — never negative", () => {
