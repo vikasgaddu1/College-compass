@@ -61,7 +61,15 @@ export function Research() {
           setLanes((ls) => ls.map((l) => (l.names.includes(e.name) ? { ...l, failed: [...l.failed, e.name] } : l)));
           break;
         case "batch_done":
-          setLanes((ls) => ls.map((l) => (l.batch === e.batch ? { ...l, finished: true } : l)));
+          // A finished agent's colleges are done unless they failed — names can differ ("UNC Chapel Hill"
+          // typed by the student vs. "The University of North Carolina at Chapel Hill" from research).
+          setLanes((ls) =>
+            ls.map((l) =>
+              l.batch === e.batch
+                ? { ...l, finished: true, done: l.names.filter((n) => !l.failed.includes(n)) }
+                : l,
+            ),
+          );
           break;
         case "done":
           setStatus("done");
