@@ -36,7 +36,7 @@ native app then uses it automatically).
 
 ### Real research run without an iPhone (`npm run real-run`)
 
-`scripts/real-run.ts` runs the app's own sign-in, research agents, odds and ranking code in Node (no browser, so no CORS), with a real ChatGPT account. It needs network access to `auth.openai.com` and `api.openai.com`. Behind an HTTP proxy, set `NODE_USE_ENV_PROXY=1`. Tokens and results stay in local files (`cc-real-run.json`, `cc-real-run-results.json`, git-ignored); tokens are never printed.
+`scripts/real-run.ts` runs the app's own sign-in, research agents, odds and ranking code in Node (no browser, so no CORS), with a real ChatGPT account. It needs network access to `auth.openai.com` and `api.openai.com`. Behind an HTTP proxy, use Node 22.21+ or 24+ and set `NODE_USE_ENV_PROXY=1` (older Node ignores that variable and connects directly). Tokens and results stay in local files (`cc-real-run.json`, `cc-real-run-results.json`, git-ignored); tokens are never printed.
 
 ```bash
 npm run real-run -- login                  # open the printed URL, sign in, approve

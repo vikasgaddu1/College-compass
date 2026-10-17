@@ -44,11 +44,14 @@ function login() {
   const nonce = b64u(randomBytes(16));
   const host = localStorage.getItem("realrun_host") ?? `urn:uuid:${randomUUID()}`;
   localStorage.setItem("realrun_host", host);
-  localStorage.setItem("realrun_pending", JSON.stringify({ verifier, state, nonce }));
+  // First sign-in registers this host with `dynamic_agent_client` + a name hint; later sign-ins reuse
+  // the issued `oaiapp_…` client ID and omit the hint (same as the app, src/ai/auth.ts).
+  const issued: string | null = localStorage.getItem("realrun_issued_client_id");
+  localStorage.setItem("realrun_pending", JSON.stringify({ verifier, state, nonce, client_id: issued ?? "dynamic_agent_client" }));
   const q = new URLSearchParams({
     response_type: "code",
-    client_id: "dynamic_agent_client",
-    agent_name_hint: "College Compass",
+    client_id: issued ?? "dynamic_agent_client",
+    ...(issued ? {} : { agent_name_hint: "College Compass" }),
     ext_agent_host_id: host,
     redirect_uri: REDIRECT,
     scope: "openid profile email offline_access resource.invoke chatgpt.tokens.use.direct",
@@ -62,9 +65,14 @@ async function exchange(callbackUrl: string) {
   const cb = new URL(callbackUrl).searchParams;
   const p = JSON.parse(localStorage.getItem("realrun_pending") ?? "null");
   if (!p) throw new Error("Run `login` first.");
-  if (cb.get("error")) throw new Error(`authorize error: ${cb.get("error")}`);
+  if (cb.get("error")) {
+    // A revoked registration: forget it so the next `login` registers again.
+    if (cb.get("error") === "invalid_client") localStorage.removeItem("realrun_issued_client_id");
+    throw new Error(`authorize error: ${cb.get("error")}`);
+  }
   if (cb.get("state") !== p.state) throw new Error("state mismatch");
-  const clientId = cb.get("client_id");
+  // A returning sign-in's callback may omit client_id; fall back to the one we sent.
+  const clientId = cb.get("client_id") ?? (p.client_id !== "dynamic_agent_client" ? p.client_id : null);
   if (!clientId) throw new Error("callback has no client_id");
   const res = await fetch(TOKEN, {
     method: "POST",
@@ -88,6 +96,7 @@ async function exchange(callbackUrl: string) {
     saved_at: now,
   }));
   localStorage.removeItem("realrun_pending");
+  localStorage.setItem("realrun_issued_client_id", clientId);
   console.log(JSON.stringify({ signed_in: claims.name ?? claims.email, client_id: clientId, scope: json.scope }));
 }
 
@@ -110,6 +119,7 @@ async function research(n: number) {
   const { auth } = await import("../src/ai/auth");
   const { aiClient } = await import("../src/ai/client");
   const { createResearch } = await import("../src/ai/research");
+  const { createResearchCache } = await import("../src/ai/cache");
   const { rankColleges, buildBalancedList } = await import("../src/engine");
   const acct = auth.account();
   if (!acct) throw new Error("Not signed in. Run `login` then `exchange`.");
@@ -120,7 +130,11 @@ async function research(n: number) {
   const prof = profile();
   const t0 = Date.now();
   const sec = () => `${((Date.now() - t0) / 1000).toFixed(0)}s`;
-  const colleges: College[] = await createResearch({ client: aiClient }).run({
+  // Fresh cache per run: cached entries are keyed by college name only, but researched program
+  // data depends on the student's majors and interests.
+  localStorage.removeItem("cc2:realrun_cache"); // storage.ts prefixes keys with cc2:
+  const cache = createResearchCache({ key: "realrun_cache" });
+  const colleges: College[] = await createResearch({ client: aiClient, cache }).run({
     profile: prof,
     wanted: prof.wanted_colleges,
     target_count: Math.max(n, prof.wanted_colleges.length),
