@@ -138,6 +138,9 @@ async function research(n: number) {
     profile: prof,
     wanted: prof.wanted_colleges,
     target_count: Math.max(n, prof.wanted_colleges.length),
+    // Optional overrides for timing experiments: CC_BATCH (colleges per agent), CC_CONCURRENCY (agents).
+    ...(process.env.CC_BATCH ? { batch_size: Number(process.env.CC_BATCH) } : {}),
+    ...(process.env.CC_CONCURRENCY ? { concurrency: Number(process.env.CC_CONCURRENCY) } : {}),
     onEvent: (e) => {
       if (e.type === "planned") console.log(`[${sec()}] planner → ${e.candidates.map((c) => c.name).join("; ")}`);
       else if (e.type === "batch_started") console.log(`[${sec()}] agent ${e.batch} researching ${e.names.join(", ")}`);

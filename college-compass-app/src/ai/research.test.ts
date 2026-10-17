@@ -1,9 +1,9 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AiError, type AiCallResult, type AiClient, type ResearchEvent } from "../types";
 import { createResearchCache } from "./cache";
 import { PLANNER_TOOL_NAME, RESEARCH_TOOL_NAME } from "./prompts";
-import { createLimiter, createResearch } from "./research";
-import { baseProfile, fakeCollege, installMemoryStorage, rawCollege } from "./test-helpers";
+import { createLimiter, createResearch, researchTag } from "./research";
+import { baseProfile, fakeCollege, installMemoryStorage, rawCollege, sseText } from "./test-helpers";
 
 type CallOpts = Parameters<AiClient["call"]>[0];
 const NOW = new Date("2026-10-16T12:00:00Z");
@@ -95,7 +95,7 @@ describe("research.run", () => {
     const m = mockClient({ planned: names(13, "Planned") });
     const { r } = setup(m);
     const events: ResearchEvent[] = [];
-    const out = await r.run({ profile: baseProfile(), wanted: ["Duke University", "duke university", "Elon University"], onEvent: (e) => events.push(e), concurrency: 2 });
+    const out = await r.run({ profile: baseProfile(), wanted: ["Duke University", "duke university", "Elon University"], onEvent: (e) => events.push(e), concurrency: 2, batch_size: 3 });
 
     const planner = m.calls.filter((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME);
     expect(planner).toHaveLength(1);
@@ -123,14 +123,25 @@ describe("research.run", () => {
     expect(planned.candidates.filter((c) => c.user_added).map((c) => c.name)).toEqual(["Duke University", "Elon University"]);
   });
 
-  it("skips the planner when enough colleges were named, and honors default concurrency 4", async () => {
+  it("planner runs at low effort; researchers keep the model's default effort (accuracy)", async () => {
+    const m = mockClient({ planned: names(4, "Planned") });
+    const { r } = setup(m);
+    await r.run({ profile: baseProfile(), wanted: [], target_count: 4, onEvent: () => {} });
+    const planner = m.calls.filter((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME);
+    const research = m.calls.filter((c) => c.tools?.[0]?.name === RESEARCH_TOOL_NAME);
+    expect(planner[0]!.reasoning).toBe("low");
+    expect(research.length).toBeGreaterThan(0);
+    for (const c of research) expect(c.reasoning).toBeUndefined();
+  });
+
+  it("skips the planner when enough colleges were named, and goes wide by default (1 per agent, up to 12 agents)", async () => {
     const m = mockClient({ delayMs: 15 });
     const { r } = setup(m);
     const out = await r.run({ profile: baseProfile(), wanted: names(18), target_count: 15, onEvent: () => {} });
     expect(m.calls.some((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME)).toBe(false);
     expect(out).toHaveLength(18);
-    expect(m.stats().researchCalls).toBe(6);
-    expect(m.stats().maxInFlight).toBe(4);
+    expect(m.stats().researchCalls).toBe(18);
+    expect(m.stats().maxInFlight).toBe(12);
   });
 
   it("retries a failed batch once, then splits into single-college calls", async () => {
@@ -143,7 +154,7 @@ describe("research.run", () => {
     });
     const { r } = setup(m);
     const events: ResearchEvent[] = [];
-    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: (e) => events.push(e) });
+    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, batch_size: 3, onEvent: (e) => events.push(e) });
     // 2 batch attempts + 3 singles
     expect(m.stats().researchCalls).toBe(5);
     expect(out.map((c) => c.name)).toEqual(["College A", "College C"]);
@@ -154,7 +165,7 @@ describe("research.run", () => {
   it("retries only the colleges missing from a partial answer", async () => {
     const m = mockClient({ research: (ns, n) => researchResult(n === 1 ? ns.slice(0, 2) : ns) });
     const { r } = setup(m);
-    const out = await r.run({ profile: baseProfile(), wanted: ["Alpha University", "Beta College", "Gamma Institute"], target_count: 3, onEvent: () => {} });
+    const out = await r.run({ profile: baseProfile(), wanted: ["Alpha University", "Beta College", "Gamma Institute"], target_count: 3, batch_size: 3, onEvent: () => {} });
     expect(out).toHaveLength(3);
     expect(m.stats().researchCalls).toBe(2);
     const second = m.calls.filter((c) => c.tools?.[0]?.name === RESEARCH_TOOL_NAME)[1]!;
@@ -249,5 +260,41 @@ describe("research.researchOne", () => {
     const { r } = setup(m);
     await expect(r.researchOne("X", baseProfile())).rejects.toMatchObject({ code: "reauth_required" });
     expect(m.stats().researchCalls).toBe(1);
+  });
+});
+
+describe("iOS background tracking", () => {
+  function nativeSpy(orphans: { tag: string; data: string }[] = []) {
+    return { begin: vi.fn(), end: vi.fn(), takeOrphans: vi.fn(async () => orphans.splice(0)) };
+  }
+
+  it("registers the run with the number of agent requests, tags each request, and ends the run", async () => {
+    const m = mockClient();
+    const native = nativeSpy();
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_bg" }), now: () => NOW, native });
+    await r.run({ profile: baseProfile(), wanted: names(5), target_count: 5, batch_size: 2, onEvent: () => {} });
+    expect(native.begin).toHaveBeenCalledTimes(1);
+    const [runId, expected] = native.begin.mock.calls[0]!;
+    expect(expected).toBe(3); // 5 colleges, 2 per agent
+    const tags = m.calls.map((c) => c.tag);
+    expect(tags.every((t) => typeof t === "string" && t.startsWith(`research:${runId}:`))).toBe(true);
+    expect(native.end).toHaveBeenCalledWith(runId);
+  });
+
+  it("recovers research iOS delivered after a relaunch and doesn't research those colleges again", async () => {
+    const tag = researchTag("old-run", [{ name: "College A", state: "NC" }]);
+    const args = JSON.stringify({ colleges: [rawCollege("College A")] });
+    const data = sseText([
+      { type: "response.output_item.added", item: { type: "function_call", id: "f1", name: RESEARCH_TOOL_NAME, namespace: "college_compass", arguments: "" } },
+      { type: "response.function_call_arguments.done", item_id: "f1", arguments: args },
+      { type: "response.completed", response: { model: "gpt-plan", output: [] } },
+    ]);
+    const m = mockClient();
+    const native = nativeSpy([{ tag, data }]);
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_orphan", now: () => NOW.getTime() }), now: () => NOW, native });
+    const out = await r.run({ profile: baseProfile(), wanted: ["College A", "College B"], target_count: 2, onEvent: () => {} });
+    expect(out.map((c) => c.name).sort()).toEqual(["College A", "College B"]);
+    const researched = m.calls.flatMap((c) => requested(c));
+    expect(researched).toEqual(["College B"]);
   });
 });

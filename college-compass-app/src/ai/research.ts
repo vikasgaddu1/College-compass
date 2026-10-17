@@ -2,15 +2,16 @@
  * Research orchestration: plan (if needed) → research in parallel batches → resolve all.
  *
  * - Planner tops the student's own picks up to `target_count` (default 15).
- * - Batches of `batch_size` (default 3) colleges per agent call, `concurrency` (default 4) in flight.
+ * - Batches of `batch_size` (default 1) colleges per agent call, `concurrency` (default 12) in flight.
  * - Per batch: one retry (for whatever is still missing), then split into single-college calls.
  * - Fresh cache hits (< 30 days, normalized name) are reused without a call.
  * - Fatal errors (usage limit, sign-in, unsupported) stop everything: an `error` event is emitted and
  *   run() rejects. Aborting rejects with the AbortError. Per-college failures are reported as
  *   `college_failed` and run() still resolves with everything that succeeded.
  */
-import { AiError, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
-import { aiClient } from "./client";
+import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
+import { aiClient, parseResponsesText } from "./client";
+import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
 import { researchCache as defaultCache, findFresh, type ResearchCache } from "./cache";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
@@ -85,25 +86,57 @@ function toolArgs(res: { text: string; tool_calls: { name: string; arguments: st
   throw new ResearchParseError("The model didn't return structured results.");
 }
 
+type Effort = "low" | "medium" | "high";
+
 export interface ResearchDeps {
   client: AiClient;
   cache?: ResearchCache;
   now?: () => Date;
+  /** iOS background tracking (defaults to the platform; no-ops on web). */
+  native?: {
+    begin(runId: string, expected: number): Promise<void> | void;
+    end(runId: string): Promise<void> | void;
+    takeOrphans(): Promise<{ tag: string; data: string }[]>;
+  };
+}
+
+const RUN_TAG = "research:";
+/** Tag for one agent request: `research:<runId>:<targets JSON, URI-encoded>` (recoverable after an iOS relaunch). */
+export function researchTag(runId: string, targets: ResearchTarget[]): string {
+  return `${RUN_TAG}${runId}:${encodeURIComponent(JSON.stringify(targets.map((t) => ({ name: t.name, state: t.state }))))}`;
+}
+function targetsFromTag(tag: string): ResearchTarget[] | null {
+  if (!tag.startsWith(RUN_TAG)) return null;
+  const rest = tag.slice(RUN_TAG.length);
+  const i = rest.indexOf(":");
+  if (i < 0) return null;
+  try {
+    const v = JSON.parse(decodeURIComponent(rest.slice(i + 1)));
+    return Array.isArray(v) ? v.filter((t) => t && typeof t.name === "string").map((t) => ({ name: t.name, state: typeof t.state === "string" ? t.state : null })) : null;
+  } catch {
+    return null;
+  }
+}
+function newRunId(): string {
+  const c = globalThis.crypto as Crypto | undefined;
+  return c && typeof c.randomUUID === "function" ? c.randomUUID() : `r${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
 }
 
 export function createResearch(deps: ResearchDeps): ResearchApi & {
   /** Exposed for tests / advanced callers: plan candidates without researching. */
-  plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void): Promise<CollegeCandidate[]>;
+  plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]>;
 } {
   const cache = deps.cache ?? defaultCache;
   const now = deps.now ?? (() => new Date());
+  const native = deps.native ?? { begin: beginResearchRun, end: endResearchRun, takeOrphans: takeOrphanedResearch };
 
-  async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void): Promise<CollegeCandidate[]> {
+  async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]> {
     if (count <= 0) return [];
     const res = await deps.client.call({
       instructions: plannerInstructions(now()),
       input: plannerInput({ profile, existing, count }),
       model,
+      ...(effort ? { reasoning: effort } : {}),
       tools: [proposeCollegesTool],
       tool_choice: { type: "function", name: PLANNER_TOOL_NAME },
       webSearch: true,
@@ -132,16 +165,23 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
   }
 
   /** One agent call for a batch. Returns researched colleges per target + targets still missing. */
-  async function researchBatch(targets: ResearchTarget[], profile: StudentProfile, model: string | undefined, signal: AbortSignal | undefined) {
+  async function researchBatch(targets: ResearchTarget[], profile: StudentProfile, model: string | undefined, signal: AbortSignal | undefined, effort?: Effort, tag?: string) {
     const res = await deps.client.call({
       instructions: researcherInstructions(now()),
       input: researcherInput(targets, profile),
       model,
+      ...(effort ? { reasoning: effort } : {}),
       tools: [submitResearchTool],
       tool_choice: { type: "function", name: RESEARCH_TOOL_NAME },
       webSearch: true,
       signal,
+      ...(tag ? { tag } : {}),
     });
+    return mapResearch(res, targets, profile);
+  }
+
+  /** Match a researcher answer to the requested colleges and normalize them. */
+  function mapResearch(res: AiCallResult, targets: ResearchTarget[], profile: StudentProfile) {
     const args = toolArgs(res, RESEARCH_TOOL_NAME) as { colleges?: unknown };
     const list: unknown[] = Array.isArray(args?.colleges) ? args.colleges : Array.isArray(args) ? (args as unknown[]) : args && typeof args === "object" && "name" in (args as object) ? [args] : [];
     const nameOf = (x: unknown) => (x && typeof x === "object" && typeof (x as { name?: unknown }).name === "string" ? (x as { name: string }).name : "");
@@ -174,14 +214,37 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
     return { done, missing };
   }
 
+  /** File away research responses iOS delivered after it had terminated the suspended app. */
+  async function recoverOrphans(profile: StudentProfile): Promise<College[]> {
+    let orphans: { tag: string; data: string }[] = [];
+    try { orphans = await native.takeOrphans(); } catch { return []; }
+    const out: College[] = [];
+    for (const o of orphans) {
+      const targets = targetsFromTag(o.tag);
+      const res = targets?.length ? parseResponsesText(o.data) : null;
+      if (!targets || !res) continue;
+      try {
+        for (const d of mapResearch(res, targets, profile).done) {
+          try { cache.put(d.college, [d.target.name]); } catch { /* best-effort */ }
+          out.push(d.college);
+        }
+      } catch { /* unusable answer: those colleges are simply researched again */ }
+    }
+    return out;
+  }
+
   async function run(opts: ResearchOptions): Promise<College[]> {
     const { profile } = opts;
     const emit = (e: ResearchEvent) => {
       try { opts.onEvent(e); } catch { /* UI handler errors must not break research */ }
     };
     const target = clampInt(opts.target_count, 1, 40, 15);
-    const batchSize = clampInt(opts.batch_size, 1, 5, 3);
-    const concurrency = clampInt(opts.concurrency, 1, 8, 4);
+    // Live timing (ChatGPT plan, web search, 6 colleges): 3 per agent 306 s, 2 per agent 303 s,
+    // 1 per agent (6 agents) 176 s with the same sources and figures. Faster models / low effort
+    // dropped or got wrong key figures (e.g. admit rate), so keep the model and research effort and
+    // go wide: 1 college per agent, up to 12 agents at once (a default 12-college run is one wave).
+    const batchSize = clampInt(opts.batch_size, 1, 5, 1);
+    const concurrency = clampInt(opts.concurrency, 1, 12, 12);
 
     // Internal controller so a fatal error stops in-flight calls too.
     const ctrl = new AbortController();
@@ -191,6 +254,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
     outer?.addEventListener("abort", onOuterAbort, { once: true });
     const signal = ctrl.signal;
     let fatal: AiError | null = null;
+    let endRun: (() => Promise<void> | void) | null = null;
     const fail = (e: AiError) => {
       if (!fatal) {
         fatal = e;
@@ -209,7 +273,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       if (wanted.length < target) {
         emit({ type: "planning" });
         try {
-          const proposed = await plan(profile, wanted, target - wanted.length, opts.model, signal, (t) => emit({ type: "summary_delta", text: t }));
+          const proposed = await plan(profile, wanted, target - wanted.length, opts.planner_model ?? opts.model, signal, (t) => emit({ type: "summary_delta", text: t }), opts.effort?.planner ?? "low");
           candidates.push(...proposed);
         } catch (e) {
           if (isAbort(e) && !fatal) throw e;
@@ -230,7 +294,8 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       }
       emit({ type: "planned", candidates });
 
-      // 2) Cache reuse.
+      // 2) Cache reuse — first file away any research iOS finished while the app wasn't running.
+      await recoverOrphans(profile);
       const results = new Map<CollegeCandidate, College>();
       const toResearch: CollegeCandidate[] = [];
       const nowMs = now().getTime();
@@ -244,6 +309,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
 
       // 3) Parallel batches.
       const limit = createLimiter(concurrency);
+      const runId = newRunId();
+      const batches = chunk(toResearch, batchSize);
+      if (batches.length) {
+        endRun = () => native.end(runId);
+        try { await native.begin(runId, batches.length); } catch { /* best-effort */ }
+      }
       const record = (cand: CollegeCandidate, college: College) => {
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
@@ -258,7 +329,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         let lastErr: unknown = null;
         for (let attempt = 0; attempt < 2 && remaining.length; attempt++) {
           try {
-            const r = await researchBatch(remaining, profile, opts.model, signal);
+            const r = await researchBatch(remaining, profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, remaining));
             for (const d of r.done) record(byTarget(d.target), d.college);
             remaining = r.missing;
           } catch (e) {
@@ -278,7 +349,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       const singleTask = async (t: ResearchTarget): Promise<void> => {
         if (fatal || signal.aborted) return;
         try {
-          const r = await researchBatch([t], profile, opts.model, signal);
+          const r = await researchBatch([t], profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, [t]));
           const d = r.done[0];
           if (d) record(byTarget(t), d.college);
           else emit({ type: "college_failed", name: t.name, error: "No results were returned." });
@@ -290,7 +361,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       };
 
       await Promise.all(
-        chunk(toResearch, batchSize).map((batch, no) =>
+        batches.map((batch, no) =>
           limit(() => batchTask(batch, no))
             .then((left) => Promise.all(left.map((t) => limit(() => singleTask(t)))))
             .then(() => { if (!fatal && !signal.aborted) emit({ type: "batch_done", batch: no }); }),
@@ -306,6 +377,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       return unique;
     } finally {
       outer?.removeEventListener("abort", onOuterAbort);
+      if (endRun) { try { await endRun(); } catch { /* best-effort */ } }
     }
   }
 

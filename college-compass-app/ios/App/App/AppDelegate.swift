@@ -7,6 +7,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Research requests from a previous process may still be in flight: reattach to their session.
+        if BackgroundTransfers.shared.inFlight > 0 { BackgroundTransfers.shared.reconnect() }
         // Override point for customization after application launch.
         return true
     }
@@ -27,6 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    /// iOS woke the app because background research requests finished (BackgroundTransfers.swift).
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        if identifier == BackgroundTransfers.sessionIdentifier {
+            BackgroundTransfers.shared.systemCompletionHandler = completionHandler
+            BackgroundTransfers.shared.reconnect() // recreate the session so iOS can deliver its events
+        } else {
+            completionHandler()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

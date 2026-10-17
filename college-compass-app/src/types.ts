@@ -280,6 +280,8 @@ export interface AiClient {
     reasoning?: "low" | "medium" | "high";
     onDelta?: (text: string) => void;
     signal?: AbortSignal;
+    /** Opaque label for the native transport (background research tracking); never sent to OpenAI. */
+    tag?: string;
   }): Promise<AiCallResult>;
 }
 
@@ -340,6 +342,10 @@ export interface ResearchOptions {
   /** Already researched colleges to reuse (cache, keyed by normalized name). */
   cache?: College[];
   model?: string;
+  /** Model for the planner only (defaults to `model`). A quick list needs less than deep research. */
+  planner_model?: string;
+  /** Reasoning effort per agent role; omitted = the model's default. Lower is faster. */
+  effort?: { planner?: "low" | "medium" | "high"; researcher?: "low" | "medium" | "high" };
   signal?: AbortSignal;
   onEvent: (e: ResearchEvent) => void;
 }
