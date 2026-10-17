@@ -25,7 +25,7 @@ college-compass-app/
 - App Store readiness: privacy policy + support pages (static, in `public/`), Privacy Nutrition Label notes (no data collected by developer; data stays on device; requests go to OpenAI under the user's account), age rating notes, App Review notes (demo instructions; ChatGPT account required — reviewer test path), Sign in with Apple not required (no first-party account; guideline 4.8 exception for third-party service clients) — documented in `docs/APP_STORE.md`.
 
 ## Stack
-Vite 5 + React 18 + TS strict + Tailwind 3, hand-built components, vitest, hash routing (`src/lib/router.ts`), PWA. `App` is a **named export** from `src/app/App.tsx`. `npm run build` type-checks all of `src/**`.
+Vite 5 + React 18 + TS strict + Tailwind 3, hand-built components, vitest, a Playwright end-to-end test of the production build with OpenAI mocked (`npm run e2e`, see `e2e/README.md`), hash routing (`src/lib/router.ts`), PWA. `App` is a **named export** from `src/app/App.tsx`. `npm run build` type-checks all of `src/**`.
 
 ## Sign in with ChatGPT (no database)
 
