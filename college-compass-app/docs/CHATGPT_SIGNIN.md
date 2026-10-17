@@ -34,6 +34,17 @@ native app then uses it automatically).
 - **The token endpoint allows browser CORS** (the exchange ran with `fetch` from the github.io origin).
 - **api.openai.com does not.** Authenticated calls (`GET /v1/models` with a ChatGPT token, any `POST /v1/responses`) fail CORS from a web origin. So the native app sends every OpenAI request through `platform.httpFetch` → the in-app `NativeHttp` plugin (URLSession, no CORS; `ios/App/App/NativeHttpPlugin.swift`). Stopping research or chat cancels the URLSession task, so OpenAI stops generating. Streaming responses are buffered and parsed once complete. CI launches the app in the iOS Simulator and checks that a native request reaches api.openai.com (401 without a token) and that cancel aborts it. The web build can sign in but cannot run plan-usage requests; it says so and points to the iPhone app.
 
+### Real research run without an iPhone (`npm run real-run`)
+
+`scripts/real-run.ts` runs the app's own sign-in, research agents, odds and ranking code in Node (no browser, so no CORS), with a real ChatGPT account. It needs network access to `auth.openai.com` and `api.openai.com`. Behind an HTTP proxy, set `NODE_USE_ENV_PROXY=1`. Tokens and results stay in local files (`cc-real-run.json`, `cc-real-run-results.json`, git-ignored); tokens are never printed.
+
+```bash
+npm run real-run -- login                  # open the printed URL, sign in, approve
+npm run real-run -- exchange '<the http://127.0.0.1:1455/auth/callback?... URL the browser ended on>'
+npm run real-run -- research 6             # planner + parallel research agents, then odds + ranking
+```
+Set `CC_PROFILE=profile.json` to use your own answers (a `StudentProfile`); the default is a general pre-med student from North Carolina.
+
 ## 0. iOS self-serve sign-in (how it works)
 
 Nothing to configure: leave `VITE_CC_CHATGPT_CLIENT_ID` empty for the iOS build.
