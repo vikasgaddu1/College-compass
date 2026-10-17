@@ -160,9 +160,12 @@ describe("aiClient.call", () => {
     await expect(b.client.call({ instructions: "x", input: [] })).rejects.toMatchObject({ code: "network" });
   });
 
-  it("network failure → network; abort → AbortError", async () => {
+  it("network failure → network (CORS-blocked ChatGPT web call → unsupported); abort → AbortError", async () => {
     const a = setup([() => { throw new TypeError("Failed to fetch"); }]);
-    await expect(a.client.call({ instructions: "x", input: [] })).rejects.toMatchObject({ code: "network" });
+    // From a web page a ChatGPT-token request fails at CORS, so the error points to the iPhone app.
+    await expect(a.client.call({ instructions: "x", input: [] })).rejects.toMatchObject({ code: "unsupported" });
+    const k = setup([() => { throw new TypeError("Failed to fetch"); }], { account: () => null }, "sk-test");
+    await expect(k.client.call({ instructions: "x", input: [] })).rejects.toMatchObject({ code: "network" });
     const ctrl = new AbortController();
     ctrl.abort();
     const b = setup([sseResponse(completed())]);

@@ -10,6 +10,7 @@
  * dropped, retried once and remembered for a week on this device.
  */
 import { load, remove, save } from "../lib/storage";
+import { httpFetch, isNative } from "../platform";
 import { AiError, type AiCallResult, type AiClient, type AiConnection, type AiFunctionTool } from "../types";
 import { auth as authSingleton, type ChatGPTAuth } from "./auth";
 import { DEV_DEFAULT_MODEL, KEYS, MANAGE_USAGE_URL, RESPONSES_URL } from "./config";
@@ -170,7 +171,7 @@ export interface CompassAiClient extends AiClient {
 
 export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps> = {}): CompassAiClient {
   const d: ClientDeps = {
-    fetch: (...a) => globalThis.fetch(...a),
+    fetch: (...a) => httpFetch(...a),
     now: () => Date.now(),
     sleep: defaultSleep,
     devKey: getDevApiKey,
@@ -309,6 +310,10 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
         });
       } catch {
         if (signal?.aborted) throw abortError(signal);
+        if (conn.kind === "chatgpt" && !isNative()) {
+          // api.openai.com blocks browser (CORS) calls made with ChatGPT tokens; only the app can make them.
+          throw new AiCallError("unsupported", "OpenAI only accepts ChatGPT-plan requests from the College Compass iPhone app, not from a web page. Open the app to run research, or try the demo here.");
+        }
         throw new AiCallError("network", "Couldn't reach OpenAI. Check your connection and try again.");
       }
 
