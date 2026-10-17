@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: "college-dashboard/package-lock.json"
+          cache-dependency-path: |
+            college-dashboard/package-lock.json
+            college-compass-app/package-lock.json
       - name: Install
         working-directory: college-dashboard
         run: npm ci
@@ -38,11 +40,26 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npx vite build
+      - name: Install app (college-compass-app)
+        working-directory: college-compass-app
+        run: npm ci
+      - name: Test app
+        working-directory: college-compass-app
+        run: npm test
+      - name: Build app
+        working-directory: college-compass-app
+        env:
+          VITE_CC_CHATGPT_CLIENT_ID: ${{ secrets.VITE_CC_CHATGPT_CLIENT_ID }}
+          VITE_CC_TOKEN_RELAY: ${{ secrets.VITE_CC_TOKEN_RELAY }}
+        run: npm run build
       - name: Prepare Pages bundle
         run: |
           mkdir -p _site
           cp -r college-dashboard/dist/public/* _site/
           cp _site/index.html _site/404.html
+          mkdir -p _site/app
+          cp -r college-compass-app/dist/* _site/app/
+          cp _site/app/index.html _site/app/404.html
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,285 @@
+name: iOS app (Capacitor)
+
+# Compile check on every relevant push; optional manual TestFlight upload.
+# Setup guide: college-compass-app/docs/APP_STORE.md
+
+on:
+  push:
+    branches: [app-v2, main]
+    paths:
+      - "college-compass-app/**"
+      - ".github/workflows/ios.yml"
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: "Archive, sign and upload to TestFlight (needs the App Store secrets)"
+        type: boolean
+        default: false
+      xcode_version:
+        description: "Xcode for the TestFlight job (Apple's current minimum SDK applies to uploads; see APP_STORE.md)"
+        type: string
+        default: "latest-stable"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUNDLE_ID: com.gaddu.collegecompass
+
+defaults:
+  run:
+    working-directory: college-compass-app
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. Test + build the web bundle for iOS + compile the app for the simulator.
+  #    Unsigned, no secrets required.
+  # ---------------------------------------------------------------------------
+  simulator-build:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: college-compass-app/package-lock.json
+
+      - name: Select Xcode 16
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "16"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      # `cap:sync` = tsc + `BUILD_TARGET=ios vite build` (relative base) + `cap sync ios`,
+      # which runs `pod install` (CocoaPods is preinstalled on GitHub macOS runners).
+      - name: Build web bundle and sync to iOS project
+        env:
+          VITE_CC_CHATGPT_CLIENT_ID: ${{ secrets.VITE_CC_CHATGPT_CLIENT_ID }}
+          VITE_CC_TOKEN_RELAY: ${{ vars.VITE_CC_TOKEN_RELAY }}
+        run: npm run cap:sync
+
+      - name: Build for iOS Simulator (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Upload simulator .app
+        uses: actions/upload-artifact@v4
+        with:
+          name: CollegeCompass-simulator-app
+          path: ${{ runner.temp }}/DerivedData/Build/Products/Debug-iphonesimulator/App.app
+          retention-days: 7
+          if-no-files-found: warn
+
+  # ---------------------------------------------------------------------------
+  # 2. Manual only: archive with manual signing, export an IPA, upload to
+  #    TestFlight. Secrets cannot be read in a job-level `if`, so they are
+  #    mapped to env and a first step computes a `ready` output that gates
+  #    every later step.
+  # ---------------------------------------------------------------------------
+  testflight:
+    needs: simulator-build
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.upload == true }}
+    runs-on: macos-latest
+    timeout-minutes: 60
+    env:
+      ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.APP_STORE_CONNECT_KEY_P8 }}
+      CERT_P12_B64: ${{ secrets.IOS_DIST_CERT_P12_BASE64 }}
+      CERT_PASSWORD: ${{ secrets.IOS_DIST_CERT_PASSWORD }}
+      PROFILE_B64: ${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}
+    steps:
+      - name: Check App Store secrets
+        id: gate
+        working-directory: .
+        run: |
+          missing=""
+          [ -n "$ASC_KEY_ID" ]    || missing="$missing APP_STORE_CONNECT_KEY_ID"
+          [ -n "$ASC_ISSUER_ID" ] || missing="$missing APP_STORE_CONNECT_ISSUER_ID"
+          [ -n "$ASC_KEY_P8" ]    || missing="$missing APP_STORE_CONNECT_KEY_P8"
+          [ -n "$CERT_P12_B64" ]  || missing="$missing IOS_DIST_CERT_P12_BASE64"
+          [ -n "$CERT_PASSWORD" ] || missing="$missing IOS_DIST_CERT_PASSWORD"
+          [ -n "$PROFILE_B64" ]   || missing="$missing IOS_PROVISION_PROFILE_BASE64"
+          if [ -n "$missing" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=TestFlight upload skipped::Missing repository secrets:$missing (see college-compass-app/docs/APP_STORE.md)"
+            echo "### TestFlight upload skipped" >> "$GITHUB_STEP_SUMMARY"
+            echo "Missing repository secrets:$missing" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.ready == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.ready == 'true'
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: college-compass-app/package-lock.json
+
+      - name: Select Xcode
+        if: steps.gate.outputs.ready == 'true'
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ inputs.xcode_version }}
+
+      - name: Install dependencies
+        if: steps.gate.outputs.ready == 'true'
+        run: npm ci
+
+      - name: Unit tests
+        if: steps.gate.outputs.ready == 'true'
+        run: npm test
+
+      - name: Build web bundle and sync to iOS project
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          VITE_CC_CHATGPT_CLIENT_ID: ${{ secrets.VITE_CC_CHATGPT_CLIENT_ID }}
+          VITE_CC_TOKEN_RELAY: ${{ vars.VITE_CC_TOKEN_RELAY }}
+        run: npm run cap:sync
+
+      - name: Import signing certificate and provisioning profile
+        if: steps.gate.outputs.ready == 'true'
+        id: signing
+        run: |
+          set -euo pipefail
+          KEYCHAIN="$RUNNER_TEMP/build.keychain-db"
+          KEYCHAIN_PASSWORD="$(uuidgen)"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+
+          echo "$CERT_P12_B64" | base64 --decode > "$RUNNER_TEMP/dist.p12"
+          security import "$RUNNER_TEMP/dist.p12" -P "$CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          rm -f "$RUNNER_TEMP/dist.p12"
+
+          echo "$PROFILE_B64" | base64 --decode > "$RUNNER_TEMP/profile.mobileprovision"
+          security cms -D -i "$RUNNER_TEMP/profile.mobileprovision" > "$RUNNER_TEMP/profile.plist"
+          PROFILE_UUID="$(/usr/libexec/PlistBuddy -c 'Print :UUID' "$RUNNER_TEMP/profile.plist")"
+          PROFILE_NAME="$(/usr/libexec/PlistBuddy -c 'Print :Name' "$RUNNER_TEMP/profile.plist")"
+          TEAM_ID="$(/usr/libexec/PlistBuddy -c 'Print :TeamIdentifier:0' "$RUNNER_TEMP/profile.plist")"
+          APP_ID="$(/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' "$RUNNER_TEMP/profile.plist")"
+          if [ "$APP_ID" != "$TEAM_ID.$BUNDLE_ID" ]; then
+            echo "::error::Provisioning profile is for '$APP_ID', expected '$TEAM_ID.$BUNDLE_ID'"
+            exit 1
+          fi
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          cp "$RUNNER_TEMP/profile.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$PROFILE_UUID.mobileprovision"
+
+          echo "keychain=$KEYCHAIN" >> "$GITHUB_OUTPUT"
+          echo "profile_uuid=$PROFILE_UUID" >> "$GITHUB_OUTPUT"
+          echo "profile_name=$PROFILE_NAME" >> "$GITHUB_OUTPUT"
+          echo "team_id=$TEAM_ID" >> "$GITHUB_OUTPUT"
+
+      # Manual signing is applied to the App target only (a command-line
+      # PROVISIONING_PROFILE_SPECIFIER would also hit the Pods targets and fail).
+      # Only the two App-target build configurations contain CODE_SIGN_STYLE.
+      - name: Archive (manual signing)
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          TEAM_ID: ${{ steps.signing.outputs.team_id }}
+          PROFILE_NAME: ${{ steps.signing.outputs.profile_name }}
+        run: |
+          set -euo pipefail
+          perl -0pi -e 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;\n\t\t\t\tCODE_SIGN_IDENTITY = "Apple Distribution";\n\t\t\t\tDEVELOPMENT_TEAM = $ENV{TEAM_ID};\n\t\t\t\tPROVISIONING_PROFILE_SPECIFIER = "$ENV{PROFILE_NAME}";/g' \
+            ios/App/App.xcodeproj/project.pbxproj
+          grep -c 'CODE_SIGN_STYLE = Manual' ios/App/App.xcodeproj/project.pbxproj
+
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER"
+
+      - name: Export IPA
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          TEAM_ID: ${{ steps.signing.outputs.team_id }}
+          PROFILE_NAME: ${{ steps.signing.outputs.profile_name }}
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>export</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>$BUNDLE_ID</key><string>$PROFILE_NAME</string>
+            </dict>
+            <key>uploadSymbols</key><true/>
+            <key>stripSwiftSymbols</key><true/>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+          ls -la "$RUNNER_TEMP/export"
+
+      - name: Upload to TestFlight
+        if: steps.gate.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          # altool looks for AuthKey_<KEYID>.p8 in ~/.appstoreconnect/private_keys.
+          # The secret may hold the raw PEM or a base64 encoding of it.
+          KEY_DIR="$HOME/.appstoreconnect/private_keys"
+          mkdir -p "$KEY_DIR"
+          if printf '%s' "$ASC_KEY_P8" | grep -q 'BEGIN PRIVATE KEY'; then
+            printf '%s\n' "$ASC_KEY_P8" > "$KEY_DIR/AuthKey_${ASC_KEY_ID}.p8"
+          else
+            printf '%s' "$ASC_KEY_P8" | base64 --decode > "$KEY_DIR/AuthKey_${ASC_KEY_ID}.p8"
+          fi
+          IPA="$(ls "$RUNNER_TEMP"/export/*.ipa | head -n 1)"
+          xcrun altool --upload-app --type ios --file "$IPA" \
+            --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
+
+      - name: Keep IPA as a build artifact
+        if: steps.gate.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: CollegeCompass-ipa
+          path: ${{ runner.temp }}/export/*.ipa
+          retention-days: 14
+
+      - name: Clean up signing material
+        if: always() && steps.gate.outputs.ready == 'true'
+        run: |
+          security delete-keychain "${{ steps.signing.outputs.keychain }}" || true
+          rm -f "$HOME/Library/MobileDevice/Provisioning Profiles/${{ steps.signing.outputs.profile_uuid }}.mobileprovision"
+          rm -rf "$HOME/.appstoreconnect/private_keys"

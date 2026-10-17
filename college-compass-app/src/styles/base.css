@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Names are the contract; values are the College Compass theme:
+ * a calm stone/spruce palette (light) and a deep moss palette (dark).
+ * Tier colors run from plum (hardest) to green (safest).
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: #f1f2ee;
+  --surface: #ffffff;
+  --surface-2: #e7eae4;
+  --text: #172019;
+  --text-muted: #606b65;
+  --border: #dce0da;
+  --accent: #1e5c4c;
+  --accent-soft: #dcebe4;
+  --accent-contrast: #ffffff;
+  --good: #2d7a4a;
+  --warn: #9a6b0e;
+  --bad: #b5503a;
+
+  --tier-high-reach: #7a3b5e;
+  --tier-reach: #b5503a;
+  --tier-target: #9a6b0e;
+  --tier-likely: #237683;
+  --tier-safety: #2d7a4a;
+
+  --chrome: rgba(241, 242, 238, 0.88);
+  --shadow: 0 1px 2px rgba(23, 32, 25, 0.06), 0 6px 20px rgba(23, 32, 25, 0.06);
+
+  /* Safe-area insets (0 on devices without a notch / home indicator). */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  --tabbar-h: 50px;
+  --kb: 0px; /* keyboard inset, set from visualViewport */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1311;
+    --surface: #181d1a;
+    --surface-2: #232a26;
+    --text: #ebeee9;
+    --text-muted: #98a29b;
+    --border: #2b332e;
+    --accent: #7ed3b5;
+    --accent-soft: #1b352c;
+    --accent-contrast: #0b1a14;
+    --good: #6cc98c;
+    --warn: #e0b24a;
+    --bad: #ef8a73;
+
+    --tier-high-reach: #d48ab6;
+    --tier-reach: #ef8a73;
+    --tier-target: #e0b24a;
+    --tier-likely: #67bfcd;
+    --tier-safety: #6cc98c;
+
+    --chrome: rgba(15, 19, 17, 0.86);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px; /* prevents iOS zoom-on-focus */
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
