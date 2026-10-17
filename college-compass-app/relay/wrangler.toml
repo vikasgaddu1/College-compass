@@ -1,0 +1,13 @@
+# Optional stateless token relay for the College Compass web/PWA build. See README.md.
+name = "college-compass-token-relay"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+# No KV, D1, R2, Durable Objects, queues or analytics bindings — the relay stores nothing.
+[observability]
+enabled = false
+
+[vars]
+# Exact origin of the web app (scheme + host, no path, no trailing slash).
+ALLOWED_ORIGIN = "https://vikasgaddu1.github.io"

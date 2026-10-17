@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Signing you in… · College Compass</title>
+<style>
+  :root { color-scheme: light dark; --bg: #f7f7f5; --fg: #1d1d1f; --muted: #6e6e73; --accent: #0a6c5a; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111214; --fg: #f2f2f2; --muted: #a1a1a6; --accent: #46c2a6; } }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg);
+    font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; padding: max(24px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom)); text-align: center; }
+  .spin { width: 28px; height: 28px; border-radius: 50%; border: 3px solid color-mix(in srgb, var(--fg) 15%, transparent);
+    border-top-color: var(--accent); animation: r 0.9s linear infinite; }
+  @keyframes r { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+  p { margin: 0; color: var(--muted); max-width: 22rem; }
+  a.btn { display: none; min-height: 44px; padding: 12px 22px; border-radius: 12px; background: var(--accent);
+    color: #fff; text-decoration: none; font-weight: 600; box-sizing: border-box; }
+  .show a.btn { display: inline-block; }
+</style>
+</head>
+<body>
+<main id="m">
+  <div class="spin" aria-hidden="true"></div>
+  <h1 style="font-size:20px;margin:0">Signing you in…</h1>
+  <p id="msg">Taking you back to College Compass.</p>
+  <a id="open" class="btn" href="./">Open College Compass</a>
+</main>
+<script>
+  // Keep in sync with src/ai/callback.ts (callback.test.ts compares them).
+  function ccCallbackTarget(search) {
+    var s = search || "";
+    if (s && s.charAt(0) !== "?") s = "?" + s;
+    var state = new URLSearchParams(s).get("state") || "";
+    var native = state.slice(-2) === ".n";
+    return (native ? "collegecompass://auth/callback" : "./#/auth/callback") + s;
+  }
+  (function () {
+    var target = ccCallbackTarget(location.search);
+    var link = document.getElementById("open");
+    link.setAttribute("href", target);
+    if (target.indexOf("collegecompass:") === 0) {
+      // Native: the in-app browser may ask before opening the app — always offer a tap target too.
+      document.getElementById("m").className = "show";
+      document.getElementById("msg").textContent = "If the app doesn’t open by itself, tap the button below.";
+    }
+    location.replace(target);
+  })();
+</script>
+</body>
+</html>
