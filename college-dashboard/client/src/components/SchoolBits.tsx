@@ -16,8 +16,8 @@ export function PlanBadge({ slug, showDeadline }: { slug: string; showDeadline?:
   const pending = a.plan === "PENDING";
   return (
     <span className={`chip ${planClass(a.plan)} font-semibold`}
-      title={`${pending ? "Plan pending" : `Applying ${a.plan_label}${a.binding ? " (binding)" : ""}`} · ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
-      {pending ? "Plan pending" : `Applying ${a.plan_short ?? a.plan}`}{showDeadline ? ` · ${a.deadline_label}` : ""}
+      title={`${pending ? "Round not chosen" : `Applying ${a.plan_label}${a.binding ? " (binding)" : ""}`} · ${a.deadline_label}${a.note ? " · " + a.note : ""}`}>
+      {pending ? "Round not chosen" : `Applying ${a.plan_short ?? a.plan}`}{showDeadline ? ` · ${a.deadline_label}` : ""}
     </span>
   );
 }

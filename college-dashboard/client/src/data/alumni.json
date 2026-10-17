@@ -48,46 +48,32 @@
       "note": "#1 feeder by alumni share at Google (2.62%), Meta (1.36%), Apple (1.15%), Nvidia (0.55%); #4 at OpenAI+Anthropic (255)",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
-    "purdue": {
+    "cornell": {
       "bands": {
-        "Google": "Moderate",
-        "Meta": "Moderate",
+        "Google": "Very high",
+        "Meta": "Very high",
+        "Amazon": "High",
+        "Microsoft": "High",
+        "Apple": "High",
+        "Nvidia": "Moderate",
+        "OpenAI": "High",
+        "Anthropic": "Moderate"
+      },
+      "note": "#9 feeder (403); named in workforce.ai's OpenAI top-10",
+      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
+    },
+    "duke": {
+      "bands": {
+        "Google": "High",
+        "Meta": "High",
         "Amazon": "High",
         "Microsoft": "High",
         "Apple": "Moderate",
-        "Nvidia": "Moderate",
+        "Nvidia": "Low",
         "OpenAI": "Low",
         "Anthropic": "Low"
       },
-      "note": "#16 feeder (277); Microsoft and Amazon are Purdue's #1/#2 tech employers",
-      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
-    },
-    "wpi": {
-      "bands": {
-        "Google": "Moderate",
-        "Meta": "Low",
-        "Amazon": "Moderate",
-        "Microsoft": "Moderate",
-        "Apple": "Low",
-        "Nvidia": "Low",
-        "OpenAI": "n.a.",
-        "Anthropic": "n.a."
-      },
-      "note": "\"Hundreds\" at Google and Microsoft; defense/industrial employers dominate WPI's outcomes",
-      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
-    },
-    "rpi": {
-      "bands": {
-        "Google": "Low",
-        "Meta": "Low",
-        "Amazon": "Moderate",
-        "Microsoft": "Moderate",
-        "Apple": "Low",
-        "Nvidia": "Low",
-        "OpenAI": "n.a.",
-        "Anthropic": "n.a."
-      },
-      "note": "83 recent tech hires; Amazon/Microsoft top two",
+      "note": "Strong Northeast/Bay Area alumni network; smaller footprint than public peers due to Duke's size",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
     "georgia-tech": {
@@ -104,18 +90,18 @@
       "note": "#2 overall by MANGO alumni share (3.48%); top-5 at all five FAANG companies",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
-    "michigan": {
+    "johns-hopkins": {
       "bands": {
-        "Google": "Very high",
-        "Meta": "High",
-        "Amazon": "Very high",
-        "Microsoft": "Very high",
-        "Apple": "High",
-        "Nvidia": "Moderate",
+        "Google": "Moderate",
+        "Meta": "Moderate",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
         "OpenAI": "Low",
         "Anthropic": "Low"
       },
-      "note": "#3 in raw volume (561); Microsoft is Michigan's #1 tech employer",
+      "note": "Defense/health-heavy top employers; no top-5 finishes at any big-tech company",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
     "maryland": {
@@ -130,6 +116,48 @@
         "Anthropic": "Low"
       },
       "note": "Amazon, Google, and Microsoft each employ 900+ UMD alumni",
+      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
+    },
+    "michigan": {
+      "bands": {
+        "Google": "Very high",
+        "Meta": "High",
+        "Amazon": "Very high",
+        "Microsoft": "Very high",
+        "Apple": "High",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "#3 in raw volume (561); Microsoft is Michigan's #1 tech employer",
+      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
+    },
+    "michigan-dearborn": {
+      "bands": {
+        "Google": "n.a.",
+        "Meta": "n.a.",
+        "Microsoft": "n.a.",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a.",
+        "Amazon": "Low"
+      },
+      "note": "Amazon is the only listed company named among the top 10 employers of 2023-24 UM-Dearborn graduates (university-wide); the top employers are Michigan automotive, health and energy firms (Ford, GM, Bosch, Stellantis, DTE). About 95% of employed graduates stay in Michigan.",
+      "robotics_scope_note": "Bands are not from LinkedIn counts. The 2023-24 report does not split employers by major, so no robotics placement or big-tech pipeline is inferred. The Amazon band reflects one university-wide employer list only."
+    },
+    "nc-state": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "High",
+        "Microsoft": "Moderate",
+        "Apple": "Moderate",
+        "Nvidia": "Moderate",
+        "OpenAI": "Low",
+        "Anthropic": "Low"
+      },
+      "note": "CS employer list led by Amazon; NVIDIA/Apple present via Research Triangle",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
     "northeastern": {
@@ -160,61 +188,61 @@
       "note": "500+ alumni at each of Amazon, Google, and Microsoft",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
-    "nc-state": {
+    "purdue": {
       "bands": {
         "Google": "Moderate",
-        "Meta": "Low",
+        "Meta": "Moderate",
         "Amazon": "High",
-        "Microsoft": "Moderate",
+        "Microsoft": "High",
         "Apple": "Moderate",
         "Nvidia": "Moderate",
         "OpenAI": "Low",
         "Anthropic": "Low"
       },
-      "note": "CS employer list led by Amazon; NVIDIA/Apple present via Research Triangle",
-      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
-    },
-    "duke": {
-      "bands": {
-        "Google": "High",
-        "Meta": "High",
-        "Amazon": "High",
-        "Microsoft": "High",
-        "Apple": "Moderate",
-        "Nvidia": "Low",
-        "OpenAI": "Low",
-        "Anthropic": "Low"
-      },
-      "note": "Strong Northeast/Bay Area alumni network; smaller footprint than public peers due to Duke's size",
+      "note": "#16 feeder (277); Microsoft and Amazon are Purdue's #1/#2 tech employers",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
     "rose-hulman": {
       "bands": {
         "Google": "n.a.",
         "Meta": "n.a.",
-        "Amazon": "n.a.",
-        "Microsoft": "n.a.",
+        "Amazon": "Low",
+        "Microsoft": "Low",
         "Apple": "n.a.",
         "Nvidia": "n.a.",
         "OpenAI": "n.a.",
         "Anthropic": "n.a."
       },
-      "note": "No source-backed company-alumni or robotics-placement bands researched for this entry.",
-      "robotics_scope_note": "Unknown company footprint; no job-placement inference is made."
+      "note": "Amazon and Microsoft appear on the Class of 2025 Computer Science employer list; no other target company appears in the published lists",
+      "robotics_scope_note": "Bands come only from Rose-Hulman's Class of 2025 employer lists, not an alumni headcount. Computer Engineering hires went mainly to hardware and defense employers (AMD, Texas Instruments, Collins Aerospace, Boeing, NSWC Crane). No robotics-specific placement rate is published."
     },
-    "michigan-dearborn": {
+    "rpi": {
       "bands": {
-        "Google": "n.a.",
-        "Meta": "n.a.",
-        "Amazon": "n.a.",
-        "Microsoft": "n.a.",
-        "Apple": "n.a.",
-        "Nvidia": "n.a.",
+        "Google": "Low",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
         "OpenAI": "n.a.",
         "Anthropic": "n.a."
       },
-      "note": "No source-backed company-alumni or robotics-placement bands researched for this entry.",
-      "robotics_scope_note": "Unknown company footprint; no job-placement inference is made."
+      "note": "83 recent tech hires; Amazon/Microsoft top two",
+      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
+    },
+    "wpi": {
+      "bands": {
+        "Google": "Moderate",
+        "Meta": "Low",
+        "Amazon": "Moderate",
+        "Microsoft": "Moderate",
+        "Apple": "Low",
+        "Nvidia": "Low",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "\"Hundreds\" at Google and Microsoft; defense/industrial employers dominate WPI's outcomes",
+      "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     }
   },
   "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
