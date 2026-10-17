@@ -7,6 +7,13 @@
  *      `.n` state suffix and forwards to `collegecompass://auth/callback?...`; this module listens via
  *      `platform.onAuthRedirect`, completes sign-in, closes the browser and notifies subscribers.
  *
+ * Native self-serve ("oss" mode — used when the build has no partner client ID): OpenAI's self-serve
+ *      path for open-source, locally run apps. A 127.0.0.1 loopback listener (LoopbackAuth plugin) is
+ *      started, the first sign-in registers this install with `client_id=dynamic_agent_client` +
+ *      `agent_name_hint` + a stable `ext_agent_host_id`, and the issued `oaiapp_…` client ID returned on
+ *      the redirect is saved and used for the exchange, refresh and later sign-ins. `signIn()` resolves
+ *      only after the whole flow completes.
+ *
  * All redirect/HTTP plumbing goes through src/platform so the same code runs on web and iOS.
  */
 import * as platform from "../platform";
@@ -14,8 +21,9 @@ import { load, remove, save, NS } from "../lib/storage";
 import { navigate } from "../lib/router";
 import { AiError, type AuthApi, type ChatGPTAccount } from "../types";
 import {
-  AUTHORIZE_URL, ISSUER, JWKS_URL, KEYS, MODELS_TTL_MS, MODELS_URL, NATIVE_STATE_SUFFIX, OIDC_DISCOVERY_URL,
-  PENDING_TTL_MS, PLAN_USAGE_SCOPE, REFRESH_SKEW_MS, RESOURCE, SCOPE, TOKEN_URL, clientId, tokenRelay,
+  AGENT_NAME_HINT, AUTHORIZE_URL, ISSUER, JWKS_URL, KEYS, MODELS_TTL_MS, MODELS_URL, NATIVE_STATE_SUFFIX,
+  OIDC_DISCOVERY_URL, PENDING_TTL_MS, PLAN_USAGE_SCOPE, REFRESH_SKEW_MS, RESOURCE, SCOPE, SELF_SERVE_CLIENT_ID,
+  TOKEN_URL, clientId, tokenRelay,
 } from "./config";
 import { createPkce, randomString } from "./pkce";
 import { decodeJwt, verifyIdToken, type Jwk } from "./jwt";
@@ -29,6 +37,24 @@ export interface PendingSignIn {
   returnTo: string | null;
   createdAt: number;
   redirect_uri: string;
+  /** "oss" = native self-serve sign-in (loopback redirect). Absent = partner client-ID flow. */
+  mode?: "oss";
+  /** oss: the client_id sent to authorize (`dynamic_agent_client` on first registration). */
+  client_id?: string;
+  /** oss: the `ext_agent_host_id` sent to authorize. */
+  host_id?: string;
+}
+
+/** Self-serve client IDs issued to this device (`cc2:issued_client_id`). */
+export interface IssuedClientIds {
+  /** The `ext_agent_host_id` these were issued for; ignored if the host ID changes. */
+  host_id: string;
+  /** Account `sub` → issued client ID (OpenAI issues one per device + account). */
+  by_sub: Record<string, string>;
+  /** The account that signed in last on this device. */
+  last_sub: string | null;
+  /** The most recently issued client ID (used before an account is known). */
+  latest: string | null;
 }
 
 export interface StoredTokens {
@@ -71,13 +97,16 @@ interface ModelsCache {
 // ───────────────────────────── dependencies (injectable for tests) ─────────────────────────────
 
 export interface AuthDeps {
-  platform: Pick<typeof platform, "isNative" | "openAuthUrl" | "onAuthRedirect" | "closeAuthBrowser" | "postForm" | "redirectUri">;
+  platform: Pick<typeof platform, "isNative" | "openAuthUrl" | "onAuthRedirect" | "closeAuthBrowser" | "postForm" | "redirectUri">
+    & Partial<Pick<typeof platform, "supportsSelfServeSignIn" | "startLoopback" | "onAuthBrowserFinished">>;
   fetch: typeof fetch;
   now: () => number;
   clientId: () => string;
   tokenRelay: () => string;
   navigate: (path: string) => void;
   warn: (msg: string) => void;
+  /** Random UUID for the per-device host ID (tests inject a fixed one). */
+  uuid: () => string;
 }
 
 const defaultDeps = (): AuthDeps => ({
@@ -88,7 +117,34 @@ const defaultDeps = (): AuthDeps => ({
   tokenRelay,
   navigate: (p) => navigate(p, { replace: true }),
   warn: (m) => console.warn(m),
+  uuid: () => randomUuid(),
 });
+
+function randomUuid(): string {
+  const c = globalThis.crypto as Crypto | undefined;
+  if (c && typeof c.randomUUID === "function") return c.randomUUID();
+  // RFC 4122 v4 from getRandomValues (older WebKit without randomUUID).
+  const b = new Uint8Array(16);
+  c!.getRandomValues(b);
+  b[6] = (b[6]! & 0x0f) | 0x40;
+  b[8] = (b[8]! & 0x3f) | 0x80;
+  const h = Array.from(b, (x) => x.toString(16).padStart(2, "0")).join("");
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+}
+
+/** Thrown inside the self-serve flow when the attempt should be restarted once (e.g. invalid_grant). */
+class RestartSignIn extends Error {
+  constructor(readonly reason: string) {
+    super(reason);
+  }
+}
+
+/** Accepts an issued client ID from the redirect (`oaiapp_…` today; the charset check is deliberately loose). */
+export function isPlausibleClientId(v: unknown): v is string {
+  return typeof v === "string" && /^[A-Za-z0-9][A-Za-z0-9_.:-]{2,199}$/.test(v) && v !== SELF_SERVE_CLIENT_ID;
+}
+
+const HOST_ID_RE = /^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** OAuth error codes that mean the refresh token is unusable → clear tokens and sign in again. */
 const TERMINAL_REFRESH_ERRORS = new Set([
@@ -206,9 +262,143 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     };
   }
 
+  // ── self-serve (native, open-source path) helpers ──
+  const selfServe = () => !d.clientId() && !!d.platform.supportsSelfServeSignIn?.() && !!d.platform.startLoopback;
+
+  /** Stable per-device `ext_agent_host_id` (`urn:uuid:…`), created once and persisted. */
+  function hostId(): string {
+    const existing = load<string | null>(KEYS.hostId, null);
+    if (typeof existing === "string" && HOST_ID_RE.test(existing)) return existing;
+    const id = `urn:uuid:${d.uuid().toLowerCase()}`;
+    if (!save(KEYS.hostId, id)) throw new AiError("unsupported", "Couldn't save sign-in data on this device (storage full or blocked).");
+    return id;
+  }
+
+  function readIssued(host: string): IssuedClientIds {
+    const v = load<IssuedClientIds | null>(KEYS.issuedClientIds, null);
+    if (v && v.host_id === host && v.by_sub && typeof v.by_sub === "object") return v;
+    return { host_id: host, by_sub: {}, last_sub: null, latest: null };
+  }
+
+  /** The issued client ID to reuse for this device: the current/last account's, else the latest. */
+  function issuedClientFor(host: string): string | null {
+    const v = readIssued(host);
+    const sub = readTokens()?.claims.sub ?? v.last_sub;
+    const bySub = sub ? v.by_sub[sub] : undefined;
+    if (isPlausibleClientId(bySub)) return bySub;
+    return isPlausibleClientId(v.latest) ? v.latest : null;
+  }
+
+  function rememberIssued(host: string, cid: string, sub: string): void {
+    const v = readIssued(host);
+    save(KEYS.issuedClientIds, { ...v, by_sub: { ...v.by_sub, [sub]: cid }, last_sub: sub, latest: cid } satisfies IssuedClientIds);
+  }
+
+  /** Drop a stored issued client ID that OpenAI rejected, so the next attempt registers again. */
+  function forgetIssued(host: string, cid: string): void {
+    const v = readIssued(host);
+    const by_sub = Object.fromEntries(Object.entries(v.by_sub).filter(([, c]) => c !== cid));
+    save(KEYS.issuedClientIds, { ...v, by_sub, latest: v.latest === cid ? null : v.latest } satisfies IssuedClientIds);
+  }
+
+  /** Wait for the loopback callback, the user closing the browser, or the attempt expiring. */
+  function awaitCallback(next: Promise<URLSearchParams>): Promise<URLSearchParams> {
+    return new Promise<URLSearchParams>((resolve, reject) => {
+      let done = false;
+      let offClosed: () => void = () => {};
+      const timer = setTimeout(() => finish(() => reject(new AiError("reauth_required", "Sign-in took too long and expired. Please try again."))), PENDING_TTL_MS);
+      function finish(fn: () => void) {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        offClosed();
+        fn();
+      }
+      offClosed = d.platform.onAuthBrowserFinished?.(() => finish(() => reject(new AiError("reauth_required", "Sign-in was cancelled.")))) ?? (() => {});
+      next.then(
+        (q) => finish(() => resolve(q)),
+        () => finish(() => reject(new AiError("network", "The sign-in listener stopped unexpectedly. Please try again."))),
+      );
+    });
+  }
+
+  /** One self-serve attempt: loopback → authorize in the in-app browser → callback → exchange. */
+  async function selfServeAttempt(rt: string | undefined, forceRegistration: boolean): Promise<void> {
+    const host = hostId();
+    const issued = forceRegistration ? null : issuedClientFor(host);
+    let session: platform.LoopbackSession;
+    try {
+      session = await d.platform.startLoopback!(); // listener first, browser second
+    } catch {
+      throw new AiError("unsupported", "Couldn't start ChatGPT sign-in on this device. Close other apps that may be signing in and try again.");
+    }
+    let query: URLSearchParams;
+    try {
+      const state = randomString(24);
+      const nonce = randomString(24);
+      const { verifier, challenge } = await createPkce();
+      const sentClientId = issued ?? SELF_SERVE_CLIENT_ID;
+      const pending: PendingSignIn = {
+        state, nonce, verifier, returnTo: rt ?? null, createdAt: d.now(), redirect_uri: session.redirectUri,
+        mode: "oss", client_id: sentClientId, host_id: host,
+      };
+      if (!save(KEYS.pending, pending)) throw new AiError("unsupported", "Couldn't save sign-in data on this device (storage full or blocked).");
+      const url = new URL(AUTHORIZE_URL);
+      const q = url.searchParams;
+      q.set("response_type", "code");
+      q.set("client_id", sentClientId);
+      if (!issued) q.set("agent_name_hint", AGENT_NAME_HINT); // first registration only
+      q.set("ext_agent_host_id", host);
+      q.set("redirect_uri", session.redirectUri);
+      q.set("scope", SCOPE);
+      q.set("resource", RESOURCE);
+      q.set("state", state);
+      q.set("nonce", nonce);
+      q.set("code_challenge", challenge);
+      q.set("code_challenge_method", "S256");
+      await d.platform.openAuthUrl(url.toString());
+      query = await awaitCallback(session.next());
+    } catch (e) {
+      remove(KEYS.pending);
+      throw e;
+    } finally {
+      await session.stop().catch(() => {});
+      await d.platform.closeAuthBrowser().catch(() => {});
+    }
+    await completeSignIn(query);
+  }
+
+  async function signInSelfServe(rt?: string): Promise<void> {
+    lastErr = null;
+    let forceRegistration = false;
+    for (let attempt = 0; ; attempt++) {
+      try {
+        await selfServeAttempt(rt, forceRegistration);
+        break;
+      } catch (e) {
+        if (e instanceof RestartSignIn && attempt === 0) {
+          d.warn(`ChatGPT sign-in restarting: ${e.reason}`);
+          forceRegistration = e.reason === "client_rejected";
+          lastErr = null;
+          continue;
+        }
+        const err = e instanceof RestartSignIn
+          ? new AiError("reauth_required", "ChatGPT sign-in couldn't be completed. Please try again.")
+          : e;
+        lastErr = err instanceof Error ? err.message : String(err);
+        emit();
+        throw err;
+      }
+    }
+    const next = returnTo;
+    returnTo = null;
+    if (next) d.navigate(next);
+  }
+
   // ── sign in ──
   async function signIn(rt?: string): Promise<void> {
     const cid = d.clientId();
+    if (!cid && selfServe()) return signInSelfServe(rt);
     if (!cid) throw new AiError("not_connected", "ChatGPT sign-in isn't configured in this build yet.");
     lastErr = null;
     const native = d.platform.isNative();
@@ -242,8 +432,15 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
       throw new AiError("reauth_required", "Sign-in couldn't be verified (state mismatch). Please try again.");
     }
     remove(KEYS.pending); // single use
+    const oss = pending.mode === "oss";
     if (err) {
       const desc = query.get("error_description");
+      // A stored issued client ID that OpenAI no longer accepts → forget it and register again (once).
+      if (oss && pending.host_id && pending.client_id && pending.client_id !== SELF_SERVE_CLIENT_ID
+        && (err === "invalid_client" || err === "unauthorized_client")) {
+        forgetIssued(pending.host_id, pending.client_id);
+        throw new RestartSignIn("client_rejected");
+      }
       throw new AiError(
         "reauth_required",
         err === "access_denied" ? "Sign-in was cancelled." : `ChatGPT sign-in failed: ${desc || err}.`,
@@ -253,7 +450,13 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     const code = query.get("code");
     if (!code) throw new AiError("reauth_required", "ChatGPT didn't return a sign-in code. Please try again.");
 
-    const cid = d.clientId();
+    // Self-serve: a new registration returns the issued client ID on the redirect; later sign-ins
+    // reuse the stored one (also accept a fresh one if OpenAI sends it).
+    const callbackCid = query.get("client_id");
+    const cid = oss
+      ? (isPlausibleClientId(callbackCid) ? callbackCid : pending.client_id !== SELF_SERVE_CLIENT_ID ? pending.client_id ?? "" : "")
+      : d.clientId();
+    if (!cid) throw new AiError("server", "ChatGPT didn't return a client ID for this app. Please try again.");
     const { status, json } = await tokenRequest({
       grant_type: "authorization_code",
       client_id: cid,
@@ -264,6 +467,11 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     });
     if (status !== 200 || typeof json?.access_token !== "string") {
       const e = oauthError(json);
+      if (oss && e.code === "invalid_grant") throw new RestartSignIn("invalid_grant"); // discard the code, start over
+      if (oss && e.code === "invalid_client" && pending.host_id) {
+        forgetIssued(pending.host_id, cid);
+        throw new RestartSignIn("client_rejected");
+      }
       if (e.code === "invalid_client") throw new AiError("unsupported", "This app's ChatGPT client configuration was rejected. Please update the app.");
       throw new AiError(status >= 500 ? "server" : "reauth_required", `ChatGPT sign-in failed (${e.code}). Please try again.`);
     }
@@ -299,6 +507,7 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     if (prev && prev.claims.sub !== tokens.claims.sub) remove(KEYS.models);
     modelsMem = null;
     if (!save(KEYS.tokens, tokens)) throw new AiError("unsupported", "Couldn't save your sign-in on this device (storage full or blocked).");
+    if (oss && pending.host_id) rememberIssued(pending.host_id, cid, tokens.claims.sub);
     returnTo = pending.returnTo;
     lastErr = null;
     emit();
@@ -473,7 +682,7 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
   }
 
   return {
-    configured: () => !!d.clientId(),
+    configured: () => !!d.clientId() || selfServe(),
     account() {
       const raw = (() => { try { return localStorage.getItem(NS + KEYS.tokens) ?? ""; } catch { return ""; } })();
       if (accountCache && accountCache.raw === raw) return accountCache.account;

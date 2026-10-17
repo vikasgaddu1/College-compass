@@ -66,6 +66,16 @@ export function getRedirectUri(): string {
 /** Suffix appended to `state` so callback.html knows to forward to the native app. */
 export const NATIVE_STATE_SUFFIX = ".n";
 
+/**
+ * Self-serve sign-in for open-source, locally run apps (developers.openai.com/siwc/token-sharing-open-source,
+ * Oct 2026). Used by the native iOS app when no partner client ID is configured: the first sign-in
+ * registers this install with `client_id=dynamic_agent_client`; OpenAI returns an issued client ID
+ * (`oaiapp_…`) on the redirect, which is reused for later sign-ins, the token exchange and refresh.
+ */
+export const SELF_SERVE_CLIENT_ID = "dynamic_agent_client";
+/** `agent_name_hint` — display metadata, identical across installs. Sent on first registration only. */
+export const AGENT_NAME_HINT = "College Compass";
+
 /** Storage keys (all under the `cc2:` namespace, written via src/lib/storage). */
 export const KEYS = {
   pending: "oauth_pending",
@@ -76,6 +86,10 @@ export const KEYS = {
   model: "ai_model",
   caps: "ai_caps",
   researchCache: "research_cache",
+  /** Stable per-device `ext_agent_host_id` (`urn:uuid:…`) for self-serve sign-in. */
+  hostId: "host_id",
+  /** Issued self-serve client IDs for this device (by account `sub`, plus the latest). */
+  issuedClientIds: "issued_client_id",
 } as const;
 
 /** Default model for the developer API-key demo mode (override with localStorage `cc2:dev_openai_model`). */
