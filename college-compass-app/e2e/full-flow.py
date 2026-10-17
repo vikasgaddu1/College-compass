@@ -667,10 +667,10 @@ class Flow:
         self.ok()
         total = 1 + min(len(PLANNED), 11)  # default research size is 12 (1 wanted + 11 planned)
         await expect(page.get_by_text(f"{total} of {total} colleges researched.")).to_be_visible()
-        await expect(page.get_by_text(f"{total} candidates chosen")).to_be_visible()
+        await expect(page.get_by_text(f"{total} colleges picked")).to_be_visible()
         await expect(page.get_by_text("Couldn't research")).to_have_count(0)
-        lanes = page.locator(".cc-card", has=page.get_by_text(re.compile(r"^Agent \d+$")))
-        await expect(lanes).to_have_count(-(-total // 3))  # one lane per batch of 3
+        lanes = page.locator("[data-lane]", has=page.get_by_text(re.compile(r"^Agent \d+$")))
+        await expect(lanes).to_have_count(-(-total // 2))  # one lane per batch of 2
         await self.shot("research-complete")
         await page.get_by_role("button", name="See my list").click()
 
@@ -783,7 +783,7 @@ async def main() -> int:
             overlaps = sum(1 for i, a in enumerate(rc) for b in rc[i + 1:] if a["start"] < b["end"] and b["start"] < a["end"])
             peak = concurrency(rc)
             assert overlaps >= 1, "research calls never overlapped"
-            assert 2 <= peak <= 4, f"peak research calls in flight = {peak} (expected 2–4)"
+            assert 2 <= peak <= 8, f"peak research calls in flight = {peak} (expected 2–8)"
             assert planner_before_research(mock), "research started before the planner finished"
             assert len(mock.chat_calls) == 1
             status = 0

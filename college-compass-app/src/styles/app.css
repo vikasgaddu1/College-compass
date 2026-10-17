@@ -705,6 +705,12 @@ textarea.cc-input {
 .cc-dot-pulse {
   animation: cc-pulse 1.2s ease-in-out infinite;
 }
+
+/* Rotating "while you wait" tip: a gentle fade on each swap (held still under reduced motion). */
+.cc-tip-swap {
+  display: inline-block;
+  animation: cc-fade 400ms ease both;
+}
 @keyframes cc-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }

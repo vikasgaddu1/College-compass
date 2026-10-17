@@ -18,9 +18,11 @@ export interface Prefs {
   theme: "system";
   /** How many colleges a research run aims for (planner tops up to this). */
   researchCount: 6 | 12 | 18;
+  /** iOS app: the student asked to be notified when research finishes, so later runs arm it automatically. */
+  notifyWhenReady: boolean;
 }
 
-const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, demo: false, onboardingDone: false, researchedAt: null, theme: "system", researchCount: 12 };
+const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, demo: false, onboardingDone: false, researchedAt: null, theme: "system", researchCount: 12, notifyWhenReady: false };
 
 export interface Store {
   profile: StudentProfile;
