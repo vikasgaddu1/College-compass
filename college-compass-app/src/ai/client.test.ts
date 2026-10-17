@@ -172,6 +172,13 @@ describe("aiClient.call", () => {
     await expect(b.client.call({ instructions: "x", input: [], signal: ctrl.signal })).rejects.toMatchObject({ name: "AbortError" });
   });
 
+  it("web: a CORS-blocked model lookup also points to the iPhone app", async () => {
+    const { AiError } = await import("../types");
+    const { client, fetchMock } = setup([], { listModels: async () => { throw new AiError("network", "Couldn't load your ChatGPT models. Check your connection."); } });
+    await expect(client.call({ instructions: "x", input: [] })).rejects.toMatchObject({ code: "unsupported" });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("uses the developer API key (flat tools, configured model) when there is no ChatGPT plan session", async () => {
     const { client, bodies, headers } = setup([sseResponse(completed())], { account: () => null }, "sk-test");
     expect(client.connection()).toEqual({ kind: "api_key" });

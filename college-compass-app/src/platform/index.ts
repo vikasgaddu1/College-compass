@@ -125,57 +125,87 @@ export async function postForm(url: string, body: URLSearchParams): Promise<{ st
 /**
  * `fetch` that works against api.openai.com from the app.
  *
- * api.openai.com does not send CORS headers for authenticated POSTs, so a WebView `fetch` from
+ * api.openai.com does not send CORS headers for authenticated requests, so a WebView `fetch` from
  * `capacitor://localhost` (or any web origin) fails before the request is answered. In the native
- * app, requests therefore go through CapacitorHttp (URLSession, no CORS). The whole body is
- * buffered and handed back as a standard `Response`, so streaming (SSE) responses still parse —
- * they just arrive at once. Web: plain `fetch`.
+ * app, requests therefore go through the in-app `NativeHttp` plugin (URLSession, no CORS;
+ * ios/App/App/NativeHttpPlugin.swift). Aborting the signal cancels the URLSession task, which
+ * closes the connection so OpenAI stops generating. The body is returned whole as a standard
+ * `Response`, so streaming (SSE) responses still parse — they just arrive at once. Web: `fetch`.
  */
 export async function httpFetch(input: RequestInfo | URL, init: RequestInit = {}): Promise<Response> {
   if (!isNative()) return globalThis.fetch(input, init);
-  return nativeFetch(input, init, CapacitorHttp);
+  return nativeFetch(input, init, getNativeHttpPlugin());
 }
 
-/** Exported for tests: the CapacitorHttp-backed implementation of `httpFetch`. */
-export async function nativeFetch(
-  input: RequestInfo | URL,
-  init: RequestInit,
-  http: Pick<typeof CapacitorHttp, "request">,
-): Promise<Response> {
+/** JS face of the native `NativeHttp` plugin. */
+export interface NativeHttpPlugin {
+  request(opts: {
+    id: string;
+    url: string;
+    method?: string;
+    headers?: Record<string, string>;
+    body?: string;
+    timeoutMs?: number;
+  }): Promise<{ status: number; headers?: Record<string, string>; data?: string }>;
+  cancel(opts: { id: string }): Promise<void>;
+}
+
+let nativeHttpPlugin: NativeHttpPlugin | null = null;
+function getNativeHttpPlugin(): NativeHttpPlugin {
+  nativeHttpPlugin ??= registerPlugin<NativeHttpPlugin>("NativeHttp");
+  return nativeHttpPlugin;
+}
+
+let requestSeq = 0;
+function abortError(): DOMException {
+  return new DOMException("Aborted", "AbortError");
+}
+
+/** Exported for tests: the NativeHttp-backed implementation of `httpFetch`. */
+export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, http: NativeHttpPlugin): Promise<Response> {
   const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
   const method = (init.method ?? "GET").toUpperCase();
   const headers: Record<string, string> = {};
   new Headers(init.headers ?? {}).forEach((v, k) => { headers[k] = v; });
   const signal = init.signal ?? undefined;
-  if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
+  if (signal?.aborted) throw abortError();
 
-  const req = http.request({
-    url,
-    method,
-    headers,
-    // iOS passes a string body through unchanged.
-    data: init.body == null ? undefined : String(init.body),
-    responseType: "text",
-    connectTimeout: 30_000,
-    // Research calls with web search can take a few minutes.
-    readTimeout: 300_000,
+  const id = `r${Date.now().toString(36)}-${++requestSeq}`;
+  let onAbort: (() => void) | null = null;
+  const aborted = new Promise<never>((_, reject) => {
+    if (!signal) return;
+    onAbort = () => {
+      // Cancel the URLSession task too, not just this promise.
+      void http.cancel({ id }).catch(() => {});
+      reject(abortError());
+    };
+    signal.addEventListener("abort", onAbort, { once: true });
   });
-  const res = await (signal
-    ? Promise.race([
-        req,
-        new Promise<never>((_, reject) =>
-          signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true }),
-        ),
-      ])
-    : req);
 
-  const body = typeof res.data === "string" ? res.data : res.data == null ? "" : JSON.stringify(res.data);
+  let res: { status: number; headers?: Record<string, string>; data?: string };
+  try {
+    const req = http.request({
+      id,
+      url,
+      method,
+      headers,
+      body: init.body == null ? undefined : String(init.body),
+      // Research calls with web search can take a few minutes.
+      timeoutMs: 300_000,
+    });
+    res = await (signal ? Promise.race([req, aborted]) : req);
+  } catch (e) {
+    if (signal?.aborted || (e as { code?: string })?.code === "ABORTED") throw abortError();
+    throw new TypeError("Network request failed");
+  } finally {
+    if (signal && onAbort) signal.removeEventListener("abort", onAbort);
+  }
+
   const outHeaders = new Headers();
   for (const [k, v] of Object.entries(res.headers ?? {})) {
     try { outHeaders.set(k, String(v)); } catch { /* skip invalid header names */ }
   }
-  // Status 0 means the native layer failed before any HTTP response.
-  if (!res.status) throw new TypeError("Network request failed");
+  const body = typeof res.data === "string" ? res.data : "";
   return new Response(res.status === 204 || res.status === 304 ? null : body, { status: res.status, headers: outHeaders });
 }
 

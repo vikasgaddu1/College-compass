@@ -12,5 +12,11 @@ class MainViewController: CAPBridgeViewController {
         if ProcessInfo.processInfo.arguments.contains("-ccLoopbackSelfTest") {
             loopback.startSelfTest()
         }
+        // OpenAI requests (api.openai.com has no CORS for authenticated calls): NativeHttpPlugin.swift.
+        let http = NativeHttpPlugin()
+        bridge?.registerPluginInstance(http)
+        if ProcessInfo.processInfo.arguments.contains("-ccNativeHttpSelfTest") {
+            http.runSelfTest()
+        }
     }
 }
