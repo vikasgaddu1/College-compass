@@ -14,7 +14,7 @@ import { httpFetch, isNative } from "../platform";
 import { AiError, type AiCallResult, type AiClient, type AiConnection, type AiFunctionTool } from "../types";
 import { auth as authSingleton, type ChatGPTAuth } from "./auth";
 import { DEV_DEFAULT_MODEL, KEYS, MANAGE_USAGE_URL, RESPONSES_URL } from "./config";
-import { ResponseAccumulator, readSse, type StreamError } from "./sse";
+import { ResponseAccumulator, SseParser, readSse, type StreamError } from "./sse";
 
 type CallOpts = Parameters<AiClient["call"]>[0];
 
@@ -161,6 +161,26 @@ function stripNamespace(name: string): string {
 /** api.openai.com blocks browser (CORS) calls made with ChatGPT tokens; only the app can make them. */
 function webPlanError(): AiCallError {
   return new AiCallError("unsupported", "OpenAI only accepts ChatGPT-plan requests from the College Compass iPhone app, not from a web page. Open the app to run research, or try the demo here.");
+}
+
+/**
+ * Parse a complete, buffered Responses API stream (SSE text) into a call result. Used to recover
+ * research responses that iOS delivered while the app wasn't running. Null unless it completed.
+ */
+export function parseResponsesText(text: string): AiCallResult | null {
+  const acc = new ResponseAccumulator(() => {});
+  const parser = new SseParser();
+  for (const m of [...parser.push(text), ...parser.flush()]) {
+    acc.handle(m);
+    if (acc.done) break;
+  }
+  const out = acc.result();
+  if (out.status !== "completed") return null;
+  return {
+    text: out.text,
+    tool_calls: out.tool_calls.map((c) => ({ name: stripNamespace(c.name), arguments: c.arguments })),
+    model: out.model || "",
+  };
 }
 
 // ───────────────────────────── client ─────────────────────────────
@@ -319,7 +339,9 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "text/event-stream" },
           body: JSON.stringify(body),
           signal,
-        });
+          // Read by platform.httpFetch on iOS only; fetch() ignores unknown init fields.
+          ...(o.tag ? { ccTag: o.tag } : {}),
+        } as RequestInit);
       } catch {
         if (signal?.aborted) throw abortError(signal);
         if (conn.kind === "chatgpt" && !isNative()) {

@@ -27,7 +27,10 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "cancel", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "requestNotificationPermission", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "notifyWhenDone", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "cancelNotify", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "cancelNotify", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "beginRun", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "endRun", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "takeOrphans", returnType: CAPPluginReturnPromise)
     ]
 
     private let lock = NSLock()
@@ -73,7 +76,7 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
             case .failure(let failure): call.reject(failure.message, failure.code)
             }
         }
-        send(req, id: id, background: call.getBool("background") == true) { result, _ in handle(result) }
+        send(req, id: id, background: call.getBool("background") == true, tag: call.getString("tag")) { result, _ in handle(result) }
     }
 
     /// Set once the background session has failed to start a request (seen in the iOS Simulator:
@@ -85,7 +88,7 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
     /// fails quickly with a transport error, retry once on the normal session: at worst research
     /// behaves as it did before (it just pauses while the app is in the background).
     /// `via` reports which path produced the result ("background" / "foreground").
-    func send(_ req: URLRequest, id: String, background: Bool,
+    func send(_ req: URLRequest, id: String, background: Bool, tag: String? = nil,
               completion: @escaping (Result<[String: Any], Failure>, String) -> Void) {
         Self.flagLock.lock()
         let useBackground = background && !Self.backgroundUnavailable
@@ -95,7 +98,7 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
         let started = Date()
-        BackgroundTransfers.shared.perform(req, id: id) { [weak self] result in
+        BackgroundTransfers.shared.perform(req, id: id, tag: tag) { [weak self] result in
             if case .failure(let f) = result, f.code == "NETWORK", Date().timeIntervalSince(started) < 20, let self {
                 Self.flagLock.lock(); Self.backgroundUnavailable = true; Self.flagLock.unlock()
                 NSLog("CC_NATIVEHTTP background session unavailable (%@); using the normal session", f.message)
@@ -129,6 +132,26 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func cancelNotify(_ call: CAPPluginCall) {
         BackgroundTransfers.shared.disarm()
         call.resolve()
+    }
+
+    /// A research run: `expected` agent requests tagged `research:<runId>:…` (see BackgroundTransfers).
+    @objc func beginRun(_ call: CAPPluginCall) {
+        guard let runId = call.getString("runId"), !runId.isEmpty else {
+            call.reject("Missing runId", "INVALID")
+            return
+        }
+        BackgroundTransfers.shared.beginRun(runId: runId, expected: call.getInt("expected") ?? 0)
+        call.resolve()
+    }
+
+    @objc func endRun(_ call: CAPPluginCall) {
+        BackgroundTransfers.shared.endRun(runId: call.getString("runId") ?? "")
+        call.resolve()
+    }
+
+    /// Research answers iOS delivered after relaunching the app in the background (no JS caller then).
+    @objc func takeOrphans(_ call: CAPPluginCall) {
+        call.resolve(["orphans": BackgroundTransfers.shared.takeOrphans()])
     }
 
     // MARK: - Core (also used by the CI self-test)

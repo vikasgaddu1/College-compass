@@ -280,6 +280,8 @@ export interface AiClient {
     reasoning?: "low" | "medium" | "high";
     onDelta?: (text: string) => void;
     signal?: AbortSignal;
+    /** Opaque label for the native transport (background research tracking); never sent to OpenAI. */
+    tag?: string;
   }): Promise<AiCallResult>;
 }
 

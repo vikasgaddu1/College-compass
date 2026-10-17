@@ -7,6 +7,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Research requests from a previous process may still be in flight: reattach to their session.
+        if BackgroundTransfers.shared.inFlight > 0 { BackgroundTransfers.shared.reconnect() }
         // Override point for customization after application launch.
         return true
     }
@@ -33,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         if identifier == BackgroundTransfers.sessionIdentifier {
             BackgroundTransfers.shared.systemCompletionHandler = completionHandler
-            _ = BackgroundTransfers.shared.inFlight // make sure the session exists to receive the events
+            BackgroundTransfers.shared.reconnect() // recreate the session so iOS can deliver its events
         } else {
             completionHandler()
         }

@@ -1,9 +1,9 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AiError, type AiCallResult, type AiClient, type ResearchEvent } from "../types";
 import { createResearchCache } from "./cache";
 import { PLANNER_TOOL_NAME, RESEARCH_TOOL_NAME } from "./prompts";
-import { createLimiter, createResearch } from "./research";
-import { baseProfile, fakeCollege, installMemoryStorage, rawCollege } from "./test-helpers";
+import { createLimiter, createResearch, researchTag } from "./research";
+import { baseProfile, fakeCollege, installMemoryStorage, rawCollege, sseText } from "./test-helpers";
 
 type CallOpts = Parameters<AiClient["call"]>[0];
 const NOW = new Date("2026-10-16T12:00:00Z");
@@ -260,5 +260,41 @@ describe("research.researchOne", () => {
     const { r } = setup(m);
     await expect(r.researchOne("X", baseProfile())).rejects.toMatchObject({ code: "reauth_required" });
     expect(m.stats().researchCalls).toBe(1);
+  });
+});
+
+describe("iOS background tracking", () => {
+  function nativeSpy(orphans: { tag: string; data: string }[] = []) {
+    return { begin: vi.fn(), end: vi.fn(), takeOrphans: vi.fn(async () => orphans.splice(0)) };
+  }
+
+  it("registers the run with the number of agent requests, tags each request, and ends the run", async () => {
+    const m = mockClient();
+    const native = nativeSpy();
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_bg" }), now: () => NOW, native });
+    await r.run({ profile: baseProfile(), wanted: names(5), target_count: 5, batch_size: 2, onEvent: () => {} });
+    expect(native.begin).toHaveBeenCalledTimes(1);
+    const [runId, expected] = native.begin.mock.calls[0]!;
+    expect(expected).toBe(3); // 5 colleges, 2 per agent
+    const tags = m.calls.map((c) => c.tag);
+    expect(tags.every((t) => typeof t === "string" && t.startsWith(`research:${runId}:`))).toBe(true);
+    expect(native.end).toHaveBeenCalledWith(runId);
+  });
+
+  it("recovers research iOS delivered after a relaunch and doesn't research those colleges again", async () => {
+    const tag = researchTag("old-run", [{ name: "College A", state: "NC" }]);
+    const args = JSON.stringify({ colleges: [rawCollege("College A")] });
+    const data = sseText([
+      { type: "response.output_item.added", item: { type: "function_call", id: "f1", name: RESEARCH_TOOL_NAME, namespace: "college_compass", arguments: "" } },
+      { type: "response.function_call_arguments.done", item_id: "f1", arguments: args },
+      { type: "response.completed", response: { model: "gpt-plan", output: [] } },
+    ]);
+    const m = mockClient();
+    const native = nativeSpy([{ tag, data }]);
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_orphan", now: () => NOW.getTime() }), now: () => NOW, native });
+    const out = await r.run({ profile: baseProfile(), wanted: ["College A", "College B"], target_count: 2, onEvent: () => {} });
+    expect(out.map((c) => c.name).sort()).toEqual(["College A", "College B"]);
+    const researched = m.calls.flatMap((c) => requested(c));
+    expect(researched).toEqual(["College B"]);
   });
 });

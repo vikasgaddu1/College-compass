@@ -147,11 +147,16 @@ export interface NativeHttpPlugin {
     body?: string;
     timeoutMs?: number;
     background?: boolean;
+    /** Research tracking label (see beginResearchRun). */
+    tag?: string;
   }): Promise<{ status: number; headers?: Record<string, string>; data?: string }>;
   cancel(opts: { id: string }): Promise<void>;
   requestNotificationPermission(): Promise<{ granted: boolean }>;
   notifyWhenDone(opts: { title: string; body: string }): Promise<void>;
   cancelNotify(): Promise<void>;
+  beginRun(opts: { runId: string; expected: number }): Promise<void>;
+  endRun(opts: { runId: string }): Promise<void>;
+  takeOrphans(): Promise<{ orphans: { tag: string; data: string }[] }>;
 }
 
 let nativeHttpPlugin: NativeHttpPlugin | null = null;
@@ -199,6 +204,7 @@ export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, h
       // AI requests (research agents, chat) go through iOS's background session so they keep running
       // when the student leaves the app.
       background: method === "POST" && /\/v1\/responses$/.test(url),
+      tag: typeof (init as { ccTag?: unknown }).ccTag === "string" ? (init as { ccTag: string }).ccTag : undefined,
     });
     res = await (signal ? Promise.race([req, aborted]) : req);
   } catch (e) {
@@ -240,6 +246,31 @@ export async function requestNotificationPermission(): Promise<boolean> {
 export async function notifyWhenResearchDone(title: string, body: string): Promise<void> {
   if (!isNative()) return;
   try { await getNativeHttpPlugin().notifyWhenDone({ title, body }); } catch { /* best-effort */ }
+}
+
+/**
+ * Tell iOS how many research requests this run will make, so "your list is ready" is only posted
+ * when all of them have finished — not when just the first wave did (the rest are started by
+ * JavaScript, which is suspended in the background; then iOS posts "open the app to finish").
+ * Requests carry the tag `research:<runId>:…`. No-op on web.
+ */
+export async function beginResearchRun(runId: string, expected: number): Promise<void> {
+  if (!isNative()) return;
+  try { await getNativeHttpPlugin().beginRun({ runId, expected }); } catch { /* best-effort */ }
+}
+
+export async function endResearchRun(runId: string): Promise<void> {
+  if (!isNative()) return;
+  try { await getNativeHttpPlugin().endRun({ runId }); } catch { /* best-effort */ }
+}
+
+/**
+ * Research responses iOS delivered after it had terminated the suspended app (no JavaScript caller
+ * left), saved on disk by the native side. Each is returned once. Empty on web.
+ */
+export async function takeOrphanedResearch(): Promise<{ tag: string; data: string }[]> {
+  if (!isNative()) return [];
+  try { return (await getNativeHttpPlugin().takeOrphans()).orphans ?? []; } catch { return []; }
 }
 
 /** Disarm the notification (research finished or was cancelled while the app was open). */

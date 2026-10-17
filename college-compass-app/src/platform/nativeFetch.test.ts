@@ -5,7 +5,10 @@ const sse = 'event: response.completed\ndata: {"type":"response.completed","resp
 
 function plugin(request: NativeHttpPlugin["request"]) {
   const cancel = vi.fn(async () => {});
-  const extra = { requestNotificationPermission: vi.fn(async () => ({ granted: true })), notifyWhenDone: vi.fn(async () => {}), cancelNotify: vi.fn(async () => {}) };
+  const extra = {
+    requestNotificationPermission: vi.fn(async () => ({ granted: true })), notifyWhenDone: vi.fn(async () => {}), cancelNotify: vi.fn(async () => {}),
+    beginRun: vi.fn(async () => {}), endRun: vi.fn(async () => {}), takeOrphans: vi.fn(async () => ({ orphans: [] })),
+  };
   return { http: { request: vi.fn(request), cancel, ...extra } as NativeHttpPlugin & { request: ReturnType<typeof vi.fn> }, cancel };
 }
 
@@ -16,9 +19,10 @@ describe("nativeFetch (NativeHttp-backed fetch)", () => {
       method: "POST",
       headers: { Authorization: "Bearer t", "Content-Type": "application/json" },
       body: JSON.stringify({ a: 1 }),
-    }, http);
+      ccTag: "research:run1:x",
+    } as RequestInit, http);
     const opts = (http.request.mock.calls[0] as any[])[0];
-    expect(opts).toMatchObject({ url: "https://api.openai.com/v1/responses", method: "POST", body: '{"a":1}', background: true });
+    expect(opts).toMatchObject({ url: "https://api.openai.com/v1/responses", method: "POST", body: '{"a":1}', background: true, tag: "research:run1:x" });
     expect(typeof opts.id).toBe("string");
     expect(opts.headers).toMatchObject({ authorization: "Bearer t", "content-type": "application/json" });
     expect(res.ok).toBe(true);
