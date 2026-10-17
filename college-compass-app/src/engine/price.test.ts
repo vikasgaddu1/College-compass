@@ -61,3 +61,24 @@ describe("in-state student, published out-of-state budget (real-run regression)"
     expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(26000);
   });
 });
+
+describe("explicit cost_of_attendance_basis (no threshold guessing)", () => {
+  // Out-of-state budget with low living costs: below the $12k fallback margin.
+  const cheap = { state: "NC", ownership: "public" as const, cost_of_attendance: 30000, tuition_in_state: 8000, tuition_out_of_state: 22000 };
+
+  it("in-state student: removes the tuition difference when the basis says out_of_state", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "out_of_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(16000);
+  });
+
+  it("out-of-state student: does not add the difference twice when the basis says out_of_state", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "out_of_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "VA" })).value).toBe(30000);
+  });
+
+  it("in_state basis: in-state student pays it as is, out-of-state adds the difference", () => {
+    const c = blankCollege({ ...cheap, cost_of_attendance_basis: "in_state" });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(30000);
+    expect(estimateNetPrice(c, baseProfile({ home_state: "VA" })).value).toBe(44000);
+  });
+});

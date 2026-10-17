@@ -17,7 +17,10 @@ export interface NetPriceEstimate {
   note: string;
 }
 
-/** A published COA at or above out-of-state tuition + this is assumed to already be the out-of-state COA. */
+/**
+ * Fallback for data without `cost_of_attendance_basis`: a published COA at or above out-of-state
+ * tuition + this is assumed to already be the out-of-state COA.
+ */
 export const COA_ALREADY_OUT_OF_STATE_MARGIN = 12000;
 
 const BAND_LABEL: Readonly<Record<keyof IncomeNetPrice, string>> = {
@@ -75,7 +78,9 @@ export function estimateNetPrice(college: College, profile: StudentProfile): Net
   if (kind === "coa" && college.ownership === "public" && isInState(college, profile) === true) {
     const tin = usd(college.tuition_in_state);
     const tout = usd(college.tuition_out_of_state);
-    const looksOut = tout != null && value >= tout + COA_ALREADY_OUT_OF_STATE_MARGIN;
+    const basis = college.cost_of_attendance_basis;
+    // The researcher says which budget it is; older data falls back to the size heuristic.
+    const looksOut = basis === "out_of_state" || (basis == null && tout != null && value >= tout + COA_ALREADY_OUT_OF_STATE_MARGIN);
     if (looksOut && tin != null && tout! > tin) {
       value -= tout! - tin;
       notes.push(`in-state estimate (published budget was out-of-state, minus about ${fmtK(tout! - tin)} tuition difference)`);
@@ -90,7 +95,8 @@ export function estimateNetPrice(college: College, profile: StudentProfile): Net
     const tout = usd(college.tuition_out_of_state);
     const diff = tin != null && tout != null ? tout - tin : null;
     if (diff != null && diff > 0) {
-      const alreadyOut = kind === "coa" && tout != null && value >= tout + COA_ALREADY_OUT_OF_STATE_MARGIN;
+      const basis = college.cost_of_attendance_basis;
+      const alreadyOut = kind === "coa" && (basis === "out_of_state" || (basis == null && tout != null && value >= tout + COA_ALREADY_OUT_OF_STATE_MARGIN));
       if (!alreadyOut) {
         value += diff;
         notes.push(`plus about ${fmtK(diff)} out-of-state tuition`);

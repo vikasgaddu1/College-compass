@@ -80,7 +80,7 @@ export function rawCollege(name: string, state = "NC", over: Record<string, unkn
   return {
     name, short: null, city: "Somewhere", state, ownership: "public", locale: "city", url: "https://example.edu",
     lat: 35.9, lon: -79.0, undergrad_size: 20000, admit_rate: 0.4, sat_25: 1200, sat_75: 1400, act_25: 25, act_75: 31,
-    test_policy: "optional", tuition_in_state: 9000, tuition_out_of_state: 38000, cost_of_attendance: 30000,
+    test_policy: "optional", tuition_in_state: 9000, tuition_out_of_state: 38000, cost_of_attendance: 30000, cost_of_attendance_basis: "in_state",
     avg_net_price: 15000, net_price_by_income: { "0_30k": 5000, "30_48k": 7000, "48_75k": 11000, "75_110k": 17000, "110k_plus": 24000 },
     grad_rate_6yr: 0.8, retention_rate: 0.9, median_earnings_10yr: 60000, program_share: [], hbcu: false, women_only: false,
     religious: false, cds: {}, application: { cycle: "Fall 2027 entry", plans: [], test_policy_note: null, essays_note: null, fee: null },

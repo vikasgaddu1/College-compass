@@ -409,6 +409,7 @@ export function normalizeCollege(raw: unknown, context: NormalizeContext = {}): 
     tuition_in_state: toMoney(r.tuition_in_state, ctx, "tuition", 120_000),
     tuition_out_of_state: toMoney(r.tuition_out_of_state, ctx, "tuition", 120_000),
     cost_of_attendance: toMoney(r.cost_of_attendance, ctx, "cost of attendance", 150_000),
+    cost_of_attendance_basis: r.cost_of_attendance_basis === "out_of_state" || r.cost_of_attendance_basis === "in_state" || r.cost_of_attendance_basis === "same" ? r.cost_of_attendance_basis : null,
     avg_net_price: toMoney(r.avg_net_price, ctx, "net price", 120_000),
     net_price_by_income,
     grad_rate_6yr: toRate(r.grad_rate_6yr, ctx, "graduation rate"),
