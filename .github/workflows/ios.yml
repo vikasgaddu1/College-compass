@@ -108,13 +108,16 @@ jobs:
           test "$code" = "200"
           grep -q "Signed in to College Compass" "$RUNNER_TEMP/body.html"
           # Native HTTP (OpenAI calls bypass WebView CORS): unauthenticated GET /v1/models must come
-          # back 401 from api.openai.com, and a cancelled request must abort.
+          # back 401 from api.openai.com, a cancelled request must abort, and a POST through the background
+          # URLSession must reach api.openai.com too.
           DATA=$(xcrun simctl get_app_container "$UDID" "$BUNDLE_ID" data)
           OUT="$DATA/Documents/cc_nativehttp_selftest.txt"
           for i in $(seq 1 45); do [ -s "$OUT" ] && break; sleep 2; done
           cat "$OUT"
           grep -qx "status=401" "$OUT"
           grep -qx "cancel=ABORTED" "$OUT"
+          grep -qx "bgstatus=401" "$OUT"   # background URLSession: research keeps running after leaving the app
+          grep -qx "bgstatus=401" "$OUT"   # background URLSession (research keeps running after leaving the app)
           xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK"' || true
           xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
 

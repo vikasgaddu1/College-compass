@@ -1,5 +1,6 @@
 import Foundation
 import Capacitor
+import UserNotifications
 
 /// Cancellable HTTPS requests for the app's OpenAI calls.
 ///
@@ -9,16 +10,24 @@ import Capacitor
 /// URLSession task, which closes the connection so OpenAI stops generating (and stops counting
 /// against the user's ChatGPT plan) when the student stops research or chat.
 ///
-/// JS: `request({ id, url, method?, headers?, body?, timeoutMs? }) -> { status, headers, data }`
+/// JS: `request({ id, url, method?, headers?, body?, timeoutMs?, background? }) -> { status, headers, data }`
 /// (rejects with code `ABORTED` after `cancel`, `NETWORK` on transport errors), `cancel({ id })`.
-/// The response body is returned whole as UTF-8 text.
+/// The response body is returned whole as UTF-8 text. `background: true` sends the request through
+/// `BackgroundTransfers` so it keeps running after the student leaves the app.
+///
+/// Notifications: `requestNotificationPermission() -> { granted }`, `notifyWhenDone({ title, body })`
+/// arms a local notification for when the last background request finishes while the app is not in
+/// the foreground; `cancelNotify()` disarms it.
 @objc(NativeHttpPlugin)
 public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "NativeHttpPlugin"
     public let jsName = "NativeHttp"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "request", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "cancel", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "cancel", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "requestNotificationPermission", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "notifyWhenDone", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "cancelNotify", returnType: CAPPluginReturnPromise)
     ]
 
     private let lock = NSLock()
@@ -58,16 +67,41 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
         if let body = call.getString("body") { req.httpBody = Data(body.utf8) }
         if let ms = call.getDouble("timeoutMs"), ms > 0 { req.timeoutInterval = ms / 1000 }
 
-        perform(req, id: id) { result in
+        let handle: (Result<[String: Any], Failure>) -> Void = { result in
             switch result {
             case .success(let payload): call.resolve(payload)
             case .failure(let failure): call.reject(failure.message, failure.code)
             }
         }
+        if call.getBool("background") == true {
+            BackgroundTransfers.shared.perform(req, id: id, completion: handle)
+            return
+        }
+        perform(req, id: id, completion: handle)
     }
 
     @objc func cancel(_ call: CAPPluginCall) {
-        cancel(id: call.getString("id") ?? "")
+        let id = call.getString("id") ?? ""
+        if !BackgroundTransfers.shared.cancel(id: id) { cancel(id: id) }
+        call.resolve()
+    }
+
+    @objc func requestNotificationPermission(_ call: CAPPluginCall) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            call.resolve(["granted": granted])
+        }
+    }
+
+    @objc func notifyWhenDone(_ call: CAPPluginCall) {
+        BackgroundTransfers.shared.arm(
+            title: call.getString("title") ?? "Your college list is ready",
+            body: call.getString("body") ?? "Open College Compass to see your colleges and odds."
+        )
+        call.resolve()
+    }
+
+    @objc func cancelNotify(_ call: CAPPluginCall) {
+        BackgroundTransfers.shared.disarm()
         call.resolve()
     }
 
@@ -167,6 +201,20 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
             group.leave()
         }
         cancel(id: "selftest-cancel")
+
+        // Background session (upload task from a temp file) → POST without a token must come back 401.
+        var post = URLRequest(url: URL(string: "https://api.openai.com/v1/responses")!)
+        post.httpMethod = "POST"
+        post.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        post.httpBody = Data("{}".utf8)
+        group.enter()
+        BackgroundTransfers.shared.perform(post, id: "selftest-bg") { result in
+            switch result {
+            case .success(let p): record("bgstatus=\(p["status"] ?? "?")")
+            case .failure(let f): record("bgstatus-error=\(f.code) \(f.message)")
+            }
+            group.leave()
+        }
 
         group.notify(queue: .global()) {
             lineLock.lock()

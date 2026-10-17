@@ -2,7 +2,7 @@
  * Research orchestration: plan (if needed) → research in parallel batches → resolve all.
  *
  * - Planner tops the student's own picks up to `target_count` (default 15).
- * - Batches of `batch_size` (default 3) colleges per agent call, `concurrency` (default 4) in flight.
+ * - Batches of `batch_size` (default 2) colleges per agent call, `concurrency` (default 8) in flight.
  * - Per batch: one retry (for whatever is still missing), then split into single-college calls.
  * - Fresh cache hits (< 30 days, normalized name) are reused without a call.
  * - Fatal errors (usage limit, sign-in, unsupported) stop everything: an `error` event is emitted and
@@ -85,6 +85,8 @@ function toolArgs(res: { text: string; tool_calls: { name: string; arguments: st
   throw new ResearchParseError("The model didn't return structured results.");
 }
 
+type Effort = "low" | "medium" | "high";
+
 export interface ResearchDeps {
   client: AiClient;
   cache?: ResearchCache;
@@ -93,17 +95,18 @@ export interface ResearchDeps {
 
 export function createResearch(deps: ResearchDeps): ResearchApi & {
   /** Exposed for tests / advanced callers: plan candidates without researching. */
-  plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void): Promise<CollegeCandidate[]>;
+  plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]>;
 } {
   const cache = deps.cache ?? defaultCache;
   const now = deps.now ?? (() => new Date());
 
-  async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void): Promise<CollegeCandidate[]> {
+  async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]> {
     if (count <= 0) return [];
     const res = await deps.client.call({
       instructions: plannerInstructions(now()),
       input: plannerInput({ profile, existing, count }),
       model,
+      ...(effort ? { reasoning: effort } : {}),
       tools: [proposeCollegesTool],
       tool_choice: { type: "function", name: PLANNER_TOOL_NAME },
       webSearch: true,
@@ -132,11 +135,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
   }
 
   /** One agent call for a batch. Returns researched colleges per target + targets still missing. */
-  async function researchBatch(targets: ResearchTarget[], profile: StudentProfile, model: string | undefined, signal: AbortSignal | undefined) {
+  async function researchBatch(targets: ResearchTarget[], profile: StudentProfile, model: string | undefined, signal: AbortSignal | undefined, effort?: Effort) {
     const res = await deps.client.call({
       instructions: researcherInstructions(now()),
       input: researcherInput(targets, profile),
       model,
+      ...(effort ? { reasoning: effort } : {}),
       tools: [submitResearchTool],
       tool_choice: { type: "function", name: RESEARCH_TOOL_NAME },
       webSearch: true,
@@ -180,8 +184,11 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       try { opts.onEvent(e); } catch { /* UI handler errors must not break research */ }
     };
     const target = clampInt(opts.target_count, 1, 40, 15);
-    const batchSize = clampInt(opts.batch_size, 1, 5, 3);
-    const concurrency = clampInt(opts.concurrency, 1, 8, 4);
+    // Live timing (ChatGPT plan, web search): one agent took ~130 s for 1 college and ~270 s for 3,
+    // while faster models / low effort dropped or got wrong key figures (e.g. admit rate). So keep
+    // the model and research effort, and go wide: 2 colleges per agent, up to 8 agents at once.
+    const batchSize = clampInt(opts.batch_size, 1, 5, 2);
+    const concurrency = clampInt(opts.concurrency, 1, 8, 8);
 
     // Internal controller so a fatal error stops in-flight calls too.
     const ctrl = new AbortController();
@@ -209,7 +216,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       if (wanted.length < target) {
         emit({ type: "planning" });
         try {
-          const proposed = await plan(profile, wanted, target - wanted.length, opts.model, signal, (t) => emit({ type: "summary_delta", text: t }));
+          const proposed = await plan(profile, wanted, target - wanted.length, opts.planner_model ?? opts.model, signal, (t) => emit({ type: "summary_delta", text: t }), opts.effort?.planner ?? "low");
           candidates.push(...proposed);
         } catch (e) {
           if (isAbort(e) && !fatal) throw e;
@@ -258,7 +265,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         let lastErr: unknown = null;
         for (let attempt = 0; attempt < 2 && remaining.length; attempt++) {
           try {
-            const r = await researchBatch(remaining, profile, opts.model, signal);
+            const r = await researchBatch(remaining, profile, opts.model, signal, opts.effort?.researcher);
             for (const d of r.done) record(byTarget(d.target), d.college);
             remaining = r.missing;
           } catch (e) {
@@ -278,7 +285,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       const singleTask = async (t: ResearchTarget): Promise<void> => {
         if (fatal || signal.aborted) return;
         try {
-          const r = await researchBatch([t], profile, opts.model, signal);
+          const r = await researchBatch([t], profile, opts.model, signal, opts.effort?.researcher);
           const d = r.done[0];
           if (d) record(byTarget(t), d.college);
           else emit({ type: "college_failed", name: t.name, error: "No results were returned." });

@@ -146,8 +146,12 @@ export interface NativeHttpPlugin {
     headers?: Record<string, string>;
     body?: string;
     timeoutMs?: number;
+    background?: boolean;
   }): Promise<{ status: number; headers?: Record<string, string>; data?: string }>;
   cancel(opts: { id: string }): Promise<void>;
+  requestNotificationPermission(): Promise<{ granted: boolean }>;
+  notifyWhenDone(opts: { title: string; body: string }): Promise<void>;
+  cancelNotify(): Promise<void>;
 }
 
 let nativeHttpPlugin: NativeHttpPlugin | null = null;
@@ -192,6 +196,9 @@ export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, h
       body: init.body == null ? undefined : String(init.body),
       // Research calls with web search can take a few minutes.
       timeoutMs: 300_000,
+      // AI requests (research agents, chat) go through iOS's background session so they keep running
+      // when the student leaves the app.
+      background: method === "POST" && /\/v1\/responses$/.test(url),
     });
     res = await (signal ? Promise.race([req, aborted]) : req);
   } catch (e) {
@@ -207,6 +214,38 @@ export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, h
   }
   const body = typeof res.data === "string" ? res.data : "";
   return new Response(res.status === 204 || res.status === 304 ? null : body, { status: res.status, headers: outHeaders });
+}
+
+// ───────────────────────────── "you can leave the app" notifications ─────────────────────────────
+
+/** True when research keeps running after the student leaves the app and we can notify them (iOS app). */
+export function supportsLeaveAndNotify(): boolean {
+  return isNative();
+}
+
+/** Ask iOS for permission to show "your list is ready". Resolves false on web or when declined. */
+export async function requestNotificationPermission(): Promise<boolean> {
+  if (!isNative()) return false;
+  try {
+    return (await getNativeHttpPlugin().requestNotificationPermission()).granted === true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Arm a local notification for when the in-flight AI requests finish while the app is in the
+ * background. Posted at most once; never shown while the app is open. No-op on web.
+ */
+export async function notifyWhenResearchDone(title: string, body: string): Promise<void> {
+  if (!isNative()) return;
+  try { await getNativeHttpPlugin().notifyWhenDone({ title, body }); } catch { /* best-effort */ }
+}
+
+/** Disarm the notification (research finished or was cancelled while the app was open). */
+export async function cancelResearchNotification(): Promise<void> {
+  if (!isNative()) return;
+  try { await getNativeHttpPlugin().cancelNotify(); } catch { /* best-effort */ }
 }
 
 /** The HTTPS redirect URI registered with OpenAI (same for web and native). */

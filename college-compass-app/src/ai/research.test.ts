@@ -95,7 +95,7 @@ describe("research.run", () => {
     const m = mockClient({ planned: names(13, "Planned") });
     const { r } = setup(m);
     const events: ResearchEvent[] = [];
-    const out = await r.run({ profile: baseProfile(), wanted: ["Duke University", "duke university", "Elon University"], onEvent: (e) => events.push(e), concurrency: 2 });
+    const out = await r.run({ profile: baseProfile(), wanted: ["Duke University", "duke university", "Elon University"], onEvent: (e) => events.push(e), concurrency: 2, batch_size: 3 });
 
     const planner = m.calls.filter((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME);
     expect(planner).toHaveLength(1);
@@ -123,14 +123,25 @@ describe("research.run", () => {
     expect(planned.candidates.filter((c) => c.user_added).map((c) => c.name)).toEqual(["Duke University", "Elon University"]);
   });
 
-  it("skips the planner when enough colleges were named, and honors default concurrency 4", async () => {
+  it("planner runs at low effort; researchers keep the model's default effort (accuracy)", async () => {
+    const m = mockClient({ planned: names(4, "Planned") });
+    const { r } = setup(m);
+    await r.run({ profile: baseProfile(), wanted: [], target_count: 4, onEvent: () => {} });
+    const planner = m.calls.filter((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME);
+    const research = m.calls.filter((c) => c.tools?.[0]?.name === RESEARCH_TOOL_NAME);
+    expect(planner[0]!.reasoning).toBe("low");
+    expect(research.length).toBeGreaterThan(0);
+    for (const c of research) expect(c.reasoning).toBeUndefined();
+  });
+
+  it("skips the planner when enough colleges were named, and goes wide by default (2 per agent, up to 8 agents)", async () => {
     const m = mockClient({ delayMs: 15 });
     const { r } = setup(m);
     const out = await r.run({ profile: baseProfile(), wanted: names(18), target_count: 15, onEvent: () => {} });
     expect(m.calls.some((c) => c.tools?.[0]?.name === PLANNER_TOOL_NAME)).toBe(false);
     expect(out).toHaveLength(18);
-    expect(m.stats().researchCalls).toBe(6);
-    expect(m.stats().maxInFlight).toBe(4);
+    expect(m.stats().researchCalls).toBe(9);
+    expect(m.stats().maxInFlight).toBe(8);
   });
 
   it("retries a failed batch once, then splits into single-college calls", async () => {
@@ -143,7 +154,7 @@ describe("research.run", () => {
     });
     const { r } = setup(m);
     const events: ResearchEvent[] = [];
-    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: (e) => events.push(e) });
+    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, batch_size: 3, onEvent: (e) => events.push(e) });
     // 2 batch attempts + 3 singles
     expect(m.stats().researchCalls).toBe(5);
     expect(out.map((c) => c.name)).toEqual(["College A", "College C"]);

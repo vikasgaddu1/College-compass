@@ -29,6 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
+    /// iOS woke the app because background research requests finished (BackgroundTransfers.swift).
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        if identifier == BackgroundTransfers.sessionIdentifier {
+            BackgroundTransfers.shared.systemCompletionHandler = completionHandler
+            _ = BackgroundTransfers.shared.inFlight // make sure the session exists to receive the events
+        } else {
+            completionHandler()
+        }
+    }
+
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }

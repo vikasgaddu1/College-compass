@@ -5,7 +5,8 @@ const sse = 'event: response.completed\ndata: {"type":"response.completed","resp
 
 function plugin(request: NativeHttpPlugin["request"]) {
   const cancel = vi.fn(async () => {});
-  return { http: { request: vi.fn(request), cancel } as NativeHttpPlugin & { request: ReturnType<typeof vi.fn> }, cancel };
+  const extra = { requestNotificationPermission: vi.fn(async () => ({ granted: true })), notifyWhenDone: vi.fn(async () => {}), cancelNotify: vi.fn(async () => {}) };
+  return { http: { request: vi.fn(request), cancel, ...extra } as NativeHttpPlugin & { request: ReturnType<typeof vi.fn> }, cancel };
 }
 
 describe("nativeFetch (NativeHttp-backed fetch)", () => {
@@ -17,7 +18,7 @@ describe("nativeFetch (NativeHttp-backed fetch)", () => {
       body: JSON.stringify({ a: 1 }),
     }, http);
     const opts = (http.request.mock.calls[0] as any[])[0];
-    expect(opts).toMatchObject({ url: "https://api.openai.com/v1/responses", method: "POST", body: '{"a":1}' });
+    expect(opts).toMatchObject({ url: "https://api.openai.com/v1/responses", method: "POST", body: '{"a":1}', background: true });
     expect(typeof opts.id).toBe("string");
     expect(opts.headers).toMatchObject({ authorization: "Bearer t", "content-type": "application/json" });
     expect(res.ok).toBe(true);
@@ -29,6 +30,7 @@ describe("nativeFetch (NativeHttp-backed fetch)", () => {
   it("keeps error statuses and bodies", async () => {
     const { http } = plugin(async () => ({ status: 429, headers: {}, data: '{"error":{"code":"rate_limit_exceeded"}}' }));
     const res = await nativeFetch("https://api.openai.com/v1/models", {}, http);
+    expect((http.request.mock.calls[0] as any[])[0].background).toBe(false);
     expect(res.status).toBe(429);
     expect(await res.json()).toEqual({ error: { code: "rate_limit_exceeded" } });
   });
