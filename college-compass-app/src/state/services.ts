@@ -25,7 +25,15 @@ export function devKey(): string | null {
 
 /** Balanced picks per tier (engine spec + budget rule) plus every researched college that didn't make a bucket. */
 export function balance(ranked: RankedCollege[], profile: StudentProfile): { picks: BalancedListResult; others: RankedCollege[] } {
-  const picks = buildBalancedList(ranked, undefined, profile);
+  const built = buildBalancedList(ranked, undefined, profile);
+  // Show every pick under its OWN tier. The engine may borrow a college from a neighboring
+  // tier to fill a short bucket; listing a 1% school under "Reach" would mislabel its odds.
+  const all = [...built.high_reach, ...built.reach, ...built.target, ...built.likely, ...built.safety];
+  const regrouped = { high_reach: [] as RankedCollege[], reach: [] as RankedCollege[], target: [] as RankedCollege[], likely: [] as RankedCollege[], safety: [] as RankedCollege[] };
+  for (const r of all) regrouped[r.odds.tier].push(r);
+  const order = (a: RankedCollege, b: RankedCollege) => b.fit.total - a.fit.total || a.college.name.localeCompare(b.college.name);
+  for (const k of Object.keys(regrouped) as (keyof typeof regrouped)[]) regrouped[k].sort(order);
+  const picks: BalancedListResult = { ...built, ...regrouped, borrowed: [] };
   const used = new Set<RankedCollege>([...picks.high_reach, ...picks.reach, ...picks.target, ...picks.likely, ...picks.safety]);
   const others = ranked.filter((r) => !used.has(r));
   return { picks, others };
