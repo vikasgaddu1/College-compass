@@ -63,7 +63,7 @@ export function Welcome() {
           <div className="cc-sticky-actions mt-6">
             {err && <Banner tone="error">{err}</Banner>}
             {!configured && (
-              <Banner>ChatGPT sign-in is being enabled for this app. Until then, try the demo or use a developer key.</Banner>
+              <Banner>Continue with ChatGPT works in the College Compass iPhone app. On the web it is waiting on OpenAI approval for this site — try the demo here in the meantime.</Banner>
             )}
             {connected && hasProfile ? (
               <Button onClick={continueExisting}>Continue</Button>
