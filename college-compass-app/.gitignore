@@ -1,3 +1,7 @@
 node_modules
 dist
 *.tsbuildinfo
+
+# real-run harness (tokens + results stay local)
+.real-run.mjs
+cc-real-run*.json

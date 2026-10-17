@@ -12,7 +12,8 @@
     "build:ios": "tsc -b && BUILD_TARGET=ios vite build",
     "cap:sync": "npm run build:ios && npx cap sync ios",
     "cap:open": "npx cap open ios",
-    "e2e": "bash e2e/run.sh"
+    "e2e": "bash e2e/run.sh",
+    "real-run": "esbuild scripts/real-run.ts --bundle --platform=node --format=esm --target=node20 --alias:@=./src --outfile=.real-run.mjs --log-level=warning && node .real-run.mjs"
   },
   "dependencies": {
     "@capacitor/app": "^6.0.3",
