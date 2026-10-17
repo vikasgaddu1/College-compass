@@ -73,11 +73,37 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
             case .failure(let failure): call.reject(failure.message, failure.code)
             }
         }
-        if call.getBool("background") == true {
-            BackgroundTransfers.shared.perform(req, id: id, completion: handle)
+        send(req, id: id, background: call.getBool("background") == true) { result, _ in handle(result) }
+    }
+
+    /// Set once the background session has failed to start a request (seen in the iOS Simulator:
+    /// "unknown error"); later requests then go straight to the normal session.
+    private static var backgroundUnavailable = false
+    private static let flagLock = NSLock()
+
+    /// Background session first, so research keeps running after the student leaves the app. If it
+    /// fails quickly with a transport error, retry once on the normal session: at worst research
+    /// behaves as it did before (it just pauses while the app is in the background).
+    /// `via` reports which path produced the result ("background" / "foreground").
+    func send(_ req: URLRequest, id: String, background: Bool,
+              completion: @escaping (Result<[String: Any], Failure>, String) -> Void) {
+        Self.flagLock.lock()
+        let useBackground = background && !Self.backgroundUnavailable
+        Self.flagLock.unlock()
+        guard useBackground else {
+            perform(req, id: id) { completion($0, "foreground") }
             return
         }
-        perform(req, id: id, completion: handle)
+        let started = Date()
+        BackgroundTransfers.shared.perform(req, id: id) { [weak self] result in
+            if case .failure(let f) = result, f.code == "NETWORK", Date().timeIntervalSince(started) < 20, let self {
+                Self.flagLock.lock(); Self.backgroundUnavailable = true; Self.flagLock.unlock()
+                NSLog("CC_NATIVEHTTP background session unavailable (%@); using the normal session", f.message)
+                self.perform(req, id: id) { completion($0, "foreground") }
+                return
+            }
+            completion(result, "background")
+        }
     }
 
     @objc func cancel(_ call: CAPPluginCall) {
@@ -202,16 +228,16 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
         }
         cancel(id: "selftest-cancel")
 
-        // Background session (upload task from a temp file) → POST without a token must come back 401.
+        // AI POST path (background session, falling back to the normal one) → 401 without a token.
         var post = URLRequest(url: URL(string: "https://api.openai.com/v1/responses")!)
         post.httpMethod = "POST"
         post.setValue("application/json", forHTTPHeaderField: "Content-Type")
         post.httpBody = Data("{}".utf8)
         group.enter()
-        BackgroundTransfers.shared.perform(post, id: "selftest-bg") { result in
+        send(post, id: "selftest-bg", background: true) { result, via in
             switch result {
-            case .success(let p): record("bgstatus=\(p["status"] ?? "?")")
-            case .failure(let f): record("bgstatus-error=\(f.code) \(f.message)")
+            case .success(let p): record("bgstatus=\(p["status"] ?? "?") via=\(via)")
+            case .failure(let f): record("bgstatus-error=\(f.code) \(f.message) via=\(via)")
             }
             group.leave()
         }

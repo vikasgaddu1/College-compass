@@ -117,7 +117,9 @@ jobs:
           echo "::notice title=Native HTTP self-test::$( [ -s "$OUT" ] && tr '\n' ' ' < "$OUT" || echo 'no result file (timed out)')"
           grep -qx "status=401" "$OUT"
           grep -qx "cancel=ABORTED" "$OUT"
-          grep -qx "bgstatus=401" "$OUT"   # background URLSession: research keeps running after leaving the app
+          # AI POST path: background URLSession (keeps running after leaving the app), or the automatic
+          # fallback to the normal session where background sessions don't work (the Simulator).
+          grep -Eqx "bgstatus=401 via=(background|foreground)" "$OUT"
           grep -qx "bgstatus=401" "$OUT"   # background URLSession (research keeps running after leaving the app)
           xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK"' || true
           xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
