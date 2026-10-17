@@ -77,6 +77,8 @@ export interface College {
   tuition_in_state: number | null;
   tuition_out_of_state: number | null;
   cost_of_attendance: number | null;  // published COA (on-campus)
+  /** Which budget `cost_of_attendance` describes (publics differ by residency). Absent on older data. */
+  cost_of_attendance_basis?: "out_of_state" | "in_state" | "same" | null;
   avg_net_price: number | null;
   net_price_by_income: IncomeNetPrice;
   /** Outcomes. */

@@ -147,3 +147,17 @@ describe("estimateOdds", () => {
     expect(tierFromP(0.1)).toBe("high_reach");
   });
 });
+
+describe("unknown admit rate (real-run regression)", () => {
+  it("never reads likely/safety on a guessed starting point", () => {
+    // UNC Chapel Hill as researched live: CDS tables not extracted, no admit rate or score range.
+    const unc = blankCollege({ name: "UNC Chapel Hill", state: "NC", ownership: "public", admit_rate: null, data_confidence: "low" });
+    const r = estimateOdds(unc, baseProfile({ home_state: "NC", gpa_unweighted: 3.8, rigor: "very", activities_strength: "school_leader" }));
+    expect(r.p).toBeLessThanOrEqual(0.5);
+    expect(r.high).toBeLessThanOrEqual(0.5);
+    expect(r.low).toBeLessThanOrEqual(0.15);
+    expect(["target", "reach", "high_reach"]).toContain(r.tier);
+    expect(r.confidence).toBe("low");
+    expect(r.factors[0]!.label).toMatch(/rough guess/);
+  });
+});
