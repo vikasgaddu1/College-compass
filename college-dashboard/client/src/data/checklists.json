@@ -21,58 +21,43 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_count_exact_portal_prompts_unresolved"
     },
-    "purdue": {
+    "cornell": {
       "cycle": "2026-27",
-      "platform": "Common App",
-      "supp_essay_count": "2 required (+ conditional alternate-major response; Honors adds4)",
-      "prompts": "How Purdue opportunities support your interests in and out of the classroom (≤250 words); reasons for your chosen major and chosen campus, Indianapolis or West Lafayette (≤250 words). An alternate major adds another conditional250-word response. Honors applicants answer four additional prompts, each≤200 words.",
-      "teacher_recs": 0,
-      "counselor_rec": "No",
-      "interview": "Not offered",
-      "fee": "$60",
-      "special": "Honors College adds four essays; submit complete application by Nov 1. SAT, ACT or CLT scores expected; exceptional cases may submit without scores.",
-      "sources": [
-        {
-          "label": "Purdue essay",
-          "url": "https://admission.purdue.edu/apply/essay.php"
-        }
-      ],
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
-    "wpi": {
-      "cycle": "2026-27",
-      "platform": "Common App",
-      "supp_essay_count": "None school-specific stated",
-      "prompts": "n.a.",
-      "teacher_recs": 1,
+      "platform": "Common App (QuestBridge finalists via portal)",
+      "supp_essay_count": "1-6 (varies by college)",
+      "prompts": "Engineering is heaviest at 6 essays (2×200w + 4×100w). A&S: passion for learning + College alignment (3000ch). CALS: why this major + why CALS (2500ch). AAP: interests → major, creative project for B.Arch.",
+      "teacher_recs": 2,
       "counselor_rec": "Yes",
       "interview": "Not offered",
-      "fee": "$70",
-      "special": "Early Decision Agreement if ED",
+      "fee": "$85",
+      "special": "Duffield Engineering: two200-word and four100-word essays. Central admissions lists domestic ED aid priority Nov15; Engineering page lists Nov21—use earlier priority and verify with aid office. Program portfolios only if applicable.",
       "sources": [
         {
-          "label": "WPI how to apply",
-          "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to"
+          "label": "Cornell first-year",
+          "url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants"
+        },
+        {
+          "label": "Cornell Engineering",
+          "url": "https://www.duffield.cornell.edu/admissions/first-year-applicants/"
         }
       ],
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
-    "rpi": {
+    "duke": {
       "cycle": "2026-27",
-      "platform": "Common App or RPI Application",
-      "supp_essay_count": "0 general; program-specific for some majors",
-      "prompts": "B.S./M.D.: reasons for pursuing medicine. Architecture: why architecture. Electronic Arts/GSAS/Music: interests, goals, and portfolio.",
-      "teacher_recs": "1 letter from a counselor OR teacher (preferably math/science)",
-      "counselor_rec": "May satisfy the single letter requirement; separate counselor recommendation not specified",
-      "interview": "Not offered domestically (InitialView for intl; optional GLIMPSE video)",
-      "fee": "$70; waived for applications submitted by Dec 1 and for Rensselaer Medalists (per current apply page)",
-      "special": "Architecture portfolio required; GSAS/Electronic Arts/Music portfolios; optional 60-90s GLIMPSE video",
+      "platform": "Common App or QuestBridge",
+      "supp_essay_count": "2 required + 1 optional",
+      "prompts": "Two required 250-word responses: Why Duke and Communities. One optional 250-word response from Viewpoints and experiences, Difference of opinion, or Something you are excited about.",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes",
+      "interview": "Alumni interview offered (optional)",
+      "fee": "$85",
+      "special": "Pratt requires at least one recommendation from a math or science teacher. Test-optional for 2026-27. Robertson scholarship has a separate selection/application process; confirm its current deadline with the program.",
       "sources": [
         {
-          "label": "RPI apply",
-          "url": "https://undergrad.admissions.rpi.edu/apply"
+          "label": "Duke current-cycle requirements",
+          "url": "https://admissions.duke.edu/apply/"
         }
       ],
       "verified_on": "2026-10-14",
@@ -101,20 +86,20 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
-    "michigan": {
+    "johns-hopkins": {
       "cycle": "2026-27",
-      "platform": "Common App",
-      "supp_essay_count": 2,
-      "prompts": "Contributing to U-M’s leaders and citizens who challenge the present and enrich the future (100–300 words); unique qualities of your college/school and how its curriculum supports your interests (100–550 words).",
-      "teacher_recs": 1,
-      "counselor_rec": "Yes",
+      "platform": "Common App or Coalition on Scoir",
+      "supp_essay_count": 1,
+      "prompts": "What you've learned engaging with people whose experiences differ from yours, and how it shaped your thinking about building bridges and working with others (350 w).",
+      "teacher_recs": 2,
+      "counselor_rec": "Yes (included in secondary school report)",
       "interview": "Not offered",
-      "fee": "$75",
-      "special": "Portfolio/artistic profile for SMTD, Stamps, Taubman",
+      "fee": "$70",
+      "special": "SAT or ACT required for Homewood first-year applicants; optional Schoolhouse.world portfolio; ED agreement. Supplemental bridge-building essay 350 words verified for2026-27.",
       "sources": [
         {
-          "label": "Michigan current essay questions",
-          "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions"
+          "label": "JHU deadlines",
+          "url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/"
         }
       ],
       "verified_on": "2026-10-14",
@@ -138,6 +123,76 @@
       ],
       "verified_on": "2026-10-14",
       "verification_status": "partially_verified_prompt_count_unresolved"
+    },
+    "michigan": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": 2,
+      "prompts": "Contributing to U-M’s leaders and citizens who challenge the present and enrich the future (100–300 words); unique qualities of your college/school and how its curriculum supports your interests (100–550 words).",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$75",
+      "special": "Portfolio/artistic profile for SMTD, Stamps, Taubman",
+      "sources": [
+        {
+          "label": "Michigan current essay questions",
+          "url": "https://admissions.umich.edu/apply/first-year-applicants/essay-questions"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
+    },
+    "michigan-dearborn": {
+      "cycle": "2026-27",
+      "platform": "UM-Dearborn online application or Common App",
+      "supp_essay_count": "None required (may be requested if GPA 2.75-2.99)",
+      "prompts": "n.a.",
+      "teacher_recs": 0,
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$0",
+      "special": "Official high-school transcript (plus any dual-enrollment transcripts) must arrive by the deadline; 7th-semester grades may be requested. SAT/ACT optional (self-reported scores accepted on Common App). $50 non-refundable enrollment deposit (hardship waiver). Most new students take the Mathematics Placement Examination before orientation. Engineering applicants are advised to have two years of algebra, geometry, at least one semester of trigonometry, chemistry and physics.",
+      "sources": [
+        {
+          "label": "Admission criteria for first-year students",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/apply-first-year-student"
+        },
+        {
+          "label": "Admission criteria (counselors)",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/high-school-counselors/admission-criteria"
+        },
+        {
+          "label": "Common App profile",
+          "url": "https://www.commonapp.org/explore/university-michigan-dearborn"
+        },
+        {
+          "label": "2026-27 catalog: first-year admission",
+          "url": "https://catalog.umd.umich.edu/undergraduate/admissions/freshman-student-admission/"
+        }
+      ],
+      "verification_status": "verified_official_page",
+      "verification_note": "Reviewed against current official university sources on October 16, 2026.",
+      "verified_on": "2026-10-16"
+    },
+    "nc-state": {
+      "cycle": "2026-27",
+      "platform": "Common App or Coalition on Scoir",
+      "supp_essay_count": "1 required program-interest response (+ optional Honors application essay)",
+      "prompts": "Explain why you selected the academic program(s) and why you want to study them at NC State; Honors applicants answer the separate prompt, maximum 600 words.",
+      "teacher_recs": 0,
+      "counselor_rec": "No — counselor endorsements dropped as of fall 2022",
+      "interview": "Not offered generally (Design/some depts interview by invitation)",
+      "fee": "$85",
+      "special": "Honors application due Nov 1. EA application complete and NC residency through RDS confirmed by Nov 10 for end-of-December NC notification.",
+      "sources": [
+        {
+          "label": "NC State apply",
+          "url": "https://admissions.ncsu.edu/apply/first-year/"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     },
     "northeastern": {
       "cycle": "2026-27",
@@ -177,88 +232,91 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
-    "nc-state": {
+    "purdue": {
       "cycle": "2026-27",
-      "platform": "Common App or Coalition on Scoir",
-      "supp_essay_count": "1 required program-interest response (+ optional Honors application essay)",
-      "prompts": "Explain why you selected the academic program(s) and why you want to study them at NC State; Honors applicants answer the separate prompt, maximum 600 words.",
+      "platform": "Common App",
+      "supp_essay_count": "2 required (+ conditional alternate-major response; Honors adds4)",
+      "prompts": "How Purdue opportunities support your interests in and out of the classroom (≤250 words); reasons for your chosen major and chosen campus, Indianapolis or West Lafayette (≤250 words). An alternate major adds another conditional250-word response. Honors applicants answer four additional prompts, each≤200 words.",
       "teacher_recs": 0,
-      "counselor_rec": "No — counselor endorsements dropped as of fall 2022",
-      "interview": "Not offered generally (Design/some depts interview by invitation)",
-      "fee": "$85",
-      "special": "Honors application due Nov 1. EA application complete and NC residency through RDS confirmed by Nov 10 for end-of-December NC notification.",
+      "counselor_rec": "No",
+      "interview": "Not offered",
+      "fee": "$60",
+      "special": "Honors College adds four essays; submit complete application by Nov 1. SAT, ACT or CLT scores expected; exceptional cases may submit without scores.",
       "sources": [
         {
-          "label": "NC State apply",
-          "url": "https://admissions.ncsu.edu/apply/first-year/"
-        }
-      ],
-      "verified_on": "2026-10-14",
-      "verification_status": "verified_official_page"
-    },
-    "duke": {
-      "cycle": "2026-27",
-      "platform": "Common App or QuestBridge",
-      "supp_essay_count": "2 required + 1 optional",
-      "prompts": "Two required 250-word responses: Why Duke and Communities. One optional 250-word response from Viewpoints and experiences, Difference of opinion, or Something you are excited about.",
-      "teacher_recs": 2,
-      "counselor_rec": "Yes",
-      "interview": "Alumni interview offered (optional)",
-      "fee": "$85",
-      "special": "Pratt requires at least one recommendation from a math or science teacher. Test-optional for 2026-27. Robertson scholarship has a separate selection/application process; confirm its current deadline with the program.",
-      "sources": [
-        {
-          "label": "Duke current-cycle requirements",
-          "url": "https://admissions.duke.edu/apply/"
+          "label": "Purdue essay",
+          "url": "https://admission.purdue.edu/apply/essay.php"
         }
       ],
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
     "rose-hulman": {
-      "cycle": "Fall 2027 (current requirements pending confirmation)",
-      "platform": "Common App or Rose-Hulman application",
-      "supp_essay_count": "Unknown for current cycle; historical checklist states no separate supplemental prompt",
-      "prompts": "Current prompts pending confirmation",
-      "teacher_recs": "Historical: one teacher/counselor/principal recommendation; confirm current requirement",
-      "counselor_rec": "Historical checklist says no separate counselor recommendation; confirm current requirement",
-      "interview": "Historically optional Glimpse video for domestic U.S. students and InitialView for students abroad; no-penalty rules require current confirmation.",
-      "fee": null,
-      "special": "Historical optional 60–90 second Glimpse video. Confirm current application fields, recommendations and fee before submission.",
+      "cycle": "2026-27",
+      "platform": "GoRose App or Common App (no preference)",
+      "supp_essay_count": "None school-specific stated",
+      "prompts": "n.a.",
+      "teacher_recs": "1 (from a teacher, counselor or principal)",
+      "counselor_rec": "Not separately required; the one required letter may come from a counselor",
+      "interview": "Optional Glimpse video (60-90 s) for U.S. high-school students; optional InitialView for students abroad; no disadvantage if omitted",
+      "fee": "$65 (fee waiver accepted)",
+      "special": "High school transcript (Parchment accepted). Self-report test scores only if they should be considered. FIRST Robotics Scholarship: admitted students apply on the applicant portal admit tab by Feb 1. Enrollment deposit May 1.",
       "sources": [
         {
-          "label": "Rose-Hulman process",
-          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html"
-        }
-      ],
-      "reviewed_on": "2026-10-14",
-      "verified_on": "2026-08-16",
-      "verification_status": "historical_evidence_pending_current_confirmation",
-      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed.",
-      "historical_fee": "$65; current fee pending confirmation"
-    },
-    "michigan-dearborn": {
-      "cycle": "2026-27 (Fall 2027 entry; requirements unverified)",
-      "platform": "Confirm current application platform with admissions",
-      "supp_essay_count": null,
-      "prompts": null,
-      "teacher_recs": null,
-      "counselor_rec": null,
-      "interview": null,
-      "fee": null,
-      "special": "Confirm current platform, fee, transcript/course prerequisites, writing and recommendations with admissions. Earlier sources conflict on essays and recommendations; no blanket waiver or guarantee is inferred from GPA or CDS factor treatment.",
-      "sources": [
-        {
-          "label": "First-year application (current check pending)",
-          "url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/incoming-first-year-students/apply-admission-first-year"
+          "label": "Rose-Hulman first-year application & deadlines",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html"
         },
         {
-          "label": "Admission criteria (scope unresolved)",
-          "url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/high-school-counselors/admissions-criteria"
+          "label": "Rose-Hulman apply (GoRose App / Common App)",
+          "url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/apply.html"
+        },
+        {
+          "label": "Rose-Hulman scholarships",
+          "url": "https://rhit.edu/admissions-and-aid/financial-aid/scholarships-and-grants/rose-hulman-scholarships/index.html"
         }
       ],
-      "verification_status": "historical_pending_current_recheck",
-      "verification_note": "Inherited university-source evidence dated August 16–18, 2026. Reviewed October 14; current Fall 2027 requirements, course access, aid and campus figures remain unconfirmed."
+      "reviewed_on": "2026-10-16",
+      "verified_on": "2026-10-16",
+      "verification_status": "verified_official_page",
+      "verification_note": "Reviewed against current official university sources on October 16, 2026."
+    },
+    "rpi": {
+      "cycle": "2026-27",
+      "platform": "Common App or RPI Application",
+      "supp_essay_count": "0 general; program-specific for some majors",
+      "prompts": "B.S./M.D.: reasons for pursuing medicine. Architecture: why architecture. Electronic Arts/GSAS/Music: interests, goals, and portfolio.",
+      "teacher_recs": "1 letter from a counselor OR teacher (preferably math/science)",
+      "counselor_rec": "May satisfy the single letter requirement; separate counselor recommendation not specified",
+      "interview": "Not offered domestically (InitialView for intl; optional GLIMPSE video)",
+      "fee": "$70; waived for applications submitted by Dec 1 and for Rensselaer Medalists (per current apply page)",
+      "special": "Architecture portfolio required; GSAS/Electronic Arts/Music portfolios; optional 60-90s GLIMPSE video",
+      "sources": [
+        {
+          "label": "RPI apply",
+          "url": "https://undergrad.admissions.rpi.edu/apply"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
+    },
+    "wpi": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": "None school-specific stated",
+      "prompts": "n.a.",
+      "teacher_recs": 1,
+      "counselor_rec": "Yes",
+      "interview": "Not offered",
+      "fee": "$70",
+      "special": "Early Decision Agreement if ED",
+      "sources": [
+        {
+          "label": "WPI how to apply",
+          "url": "https://www.wpi.edu/admissions/undergraduate/apply/how-to"
+        }
+      ],
+      "verified_on": "2026-10-14",
+      "verification_status": "verified_official_page"
     }
   },
   "selection_updated_on": "2026-10-14",

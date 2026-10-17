@@ -30,7 +30,7 @@ const nav: { section: string; items: { path: string; label: string; icon: any; h
     items: [
       { path: "/curriculum", label: "Curriculum & access",   icon: GraduationCap, hint: "Robotics courses, route access, research" },
       { path: "/robotics",   label: "Entry & alternatives",    icon: Bot,           hint: "ECE / CS gates and optional ME routes" },
-      { path: "/robotics-degrees", label: "Degree routes", icon: Radar,       hint: "Degree types at the 13 schools" },
+      { path: "/robotics-degrees", label: "Degree routes", icon: Radar,       hint: "Degree types at the 15 schools" },
       { path: "/robotics-compare", label: "WPI vs Michigan", icon: Columns3,    hint: "The two robotics BS degrees, side by side" },
       { path: "/cmu-plan",   label: "CMU Robotics BS",    icon: CalendarRange, hint: "Primary Robotics BS and alternative routes" },
       { path: "/culture",    label: "Culture & campus",      icon: Users,         hint: "Greek life, ambition, rec" },

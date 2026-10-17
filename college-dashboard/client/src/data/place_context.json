@@ -14,37 +14,26 @@
       "drive_hours_from_rdu": 7.5,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
-    "purdue": {
-      "campus_city": "West Lafayette, IN",
-      "nearest_airport": "IND",
-      "temp_low_jan_f": 18,
-      "temp_high_jul_f": 85,
-      "snow_inches_annual": 24,
-      "days_below_freezing": 118,
-      "flight_from_rdu_band": "$220-$420 (connections)",
-      "drive_hours_from_rdu": 12.5,
+    "cornell": {
+      "campus_city": "Ithaca, NY",
+      "nearest_airport": "ITH",
+      "temp_low_jan_f": 14,
+      "temp_high_jul_f": 80,
+      "snow_inches_annual": 66,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$280-$500 (connections)",
+      "drive_hours_from_rdu": 11.0,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
-    "wpi": {
-      "campus_city": "Worcester, MA",
-      "nearest_airport": "BOS",
-      "temp_low_jan_f": 15,
-      "temp_high_jul_f": 82,
-      "snow_inches_annual": 64,
-      "days_below_freezing": 133,
-      "flight_from_rdu_band": "$180-$320",
-      "drive_hours_from_rdu": 12.5,
-      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
-    },
-    "rpi": {
-      "campus_city": "Troy, NY",
-      "nearest_airport": "ALB",
-      "temp_low_jan_f": 13,
-      "temp_high_jul_f": 83,
-      "snow_inches_annual": 63,
-      "days_below_freezing": 145,
-      "flight_from_rdu_band": "$220-$400 (connections)",
-      "drive_hours_from_rdu": 12.0,
+    "duke": {
+      "campus_city": "Durham, NC",
+      "nearest_airport": "RDU",
+      "temp_low_jan_f": 32,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 4,
+      "days_below_freezing": 69,
+      "flight_from_rdu_band": "N/A (home)",
+      "drive_hours_from_rdu": 0.3,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "georgia-tech": {
@@ -58,15 +47,15 @@
       "drive_hours_from_rdu": 6.5,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
-    "michigan": {
-      "campus_city": "Ann Arbor, MI",
-      "nearest_airport": "DTW",
-      "temp_low_jan_f": 18,
-      "temp_high_jul_f": 84,
-      "snow_inches_annual": 42,
-      "days_below_freezing": 130,
-      "flight_from_rdu_band": "$140-$260",
-      "drive_hours_from_rdu": 12.0,
+    "johns-hopkins": {
+      "campus_city": "Baltimore, MD",
+      "nearest_airport": "BWI",
+      "temp_low_jan_f": 26,
+      "temp_high_jul_f": 88,
+      "snow_inches_annual": 20,
+      "days_below_freezing": 82,
+      "flight_from_rdu_band": "$100-$200",
+      "drive_hours_from_rdu": 5.0,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "maryland": {
@@ -78,6 +67,39 @@
       "days_below_freezing": 71,
       "flight_from_rdu_band": "$100-$220",
       "drive_hours_from_rdu": 4.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
+    },
+    "michigan": {
+      "campus_city": "Ann Arbor, MI",
+      "nearest_airport": "DTW",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 84,
+      "snow_inches_annual": 42,
+      "days_below_freezing": 130,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 12.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
+    },
+    "michigan-dearborn": {
+      "campus_city": "Dearborn, MI",
+      "nearest_airport": "DTW",
+      "temp_low_jan_f": 19,
+      "temp_high_jul_f": 84,
+      "snow_inches_annual": 45,
+      "days_below_freezing": null,
+      "flight_from_rdu_band": "$140-$260",
+      "drive_hours_from_rdu": 12.2,
+      "robotics_scope_note": "Location context checked 2026-10-16. Climate is the NWS Detroit 1991–2020 normals table (January low 19.2°F, July high 83.7°F, monthly snowfall summing to 45.0 in); the annual count of days below freezing was not on that page and is left blank. Drive time is a routing estimate: OSRM gives 678 road miles from Cary and a model time of 13.1 h; this is scaled to 12.2 h using the ratio between this file's Ann Arbor entry (12.0 h) and OSRM's Cary-Ann Arbor time (12.9 h). The flight band reuses the July 2026 RDU–DTW sample from the Michigan entry; Delta and Frontier fly the route nonstop. UM-Dearborn says campus is about 20 minutes from DTW. Weather and travel estimates do not establish robotics-program quality; check current fares and routes before booking."
+    },
+    "nc-state": {
+      "campus_city": "Raleigh, NC",
+      "nearest_airport": "RDU",
+      "temp_low_jan_f": 32,
+      "temp_high_jul_f": 89,
+      "snow_inches_annual": 4,
+      "days_below_freezing": 69,
+      "flight_from_rdu_band": "N/A (home)",
+      "drive_hours_from_rdu": 0.3,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "northeastern": {
@@ -102,49 +124,49 @@
       "drive_hours_from_rdu": 9.0,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
-    "nc-state": {
-      "campus_city": "Raleigh, NC",
-      "nearest_airport": "RDU",
-      "temp_low_jan_f": 32,
-      "temp_high_jul_f": 89,
-      "snow_inches_annual": 4,
-      "days_below_freezing": 69,
-      "flight_from_rdu_band": "N/A (home)",
-      "drive_hours_from_rdu": 0.3,
-      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
-    },
-    "duke": {
-      "campus_city": "Durham, NC",
-      "nearest_airport": "RDU",
-      "temp_low_jan_f": 32,
-      "temp_high_jul_f": 89,
-      "snow_inches_annual": 4,
-      "days_below_freezing": 69,
-      "flight_from_rdu_band": "N/A (home)",
-      "drive_hours_from_rdu": 0.3,
+    "purdue": {
+      "campus_city": "West Lafayette, IN",
+      "nearest_airport": "IND",
+      "temp_low_jan_f": 18,
+      "temp_high_jul_f": 85,
+      "snow_inches_annual": 24,
+      "days_below_freezing": 118,
+      "flight_from_rdu_band": "$220-$420 (connections)",
+      "drive_hours_from_rdu": 12.5,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
     "rose-hulman": {
-      "campus_city": "Terre Haute, Indiana",
-      "nearest_airport": "Unverified",
-      "temp_low_jan_f": null,
-      "temp_high_jul_f": null,
+      "campus_city": "Terre Haute, IN",
+      "nearest_airport": "IND",
+      "temp_low_jan_f": 21,
+      "temp_high_jul_f": 86,
       "snow_inches_annual": null,
-      "days_below_freezing": null,
-      "flight_from_rdu_band": "Not researched",
-      "drive_hours_from_rdu": null,
-      "robotics_scope_note": "Campus location inherited from programme records; travel and climate estimates were not supplied without verified sources."
+      "days_below_freezing": 110,
+      "flight_from_rdu_band": "$280-$450",
+      "drive_hours_from_rdu": 10.5,
+      "robotics_scope_note": "Location context compiled 2026-10-16 from NOAA NCEI 1991–2020 normals for Terre Haute Regional Airport (USW00003868): January mean low 20.7 F, July mean high 85.9 F, 110.3 days a year at or below 32 F. NCEI publishes no 1991–2020 snowfall normal for the Terre Haute stations and NWS Indianapolis lists Terre Haute normals as under review, so annual snowfall is left blank. Terre Haute Regional (HUF) has had no scheduled airline service since 1999; IND is about 60 minutes from campus via I-70. Delta flies one daily RDU–IND nonstop (about 2 h); the fare band starts from Southwest's posted one-way fares ($140–$178) doubled and is not a live fare. Drive time is a routing estimate (about 683 miles), not a school figure. Weather and travel estimates do not establish robotics-program quality."
     },
-    "michigan-dearborn": {
-      "campus_city": "Dearborn, MI",
-      "nearest_airport": "Unverified",
-      "temp_low_jan_f": null,
-      "temp_high_jul_f": null,
-      "snow_inches_annual": null,
-      "days_below_freezing": null,
-      "flight_from_rdu_band": "Not researched",
-      "drive_hours_from_rdu": null,
-      "robotics_scope_note": "Campus location inherited from programme records; travel and climate estimates were not supplied without verified sources."
+    "rpi": {
+      "campus_city": "Troy, NY",
+      "nearest_airport": "ALB",
+      "temp_low_jan_f": 13,
+      "temp_high_jul_f": 83,
+      "snow_inches_annual": 63,
+      "days_below_freezing": 145,
+      "flight_from_rdu_band": "$220-$400 (connections)",
+      "drive_hours_from_rdu": 12.0,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
+    },
+    "wpi": {
+      "campus_city": "Worcester, MA",
+      "nearest_airport": "BOS",
+      "temp_low_jan_f": 15,
+      "temp_high_jul_f": 82,
+      "snow_inches_annual": 64,
+      "days_below_freezing": 133,
+      "flight_from_rdu_band": "$180-$320",
+      "drive_hours_from_rdu": 12.5,
+      "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     }
   },
   "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."

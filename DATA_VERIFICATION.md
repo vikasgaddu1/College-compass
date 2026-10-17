@@ -1,12 +1,12 @@
-# Data verification — October 14, 2026
+# Data verification — October 14 and 16, 2026
 
-The active dashboard covers exactly 13 universities. This replaces the old 33-school cost audit, whose figures and scope no longer described the selected robotics routes.
+The active dashboard covers exactly 15 universities. This replaces the old 33-school cost audit, whose figures and scope no longer described the selected robotics routes.
 
-See [ROBOTICS_RESEARCH.md](ROBOTICS_RESEARCH.md) for the complete review and all 13 major recommendations. The machine-readable programme ledger is `college-dashboard/client/src/data/research_audit.json`; financial/CDS fetch records are in `finance_sources.json` and `admissions_source_log.json`.
+See [ROBOTICS_RESEARCH.md](ROBOTICS_RESEARCH.md) for the complete review and all 15 major recommendations. The machine-readable programme ledger is `college-dashboard/client/src/data/research_audit.json`; financial/CDS fetch records are in `finance_sources.json` and `admissions_source_log.json`.
 
 ## Current facts versus historical context
 
-Official degree/curriculum, entry, scholarship and deadline sources for the eleven retained schools were read again in the October refresh. Rose-Hulman and Michigan-Dearborn use corrected August 2026 evidence with current checks pending. Some current pages show month/day without an explicit entry year; those calendar events retain `year_inferred: true`. Exact published notification bounds are labeled “by”, while vague windows have null ISO dates rather than fabricated release days. Future seat availability and graduation schedules are never guaranteed.
+Official degree/curriculum, entry, scholarship and deadline sources for thirteen schools were read again on October 14. Rose-Hulman and Michigan-Dearborn were re-researched from their current catalogs, admissions, aid, Common Data Set and visit pages on October 16. Some current pages show month/day without an explicit entry year; those calendar events retain `year_inferred: true`. Exact published notification bounds are labeled “by”, while vague windows have null ISO dates rather than fabricated release days. Future seat availability and graduation schedules are never guaranteed.
 
 Historical campus culture, Reddit/community membership, travel context and alumni/company bands retain their original compilation dates. They were not relabeled as current robotics outcomes. Historical source-log entries remain alongside the new readings.
 
@@ -26,6 +26,4 @@ Aid/net-price population denominators and years remain explicit. Historical IPED
 
 ## Validation
 
-The selected list now includes Rose-Hulman and Michigan-Dearborn in place of Cornell and Johns Hopkins. These two entries use audited August 2026 university-source records, not fresh October retrievals. Their unknown current budgets, scholarship amounts, application deadlines, major-entry guarantees and campus/social figures remain null or explicitly unconfirmed. Dearborn's earlier commuter, student-origin and quiet-campus claims were removed because no supporting citation could be traced. New application plans remain pending until rounds and dates are selected and verified.
-
-Run `npm test`, `npm run check` and `npm run build` from `college-dashboard`. Automated regressions check roster consistency, distinct credential/campus routes, route-specific scoring and source scope, preserved application plans, and calendar behavior. Browser checks exercise all existing routes and representative interactive flows. Source access failures and curriculum/advising conflicts are documented instead of replaced with invented facts.
+The selected list is 15 schools: Cornell and Johns Hopkins were restored with their October 14 review, alongside Rose-Hulman and Michigan-Dearborn. The two additions were re-researched on October 16, 2026 from official pages (and College Navigator / College Scorecard data for net price). Facts that could not be confirmed stay null with a note naming who to ask: for example Rose-Hulman's annual snowfall normal and C7 factor checkboxes, and Michigan-Dearborn's Greek and housing percentages (UM-Dearborn does not publish a current Common Data Set) and whether its 3.0 GPA admission guarantee covers out-of-state applicants. Dearborn campus descriptions avoid unsourced commuter or quiet-campus claims. Neither new school has an application round chosen yet.

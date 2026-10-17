@@ -104,7 +104,7 @@ export default function RoboticsRoutesPage() {
           <strong>ECE route</strong> (electrical or computer engineering plus its controls/robotics track) or the{" "}
           <strong>CS route</strong> (computer science plus its robotics courses). Each school shows all three, how a
           first-year enters the program, the recommended route, and undergraduate AI choices with their access limits.
-          This comparison covers the 13 selected schools for Fall 2027 entry by a North Carolina resident.
+          This comparison covers the 15 selected schools for Fall 2027 entry by a North Carolina resident.
           Research snapshot: {data.compiled_date}; school-specific source notes appear below.
         </p>
 

@@ -13,7 +13,7 @@ export default function NotFound() {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            This page is unavailable. Return to the <Link href="/" className="underline">robotics shortlist</Link> to compare the 13 schools.
+            This page is unavailable. Return to the <Link href="/" className="underline">robotics shortlist</Link> to compare the 15 schools.
           </p>
         </CardContent>
       </Card>

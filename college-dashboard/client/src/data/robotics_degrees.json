@@ -1,6 +1,6 @@
 {
   "compiled": "2026-10-14",
-  "note": "The selected 13 universities: five primary robotics degrees and eight ECE/CE routes. Purdue’s engineering-technology alternative is a separate credential. New Rose-Hulman and Dearborn entries use corrected August 2026 evidence with current checks pending; WVU is not selected.",
+  "note": "The selected 15 universities: five primary robotics degrees and ten ECE/CE routes. Purdue’s engineering-technology alternative is a separate credential.",
   "bucket_order": [
     "robotics_engineering",
     "ece_robotics_route",
@@ -223,17 +223,17 @@
       "bucket": "ece_robotics_route",
       "home_unit": "Department of Electrical and Computer Engineering; multidisciplinary robotics program",
       "url": "https://catalog.rose-hulman.edu/catalog/undergraduate-programs-study/computer-engineering-bs/",
-      "launched": "Not established in this review",
-      "route": "BS Computer Engineering + Multidisciplinary Minor in Robotics; add degree-applicable AI and perception electives after checking prerequisites and the quarter-by-quarter plan.",
-      "gate": "Historical evidence describes institute-level admission with an intended major; no separate competitive CE gate was documented. Current rules remain to be confirmed.",
-      "size": "Current major enrollment not verified",
-      "notes": "CE supplies embedded systems and digital design, while the robotics minor adds controls, mobile robotics and multidisciplinary design. EE is the controls-focused alternative. Historical EAC accreditation is for the base CE/EE degrees, not the minor. Inherited degree total is 194 quarter credits; confirm overlap and AI elective applicability.",
+      "launched": "Minor; launch year not published",
+      "route": "Admission is to the institute with an intended major; students start CE in the first year and change majors through the Registrar with no published GPA or capacity gate. The robotics minor is open to any major.",
+      "gate": "No competitive major gate published. The minor's CPE track adds CSSE 463, ECE 320 (replacing ECE 380) and 8 credits of robotics electives on top of CSSE 120, ME/CSSE 435 and ECE 425.",
+      "size": "Not published for the minor",
+      "notes": "CE (194 quarter credits, EAC-accredited) supplies embedded systems and digital design; the robotics minor adds controls, robotics engineering, mobile robotics and image recognition. CE majors keep the ECE 460/461/462 senior design; the three-term multidisciplinary robotics capstone is required only on the ENGD track.",
       "in_dataset_slug": "rose-hulman",
       "robotics_minor_url": "https://catalog.rose-hulman.edu/catalog/minors-certificates/multidiscpln-minor-robotics-minor/",
-      "reviewed_on": "2026-10-14",
-      "verified_on": "2026-08-18",
-      "verification_status": "historical_evidence_pending_current_confirmation",
-      "verification_note": "Reviewed inherited university-source evidence fetched August 16–18, 2026. No university document was freshly retrieved on October 14; current-cycle requirements, offerings and access remain pending confirmation."
+      "reviewed_on": "2026-10-16",
+      "verified_on": "2026-10-16",
+      "verification_status": "verified_official_sources",
+      "verification_note": "Rose-Hulman catalog and department pages reviewed October 16, 2026."
     },
     {
       "institution": "University of Michigan-Dearborn",
@@ -243,27 +243,57 @@
       "bucket": "robotics_engineering",
       "home_unit": "Electrical and Computer Engineering, College of Engineering and Computer Science",
       "url": "https://catalog.umd.umich.edu/undergraduate/college-engineering-computer-science/robotics-engineering/",
-      "launched": "Not independently established in this review",
-      "route": "Primary BSE robotics route; current first-year admission/major entry must be confirmed.",
-      "gate": "Unknown for Fall 2027. Inherited university-level GPA admission language conflicts with an unverified degree-specific entry audit. Confirm first-year CECS/major selection, preparation requirements and any later declaration or transfer rules; university eligibility does not establish guaranteed admission to this major.",
-      "size": "Unknown for this major",
-      "notes": "Historical 125-semester-credit engineering degree with controls, embedded systems, manipulation, mobility, vision and two-semester robotics design. Degree-specific EAC evidence inherited from August 2026; current recheck pending. AI/ML elective credit applicability unresolved.",
+      "launched": "Fall 2014",
+      "route": "First-year applicants are admitted directly into their chosen CECS major, including Robotics Engineering. Students without Pre-Calculus credit start in Dearborn Engineering Success and must pass MATH 105 or 101 (C- or better) within three semesters with a 2.0 GPA.",
+      "gate": "No separate Robotics Engineering gate published for first-years.",
+      "size": "31 students enrolled in Fall 2025; about 5–10 degrees a year",
+      "notes": "125-credit EAC-accredited BSE: embedded systems (ECE 3731), robotic manipulation (ECE 3641), mobile robots (ECE 4641), industrial robots (IMSE 381), controls (ECE 460 or ME 442) and the ECE 4987/4988 robotics design capstone. Only about 7 elective credits, where ML, AI and robot vision fit. Very small program.",
       "in_dataset_slug": "michigan-dearborn",
-      "verified_on": "2026-08-18",
-      "verification_status": "historical_pending_current_recheck",
-      "verification_note": "Historical evidence inherited from August 16–18, 2026; no university source freshly retrieved October 14, 2026 because the running network policy blocks the destinations. Fall 2027 requirements remain subject to a current check."
+      "verified_on": "2026-10-16",
+      "verification_status": "verified_official_sources",
+      "verification_note": "UM-Dearborn 2026–27 catalog and CECS pages reviewed October 16, 2026."
+    },
+    {
+      "institution": "Cornell University",
+      "state": "NY",
+      "control": "private",
+      "degree_name": "BS Electrical and Computer Engineering (Cornell Engineering) + Robotics minor",
+      "bucket": "ece_robotics_route",
+      "home_unit": "Cornell Duffield College of Engineering, School of Electrical and Computer Engineering",
+      "url": "https://courses.cornell.edu/programs/electrical-computer-engineering-bs/",
+      "launched": "See current programme source",
+      "route": "At least C+ in: MATH 2930 or MATH 2940, PHYS 2213, and one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300.\nMust have a GPA ≥ 2.5 in (if completed): MATH 1920, MATH 2930, MATH 2940, PHYS 2213, ENGRD 2110, ECE 2400/ENGRD 2140, ECE 2300/ENGRD 2300, ECE 2100/ENGRD 2100, ECE 2720/ENGRD 2720. Apply to Engineering, not a major; catalog encourages sophomore-fall affiliation and requires affiliation by fifth semester. Admissions FAQ describes selection in sophomore spring.",
+      "gate": "At least C+ in: MATH 2930 or MATH 2940, PHYS 2213, and one of ECE 2100/ENGRD 2100, ECE 2720 or ECE 2300/ENGRD 2300.\nMust have a GPA ≥ 2.5 in (if completed): MATH 1920, MATH 2930, MATH 2940, PHYS 2213, ENGRD 2110, ECE 2400/ENGRD 2140, ECE 2300/ENGRD 2300, ECE 2100/ENGRD 2100, ECE 2720/ENGRD 2720. Apply to Engineering, not a major; catalog encourages sophomore-fall affiliation and requires affiliation by fifth semester. Admissions FAQ describes selection in sophomore spring. Confirm elective prerequisites, permissions and degree applicability.",
+      "size": "Not verified for this major",
+      "notes": "ECE balances circuits/digital hardware with embedded systems, current ECE3200 ML, ECE4240 robot perception, ECE4250 control/estimation, cross-listed robotics and required CDE build work. The Robotics minor adds interdisciplinary structure; its courses need adviser pre-approval. Current CS AI/vision/robot-learning listings limit enrollment to CS majors, so those are alternatives requiring verified access, not guaranteed ECE options.",
+      "in_dataset_slug": "cornell"
+    },
+    {
+      "institution": "Johns Hopkins University",
+      "state": "MD",
+      "control": "private",
+      "degree_name": "BS Computer Engineering + optional Robotics study focus area + LCSR Robotics minor",
+      "bucket": "ece_robotics_route",
+      "home_unit": "Department of Electrical and Computer Engineering, Whiting School of Engineering",
+      "url": "https://engineering.jhu.edu/ece/academics/undergraduate-studies/degree-options/study-focus-areas-for-undergraduates",
+      "launched": "See current programme source",
+      "route": "Live CS declaration: SIS form, four-year plan, departmental review and advisor approval; no GPA/cap threshold stated, and secondary-major/minor declarations pause before/during registration. Prior admissions FAQ said university-wide admission except BME, but its current page returns403; preserve as older policy pending re-verification.",
+      "gate": "Live CS declaration: SIS form, four-year plan, departmental review and advisor approval; no GPA/cap threshold stated, and secondary-major/minor declarations pause before/during registration. Prior admissions FAQ said university-wide admission except BME, but its current page returns403; preserve as older policy pending re-verification. Confirm elective prerequisites, permissions and degree applicability.",
+      "size": "Not verified for this major",
+      "notes": "BS Computer Engineering has the same ECE electronics/signals/design core as EE plus required intermediate programming and data structures. Both have an optional Robotics study focus area and a two-term ECE capstone. Add selectable controls, robot sensors/mechatronics, machine perception, embedded AI and sensor-based robotics; the interdisciplinary minor gives transcript recognition. EE is the controls/sensing alternative and CS is the software/planning alternative. Primary ordering is analyst judgment, not an admissions advantage.",
+      "in_dataset_slug": "johns-hopkins"
     }
   ],
   "excluded": [],
   "counts": {
-    "total": 14,
-    "selected_schools": 13,
+    "total": 16,
+    "selected_schools": 15,
     "by_bucket": {
       "robotics_engineering": 5,
-      "ece_robotics_route": 8,
+      "ece_robotics_route": 10,
       "robotics_engineering_technology": 1
     },
     "new_to_user": 2
   },
-  "selection_updated_on": "2026-10-14"
+  "selection_updated_on": "2026-10-16"
 }

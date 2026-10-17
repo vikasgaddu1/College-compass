@@ -1,7 +1,7 @@
 {
   "compiled": "2026-08-19",
   "home_base": "Cary, North Carolina (RDU)",
-  "note": "Existing visit suggestions remain historical. Rose-Hulman and Michigan-Dearborn have unscheduled visit-question entries. Attendance for removed colleges is retained in archived records and excluded from active comparison counts.",
+  "note": "Visit suggestions for the 15 selected schools. Cornell (visited) and Johns Hopkins return with their earlier entries. Rose-Hulman and Michigan-Dearborn visit options were confirmed from official pages on October 16, 2026.",
   "constraint": "Anurag can be excused on weekdays, which is what makes this possible: almost every engineering-specific session on this list runs Monday to Friday only.",
   "trips": [
     {
@@ -83,40 +83,46 @@
     {
       "id": 4,
       "name": "Terre Haute, Indiana — Rose-Hulman",
-      "dates": "Dates not selected",
-      "school_days": 0,
+      "dates": "Any weekday, 19–23 Oct 2026",
+      "school_days": 1,
       "schools": [
         "rose-hulman"
       ],
-      "travel": "Confirm current transport and campus tour availability before planning.",
-      "why_first": "Assess the new robotics curriculum option and actual undergraduate course/project access.",
+      "travel": "Fly RDU→IND (Delta has one daily nonstop, about 2 hours), then about an hour's drive west to Terre Haute; driving from Cary is roughly 10.5 hours (routing estimate). Terre Haute's own airport has no airline service.",
+      "why_first": "Only weekday visits are offered (admissions session, tour, lunch) and the Early Action deadline is Nov 1, so the week of 19–23 Oct is the last useful window before submitting.",
       "book": [
-        "Find a current official campus visit and ask whether an engineering adviser or robotics teaching-lab visit is available."
+        "Weekday visit (admissions session + campus tour + lunch) through the visit portal",
+        "On the request form, ask for a class visit or professor meeting in ECE (not always available) and a look at the robotics team spaces"
       ],
       "watch": [
-        "No itinerary, reservation, school-day estimate or registration slot has been confirmed."
+        "No fall open house or preview day is published",
+        "Finals run 16–19 Nov and the term ends 23 Nov",
+        "No robotics lab tour is published; ask when booking"
       ],
-      "planning_status": "unscheduled_candidate_visit",
-      "status_note": "New comparison entry; visit planning remains unconfirmed."
+      "planning_status": "candidate_visit",
+      "status_note": "Dates and visit format confirmed from Rose-Hulman's visit pages on October 16, 2026; booking-calendar availability not checked."
     },
     {
       "id": 5,
       "name": "Dearborn, MI — Michigan-Dearborn",
-      "dates": "Dates not selected",
-      "school_days": 0,
+      "dates": "Thu 12 – Fri 13 Nov 2026",
+      "school_days": 1,
       "schools": [
         "michigan-dearborn"
       ],
-      "travel": "Confirm current transport and campus tour availability before planning.",
-      "why_first": "Assess the new robotics curriculum option and actual undergraduate course/project access.",
+      "travel": "Fly RDU→DTW (Delta and Frontier nonstop); campus is about 20 minutes from the airport. Driving from Cary is roughly 12 hours (routing estimate).",
+      "why_first": "Pairs the CECS Exploration Event (Thu 12 Nov, 5:30–7:30 p.m.) with the Friday Main Campus Tour (13 Nov, 3:00–4:30 p.m.). Admission is rolling with a recommended Apr 1 deadline, so a November visit still comes before any deadline. Could be combined with Michigan (Ann Arbor) about 30 minutes away.",
       "book": [
-        "Find a current official campus visit and ask whether an engineering adviser or robotics teaching-lab visit is available."
+        "CECS Exploration Event, Thu 12 Nov (RSVP required)",
+        "Main Campus Tour, Fri 13 Nov, 3:00–4:30 p.m. (registration required, no walk-ins)"
       ],
       "watch": [
-        "No itinerary, reservation, school-day estimate or registration slot has been confirmed."
+        "No fall open house or class visits are published",
+        "Thanksgiving recess is 21–29 Nov",
+        "No robotics lab access for visitors is published; ask at the CECS event"
       ],
-      "planning_status": "unscheduled_candidate_visit",
-      "status_note": "New comparison entry; visit planning remains unconfirmed."
+      "planning_status": "candidate_visit",
+      "status_note": "Event and tour dates confirmed from UM-Dearborn's admissions event listings on October 16, 2026."
     }
   ],
   "dead_week": {
@@ -1491,68 +1497,497 @@
     },
     "rose-hulman": {
       "visited": null,
-      "visit_home_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html",
-      "registration_url": null,
-      "booking_verification_status": "not_researched",
-      "temporal_audit_on": "2026-10-14",
+      "visit_home_url": "https://rhit.edu/visit/index.html",
+      "registration_url": "https://admissions.rose-hulman.edu/portal/CampusVisits2",
+      "booking_verification_status": "live_registration_not_verified",
+      "temporal_audit_on": "2026-10-16",
       "note": "No student attendance or booking record supplied.",
-      "robotics_lab_access": "Confirm prospective-student access to undergraduate robotics teaching labs and projects directly.",
+      "robotics_lab_access": "NOT PUBLISHED - no lab tour is listed on Rose-Hulman's visit pages. The robotics teams (Combat, MATE ROV, Thornbots, Rover, VEX U) and Rose Aerial Systems work out of the Branam and Kremer Innovation Centers (BIC/KIC); ask when booking whether the tour or a professor meeting can include the BIC. Preview Rose points to a Google Earth view of 'our academic buildings and labs' as the published virtual option. [RH-V16, RH-V07]",
       "questions": {
-        "read_first": [],
-        "dont_ask": [],
+        "read_first": [
+          {
+            "q": "Does visiting count in admission?",
+            "a": "Not as a recorded factor: the CDS-derived profile lists level of applicant's interest as Not Considered. Visit to decide, not to signal.",
+            "url": null
+          },
+          {
+            "q": "Which deadline matters?",
+            "a": "Early Action, 1 November, non-binding; Rose-Hulman ties it to maximum scholarship consideration. Regular Decision is 1 February.",
+            "url": "https://rhit.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html"
+          }
+        ],
         "ask": [
           {
-            "who": "Engineering adviser",
-            "q": "Can you map the recommended robotics route and AI electives into a four-year plan, including prerequisites and course rotations?",
-            "why": "The comparison uses inherited curriculum evidence; current cohort requirements and degree applicability need confirmation."
+            "who": "Admissions counsellor",
+            "priority": "high",
+            "q": "Can today's visit include a stop at the Branam Innovation Center or a meeting with a professor who advises a robotics team?",
+            "why": "No lab tour is published; the BIC is where the robotics, VEX U and aerial teams work."
           },
           {
             "who": "Admissions counsellor",
-            "q": "What is the current first-year application route, and which major, transcript and deadline requirements apply?",
-            "why": "University eligibility and admission to a specific major should be confirmed separately."
+            "priority": "medium",
+            "q": "Is Early Action required for full scholarship consideration, and when are merit awards announced relative to the 15 December EA notification?",
+            "why": "Rose-Hulman links the Nov 1 deadline to maximum scholarship consideration."
+          },
+          {
+            "who": "Robotics team member or faculty",
+            "priority": "high",
+            "q": "Can a first-year join Thornbots, VEX U or Rover in the first fall quarter, and how much time per week does a competition season take?",
+            "why": "The teams say no experience is required; workload on 10-week quarters is not published."
           },
           {
             "who": "Student life adviser",
-            "q": "What housing choices, residence participation and evening/weekend activities are available to students moving from out of state?",
-            "why": "Student origins and campus activity have not been verified; no commuter or quiet-campus conclusion is assumed."
+            "priority": "medium",
+            "q": "Only 55% of all undergraduates live in college housing. Where do sophomores and juniors live, and is upper-year housing ever short?",
+            "why": "Only first-year residence is required; no upper-year guarantee is published."
+          },
+          {
+            "who": "Current student",
+            "priority": "medium",
+            "q": "With about a third of students in fraternities or sororities, what does a weekend look like for someone who does not join?",
+            "why": "Greek participation is high and Terre Haute has limited car-free options."
           }
-        ]
-      }
+        ],
+        "dont_ask": []
+      },
+      "deadline": {
+        "date": "2026-11-01",
+        "label": "EA Nov 1",
+        "source_url": "https://rhit.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+        "year_inferred": true
+      },
+      "interest": {
+        "level": "none",
+        "quote": "Level of applicant's interest: Not Considered",
+        "basis": "CollegeData admission profile, compiled from Rose-Hulman's Common Data Set; the C7 checkbox in Rose-Hulman's own 2025-26 CDS PDF did not survive text extraction, and admissions prose is silent. Confirm with admissions."
+      },
+      "book_by": {
+        "when": "Book a weekday visit for 19-23 October through the portal now; 26 October-1 November is application-finishing week before the Nov 1 Early Action deadline",
+        "why": "Rose-Hulman publishes weekday (Mon-Fri) visits only and no fall open house or preview day. Classes are in session from 19 October until finals begin 16 November; fall break (8-9 October) has passed. A visit after 1 November can still inform the decision but not the Early Action application."
+      },
+      "registration_required": true,
+      "booking_lead_time": "No numeric lead time published. The portal says 'select a date from the calendar below and choose from the available visit times,' with a legend of 'Available,' 'Unavailable / Filled' and 'Not Scheduled.' The request form states a visit is not confirmed until an email confirmation arrives. The live calendar did not render in this session (JavaScript-only), so open slots are unverified. [RH-V03, RH-V04]",
+      "tours": [
+        {
+          "name": "Daily on-campus visit (admissions session + campus tour + lunch)",
+          "days_offered": "'Daily visit opportunities are available Monday through Friday.'",
+          "times": "Chosen on the portal calendar; request form offers earliest arrival 8:00 a.m.-1:00 p.m. and latest departure 1:00-5:00 p.m., Eastern Time",
+          "duration": "NOT PUBLISHED (half day implied by arrival/departure windows)",
+          "audience": "general",
+          "notes": "Each visit includes 'an admissions session, campus tour, and lunch (when available).' Up to five guests may attend. No Saturday visits are published.",
+          "cite": "RH-V01, RH-V02, RH-V03, RH-V04"
+        },
+        {
+          "name": "Optional add-ons: class visit, professor meeting, financial aid, career services",
+          "days_offered": "Requested with a weekday visit",
+          "times": "Within the visit window",
+          "duration": "Admissions meeting 15 minutes; others NOT PUBLISHED",
+          "audience": "general",
+          "notes": "The visit request form lists 'Class Visit (prospective students only),' 'Professor Meeting,' Financial Aid, Career Services, Performing Arts, ROTC (Army and Air Force) and Athletic Coach meetings, and notes class visits and professor meetings are not always available. The form seen is the athletic-visit version; confirm the same options apply to a standard visit.",
+          "cite": "RH-V04"
+        },
+        {
+          "name": "Virtual admissions presentation",
+          "days_offered": "Multiple dates on the portal calendar",
+          "times": "NOT PUBLISHED (calendar did not render)",
+          "duration": "30 minutes",
+          "audience": "general",
+          "notes": "'A 30 minute introduction to Rose-Hulman in a group setting' with time for an admission counselor to answer questions.",
+          "cite": "RH-V05"
+        },
+        {
+          "name": "Let's Connect one-on-one video appointment",
+          "days_offered": "By appointment",
+          "times": "NOT PUBLISHED",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Live video chat with admissions, professors, coaches, students or others on campus; the most direct published route to a robotics-relevant faculty conversation without travelling.",
+          "cite": "RH-V01, RH-V06"
+        },
+        {
+          "name": "Recorded department Live Video Chats",
+          "days_offered": "On demand (YouTube playlist)",
+          "times": "N/A",
+          "duration": "Varies",
+          "audience": "general",
+          "notes": "Recorded chats with students and departments; useful preparation for which department to ask to meet.",
+          "cite": "RH-V01"
+        }
+      ],
+      "engineering_specific": "No separate engineering admissions session or fall open house is published; Rose-Hulman is an all-STEM college, so every visit is engineering-focused by default. Engineering depth comes from requesting a Professor Meeting or class visit on the visit form, or a Let's Connect video appointment with a professor. The 28 August 2026 'Academic Department Open Houses' were New Student Orientation events, not prospective-student programs. [RH-V04, RH-V06, RH-V17]",
+      "class_visit_possible": "Yes, by request and not guaranteed - the visit request form lists 'Class Visit (prospective students only)' and 'Professor Meeting', noting they are not always available. Fall-quarter classes run 3 September until finals begin 16 November 2026, with no classes 8-9 October or between 19 November and 30 November. [RH-V04, RH-V10]",
+      "calendar": {
+        "term_start": "2026-09-03 (Fall Quarter classes begin, 8:00 a.m.)",
+        "fall_break": "8-9 October 2026 (Thu-Fri), no classes.",
+        "thanksgiving_break": "No Thanksgiving entry on the 2026-27 calendar. Fall term ends 23 November and winter-quarter classes begin 30 November, so Thanksgiving week (23-27 November) falls between terms.",
+        "term_end": "2026-11-23 Fall Term ends 5:00 p.m.; final examinations 16-19 November",
+        "blackouts": [
+          "No tour blackout dates are published by Rose-Hulman admissions",
+          "Practical caution: 16-19 November 2026 final examinations",
+          "Practical caution: 20-29 November 2026, no classes between fall and winter quarters (includes Thanksgiving)",
+          "Practical caution: 19-23 October 2026 winter-term registration week (classes in session)",
+          "Passed: 3 October 2026 Homecoming; 8-9 October 2026 Fall Break"
+        ],
+        "cite": "RH-V09, RH-V10"
+      },
+      "football": [
+        "5 September 2026 - vs #13 DePauw, 7:00 p.m., Cook Stadium (L 23-31)",
+        "3 October 2026 - Homecoming (registrar calendar); opponent not confirmed",
+        "10 October 2026 - vs Anderson, 2:00 p.m., Cook Stadium (W 52-21)",
+        "24 October 2026 - at Hanover",
+        "31 October 2026 - vs Manchester at Rose-Hulman; kickoff time not confirmed"
+      ],
+      "travel": {
+        "airport": "Indianapolis International (IND). Rose-Hulman cites its 'nearness to Indianapolis International Airport and Interstate 70'. Terre Haute Regional (HUF) has no scheduled airline service. Campus address 5500 Wabash Avenue, Terre Haute, IN 47803 (Eastern Time).",
+        "airport_to_campus": "'A 60-minute drive from the airport to campus via I-70'; 'There is currently no mass public transportation from the airport to campus.' Rental car or taxi recommended; some visitors have used Lyft or Uber (Rose-Hulman math conference travel page).",
+        "drive_from_cary": "ROUTING ESTIMATE about 683 miles, roughly 10-11 hours of driving plus stops. Rose-Hulman publishes no drive time from North Carolina.",
+        "suggested_stay": "Admissions pages name no hotels. A Rose-Hulman conference page notes the Holiday Inn Express is about 4 miles south 'on busy roads without sidewalks', so plan on a car.",
+        "pair_with": "purdue - Rose-Hulman says Purdue, Indiana University and Illinois are 'within two hours' of campus. No campus-to-campus drive time is published by either school."
+      },
+      "cost_notes": "No visit fee is mentioned; lunch is included 'when available'. Visitor parking is not described on the visit or directions pages; ask on confirmation. Contacts: Kelli Lloyd, campusvisits@rose-hulman.edu; Office of Admissions admissions@rhit.edu, 800-248-7448. [RH-V01, RH-V02]",
+      "sources": [
+        {
+          "id": "RH-V01",
+          "url": "https://rhit.edu/visit/index.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V02",
+          "url": "https://rose-hulman.edu/visit/programs-and-tours.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V03",
+          "url": "https://admissions.rose-hulman.edu/portal/CampusVisits2",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V04",
+          "url": "https://admissions.rose-hulman.edu/register/athleticvisit",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V05",
+          "url": "https://admissions.rose-hulman.edu/portal/virtualadmissions",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V06",
+          "url": "https://rose-hulman.edu/visit/preview-rose/seniors/next-steps.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V07",
+          "url": "https://rose-hulman.edu/visit/preview-rose/seniors/admissions.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V08",
+          "url": "https://rhit.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V09",
+          "url": "https://www.rose-hulman.edu/campus-life/student-services/registrar/academic-calendars.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V10",
+          "url": "https://www.rose-hulman.edu/campus-life/student-services/registrar/2026-27_Academic_Year_Calendar.pdf",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V11",
+          "url": "https://www.rhit.edu/news/events/2026/Athletics10812.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V12",
+          "url": "https://rhit.edu/news/events/2026/Athletics10808.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V13",
+          "url": "https://athletics.hanover.edu/news/2026/4/16/hanover-announces-the-2026-panthers-football-schedule.aspx",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V14",
+          "url": "https://muspartans.com/news/2026/7/15/football-releases-2026-schedule.aspx",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V15",
+          "url": "https://waf.collegedata.com/college-search/rose-hulman-institute-of-technology/admission",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V16",
+          "url": "https://www.rose-hulman.edu/academics/degrees-and-programs/cross-cutting-programs/BIC/teams-and-clubs.html",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "RH-V17",
+          "url": "https://www.rose-hulman.edu/news/events/2026/cgroups8721.html",
+          "fetched": "2026-10-16"
+        }
+      ]
     },
     "michigan-dearborn": {
       "visited": null,
-      "visit_home_url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/incoming-first-year-students/apply-admission-first-year",
-      "registration_url": null,
-      "booking_verification_status": "not_researched",
-      "temporal_audit_on": "2026-10-14",
-      "note": "No student attendance or booking record supplied.",
-      "robotics_lab_access": "Confirm prospective-student access to undergraduate robotics teaching labs and projects directly.",
+      "visit_home_url": "https://umdearborn.edu/admissions/undergraduate/visits-events",
+      "registration_url": "https://umdearborn.edu/events?title=%22main+campus+tour%22&start=today&end=&org_unit%5B1508%5D=1508",
+      "booking_verification_status": "live_registration_not_verified",
+      "temporal_audit_on": "2026-10-16",
+      "note": "No student attendance or booking record supplied. RSVP forms for the listed tours and the CECS event were seen on 2026-10-16; seat availability was not checked.",
+      "robotics_lab_access": "NOT PUBLISHED. Neither the Main Campus Tour nor the CECS Exploration Event lists lab visits or robotics demonstrations. CECS lists student teams (Formula SAE Combustion and Electric, Intelligent Systems Club, AI Club), but no visitor access to robotics teaching labs is described; ask at the 12 November CECS event or request it through a first-year counselor appointment. [DBN-V07, DBN-V19, DBN-V13]",
       "questions": {
-        "read_first": [],
-        "dont_ask": [],
-        "ask": [
+        "read_first": [
           {
-            "who": "Engineering adviser",
-            "q": "Can you map the recommended robotics route and AI electives into a four-year plan, including prerequisites and course rotations?",
-            "why": "The comparison uses inherited curriculum evidence; current cohort requirements and degree applicability need confirmation."
+            "q": "Is there a residence hall?",
+            "a": "No. UM-Dearborn states it 'does not offer university-owned housing.' Students who move to Dearborn rent privately; the nearest purpose-built option is The Union at Dearborn, a privately owned apartment complex across Evergreen Road with furnished units and 9- or 12-month individual leases.",
+            "url": "https://umdearborn.edu/campus-life/housing"
           },
           {
+            "q": "Does visiting help my application?",
+            "a": "UM-Dearborn's first-year admission pages do not mention demonstrated interest. Fall 2027 decisions are released on a rolling basis from 15 October, with a recommended deadline of 1 April and a final deadline of 15 August.",
+            "url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/apply-first-year-student"
+          }
+        ],
+        "ask": [
+          {
             "who": "Admissions counsellor",
-            "q": "What is the current first-year application route, and which major, transcript and deadline requirements apply?",
-            "why": "University eligibility and admission to a specific major should be confirmed separately."
+            "priority": "high",
+            "q": "If I list Robotics Engineering on the application, am I admitted straight into that major or into CECS first, and are there grade or course gates before I can take robotics courses?",
+            "why": "Major access for robotics is not confirmed in this dataset."
+          },
+          {
+            "who": "Engineering adviser",
+            "priority": "high",
+            "q": "Can you map the recommended robotics route and AI electives into a four-year plan, including prerequisites and how often upper-level robotics courses are offered?",
+            "why": "Course rotation and prerequisite timing decide whether a four-year finish is realistic."
           },
           {
             "who": "Student life adviser",
-            "q": "What housing choices, residence participation and evening/weekend activities are available to students moving from out of state?",
-            "why": "Student origins and campus activity have not been verified; no commuter or quiet-campus conclusion is assumed."
+            "priority": "high",
+            "q": "For a first-year from out of state, where do most students in my situation live, does the university help with roommate matching or leases at The Union or nearby apartments, and what does a typical evening and weekend look like?",
+            "why": "There is no university-owned housing; 93% of undergraduates are Michigan residents."
+          },
+          {
+            "who": "CECS staff or students at the exploration event",
+            "priority": "medium",
+            "q": "Which robotics labs can a first- or second-year student use, and is there a robotics competition team alongside the Formula SAE teams and the Intelligent Systems Club?",
+            "why": "No robotics lab access or robotics team is described on the fetched pages."
+          },
+          {
+            "who": "Admissions counsellor",
+            "priority": "medium",
+            "q": "How are non-residents reviewed for the automatic scholarship tiers, and is there a date by which applying earlier improves scholarship consideration?",
+            "why": "The scholarship page says applicants are reviewed automatically by residency but the non-resident tier details were not retrievable."
+          }
+        ],
+        "dont_ask": [
+          {
+            "q": "Is housing guaranteed for first-years?",
+            "because": "UM-Dearborn states it does not offer university-owned housing, so there is no guarantee to ask about; ask about private options instead."
           }
         ]
-      }
-    }
-  },
-  "as_of": "2026-10-14",
-  "timezone": "America/New_York",
-  "archived_school_visits": {
+      },
+      "deadline": {
+        "date": "2027-04-01",
+        "label": "Recommended Apr 1 (rolling)",
+        "source_url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/apply-first-year-student",
+        "year_inferred": true
+      },
+      "interest": {
+        "level": null,
+        "quote": null,
+        "basis": "UM-Dearborn's first-year admission and visit pages fetched on 2026-10-16 do not mention demonstrated interest. The dataset's CDS 2024-25 C7 grid records level of applicant's interest as not considered, but that PDF's values could not be re-read; confirm with admissions."
+      },
+      "book_by": {
+        "when": "Register now for the CECS Exploration Event (Thu 12 Nov 2026, 5:30-7:30 p.m.) and the Main Campus Tour the next day (Fri 13 Nov 2026, 3:00-4:30 p.m.); both require RSVP.",
+        "why": "Tours on 23 and 30 Oct fall just before or inside submit week (26 Oct-1 Nov). Fall 2027 decisions are rolling from 15 Oct with a recommended 1 April deadline, so a mid-November visit still precedes any published deadline. Thanksgiving recess is 21-29 Nov."
+      },
+      "registration_required": true,
+      "booking_lead_time": "Registration is required: 'Due to tour capacity, walk-ins cannot be accommodated.' No numeric lead time is published for individual tours; group visits must be requested at least two weeks in advance [DBN-V04, DBN-V02]",
+      "tours": [
+        {
+          "name": "Main Campus Tour",
+          "days_offered": "Remaining fall 2026 dates on the first page of the listing: Fridays 23 Oct, 30 Oct, 6 Nov and 13 Nov; Thu 3 Dec, Fri 4 Dec, Thu 10 Dec, Fri 11 Dec. Earlier fall dates also ran on a Monday afternoon and a Thursday evening.",
+          "times": "3:00-4:30 p.m. for the listed Oct-Dec dates (17 Sep example ran 5:30-7:00 p.m.)",
+          "duration": "1.5 hours",
+          "audience": "general",
+          "notes": "Brief presentation on UM-Dearborn and the admissions process, then a walking tour of the Main Campus led by a current student. Meeting point is not named on the event pages. The listing showed one of three result pages, so more dates may exist.",
+          "cite": "DBN-V03, DBN-V04, DBN-V05, DBN-V06, DBN-V02"
+        },
+        {
+          "name": "College of Engineering and Computer Science (CECS) Exploration Event",
+          "days_offered": "Thursday 12 November 2026",
+          "times": "5:30-7:30 p.m.",
+          "duration": "2 hours",
+          "audience": "engineering",
+          "notes": "Info session on CECS programs and 'hands-on opportunities', the admission process, staff presentations and conversation with current students. No lab tour or robotics demonstration is listed. RSVP form on the event page; up to two additional guests.",
+          "cite": "DBN-V07, DBN-V01"
+        },
+        {
+          "name": "Other college exploration events",
+          "days_offered": "College of Business Thu 29 Oct; CEHHS Thu 5 Nov (tentative); CASL Tue 17 Nov 2026",
+          "times": "5:30-7:30 p.m.",
+          "duration": "2 hours",
+          "audience": "general",
+          "notes": "Same format as the CECS event for other colleges; not engineering-specific.",
+          "cite": "DBN-V01"
+        },
+        {
+          "name": "Virtual Campus Preview",
+          "days_offered": "Once a month (dates on the events listing)",
+          "times": "NOT PUBLISHED on the tours page",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "Real-time virtual tour with a student ambassador; an on-demand student-led video tour (about 8 minutes) is also posted.",
+          "cite": "DBN-V02, DBN-V01"
+        },
+        {
+          "name": "UM-Dearborn Majors: Explore Your Options (virtual)",
+          "days_offered": "Monday 7 December 2026",
+          "times": "6:00-7:15 p.m.",
+          "duration": "1 hour 15 minutes",
+          "audience": "general",
+          "notes": "Virtual overview of majors.",
+          "cite": "DBN-V01"
+        },
+        {
+          "name": "Virtual Front Desk and 1:1 counselor appointments",
+          "days_offered": "Virtual Front Desk Monday-Thursday; appointments by booking",
+          "times": "Front Desk 2:00-5:00 p.m. ET, no registration",
+          "duration": "Drop-in",
+          "audience": "general",
+          "notes": "Live Zoom Q&A with admissions; first-year counselor appointments require creating an account first.",
+          "cite": "DBN-V01, DBN-V13"
+        }
+      ],
+      "engineering_specific": "The CECS Exploration Event on Thursday 12 November 2026, 5:30-7:30 p.m., is the only engineering-specific prospective-student event listed for fall 2026. A CECS Facilities & Labs Tour ran on 14 November 2024 but was aimed at current CECS students and is not on the fall 2026 visit page. [DBN-V07, DBN-V01, DBN-V15]",
+      "class_visit_possible": "NOT PUBLISHED - UM-Dearborn's visit pages do not describe class visits or faculty meetings for prospective students.",
+      "calendar": {
+        "term_start": "2026-08-26 (Wednesday) - fall classes begin",
+        "fall_break": "No fall break is listed on the 2026-27 academic calendar. Labor Day holiday Monday 7 September 2026.",
+        "thanksgiving_break": "Thanksgiving recess Saturday 21 - Sunday 29 November 2026; classes resume 30 November",
+        "term_end": "2026-12-07 classes end; study days 8-9 December; exams 10-11 and 14-16 December; commencement 19 December",
+        "blackouts": [
+          "No tour blackout dates are published by UM-Dearborn admissions",
+          "Practical caution: 21-29 November 2026 Thanksgiving recess; shuttles also have no-service dates in late November",
+          "Practical caution: 8-16 December 2026 study days and exams",
+          "No varsity football program is listed, so no game-day conflicts"
+        ],
+        "cite": "DBN-V08, DBN-V03"
+      },
+      "football": [],
+      "travel": {
+        "airport": "Detroit Metropolitan Wayne County (DTW). UM-Dearborn says campus is 'just 20 minutes from Detroit Metropolitan Airport.' Campus address 4901 Evergreen Road, Dearborn, MI 48128; Undergraduate Admissions is in 1145 Renick University Center.",
+        "airport_to_campus": "About 20 minutes by car per UM-Dearborn; campus is also about a mile from the John D. Dingell Transit Center.",
+        "drive_from_cary": "UNVERIFIED ESTIMATE: about 678 road miles one way (OSRM routing computation), roughly 11-12 hours of driving. Not a first-party figure.",
+        "suggested_stay": "1 night - pair the Thursday 12 November CECS evening event with the Friday 13 November 3:00 p.m. Main Campus Tour; fly RDU-DTW nonstop (Delta, Frontier).",
+        "pair_with": "michigan - Ann Arbor is about 36 road miles (roughly 45-50 minutes) west of UM-Dearborn by OSRM routing, and both use DTW. Michigan's engineering tours are booked separately; not a first-party figure."
+      },
+      "cost_notes": "Tours and exploration events are free. Visitor parking: Monteith Parking Structure 3rd floor, limited spaces in Lot E5 (across from the Renick University Center) and Lot F (near the Field House), and Fairlane Center North Lot FCN 1 (free); visitor spaces are in effect Monday-Thursday 7 a.m.-7 p.m., and rates for the main-campus lots and Friday rules are not published on that page, so confirm when registering for a Friday tour. Undergraduate Admissions, 1145 Renick University Center, 313-593-5300. [DBN-V10, DBN-V02]",
+      "sources": [
+        {
+          "id": "DBN-V01",
+          "url": "https://umdearborn.edu/admissions/undergraduate/visits-events",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V02",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate/visits-events/campus-tours",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V03",
+          "url": "https://umdearborn.edu/event-type/campus-tour",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V04",
+          "url": "https://umdearborn.edu/events/main-campus-tour-102326",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V05",
+          "url": "https://umdearborn.edu/events/main-campus-tour-91726",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V06",
+          "url": "https://umdearborn.edu/events/main-campus-tour-91426",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V07",
+          "url": "https://umdearborn.edu/events/college-engineering-and-computer-science-exploration-event-111226",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V08",
+          "url": "https://umdearborn.edu/sites/default/files/unmanaged/pdf/registrar/2026-2027-academic-calendar.pdf",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V09",
+          "url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/apply-first-year-student",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V10",
+          "url": "https://umdearborn.edu/about/visit-campus/parking-and-transportation/visitor-parking",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V11",
+          "url": "https://umdearborn.edu/about-um-dearborn/visit-campus",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V12",
+          "url": "https://umdearborn.edu/about-um-dearborn/visit-campus/maps-and-directions",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V13",
+          "url": "https://umdearborn.edu/admissions-aid/contact-visit/meet-first-year-admissions-counselor",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V14",
+          "url": "https://umdearborn.edu/campus-life/housing",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V15",
+          "url": "https://umdearborn.edu/events/college-engineering-and-computer-science-cecs-facilities-labs-tour",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V16",
+          "url": "https://www.flightsfrom.com/RDU-DTW",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V17",
+          "url": "https://router.project-osrm.org/route/v1/driving/-78.7811,35.7915;-83.2310,42.3170?overview=false",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V18",
+          "url": "https://router.project-osrm.org/route/v1/driving/-83.2310,42.3170;-83.7382,42.2780?overview=false",
+          "fetched": "2026-10-16"
+        },
+        {
+          "id": "DBN-V19",
+          "url": "https://umdearborn.edu/cecs/life-cecs/student-clubs-organizations",
+          "fetched": "2026-10-16"
+        }
+      ]
+    },
     "cornell": {
       "visited": true,
       "deadline": {
@@ -1582,5 +2017,7 @@
         "year_inferred": false
       }
     }
-  }
+  },
+  "as_of": "2026-10-14",
+  "timezone": "America/New_York"
 }

@@ -138,7 +138,7 @@ export default function TimelinePage() {
                     {verified && days !== null && <span className="text-[hsl(var(--muted-foreground))]"> · {days < 0 ? `${-days} days past` : days === 0 ? "today" : `${days} day${days===1?"":"s"} left`}</span>}
                   </div>
                   {d?.aid_priority && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-0.5">Aid: {d.aid_priority}</div>}
-                  {(!verified || a.note) && <div className="mt-1"><span className="chip fit-conditional">{a.plan === "PENDING" ? "Round and deadline unconfirmed" : !verified ? "Saved plan date · cycle confirmation pending" : a.note}</span>{a.plan === "PENDING" && a.note && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">{a.note}</div>}</div>}
+                  {(!verified || a.note) && <div className="mt-1"><span className="chip fit-conditional">{a.plan === "PENDING" ? "Round not chosen yet" : !verified ? "Saved plan date · cycle confirmation pending" : a.note}</span>{a.plan === "PENDING" && a.note && <div className="text-[11px] text-[hsl(var(--muted-foreground))] mt-1">{a.note}</div>}</div>}
                 </div>
               );
             })}

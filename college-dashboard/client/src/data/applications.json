@@ -1,7 +1,7 @@
 {
   "student": "Anurag",
   "cycle": "2026-27 (Fall 2027 entry)",
-  "note": "Selected 13 schools: Rose-Hulman and Michigan-Dearborn replace Cornell and Johns Hopkins; WVU is excluded. Existing ED1/EA/EA2/RD plans are preserved for the remaining eleven. New school rounds and current deadlines are pending, not inferred from the removed schools.",
+  "note": "Selected 15 schools. Existing ED1/EA/EA2/RD plans are kept; Cornell and Johns Hopkins return with their earlier RD plans. Rose-Hulman and Michigan-Dearborn have verified Fall 2027 dates but no round chosen yet.",
   "applications": [
     {
       "slug": "carnegie-mellon",
@@ -161,29 +161,57 @@
       "slug": "rose-hulman",
       "plan": "PENDING",
       "plan_short": "Pending",
-      "plan_label": "Application plan pending",
+      "plan_label": "Round not yet chosen",
       "round": "pending",
-      "deadline": null,
-      "deadline_label": "Confirm current cycle",
+      "deadline": "2026-11-01",
+      "deadline_label": "EA Nov 1 or RD Feb 1",
       "binding": false,
-      "note": "Earlier Rose-Hulman pages list EA November 1 and RD February 1. Confirm Fall 2027 dates and choose a round.",
-      "source_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/index.html",
-      "verified_on": null,
-      "status": "round_and_deadline_pending"
+      "source_url": "https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html",
+      "verified_on": "2026-10-16",
+      "year_inferred": true,
+      "note": "Round not chosen yet. Rose-Hulman offers non-binding Early Action (due Nov 1, 2026, decision by Dec 15) and Regular Decision (due Feb 1, 2027, decision Mar 15); there is no ED. Applying EA gives maximum scholarship consideration. FIRST Robotics Scholarship applications (admitted students only) are due Feb 1."
     },
     {
       "slug": "michigan-dearborn",
       "plan": "PENDING",
       "plan_short": "Pending",
-      "plan_label": "Application plan pending",
+      "plan_label": "Rolling admission, date not yet chosen",
       "round": "pending",
-      "deadline": null,
-      "deadline_label": "Confirm current cycle",
+      "deadline": "2026-12-01",
+      "deadline_label": "Rolling; Dec 1 suggested, Apr 1 recommended",
       "binding": false,
-      "note": "Earlier pages describe rolling admission. Current application and aid dates need confirmation.",
-      "source_url": "https://umdearborn.edu/admissions-aid/undergraduate/ready-apply/incoming-first-year-students/apply-admission-first-year",
-      "verified_on": null,
-      "status": "round_and_deadline_pending"
+      "source_url": "https://umdearborn.edu/admissions-aid/undergraduate-applicants/incoming-first-year-students/apply-first-year-student",
+      "verified_on": "2026-10-16",
+      "year_inferred": true,
+      "note": "No EA or ED. Admission is rolling with decisions from Oct 15, 2026; the recommended deadline is Apr 1, 2027 and the final deadline Aug 15, 2027. Applying by Dec 1 is encouraged on the Common App profile and Dec 1 is the recommended FAFSA date; earlier applicants may get priority for aid. The application is free."
+    },
+    {
+      "slug": "cornell",
+      "plan": "RD",
+      "plan_short": "RD",
+      "plan_label": "Regular Decision",
+      "round": "rd",
+      "deadline": "2027-01-02",
+      "deadline_label": "Jan 2 (RD)",
+      "binding": false,
+      "source_url": "https://admissions.cornell.edu/how-to-apply/first-year-applicants",
+      "verified_on": "2026-10-14",
+      "year_inferred": true,
+      "note": "Month/day is published; cycle year is inferred from the current Fall 2027 application plan."
+    },
+    {
+      "slug": "johns-hopkins",
+      "plan": "RD",
+      "plan_short": "RD",
+      "plan_label": "Regular Decision",
+      "round": "rd",
+      "deadline": "2027-01-02",
+      "deadline_label": "Jan 2 (RD)",
+      "binding": false,
+      "source_url": "https://apply.jhu.edu/how-to-apply/application-deadlines-requirements/",
+      "verified_on": "2026-10-14",
+      "year_inferred": false,
+      "note": null
     }
   ],
   "updated_on": "2026-10-14"

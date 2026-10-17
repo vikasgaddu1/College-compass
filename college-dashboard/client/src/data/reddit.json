@@ -19,54 +19,39 @@
       "vibe": "Serious about CS; culture is heads-down and self-selecting.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
-    "purdue": {
-      "sub": "r/Purdue",
-      "members": "~45k",
+    "cornell": {
+      "sub": "r/Cornell",
+      "members": "~68k",
       "praises": [
-        "Engineering respected industry-wide",
-        "Big Ten sports + traditions",
-        "Value for tuition is strong",
-        "Career fair is legendary"
+        "Beautiful campus, gorges are famous",
+        "Diverse across colleges",
+        "Undergrad research strong for an Ivy"
       ],
       "complaints": [
-        "West Lafayette is not a college town, it's a village",
-        "Winters are cold and gray",
-        "CS advising uneven"
+        "Ithaca weather brutal",
+        "\"Suicide school\" reputation persists",
+        "CS overcrowded and grade-deflated",
+        "Greek life dominates undergrad social scene"
       ],
-      "vibe": "Practical, engineering-first, unpretentious.",
+      "vibe": "Nature-loving and academically intense; students split on whether they love or tolerate it.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
-    "wpi": {
-      "sub": "r/WPI",
-      "members": "~14k",
+    "duke": {
+      "sub": "r/Duke",
+      "members": "~28k",
       "praises": [
-        "Project-based learning (IQP/MQP) is a differentiator",
-        "Small campus, professors know you",
-        "7-week terms keep momentum"
+        "Non-cutthroat despite academic rigor",
+        "East Campus freshman experience builds community",
+        "Basketball culture unifies",
+        "Small classes for a research university"
       ],
       "complaints": [
-        "Worcester is not Boston, students often visit weekends",
-        "7-week terms are relentless",
-        "Counseling wait times flagged"
+        "Cost is punishing without aid",
+        "Greek + SLG system dominates social life",
+        "Housing wear-and-tear complaints",
+        "Durham is 'meh' beyond campus for some students"
       ],
-      "vibe": "Tight-knit, project-driven, self-selecting engineering culture.",
-      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
-    },
-    "rpi": {
-      "sub": "r/RPI",
-      "members": "~15k",
-      "praises": [
-        "Strong engineering + hands-on labs",
-        "Games + Simulation programs are respected",
-        "Small enough that faculty know you"
-      ],
-      "complaints": [
-        "Troy is depressing",
-        "Administration criticism is a running thread",
-        "Winter is long and grey",
-        "Post-COVID budget cuts felt"
-      ],
-      "vibe": "Committed engineers who love the school but not the town or admin.",
+      "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "georgia-tech": {
@@ -85,20 +70,21 @@
       "vibe": "Big, energetic, high-workload; students earn their degrees.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
-    "michigan": {
-      "sub": "r/uofm",
-      "members": "~78k",
+    "johns-hopkins": {
+      "sub": "r/jhu",
+      "members": "~24k",
       "praises": [
-        "Ann Arbor is arguably the best college town",
-        "AI/ML program strong",
-        "Athletics + Michigan pride are real"
+        "Pre-med + BME reputation is unmatched",
+        "Undergrads get real research access",
+        "Baltimore is underrated"
       ],
       "complaints": [
-        "OOS cost is brutal",
-        "Greek life is prominent socially",
-        "Some CS classes overcrowded"
+        "Grade grubbing culture",
+        "Party scene minimal — students describe it as quiet",
+        "Charles Village safety flagged",
+        "Housing not guaranteed past year 2"
       ],
-      "vibe": "Confident, athletic-social, academically strong.",
+      "vibe": "Studious and quiet; pre-professional grinders.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "maryland": {
@@ -115,6 +101,46 @@
         "Frats have visible presence"
       ],
       "vibe": "Ambitious, DC-adjacent, big-school energy.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
+    },
+    "michigan": {
+      "sub": "r/uofm",
+      "members": "~78k",
+      "praises": [
+        "Ann Arbor is arguably the best college town",
+        "AI/ML program strong",
+        "Athletics + Michigan pride are real"
+      ],
+      "complaints": [
+        "OOS cost is brutal",
+        "Greek life is prominent socially",
+        "Some CS classes overcrowded"
+      ],
+      "vibe": "Confident, athletic-social, academically strong.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
+    },
+    "michigan-dearborn": {
+      "sub": "r/dearbornwolverines",
+      "members": "Unknown",
+      "praises": [],
+      "complaints": [],
+      "vibe": "No sourced campus sentiment summary is available for this entry.",
+      "robotics_scope_note": "r/dearbornwolverines was seen through a Reddit front-end mirror on 2026-10-16 with UM-Dearborn posts on transfer, housing, course choice and scholarships; reddit.com itself was blocked, so the member count was not retrieved. An r/UMDearborn subreddit could not be confirmed. No anecdotes or sentiment are summarized here."
+    },
+    "nc-state": {
+      "sub": "r/NCSU",
+      "members": "~48k",
+      "praises": [
+        "Engineering + CS respected",
+        "RTP proximity for internships",
+        "Value for in-state is strong"
+      ],
+      "complaints": [
+        "Free-elective load debated",
+        "Greek life visible but not dominant",
+        "Housing not always guaranteed"
+      ],
+      "vibe": "Practical engineering culture with strong in-state alumni network.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "northeastern": {
@@ -150,55 +176,63 @@
       "vibe": "Massive, athletic, community-oriented; not for those wanting a small feel.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
-    "nc-state": {
-      "sub": "r/NCSU",
-      "members": "~48k",
+    "purdue": {
+      "sub": "r/Purdue",
+      "members": "~45k",
       "praises": [
-        "Engineering + CS respected",
-        "RTP proximity for internships",
-        "Value for in-state is strong"
+        "Engineering respected industry-wide",
+        "Big Ten sports + traditions",
+        "Value for tuition is strong",
+        "Career fair is legendary"
       ],
       "complaints": [
-        "Free-elective load debated",
-        "Greek life visible but not dominant",
-        "Housing not always guaranteed"
+        "West Lafayette is not a college town, it's a village",
+        "Winters are cold and gray",
+        "CS advising uneven"
       ],
-      "vibe": "Practical engineering culture with strong in-state alumni network.",
-      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
-    },
-    "duke": {
-      "sub": "r/Duke",
-      "members": "~28k",
-      "praises": [
-        "Non-cutthroat despite academic rigor",
-        "East Campus freshman experience builds community",
-        "Basketball culture unifies",
-        "Small classes for a research university"
-      ],
-      "complaints": [
-        "Cost is punishing without aid",
-        "Greek + SLG system dominates social life",
-        "Housing wear-and-tear complaints",
-        "Durham is 'meh' beyond campus for some students"
-      ],
-      "vibe": "Ambitious but supportive; strong residential community; genuinely non-cutthroat.",
+      "vibe": "Practical, engineering-first, unpretentious.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
     "rose-hulman": {
-      "sub": "Not researched",
-      "members": "Unknown",
+      "sub": "r/rosehulman",
+      "members": "Unconfirmed",
       "praises": [],
       "complaints": [],
-      "vibe": "No sourced campus sentiment summary is available for this entry.",
-      "robotics_scope_note": "No Reddit anecdotes or commuter/residential conclusions imported. Confirm campus experience from reliable student-life evidence or a visit."
+      "vibe": "Mostly prospective-student Q&A (fee waivers, chances, scholarships, transfer credit) rather than campus sentiment.",
+      "robotics_scope_note": "Subreddit existence confirmed 2026-10-16 through third-party Reddit mirrors (reddit.com is blocked in this environment); member count could not be read. Recurring questions include getting to Terre Haute or the airport without a car, upper-year housing and cost. Anecdotal; not evidence of robotics fit."
     },
-    "michigan-dearborn": {
-      "sub": "Not researched",
-      "members": "Unknown",
-      "praises": [],
-      "complaints": [],
-      "vibe": "No sourced campus sentiment summary is available for this entry.",
-      "robotics_scope_note": "No Reddit anecdotes or commuter/residential conclusions imported. Confirm campus experience from reliable student-life evidence or a visit."
+    "rpi": {
+      "sub": "r/RPI",
+      "members": "~15k",
+      "praises": [
+        "Strong engineering + hands-on labs",
+        "Games + Simulation programs are respected",
+        "Small enough that faculty know you"
+      ],
+      "complaints": [
+        "Troy is depressing",
+        "Administration criticism is a running thread",
+        "Winter is long and grey",
+        "Post-COVID budget cuts felt"
+      ],
+      "vibe": "Committed engineers who love the school but not the town or admin.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
+    },
+    "wpi": {
+      "sub": "r/WPI",
+      "members": "~14k",
+      "praises": [
+        "Project-based learning (IQP/MQP) is a differentiator",
+        "Small campus, professors know you",
+        "7-week terms keep momentum"
+      ],
+      "complaints": [
+        "Worcester is not Boston, students often visit weekends",
+        "7-week terms are relentless",
+        "Counseling wait times flagged"
+      ],
+      "vibe": "Tight-knit, project-driven, self-selecting engineering culture.",
+      "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     }
   },
   "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
