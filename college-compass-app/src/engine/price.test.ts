@@ -33,3 +33,31 @@ describe("estimateNetPrice", () => {
     expect(estimateNetPrice(broken, baseProfile()).value).toBe(20000);
   });
 });
+
+describe("in-state student, published out-of-state budget (real-run regression)", () => {
+  // East Carolina University as researched live: COA is the nonresident budget.
+  const ecu = blankCollege({ name: "East Carolina University", state: "NC", ownership: "public", cost_of_attendance: 42850, tuition_in_state: 7789, tuition_out_of_state: 24555 });
+
+  it("takes the tuition difference back off for an NC resident", () => {
+    const r = estimateNetPrice(ecu, baseProfile({ home_state: "NC" }));
+    expect(r.value).toBe(26100);
+    expect(r.note).toMatch(/in-state estimate/);
+  });
+
+  it("leaves the out-of-state student at the published budget", () => {
+    const r = estimateNetPrice(ecu, baseProfile({ home_state: "VA" }));
+    expect(r.value).toBe(42900);
+  });
+
+  it("flags it when in-state tuition is unknown", () => {
+    const unc = blankCollege({ state: "NC", ownership: "public", cost_of_attendance: 70264, tuition_in_state: null, tuition_out_of_state: 49602 });
+    const r = estimateNetPrice(unc, baseProfile({ home_state: "NC" }));
+    expect(r.value).toBe(70300);
+    expect(r.note).toMatch(/looks out-of-state/);
+  });
+
+  it("does not touch a COA that already looks in-state", () => {
+    const c = blankCollege({ state: "NC", ownership: "public", cost_of_attendance: 26000, tuition_in_state: 7789, tuition_out_of_state: 24555 });
+    expect(estimateNetPrice(c, baseProfile({ home_state: "NC" })).value).toBe(26000);
+  });
+});

@@ -238,7 +238,7 @@ const collegeSchema = obj({
   test_policy: enm(TEST_POLICIES, "Policy for the student's entry cycle: required / optional / blind (not considered) / considered (used if sent, e.g. some publics) / unknown."),
   tuition_in_state: nint("Annual tuition + required fees, in-state (privates: same as out-of-state)."),
   tuition_out_of_state: nint("Annual tuition + required fees, out-of-state."),
-  cost_of_attendance: nint("Published total cost of attendance for an on-campus first-year (out-of-state for publics)."),
+  cost_of_attendance: nint("Published total cost of attendance for an on-campus first-year. For public colleges use the OUT-of-state budget and always fill tuition_in_state and tuition_out_of_state so the app can derive the in-state cost."),
   avg_net_price: nint("Average annual net price after grants (College Scorecard / IPEDS)."),
   net_price_by_income: incomeSchema,
   grad_rate_6yr: nnum("Six-year graduation rate 0–1."),

@@ -69,6 +69,21 @@ export function estimateNetPrice(college: College, profile: StudentProfile): Net
     return { value: null, note: "Cost data not found — try the college's net price calculator" };
   }
 
+  // In-state students at public colleges: research often returns the published OUT-of-state budget
+  // as the cost of attendance (seen in a real run: ECU $42.9k vs ~$26k in-state). When the COA is at
+  // least out-of-state tuition + margin, take the tuition difference back off.
+  if (kind === "coa" && college.ownership === "public" && isInState(college, profile) === true) {
+    const tin = usd(college.tuition_in_state);
+    const tout = usd(college.tuition_out_of_state);
+    const looksOut = tout != null && value >= tout + COA_ALREADY_OUT_OF_STATE_MARGIN;
+    if (looksOut && tin != null && tout! > tin) {
+      value -= tout! - tin;
+      notes.push(`in-state estimate (published budget was out-of-state, minus about ${fmtK(tout! - tin)} tuition difference)`);
+    } else if (looksOut) {
+      notes.push("published budget looks out-of-state — your in-state cost should be much lower");
+    }
+  }
+
   // Out-of-state adjustment at public colleges.
   if (college.ownership === "public" && isInState(college, profile) === false) {
     const tin = usd(college.tuition_in_state);
