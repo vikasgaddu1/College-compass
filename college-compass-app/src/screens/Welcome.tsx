@@ -79,8 +79,9 @@ export function Welcome() {
               </Button>
             )}
             <p className="px-2 text-center text-footnote text-text-muted">Free with your ChatGPT plan. Your answers and results stay on this phone.</p>
-            {!configured && (
+            {(!configured || !connected) && (
               <div className="flex items-center justify-center gap-5 pt-1 text-subhead">
+                {/* Demo stays available even when sign-in works (App Review path, no account needed). */}
                 <button
                   type="button"
                   className="cc-link min-h-tap"
@@ -91,9 +92,11 @@ export function Welcome() {
                 >
                   Try demo
                 </button>
-                <button type="button" className="cc-link min-h-tap" onClick={() => navigate("/settings?dev=1")}>
-                  Developer mode
-                </button>
+                {!configured && (
+                  <button type="button" className="cc-link min-h-tap" onClick={() => navigate("/settings?dev=1")}>
+                    Developer mode
+                  </button>
+                )}
               </div>
             )}
           </div>

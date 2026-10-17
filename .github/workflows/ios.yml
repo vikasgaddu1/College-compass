@@ -83,6 +83,42 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             build
 
+      # Boots a simulator and proves the self-serve ChatGPT sign-in callback works inside a real
+      # iOS runtime: the app (launched with -ccLoopbackSelfTest) must answer on 127.0.0.1:1455.
+      - name: Simulator smoke test (127.0.0.1 sign-in callback)
+        run: |
+          set -euo pipefail
+          APP="$RUNNER_TEMP/DerivedData/Build/Products/Debug-iphonesimulator/App.app"
+          UDID=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin)["devices"]; c=[x for k,v in d.items() if "iOS" in k for x in v if x["name"].startswith("iPhone")]; print(c[-1]["udid"])')
+          echo "Simulator: $UDID"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" "$APP"
+          xcrun simctl launch "$UDID" "$BUNDLE_ID" -ccLoopbackSelfTest
+          status=000
+          for i in $(seq 1 45); do
+            status=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:1455/ || true)
+            [ "$status" != "000" ] && break
+            sleep 2
+          done
+          echo "GET / -> $status"
+          test "$status" = "404"
+          code=$(curl -s -o "$RUNNER_TEMP/body.html" -w '%{http_code}' 'http://127.0.0.1:1455/auth/callback?code=ci-test&state=ci-state&client_id=oaiapp_ci')
+          echo "GET /auth/callback -> $code"
+          test "$code" = "200"
+          grep -q "Signed in to College Compass" "$RUNNER_TEMP/body.html"
+          xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK"' || true
+          xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
+
+      - name: Upload smoke-test screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulator-launch-screenshot
+          path: ${{ runner.temp }}/launch.png
+          retention-days: 7
+          if-no-files-found: ignore
+
       - name: Upload simulator .app
         uses: actions/upload-artifact@v4
         with:

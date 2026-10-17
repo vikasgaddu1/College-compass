@@ -2,14 +2,89 @@
 
 College Compass has no backend and no database. Each student signs in with **their own ChatGPT
 account**, and every AI request (planner, research agents, Ask tab) goes **from their device straight
-to OpenAI**, billed to **their ChatGPT plan**. This guide covers what you need to set up, what it costs
-you (nothing per user), and what still isn't certain.
+to OpenAI**, billed to **their ChatGPT plan**. This guide covers the two sign-in modes, what you need to
+set up, what it costs you (nothing per user), and what still isn't certain.
+
+## Two sign-in modes
+
+| | **iOS app: self-serve (open-source path)** | **Web build: partner client ID** |
+|---|---|---|
+| Used when | native iOS app **and** `VITE_CC_CHATGPT_CLIENT_ID` is empty | web/PWA build, or any build with `VITE_CC_CHATGPT_CLIENT_ID` set |
+| Approval from OpenAI | **none** | client ID issued by OpenAI's partner program |
+| Redirect | HTTP loopback `http://127.0.0.1:<port>/auth/callback` inside the app | `https://vikasgaddu1.github.io/College-compass/app/callback.html` |
+| Client ID | `dynamic_agent_client` on first sign-in, then the `oaiapp_…` ID OpenAI issues to this device | the partner client ID |
+| Status | **works today** | waiting for OpenAI to issue a client ID |
+
+**Who can use it.** Any ChatGPT account can complete sign-in. Research and chat run on the account's
+**plan usage**, which needs a paid plan (**ChatGPT Plus or Pro**). A Free account can sign in, but the
+research and Ask features won't run on it; the app explains why (plan-usage or usage-limit message
+with a "Manage usage" link).
+
+**Eligibility of the self-serve path.** OpenAI's self-serve path is documented for **open-source,
+locally run apps** (developers.openai.com/siwc/token-sharing-open-source, Oct 2026). The iOS app
+qualifies on both counts: it is free and open source (public GitHub repo) and runs entirely on the
+phone, with no developer server. A **paid** app, or one that runs its AI calls on a **remotely hosted**
+server, does not fit that path and needs the partner interest form (§1). If the app ever becomes paid
+or gains a backend, switch the iOS build to a partner client ID (set `VITE_CC_CHATGPT_CLIENT_ID`; the
+native app then uses it automatically).
+
+## 0. iOS self-serve sign-in (how it works)
+
+Nothing to configure: leave `VITE_CC_CHATGPT_CLIENT_ID` empty for the iOS build.
+
+```
+App: LoopbackAuth.start()  → NWListener on 127.0.0.1:1455 (or any free port if 1455 is busy)
+     open SFSafariViewController(authorize?client_id=dynamic_agent_client&agent_name_hint=College Compass
+                                  &ext_agent_host_id=urn:uuid:…&redirect_uri=http://127.0.0.1:1455/auth/callback…)
+OpenAI login ──redirect──▶ http://127.0.0.1:1455/auth/callback?code&state&client_id=oaiapp_…
+     plugin answers with a "Signed in to College Compass" page and emits `callback` to JS
+App: stop listener, close browser, check state, POST /oauth/token with client_id=oaiapp_…
+```
+
+- **Listener first.** The native plugin (`ios/App/App/LoopbackAuthPlugin.swift`, registered in
+  `MainViewController.swift`) binds to `127.0.0.1` only, never `localhost` or another interface. It
+  tries port 1455 and falls back to an OS-assigned port. Only the port may differ between sign-ins;
+  scheme, host and path never change. It answers only `GET /auth/callback?…` (anything else gets 404),
+  delivers one callback per sign-in, and stops as soon as sign-in finishes. `Info.plist` sets
+  `NSAllowsLocalNetworking` (arbitrary loads stay off).
+- **Per-device host ID.** `ext_agent_host_id` is `urn:uuid:<uuid>`, created once with
+  `crypto.randomUUID()` and kept in `cc2:host_id`. It is sent on every sign-in from this device.
+- **First registration** sends `client_id=dynamic_agent_client` and `agent_name_hint=College Compass`
+  (same on every install; display metadata only). The redirect returns `code`, `state` and the
+  **issued `client_id`** (`oaiapp_…`).
+- **Issued client ID.** It is used for the token exchange, as the expected ID-token `aud`, for every
+  refresh, and for revocation. After a successful sign-in it is saved per device and account in
+  `cc2:issued_client_id` (`by_sub`, `last_sub`, `latest`). Later sign-ins send it as `client_id`
+  (with the same `ext_agent_host_id` and no `agent_name_hint`). Sign-out keeps it; **Delete
+  everything** removes it, and the next sign-in registers again. `host_id` and `issued_client_id` are
+  never exported, because they belong to this device.
+- **Errors.** `error=access_denied` shows "Sign-in was cancelled."; other `error` values are shown
+  with their description. A state mismatch is rejected before any exchange. `invalid_grant` on the
+  exchange discards the code and restarts sign-in once. If OpenAI rejects a stored issued client ID
+  (`invalid_client` / `unauthorized_client`), it is forgotten and the device registers again (once).
+  Closing the in-app browser cancels the attempt; an attempt expires after 10 minutes.
+- **Scopes and plan usage.** The same scopes and `resource` as the partner path. Plan usage is on
+  only if the granted scope includes `chatgpt.tokens.use.direct`.
+- **No cold-start recovery.** The listener lives in the app process. If iOS kills the app while the
+  login page is open, the redirect has nowhere to go; the user simply taps "Continue with ChatGPT"
+  again.
+- **No secret, no partner key** anywhere in the app or the repo.
+
+Code: `src/ai/auth.ts` (`signInSelfServe`), `src/platform/index.ts` (`startLoopback`,
+`createLoopbackSession`, `parseLoopbackCallback`), tests in `src/ai/auth-selfserve.test.ts` and
+`src/platform/platform.test.ts`.
 
 ---
 
+# Partner client-ID path (web build)
+
+The web/PWA build cannot open a loopback listener, so it needs a client ID from OpenAI's partner
+program. Everything below applies to that path. (The native app also uses it whenever
+`VITE_CC_CHATGPT_CLIENT_ID` is set.)
+
 ## 1. Request a client ID from OpenAI
 
-Sign in with ChatGPT is a limited trial for selected partners. Apply through the interest form linked
+The partner path is a limited trial for selected partners. Apply through the interest form linked
 from <https://developers.openai.com/siwc/request-client-id>
 (form: <https://openai.com/form/sign-in-with-chatgpt-interest/>).
 
@@ -67,10 +142,11 @@ The client ID is **public**, not a secret. It is still kept out of the repo so f
 the workflow by hand) to redeploy. The iOS build reads the same variables at `npm run build`
 (`BUILD_TARGET=ios`), so set them in the iOS CI job too.
 
-Until the client ID exists, `auth.configured()` returns `false`. The app then shows its "not
-configured" state, and the developer key mode (§6) still works for demos.
+Until the client ID exists, `auth.configured()` returns `false` **on the web build**. The web app then
+shows its "not configured" state, and the developer key mode (§6) still works for demos. The native
+iOS app is unaffected: with no client ID it uses the self-serve path (§0) and `configured()` is `true`.
 
-## 3. How sign-in works
+## 3. How partner sign-in works
 
 ```
 Web:    App → auth.openai.com/authorize ──redirect──▶ /app/callback.html?code&state
@@ -144,7 +220,7 @@ through the Worker in transit only. See `relay/README.md`.
 
 ## 6. Developer API-key demo mode
 
-Use this before OpenAI issues the client ID, or for App Review if needed. Go to Settings → Developer
+Use this on the web build before OpenAI issues the client ID. Go to Settings → Developer
 (hidden) and paste an OpenAI API key. It is stored only on that device (`cc2:dev_openai_key`). Requests
 use the same shape, billed to **that key**, with model `gpt-5` by default (override with
 `cc2:dev_openai_model`). The ChatGPT session always wins when it has plan usage. **Never ship a key in
@@ -169,6 +245,9 @@ the build.**
 - **`earliest_refresh_at`** appears in token responses, but its format isn't documented. The app
   accepts Unix seconds, milliseconds or ISO 8601, and doesn't refresh before that time unless the
   token is about to expire.
+- **Self-serve path details:** the redirect parameter name for the issued ID (`client_id`) and the
+  `invalid_client` / `unauthorized_client` re-registration rule are implemented from OpenAI's docs as
+  of Oct 2026 and unit-tested with mocks. Verify both on a physical iPhone before submitting.
 - **Token storage:** OpenAI's guidance prefers keeping tokens out of browser storage. With no backend
   there is no alternative on the web. On iOS, a Keychain or Preferences adapter would be stronger; that
   is a planned follow-up.

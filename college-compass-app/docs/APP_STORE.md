@@ -4,7 +4,8 @@ Everything the owner (Vikas / Gaddu LLC) must do to get **College Compass** from
 
 - Bundle ID: `com.gaddu.collegecompass` · Display name: **College Compass** · Version `1.0.0` (build number = GitHub run number in CI) · iOS 15+ · iPhone + iPad
 - Stack: Capacitor 6 wrapping the same Vite/React build as the web app (`npm run build:ios` uses relative asset paths; the web build is unchanged)
-- Custom URL scheme: `collegecompass://` (sign-in return path, see [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md))
+- ChatGPT sign-in: OpenAI's **self-serve path for open-source, locally run apps** (no client ID or approval needed). The app runs a loopback listener on `127.0.0.1` for the sign-in redirect; see [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md)
+- Custom URL scheme: `collegecompass://` (return path for the partner client-ID flow and the "Return to College Compass" button on the sign-in page)
 - CocoaPods is used for native dependencies (Capacitor 6 has no Swift Package Manager mode; SPM arrived in Capacitor 7). GitHub's macOS runners and any Mac with Xcode can run it.
 
 ---
@@ -15,7 +16,7 @@ Everything the owner (Vikas / Gaddu LLC) must do to get **College Compass** from
 | --- | --- |
 | Xcode project `ios/App/App.xcodeproj` (+ workspace, Podfile), Info.plist, URL scheme, privacy manifest | Apple Developer Program membership, App ID, App Store Connect record |
 | App icon (1024 px, opaque) + adaptive launch screen | Signing certificate + provisioning profile (or Xcode automatic signing on a Mac) |
-| `src/platform` native seam (in-app browser sign-in, deep link, CapacitorHttp) | OpenAI "Sign in with ChatGPT" client ID (see section 9) |
+| `src/platform` native seam (in-app browser sign-in, loopback listener plugin, deep link, CapacitorHttp) | Nothing for sign-in in the iOS app (self-serve path, see section 9); a partner client ID only for the web build |
 | CI: simulator compile check on every push; manual TestFlight job | GitHub secrets, App Store metadata, screenshots, review submission |
 
 The iOS project was generated on Linux. It has **never been opened in Xcode or built by a human**: the first CI run (or your first build on a Mac) is the real compile check. `pod install` and `xcodebuild` could not run on Linux, so `ios/App/Podfile.lock` and `ios/App/Pods/` do not exist yet. CI creates them each run; commit `Podfile.lock` after your first Mac build for reproducible pods.
@@ -84,7 +85,7 @@ The workflow reads the team ID and profile name from the profile itself and fail
 | `IOS_DIST_CERT_P12_BASE64` | base64 of `dist.p12` |
 | `IOS_DIST_CERT_PASSWORD` | the `.p12` password |
 | `IOS_PROVISION_PROFILE_BASE64` | base64 of the `.mobileprovision` |
-| `VITE_CC_CHATGPT_CLIENT_ID` | OpenAI client ID for Sign in with ChatGPT (section 9). Optional until issued; without it the build still compiles but sign-in cannot work. |
+| `VITE_CC_CHATGPT_CLIENT_ID` | **Leave empty for the iOS build**: the native app then uses OpenAI's self-serve sign-in path (section 9). Set it only if OpenAI issues a partner client ID you want the iOS app to use instead. |
 
 Optional repository **variable** (not secret): `VITE_CC_TOKEN_RELAY` — URL of the stateless token relay, only if OpenAI's token endpoint blocks browser CORS (see CHATGPT_SIGNIN.md). Native builds do not need it (CapacitorHttp has no CORS limits).
 
@@ -143,7 +144,7 @@ PRIVATE BY DESIGN
 There is no College Compass account and no developer server. Your profile, research, shortlist and notes stay on your device. You can export or delete everything in Settings at any time. AI requests go directly from your phone to OpenAI under your own ChatGPT account; the app's developer never sees them.
 
 WHAT YOU NEED
-A ChatGPT account (a plan that allows sign-in with ChatGPT) is required, because the AI research is the heart of the app. College Compass uses your plan's usage allowance, so no extra subscription is sold in the app.
+A ChatGPT Plus or Pro account is required for the AI research, which is the heart of the app. College Compass uses your plan's usage allowance, so no extra subscription is sold in the app. (A free ChatGPT account can sign in, but research needs a paid plan.)
 
 College Compass is an independent app. It is not affiliated with, endorsed by or sponsored by OpenAI or any college or university listed.
 ```
@@ -190,7 +191,7 @@ The app also ships a privacy manifest (`PrivacyInfo.xcprivacy`) declaring no col
 Provide, under App Review Information:
 
 - **Contact**: your name, phone, email.
-- **Sign-in required**: Yes → provide a dedicated **reviewer ChatGPT account** (see plan below).
+- **Sign-in required**: Yes → provide a dedicated **reviewer ChatGPT Plus (or Pro) account** (see plan below). Sign-in works in the native app with any ChatGPT Plus/Pro account; no OpenAI approval or client ID is involved.
 - **Notes** (paste and adjust):
 
 ```text
@@ -198,7 +199,7 @@ College Compass helps high school students build a balanced college list. The st
 
 HOW TO REVIEW WITHOUT A ChatGPT ACCOUNT: on the Welcome screen choose "Try the demo" (demo mode). It loads sample research data so every screen can be explored offline: the questions, the balanced list with odds bands, college details, shortlist and Settings. [Confirm this label matches the final UI before submitting.]
 
-HOW TO REVIEW THE LIVE AI FLOW: tap "Continue with ChatGPT" and sign in with the reviewer account below. Sign-in opens an in-app browser (OpenAI's login) and returns to the app through the collegecompass:// URL scheme. Research then runs against that ChatGPT account's own usage allowance; the developer has no server in the loop.
+HOW TO REVIEW THE LIVE AI FLOW: tap "Continue with ChatGPT" and sign in with the reviewer account below (a ChatGPT Plus account; any ChatGPT Plus or Pro account works). Sign-in opens an in-app browser with OpenAI's login page. After login, OpenAI redirects to a sign-in listener that runs inside the app on the phone itself (127.0.0.1, OpenAI's sign-in method for open-source apps that run locally); the browser then closes and the app continues. Research then runs against that ChatGPT account's own usage allowance; the developer has no server in the loop. College Compass is free and open source: <public GitHub repo URL>.
 Reviewer account: <email>  Password: <password>
 (If a verification code is requested, please use the attached screen recording; the code goes to an inbox the developer monitors: <contact>.)
 
@@ -207,8 +208,8 @@ There is no College Compass account, no in-app purchase and no data collected by
 
 **Reviewer-account plan (do before submitting):**
 
-1. Create a **new** ChatGPT account used only for review (a plan level that is allowed to use Sign in with ChatGPT; confirm with OpenAI's program terms). Disable anything that blocks a reviewer: avoid SMS 2FA; if OpenAI forces an email one-time code, use an inbox you actively monitor and say so in the notes.
-2. Verify the whole flow on a clean TestFlight install with that account, including cold start (kill the app while the in-app browser is open, then finish sign-in).
+1. Create a **new** ChatGPT account used only for review, on **ChatGPT Plus** (or Pro): plan usage, which the research needs, isn't available on a free account. Disable anything that blocks a reviewer: avoid SMS 2FA; if OpenAI forces an email one-time code, use an inbox you actively monitor and say so in the notes.
+2. Verify the whole flow on a clean TestFlight install with that account, then sign out and sign in again (the second sign-in reuses this device's issued client ID). If the app is killed while the login page is open, sign-in can't finish (the listener lived in the app); check that tapping "Continue with ChatGPT" again works.
 3. Attach a **screen recording** of a full live run as a fallback; demo mode is the primary path if the account is unavailable.
 4. Make sure the account has usage available on review days.
 5. Rotate the password after approval.
@@ -218,23 +219,28 @@ Reviewers also test: sign-out, **Settings → Delete everything** (this satisfie
 ## 9. Guideline notes (owner's judgment calls flagged)
 
 - **2.1 App completeness / 2.3 accurate metadata.** Demo mode plus a working reviewer account (section 8) avoid the most common rejection: "could not sign in". Screenshots must show the real UI.
-- **4.2 Minimum functionality (not a repackaged website).** The binary contains the whole app and works without a network for stored data (nothing is loaded from a remote URL: `capacitor.config.ts` has no `server.url`, and the service worker is disabled in the native app). Native integration in use: SFSafariViewController sign-in via `@capacitor/browser`, custom URL scheme deep link and cold-start handling via `@capacitor/app`, native HTTP (`CapacitorHttp`), native launch screen and status-bar/safe-area handling, on-device odds/fit/ranking engine, on-device persistence with export/import/delete, light/dark mode. Haptics (`@capacitor/haptics`) is bundled and can be used by the UI for feedback; only list it in review notes if the UI actually calls it. Keep the in-app experience clearly app-like (tab bar, sheets, no browser chrome).
+- **4.2 Minimum functionality (not a repackaged website).** The binary contains the whole app and works without a network for stored data (nothing is loaded from a remote URL: `capacitor.config.ts` has no `server.url`, and the service worker is disabled in the native app). Native integration in use: SFSafariViewController sign-in via `@capacitor/browser` with an in-app Network.framework loopback listener (`LoopbackAuthPlugin.swift`), custom URL scheme deep link and cold-start handling via `@capacitor/app`, native HTTP (`CapacitorHttp`), native launch screen and status-bar/safe-area handling, on-device odds/fit/ranking engine, on-device persistence with export/import/delete, light/dark mode. Haptics (`@capacitor/haptics`) is bundled and can be used by the UI for feedback; only list it in review notes if the UI actually calls it. Keep the in-app experience clearly app-like (tab bar, sheets, no browser chrome).
 - **4.8 Login services.** Sign in with Apple is required for apps that use a third-party login to set up or authenticate the user's *primary account in the app*. College Compass has **no first-party account**; "Continue with ChatGPT" only connects the user's own existing third-party ChatGPT plan so the app can act as a client of that service (guideline 4.8 exempts apps that are a client for a specific third-party service where the user signs in to that third-party account directly to access their content). We therefore do not offer Sign in with Apple. **This is a judgment call.** If App Review disagrees, answer in the Resolution Center with the facts above first; the fallbacks are adding Sign in with Apple or another login that meets 4.8's privacy criteria (which would add little here since the app has no account to log into).
 - **5.1.1 / 5.1.2 Privacy and third-party AI.** Apple's updated 5.1.2(i) (late 2025; re-read the current wording) expects an app to **clearly disclose where personal data is shared with third parties, including third-party AI, and to get explicit permission first**. The student's profile (state, GPA, scores, income band, interests) is sent to OpenAI to run the research. Strong recommendation for the UI owner: the first-run "You're using your ChatGPT plan" sheet should also state plainly that the answers are sent to OpenAI under the user's ChatGPT account, link to the privacy policy, and require an explicit "Agree and continue" before the first research request. Also link the privacy policy inside Settings.
 - **5.2 Intellectual property.** Use "Continue with ChatGPT" wording per OpenAI's branding rules, do not use OpenAI logos beyond what their guidelines permit, keep the non-affiliation sentence. College names are used descriptively.
 - **1.4 / 5.1.4 Minors.** The audience includes teenagers. No ads, no tracking, no social features, no contact collection. Do not enable the Kids Category.
 - **Export compliance.** Already answered in `Info.plist` (`ITSAppUsesNonExemptEncryption = false`). If App Store Connect still asks, answer that the app uses only standard encryption (HTTPS) exempt under the relevant provisions.
 
-### OpenAI client-ID dependency
+### ChatGPT sign-in eligibility
 
-The live sign-in needs a **client ID issued by OpenAI's Sign in with ChatGPT program** and the redirect URI `https://vikasgaddu1.github.io/College-compass/app/callback.html` registered for it. Until OpenAI issues it, TestFlight builds can only demonstrate demo mode (or the hidden developer API-key fallback in Settings → Developer, which must **not** be advertised to App Review). Do not submit for review until a real build with the client ID in `VITE_CC_CHATGPT_CLIENT_ID` has completed sign-in on a physical device. Details, redirect registration and the native `state` flag (`native=1`): [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md).
+The iOS app signs in through OpenAI's **self-serve path for open-source, locally run apps**: the first sign-in registers the install with `client_id=dynamic_agent_client`, OpenAI issues a per-device client ID (`oaiapp_…`), and the redirect goes to a loopback listener on `127.0.0.1` inside the app. No client ID, partner approval or secret is needed, so TestFlight builds can sign in today. Leave `VITE_CC_CHATGPT_CLIENT_ID` empty for the iOS build.
+
+Eligibility caveat, stated factually: OpenAI documents this self-serve path for **open-source, locally run** apps. College Compass qualifies because it is free, its source is public on GitHub, and it runs entirely on the phone. A **paid** app or one whose AI calls run on a **remotely hosted** server would need OpenAI's partner interest form and a client ID instead. Keep the repository public and the app free while using this path.
+
+Users need **ChatGPT Plus or Pro** for research (plan usage). Free accounts can sign in but research won't run. Do not submit for review until a TestFlight build has completed sign-in and a research run on a physical iPhone with the reviewer account. Details: [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md).
 
 ## 10. Pre-submission test pass (physical iPhone, TestFlight build)
 
 - [ ] Cold install launches with the compass launch screen (light and dark appearance), no white flash
 - [ ] Demo mode works fully offline
-- [ ] "Continue with ChatGPT" opens the in-app browser; after login it returns to the app and the browser closes
-- [ ] Sign-in completes when the app was killed while the browser was open (cold-start deep link)
+- [ ] "Continue with ChatGPT" opens the in-app browser; after login the browser closes by itself and the app continues
+- [ ] Sign out, then sign in again (reuses this device's issued client ID; no second registration)
+- [ ] Closing the in-app browser with Done shows "Sign-in was cancelled." and the button works again
 - [ ] Cancelling/denying at OpenAI returns to the app with a friendly error
 - [ ] Research runs, can be cancelled, resumed after backgrounding; token refresh after 1 hour
 - [ ] Safe areas: notch/Dynamic Island, home indicator, keyboard; iPad portrait and landscape
@@ -252,11 +258,12 @@ App Store Connect → the app → the 1.0 version: upload screenshots, descripti
 | --- | --- |
 | `capacitor.config.ts` | appId, appName, `webDir: dist`, splash settings, no remote server URL |
 | `ios/App/App.xcodeproj`, `ios/App/Podfile` | Xcode project (iOS 15.0, v1.0.0, build 1), CocoaPods plugins |
-| `ios/App/App/Info.plist` | display name, `collegecompass` URL scheme, portrait (iPad: all), ATS defaults, encryption flag |
+| `ios/App/App/Info.plist` | display name, `collegecompass` URL scheme, portrait (iPad: all), ATS (arbitrary loads off, `NSAllowsLocalNetworking` on for the 127.0.0.1 sign-in listener), encryption flag |
+| `ios/App/App/LoopbackAuthPlugin.swift`, `ios/App/App/MainViewController.swift` | in-app Capacitor plugin: 127.0.0.1 loopback listener for ChatGPT sign-in; bridge view controller that registers it (Main.storyboard) |
 | `ios/App/App/PrivacyInfo.xcprivacy` | app privacy manifest |
 | `ios/App/App/Assets.xcassets` | AppIcon (1024 single-size), LaunchLogo, LaunchBackground (light/dark) |
 | `ios/App/App/Base.lproj/LaunchScreen.storyboard` | launch screen: centered mark on the app background colour |
 | `ios/tools/make_icons.py` | regenerates the icon and launch logo (Pillow) |
-| `src/platform/index.ts` | web/native seam: `isNative`, `openAuthUrl`, `onAuthRedirect`, `closeAuthBrowser`, `postForm`, `redirectUri` |
+| `src/platform/index.ts` | web/native seam: `isNative`, `openAuthUrl`, `onAuthRedirect`, `closeAuthBrowser`, `postForm`, `redirectUri`, `startLoopback`, `supportsSelfServeSignIn` |
 | `.github/workflows/ios.yml` (repo root) | simulator compile check + manual TestFlight job |
 | `package.json` scripts | `build:ios`, `cap:sync`, `cap:open` |
