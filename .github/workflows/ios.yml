@@ -171,12 +171,16 @@ jobs:
           [ -n "$ASC_ISSUER_ID" ] || missing="$missing APP_STORE_CONNECT_ISSUER_ID"
           [ -n "$ASC_KEY_P8" ]    || missing="$missing APP_STORE_CONNECT_KEY_P8"
           mode=""
-          if [ -n "$CERT_P12_B64" ] && [ -n "$CERT_PASSWORD" ] && [ -n "$PROFILE_B64" ]; then
+          if [ -n "$CERT_P12_B64$CERT_PASSWORD$PROFILE_B64" ]; then
+            # Option C (own certificate) is being configured: name exactly what's missing for it.
             mode=manual
+            [ -n "$CERT_P12_B64" ]  || missing="$missing IOS_DIST_CERT_P12_BASE64"
+            [ -n "$CERT_PASSWORD" ] || missing="$missing IOS_DIST_CERT_PASSWORD"
+            [ -n "$PROFILE_B64" ]   || missing="$missing IOS_PROVISION_PROFILE_BASE64"
           elif [ -n "$TEAM_ID" ]; then
             mode=cloud
           else
-            missing="$missing APPLE_TEAM_ID(variable)"
+            missing="$missing APPLE_TEAM_ID(variable, for cloud-managed signing)"
           fi
           if [ -n "$missing" ]; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
