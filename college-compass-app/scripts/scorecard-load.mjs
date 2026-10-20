@@ -99,6 +99,9 @@ export const KNOWN_ALIASES = {
   "University of California-Santa Barbara": ["UC Santa Barbara", "UCSB"],
   "Johns Hopkins University": ["JHU", "Hopkins"],
   "Arizona State University Campus Immersion": ["ASU"],
+  // Branch campuses share "Miami University", so the rule-based alias is dropped as ambiguous; the
+  // main campus is what students and the planner mean.
+  "Miami University-Oxford": ["Miami University", "Miami University Ohio", "Miami (OH)", "Miami of Ohio"],
   "University of Massachusetts-Amherst": ["UMass Amherst", "UMass"],
   "University of Connecticut": ["UConn"],
   "Louisiana State University and Agricultural & Mechanical College": ["LSU", "Louisiana State University"],
