@@ -90,6 +90,17 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const [authTick, setAuthTick] = useState(0);
   useEffect(() => auth.subscribe(() => setAuthTick((t) => t + 1)), []);
+  // Renew the ChatGPT session when the app comes back to the front, so renewals happen while the app
+  // is open rather than mid-research while iOS may suspend it (a renewal cut off by suspension can end
+  // the session, since the previous renewal token is retired as soon as a new one is issued).
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void auth.ensureFresh?.().catch(() => setAuthTick((t) => t + 1));
+    };
+    onVisible();
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, []);
   const refreshAuth = useCallback(() => setAuthTick((t) => t + 1), []);
   const account = useMemo(() => auth.account(), [authTick]);
   const hasDevKey = useMemo(() => !!devKey(), [authTick]);

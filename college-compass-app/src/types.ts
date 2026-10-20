@@ -314,6 +314,21 @@ export interface AuthApi {
   /** Models the account can use (GET /v1/models, visibility=list). */
   listModels(): Promise<{ slug: string; display_name: string }[]>;
   subscribe(fn: () => void): () => void;
+  /**
+   * Renew the session now if it expires within `minValidMs` (default 20 min), so renewal happens while
+   * the app is open — not mid-research while iOS may suspend the app. Throws reauth_required only when
+   * the session can't be renewed. No-op when signed out.
+   */
+  ensureFresh?(minValidMs?: number): Promise<void>;
+  /** Why the last session renewal failed, if it did: error code, HTTP status and time — never tokens. */
+  lastIssue?(): AuthIssue | null;
+}
+
+export interface AuthIssue {
+  at: number;
+  code: string;
+  status: number;
+  phase: "refresh" | "api";
 }
 
 // ───────────────────────────── Research orchestration ─────────────────────────────

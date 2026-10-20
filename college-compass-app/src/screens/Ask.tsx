@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { AiMessage } from "@/types";
-import { navigate } from "@/lib/router";
 import { useStore } from "@/state/store";
-import { MANAGE_USAGE_URL, aiClient, chatInstructions, describeError, summarizeListForAi } from "@/state/services";
+import { MANAGE_USAGE_URL, aiClient, auth, chatInstructions, describeError, summarizeListForAi } from "@/state/services";
 import { ConfirmSheet } from "@/components/Sheet";
-import { Banner, Button, Chip, Empty } from "@/components/ui";
+import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
+import { Banner, Chip, Empty } from "@/components/ui";
 import { IconSend, IconStop, IconTrash } from "@/components/icons";
 import { Screen } from "@/components/Screen";
 
@@ -48,6 +48,15 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [chat.length, streaming]);
+
+  // Signed in again from the card (iPhone completes sign-in in place): drop the card so they can keep chatting.
+  const needsSession = !!err && needsSignIn(err.code);
+  useEffect(() => {
+    if (!needsSession) return;
+    return auth.subscribe(() => {
+      if (auth.account() && !auth.lastError?.()) setErr(null);
+    });
+  }, [needsSession]);
 
   const send = async (content: string) => {
     const msg = content.trim();
@@ -179,7 +188,9 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
       }
     >
       {!canChat ? (
-        <Empty icon="💬" title="Chat needs ChatGPT" message="Sign in with your ChatGPT account to ask about your list. Your profile and colleges are sent only with your question." action={<Button onClick={() => navigate("/")}>Continue with ChatGPT</Button>} />
+        <div className="pt-4">
+          <SignInAgain returnTo="/ask" reason="signed_out" line="Sign in to ask about your list. Your profile and colleges are sent only with your question, and stay on this phone." />
+        </div>
       ) : chat.length === 0 && !busy ? (
         <Empty
           icon="💬"
@@ -202,7 +213,12 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
           )}
         </ol>
       )}
-      {err && (
+      {err && needsSignIn(err.code) && (
+        <div className="mt-3">
+          <SignInAgain returnTo="/ask" reason={reasonFor(err.code)} line="Sign in again to keep chatting — your conversation and colleges are saved on this phone." />
+        </div>
+      )}
+      {err && !needsSignIn(err.code) && (
         <div className="mt-3">
           <Banner tone="error">
             <strong>{err.title}.</strong> {err.detail}{" "}
@@ -210,11 +226,6 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
               <a className="underline" href={MANAGE_USAGE_URL} target="_blank" rel="noopener noreferrer">
                 Manage usage
               </a>
-            )}
-            {err.code === "reauth_required" && (
-              <button type="button" className="underline" onClick={() => navigate("/")}>
-                Sign in
-              </button>
             )}
           </Banner>
         </div>

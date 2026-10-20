@@ -2,15 +2,38 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { College, CollegeCandidate, ResearchEvent } from "@/types";
 import { navigate } from "@/lib/router";
 import { useStore } from "@/state/store";
-import { describeError, rankColleges, researchApi } from "@/state/services";
+import { auth, describeError, isConnected, rankColleges, researchApi } from "@/state/services";
 import { cancelResearchNotification, notifyWhenResearchDone, requestNotificationPermission, supportsLeaveAndNotify } from "@/platform";
 import { Screen, StickyActions } from "@/components/Screen";
 import { CollegeCard } from "@/components/CollegeCard";
 import { Banner, Button, ProgressBar } from "@/components/ui";
 import { CollegeStateGlyph, KeepTabOpenNote, LeaveAppCard, PhaseSteps, WaitTips, useNow, type NotifyState } from "@/components/ResearchStatus";
+import { SignInAgain, needsSignIn, reasonFor, type SignInReason } from "@/components/SignInAgain";
 import { IconCheck, IconRefresh, IconWarning } from "@/components/icons";
 
-type Status = "planning" | "researching" | "done" | "cancelled" | "error";
+/** "signin": the ChatGPT session ended (or there is none) — the sign-in card is shown instead of a run. */
+type Status = "planning" | "researching" | "done" | "cancelled" | "error" | "signin";
+
+/** Renew the session for the whole run up front: research takes minutes and may run while the app is in the background. */
+const RUN_SESSION_MS = 25 * 60_000;
+
+/** Web sign-in reloads the page; this tab-scoped flag says "resume the interrupted run" on remount. */
+const RESUME_KEY = "cc2:research_resume";
+function setResumeFlag(on: boolean): void {
+  try {
+    if (on) sessionStorage.setItem(RESUME_KEY, "1");
+    else sessionStorage.removeItem(RESUME_KEY);
+  } catch { /* private mode: a fresh run is fine */ }
+}
+function takeResumeFlag(): boolean {
+  try {
+    const on = sessionStorage.getItem(RESUME_KEY) === "1";
+    sessionStorage.removeItem(RESUME_KEY);
+    return on;
+  } catch {
+    return false;
+  }
+}
 interface Lane {
   batch: number;
   names: string[];
@@ -20,13 +43,14 @@ interface Lane {
 }
 
 export function Research() {
-  const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, isSaved, toggleSaved, connected } = useStore();
+  const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, isSaved, toggleSaved } = useStore();
   const [status, setStatus] = useState<Status>("planning");
   const [candidates, setCandidates] = useState<CollegeCandidate[]>([]);
   const [lanes, setLanes] = useState<Lane[]>([]);
   const [done, setDone] = useState<College[]>([]);
   const [failures, setFailures] = useState<{ name: string; error: string }[]>([]);
   const [error, setError] = useState<{ title: string; detail: string } | null>(null);
+  const [signInReason, setSignInReason] = useState<SignInReason>("expired");
   const [retrying, setRetrying] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [notify, setNotify] = useState<NotifyState>("idle");
@@ -35,8 +59,18 @@ export function Research() {
   const statusRef = useRef<Status>("planning");
   const armed = useRef(false);
   statusRef.current = status;
+  // Latest colleges for a run started from a callback that outlives the render (resume after sign-in).
+  const collegesRef = useRef(colleges);
+  collegesRef.current = colleges;
 
   const canNotify = supportsLeaveAndNotify() && !demo;
+
+  /** Stop the run and show the sign-in card instead of an error banner. */
+  const askToSignIn = useCallback((code: "reauth_required" | "not_connected") => {
+    setSignInReason(reasonFor(code));
+    setError(null);
+    setStatus("signin");
+  }, []);
 
   const onEvent = useCallback(
     (e: ResearchEvent) => {
@@ -76,48 +110,96 @@ export function Research() {
           setPrefs({ researchedAt: new Date().toISOString() });
           break;
         case "error":
+          if (needsSignIn(e.code)) {
+            askToSignIn(e.code);
+            break;
+          }
           setStatus("error");
           setError({ title: "Research stopped", detail: e.error });
           break;
       }
     },
-    [upsertCollege, setPrefs],
+    [upsertCollege, setPrefs, askToSignIn],
   );
 
-  const start = useCallback(() => {
-    ctrl.current?.abort();
-    const c = new AbortController();
-    ctrl.current = c;
-    setStatus("planning");
-    setLanes([]);
-    setDone([]);
-    setFailures([]);
-    setError(null);
-    setNotify("idle");
-    setStartedAt(Date.now());
-    setColleges([]);
-    researchApi(demo)
-      .run({ profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache: colleges, model: prefs.model ?? undefined, share_research: prefs.shareResearch !== false, signal: c.signal, onEvent })
-      .then(() => setStatus((s) => (s === "error" ? s : "done")))
-      .catch((err) => {
-        if (c.signal.aborted) {
-          setStatus("cancelled");
+  /**
+   * Run research. `resume` (after signing in again) keeps the colleges already researched — in the
+   * store and on screen — instead of clearing the list for a fresh run.
+   */
+  const start = useCallback(
+    (resume = false) => {
+      ctrl.current?.abort();
+      const c = new AbortController();
+      ctrl.current = c;
+      const cache = collegesRef.current;
+      setStatus("planning");
+      setLanes([]);
+      setFailures([]);
+      setError(null);
+      setNotify("idle");
+      setStartedAt(Date.now());
+      if (!resume) {
+        setDone([]);
+        setColleges([]);
+      }
+      researchApi(demo)
+        .run({ profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache, model: prefs.model ?? undefined, share_research: prefs.shareResearch !== false, signal: c.signal, onEvent })
+        .then(() => setStatus((s) => (s === "error" || s === "signin" ? s : "done")))
+        .catch((err) => {
+          if (c.signal.aborted) {
+            setStatus((s) => (s === "signin" ? s : "cancelled"));
+            return;
+          }
+          const described = describeError(err);
+          if (needsSignIn(described.code)) {
+            askToSignIn(described.code);
+            return;
+          }
+          setStatus("error");
+          setError(described);
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [demo, profile, prefs.model, prefs.researchCount, onEvent, askToSignIn],
+  );
+
+  /**
+   * Gate a run on a usable ChatGPT session: no account → the sign-in card; a session that can't be
+   * renewed for the whole run → the sign-in card. Anything else (e.g. offline with a still-valid
+   * token) starts the run, which reports its own errors.
+   */
+  const begin = useCallback(
+    async (resume = false) => {
+      if (!demo) {
+        if (!isConnected()) {
+          askToSignIn("not_connected");
           return;
         }
-        setStatus("error");
-        setError(describeError(err));
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [demo, profile, prefs.model, prefs.researchCount, onEvent]);
+        try {
+          await auth.ensureFresh?.(RUN_SESSION_MS);
+        } catch (e) {
+          const code = describeError(e).code;
+          if (needsSignIn(code)) {
+            askToSignIn(code);
+            return;
+          }
+        }
+        if (!isConnected()) {
+          // The renewal attempt itself ended the session (tokens cleared).
+          askToSignIn("reauth_required");
+          return;
+        }
+      }
+      start(resume);
+    },
+    [demo, start, askToSignIn],
+  );
 
   useEffect(() => {
-    if (!connected && !demo) {
-      navigate("/", { replace: true });
-      return;
-    }
     if (started.current) return;
     started.current = true;
-    start();
+    // Web: sign-in is a full-page redirect, so coming back here is a remount — resume, don't start over.
+    void begin(takeResumeFlag());
     return () => {
       ctrl.current?.abort();
       // Leaving the screen aborts the run, so a pending "list is ready" notification would lie.
@@ -128,6 +210,25 @@ export function Research() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Signed in again (the sign-in card brings the student back here): pick up without another tap,
+  // keeping whatever was researched before the session ended. On iPhone the sign-in completes in
+  // place, so listen for it; a failed attempt (lastError set) leaves the card up for a retry.
+  useEffect(() => {
+    if (status !== "signin") return;
+    setResumeFlag(true);
+    let resumed = false;
+    const off = auth.subscribe(() => {
+      if (resumed || !auth.account() || auth.lastError?.()) return;
+      resumed = true;
+      setResumeFlag(false);
+      void begin(true);
+    });
+    return () => {
+      off();
+      if (statusRef.current !== "signin") setResumeFlag(false);
+    };
+  }, [status, begin]);
 
   const cancel = () => {
     ctrl.current?.abort();
@@ -148,7 +249,8 @@ export function Research() {
   };
 
   const total = Math.max(candidates.length, done.length + failures.length, 1);
-  const finished = status === "done" || status === "cancelled" || status === "error";
+  const finished = status === "done" || status === "cancelled" || status === "error" || status === "signin";
+  const signIn = status === "signin";
   const progress = status === "done" ? 1 : status === "planning" ? 0.02 : (done.length + failures.length) / total;
   const ranked = useMemo(() => rankColleges(done, profile), [done, profile]);
 
@@ -201,7 +303,11 @@ export function Research() {
           ? "Research complete"
           : status === "cancelled"
             ? "Research stopped"
-            : "Research failed";
+            : status === "signin"
+              ? signInReason === "expired"
+                ? "Research paused"
+                : "Research needs ChatGPT"
+              : "Research failed";
 
   const subtitle =
     status === "planning"
@@ -214,7 +320,11 @@ export function Research() {
         ? demo
           ? "Demo mode: loading sample research."
           : "Agents are reading each college's Common Data Set, costs and deadlines. This usually takes 2–4 minutes."
-        : `${done.length} of ${total} colleges researched${failures.length ? `, ${failures.length} failed` : ""}.`;
+        : status === "signin"
+          ? signInReason === "expired"
+            ? `${done.length ? `${done.length} ${done.length === 1 ? "college is" : "colleges are"} saved. ` : ""}Sign in to pick up where you left off.`
+            : "Sign in to research colleges with your ChatGPT plan."
+          : `${done.length} of ${total} colleges researched${failures.length ? `, ${failures.length} failed` : ""}.`;
 
   return (
     <Screen
@@ -224,13 +334,18 @@ export function Research() {
       bar={<ProgressBar value={progress} label="Research progress" />}
       footer={
         <StickyActions>
-          {finished ? (
+          {signIn ? (
+            // The sign-in card above holds the primary action; this only offers a way out.
+            <Button variant="quiet" onClick={() => navigate("/list", { replace: true })}>
+              {done.length > 0 || colleges.length > 0 ? "See my list" : "Not now"}
+            </Button>
+          ) : finished ? (
             <>
               <Button onClick={() => navigate("/list", { replace: true })} disabled={done.length === 0}>
                 See my list
               </Button>
               {(status === "cancelled" || status === "error") && (
-                <Button variant="secondary" onClick={start}>
+                <Button variant="secondary" onClick={() => start()}>
                   <IconRefresh size={20} /> Start over
                 </Button>
               )}
@@ -250,7 +365,8 @@ export function Research() {
         </StickyActions>
       }
     >
-      {error && (
+      {signIn && <SignInAgain returnTo="/research" reason={signInReason} className="mb-4" />}
+      {error && !signIn && (
         <div className="mb-4">
           <Banner tone="error">
             <strong>{error.title}.</strong> {error.detail}
@@ -258,15 +374,17 @@ export function Research() {
         </div>
       )}
 
-      {/* Phases */}
-      <PhaseSteps
-        phase={status === "planning" ? "planning" : status === "researching" ? "researching" : status === "done" ? "done" : "stopped"}
-        total={candidates.length}
-        done={done.length}
-        failed={failures.length}
-        elapsedMs={elapsedMs}
-        demo={demo}
-      />
+      {/* Phases (nothing to show when a run never started for want of a session) */}
+      {!(signIn && candidates.length === 0) && (
+        <PhaseSteps
+          phase={status === "planning" ? "planning" : status === "researching" ? "researching" : status === "done" ? "done" : "stopped"}
+          total={candidates.length}
+          done={done.length}
+          failed={failures.length}
+          elapsedMs={elapsedMs}
+          demo={demo}
+        />
+      )}
       {!finished && !demo && <WaitTips />}
 
       {/* Leave the app (iOS) / keep the tab open (web) */}

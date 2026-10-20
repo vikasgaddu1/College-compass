@@ -295,3 +295,31 @@ describe("signOut / models", () => {
     expect(parseInstant(null)).toBeNull();
   });
 });
+
+describe("ensureFresh (renew while the app is open) and renewal diagnostics", () => {
+  it("renews ahead of time when the session expires within the window, and not otherwise", async () => {
+    const h = await harness();
+    await signedIn(h);
+    h.setTokenReply(async () => ({ status: 200, json: { access_token: "at2", refresh_token: "rt2", expires_in: 3600 } }));
+    await h.auth.ensureFresh!(20 * 60_000); // 60 min left → nothing to do
+    expect(h.posts.filter((p) => p.body.grant_type === "refresh_token")).toHaveLength(0);
+    h.setNow(T0 + 45 * 60_000); // 15 min left → renew now
+    await h.auth.ensureFresh!(20 * 60_000);
+    expect(h.posts.filter((p) => p.body.grant_type === "refresh_token")).toHaveLength(1);
+    expect(stored()).toMatchObject({ access_token: "at2", refresh_token: "rt2" });
+  });
+
+  it("a network blip with a still-valid token is not fatal; an ended session is, and its reason is recorded", async () => {
+    const h = await harness();
+    await signedIn(h);
+    h.setNow(T0 + 50 * 60_000);
+    h.setTokenReply(async () => ({ status: 503, json: null }));
+    await expect(h.auth.ensureFresh!()).resolves.toBeUndefined();
+    expect(h.auth.account()).not.toBeNull();
+    expect(h.auth.lastIssue!()).toBeNull();
+    h.setTokenReply(async () => ({ status: 400, json: { error: "refresh_token_reused" } }));
+    await expect(h.auth.ensureFresh!()).rejects.toMatchObject({ code: "reauth_required" });
+    expect(h.auth.lastIssue!()).toMatchObject({ code: "refresh_token_reused", status: 400, phase: "refresh", at: T0 + 50 * 60_000 });
+    expect(JSON.stringify(h.auth.lastIssue!())).not.toMatch(/rt1|at1/);
+  });
+});

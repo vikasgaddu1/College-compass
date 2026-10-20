@@ -1,12 +1,13 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Ownership, RankedCollege, Tier } from "@/types";
 import { navigate } from "@/lib/router";
 import { useStore, type SortKey } from "@/state/store";
 import { TIERS, TIER_ORDER, tierInfo } from "@/state/catalog";
-import { describeError, researchApi } from "@/state/services";
+import { auth, describeError, researchApi } from "@/state/services";
 import { Screen } from "@/components/Screen";
 import { Sheet } from "@/components/Sheet";
 import { CollegeCard } from "@/components/CollegeCard";
+import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, CardSkeleton, Chip, Empty, Segmented } from "@/components/ui";
 import { IconFilter, IconPlus, IconSearch, IconClose } from "@/components/icons";
 
@@ -19,7 +20,7 @@ interface Filters {
 const NO_FILTERS: Filters = { tiers: [], maxPrice: null, ownership: "any", savedOnly: false };
 
 export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: ReactNode }) {
-  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertCollege, demo, connected, hasProfile } = useStore();
+  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertCollege, demo, connected, hasProfile, enterDemo } = useStore();
   const [q, setQ] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>(NO_FILTERS);
@@ -27,7 +28,7 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
   const [addOpen, setAddOpen] = useState(false);
   const [addName, setAddName] = useState("");
   const [adding, setAdding] = useState(false);
-  const [addError, setAddError] = useState<string | null>(null);
+  const [addError, setAddError] = useState<{ detail: string; code?: string } | null>(null);
 
   const sort = prefs.sort;
   const filterCount = (filters.tiers.length ? 1 : 0) + (filters.maxPrice != null ? 1 : 0) + (filters.ownership !== "any" ? 1 : 0) + (filters.savedOnly ? 1 : 0);
@@ -66,11 +67,20 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
       setAddOpen(false);
       setAddName("");
     } catch (e) {
-      setAddError(describeError(e).detail);
+      setAddError(describeError(e));
     } finally {
       setAdding(false);
     }
   };
+
+  // Signed in again from the card inside the sheet: clear it so "Research and add" can be tapped.
+  const addNeedsSession = !!addError && needsSignIn(addError.code);
+  useEffect(() => {
+    if (!addNeedsSession) return;
+    return auth.subscribe(() => {
+      if (auth.account() && !auth.lastError?.()) setAddError(null);
+    });
+  }, [addNeedsSession]);
 
   const counts = TIER_ORDER.map((t) => balanced[t].length);
 
@@ -121,13 +131,25 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
       >
         {!hasProfile ? (
           <Empty icon="🧭" title="Let's build your list" message="Answer a few questions and we'll research colleges that fit you." action={<Button onClick={() => navigate("/onboarding/1")}>Start</Button>} />
+        ) : colleges.length === 0 && !connected && !demo ? (
+          <div className="pt-4">
+            <SignInAgain returnTo="/research" reason="signed_out" line="Sign in to research colleges that fit your answers — everything stays on this phone." />
+            <p className="mt-4 text-center text-footnote text-text-muted">
+              No ChatGPT account?{" "}
+              <button
+                type="button"
+                className="cc-link min-h-tap"
+                onClick={() => {
+                  enterDemo();
+                  navigate("/list", { replace: true });
+                }}
+              >
+                Try the demo
+              </button>
+            </p>
+          </div>
         ) : colleges.length === 0 ? (
-          <Empty
-            icon="🔎"
-            title="No research yet"
-            message={connected || demo ? "Run research to build a balanced list from your answers." : "Sign in with ChatGPT to research colleges, or try the demo."}
-            action={connected || demo ? <Button onClick={() => navigate("/research")}>Research colleges</Button> : <Button onClick={() => navigate("/")}>Continue with ChatGPT</Button>}
-          />
+          <Empty icon="🔎" title="No research yet" message="Run research to build a balanced list from your answers." action={<Button onClick={() => navigate("/research")}>Research colleges</Button>} />
         ) : shown === 0 ? (
           <Empty
             icon="🫥"
@@ -240,9 +262,14 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
       >
         <p className="text-subhead text-text-muted">We'll research it and place it on your list with odds and a fit score.</p>
         <input className="cc-input mt-3" placeholder="College name" value={addName} autoFocus autoCapitalize="words" enterKeyHint="go" onChange={(e) => setAddName(e.target.value)} onKeyDown={(e) => e.key === "Enter" && addCollege()} aria-label="College name" disabled={adding} />
-        {addError && (
+        {addError && needsSignIn(addError.code) && (
           <div className="mt-3">
-            <Banner tone="error">{addError}</Banner>
+            <SignInAgain returnTo="/list" reason={reasonFor(addError.code)} line="Sign in again to add colleges — your list is saved on this phone." />
+          </div>
+        )}
+        {addError && !needsSignIn(addError.code) && (
+          <div className="mt-3">
+            <Banner tone="error">{addError.detail}</Banner>
           </div>
         )}
         {adding && (
