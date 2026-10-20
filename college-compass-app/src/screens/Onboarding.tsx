@@ -58,12 +58,26 @@ function NumberField({ label, value, onChange, placeholder, hint, mode = "decima
   );
 }
 
-function StatePicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
+export function StatePicker({ value, onChange }: { value: string; onChange: (code: string) => void }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const list = useMemo(() => {
     const s = q.trim().toLowerCase();
-    return STATES.filter((st) => !s || st.name.toLowerCase().includes(s) || st.code.toLowerCase() === s);
+    if (!s) return STATES;
+    // Names starting with the text first ("n" → Nebraska, Nevada, New …), then names containing it
+    // ("no" → North Carolina, North Dakota, then Illinois); a 2-letter code ("nc") also matches.
+    const rank = (st: { code: string; name: string }) => {
+      const n = st.name.toLowerCase();
+      if (st.code.toLowerCase() === s) return 0;
+      if (n.startsWith(s)) return 1;
+      if (n.split(/\s+/).some((w) => w.startsWith(s))) return 2;
+      if (n.includes(s)) return 3;
+      return 9;
+    };
+    return STATES.map((st) => ({ st, r: rank(st) }))
+      .filter((x) => x.r < 9)
+      .sort((a, b) => a.r - b.r || a.st.name.localeCompare(b.st.name))
+      .map((x) => x.st);
   }, [q]);
   return (
     <>
