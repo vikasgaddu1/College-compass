@@ -52,7 +52,9 @@ function nsKeys(s: Storage): string[] {
 /** Serialize every `cc2:` entry (keys without the prefix) to a JSON string. */
 /** Keys that hold credentials and must never leave the device in an export file. */
 /** `host_id` / `issued_client_id` are device-bound sign-in registrations: copying them to another device would be wrong. */
-const SECRET_KEYS = new Set(["chatgpt", "oauth_pending", "dev_openai_key", "ai_session", "host_id", "issued_client_id"]);
+// Excluded from export/import. install_id: a copied install ID would make two devices look like one
+// "independent" contributor to shared research.
+const SECRET_KEYS = new Set(["chatgpt", "oauth_pending", "dev_openai_key", "ai_session", "host_id", "issued_client_id", "install_id"]);
 
 export function exportAll(): string {
   const out: Record<string, unknown> = {};

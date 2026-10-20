@@ -33,7 +33,14 @@
     <li>Your chat history with the Ask feature</li>
     <li>Your ChatGPT sign-in tokens</li>
   </ul>
-  <p>We do not run a server that stores any of this. There are no College Compass accounts. You can export, import or delete all of it at any time from Settings.</p>
+  <p>None of this leaves your device except as described below. There are no College Compass accounts. You can export, import or delete all of it at any time from Settings.</p>
+
+  <h2>Shared college database</h2>
+  <p>College Compass keeps a shared database of <strong>facts about colleges</strong> (for example admit rates, test score ranges, costs, net price by family income, deadlines, programs and the sources they came from). It is hosted on Supabase and contains no information about students.</p>
+  <ul>
+    <li><strong>Federal data.</strong> Most figures come from the U.S. Department of Education's College Scorecard. When you research colleges, the app looks up the colleges' names in this database. Only the college names are sent, with no information about you.</li>
+    <li><strong>Shared research</strong> (Settings → "Share research to help other students", on by default). After researching a college, the app sends the researched college facts listed above to the shared database, so later students can skip that research. It sends nothing about you: no answers, grades, scores, interests, notes, name, email, ChatGPT account or device identifiers. To recognize that two results came from different installs, the app includes a random ID created on first use; the database stores it only as a one-way hash, and it is not linked to you, your account or your device. To prevent abuse, the database also counts requests per network address for up to two days, stored only as a one-way hash. Shared facts are published only after independent research from another install agrees. You can turn sharing off at any time in Settings.</li>
+  </ul>
 
   <h2>What is sent to OpenAI</h2>
   <p>Research and chat are powered by ChatGPT. When you run research or ask a question, the app sends your profile answers, the names of colleges being researched and your question directly from your device to OpenAI's API, under your own ChatGPT account and subject to <a href="https://openai.com/policies/" target="_blank" rel="noopener">OpenAI's terms and privacy policy</a>. Requests are made with the "do not store" option. The developer of College Compass does not receive, relay or see these requests.</p>
@@ -42,8 +49,8 @@
   <h2>What we don't do</h2>
   <ul>
     <li>No analytics, tracking, advertising or crash-reporting SDKs</li>
-    <li>No third-party services other than OpenAI, which you connect yourself</li>
-    <li>No sale or sharing of personal data — we never have it</li>
+    <li>No third-party services other than OpenAI, which you connect yourself, and the shared college database described above</li>
+    <li>No sale or sharing of personal data — we never collect it</li>
   </ul>
 
   <h2>Children</h2>

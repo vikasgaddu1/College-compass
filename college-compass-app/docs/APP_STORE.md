@@ -184,15 +184,20 @@ App Store Connect → App Privacy. Facts to answer from:
 - The developer operates **no server and no account system**. Profile, research results, shortlist, notes and tokens are stored on the device only. Export/delete are in Settings.
 - AI requests (the student's answers, the college list) go **directly from the phone to OpenAI** (`api.openai.com`, `auth.openai.com`) under the **student's own ChatGPT account**. The developer never receives, relays or stores them. (The optional token relay, if ever deployed, is stateless and forwards token requests only.)
 - No analytics, no advertising SDKs, no tracking, no third-party SDKs that collect data.
+- **Shared college database (Supabase, developer-operated).** The app looks up college names there, and — when "Share research to help other students" is on (default) — sends researched **college facts** (admit rates, costs, deadlines, programs, sources) to it. Nothing about the student is sent. A random per-install ID (stored server-side only as a salted hash) and a salted hash of the network address (kept up to two days, for rate limiting) are processed. See `docs/SHARED_DATA.md`.
 
-Recommended answers:
+Recommended answers (updated for the shared database):
 
-1. *Do you or your third-party partners collect data from this app?* → **No, we do not collect data from this app.** Result label: "Data Not Collected".
+1. *Do you or your third-party partners collect data from this app?* → **Yes.** Declare:
+   - **Usage Data → Product Interaction** (which colleges were researched, as college facts) — *not linked to the user's identity*, *not used for tracking*, purpose **App Functionality**.
+   - **Identifiers → Device ID**: *No* (the install ID is random, app-generated and stored only as a hash; Apple's "Device ID" means device-level identifiers such as the advertising identifier — still, if you prefer the conservative position, declare it as *not linked, not tracking, App Functionality*).
+   - Everything else (contact info, health, financial info, location, user content about the student) → **not collected**.
+   The previous answer ("Data Not Collected") no longer applies once sharing is on by default.
 2. *Tracking* → **No** (no ATT prompt, `NSPrivacyTracking = false` in `ios/App/App/PrivacyInfo.xcprivacy`).
 
 **Owner judgment call.** Apple's definition of "collect" is data transmitted off the device in a way that you or your partners can access. Direct traffic to the user's own OpenAI account is not accessible to you, which is the basis for "Data Not Collected". If you prefer the conservative position (and some reviewers are strict about third-party AI), declare **User Content → Other User Content** (and, if the profile questions include them, **Other Data Types**) as *collected by a third party (OpenAI)*, **not linked to identity by you**, **not used for tracking**, purpose **App Functionality**. Over-declaring is never rejected; under-declaring can be. Keep the privacy policy and the label consistent with each other.
 
-The app also ships a privacy manifest (`PrivacyInfo.xcprivacy`) declaring no collected data, no tracking, and the UserDefaults required-reason API (`CA92.1`, used by the on-device storage plugin).
+The app also ships a privacy manifest (`PrivacyInfo.xcprivacy`) declaring product-interaction data (not linked, not tracking, App Functionality), no tracking, and the UserDefaults required-reason API (`CA92.1`, used by the on-device storage plugin).
 
 ## 8. App Review information and notes
 

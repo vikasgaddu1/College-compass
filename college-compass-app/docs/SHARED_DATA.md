@@ -10,9 +10,9 @@ Project: `college-compass` (Gaddu LLC) — `https://nspbxlnocelknibrajkv.supabas
 |---|---|---|---|
 | `colleges` | ~2,000 operating, predominantly bachelor's, public/private nonprofit institutions: name, aliases, location, type, size | Scorecard job | yes |
 | `college_stats` | federal College Scorecard figures: admit rate, SAT/ACT ranges, tuition, cost of attendance, net price by family income, graduation/retention, earnings, degrees by field | Scorecard job (monthly) | yes |
-| `college_research` | AI-researched facts for an admissions cycle (plans, deadlines, test policy, CDS extras, scholarships) | later: validated contributions | published rows only |
-| `college_programs` | AI-researched program notes per college × major area | later: validated contributions | published rows only |
-| `contributions` | raw research held in quarantine | later: edge function | **no** |
+| `college_research` | AI-researched facts for an admissions cycle (plans, deadlines, test policy, CDS extras, scholarships) | `contribute_research()` consensus | published rows only |
+| `college_programs` | AI-researched program notes per college × major area | `contribute_research()` consensus | published rows only |
+| `contributions` | raw research held in quarantine | `contribute_research()` | **no** |
 
 Row Level Security: the app's publishable key can only `select`, and only published research. All writes use the service key in CI. `match_colleges(names, states)` finds the best match per name (trigram similarity + aliases, optional state).
 
@@ -29,6 +29,23 @@ Turn it off for a build with `VITE_CC_SHARED_DATA=off` (the mocked e2e build doe
 
 Secrets: `SUPABASE_ACCESS_TOKEN` (Supabase account token; the job looks up the service key through the Management API and never prints it), `SUPABASE_DB_PASSWORD`, `SCORECARD_API_KEY` (api.data.gov). Optional variable `SUPABASE_PROJECT_REF` (defaults to the project above).
 
-## Not yet (needs a decision)
+## Shared research (the flywheel)
 
-Contributions from students' research (filling `college_research` / `college_programs` so later students don't spend ChatGPT usage) are **off**. Before enabling: confirm with OpenAI that research generated with a student's ChatGPT plan may be shared across users; add an opt-out in Settings and update the App Store privacy answers; accept writes only through an edge function with schema checks, the automatic data checks, Apple App Attest, and quarantine until a second independent result or a review pass agrees.
+`supabase/migrations/20261020010000_contributions.sql`. Every researched college makes the database richer; later students get it instantly with no ChatGPT usage.
+
+**Reading.** The lookup also returns *published* research for the student's cycle and program notes per major. A college whose research for the cycle **and** program notes for every one of the student's majors are published and fresh is built from the shared record (normalized exactly like fresh research, then gap-filled from federal data) and is **not researched**. Its data notes say "Shared research verified by N students' independent results".
+
+**Contributing.** After researching a college, the app calls `contribute_research(payload)` with whitelisted college facts and program notes (`contributionPayload` in `src/data/shared.ts`) — never data notes, CDS free-text notes, the profile, answers or anything identifying — plus a random per-install ID and the cycle. Settings → "Share research to help other students" (on by default) turns it off.
+
+**In the database** (`security definer` function, the only write path apps have):
+1. Size/shape checks; cycle must look like `Fall 20xx`.
+2. Rate limit: 120 contributions per network address per hour (address stored only as a salted SHA-256, rows deleted after two days).
+3. Match the name (+ state) to a federal college; unknown colleges are rejected.
+4. Whitelist and range-check every field; drop URLs that aren't http(s); drop figures far from federal data (admit rate > 15 points off, SAT > 150 off, tuition outside 0.6–1.7×).
+5. Store in `contributions` (apps can never read it). The install ID is stored only as a salted hash.
+6. **Consensus:** publish to `college_research` when contributions from **≥ 2 different installs** in the last 180 days agree (≥ 2 comparable facts among admit rate ±2 points, test policy, SAT range ±30, application plan set and their deadlines; no conflicts). Program notes publish when 2 installs agree on whether the program is offered. Publishing **merges** into the existing record — a later contribution can update values but can never erase a published field.
+7. Research stays fresh for 6 months, program notes for 18 months; after that the next student who needs it researches again and the cycle repeats.
+
+Tested locally against Postgres 16: single-install repeats stay pending; disagreeing deadlines don't count; two agreeing installs publish (`verified_count=2`); student notes and `javascript:` URLs are dropped; a tampered admit rate is dropped and can't erase the published one; unknown colleges/bad cycles are rejected; the app role can't read contributions or the private schema; the hourly limit applies.
+
+**Not yet:** Apple App Attest (proves a request comes from the genuine app) is the next hardening step; until then, abuse is limited by per-install consensus, the per-address limit and the federal plausibility checks. A reviewer-model pass to break ties is planned with the adversarial-review feature.

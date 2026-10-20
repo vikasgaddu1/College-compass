@@ -346,6 +346,8 @@ export interface ResearchOptions {
   planner_model?: string;
   /** Reasoning effort per agent role; omitted = the model's default. Lower is faster. */
   effort?: { planner?: "low" | "medium" | "high"; researcher?: "low" | "medium" | "high" };
+  /** Send researched college facts to the shared database so later students skip research. Default true. */
+  share_research?: boolean;
   signal?: AbortSignal;
   onEvent: (e: ResearchEvent) => void;
 }

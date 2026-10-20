@@ -12,7 +12,7 @@
 import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
 import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
-import { createSharedLookup, mergeShared, type SharedLookup } from "../data/shared";
+import { APP_VERSION, contributionPayload, createSharedLookup, installId, mergeShared, sharedResearchRecord, type SharedCollege, type SharedLookup } from "../data/shared";
 import { researchCache as defaultCache, findFresh, type ResearchCache } from "./cache";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
@@ -311,6 +311,30 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         } else toResearch.push(c);
       }
 
+      // 2b) Shared database: federal figures for everything we research, and verified research other
+      // students already did for this cycle — those colleges need no ChatGPT call at all.
+      const cycle = `${entryTerm(profile)} entry`;
+      let sharedMap = new Map<string, SharedCollege>();
+      if (shared && toResearch.length) {
+        try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }
+      }
+      if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
+      for (const c of [...toResearch]) {
+        const facts = sharedMap.get(c.name);
+        const rec = facts ? sharedResearchRecord(facts, cycle, profile.majors, now().getTime()) : null;
+        if (!facts || !rec) continue;
+        const normalized = normalizeCollege(rec.raw, { requestedName: c.name, requestedState: c.state, cycle, now: now() });
+        if (!normalized) continue;
+        const college = mergeShared(
+          { ...normalized, researched_at: rec.researchedAt || normalized.researched_at, data_notes: [`Shared research verified by ${rec.verified} students' independent results (no personal data is shared).`, ...normalized.data_notes] },
+          facts,
+        );
+        results.set(c, college);
+        try { cache.put(college, [c.name]); } catch { /* cache is best-effort */ }
+        emit({ type: "college_done", college });
+        toResearch.splice(toResearch.indexOf(c), 1);
+      }
+
       // 3) Parallel batches.
       const limit = createLimiter(concurrency);
       const runId = newRunId();
@@ -319,13 +343,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         endRun = () => native.end(runId);
         try { await native.begin(runId, batches.length); } catch { /* best-effort */ }
       }
-      // One shared-data lookup for every college this run researches (never blocks research).
-      const sharedP = shared && toResearch.length
-        ? shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal).catch(() => new Map())
-        : Promise.resolve(new Map());
+      const share = opts.share_research !== false && !!shared?.contribute;
       const record = async (cand: CollegeCandidate, researched: College) => {
-        const facts = (await sharedP).get(cand.name);
+        const facts = sharedMap.get(cand.name);
         const college = facts ? mergeShared(researched, facts) : researched;
+        // Give back: the researched facts only (before federal gap-filling), never profile or notes.
+        if (share) void shared!.contribute!(contributionPayload(researched, cycle, installId(), APP_VERSION));
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });

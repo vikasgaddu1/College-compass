@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createSharedLookup, mergeShared, type SharedCollege } from "./shared";
+import { contributionPayload, createSharedLookup, mergeShared, sharedResearchRecord, type SharedCollege } from "./shared";
 import { fakeCollege } from "../ai/test-helpers";
 import type { College } from "../types";
 
@@ -14,6 +14,8 @@ const ecu: SharedCollege = {
     avg_net_price: 14000, net_price_by_income: { "0_30k": 9000, "30_48k": 10500, "48_75k": 13000, "75_110k": 17000, "110k_plus": 19500 },
     grad_rate_6yr: 0.66, retention_rate: 0.83, median_earnings_10yr: 48000, program_share: { health: 0.2, nursing: 0.2 },
   },
+  research: [],
+  programs: [],
 };
 
 describe("mergeShared", () => {
@@ -69,5 +71,48 @@ describe("createSharedLookup", () => {
     expect((await l.lookup([{ name: "A", state: null }])).size).toBe(0);
     const slow = createSharedLookup({ url: "https://x", key: "k" }, ((_u: unknown, init?: RequestInit) => new Promise((_, rej) => init?.signal?.addEventListener("abort", () => rej(new DOMException("t", "AbortError"))))) as unknown as typeof fetch, 20)!;
     expect((await slow.lookup([{ name: "A", state: null }])).size).toBe(0);
+  });
+});
+
+describe("shared research (the flywheel)", () => {
+  const now = Date.parse("2026-10-20T00:00:00Z");
+  const later = "2027-04-01T00:00:00Z";
+  const withResearch: SharedCollege = {
+    ...ecu,
+    research: [{ cycle: "Fall 2027", data: { admit_rate: 0.89, test_policy: "optional", sources: [{ title: "CDS", url: "https://ecu.edu/cds" }] }, verified_count: 3, researched_at: "2026-10-01T00:00:00Z", stale_after: later }],
+    programs: [{ major_area: "nursing", data: { major: "nursing", offered: true, degree: "BSN" }, verified_count: 2, stale_after: later }],
+  };
+
+  it("is a hit only when this cycle's research and every one of the student's majors are verified and fresh", () => {
+    const hit = sharedResearchRecord(withResearch, "Fall 2027 entry", ["nursing", "undecided"], now)!;
+    expect(hit.raw.admit_rate).toBe(0.89);
+    expect(hit.raw.programs).toEqual([{ major: "nursing", offered: true, degree: "BSN" }]);
+    expect(hit.verified).toBe(3);
+    expect(sharedResearchRecord(withResearch, "Fall 2027", ["nursing", "biology"], now)).toBeNull(); // biology not researched yet
+    expect(sharedResearchRecord(withResearch, "Fall 2028", ["nursing"], now)).toBeNull(); // other cycle
+    expect(sharedResearchRecord(withResearch, "Fall 2027", ["nursing"], Date.parse("2027-05-01T00:00:00Z"))).toBeNull(); // stale
+  });
+
+  it("contributes college facts only — never notes, the profile, or program estimates", () => {
+    const c = withC("East Carolina University", {
+      data_notes: ["this NC student with a 3.8 GPA"], cds: { cds_year: "2025-26", notes: "for this student", ed_admit_rate: null },
+      programs: [{ major: "nursing", offered: true, degree: "BSN", how_to_enter: "competitive", notes: null }],
+    });
+    const p = contributionPayload(c, "Fall 2027 entry", "11111111-1111-4111-8111-111111111111", "1.0.0");
+    expect(p.cycle).toBe("Fall 2027");
+    expect(JSON.stringify(p)).not.toMatch(/3\.8 GPA|for this student/);
+    expect(Object.keys(p.college)).not.toEqual(expect.arrayContaining(["data_notes", "program_share", "id", "researched_at", "region"]));
+    expect(p.programs).toEqual([{ major: "nursing", offered: true, degree: "BSN", how_to_enter: "competitive", notes: null }]);
+  });
+
+  it("contribute posts to the database function and never throws", async () => {
+    const doFetch = vi.fn(async () => new Response("{}"));
+    const l = createSharedLookup({ url: "https://x.supabase.co", key: "pk" }, doFetch as unknown as typeof fetch)!;
+    await l.contribute!({ install_id: "i", app_version: "1", cycle: "Fall 2027", college: { name: "A" }, programs: [] });
+    const [url, init] = doFetch.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe("https://x.supabase.co/rest/v1/rpc/contribute_research");
+    expect(JSON.parse(String(init.body)).payload.college.name).toBe("A");
+    const bad = createSharedLookup({ url: "https://x", key: "k" }, (async () => { throw new Error("down"); }) as unknown as typeof fetch)!;
+    await expect(bad.contribute!({ install_id: "i", app_version: "1", cycle: "Fall 2027", college: {}, programs: [] })).resolves.toBeUndefined();
   });
 });
