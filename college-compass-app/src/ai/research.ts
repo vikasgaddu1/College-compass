@@ -12,6 +12,7 @@
 import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
 import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
+import { createSharedLookup, mergeShared, type SharedLookup } from "../data/shared";
 import { researchCache as defaultCache, findFresh, type ResearchCache } from "./cache";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
@@ -92,6 +93,8 @@ export interface ResearchDeps {
   client: AiClient;
   cache?: ResearchCache;
   now?: () => Date;
+  /** Shared college data (federal Scorecard figures in Supabase). Null = off. Defaults to the app's project. */
+  shared?: SharedLookup | null;
   /** iOS background tracking (defaults to the platform; no-ops on web). */
   native?: {
     begin(runId: string, expected: number): Promise<void> | void;
@@ -129,6 +132,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
   const cache = deps.cache ?? defaultCache;
   const now = deps.now ?? (() => new Date());
   const native = deps.native ?? { begin: beginResearchRun, end: endResearchRun, takeOrphans: takeOrphanedResearch };
+  const shared = deps.shared === undefined ? createSharedLookup() : deps.shared;
 
   async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]> {
     if (count <= 0) return [];
@@ -315,7 +319,13 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         endRun = () => native.end(runId);
         try { await native.begin(runId, batches.length); } catch { /* best-effort */ }
       }
-      const record = (cand: CollegeCandidate, college: College) => {
+      // One shared-data lookup for every college this run researches (never blocks research).
+      const sharedP = shared && toResearch.length
+        ? shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal).catch(() => new Map())
+        : Promise.resolve(new Map());
+      const record = async (cand: CollegeCandidate, researched: College) => {
+        const facts = (await sharedP).get(cand.name);
+        const college = facts ? mergeShared(researched, facts) : researched;
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
@@ -330,7 +340,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         for (let attempt = 0; attempt < 2 && remaining.length; attempt++) {
           try {
             const r = await researchBatch(remaining, profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, remaining));
-            for (const d of r.done) record(byTarget(d.target), d.college);
+            for (const d of r.done) await record(byTarget(d.target), d.college);
             remaining = r.missing;
           } catch (e) {
             if (fatal || isAbort(e)) return [];
@@ -351,7 +361,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         try {
           const r = await researchBatch([t], profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, [t]));
           const d = r.done[0];
-          if (d) record(byTarget(t), d.college);
+          if (d) await record(byTarget(t), d.college);
           else emit({ type: "college_failed", name: t.name, error: "No results were returned." });
         } catch (e) {
           if (fatal || isAbort(e)) return;

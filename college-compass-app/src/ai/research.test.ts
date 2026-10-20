@@ -298,3 +298,28 @@ describe("iOS background tracking", () => {
     expect(researched).toEqual(["College B"]);
   });
 });
+
+describe("shared college data", () => {
+  it("fills what research missed from the shared database (one lookup per run)", async () => {
+    const m = mockClient({ research: (ns) => ({ text: "", model: "m", tool_calls: [{ name: RESEARCH_TOOL_NAME, arguments: JSON.stringify({ colleges: ns.map((n) => rawCollege(n, "NC", { median_earnings_10yr: null })) }) }] }) });
+    const lookup = vi.fn(async (targets: { name: string }[]) => new Map(targets.map((t) => [t.name, {
+      unitid: "1", name: t.name, city: null, state: "NC", lat: null, lon: null, locale: null, url: null, undergrad_size: 5000,
+      hbcu: false, women_only: false, religious: false,
+      stats: { data_year: null, admit_rate: null, sat_25: null, sat_75: null, act_25: null, act_75: null, tuition_in_state: null, tuition_out_of_state: null,
+        cost_of_attendance: null, cost_of_attendance_basis: null, avg_net_price: null, net_price_by_income: { "110k_plus": 21000 },
+        grad_rate_6yr: null, retention_rate: null, median_earnings_10yr: 55000, program_share: {} },
+    }])));
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_shared" }), now: () => NOW, shared: { lookup } });
+    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: () => {} });
+    expect(lookup).toHaveBeenCalledTimes(1);
+    expect(out.every((c) => c.median_earnings_10yr === 55000)).toBe(true);
+    expect(out.some((c) => c.sources.some((s) => s.url.includes("collegescorecard.ed.gov")))).toBe(true);
+  });
+
+  it("research still completes when the shared database is unreachable", async () => {
+    const m = mockClient();
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_shared2" }), now: () => NOW, shared: { lookup: async () => { throw new Error("down"); } } });
+    const out = await r.run({ profile: baseProfile(), wanted: names(2), target_count: 2, onEvent: () => {} });
+    expect(out).toHaveLength(2);
+  });
+});
