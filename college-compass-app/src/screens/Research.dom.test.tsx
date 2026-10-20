@@ -109,7 +109,8 @@ describe("Research sign-in gate", () => {
     expect(screen.queryByText(/Research stopped/)).toBeNull();
     // The college researched before the session ended is still on screen and in the store.
     expect(screen.getByText(first.name)).toBeTruthy();
-    expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id);
+    // Saved to storage by an effect after the render, so wait for it (slower CI machines).
+    await waitFor(() => expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id));
 
     // Signed in again (the auth module notifies subscribers): research resumes by itself.
     mocks.run.mockImplementationOnce(() => new Promise(() => {}));
@@ -119,7 +120,8 @@ describe("Research sign-in gate", () => {
     expect(screen.getByText(first.name)).toBeTruthy();
     const opts = mocks.run.mock.calls[1]![0];
     expect(opts.cache?.map((c) => c.id)).toContain(first.id);
-    expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id);
+    // Saved to storage by an effect after the render, so wait for it (slower CI machines).
+    await waitFor(() => expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id));
   });
 
   it("does not resume on a failed sign-in attempt", async () => {
