@@ -155,6 +155,9 @@ jobs:
       ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
       ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
       ASC_KEY_P8: ${{ secrets.APP_STORE_CONNECT_KEY_P8 }}
+      # Signing, option 1 (no Mac needed): Apple cloud-managed signing with the API key above
+      # (key role: Admin) + the team ID. Option 2: your own distribution certificate + profile.
+      TEAM_ID: ${{ vars.APPLE_TEAM_ID || secrets.APPLE_TEAM_ID }}
       CERT_P12_B64: ${{ secrets.IOS_DIST_CERT_P12_BASE64 }}
       CERT_PASSWORD: ${{ secrets.IOS_DIST_CERT_PASSWORD }}
       PROFILE_B64: ${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}
@@ -167,16 +170,27 @@ jobs:
           [ -n "$ASC_KEY_ID" ]    || missing="$missing APP_STORE_CONNECT_KEY_ID"
           [ -n "$ASC_ISSUER_ID" ] || missing="$missing APP_STORE_CONNECT_ISSUER_ID"
           [ -n "$ASC_KEY_P8" ]    || missing="$missing APP_STORE_CONNECT_KEY_P8"
-          [ -n "$CERT_P12_B64" ]  || missing="$missing IOS_DIST_CERT_P12_BASE64"
-          [ -n "$CERT_PASSWORD" ] || missing="$missing IOS_DIST_CERT_PASSWORD"
-          [ -n "$PROFILE_B64" ]   || missing="$missing IOS_PROVISION_PROFILE_BASE64"
+          mode=""
+          if [ -n "$CERT_P12_B64$CERT_PASSWORD$PROFILE_B64" ]; then
+            # Option C (own certificate) is being configured: name exactly what's missing for it.
+            mode=manual
+            [ -n "$CERT_P12_B64" ]  || missing="$missing IOS_DIST_CERT_P12_BASE64"
+            [ -n "$CERT_PASSWORD" ] || missing="$missing IOS_DIST_CERT_PASSWORD"
+            [ -n "$PROFILE_B64" ]   || missing="$missing IOS_PROVISION_PROFILE_BASE64"
+          elif [ -n "$TEAM_ID" ]; then
+            mode=cloud
+          else
+            missing="$missing APPLE_TEAM_ID(variable, for cloud-managed signing)"
+          fi
           if [ -n "$missing" ]; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning title=TestFlight upload skipped::Missing repository secrets:$missing (see college-compass-app/docs/APP_STORE.md)"
+            echo "::warning title=TestFlight upload skipped::Missing:$missing (see college-compass-app/docs/APP_STORE.md)"
             echo "### TestFlight upload skipped" >> "$GITHUB_STEP_SUMMARY"
-            echo "Missing repository secrets:$missing" >> "$GITHUB_STEP_SUMMARY"
+            echo "Missing:$missing" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "mode=$mode" >> "$GITHUB_OUTPUT"
+            echo "::notice title=TestFlight signing::$mode"
           fi
 
       - uses: actions/checkout@v4
@@ -210,8 +224,80 @@ jobs:
           VITE_CC_TOKEN_RELAY: ${{ vars.VITE_CC_TOKEN_RELAY }}
         run: npm run cap:sync
 
-      - name: Import signing certificate and provisioning profile
+      - name: Install the App Store Connect API key
         if: steps.gate.outputs.ready == 'true'
+        id: asckey
+        run: |
+          set -euo pipefail
+          # altool looks for AuthKey_<KEYID>.p8 in ~/.appstoreconnect/private_keys; xcodebuild takes a path.
+          # The secret may hold the raw PEM or a base64 encoding of it.
+          KEY_DIR="$HOME/.appstoreconnect/private_keys"
+          mkdir -p "$KEY_DIR"
+          KEY_PATH="$KEY_DIR/AuthKey_${ASC_KEY_ID}.p8"
+          if printf '%s' "$ASC_KEY_P8" | grep -q 'BEGIN PRIVATE KEY'; then
+            printf '%s\n' "$ASC_KEY_P8" > "$KEY_PATH"
+          else
+            printf '%s' "$ASC_KEY_P8" | base64 --decode > "$KEY_PATH"
+          fi
+          chmod 600 "$KEY_PATH"
+          echo "path=$KEY_PATH" >> "$GITHUB_OUTPUT"
+
+      # ── Option 1: cloud-managed signing (Xcode creates/uses the distribution certificate and
+      # profile in your account through the API key; needs an Admin-role key). The archive is
+      # built unsigned — signing it for development would need a registered device — and the
+      # export step signs it for App Store distribution and uploads it. ──
+      - name: Archive and upload (cloud-managed signing)
+        if: steps.gate.outputs.ready == 'true' && steps.gate.outputs.mode == 'cloud'
+        env:
+          KEY_PATH: ${{ steps.asckey.outputs.path }}
+        run: |
+          set -euo pipefail
+          AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
+          LOG="$RUNNER_TEMP/xcodebuild.log"
+          # Surface Xcode's own error lines as annotations (raw logs aren't always reachable).
+          report() {
+            grep -E "error:|error -|No profiles|No Accounts|Provisioning|provisioning|certificate|Certificate|not found|App Store Connect|ITMS-|Code Signing|Signing" "$LOG" \
+              | grep -v "^\s*$" | sort -u | head -25 | while IFS= read -r line; do echo "::error title=xcodebuild::${line:0:900}"; done
+          }
+          trap 'report' ERR
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            "${AUTH[@]}" \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER" 2>&1 | tee "$LOG" | grep -E "error|warning: .*sign|ARCHIVE (SUCCEEDED|FAILED)" || true
+          grep -q "ARCHIVE SUCCEEDED" "$LOG" || { report; exit 65; }
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict>
+          </plist>
+          EOF
+          # destination=upload sends the build straight to App Store Connect / TestFlight.
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            "${AUTH[@]}" 2>&1 | tee "$LOG" | grep -E "error|Upload|EXPORT (SUCCEEDED|FAILED)" || true
+          grep -q "EXPORT SUCCEEDED" "$LOG" || { report; exit 65; }
+          echo "### Uploaded build $GITHUB_RUN_NUMBER to App Store Connect" >> "$GITHUB_STEP_SUMMARY"
+
+      # ── Option 2: your own distribution certificate + App Store provisioning profile. ──
+      - name: Import signing certificate and provisioning profile
+        if: steps.gate.outputs.ready == 'true' && steps.gate.outputs.mode == 'manual'
         id: signing
         run: |
           set -euo pipefail
@@ -232,10 +318,10 @@ jobs:
           security cms -D -i "$RUNNER_TEMP/profile.mobileprovision" > "$RUNNER_TEMP/profile.plist"
           PROFILE_UUID="$(/usr/libexec/PlistBuddy -c 'Print :UUID' "$RUNNER_TEMP/profile.plist")"
           PROFILE_NAME="$(/usr/libexec/PlistBuddy -c 'Print :Name' "$RUNNER_TEMP/profile.plist")"
-          TEAM_ID="$(/usr/libexec/PlistBuddy -c 'Print :TeamIdentifier:0' "$RUNNER_TEMP/profile.plist")"
+          TEAM="$(/usr/libexec/PlistBuddy -c 'Print :TeamIdentifier:0' "$RUNNER_TEMP/profile.plist")"
           APP_ID="$(/usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' "$RUNNER_TEMP/profile.plist")"
-          if [ "$APP_ID" != "$TEAM_ID.$BUNDLE_ID" ]; then
-            echo "::error::Provisioning profile is for '$APP_ID', expected '$TEAM_ID.$BUNDLE_ID'"
+          if [ "$APP_ID" != "$TEAM.$BUNDLE_ID" ]; then
+            echo "::error::Provisioning profile is for '$APP_ID', expected '$TEAM.$BUNDLE_ID'"
             exit 1
           fi
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
@@ -244,19 +330,19 @@ jobs:
           echo "keychain=$KEYCHAIN" >> "$GITHUB_OUTPUT"
           echo "profile_uuid=$PROFILE_UUID" >> "$GITHUB_OUTPUT"
           echo "profile_name=$PROFILE_NAME" >> "$GITHUB_OUTPUT"
-          echo "team_id=$TEAM_ID" >> "$GITHUB_OUTPUT"
+          echo "team_id=$TEAM" >> "$GITHUB_OUTPUT"
 
       # Manual signing is applied to the App target only (a command-line
       # PROVISIONING_PROFILE_SPECIFIER would also hit the Pods targets and fail).
       # Only the two App-target build configurations contain CODE_SIGN_STYLE.
-      - name: Archive (manual signing)
-        if: steps.gate.outputs.ready == 'true'
+      - name: Archive, export and upload (manual signing)
+        if: steps.gate.outputs.ready == 'true' && steps.gate.outputs.mode == 'manual'
         env:
-          TEAM_ID: ${{ steps.signing.outputs.team_id }}
+          TEAM: ${{ steps.signing.outputs.team_id }}
           PROFILE_NAME: ${{ steps.signing.outputs.profile_name }}
         run: |
           set -euo pipefail
-          perl -0pi -e 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;\n\t\t\t\tCODE_SIGN_IDENTITY = "Apple Distribution";\n\t\t\t\tDEVELOPMENT_TEAM = $ENV{TEAM_ID};\n\t\t\t\tPROVISIONING_PROFILE_SPECIFIER = "$ENV{PROFILE_NAME}";/g' \
+          perl -0pi -e 's/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;\n\t\t\t\tCODE_SIGN_IDENTITY = "Apple Distribution";\n\t\t\t\tDEVELOPMENT_TEAM = $ENV{TEAM};\n\t\t\t\tPROVISIONING_PROFILE_SPECIFIER = "$ENV{PROFILE_NAME}";/g' \
             ios/App/App.xcodeproj/project.pbxproj
           grep -c 'CODE_SIGN_STYLE = Manual' ios/App/App.xcodeproj/project.pbxproj
 
@@ -269,13 +355,6 @@ jobs:
             -archivePath "$RUNNER_TEMP/App.xcarchive" \
             CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER"
 
-      - name: Export IPA
-        if: steps.gate.outputs.ready == 'true'
-        env:
-          TEAM_ID: ${{ steps.signing.outputs.team_id }}
-          PROFILE_NAME: ${{ steps.signing.outputs.profile_name }}
-        run: |
-          set -euo pipefail
           cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -283,7 +362,7 @@ jobs:
           <dict>
             <key>method</key><string>app-store-connect</string>
             <key>destination</key><string>export</string>
-            <key>teamID</key><string>$TEAM_ID</string>
+            <key>teamID</key><string>$TEAM</string>
             <key>signingStyle</key><string>manual</string>
             <key>signingCertificate</key><string>Apple Distribution</string>
             <key>provisioningProfiles</key>
@@ -299,36 +378,14 @@ jobs:
             -archivePath "$RUNNER_TEMP/App.xcarchive" \
             -exportPath "$RUNNER_TEMP/export" \
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
-          ls -la "$RUNNER_TEMP/export"
-
-      - name: Upload to TestFlight
-        if: steps.gate.outputs.ready == 'true'
-        run: |
-          set -euo pipefail
-          # altool looks for AuthKey_<KEYID>.p8 in ~/.appstoreconnect/private_keys.
-          # The secret may hold the raw PEM or a base64 encoding of it.
-          KEY_DIR="$HOME/.appstoreconnect/private_keys"
-          mkdir -p "$KEY_DIR"
-          if printf '%s' "$ASC_KEY_P8" | grep -q 'BEGIN PRIVATE KEY'; then
-            printf '%s\n' "$ASC_KEY_P8" > "$KEY_DIR/AuthKey_${ASC_KEY_ID}.p8"
-          else
-            printf '%s' "$ASC_KEY_P8" | base64 --decode > "$KEY_DIR/AuthKey_${ASC_KEY_ID}.p8"
-          fi
           IPA="$(ls "$RUNNER_TEMP"/export/*.ipa | head -n 1)"
           xcrun altool --upload-app --type ios --file "$IPA" \
             --apiKey "$ASC_KEY_ID" --apiIssuer "$ASC_ISSUER_ID"
-
-      - name: Keep IPA as a build artifact
-        if: steps.gate.outputs.ready == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: CollegeCompass-ipa
-          path: ${{ runner.temp }}/export/*.ipa
-          retention-days: 14
+          echo "### Uploaded build $GITHUB_RUN_NUMBER to App Store Connect" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Clean up signing material
         if: always() && steps.gate.outputs.ready == 'true'
         run: |
-          security delete-keychain "${{ steps.signing.outputs.keychain }}" || true
-          rm -f "$HOME/Library/MobileDevice/Provisioning Profiles/${{ steps.signing.outputs.profile_uuid }}.mobileprovision"
+          [ -n "${{ steps.signing.outputs.keychain }}" ] && security delete-keychain "${{ steps.signing.outputs.keychain }}" || true
+          [ -n "${{ steps.signing.outputs.profile_uuid }}" ] && rm -f "$HOME/Library/MobileDevice/Provisioning Profiles/${{ steps.signing.outputs.profile_uuid }}.mobileprovision" || true
           rm -rf "$HOME/.appstoreconnect/private_keys"
