@@ -247,6 +247,13 @@ jobs:
         run: |
           set -euo pipefail
           AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
+          LOG="$RUNNER_TEMP/xcodebuild.log"
+          # Surface Xcode's own error lines as annotations (raw logs aren't always reachable).
+          report() {
+            grep -E "error:|error -|No profiles|No Accounts|Provisioning|provisioning|certificate|Certificate|not found|App Store Connect|ITMS-|Code Signing|Signing" "$LOG" \
+              | grep -v "^\s*$" | sort -u | head -25 | while IFS= read -r line; do echo "::error title=xcodebuild::${line:0:900}"; done
+          }
+          trap 'report' ERR
           xcodebuild archive \
             -workspace ios/App/App.xcworkspace \
             -scheme App \
@@ -256,7 +263,8 @@ jobs:
             -archivePath "$RUNNER_TEMP/App.xcarchive" \
             "${AUTH[@]}" \
             CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM="$TEAM_ID" \
-            CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER"
+            CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER" 2>&1 | tee "$LOG" | grep -E "error|warning: .*sign|ARCHIVE (SUCCEEDED|FAILED)" || true
+          grep -q "ARCHIVE SUCCEEDED" "$LOG" || { report; exit 65; }
           cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -276,7 +284,8 @@ jobs:
             -archivePath "$RUNNER_TEMP/App.xcarchive" \
             -exportPath "$RUNNER_TEMP/export" \
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
-            "${AUTH[@]}"
+            "${AUTH[@]}" 2>&1 | tee "$LOG" | grep -E "error|Upload|EXPORT (SUCCEEDED|FAILED)" || true
+          grep -q "EXPORT SUCCEEDED" "$LOG" || { report; exit 65; }
           echo "### Uploaded build $GITHUB_RUN_NUMBER to App Store Connect" >> "$GITHUB_STEP_SUMMARY"
 
       # ── Option 2: your own distribution certificate + App Store provisioning profile. ──
