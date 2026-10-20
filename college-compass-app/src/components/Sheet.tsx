@@ -16,20 +16,29 @@ interface SheetProps {
 
 export function Sheet({ open, onClose, title, left, right, children, footer, label }: SheetProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // Callers pass inline arrows, so `onClose` changes on every render. Keep it in a ref: if the
+  // effect below re-ran per render, typing in a search box inside the sheet would move focus
+  // away after each character (and on iPhone the keyboard closes and the sheet collapses).
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") onCloseRef.current();
     };
     document.addEventListener("keydown", onKey);
     const prev = document.activeElement as HTMLElement | null;
-    // Focus the sheet so VoiceOver / keyboard users land inside it.
-    setTimeout(() => ref.current?.focus(), 30);
+    // Focus the sheet so VoiceOver / keyboard users land inside it — unless a field inside it
+    // (e.g. an autoFocus search box) already has focus.
+    const t = setTimeout(() => {
+      if (ref.current && !ref.current.contains(document.activeElement)) ref.current.focus();
+    }, 30);
     return () => {
+      clearTimeout(t);
       document.removeEventListener("keydown", onKey);
       prev?.focus?.();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
   return createPortal(
