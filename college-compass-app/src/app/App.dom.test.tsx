@@ -31,8 +31,10 @@ describe("App", () => {
     expect(screen.getByRole("region", { name: "High reach" }) || screen.getByText("High reach")).toBeTruthy();
     expect(screen.getByText("Duke University")).toBeTruthy();
     // Persisted under cc2:
-    expect(localStorage.getItem("cc2:colleges")).toBeTruthy();
-    expect(JSON.parse(localStorage.getItem("cc2:prefs") || "{}").demo).toBe(true);
+    await waitFor(() => {
+      expect(localStorage.getItem("cc2:colleges")).toBeTruthy();
+      expect(JSON.parse(localStorage.getItem("cc2:prefs") || "{}").demo).toBe(true);
+    });
   });
 
   it("opens a college detail with the odds breakdown and toggles the shortlist", async () => {
