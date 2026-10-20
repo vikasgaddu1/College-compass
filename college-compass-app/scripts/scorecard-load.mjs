@@ -25,6 +25,7 @@ const KEY = process.env.SCORECARD_API_KEY || "DEMO_KEY";
 const REF = process.env.SUPABASE_PROJECT_REF;
 const DRY = process.env.DRY_RUN === "1";
 const LIMIT_PAGES = Number(process.env.LIMIT_PAGES || 0);
+const RUN_AT = new Date().toISOString();
 
 /**
  * Scorecard 2-digit CIP families → the app's BROAD major areas only. Specialized areas (nursing,
@@ -55,6 +56,86 @@ export const PROGRAM_MAP = {
   agriculture: ["agriculture_food"],
   parks_recreation_fitness: ["kinesiology_sports"],
 };
+
+const STATE_NAMES = {
+  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California", CO: "Colorado", CT: "Connecticut", DE: "Delaware",
+  FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho", IL: "Illinois", IN: "Indiana", IA: "Iowa", KS: "Kansas", KY: "Kentucky",
+  LA: "Louisiana", ME: "Maine", MD: "Maryland", MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri",
+  MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York",
+  NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island",
+  SC: "South Carolina", SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington",
+  WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming", DC: "District of Columbia",
+};
+
+/** Well-known short names that rules can't derive (federal name → aliases). */
+export const KNOWN_ALIASES = {
+  "Massachusetts Institute of Technology": ["MIT"],
+  "California Institute of Technology": ["Caltech"],
+  "Georgia Institute of Technology-Main Campus": ["Georgia Tech", "GT"],
+  "Virginia Polytechnic Institute and State University": ["Virginia Tech", "VT"],
+  "University of Pennsylvania": ["Penn", "UPenn"],
+  "Pennsylvania State University-Main Campus": ["Penn State", "PSU"],
+  "University of California-Berkeley": ["UC Berkeley", "Berkeley", "Cal"],
+  "University of California-Los Angeles": ["UCLA"],
+  "University of California-San Diego": ["UCSD", "UC San Diego"],
+  "University of Southern California": ["USC"],
+  "University of Michigan-Ann Arbor": ["University of Michigan", "UMich", "Michigan"],
+  "University of Illinois Urbana-Champaign": ["UIUC", "University of Illinois"],
+  "The University of Texas at Austin": ["UT Austin", "University of Texas"],
+  "University of Virginia-Main Campus": ["UVA", "University of Virginia"],
+  "University of Wisconsin-Madison": ["UW Madison", "UW-Madison"],
+  "Carnegie Mellon University": ["CMU"],
+  "New York University": ["NYU"],
+  "Rensselaer Polytechnic Institute": ["RPI"],
+  "Worcester Polytechnic Institute": ["WPI"],
+  "Rose-Hulman Institute of Technology": ["Rose-Hulman"],
+  "Texas A & M University-College Station": ["Texas A&M", "TAMU"],
+  "Purdue University-Main Campus": ["Purdue", "Purdue University"],
+  "Ohio State University-Main Campus": ["Ohio State", "The Ohio State University", "OSU"],
+  "University of Maryland-College Park": ["UMD", "University of Maryland"],
+  "University of Washington-Seattle Campus": ["UW", "University of Washington"],
+  "Johns Hopkins University": ["JHU", "Hopkins"],
+  "Arizona State University Campus Immersion": ["ASU"],
+  "University of Massachusetts-Amherst": ["UMass Amherst", "UMass"],
+  "University of Connecticut": ["UConn"],
+  "Louisiana State University and Agricultural & Mechanical College": ["LSU", "Louisiana State University"],
+  "University of Minnesota-Twin Cities": ["University of Minnesota", "UMN"],
+};
+
+/**
+ * Names students and the planner actually use: the federal name without its campus suffix
+ * ("Purdue University-Main Campus" → "Purdue University"), "UNC Chapel Hill" style for
+ * "University of North Carolina at Chapel Hill", "NC State" for "North Carolina State University
+ * at Raleigh", plus a few well-known short names.
+ */
+export function deriveAliases(name, state) {
+  const out = new Set(KNOWN_ALIASES[name] ?? []);
+  const base = name.replace(/^The\s+/i, "").trim();
+  const noCampus = base.replace(/\s*-\s*(Main Campus|Main|Campus.*)$/i, "").replace(/\s+(Main Campus|Campus Immersion|Campus)$/i, "").trim();
+  if (noCampus !== name) out.add(noCampus);
+  // "X-City" / "X at City" → "X" and "X City"
+  const split = noCampus.match(/^(.*?)(?:\s*-\s*|\s+at\s+)([A-Z][\w .&'-]+)$/);
+  if (split && split[1].length > 6) {
+    out.add(split[1].trim());
+    out.add(`${split[1].trim()} ${split[2].trim()}`);
+  }
+  // "University of <State> at/- <City>" → "U<initials> <City>" (UNC Chapel Hill, UMass Amherst-ish)
+  for (const [code, stName] of Object.entries(STATE_NAMES)) {
+    // "University of North Carolina at Chapel Hill", "…-Columbia", "…Wilmington" (no separator)
+    const m = noCampus.match(new RegExp(`^University of ${stName}(?:\\s*-\\s*|\\s+at\\s+|\\s+)([A-Z].+)$`));
+    if (m) {
+      const initials = "U" + stName.split(/\s+/).map((w) => w[0].toUpperCase()).join("");
+      if (initials.length >= 3) out.add(`${initials} ${m[1].trim()}`);
+    }
+    const st = noCampus.match(new RegExp(`^${stName} State University(?:\\s*-\\s*|\\s+at\\s+.*)?$`, "i"));
+    if (st) {
+      out.add(`${stName} State`);
+      if (stName.includes(" ")) out.add(`${stName.split(/\s+/).map((w) => w[0].toUpperCase()).join("")} State`); // NC State
+    }
+  }
+  out.delete(name);
+  return [...out].filter((a) => a.length >= 2 && a.length <= 80);
+}
 
 const LOCALE = (code) => {
   const c = Number(code);
@@ -98,10 +179,13 @@ const url = (u) => (!u ? null : /^https?:\/\//i.test(u) ? u : `https://${String(
 export function mapSchool(r, fetchedYear) {
   const own = OWNERSHIP[r["school.ownership"]] ?? null;
   const pub = own === "public";
-  const aliases = String(r["school.alias"] ?? "")
-    .split(/[|,;]/)
-    .map((s) => s.trim())
-    .filter((s) => s && s.length <= 80);
+  const aliases = [
+    ...String(r["school.alias"] ?? "")
+      .split(/[|,;]/)
+      .map((s) => s.trim())
+      .filter((s) => s && s.length <= 80),
+    ...deriveAliases(String(r["school.name"] ?? ""), r["school.state"] ?? null),
+  ];
   const college = {
     unitid: String(r.id),
     name: String(r["school.name"]).trim(),
@@ -118,7 +202,7 @@ export function mapSchool(r, fetchedYear) {
     women_only: Number(r["school.women_only"]) === 1,
     religious: num(r["school.religious_affiliation"]) !== null && Number(r["school.religious_affiliation"]) > 0,
     active: true,
-    updated_at: new Date().toISOString(),
+    updated_at: RUN_AT,
   };
   const side = pub ? "public" : "private";
   const npi = {};
@@ -219,6 +303,9 @@ function report(lines) {
 }
 
 async function main() {
+  // Recorded before mapping: every row this run writes gets updated_at = RUN_AT (> runStart), so
+  // only colleges absent from this complete feed keep an older updated_at and are deactivated.
+  const runStart = new Date(Date.now() - 1000).toISOString();
   if (KEY === "DEMO_KEY") console.log("SCORECARD_API_KEY not set — using api.data.gov's public DEMO_KEY (30 requests/hour).");
   const { rows, total } = await fetchScorecard();
   const year = new Date().toISOString().slice(0, 7);
@@ -250,7 +337,6 @@ async function main() {
 
   if (!DRY) {
     const key = await serviceKey();
-    const runStart = new Date(Date.now() - 1000).toISOString();
     await upsert("colleges", mapped.map((m) => m.college), key, "unitid");
     await upsert("college_stats", mapped.map((m) => m.stats), key, "unitid,source");
     lines.push("", `Upserted ${mapped.length} colleges and their Scorecard stats into Supabase project \`${REF}\`.`);

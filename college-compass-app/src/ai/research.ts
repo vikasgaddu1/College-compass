@@ -345,7 +345,11 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       }
       const share = opts.share_research !== false && !!shared?.contribute;
       const record = async (cand: CollegeCandidate, researched: College) => {
-        const facts = sharedMap.get(cand.name);
+        let facts = sharedMap.get(cand.name);
+        // Planner/student names ("UNC Chapel Hill") may not match; research returns the official name.
+        if (!facts && shared && researched.name && researched.name !== cand.name) {
+          try { facts = (await shared.lookup([{ name: researched.name, state: researched.state || null }], signal)).get(researched.name); } catch { /* optional */ }
+        }
         const college = facts ? mergeShared(researched, facts) : researched;
         // Give back: the researched facts only (before federal gap-filling), never profile or notes.
         if (share) void shared!.contribute!(contributionPayload(researched, cycle, installId(), APP_VERSION));
