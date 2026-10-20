@@ -1,0 +1,3 @@
+# Minimal Supabase CLI config for `supabase db push` from CI (.github/workflows/supabase.yml).
+# The project itself is created in the Supabase dashboard; migrations live in supabase/migrations.
+project_id = "college-compass"

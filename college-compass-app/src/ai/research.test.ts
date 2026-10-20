@@ -298,3 +298,63 @@ describe("iOS background tracking", () => {
     expect(researched).toEqual(["College B"]);
   });
 });
+
+describe("shared college data", () => {
+  it("fills what research missed from the shared database (one lookup per run)", async () => {
+    const m = mockClient({ research: (ns) => ({ text: "", model: "m", tool_calls: [{ name: RESEARCH_TOOL_NAME, arguments: JSON.stringify({ colleges: ns.map((n) => rawCollege(n, "NC", { median_earnings_10yr: null })) }) }] }) });
+    const lookup = vi.fn(async (targets: { name: string }[]) => new Map(targets.map((t) => [t.name, {
+      unitid: "1", name: t.name, city: null, state: "NC", lat: null, lon: null, locale: null, url: null, undergrad_size: 5000,
+      hbcu: false, women_only: false, religious: false,
+      stats: { data_year: null, admit_rate: null, sat_25: null, sat_75: null, act_25: null, act_75: null, tuition_in_state: null, tuition_out_of_state: null,
+        cost_of_attendance: null, cost_of_attendance_basis: null, avg_net_price: null, net_price_by_income: { "110k_plus": 21000 },
+        grad_rate_6yr: null, retention_rate: null, median_earnings_10yr: 55000, program_share: {} },
+      research: [], programs: [],
+    }])));
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_shared" }), now: () => NOW, shared: { lookup } });
+    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: () => {} });
+    expect(lookup).toHaveBeenCalledTimes(1);
+    expect(out.every((c) => c.median_earnings_10yr === 55000)).toBe(true);
+    expect(out.some((c) => c.sources.some((s) => s.url.includes("collegescorecard.ed.gov")))).toBe(true);
+  });
+
+  it("research still completes when the shared database is unreachable", async () => {
+    const m = mockClient();
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_shared2" }), now: () => NOW, shared: { lookup: async () => { throw new Error("down"); } } });
+    const out = await r.run({ profile: baseProfile(), wanted: names(2), target_count: 2, onEvent: () => {} });
+    expect(out).toHaveLength(2);
+  });
+});
+
+describe("shared research flywheel", () => {
+  const sharedHit = (name: string) => ({
+    unitid: "1", name, city: "Somewhere", state: "NC", lat: null, lon: null, locale: null, url: "https://a.edu", undergrad_size: 9000,
+    hbcu: false, women_only: false, religious: false, stats: null,
+    research: [{ cycle: `Fall ${baseProfile().grad_year}`, data: { ...rawCollege(name), name }, verified_count: 2, researched_at: "2026-09-01T00:00:00Z", stale_after: "2099-01-01T00:00:00Z" }],
+    programs: baseProfile().majors.filter((m) => m !== "undecided").map((m) => ({ major_area: m, data: { major: m, offered: true, degree: "B.S." }, verified_count: 2, stale_after: "2099-01-01T00:00:00Z" })),
+  });
+
+  it("uses verified shared research instead of ChatGPT, and contributes what it researched", async () => {
+    const m = mockClient();
+    const contribute = vi.fn(async () => {});
+    const lookup = vi.fn(async (targets: { name: string }[]) => new Map(targets.filter((t) => t.name === "College A").map((t) => [t.name, sharedHit(t.name)])));
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_fly" }), now: () => NOW, shared: { lookup, contribute } as never });
+    const out = await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: () => {} });
+    expect(out.map((c) => c.name).sort()).toEqual(["College A", "College B", "College C"]);
+    const researched = m.calls.flatMap((c) => requested(c));
+    expect(researched.sort()).toEqual(["College B", "College C"]); // A came from the shared database
+    const a = out.find((c) => c.name === "College A")!;
+    expect(a.data_notes[0]).toMatch(/Shared research verified by 2 students/);
+    expect(contribute).toHaveBeenCalledTimes(2);
+    const sent = (contribute.mock.calls as unknown as [{ college: Record<string, unknown>; cycle: string }][]).map(([p]) => p);
+    expect(sent.map((p) => p.college.name).sort()).toEqual(["College B", "College C"]);
+    expect(sent.every((p) => !("data_notes" in p.college))).toBe(true);
+  });
+
+  it("does not contribute when the student turned sharing off", async () => {
+    const m = mockClient();
+    const contribute = vi.fn(async () => {});
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_fly2" }), now: () => NOW, shared: { lookup: async () => new Map(), contribute } });
+    await r.run({ profile: baseProfile(), wanted: names(2), target_count: 2, share_research: false, onEvent: () => {} });
+    expect(contribute).not.toHaveBeenCalled();
+  });
+});

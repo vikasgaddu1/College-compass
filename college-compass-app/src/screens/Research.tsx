@@ -97,7 +97,7 @@ export function Research() {
     setStartedAt(Date.now());
     setColleges([]);
     researchApi(demo)
-      .run({ profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache: colleges, model: prefs.model ?? undefined, signal: c.signal, onEvent })
+      .run({ profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache: colleges, model: prefs.model ?? undefined, share_research: prefs.shareResearch !== false, signal: c.signal, onEvent })
       .then(() => setStatus((s) => (s === "error" ? s : "done")))
       .catch((err) => {
         if (c.signal.aborted) {

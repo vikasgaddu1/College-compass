@@ -5,7 +5,7 @@ import { MANAGE_USAGE_URL, auth, describeError, devKey as readDevKey, setDevApiK
 import { TIERS, majorLabel, stateName } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
 import { ConfirmSheet, Sheet } from "@/components/Sheet";
-import { Banner, Button, Group, Row, Segmented } from "@/components/ui";
+import { Banner, Button, Group, Row, Segmented, Switch } from "@/components/ui";
 import { IconCheck, IconChat, IconExternal, IconPerson } from "@/components/icons";
 
 const APP_VERSION = "0.1.0";
@@ -166,6 +166,20 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
         ) : (
           <Row label="Answer the questions" hint="About 3 minutes" chevron onClick={() => navigate("/onboarding/1")} />
         )}
+      </Group>
+
+      {/* Shared research */}
+      <Group
+        label="Shared college research"
+        foot="Only facts about colleges are shared — admit rates, costs, deadlines, programs and their sources. Never your answers, grades, notes, name or anything that identifies you. Results are published only after a second student's independent research agrees."
+      >
+        <div className="flex min-h-tap items-center gap-3 px-4 py-3">
+          <div className="min-w-0 flex-1">
+            <div className="text-[15px]">Share research to help other students</div>
+            <div className="text-[13px] text-[color:var(--text-muted)] mt-0.5">Colleges other students already researched load instantly and don't use your ChatGPT plan.</div>
+          </div>
+          <Switch checked={prefs.shareResearch !== false} onChange={(v) => setPrefs({ shareResearch: v })} label="Share research to help other students" />
+        </div>
       </Group>
 
       {/* Data */}

@@ -7,7 +7,7 @@ cd "$(dirname "$0")/.."
 PORT="${E2E_PORT:-4173}"
 export E2E_BASE_URL="${E2E_BASE_URL:-http://localhost:${PORT}/College-compass/app/}"
 
-VITE_CC_CHATGPT_CLIENT_ID=oaiapp_e2e_test npm run build
+VITE_CC_SHARED_DATA=off VITE_CC_CHATGPT_CLIENT_ID=oaiapp_e2e_test npm run build
 
 set -m # background job gets its own process group, so the whole npx → vite tree can be stopped
 npx vite preview --port "$PORT" --strictPort >e2e/.preview.log 2>&1 &

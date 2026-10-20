@@ -20,9 +20,11 @@ export interface Prefs {
   researchCount: 6 | 12 | 18;
   /** iOS app: the student asked to be notified when research finishes, so later runs arm it automatically. */
   notifyWhenReady: boolean;
+  /** Share researched college facts (never personal data) so other students skip research. */
+  shareResearch: boolean;
 }
 
-const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, demo: false, onboardingDone: false, researchedAt: null, theme: "system", researchCount: 12, notifyWhenReady: false };
+const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, demo: false, onboardingDone: false, researchedAt: null, theme: "system", researchCount: 12, notifyWhenReady: false, shareResearch: true };
 
 export interface Store {
   profile: StudentProfile;

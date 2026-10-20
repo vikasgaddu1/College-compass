@@ -12,6 +12,7 @@
 import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
 import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
+import { APP_VERSION, contributionPayload, createSharedLookup, installId, mergeShared, sharedResearchRecord, type SharedCollege, type SharedLookup } from "../data/shared";
 import { researchCache as defaultCache, findFresh, type ResearchCache } from "./cache";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
@@ -92,6 +93,8 @@ export interface ResearchDeps {
   client: AiClient;
   cache?: ResearchCache;
   now?: () => Date;
+  /** Shared college data (federal Scorecard figures in Supabase). Null = off. Defaults to the app's project. */
+  shared?: SharedLookup | null;
   /** iOS background tracking (defaults to the platform; no-ops on web). */
   native?: {
     begin(runId: string, expected: number): Promise<void> | void;
@@ -129,6 +132,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
   const cache = deps.cache ?? defaultCache;
   const now = deps.now ?? (() => new Date());
   const native = deps.native ?? { begin: beginResearchRun, end: endResearchRun, takeOrphans: takeOrphanedResearch };
+  const shared = deps.shared === undefined ? createSharedLookup() : deps.shared;
 
   async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]> {
     if (count <= 0) return [];
@@ -307,6 +311,30 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         } else toResearch.push(c);
       }
 
+      // 2b) Shared database: federal figures for everything we research, and verified research other
+      // students already did for this cycle — those colleges need no ChatGPT call at all.
+      const cycle = `${entryTerm(profile)} entry`;
+      let sharedMap = new Map<string, SharedCollege>();
+      if (shared && toResearch.length) {
+        try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }
+      }
+      if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
+      for (const c of [...toResearch]) {
+        const facts = sharedMap.get(c.name);
+        const rec = facts ? sharedResearchRecord(facts, cycle, profile.majors, now().getTime()) : null;
+        if (!facts || !rec) continue;
+        const normalized = normalizeCollege(rec.raw, { requestedName: c.name, requestedState: c.state, cycle, now: now() });
+        if (!normalized) continue;
+        const college = mergeShared(
+          { ...normalized, researched_at: rec.researchedAt || normalized.researched_at, data_notes: [`Shared research verified by ${rec.verified} students' independent results (no personal data is shared).`, ...normalized.data_notes] },
+          facts,
+        );
+        results.set(c, college);
+        try { cache.put(college, [c.name]); } catch { /* cache is best-effort */ }
+        emit({ type: "college_done", college });
+        toResearch.splice(toResearch.indexOf(c), 1);
+      }
+
       // 3) Parallel batches.
       const limit = createLimiter(concurrency);
       const runId = newRunId();
@@ -315,7 +343,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         endRun = () => native.end(runId);
         try { await native.begin(runId, batches.length); } catch { /* best-effort */ }
       }
-      const record = (cand: CollegeCandidate, college: College) => {
+      const share = opts.share_research !== false && !!shared?.contribute;
+      const record = async (cand: CollegeCandidate, researched: College) => {
+        const facts = sharedMap.get(cand.name);
+        const college = facts ? mergeShared(researched, facts) : researched;
+        // Give back: the researched facts only (before federal gap-filling), never profile or notes.
+        if (share) void shared!.contribute!(contributionPayload(researched, cycle, installId(), APP_VERSION));
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
@@ -330,7 +363,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         for (let attempt = 0; attempt < 2 && remaining.length; attempt++) {
           try {
             const r = await researchBatch(remaining, profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, remaining));
-            for (const d of r.done) record(byTarget(d.target), d.college);
+            for (const d of r.done) await record(byTarget(d.target), d.college);
             remaining = r.missing;
           } catch (e) {
             if (fatal || isAbort(e)) return [];
@@ -351,7 +384,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         try {
           const r = await researchBatch([t], profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, [t]));
           const d = r.done[0];
-          if (d) record(byTarget(t), d.college);
+          if (d) await record(byTarget(t), d.college);
           else emit({ type: "college_failed", name: t.name, error: "No results were returned." });
         } catch (e) {
           if (fatal || isAbort(e)) return;
