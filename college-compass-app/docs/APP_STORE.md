@@ -51,11 +51,17 @@ npx cap open ios
 
 In Xcode: target **App** → Signing & Capabilities → tick *Automatically manage signing* → choose your Team. Product → Archive → Distribute App → App Store Connect → Upload. Commit `ios/App/Podfile.lock` afterwards.
 
-### B. From CI (no Mac needed)
+### B. From CI, cloud-managed signing (recommended: no Mac, no certificate files)
 
-You need an **Apple Distribution certificate** (exported as `.p12`), an **App Store provisioning profile**, and an **App Store Connect API key**.
+You only need an **App Store Connect API key with the Admin role** and your **Team ID**. The workflow runs Xcode with `-allowProvisioningUpdates` and the key, so Xcode creates/uses a cloud-managed distribution certificate and the App Store profile in your account, then uploads the build straight to App Store Connect.
 
-**API key** — App Store Connect → Users and Access → Integrations → App Store Connect API → Team Keys → `+`, access **App Manager**. Note the *Key ID* and *Issuer ID*; download the `.p8` once (it cannot be downloaded again).
+**API key** — App Store Connect → Users and Access → Integrations → App Store Connect API → Team Keys → `+`, name `College Compass CI`, access **Admin** (cloud signing needs Admin). Note the *Key ID* and the *Issuer ID* (shown above the key list); download the `.p8` once (it cannot be downloaded again).
+
+**Team ID** — developer.apple.com → Account → Membership details → *Team ID* (10 characters). Save it as the repository **variable** `APPLE_TEAM_ID` (not secret).
+
+### C. From CI with your own certificate (only if you don't want an Admin key)
+
+You need an **Apple Distribution certificate** (exported as `.p12`), an **App Store provisioning profile**, and an **App Store Connect API key** (App Manager is enough here).
 
 **Distribution certificate without a Mac** (OpenSSL):
 
@@ -82,9 +88,11 @@ The workflow reads the team ID and profile name from the profile itself and fail
 | `APP_STORE_CONNECT_KEY_ID` | Key ID of the API key |
 | `APP_STORE_CONNECT_ISSUER_ID` | Issuer ID (UUID at top of the API keys page) |
 | `APP_STORE_CONNECT_KEY_P8` | Full contents of the `.p8` file (or its base64) |
-| `IOS_DIST_CERT_P12_BASE64` | base64 of `dist.p12` |
-| `IOS_DIST_CERT_PASSWORD` | the `.p12` password |
-| `IOS_PROVISION_PROFILE_BASE64` | base64 of the `.mobileprovision` |
+| `IOS_DIST_CERT_P12_BASE64` | option C only: base64 of `dist.p12` |
+| `IOS_DIST_CERT_PASSWORD` | option C only: the `.p12` password |
+| `IOS_PROVISION_PROFILE_BASE64` | option C only: base64 of the `.mobileprovision` |
+
+Repository **variable** `APPLE_TEAM_ID` — your 10-character Team ID (option B). If the three option-C secrets are all set, the workflow uses them instead.
 | `VITE_CC_CHATGPT_CLIENT_ID` | **Leave empty for the iOS build**: the native app then uses OpenAI's self-serve sign-in path (section 9). Set it only if OpenAI issues a partner client ID you want the iOS app to use instead. |
 
 Optional repository **variable** (not secret): `VITE_CC_TOKEN_RELAY` — URL of the stateless token relay, only if OpenAI's token endpoint blocks browser CORS (see CHATGPT_SIGNIN.md). Native builds do not need it (CapacitorHttp has no CORS limits).
@@ -96,7 +104,7 @@ The web deploy workflow (`deploy.yml`) builds the web app separately; give it th
 Workflow: `.github/workflows/ios.yml`.
 
 - **Every push** to `app-v2` or `main` that touches `college-compass-app/**`: macOS runner, Xcode 16, Node 20, `npm ci`, `npm test`, `npm run cap:sync`, then an unsigned simulator build with `xcodebuild -workspace ios/App/App.xcworkspace -scheme App -sdk iphonesimulator -configuration Debug -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build`. The simulator `.app` is attached to the run (7 days).
-- **TestFlight upload**: Actions → *iOS app (Capacitor)* → Run workflow → tick **upload** (Xcode defaults to `latest-stable`, see below). The `testflight` job imports the certificate into a temporary keychain, installs the profile, archives with manual signing (App target only), exports the IPA (`method: app-store-connect`), uploads with `xcrun altool --upload-app` using the API key, and wipes the keychain/key afterwards. If any of the six signing secrets is missing it logs a warning listing them and skips the signing/upload steps.
+- **TestFlight upload**: Actions → *iOS app (Capacitor)* → Run workflow → tick **upload** (Xcode defaults to `latest-stable`, see below). With option B the `testflight` job archives with automatic, cloud-managed signing and exports with `destination: upload`, which uploads to App Store Connect. With option C it imports the certificate into a temporary keychain, installs the profile, archives with manual signing (App target only), exports the IPA and uploads it with `xcrun altool`. The key and any keychain are wiped afterwards. If something required is missing, the job logs which items and skips signing/upload.
 - The build number is `github.run_number`, so every upload is unique and increasing. Bump `MARKETING_VERSION` (currently `1.0.0`, in the Xcode project) for each store release.
 - After upload, App Store Connect processes the build (usually 5-30 minutes) and emails you. Then: TestFlight → the build → add **Internal Testing** testers (App Store Connect users, no review). **External** testers need a short Beta App Review. Export compliance is pre-answered by `ITSAppUsesNonExemptEncryption = false` (the app only uses HTTPS/standard OS encryption, which is exempt).
 - **Xcode / SDK requirement.** Apple raises the minimum SDK for uploads every spring (iOS 18 SDK / Xcode 16 from April 2025; Xcode 26 / iOS 26 SDK was announced for April 2026). Check <https://developer.apple.com/news/upcoming-requirements/>. That is why the compile job pins Xcode 16 (as specified) while the TestFlight job takes an `xcode_version` input defaulting to `latest-stable`. Capacitor 6.2 was written for Xcode 15/16; if a newer Xcode breaks the build, upgrade Capacitor (7+ adds SPM and newer Xcode support; the platform seam in `src/platform` does not change).
