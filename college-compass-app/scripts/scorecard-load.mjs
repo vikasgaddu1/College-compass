@@ -24,21 +24,26 @@ const REF = process.env.SUPABASE_PROJECT_REF;
 const DRY = process.env.DRY_RUN === "1";
 const LIMIT_PAGES = Number(process.env.LIMIT_PAGES || 0);
 
-/** Scorecard 2-digit CIP families → app major areas (share of bachelor's degrees awarded). */
+/**
+ * Scorecard 2-digit CIP families → the app's BROAD major areas only. Specialized areas (nursing,
+ * public health, data science, aerospace, film, performing arts, political science/law…) are not
+ * derivable from 2-digit families; the ranking engine treats broad areas as proxies with a discount,
+ * so mapping a broad family onto a specialized key would overstate fit.
+ */
 export const PROGRAM_MAP = {
-  computer: ["computer_science", "data_science"],
-  engineering: ["engineering", "aerospace"],
+  computer: ["computer_science"],
+  engineering: ["engineering"],
   mathematics: ["math_stats"],
   physical_science: ["physical_sciences"],
   biological: ["biology"],
-  health: ["health", "nursing", "public_health"],
+  health: ["health"],
   business_marketing: ["business"],
-  social_science: ["economics_social", "political_science_law"],
+  social_science: ["economics_social"],
   psychology: ["psychology"],
-  communication: ["communication", "film_media"],
+  communication: ["communication"],
   english: ["english_humanities"],
   humanities: ["english_humanities"],
-  visual_performing: ["arts_design", "performing_arts"],
+  visual_performing: ["arts_design"],
   education: ["education"],
   resources: ["environmental_science"],
   architecture: ["architecture"],
@@ -47,8 +52,6 @@ export const PROGRAM_MAP = {
   language: ["languages_international"],
   agriculture: ["agriculture_food"],
   parks_recreation_fitness: ["kinesiology_sports"],
-  legal: ["political_science_law"],
-  public_administration_social_service: ["political_science_law"],
 };
 
 const LOCALE = (code) => {
@@ -112,6 +115,7 @@ export function mapSchool(r, fetchedYear) {
     hbcu: Number(r["school.minority_serving.historically_black"]) === 1,
     women_only: Number(r["school.women_only"]) === 1,
     religious: num(r["school.religious_affiliation"]) !== null && Number(r["school.religious_affiliation"]) > 0,
+    active: true,
     updated_at: new Date().toISOString(),
   };
   const side = pub ? "public" : "private";
@@ -232,15 +236,38 @@ async function main() {
   const sample = mapped.find((m) => m.college.name.startsWith("Duke")) ?? mapped[0];
   if (sample) lines.push("", "Sample row:", "```json", JSON.stringify(sample, null, 1).slice(0, 2500), "```");
 
+  // A load where key admissions/cost fields are entirely empty is a mapping failure (e.g. a renamed
+  // Scorecard field), not data: stop BEFORE writing, so last month's good values stay in place.
+  const critical = ["latest.admissions.admission_rate.overall", "latest.cost.tuition.in_state", "school.name"].filter((f) => missing.includes(f));
+  if (critical.length) {
+    lines.push("", `**Not written:** no values for ${critical.map((f) => `\`${f}\``).join(", ")}; the database was left unchanged.`);
+    report(lines);
+    process.exit(2);
+  }
+
   if (!DRY) {
     const key = await serviceKey();
+    const runStart = new Date(Date.now() - 1000).toISOString();
     await upsert("colleges", mapped.map((m) => m.college), key, "unitid");
     await upsert("college_stats", mapped.map((m) => m.stats), key, "unitid,source");
     lines.push("", `Upserted ${mapped.length} colleges and their Scorecard stats into Supabase project \`${REF}\`.`);
+    // After a complete fetch, colleges no longer in the feed (closed, now for-profit, no longer mainly
+    // bachelor's) are marked inactive so they stop matching. Partial/limited runs never deactivate.
+    if (!LIMIT_PAGES && rows.length >= total && total > 500) {
+      const n = await deactivateMissing(key, runStart);
+      lines.push(`Marked ${n} colleges no longer in the federal feed as inactive.`);
+    }
   }
   report(lines);
-  // A load where key admissions/cost fields are entirely empty is a mapping failure, not data.
-  if (["latest.admissions.admission_rate.overall", "latest.cost.tuition.in_state", "school.name"].some((f) => missing.includes(f))) process.exit(2);
+}
+
+async function deactivateMissing(key, runStart) {
+  const headers = { apikey: key, "Content-Type": "application/json", Prefer: "return=representation" };
+  if (key.startsWith("eyJ")) headers.Authorization = `Bearer ${key}`;
+  const u = `https://${REF}.supabase.co/rest/v1/colleges?active=eq.true&updated_at=lt.${encodeURIComponent(runStart)}&select=unitid`;
+  const res = await fetch(u, { method: "PATCH", headers, body: JSON.stringify({ active: false }) });
+  if (!res.ok) throw new Error(`deactivate ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  return (await res.json()).length;
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

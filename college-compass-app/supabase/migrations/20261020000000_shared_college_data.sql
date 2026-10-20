@@ -30,6 +30,7 @@ create table if not exists public.colleges (
   hbcu            boolean not null default false,
   women_only      boolean not null default false,
   religious       boolean not null default false,
+  active          boolean not null default true,     -- false once it drops out of the federal feed
   name_norm       text generated always as (trim(regexp_replace(lower(name), '[^a-z0-9]+', ' ', 'g'))) stored,
   updated_at      timestamptz not null default now()
 );
@@ -139,7 +140,7 @@ as $$
     select c2.unitid, greatest(similarity(c2.name_norm, r.norm),
              coalesce((select max(similarity(trim(regexp_replace(lower(a), '[^a-z0-9]+', ' ', 'g')), r.norm)) from unnest(c2.aliases) a), 0)) as sim
     from public.colleges c2
-    where (r.st is null or c2.state = r.st)
+    where c2.active and (r.st is null or c2.state = r.st)
       and (c2.name_norm % r.norm or exists (select 1 from unnest(c2.aliases) a where trim(regexp_replace(lower(a), '[^a-z0-9]+', ' ', 'g')) % r.norm))
     order by sim desc
     limit 1
