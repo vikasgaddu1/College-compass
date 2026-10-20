@@ -27,7 +27,7 @@ Turn it off for a build with `VITE_CC_SHARED_DATA=off` (the mocked e2e build doe
 - **migrate** — `supabase db push` of `supabase/migrations/` on pushes to `main` that touch them, monthly, or manually.
 - **scorecard** — `scripts/scorecard-load.mjs`: fetches the College Scorecard API (operating, predominant degree = bachelor's, public/private nonprofit), maps and upserts. The run summary lists how many rows had each field, so a renamed Scorecard field shows as "0" instead of silently loading nulls; the job fails if key fields are entirely empty. Manual runs can be a dry run.
 
-Secrets: `SUPABASE_ACCESS_TOKEN` (Supabase account token; the job looks up the service key through the Management API and never prints it), `SUPABASE_DB_PASSWORD`, `SCORECARD_API_KEY` (api.data.gov). Optional variable `SUPABASE_PROJECT_REF` (defaults to the project above).
+Secrets: `SUPABASE_ACCESS_TOKEN` (Supabase account token; the job looks up the service key through the Management API and never prints it), `SUPABASE_DB_PASSWORD`, `SCORECARD_API_KEY` (api.data.gov; optional — without it the job uses the public `DEMO_KEY`, 30 requests/hour, enough for one load). Optional variable `SUPABASE_PROJECT_REF` (defaults to the project above).
 
 ## Shared research (the flywheel)
 

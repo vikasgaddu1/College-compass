@@ -19,7 +19,9 @@
 import { appendFileSync } from "node:fs";
 
 const API = "https://api.data.gov/ed/collegescorecard/v1/schools";
-const KEY = process.env.SCORECARD_API_KEY;
+// api.data.gov's public DEMO_KEY allows 30 requests/hour per IP — enough for one load (~20 pages of
+// 100). A personal key (free) is better for the monthly refresh; it's used when set.
+const KEY = process.env.SCORECARD_API_KEY || "DEMO_KEY";
 const REF = process.env.SUPABASE_PROJECT_REF;
 const DRY = process.env.DRY_RUN === "1";
 const LIMIT_PAGES = Number(process.env.LIMIT_PAGES || 0);
@@ -159,7 +161,8 @@ async function getJson(u, init = {}, tries = 4) {
     if (res.ok) return res.json();
     const body = (await res.text()).slice(0, 300);
     if (i < tries - 1 && (res.status === 429 || res.status >= 500)) {
-      await new Promise((r) => setTimeout(r, 2000 * (i + 1)));
+      // 429 = rate limited (likely with DEMO_KEY): wait longer before retrying.
+      await new Promise((r) => setTimeout(r, (res.status === 429 ? 20000 : 2000) * (i + 1)));
       continue;
     }
     throw new Error(`${res.status} ${new URL(u).host}${new URL(u).pathname}: ${body}`);
@@ -216,7 +219,7 @@ function report(lines) {
 }
 
 async function main() {
-  if (!KEY) throw new Error("SCORECARD_API_KEY is not set.");
+  if (KEY === "DEMO_KEY") console.log("SCORECARD_API_KEY not set — using api.data.gov's public DEMO_KEY (30 requests/hour).");
   const { rows, total } = await fetchScorecard();
   const year = new Date().toISOString().slice(0, 7);
   const mapped = rows.map((r) => mapSchool(r, year)).filter((m) => m.college.name && m.college.unitid);

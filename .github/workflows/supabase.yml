@@ -90,5 +90,5 @@ jobs:
           node-version: "20"
       - name: Load College Scorecard
         run: |
-          if [ -z "$SCORECARD_API_KEY" ]; then echo "::warning title=Scorecard skipped::SCORECARD_API_KEY is not set"; exit 0; fi
+          if [ -z "$SCORECARD_API_KEY" ]; then echo "::notice title=Scorecard::SCORECARD_API_KEY not set; using api.data.gov's public DEMO_KEY (30 requests/hour)"; fi
           node scripts/scorecard-load.mjs
