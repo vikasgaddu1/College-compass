@@ -133,3 +133,27 @@ describe("Research sign-in gate", () => {
     expect(screen.getByText("Your ChatGPT session ended")).toBeTruthy();
   });
 });
+
+describe("Research review fixes", () => {
+  it("does not start a run if the screen is left while the session is renewing", async () => {
+    let finish!: () => void;
+    mocks.ensureFresh.mockImplementation((ms?: number) => (ms === 25 * 60_000 ? new Promise<void>((r) => { finish = r; }) : Promise.resolve()));
+    const view = renderResearch();
+    await waitFor(() => expect(mocks.ensureFresh).toHaveBeenCalledWith(25 * 60_000));
+    view.unmount();
+    await act(async () => { finish(); });
+    expect(mocks.run).not.toHaveBeenCalled();
+  });
+
+  it("remembers to resume only once sign-in actually starts, and forgets on leaving", async () => {
+    mocks.ensureFresh.mockRejectedValue(new AiError("reauth_required", "Your ChatGPT session ended. Please sign in again."));
+    const view = renderResearch();
+    const button = await screen.findByRole("button", { name: "Continue with ChatGPT" });
+    expect(sessionStorage.getItem("cc2:research_resume")).toBeNull();
+    await act(async () => { button.click(); });
+    expect(mocks.signIn).toHaveBeenCalledWith("/research");
+    expect(sessionStorage.getItem("cc2:research_resume")).toBe("1");
+    view.unmount(); // "Not now" / navigating away in the same page
+    expect(sessionStorage.getItem("cc2:research_resume")).toBeNull();
+  });
+});

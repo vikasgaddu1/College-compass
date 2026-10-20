@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navigate } from "@/lib/router";
 import { fmt, useStore } from "@/state/store";
 import { majorIcon, majorLabel, tierInfo } from "@/state/catalog";
-import { describeError, researchApi } from "@/state/services";
+import { auth, describeError, researchApi } from "@/state/services";
 import { Screen } from "@/components/Screen";
 import { RangeBar } from "@/components/RangeBar";
 import { ConfirmSheet } from "@/components/Sheet";
@@ -16,6 +16,15 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
   const [refreshing, setRefreshing] = useState(false);
   const [err, setErr] = useState<{ detail: string; code?: string } | null>(null);
   const [confirmRemove, setConfirmRemove] = useState(false);
+
+  // iPhone sign-in completes in place without remounting this screen: drop the card once signed in.
+  const needsSession = !!err && needsSignIn(err.code);
+  useEffect(() => {
+    if (!needsSession) return;
+    return auth.subscribe(() => {
+      if (auth.account() && !auth.lastError?.()) setErr(null);
+    });
+  }, [needsSession]);
 
   if (!item) {
     return (

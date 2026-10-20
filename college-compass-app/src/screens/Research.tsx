@@ -58,6 +58,8 @@ export function Research() {
   const started = useRef(false);
   const statusRef = useRef<Status>("planning");
   const armed = useRef(false);
+  // False once the screen unmounts, so a session renewal that finishes later can't start a run.
+  const alive = useRef(true);
   statusRef.current = status;
   // Latest colleges for a run started from a callback that outlives the render (resume after sign-in).
   const collegesRef = useRef(colleges);
@@ -178,12 +180,14 @@ export function Research() {
         try {
           await auth.ensureFresh?.(RUN_SESSION_MS);
         } catch (e) {
+          if (!alive.current) return;
           const code = describeError(e).code;
           if (needsSignIn(code)) {
             askToSignIn(code);
             return;
           }
         }
+        if (!alive.current) return;
         if (!isConnected()) {
           // The renewal attempt itself ended the session (tokens cleared).
           askToSignIn("reauth_required");
@@ -199,8 +203,12 @@ export function Research() {
     if (started.current) return;
     started.current = true;
     // Web: sign-in is a full-page redirect, so coming back here is a remount — resume, don't start over.
+    alive.current = true;
     void begin(takeResumeFlag());
     return () => {
+      alive.current = false;
+      // Web sign-in leaves the page without running this, so the flag survives only a real redirect.
+      setResumeFlag(false);
       ctrl.current?.abort();
       // Leaving the screen aborts the run, so a pending "list is ready" notification would lie.
       if (armed.current) {
@@ -216,7 +224,6 @@ export function Research() {
   // place, so listen for it; a failed attempt (lastError set) leaves the card up for a retry.
   useEffect(() => {
     if (status !== "signin") return;
-    setResumeFlag(true);
     let resumed = false;
     const off = auth.subscribe(() => {
       if (resumed || !auth.account() || auth.lastError?.()) return;
@@ -365,7 +372,7 @@ export function Research() {
         </StickyActions>
       }
     >
-      {signIn && <SignInAgain returnTo="/research" reason={signInReason} className="mb-4" />}
+      {signIn && <SignInAgain onStart={() => setResumeFlag(true)} returnTo="/research" reason={signInReason} className="mb-4" />}
       {error && !signIn && (
         <div className="mb-4">
           <Banner tone="error">

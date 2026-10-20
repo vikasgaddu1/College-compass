@@ -189,7 +189,11 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
     >
       {!canChat ? (
         <div className="pt-4">
-          <SignInAgain returnTo="/ask" reason="signed_out" line="Sign in to ask about your list. Your profile and colleges are sent only with your question, and stay on this phone." />
+          {needsSession ? (
+            <SignInAgain returnTo="/ask" reason={reasonFor(err?.code as "reauth_required" | "not_connected")} line="Sign in again to keep chatting — your conversation and colleges are saved on this phone." />
+          ) : (
+            <SignInAgain returnTo="/ask" reason="signed_out" line="Sign in to ask about your list. Your profile and colleges are sent only with your question, and stay on this phone." />
+          )}
         </div>
       ) : chat.length === 0 && !busy ? (
         <Empty
@@ -213,7 +217,7 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
           )}
         </ol>
       )}
-      {err && needsSignIn(err.code) && (
+      {canChat && err && needsSignIn(err.code) && (
         <div className="mt-3">
           <SignInAgain returnTo="/ask" reason={reasonFor(err.code)} line="Sign in again to keep chatting — your conversation and colleges are saved on this phone." />
         </div>

@@ -24,6 +24,8 @@ export interface SignInAgainProps {
   /** Replaces the one-line explanation. */
   line?: string;
   className?: string;
+  /** Called right before sign-in starts (e.g. to remember to resume after the web redirect). */
+  onStart?: () => void;
 }
 
 export const SIGN_IN_COPY = {
@@ -37,7 +39,7 @@ export const SIGN_IN_COPY = {
   },
 } as const;
 
-export function SignInAgain({ returnTo, reason = "expired", line, className = "" }: SignInAgainProps) {
+export function SignInAgain({ returnTo, reason = "expired", line, className = "", onStart }: SignInAgainProps) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const configured = auth.configured();
@@ -62,6 +64,7 @@ export function SignInAgain({ returnTo, reason = "expired", line, className = ""
     setBusy(true);
     setErr(null);
     try {
+      onStart?.();
       await auth.signIn(returnTo);
       // Web: the page is leaving for ChatGPT, so keep the button busy. iPhone: the in-app browser is
       // up — let the button rest so a cancelled sign-in can be retried.
