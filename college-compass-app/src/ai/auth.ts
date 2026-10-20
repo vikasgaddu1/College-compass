@@ -19,7 +19,7 @@
 import * as platform from "../platform";
 import { load, remove, save, NS } from "../lib/storage";
 import { navigate } from "../lib/router";
-import { AiError, type AuthApi, type ChatGPTAccount } from "../types";
+import { AiError, type AuthApi, type AuthIssue, type ChatGPTAccount } from "../types";
 import {
   AGENT_NAME_HINT, AUTHORIZE_URL, ISSUER, JWKS_URL, KEYS, MODELS_TTL_MS, MODELS_URL, NATIVE_STATE_SUFFIX,
   OIDC_DISCOVERY_URL, PENDING_TTL_MS, PLAN_USAGE_SCOPE, REFRESH_SKEW_MS, RESOURCE, SCOPE, SELF_SERVE_CLIENT_ID,
@@ -199,6 +199,9 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     return t && typeof t.access_token === "string" && t.claims?.sub ? t : null;
   };
 
+  const noteIssue = (code: string, status: number, phase: AuthIssue["phase"]) => {
+    try { save<AuthIssue>(KEYS.authIssue, { at: d.now(), code: code || `http_${status}`, status, phase }); } catch { /* diagnostics only */ }
+  };
   const clearTokens = () => {
     remove(KEYS.tokens);
     remove(KEYS.models);
@@ -542,6 +545,7 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     if (rejected ? t.access_token !== rejected : !needsRefresh(t)) return t.access_token;
     if (!t.refresh_token) {
       if (!rejected && d.now() < t.expires_at - 10_000) return t.access_token;
+      noteIssue("no_refresh_token", 0, "refresh");
       clearTokens();
       emit();
       throw new AiError("reauth_required", "Your ChatGPT session ended. Please sign in again.");
@@ -577,6 +581,7 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     }
     const e = oauthError(json);
     if (TERMINAL_REFRESH_ERRORS.has(e.code) || status === 401) {
+      noteIssue(e.code, status, "refresh");
       clearTokens();
       emit();
       throw new AiError("reauth_required", "Your ChatGPT session ended. Please sign in again.");
@@ -593,6 +598,22 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     const p: Promise<string> = locks?.request ? locks.request(`${NS}chatgpt-refresh`, run) : run();
     refreshing = p.finally(() => { refreshing = null; });
     return refreshing;
+  }
+
+  /** Renew now if the access token expires within `minValidMs` (renewal can be deferred by the server). */
+  async function ensureFresh(minValidMs = 20 * 60_000): Promise<void> {
+    const t = readTokens();
+    if (!t) return;
+    const now = d.now();
+    if (t.expires_at - now > minValidMs) return;
+    if (t.earliest_refresh_at && now < t.earliest_refresh_at && now < t.expires_at - 10_000) return;
+    try {
+      await refreshSingleFlight(t.access_token);
+    } catch (e) {
+      // Only a session that can't be renewed is fatal; a network blip with a still-valid token isn't.
+      if (e instanceof AiError && e.code === "reauth_required") throw e;
+      if (d.now() >= t.expires_at - 10_000) throw e;
+    }
   }
 
   async function getAccessToken(opts: { rejected?: string } = {}): Promise<string> {
@@ -694,6 +715,8 @@ export function createAuth(overrides: Partial<AuthDeps> = {}): ChatGPTAuth {
     completeSignIn,
     signOut,
     listModels,
+    ensureFresh,
+    lastIssue: () => load<AuthIssue | null>(KEYS.authIssue, null),
     subscribe(fn) {
       listeners.add(fn);
       return () => { listeners.delete(fn); };

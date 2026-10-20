@@ -90,6 +90,8 @@ export const KEYS = {
   hostId: "host_id",
   /** Issued self-serve client IDs for this device (by account `sub`, plus the latest). */
   issuedClientIds: "issued_client_id",
+  /** Why the last session renewal or sign-in failed (error code + time only; never tokens). */
+  authIssue: "auth_issue",
 } as const;
 
 /** Default model for the developer API-key demo mode (override with localStorage `cc2:dev_openai_model`). */

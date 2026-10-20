@@ -17,7 +17,8 @@ export function AuthCallback() {
       .then(() => {
         if (cancelled) return;
         refreshAuth();
-        const returnTo = params.get("return_to");
+        // Where sign-in was started from (e.g. "/research" from the session-ended card), else the usual landing.
+        const returnTo = params.get("return_to") ?? auth.takeReturnTo?.() ?? null;
         navigate(returnTo && returnTo.startsWith("/") ? returnTo : hasProfile && prefs.onboardingDone ? "/list" : "/onboarding/1", { replace: true });
       })
       .catch((e) => {

@@ -23,7 +23,22 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
   const [confirmSignOut, setConfirmSignOut] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [devKey, setDevKeyText] = useState(() => readDevKey() ?? "");
+  const [signingIn, setSigningIn] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  // Why the last session renewal failed (diagnostics for "my session keeps ending"); never tokens.
+  const lastIssue = auth.lastIssue?.() ?? null;
+
+  const signIn = async () => {
+    if (signingIn) return;
+    setSigningIn(true);
+    try {
+      await auth.signIn(hasProfile && prefs.onboardingDone ? "/settings" : "/onboarding/1");
+    } catch (e) {
+      setToast(describeError(e).detail);
+    } finally {
+      setSigningIn(false);
+    }
+  };
 
   useEffect(() => {
     if (!toast) return;
@@ -92,7 +107,19 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
       )}
 
       {/* Account */}
-      <Group label="Account" foot={account ? "AI requests use your own ChatGPT plan. Nothing is sent anywhere else." : demo ? "Demo mode uses sample data and no AI." : "Signing in lets the app research colleges and chat using your ChatGPT plan."}>
+      <Group
+        label="Account"
+        foot={
+          <>
+            {account ? "AI requests use your own ChatGPT plan. Nothing is sent anywhere else." : demo ? "Demo mode uses sample data and no AI." : "Signing in lets the app research colleges and chat using your ChatGPT plan."}
+            {lastIssue && (
+              <span className="mt-1 block opacity-80" data-testid="last-sign-in-issue">
+                Last sign-in issue: <span className="font-mono">{lastIssue.code}</span> · {formatIssueTime(lastIssue.at)}
+              </span>
+            )}
+          </>
+        }
+      >
         {account ? (
           <>
             <Row
@@ -121,10 +148,10 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
                 </span>
               }
               label="Continue with ChatGPT"
-              hint={auth.configured() ? "Required for research and chat" : "Available in the iPhone app; web sign-in awaits OpenAI approval"}
+              hint={signingIn ? "Opening ChatGPT…" : auth.configured() ? "Required for research and chat" : "Available in the iPhone app; web sign-in awaits OpenAI approval"}
               chevron
-              onClick={() => navigate("/")}
-              disabled={!auth.configured()}
+              onClick={() => void signIn()}
+              disabled={!auth.configured() || signingIn}
             />
             {hasDevKey && <Row label="Developer key in use" hint="Requests go straight to OpenAI with your API key" />}
             {demo && (
@@ -299,4 +326,12 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
       />
     </Screen>
   );
+}
+
+function formatIssueTime(at: number): string {
+  try {
+    return new Date(at).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  } catch {
+    return new Date(at).toISOString();
+  }
 }

@@ -64,7 +64,8 @@ function Router() {
   }
   if (route.pattern === "/onboarding/:step") return <Onboarding />;
   if (path === "/research") {
-    if (!gated) return <Welcome />;
+    // Signed out with answers saved: Research shows the sign-in card and resumes once signed in.
+    if (!gated && !hasProfile) return <Welcome />;
     return <Research />;
   }
   if (path === "/list" || route.pattern === "/college/:id") {

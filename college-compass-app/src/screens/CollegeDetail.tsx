@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navigate } from "@/lib/router";
 import { fmt, useStore } from "@/state/store";
 import { majorIcon, majorLabel, tierInfo } from "@/state/catalog";
-import { describeError, researchApi } from "@/state/services";
+import { auth, describeError, researchApi } from "@/state/services";
 import { Screen } from "@/components/Screen";
 import { RangeBar } from "@/components/RangeBar";
 import { ConfirmSheet } from "@/components/Sheet";
+import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, ConfidenceDot, EffectIcon, Empty, Group, Row, Stat, TierPill } from "@/components/ui";
 import { IconExternal, IconRefresh, IconStar } from "@/components/icons";
 
@@ -13,8 +14,17 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
   const { byId, profile, isSaved, toggleSaved, notes, setNote, upsertCollege, removeCollege, demo, prefs } = useStore();
   const item = byId.get(id);
   const [refreshing, setRefreshing] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
+  const [err, setErr] = useState<{ detail: string; code?: string } | null>(null);
   const [confirmRemove, setConfirmRemove] = useState(false);
+
+  // iPhone sign-in completes in place without remounting this screen: drop the card once signed in.
+  const needsSession = !!err && needsSignIn(err.code);
+  useEffect(() => {
+    if (!needsSession) return;
+    return auth.subscribe(() => {
+      if (auth.account() && !auth.lastError?.()) setErr(null);
+    });
+  }, [needsSession]);
 
   if (!item) {
     return (
@@ -35,7 +45,7 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
       const fresh = await researchApi(demo).researchOne(c.name, profile, prefs.model ?? undefined);
       upsertCollege({ ...fresh, id: c.id });
     } catch (e) {
-      setErr(describeError(e).detail);
+      setErr(describeError(e));
     } finally {
       setRefreshing(false);
     }
@@ -104,9 +114,14 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
         </div>
       </header>
 
-      {err && (
+      {err && needsSignIn(err.code) && (
         <div className="mt-4">
-          <Banner tone="error">{err}</Banner>
+          <SignInAgain returnTo={`/college/${encodeURIComponent(c.id)}`} reason={reasonFor(err.code)} line="Sign in again to refresh this college — your list is saved on this phone." />
+        </div>
+      )}
+      {err && !needsSignIn(err.code) && (
+        <div className="mt-4">
+          <Banner tone="error">{err.detail}</Banner>
         </div>
       )}
 
