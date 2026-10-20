@@ -93,7 +93,10 @@ export const KNOWN_ALIASES = {
   "Purdue University-Main Campus": ["Purdue", "Purdue University"],
   "Ohio State University-Main Campus": ["Ohio State", "The Ohio State University", "OSU"],
   "University of Maryland-College Park": ["UMD", "University of Maryland"],
-  "University of Washington-Seattle Campus": ["UW", "University of Washington"],
+  "University of Washington-Seattle Campus": ["UW", "University of Washington", "UW Seattle"],
+  "University of California-Davis": ["UC Davis"],
+  "University of California-Irvine": ["UC Irvine", "UCI"],
+  "University of California-Santa Barbara": ["UC Santa Barbara", "UCSB"],
   "Johns Hopkins University": ["JHU", "Hopkins"],
   "Arizona State University Campus Immersion": ["ASU"],
   "University of Massachusetts-Amherst": ["UMass Amherst", "UMass"],
@@ -135,6 +138,31 @@ export function deriveAliases(name, state) {
   }
   out.delete(name);
   return [...out].filter((a) => a.length >= 2 && a.length <= 80);
+}
+
+const norm = (x) => String(x).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+/**
+ * Keep only aliases that identify ONE college: a derived alias shared by several colleges ("University
+ * of California" for every UC campus) or equal to another college's name is dropped, unless it is a
+ * hand-picked known alias for that college ("University of Washington" → Seattle). Exported for tests.
+ */
+export function dedupeAliases(mapped) {
+  const owners = new Map();
+  for (const m of mapped) {
+    for (const a of new Set([m.college.name, ...m.college.aliases].map(norm))) owners.set(a, (owners.get(a) ?? 0) + 1);
+  }
+  const names = new Set(mapped.map((m) => norm(m.college.name)));
+  for (const m of mapped) {
+    const known = new Set((KNOWN_ALIASES[m.college.name] ?? []).map(norm));
+    m.college.aliases = m.college.aliases.filter((a) => {
+      const k = norm(a);
+      if (known.has(k)) return true;
+      if (names.has(k) && k !== norm(m.college.name)) return false;
+      return (owners.get(k) ?? 0) <= 1;
+    });
+  }
+  return mapped;
 }
 
 const LOCALE = (code) => {
@@ -309,7 +337,7 @@ async function main() {
   if (KEY === "DEMO_KEY") console.log("SCORECARD_API_KEY not set — using api.data.gov's public DEMO_KEY (30 requests/hour).");
   const { rows, total } = await fetchScorecard();
   const year = new Date().toISOString().slice(0, 7);
-  const mapped = rows.map((r) => mapSchool(r, year)).filter((m) => m.college.name && m.college.unitid);
+  const mapped = dedupeAliases(rows.map((r) => mapSchool(r, year)).filter((m) => m.college.name && m.college.unitid));
 
   // Field coverage: catches renamed/removed Scorecard fields.
   const coverage = FIELDS.filter((f) => f !== "id").map((f) => [f, rows.filter((r) => r[f] !== null && r[f] !== undefined && r[f] !== "").length]);
