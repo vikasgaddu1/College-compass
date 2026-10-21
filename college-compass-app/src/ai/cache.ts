@@ -3,7 +3,7 @@
  * (official name, short name and the name the student typed). Size-capped LRU; entries older than
  * 30 days are treated as stale.
  */
-import type { College } from "../types";
+import type { College, MajorArea } from "../types";
 import { load, remove, save } from "../lib/storage";
 import { KEYS } from "./config";
 import { normalizeName } from "./normalize";
@@ -56,6 +56,19 @@ export function findFresh(list: College[] | undefined, name: string, now: number
     }
   }
   return best;
+}
+
+/**
+ * Whether a researched college can be reused for this student: its program notes must cover every
+ * one of their majors (research looks up programs for the majors of whoever ran it — another list,
+ * or answers since changed), and its application facts must be for the same entry cycle.
+ */
+export function fitsStudent(c: College, majors: MajorArea[], cycle: string): boolean {
+  const need = majors.filter((m) => m !== "undecided");
+  const have = new Set((c.programs ?? []).map((p) => p.major));
+  if (!need.every((m) => have.has(m))) return false;
+  const cyc = c.application?.cycle;
+  return !cyc || cyc === cycle;
 }
 
 export function createResearchCache(opts: CacheOptions = {}): ResearchCache {

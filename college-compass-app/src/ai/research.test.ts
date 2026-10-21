@@ -3,7 +3,7 @@ import { AiError, type AiCallResult, type AiClient, type ResearchEvent } from ".
 import { createResearchCache } from "./cache";
 import { PLANNER_TOOL_NAME, RESEARCH_TOOL_NAME } from "./prompts";
 import { createLimiter, createResearch, researchTag } from "./research";
-import { baseProfile, fakeCollege, installMemoryStorage, rawCollege, sseText } from "./test-helpers";
+import { BASE_PROGRAMS, baseProfile, fakeCollege, installMemoryStorage, rawCollege, sseText } from "./test-helpers";
 
 type CallOpts = Parameters<AiClient["call"]>[0];
 const NOW = new Date("2026-10-16T12:00:00Z");
@@ -201,6 +201,16 @@ describe("research.run", () => {
     expect(cache.get("college b")?.researched_at).toBe(NOW.toISOString());
   });
 
+  it("doesn't reuse research done for other majors or another entry cycle (e.g. another list)", async () => {
+    const m = mockClient();
+    const { r, cache } = setup(m);
+    cache.put({ ...fakeCollege("College A", "2026-10-01T00:00:00Z"), programs: [{ major: "business", offered: true, degree: "BBA", how_to_enter: null, notes: null }] });
+    cache.put({ ...fakeCollege("College B", "2026-10-01T00:00:00Z"), application: { cycle: "Fall 2028 entry", plans: [], test_policy_note: null, essays_note: null, fee: null } });
+    cache.put({ ...fakeCollege("College C", "2026-10-01T00:00:00Z"), application: { cycle: "Fall 2027 entry", plans: [], test_policy_note: null, essays_note: null, fee: null } });
+    await r.run({ profile: baseProfile(), wanted: names(3), target_count: 3, onEvent: () => {} });
+    expect(m.calls.flatMap((c) => requested(c)).sort()).toEqual(["College A", "College B"]);
+  });
+
   it("aborts: rejects with AbortError and stops starting new calls", async () => {
     const m = mockClient({ delayMs: 20 });
     const { r } = setup(m);
@@ -283,7 +293,7 @@ describe("iOS background tracking", () => {
 
   it("recovers research iOS delivered after a relaunch and doesn't research those colleges again", async () => {
     const tag = researchTag("old-run", [{ name: "College A", state: "NC" }]);
-    const args = JSON.stringify({ colleges: [rawCollege("College A")] });
+    const args = JSON.stringify({ colleges: [rawCollege("College A", "NC", { programs: BASE_PROGRAMS })] });
     const data = sseText([
       { type: "response.output_item.added", item: { type: "function_call", id: "f1", name: RESEARCH_TOOL_NAME, namespace: "college_compass", arguments: "" } },
       { type: "response.function_call_arguments.done", item_id: "f1", arguments: args },

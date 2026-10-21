@@ -90,8 +90,15 @@ export function rawCollege(name: string, state = "NC", over: Record<string, unkn
   };
 }
 
+/** Program notes for the base profile's majors, so cached research fits that student. */
+export const BASE_PROGRAMS: NonNullable<College["programs"]> = [
+  { major: "nursing", offered: true, degree: "BSN", how_to_enter: "Direct admit", notes: null },
+  { major: "public_health", offered: true, degree: "BSPH", how_to_enter: "Declare later", notes: null },
+];
+
 export function fakeCollege(name: string, researchedAt: string): College {
   return {
+    programs: BASE_PROGRAMS,
     id: `ai-${name.toLowerCase().replace(/\s+/g, "-")}`, name, short: name, city: "", state: "NC", region: "south_atlantic",
     lat: null, lon: null, ownership: "public", locale: null, url: null, undergrad_size: null, admit_rate: 0.5,
     sat_25: null, sat_75: null, act_25: null, act_75: null, test_policy: "unknown", tuition_in_state: null,
