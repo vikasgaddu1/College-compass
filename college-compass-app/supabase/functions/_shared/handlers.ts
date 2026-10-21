@@ -47,6 +47,8 @@ export interface Config {
   priceMonthly?: string;
   priceYearly?: string;
   webhookSecret?: string;
+  /** Stripe customer-portal configuration (bpc_…) for counselors; the account default when unset. */
+  portalConfiguration?: string;
 }
 
 export interface Deps {
@@ -159,6 +161,7 @@ export async function handleBilling(req: Request, deps: Deps): Promise<Response>
     const session = await deps.stripe.billingPortal.sessions.create({
       customer: ctx!.stripe_customer_id,
       return_url: `${deps.config.portalUrl}#/billing`,
+      ...(deps.config.portalConfiguration ? { configuration: deps.config.portalConfiguration } : {}),
     });
     return json({ url: session.url }, 200, cors);
   } catch (e) {

@@ -119,6 +119,7 @@ Do everything in **Stripe test mode** first, check the flow end-to-end, then rep
    | `STRIPE_WEBHOOK_SECRET` | `whsec_…` from step 5 |
    | `STRIPE_PRICE_MONTHLY` | monthly `price_…` |
    | `STRIPE_PRICE_YEARLY` | yearly `price_…` |
+   | `STRIPE_PORTAL_CONFIGURATION` (optional) | `bpc_…` customer-portal configuration for counselors (switch monthly ↔ yearly, cancel at period end). Without it the account's default portal settings are used. |
    | `PORTAL_URL` | optional; default `https://vikasgaddu1.github.io/College-compass/app/counselors/` |
 
    CLI alternative: put the lines in a file outside the repo and run
