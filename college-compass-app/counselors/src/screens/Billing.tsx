@@ -120,7 +120,13 @@ export function Billing() {
         </section>
       )}
 
-      {row && !(row.subscription_status === "active" || row.subscription_status === "trialing") && (
+      {row && (row.subscription_status === "past_due" || row.subscription_status === "unpaid") && (
+        <div className="mt-4">
+          <Banner tone="warn">Your last payment didn't go through. Use Manage billing to update your card — your subscription picks up where it left off.</Banner>
+        </div>
+      )}
+
+      {row && !["active", "trialing", "past_due", "unpaid"].includes(row.subscription_status) && (
         <section className="mt-8" aria-labelledby="plans">
           <h2 id="plans" className="text-title3">Choose a plan</h2>
           <p className="mt-1 text-subhead text-text-muted">Flat listing fee, billed by Stripe. Cancel anytime; your listing stays until the end of the paid period.</p>

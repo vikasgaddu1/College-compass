@@ -77,6 +77,10 @@ describe("router / image / status helpers", () => {
     expect(isListed({ ...base, founding_until: "2026-10-20" }, today)).toBe(false);
     expect(isListed({ ...base, subscription_status: "active", status: "suspended" }, today)).toBe(false);
     expect(isListed({ ...base, subscription_status: "active", published: null }, today)).toBe(false);
+    // A failed payment keeps the listing up for 7 days, like the directory query.
+    expect(isListed({ ...base, subscription_status: "past_due", past_due_since: "2026-10-15T12:00:00" }, today)).toBe(true);
+    expect(isListed({ ...base, subscription_status: "past_due", past_due_since: "2026-10-13T12:00:00" }, today)).toBe(false);
+    expect(isListed({ ...base, subscription_status: "unpaid" }, today)).toBe(false);
   });
   it("subscriptionSummary explains founding, active, cancelling and no-plan states", () => {
     const today = new Date("2026-10-21T12:00:00");

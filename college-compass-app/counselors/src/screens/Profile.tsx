@@ -24,8 +24,16 @@ function draftOf(row: CounselorRow | null): Draft {
 export function isListed(row: CounselorRow, today = new Date()): boolean {
   if (row.status !== "approved" || !row.published) return false;
   if (row.founding_until && new Date(row.founding_until + "T23:59:59") >= today) return true;
-  return row.subscription_status === "active" || row.subscription_status === "trialing";
+  if (row.subscription_status === "active" || row.subscription_status === "trialing") return true;
+  // A failed payment keeps the listing up for 7 days (same rule as the database's directory query).
+  if (row.subscription_status === "past_due") {
+    const since = row.past_due_since ? Date.parse(row.past_due_since) : today.getTime();
+    return Number.isFinite(since) && today.getTime() - since < GRACE_MS;
+  }
+  return false;
 }
+
+const GRACE_MS = 7 * 24 * 60 * 60 * 1000;
 
 export function Profile() {
   const { api, session } = usePortal();

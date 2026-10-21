@@ -189,7 +189,7 @@ export function toCounselor(row: unknown): Counselor | null {
   };
 }
 
-export type DirectoryError = "offline" | "unavailable";
+export type DirectoryError = "offline" | "unavailable" | "rate_limited" | "gone";
 
 export interface DirectoryApi {
   /** Listed counselors for a state (null = everywhere) and specialties (empty = all). Throws a DirectoryError string. */
@@ -233,7 +233,13 @@ export function createDirectoryApi(cfg = sharedConfig(), doFetch: Fetch = (...a)
       return rows.map(toCounselor).filter((c): c is Counselor => c !== null);
     },
     async report(counselorId, reason, detail) {
-      await post("report_counselor", { p_counselor: counselorId, p_reason: reason, p_detail: detail?.trim() ? detail.trim().slice(0, 1000) : null });
+      const res = (await post("report_counselor", { p_counselor: counselorId, p_reason: reason, p_detail: detail?.trim() ? detail.trim().slice(0, 1000) : null })) as { ok?: boolean; reason?: string } | null;
+      // The RPC answers 200 with { ok: false, reason } when it didn't store the report.
+      if (!res || res.ok !== true) {
+        if (res?.reason === "rate_limited") throw "rate_limited" satisfies DirectoryError;
+        if (res?.reason === "unknown_counselor") throw "gone" satisfies DirectoryError;
+        throw "unavailable" satisfies DirectoryError;
+      }
     },
   };
 }

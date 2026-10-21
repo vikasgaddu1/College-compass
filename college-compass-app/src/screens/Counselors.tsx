@@ -45,7 +45,8 @@ export function Counselors({ api: apiProp }: { /** Tests inject a mocked API. */
     api
       .list(state || null, specialties, ctl.signal)
       .then((rows) => {
-        if (!ctl.signal.aborted) setItems(rows);
+        // "Virtual – anywhere" asks for counselors who work virtually, not every listing.
+        if (!ctl.signal.aborted) setItems(state ? rows : rows.filter((c) => c.modes.includes("virtual")));
       })
       .catch((e: unknown) => {
         if (ctl.signal.aborted) return;
@@ -199,7 +200,15 @@ function ReportSheet({ counselor, api, onClose }: { counselor: Counselor | null;
       await api.report(counselor.id, reason, detail);
       setDone(true);
     } catch (e) {
-      setErr(e === "offline" ? "You're offline. Please try again when you have a connection." : "Couldn't send the report right now. Please try again later.");
+      setErr(
+        e === "offline"
+          ? "You're offline. Please try again when you have a connection."
+          : e === "rate_limited"
+            ? "You've sent several reports recently. Please try again in an hour."
+            : e === "gone"
+              ? "This listing is no longer in the directory."
+              : "Couldn't send the report right now. Please try again later.",
+      );
     } finally {
       setBusy(false);
     }

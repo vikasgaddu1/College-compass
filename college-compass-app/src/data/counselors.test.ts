@@ -105,4 +105,12 @@ describe("createDirectoryApi", () => {
     await api.report("abc", "other", "   ");
     expect(JSON.parse((f.mock.calls[1] as unknown as [string, RequestInit])[1].body as string).p_detail).toBeNull();
   });
+
+  it("report rejects when the database didn't store it (200 with ok:false)", async () => {
+    const answer = (body: unknown) => createDirectoryApi(cfg, (async () => ok(body)) as unknown as typeof fetch)!;
+    await expect(answer({ ok: false, reason: "rate_limited" }).report("abc", "other", null)).rejects.toBe("rate_limited");
+    await expect(answer({ ok: false, reason: "unknown_counselor" }).report("abc", "other", null)).rejects.toBe("gone");
+    await expect(answer({ ok: false, reason: "bad_reason" }).report("abc", "other", null)).rejects.toBe("unavailable");
+    await expect(answer(null).report("abc", "other", null)).rejects.toBe("unavailable");
+  });
 });

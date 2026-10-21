@@ -41,6 +41,8 @@ export interface CounselorRow extends Draft {
   subscription_status: SubscriptionStatus;
   plan: Plan;
   founding_until: string | null;
+  /** First failed payment; the listing stays up for 7 days from here. */
+  past_due_since?: string | null;
   current_period_end: string | null;
   cancel_at_period_end: boolean;
   created_at: string;
@@ -118,7 +120,7 @@ export function describeError(e: unknown): string {
   return err.hint ? `${m}. ${err.hint}` : m || "Something went wrong.";
 }
 
-const ROW_SELECT = "id,user_id,status,name,title,photo_url,bio,website,phone,email,city,states,specialties,modes,credentials,published,has_changes,review_note,terms_accepted_at,submitted_at,approved_at,subscription_status,plan,founding_until,current_period_end,cancel_at_period_end,created_at,updated_at";
+const ROW_SELECT = "id,user_id,status,name,title,photo_url,bio,website,phone,email,city,states,specialties,modes,credentials,published,has_changes,review_note,terms_accepted_at,submitted_at,approved_at,subscription_status,plan,founding_until,past_due_since,current_period_end,cancel_at_period_end,created_at,updated_at";
 
 export function createPortalApi(sb: SupabaseClient): PortalApi {
   const toSession = (s: { user?: { id: string; email?: string } } | null | undefined): Session | null => (s?.user ? { userId: s.user.id, email: s.user.email ?? null } : null);

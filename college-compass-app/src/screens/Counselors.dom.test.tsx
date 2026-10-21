@@ -97,7 +97,20 @@ describe("Counselors directory", () => {
     await waitFor(() => expect(list).toHaveBeenLastCalledWith(null, ["essays"], expect.anything()));
   });
 
+  it("'Virtual – anywhere' shows only counselors who work virtually", async () => {
+    const inPersonOnly = toCounselor({ id: "c9", name: "Dana Fox", title: "Counselor", city: "Durham", states: ["NC"], specialties: ["general"], modes: ["in_person"], bio: "In person only." })!;
+    seedProfile(); // starts on North Carolina
+    const { api } = mockApi([...SAMPLE, inPersonOnly]);
+    mount(api);
+    expect(await screen.findByRole("article", { name: "Dana Fox" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /^Where: / }));
+    fireEvent.click(within(await screen.findByRole("dialog", { name: "Where" })).getByRole("button", { name: "Virtual – anywhere" }));
+    expect(await screen.findByRole("article", { name: "Marcus Lee" })).toBeTruthy();
+    await waitFor(() => expect(screen.queryByRole("article", { name: "Dana Fox" })).toBeNull());
+  });
+
   it("cards: paid label, initials or photo, sanitized contact links, expandable bio", async () => {
+    seedProfile(); // home state NC, so in-person counselors are shown too
     const { api } = mockApi();
     mount(api);
     const priya = within(await screen.findByRole("article", { name: "Priya Raman" }));
