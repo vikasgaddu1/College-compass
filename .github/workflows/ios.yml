@@ -85,7 +85,7 @@ jobs:
 
       # Boots a simulator and proves the self-serve ChatGPT sign-in callback works inside a real
       # iOS runtime: the app (launched with -ccLoopbackSelfTest) must answer on 127.0.0.1:1455.
-      - name: Simulator smoke test (127.0.0.1 sign-in callback + native OpenAI HTTP)
+      - name: Simulator smoke test (127.0.0.1 sign-in callback + native OpenAI HTTP + PDF render)
         run: |
           set -euo pipefail
           APP="$RUNNER_TEMP/DerivedData/Build/Products/Debug-iphonesimulator/App.app"
@@ -114,13 +114,21 @@ jobs:
           OUT="$DATA/Documents/cc_nativehttp_selftest.txt"
           for i in $(seq 1 60); do [ -s "$OUT" ] && break; sleep 2; done
           cat "$OUT" || true
-          echo "::notice title=Native HTTP self-test::$( [ -s "$OUT" ] && tr '\n' ' ' < "$OUT" || echo 'no result file (timed out)')"
+          echo "::notice title=Native HTTP + PDF self-test::$( [ -s "$OUT" ] && tr '\n' ' ' < "$OUT" || echo 'no result file (timed out)')"
           grep -qx "status=401" "$OUT"
           grep -qx "cancel=ABORTED" "$OUT"
           # AI POST path: background URLSession (keeps running after leaving the app), or the automatic
           # fallback to the normal session where background sessions don't work (the Simulator).
           grep -Eqx "bgstatus=401 via=(background|foreground)" "$OUT"
-          xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK"' || true
+          # Share as PDF: the HTML report must render natively (UIMarkupTextPrintFormatter) to a
+          # paginated Letter PDF with at least one page and a real PDF body (SharePdfPlugin.swift).
+          grep -Eqx "pdf_pages=[0-9]+ pdf_bytes=[0-9]+" "$OUT"
+          pdf_pages=$(sed -n 's/^pdf_pages=\([0-9]*\) pdf_bytes=[0-9]*$/\1/p' "$OUT")
+          pdf_bytes=$(sed -n 's/^pdf_pages=[0-9]* pdf_bytes=\([0-9]*\)$/\1/p' "$OUT")
+          echo "PDF self-test: pages=$pdf_pages bytes=$pdf_bytes"
+          test "$pdf_pages" -ge 1
+          test "$pdf_bytes" -gt 1000
+          xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK" OR eventMessage CONTAINS "CC_SHAREPDF"' || true
           xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
 
       - name: Upload smoke-test screenshot

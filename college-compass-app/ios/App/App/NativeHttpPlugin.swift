@@ -220,7 +220,11 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
     /// Launch argument `-ccNativeHttpSelfTest`: proves, inside a real iOS runtime, that the app can
     /// reach api.openai.com natively (unauthenticated `GET /v1/models` → 401) and that cancelling a
     /// request aborts it. Results go to `Documents/cc_nativehttp_selftest.txt` for the CI job.
-    func runSelfTest() {
+    ///
+    /// `extra` lets the caller add further checks (e.g. the PDF render check in MainViewController):
+    /// it receives a `record` function for result lines and must call `done` once, after which the
+    /// file is written together with the HTTP results.
+    func runSelfTest(extra: ((_ record: @escaping (String) -> Void, _ done: @escaping () -> Void) -> Void)? = nil) {
         let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let out = docs.appendingPathComponent("cc_nativehttp_selftest.txt")
         var lines: [String] = []
@@ -229,6 +233,11 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
         func record(_ s: String) {
             lineLock.lock(); lines.append(s); lineLock.unlock()
             NSLog("CC_NATIVEHTTP %@", s)
+        }
+
+        if let extra = extra {
+            group.enter()
+            extra(record, { group.leave() })
         }
 
         let url = URL(string: "https://api.openai.com/v1/models")!

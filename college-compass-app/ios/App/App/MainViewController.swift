@@ -15,8 +15,18 @@ class MainViewController: CAPBridgeViewController {
         // OpenAI requests (api.openai.com has no CORS for authenticated calls): NativeHttpPlugin.swift.
         let http = NativeHttpPlugin()
         bridge?.registerPluginInstance(http)
+        // "Share my list as a PDF": HTML report → Letter PDF → share sheet (SharePdfPlugin.swift).
+        let sharePdf = SharePdfPlugin()
+        bridge?.registerPluginInstance(sharePdf)
         if ProcessInfo.processInfo.arguments.contains("-ccNativeHttpSelfTest") {
-            http.runSelfTest()
+            // The HTTP checks plus one PDF render of a sample report (`pdf_pages=N pdf_bytes=M`), all
+            // written to Documents/cc_nativehttp_selftest.txt for the simulator smoke test.
+            http.runSelfTest { record, done in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    record(SharePdfPlugin.selfTestLine())
+                    done()
+                }
+            }
         }
     }
 }
