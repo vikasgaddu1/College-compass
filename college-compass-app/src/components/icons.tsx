@@ -167,3 +167,15 @@ export const IconMore = ({ size, ...r }: P) => (
     <circle cx="19" cy="12" r="1.9" />
   </svg>
 );
+export const IconPhone = ({ size, ...r }: P) => (
+  <svg {...base(size, r)}>
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+  </svg>
+);
+export const IconLifebuoy = ({ size, ...r }: P) => (
+  <svg {...base(size, r)}>
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="3.5" />
+    <path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5" />
+  </svg>
+);

@@ -5,7 +5,7 @@ import type { Config } from "tailwindcss";
 const token = (name: string) => `var(--${name})`;
 
 export default {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{ts,tsx}", "./counselors/index.html", "./counselors/src/**/*.{ts,tsx}"],
   darkMode: "media",
   theme: {
     extend: {

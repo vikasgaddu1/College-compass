@@ -16,6 +16,7 @@ import { Shortlist } from "@/screens/Shortlist";
 import { Deadlines } from "@/screens/Deadlines";
 import { Ask } from "@/screens/Ask";
 import { Settings } from "@/screens/Settings";
+import { Counselors } from "@/screens/Counselors";
 
 export function App() {
   return (
@@ -95,6 +96,7 @@ function Router() {
   if (path === "/deadlines") return <Deadlines />;
   if (path === "/ask") return <Ask tabBar={tab("ask")} />;
   if (path === "/settings") return <Settings tabBar={tab("settings")} />;
+  if (path === "/counselors") return <Counselors />;
   navigate("/", { replace: true });
   return null;
 }

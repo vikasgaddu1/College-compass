@@ -12,6 +12,7 @@ import { Banner, Button, CardSkeleton, Chip, Empty, Segmented } from "@/componen
 import { IconChevronDown, IconFilter, IconPlus, IconSearch, IconClose, IconShare } from "@/components/icons";
 import { ShareListSheet } from "@/components/ShareListSheet";
 import { ListsSheet } from "@/components/ListsSheet";
+import { CounselorsNudge } from "@/components/CounselorsNudge";
 import { DeadlineBanner } from "@/components/DeadlineBanner";
 
 interface Filters {
@@ -225,6 +226,7 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
             </div>
           </section>
         )}
+        <CounselorsNudge show={!demo && colleges.length > 0 && shown > 0} />
         {demo && colleges.length > 0 && <p className="mt-6 text-center text-footnote text-text-muted">Demo mode: sample research with approximate figures.</p>}
       </Screen>
 

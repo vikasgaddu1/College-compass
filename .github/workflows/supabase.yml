@@ -11,6 +11,7 @@ on:
       - "college-compass-app/supabase/migrations/**"
       - "college-compass-app/supabase/functions/**"
       - "college-compass-app/scripts/scorecard-load.mjs"
+      - "college-compass-app/supabase/config.toml"
       - ".github/workflows/supabase.yml"
   schedule:
     - cron: "17 7 3 * *" # monthly; Scorecard data changes a few times a year and the load is idempotent
@@ -92,7 +93,15 @@ jobs:
         with:
           version: latest
       - name: Deploy the attest Edge Function
-        run: supabase functions deploy attest --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt
+        run: |
+          # Docker bundling first; if that fails, the CLI's server-side bundling (--use-api).
+          # GitHub log downloads aren't always reachable, so failures are also surfaced as annotations.
+          deploy() { supabase functions deploy attest --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt "$@" > deploy.log 2>&1; }
+          if deploy; then cat deploy.log; exit 0; fi
+          echo "::warning title=attest deploy (docker)::$(tail -c 1500 deploy.log | tr '\n\r' '  ')"
+          if deploy --use-api; then cat deploy.log; exit 0; fi
+          echo "::error title=attest deploy (api)::$(tail -c 1500 deploy.log | tr '\n\r' '  ')"
+          exit 1
 
   scorecard:
     needs: migrate
@@ -112,3 +121,72 @@ jobs:
         run: |
           if [ -z "$SCORECARD_API_KEY" ]; then echo "::notice title=Scorecard::SCORECARD_API_KEY not set; using api.data.gov's public DEMO_KEY (30 requests/hour)"; fi
           node scripts/scorecard-load.mjs
+
+  # ─────────────────────────── Counselor directory (docs/COUNSELORS.md) ───────────────────────────
+  # Deploys the counselor Edge Functions after migrations, adds the counselor portal to the Auth redirect
+  # allow-list, and warns about missing Stripe secrets. Separate job: a failure here never affects the
+  # migration or Scorecard jobs. Stripe secrets are set by the owner (`supabase secrets set …`), never here.
+  counselor-functions:
+    needs: migrate
+    if: ${{ needs.migrate.outputs.ready == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      PORTAL_URL: ${{ vars.COUNSELOR_PORTAL_URL || 'https://vikasgaddu1.github.io/College-compass/app/counselors/' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Deploy counselor Edge Functions
+        run: |
+          # Server-side bundling (--use-api) avoids pulling the edge-runtime Docker image. Failures are
+          # surfaced as annotations because GitHub log downloads aren't always reachable.
+          failed=0
+          deploy() {
+            if supabase functions deploy "$@" --use-api --project-ref "$SUPABASE_PROJECT_REF" > deploy.log 2>&1; then cat deploy.log; else
+              echo "::error title=deploy $1::$(tail -c 1200 deploy.log | tr '\n\r' '  ')"; failed=1; fi
+          }
+          deploy counselor-checkout
+          deploy counselor-billing
+          # Stripe and the daily reconcile call these without a Supabase user JWT; both check the caller themselves.
+          deploy stripe-webhook --no-verify-jwt
+          deploy counselor-reconcile --no-verify-jwt
+          exit $failed
+      - name: Check Stripe secrets (names only)
+        continue-on-error: true
+        run: |
+          # Lists names and digests only (never values); not echoed.
+          listing="$(supabase secrets list --project-ref "$SUPABASE_PROJECT_REF")"
+          missing=""
+          for k in STRIPE_SECRET_KEY STRIPE_WEBHOOK_SECRET STRIPE_PRICE_MONTHLY STRIPE_PRICE_YEARLY; do
+            grep -qw -- "$k" <<<"$listing" || missing="$missing $k"
+          done
+          if [ -n "$missing" ]; then
+            echo "::warning title=Counselor billing not configured::Missing function secrets:$missing (see college-compass-app/docs/COUNSELORS.md). Checkout returns 503 until they are set."
+          else
+            echo "Stripe function secrets are set."
+          fi
+      - name: Allow magic-link redirects to the counselor portal
+        # `supabase db push` doesn't apply [auth] settings to a hosted project, so add the portal to
+        # Authentication → URL Configuration through the Management API. Only ADDS entries; replaces the
+        # Site URL only while it is still the localhost default.
+        continue-on-error: true
+        run: |
+          api="https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_REF/config/auth"
+          cfg="$(curl -fsS -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" "$api")"
+          patch="$(jq -c --arg u "$PORTAL_URL" '
+            (.uri_allow_list // "" | split(",") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))) as $have
+            | ($have + [$u, ($u + "**")] | unique) as $want
+            | {}
+            + (if ($want | length) != ($have | unique | length) then {uri_allow_list: ($want | join(","))} else {} end)
+            + (if ((.site_url // "") | test("^$|localhost|127\\.0\\.0\\.1")) then {site_url: $u} else {} end)' <<<"$cfg")"
+          if [ "$patch" = "{}" ]; then
+            echo "Auth URL configuration already includes the counselor portal."
+          else
+            curl -fsS -X PATCH -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H "Content-Type: application/json" \
+              --data "$patch" "$api" >/dev/null
+            echo "Updated Auth URL configuration: $(jq -c 'keys' <<<"$patch")"
+          fi
+  # ───────────────────────── end counselor directory ─────────────────────────

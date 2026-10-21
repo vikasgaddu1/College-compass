@@ -20,6 +20,7 @@ export const ROUTE_PATTERNS = [
   "/deadlines",
   "/ask",
   "/settings",
+  "/counselors",
   "/research",
   "/auth/callback",
 ] as const;
