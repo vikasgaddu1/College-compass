@@ -177,6 +177,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
       <Group label="Lists" foot="Each list has its own answers, colleges, shortlist, notes and chat. Start a new one to try a different major or region.">
         <Row label="List name" hint={describeList(activeList, colleges.length, hasProfile)} value={activeList.name} chevron onClick={() => setRenameOpen(true)} />
         <Row label="Your lists" value={`${lists.length}`} chevron onClick={() => setListsOpen(true)} />
+        <Row label="Deadlines" hint="Upcoming application deadlines, reminders and calendar export" chevron onClick={() => navigate("/deadlines")} />
         <Row label="New list" onClick={() => setNewListOpen(true)} />
         <Row label="Delete this list" danger onClick={() => setDeleteListOpen(true)} />
       </Group>
