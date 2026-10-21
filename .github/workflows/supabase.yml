@@ -141,13 +141,19 @@ jobs:
           version: latest
       - name: Deploy counselor Edge Functions
         run: |
-          for fn in counselor-checkout counselor-billing; do
-            supabase functions deploy "$fn" --project-ref "$SUPABASE_PROJECT_REF"
-          done
+          # Server-side bundling (--use-api) avoids pulling the edge-runtime Docker image. Failures are
+          # surfaced as annotations because GitHub log downloads aren't always reachable.
+          failed=0
+          deploy() {
+            if supabase functions deploy "$@" --use-api --project-ref "$SUPABASE_PROJECT_REF" > deploy.log 2>&1; then cat deploy.log; else
+              echo "::error title=deploy $1::$(tail -c 1200 deploy.log | tr '\n\r' '  ')"; failed=1; fi
+          }
+          deploy counselor-checkout
+          deploy counselor-billing
           # Stripe and the daily reconcile call these without a Supabase user JWT; both check the caller themselves.
-          for fn in stripe-webhook counselor-reconcile; do
-            supabase functions deploy "$fn" --no-verify-jwt --project-ref "$SUPABASE_PROJECT_REF"
-          done
+          deploy stripe-webhook --no-verify-jwt
+          deploy counselor-reconcile --no-verify-jwt
+          exit $failed
       - name: Check Stripe secrets (names only)
         continue-on-error: true
         run: |
