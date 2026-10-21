@@ -1,13 +1,22 @@
+import { useState } from "react";
 import type { RankedCollege } from "@/types";
 import { navigate } from "@/lib/router";
 import { tierInfo } from "@/state/catalog";
-import { fmt } from "@/state/store";
+import { fmt, useStore } from "@/state/store";
 import { IconStar } from "./icons";
+import { IconNote, NoteSheet, notePreview } from "./NoteSheet";
 import { ConfidenceDot, OddsChip } from "./ui";
 
+/**
+ * `note` is the tier-placement explanation shown in italics (why a college sits in this group).
+ * The student's own per-college note comes from the store and is shown in the card's notes row.
+ */
 export function CollegeCard({ item, saved, onToggleSave, compact, pop, note }: { item: RankedCollege; saved: boolean; onToggleSave: () => void; compact?: boolean; pop?: boolean; note?: string }) {
   const { college: c, odds, fit } = item;
   const t = tierInfo(odds.tier);
+  const { notes } = useStore();
+  const ownNote = notePreview(notes[c.id]);
+  const [noteOpen, setNoteOpen] = useState(false);
   return (
     <article className={`cc-card ${pop ? "cc-pop" : ""}`} style={{ ["--rail" as string]: t.cssVar }}>
       <span className="cc-card-rail" aria-hidden />
@@ -47,10 +56,25 @@ export function CollegeCard({ item, saved, onToggleSave, compact, pop, note }: {
             <span className="text-caption text-text-muted">· {c.data_year}</span>
           </div>
         </button>
-        <button type="button" className={`cc-press -mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full ${saved ? "text-warn" : "text-text-muted"}`} aria-pressed={saved} aria-label={saved ? "Remove from shortlist" : "Add to shortlist"} onClick={onToggleSave}>
-          <IconStar size={24} filled={saved} />
-        </button>
+        <div className="-mt-1 flex shrink-0 flex-col items-center">
+          <button type="button" className={`cc-press grid h-11 w-11 place-items-center rounded-full ${saved ? "text-warn" : "text-text-muted"}`} aria-pressed={saved} aria-label={saved ? "Remove from shortlist" : "Add to shortlist"} onClick={onToggleSave}>
+            <IconStar size={24} filled={saved} />
+          </button>
+          {/* Empty state: a quiet note button under the star. Compact cards (Research) skip it to stay tidy. */}
+          {!ownNote && !compact && (
+            <button type="button" className="cc-press grid h-11 w-11 place-items-center rounded-full text-text-muted" aria-label={`Add a note for ${c.short}`} onClick={() => setNoteOpen(true)}>
+              <IconNote size={21} />
+            </button>
+          )}
+        </div>
       </div>
+      {ownNote && (
+        <button type="button" className="cc-row-press flex min-h-tap w-full items-center gap-2 border-t border-border pl-4 pr-3 text-left" aria-label={`Notes for ${c.short}: ${ownNote}`} onClick={() => setNoteOpen(true)}>
+          <IconNote size={16} className="shrink-0 text-text-muted" />
+          <span className="min-w-0 flex-1 truncate text-footnote text-text-muted">{ownNote}</span>
+        </button>
+      )}
+      <NoteSheet collegeId={c.id} open={noteOpen} onClose={() => setNoteOpen(false)} />
     </article>
   );
 }

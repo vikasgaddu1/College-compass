@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import { navigate } from "@/lib/router";
+import { useEffect, useRef, useState } from "react";
+import { navigate, useRoute } from "@/lib/router";
 import { fmt, useStore } from "@/state/store";
 import { majorIcon, majorLabel, tierInfo } from "@/state/catalog";
 import { auth, describeError, researchApi } from "@/state/services";
 import { Screen } from "@/components/Screen";
 import { RangeBar } from "@/components/RangeBar";
 import { ConfirmSheet } from "@/components/Sheet";
+import { NoteTextarea } from "@/components/NoteSheet";
 import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, ConfidenceDot, EffectIcon, Empty, Group, Row, Stat, TierPill } from "@/components/ui";
 import { IconExternal, IconRefresh, IconStar } from "@/components/icons";
@@ -16,6 +17,21 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
   const [refreshing, setRefreshing] = useState(false);
   const [err, setErr] = useState<{ detail: string; code?: string } | null>(null);
   const [confirmRemove, setConfirmRemove] = useState(false);
+
+  // `#/college/<id>?notes=1` (from a card's note preview or the quick-note sheet) lands on the notes box.
+  const wantsNotes = useRoute().query.notes === "1";
+  const notesRef = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => {
+    if (!wantsNotes) return;
+    // After Screen's own scroll-to-top on mount, and after the push transition settles.
+    const t = setTimeout(() => {
+      const el = notesRef.current;
+      if (!el) return;
+      el.scrollIntoView?.({ block: "center", behavior: "smooth" });
+      el.focus({ preventScroll: true });
+    }, 80);
+    return () => clearTimeout(t);
+  }, [wantsNotes, id]);
 
   // iPhone sign-in completes in place without remounting this screen: drop the card once signed in.
   const needsSession = !!err && needsSignIn(err.code);
@@ -125,6 +141,15 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
         </div>
       )}
 
+      {/* Notes — kept near the top so visit dates, contacts and gut feelings are one glance away. */}
+      <section id="notes" className="mt-5 scroll-mt-4">
+        <h3 className="cc-group-label">Your notes</h3>
+        <div className="cc-group">
+          <NoteTextarea inputRef={notesRef} id="college-notes" className="!rounded-none !border-0 focus:shadow-[inset_0_0_0_1.5px_var(--accent)]" minRows={3} value={notes[c.id] ?? ""} onChange={(t) => setNote(c.id, t)} />
+        </div>
+        <p className="cc-group-foot">Saved automatically on this phone. Shows on this college's card and your shortlist.</p>
+      </section>
+
       {/* You vs them */}
       <Group label="You vs. them">
         <div className="px-4 py-2">
@@ -232,11 +257,6 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
             <span className="text-footnote text-text-muted">{n}</span>
           </div>
         ))}
-      </Group>
-
-      {/* Notes */}
-      <Group label="Your notes">
-        <textarea className="cc-input !rounded-none !border-0" rows={3} placeholder="Visit dates, people to email, gut feeling…" value={notes[c.id] ?? ""} onChange={(e) => setNote(c.id, e.target.value)} aria-label="Your notes" />
       </Group>
 
       <div className="mt-6 space-y-2 pb-4">

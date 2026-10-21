@@ -4,12 +4,14 @@ import { fmt, useStore } from "@/state/store";
 import { tierInfo } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
 import { Button, Empty, OddsChip, TierPill } from "@/components/ui";
+import { IconNote, NoteSheet, notePreview } from "@/components/NoteSheet";
 import { IconArrowDown, IconArrowUp, IconChevronRight, IconShare, IconStar } from "@/components/icons";
 
 export function Shortlist({ tabBar }: { tabBar?: ReactNode }) {
   const { shortlist, byId, moveSaved, toggleSaved, notes, profile } = useStore();
   const items = shortlist.map((id) => byId.get(id)).filter((x): x is NonNullable<typeof x> => !!x);
   const [copied, setCopied] = useState(false);
+  const [noteFor, setNoteFor] = useState<string | null>(null);
 
   const exportText = () => {
     const lines = [
@@ -97,8 +99,9 @@ export function Shortlist({ tabBar }: { tabBar?: ReactNode }) {
                   </div>
                 </div>
                 <div className="flex items-center gap-2 border-t border-border py-0.5 pl-4 pr-2">
-                  <button type="button" className="min-h-tap min-w-0 flex-1 text-left" onClick={() => navigate(`/college/${encodeURIComponent(c.id)}`)} aria-label={notes[c.id] ? `Notes for ${c.short}` : `Add a note for ${c.short}`}>
-                    <span className={`block truncate text-footnote ${notes[c.id] ? "text-text" : "text-text-muted"}`}>{notes[c.id] ? notes[c.id] : "Add a note"}</span>
+                  <button type="button" className="flex min-h-tap min-w-0 flex-1 items-center gap-2 text-left" onClick={() => setNoteFor(c.id)} aria-label={notes[c.id] ? `Notes for ${c.short}: ${notePreview(notes[c.id])}` : `Add a note for ${c.short}`}>
+                    <IconNote size={16} className="shrink-0 text-text-muted" />
+                    <span className={`block min-w-0 flex-1 truncate text-footnote ${notes[c.id] ? "text-text" : "text-text-muted"}`}>{notes[c.id] ? notePreview(notes[c.id]) : "Add a note"}</span>
                   </button>
                   <button type="button" className="flex min-h-tap shrink-0 items-center gap-1.5 px-2 text-footnote text-text-muted" onClick={() => toggleSaved(c.id)}>
                     <IconStar size={16} filled className="text-warn" /> Remove
@@ -116,6 +119,7 @@ export function Shortlist({ tabBar }: { tabBar?: ReactNode }) {
           </Button>
         </div>
       )}
+      <NoteSheet collegeId={noteFor} open={!!noteFor} onClose={() => setNoteFor(null)} />
     </Screen>
   );
 }
