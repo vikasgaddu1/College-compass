@@ -63,8 +63,9 @@ export function loadIndex(): ListsIndex | null {
   return validIndex(v) ? { v: 1, active: v.active, items: v.items.map((it) => ({ ...it })) } : null;
 }
 
-export function saveIndex(index: ListsIndex): void {
-  save(LISTS_KEY, index);
+/** Persist the lists index; false if the write failed (e.g. storage full). */
+export function saveIndex(index: ListsIndex): boolean {
+  return save(LISTS_KEY, index);
 }
 
 export function removeListData(id: string): void {
@@ -252,8 +253,16 @@ export function reconcileLists(): ListsIndex {
         meta.named = true;
         if (index) meta.from = index.active;
       }
-      index = index ? { ...index, active: id, items: [...index.items, meta] } : { v: 1, active: id, items: [meta] };
-      saveIndex(index);
+      const next: ListsIndex = index ? { ...index, active: id, items: [...index.items, meta] } : { v: 1, active: id, items: [meta] };
+      if (!saveIndex(next)) {
+        // The copy is only findable through the index: without it, keep the original data and drop
+        // the copy (a later launch tries again).
+        for (const p of LIST_PARTS) remove(listKey(id, p));
+        const kept = index ?? freshIndex();
+        saveIndex(kept);
+        return kept;
+      }
+      index = next;
       removeFlat();
     }
   }

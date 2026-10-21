@@ -94,6 +94,27 @@ describe("reconcileLists: migration from the flat keys", () => {
     }
   });
 
+  it("storage full when saving the index: keeps the original data and drops the copy", () => {
+    seedFlat();
+    const real = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (k: string, v: string) {
+      if (k === "cc2:" + LISTS_KEY && v.includes('"items":[{')) throw new Error("QuotaExceededError");
+      return real.call(this, k, v);
+    };
+    try {
+      const before = { profile: raw("profile"), colleges: raw("colleges"), notes: raw("notes"), chat: raw("chat"), shortlist: raw("shortlist") };
+      reconcileLists();
+      expect({ profile: raw("profile"), colleges: raw("colleges"), notes: raw("notes"), chat: raw("chat"), shortlist: raw("shortlist") }).toEqual(before);
+      expect(Object.keys(snapshot()).some((k) => k.startsWith("cc2:list:"))).toBe(false);
+    } finally {
+      Storage.prototype.setItem = real;
+    }
+    // Next launch with space: migrates normally.
+    const idx = reconcileLists();
+    expect(raw("colleges")).toBeNull();
+    expect(JSON.parse(raw(listKey(idx.active, "colleges"))!)).toHaveLength(DEMO_COLLEGES.length);
+  });
+
   it("re-running is a no-op", () => {
     seedFlat();
     reconcileLists();
