@@ -18,12 +18,15 @@ class MainViewController: CAPBridgeViewController {
         // "Share my list as a PDF": HTML report → Letter PDF → share sheet (SharePdfPlugin.swift).
         let sharePdf = SharePdfPlugin()
         bridge?.registerPluginInstance(sharePdf)
+        // Apple App Attest for shared-research contributions (AppAttestPlugin.swift).
+        bridge?.registerPluginInstance(AppAttestPlugin())
         if ProcessInfo.processInfo.arguments.contains("-ccNativeHttpSelfTest") {
             // The HTTP checks plus one PDF render of a sample report (`pdf_pages=N pdf_bytes=M`), all
             // written to Documents/cc_nativehttp_selftest.txt for the simulator smoke test.
             http.runSelfTest { record, done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     record(SharePdfPlugin.selfTestLine())
+                    record(AppAttestPlugin.selfTestLine())
                     done()
                 }
             }

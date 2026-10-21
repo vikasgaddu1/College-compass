@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  OPT-IN ONLY — not used by default builds (CODE_SIGN_ENTITLEMENTS = $(CC_APP_ATTEST_ENTITLEMENTS), empty).
+  TestFlight, App Store and Enterprise builds always use the App Attest *production* environment
+  whether or not this entitlement is present, so release builds don't need it. Without it, apps run
+  from Xcode use the App Attest *sandbox* (development) environment. Use this file only to test
+  against production from Xcode: build with CC_APP_ATTEST_ENTITLEMENTS=App/AppAttest.entitlements,
+  after enabling the "App Attest" capability on the com.gaddu.collegecompass identifier in the
+  Apple Developer portal (otherwise signing fails: the provisioning profile won't contain this key).
+  See college-compass-app/docs/APP_STORE.md, "App Attest".
+-->
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.devicecheck.appattest-environment</key>
+	<string>production</string>
+</dict>
+</plist>
