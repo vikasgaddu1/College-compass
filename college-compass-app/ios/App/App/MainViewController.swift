@@ -18,6 +18,8 @@ class MainViewController: CAPBridgeViewController {
         // "Share my list as a PDF": HTML report → Letter PDF → share sheet (SharePdfPlugin.swift).
         let sharePdf = SharePdfPlugin()
         bridge?.registerPluginInstance(sharePdf)
+        // Apple App Attest for shared-research contributions (AppAttestPlugin.swift).
+        bridge?.registerPluginInstance(AppAttestPlugin())
         // Application-deadline reminders (local notifications) + "Add to Calendar" (.ics share):
         // DeadlineRemindersPlugin.swift.
         let deadlineReminders = DeadlineRemindersPlugin()
@@ -30,6 +32,7 @@ class MainViewController: CAPBridgeViewController {
             http.runSelfTest { record, done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     record(SharePdfPlugin.selfTestLine())
+                    record(AppAttestPlugin.selfTestLine())
                     DeadlineRemindersPlugin.selfTest { line in
                         record(line)
                         done()

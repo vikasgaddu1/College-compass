@@ -128,6 +128,9 @@ jobs:
           echo "PDF self-test: pages=$pdf_pages bytes=$pdf_bytes"
           test "$pdf_pages" -ge 1
           test "$pdf_bytes" -gt 1000
+          # App Attest (AppAttestPlugin.swift): the Simulator has no App Attest, so this only shows the plugin
+          # is compiled in and DeviceCheck links (expect appattest_supported=false). Informational, never fails.
+          grep -Ex "appattest_supported=(true|false)" "$OUT" || echo "::warning title=App Attest self-test::no appattest_supported line in $OUT"
           # Deadline reminders: two test reminders are scheduled, counted, cleared and counted again
           # (DeadlineRemindersPlugin.swift). The Simulator can't grant notification permission
           # unattended, in which case iOS refuses to add them and the plugin reports that instead.

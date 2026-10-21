@@ -526,6 +526,35 @@ export async function webPrintHtml(html: string, fileName: string): Promise<Shar
   }
 }
 
+// ───────────────────────────── Apple App Attest ─────────────────────────────
+//
+// Proves a shared-research contribution comes from the genuine College Compass app on a real
+// Apple device (ios/App/App/AppAttestPlugin.swift → DCAppAttestService). The protocol lives in
+// src/data/attest.ts. Unavailable on the web and in the Simulator (`supported: false`); then
+// contributions are simply sent unattested.
+
+/** JS face of the native `AppAttest` plugin. Client data is always a UTF-8 string the plugin hashes (SHA-256). */
+export interface AppAttestPlugin {
+  /** Whether App Attest works here, and whether a key has been attested and accepted by the server. */
+  status(): Promise<{ supported: boolean; registered: boolean; keyId?: string }>;
+  /** New Secure Enclave key, attested by Apple over SHA256(challenge). Kept pending until confirmKey. */
+  attestKey(opts: { challenge: string }): Promise<{ keyId: string; attestation: string }>;
+  /** The server accepted the attestation: use this key for assertions from now on. */
+  confirmKey(opts: { keyId: string }): Promise<void>;
+  /** Assertion over SHA256(clientData) with the registered key. Rejects `INVALID_KEY` (key dropped) when Apple invalidated it. */
+  generateAssertion(opts: { clientData: string }): Promise<{ keyId: string; assertion: string }>;
+  /** Forget the key (the server doesn't know it); the next contribution attests a new one. */
+  resetKey(): Promise<void>;
+}
+
+let appAttestPlugin: AppAttestPlugin | null = null;
+/** The native App Attest plugin in the iOS app; null on the web and in tests. */
+export function getAppAttestPlugin(): AppAttestPlugin | null {
+  if (!isNative()) return null;
+  appAttestPlugin ??= registerPlugin<AppAttestPlugin>("AppAttest");
+  return appAttestPlugin;
+}
+
 // ───────────────────────────── Deadline reminders + Add to Calendar ─────────────────────────────
 //
 // Application-deadline reminders are local notifications scheduled by the in-app `DeadlineReminders`

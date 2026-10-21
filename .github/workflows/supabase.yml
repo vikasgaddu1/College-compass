@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "college-compass-app/supabase/migrations/**"
+      - "college-compass-app/supabase/functions/**"
       - "college-compass-app/scripts/scorecard-load.mjs"
       - ".github/workflows/supabase.yml"
   schedule:
@@ -73,6 +74,25 @@ jobs:
           supabase db push --password "$SUPABASE_DB_PASSWORD"
     outputs:
       ready: ${{ steps.gate.outputs.ready }}
+
+  # The App Attest verifier (supabase/functions/attest). A separate job after `migrate` (it needs the
+  # database functions from the migrations): a failed deploy can't affect migrations or the Scorecard
+  # load, and the app falls back to unattested contributions while the function is missing.
+  # --no-verify-jwt: the app sends the publishable key, which isn't a JWT; App Attest authenticates.
+  functions:
+    needs: migrate
+    if: ${{ needs.migrate.outputs.ready == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Deploy the attest Edge Function
+        run: supabase functions deploy attest --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt
 
   scorecard:
     needs: migrate

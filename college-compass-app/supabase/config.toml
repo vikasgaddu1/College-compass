@@ -1,3 +1,8 @@
 # Minimal Supabase CLI config for `supabase db push` from CI (.github/workflows/supabase.yml).
 # The project itself is created in the Supabase dashboard; migrations live in supabase/migrations.
 project_id = "college-compass"
+
+# App Attest verifier (supabase/functions/attest). The app calls it with the publishable key, which
+# is not a JWT, so the gateway's JWT check is off; App Attest itself authenticates every request.
+[functions.attest]
+verify_jwt = false

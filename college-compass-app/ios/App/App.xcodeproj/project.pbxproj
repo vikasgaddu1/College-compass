@@ -11,6 +11,7 @@
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
 		504EC3081FED79650016851F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC3071FED79650016851F /* AppDelegate.swift */; };
 		5F6E11A2B2A7B96A60F8A315 /* LoopbackAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100C50DA04121286F91B47B7 /* LoopbackAuthPlugin.swift */; };
+		A77E5701A77E5701A77E5701 /* AppAttestPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77E5702A77E5702A77E5702 /* AppAttestPlugin.swift */; };
 		A1C0FFEE0000000000000001 /* NativeHttpPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */; };
 		A1C0FFEE0000000000000003 /* BackgroundTransfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */; };
 		A1C0FFEE0000000000000005 /* SharePdfPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */; };
@@ -30,6 +31,8 @@
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		100C50DA04121286F91B47B7 /* LoopbackAuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopbackAuthPlugin.swift; sourceTree = "<group>"; };
+		A77E5702A77E5702A77E5702 /* AppAttestPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestPlugin.swift; sourceTree = "<group>"; };
+		A77E5703A77E5703A77E5703 /* AppAttest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppAttest.entitlements; sourceTree = "<group>"; };
 		A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeHttpPlugin.swift; sourceTree = "<group>"; };
 		A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTransfers.swift; sourceTree = "<group>"; };
 		A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePdfPlugin.swift; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				E9F2362714778127FB4FA21B /* MainViewController.swift */,
 				100C50DA04121286F91B47B7 /* LoopbackAuthPlugin.swift */,
+				A77E5702A77E5702A77E5702 /* AppAttestPlugin.swift */,
+				A77E5703A77E5703A77E5703 /* AppAttest.entitlements */,
 				A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */,
 				A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */,
 				A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */,
@@ -234,6 +239,7 @@
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				E1E7EA05C8476E0917241336 /* MainViewController.swift in Sources */,
 				5F6E11A2B2A7B96A60F8A315 /* LoopbackAuthPlugin.swift in Sources */,
+				A77E5701A77E5701A77E5701 /* AppAttestPlugin.swift in Sources */,
 				A1C0FFEE0000000000000001 /* NativeHttpPlugin.swift in Sources */,
 				A1C0FFEE0000000000000003 /* BackgroundTransfers.swift in Sources */,
 				A1C0FFEE0000000000000005 /* SharePdfPlugin.swift in Sources */,
@@ -375,6 +381,7 @@
 			baseConfigurationReference = FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(CC_APP_ATTEST_ENTITLEMENTS)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
@@ -395,6 +402,7 @@
 			baseConfigurationReference = AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(CC_APP_ATTEST_ENTITLEMENTS)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
