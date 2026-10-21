@@ -55,7 +55,7 @@ A reviewer-model pass to break ties is planned with the adversarial-review featu
 
 The weak spot of the flywheel was that anyone could call `contribute_research` with made-up install IDs and pose as "two independent students". **Apple App Attest** closes it: the iPhone app proves each contribution comes from the genuine, unmodified College Compass app (App ID `C544LPNJ2S.com.gaddu.collegecompass`) on a real Apple device, and that the payload wasn't altered.
 
-**Pieces.** `ios/App/App/AppAttestPlugin.swift` (`DCAppAttestService`; key in the Secure Enclave, identifier in UserDefaults) · `src/data/attest.ts` (client protocol; wired into `createSharedLookup().contribute`) · `supabase/functions/attest/` (Edge Function: `handler.ts`, verifier in `appattest/` — CBOR, DER/X.509, ECDSA P-256/P-384, no dependencies, Apple's App Attestation Root CA pinned) · `supabase/migrations/20261021000000_app_attest.sql` (tables + service-role-only functions).
+**Pieces.** `ios/App/App/AppAttestPlugin.swift` (`DCAppAttestService`; key in the Secure Enclave, identifier in UserDefaults) · `src/data/attest.ts` (client protocol; wired into `createSharedLookup().contribute`) · `supabase/functions/attest/` (Edge Function: `handler.ts`, verifier in `appattest/` — CBOR, DER/X.509, ECDSA P-256/P-384, no dependencies, Apple's App Attestation Root CA pinned) · `supabase/migrations/20261021010000_app_attest.sql` (tables + service-role-only functions).
 
 **Protocol** (one endpoint, `POST {SUPABASE_URL}/functions/v1/attest`):
 

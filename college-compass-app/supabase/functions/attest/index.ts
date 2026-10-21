@@ -1,6 +1,6 @@
 // Supabase Edge Function `attest` — Apple App Attest for shared-research contributions.
 // Protocol and responses: ./handler.ts. Verification: ./appattest/verify.ts (pinned Apple root).
-// Database side: supabase/migrations/20261021000000_app_attest.sql (service-role-only functions).
+// Database side: supabase/migrations/20261021010000_app_attest.sql (service-role-only functions).
 //
 // Deploy: `supabase functions deploy attest --no-verify-jwt` (.github/workflows/supabase.yml). The
 // app calls it with the publishable key, which is not a JWT, so the gateway's JWT check is off;

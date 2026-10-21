@@ -1,6 +1,6 @@
 /**
  * Test-only in-memory stand-in for the database functions the `attest` Edge Function calls
- * (supabase/migrations/20261021000000_app_attest.sql), with the same single-use challenge,
+ * (supabase/migrations/20261021010000_app_attest.sql), with the same single-use challenge,
  * key registration and strictly-increasing-counter semantics.
  */
 import type { Rpc } from "../../supabase/functions/attest/handler";
