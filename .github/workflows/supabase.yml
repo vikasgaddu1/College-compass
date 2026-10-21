@@ -92,7 +92,15 @@ jobs:
         with:
           version: latest
       - name: Deploy the attest Edge Function
-        run: supabase functions deploy attest --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt
+        run: |
+          # Docker bundling first; if that fails, the CLI's server-side bundling (--use-api).
+          # GitHub log downloads aren't always reachable, so failures are also surfaced as annotations.
+          deploy() { supabase functions deploy attest --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt "$@" > deploy.log 2>&1; }
+          if deploy; then cat deploy.log; exit 0; fi
+          echo "::warning title=attest deploy (docker)::$(tail -c 1500 deploy.log | tr '\n\r' '  ')"
+          if deploy --use-api; then cat deploy.log; exit 0; fi
+          echo "::error title=attest deploy (api)::$(tail -c 1500 deploy.log | tr '\n\r' '  ')"
+          exit 1
 
   scorecard:
     needs: migrate
