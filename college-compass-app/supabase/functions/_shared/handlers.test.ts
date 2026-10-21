@@ -128,6 +128,16 @@ describe("counselor-billing", () => {
       customer: "cus_1", return_url: "https://vikasgaddu1.github.io/College-compass/app/counselors/#/billing",
     });
   });
+  it("uses the counselor portal configuration when one is set", async () => {
+    const { db } = fakeDb({ billing_counselor_for_user: ctx({ stripe_customer_id: "cus_1" }) });
+    const stripe = fakeStripe();
+    const d = deps({ db, stripe });
+    d.config.portalConfiguration = "bpc_cc";
+    await handleBilling(post({}), d);
+    expect(stripe.billingPortal.sessions.create).toHaveBeenCalledWith({
+      customer: "cus_1", return_url: "https://vikasgaddu1.github.io/College-compass/app/counselors/#/billing", configuration: "bpc_cc",
+    });
+  });
   it("409 without a Stripe customer", async () => {
     const { db } = fakeDb({ billing_counselor_for_user: ctx() });
     const res = await handleBilling(post({}), deps({ db }));

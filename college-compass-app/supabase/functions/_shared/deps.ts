@@ -1,7 +1,8 @@
 // Real dependencies for the counselor Edge Functions (Deno / Supabase Edge Runtime only).
 // Secrets come from the function environment (`supabase secrets set …`); none are ever logged.
 //   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_MONTHLY, STRIPE_PRICE_YEARLY   (owner sets)
-//   PORTAL_URL (optional), COUNSELOR_ALLOWED_ORIGINS (optional, comma-separated)
+//   PORTAL_URL (optional), COUNSELOR_ALLOWED_ORIGINS (optional, comma-separated),
+//   STRIPE_PORTAL_CONFIGURATION (optional bpc_… customer-portal configuration; account default when unset)
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY                                              (built in)
 import Stripe from "npm:stripe@22.6.2";
 import { createClient } from "npm:@supabase/supabase-js@2.117.2";
@@ -36,6 +37,7 @@ export function realDeps(): Deps {
       priceMonthly: env("STRIPE_PRICE_MONTHLY"),
       priceYearly: env("STRIPE_PRICE_YEARLY"),
       webhookSecret: env("STRIPE_WEBHOOK_SECRET"),
+      portalConfiguration: env("STRIPE_PORTAL_CONFIGURATION"),
     },
     db: admin as unknown as Db,
     stripe: stripe as unknown as StripeLike | null,
