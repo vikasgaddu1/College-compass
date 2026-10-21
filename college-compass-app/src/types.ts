@@ -265,6 +265,17 @@ export interface AiCallResult {
   text: string;
   tool_calls: { name: string; arguments: string }[];  // raw JSON argument strings
   model: string;
+  /** Token usage, when the API reported it (absent on routes that don't). */
+  usage?: AiUsage | null;
+}
+
+/** Token usage of one Responses call (`response.usage`) + how many web searches it ran. */
+export interface AiUsage {
+  input_tokens: number | null;
+  output_tokens: number | null;
+  reasoning_tokens: number | null;
+  total_tokens: number | null;
+  web_searches: number;
 }
 
 export interface AiClient {
@@ -342,7 +353,44 @@ export type ResearchEvent =
   | { type: "batch_done"; batch: number }
   | { type: "summary_delta"; text: string }
   | { type: "done"; colleges: College[] }
-  | { type: "error"; error: string; code?: AiError["code"] };
+  | { type: "error"; error: string; code?: AiError["code"] }
+  /** Second-model review finished for one college (emitted just before its `college_done`). */
+  | { type: "college_reviewed"; name: string; review: ReviewSummary };
+
+/** One correction the reviewer made. `field` is e.g. "admit_rate", "plan_deadline:EA", "program_degree:engineering". */
+export interface ReviewChange {
+  field: string;
+  old: string | null;
+  new: string;
+  source_url: string;
+  confidence: "high" | "medium" | "low";
+  reason: string;
+}
+
+/** Outcome of the optional second-model review of one researched college. */
+export interface ReviewSummary {
+  /** Model that reviewed (as reported by the API), null when the review failed before answering. */
+  model: string | null;
+  ms: number;
+  /** The record as research returned it (before review, before federal gap-filling). */
+  before: College;
+  /** The record after corrections (equals `before` when nothing was applied or the review failed). */
+  after: College;
+  applied: ReviewChange[];
+  /** Corrections not applied (no source, low confidence, implausible, unparsable…), with why. */
+  skipped: (ReviewChange & { why: string })[];
+  verified: string[];
+  unverified: { field: string; reason: string }[];
+  usage: AiUsage | null;
+  /** Why the review failed (the unreviewed record was kept), else null. */
+  error: string | null;
+}
+
+/** Reviewer model + effort. `model` is a slug or display name from listModels() (resolved at run time). */
+export interface ReviewSettings {
+  model?: string;
+  effort?: "low" | "medium" | "high";
+}
 
 export interface ResearchOptions {
   profile: StudentProfile;
@@ -363,6 +411,12 @@ export interface ResearchOptions {
   effort?: { planner?: "low" | "medium" | "high"; researcher?: "low" | "medium" | "high" };
   /** Send researched college facts to the shared database so later students skip research. Default true. */
   share_research?: boolean;
+  /**
+   * Second-model review: after research, a different model checks each college against official
+   * sources and fixes errors it can cite. false = off; omitted = the app default (APP_REVIEW in
+   * src/ai/config.ts, currently off). Review failures never fail a college.
+   */
+  review?: ReviewSettings | false;
   signal?: AbortSignal;
   onEvent: (e: ResearchEvent) => void;
 }

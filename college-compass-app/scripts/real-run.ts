@@ -11,29 +11,16 @@
  *   npm run real-run -- research [n]          # plan + research n colleges (default 6), rank, print
  */
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import type { College, StudentProfile } from "../src/types";
+import { FileStorage, STORE, installStorage } from "./store";
 
-const STORE = process.env.CC_STORE ?? "./cc-real-run.json";
 const REDIRECT = "http://127.0.0.1:1455/auth/callback";
 const AUTHORIZE = "https://auth.openai.com/api/accounts/authorize";
 const TOKEN = "https://auth.openai.com/api/accounts/oauth/token";
 
-/** localStorage backed by a JSON file, so tokens and results survive between commands. */
-class FileStorage {
-  private m: Record<string, string>;
-  constructor(private path: string) {
-    this.m = existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : {};
-  }
-  private flush() { writeFileSync(this.path, JSON.stringify(this.m, null, 1), { mode: 0o600 }); }
-  get length() { return Object.keys(this.m).length; }
-  key(i: number) { return Object.keys(this.m)[i] ?? null; }
-  getItem(k: string) { return k in this.m ? this.m[k]! : null; }
-  setItem(k: string, v: string) { this.m[k] = String(v); this.flush(); }
-  removeItem(k: string) { delete this.m[k]; this.flush(); }
-  clear() { this.m = {}; this.flush(); }
-}
-Object.defineProperty(globalThis, "localStorage", { value: new FileStorage(STORE), configurable: true });
+// Token store shared with scripts/review-compare.ts (see scripts/store.ts).
+installStorage(new FileStorage(STORE));
 
 const b64u = (b: Buffer) => b.toString("base64url");
 

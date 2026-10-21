@@ -8,13 +8,18 @@
  * - Fatal errors (usage limit, sign-in, unsupported) stop everything: an `error` event is emitted and
  *   run() rejects. Aborting rejects with the AbortError. Per-college failures are reported as
  *   `college_failed` and run() still resolves with everything that succeeded.
+ * - Optional second-model review (`opts.review`, default APP_REVIEW = off): each researched college is
+ *   checked by a reviewer model (src/ai/review.ts) as its own task under the same concurrency limiter,
+ *   before federal gap-filling, caching and `college_done`. A failed review keeps the unreviewed record.
  */
-import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type StudentProfile, type Tier } from "../types";
+import { AiError, type AiCallResult, type AiClient, type College, type CollegeCandidate, type ResearchApi, type ResearchEvent, type ResearchOptions, type ReviewSettings, type ReviewSummary, type StudentProfile, type Tier } from "../types";
 import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
 import { APP_VERSION, contributionPayload, createSharedLookup, installId, mergeShared, sharedResearchRecord, type SharedCollege, type SharedLookup } from "../data/shared";
 import { researchCache as defaultCache, findFresh, fitsStudent, type ResearchCache } from "./cache";
+import { APP_REVIEW } from "./config";
 import { stateCode } from "./geo";
+import { reviewCollege } from "./review";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
 import {
   PLANNER_TOOL_NAME, RESEARCH_TOOL_NAME, TIERS, entryTerm, plannerInput, plannerInstructions, proposeCollegesTool,
@@ -360,7 +365,28 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       };
       const byTarget = (t: ResearchTarget) => toResearch.find((c) => c.name === t.name)!;
 
-      const batchTask = async (batch: CollegeCandidate[], no: number): Promise<ResearchTarget[]> => {
+      // Second-model review: its own limiter task per college (queued, never nested inside a held slot).
+      const reviewCfg: ReviewSettings | false = opts.review === undefined ? APP_REVIEW : opts.review;
+      const reviewTask = async (cand: CollegeCandidate, researched: College): Promise<void> => {
+        if (fatal || signal.aborted || !reviewCfg) return record(cand, researched);
+        const t0 = Date.now();
+        let summary: ReviewSummary;
+        try {
+          summary = await reviewCollege(researched, { majors: profile.majors, cycle, now: now() }, { client: deps.client, model: reviewCfg.model, effort: reviewCfg.effort, signal });
+        } catch (e) {
+          // Never fails the college (not even usage limits: research calls report those themselves).
+          summary = { model: null, ms: Date.now() - t0, before: researched, after: researched, applied: [], skipped: [], verified: [], unverified: [], usage: null, error: message(e) };
+        }
+        emit({ type: "college_reviewed", name: cand.name, review: summary });
+        await record(cand, summary.after);
+      };
+      /** Research finished for a college: record now, or queue its review (collected so the batch waits for it). */
+      const deliver = async (cand: CollegeCandidate, researched: College, reviews: Promise<void>[]) => {
+        if (reviewCfg) reviews.push(limit(() => reviewTask(cand, researched)));
+        else await record(cand, researched);
+      };
+
+      const batchTask = async (batch: CollegeCandidate[], no: number, reviews: Promise<void>[]): Promise<ResearchTarget[]> => {
         if (fatal || signal.aborted) return [];
         emit({ type: "batch_started", batch: no, names: batch.map((c) => c.name) });
         let remaining: ResearchTarget[] = batch.map((c) => ({ name: c.name, state: c.state }));
@@ -368,7 +394,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         for (let attempt = 0; attempt < 2 && remaining.length; attempt++) {
           try {
             const r = await researchBatch(remaining, profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, remaining));
-            for (const d of r.done) await record(byTarget(d.target), d.college);
+            for (const d of r.done) await deliver(byTarget(d.target), d.college, reviews);
             remaining = r.missing;
           } catch (e) {
             if (fatal || isAbort(e)) return [];
@@ -384,12 +410,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         return remaining; // → split into single-college calls
       };
 
-      const singleTask = async (t: ResearchTarget): Promise<void> => {
+      const singleTask = async (t: ResearchTarget, reviews: Promise<void>[]): Promise<void> => {
         if (fatal || signal.aborted) return;
         try {
           const r = await researchBatch([t], profile, opts.model, signal, opts.effort?.researcher, researchTag(runId, [t]));
           const d = r.done[0];
-          if (d) await record(byTarget(t), d.college);
+          if (d) await deliver(byTarget(t), d.college, reviews);
           else emit({ type: "college_failed", name: t.name, error: "No results were returned." });
         } catch (e) {
           if (fatal || isAbort(e)) return;
@@ -399,11 +425,13 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       };
 
       await Promise.all(
-        batches.map((batch, no) =>
-          limit(() => batchTask(batch, no))
-            .then((left) => Promise.all(left.map((t) => limit(() => singleTask(t)))))
-            .then(() => { if (!fatal && !signal.aborted) emit({ type: "batch_done", batch: no }); }),
-        ),
+        batches.map((batch, no) => {
+          const reviews: Promise<void>[] = [];
+          return limit(() => batchTask(batch, no, reviews))
+            .then((left) => Promise.all(left.map((t) => limit(() => singleTask(t, reviews)))))
+            .then(() => Promise.all(reviews))
+            .then(() => { if (!fatal && !signal.aborted) emit({ type: "batch_done", batch: no }); });
+        }),
       );
 
       if (fatal) throw fatal;

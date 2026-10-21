@@ -13,7 +13,8 @@
     "cap:sync": "npm run build:ios && npx cap sync ios",
     "cap:open": "npx cap open ios",
     "e2e": "bash e2e/run.sh",
-    "real-run": "esbuild scripts/real-run.ts --bundle --platform=node --format=esm --target=node20 --alias:@=./src --outfile=.real-run.mjs --log-level=warning && node .real-run.mjs"
+    "real-run": "esbuild scripts/real-run.ts --bundle --platform=node --format=esm --target=node20 --alias:@=./src --outfile=.real-run.mjs --log-level=warning && node .real-run.mjs",
+    "review-compare": "esbuild scripts/review-compare.ts --bundle --platform=node --format=esm --target=node20 --alias:@=./src --outfile=.review-compare.mjs --log-level=warning && node .review-compare.mjs"
   },
   "dependencies": {
     "@capacitor/app": "^6.0.3",

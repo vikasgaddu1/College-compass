@@ -180,6 +180,7 @@ export function parseResponsesText(text: string): AiCallResult | null {
     text: out.text,
     tool_calls: out.tool_calls.map((c) => ({ name: stripNamespace(c.name), arguments: c.arguments })),
     model: out.model || "",
+    ...(out.usage ? { usage: out.usage } : {}),
   };
 }
 
@@ -375,6 +376,7 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
             text: out.text,
             tool_calls: out.tool_calls.map((c) => ({ name: stripNamespace(c.name), arguments: c.arguments })),
             model: out.model || model,
+            ...(out.usage ? { usage: out.usage } : {}),
           };
         }
         if (out.status === "incomplete") {

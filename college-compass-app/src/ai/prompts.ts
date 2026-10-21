@@ -38,7 +38,7 @@ export const RESEARCH_TOOL_NAME = "submit_college_research";
 
 // ───────────────────────────── plain-English profile ─────────────────────────────
 
-const MAJOR_TEXT: Record<MajorArea, string> = {
+export const MAJOR_TEXT: Record<MajorArea, string> = {
   computer_science: "computer science", engineering: "engineering", robotics_mechatronics: "robotics / mechatronics",
   math_stats: "mathematics & statistics", physical_sciences: "physics / chemistry / physical sciences", biology: "biology / life sciences",
   health: "health professions (pre-med, pharmacy, PT, etc.)", business: "business", economics_social: "economics & social sciences",

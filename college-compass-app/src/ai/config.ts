@@ -94,6 +94,24 @@ export const KEYS = {
   authIssue: "auth_issue",
 } as const;
 
+/**
+ * Second-model review (src/ai/review.ts, docs/REVIEW.md). The proposed pair: research with one model at
+ * high effort, then an adversarial check by a different model at medium effort. Models are named as
+ * the product owner refers to them; they are resolved against the account's GET /v1/models list at
+ * run time (slug or display name, ignoring case/spaces/dashes) — no model id is hard-coded here.
+ */
+export const REVIEW_DEFAULTS = {
+  researcher: { model: "luna 6", effort: "high" },
+  reviewer: { model: "sol 6.1", effort: "medium" },
+} as const satisfies Record<"researcher" | "reviewer", { model: string; effort: "low" | "medium" | "high" }>;
+
+/**
+ * Review in the app when a research run doesn't say (ResearchOptions.review omitted). Off until the
+ * comparison (npm run review-compare) shows it is worth the added time and usage. To turn it on:
+ *   export const APP_REVIEW: false | { model?: string; effort?: "low" | "medium" | "high" } = REVIEW_DEFAULTS.reviewer;
+ */
+export const APP_REVIEW: false | { model?: string; effort?: "low" | "medium" | "high" } = false;
+
 /** Default model for the developer API-key demo mode (override with localStorage `cc2:dev_openai_model`). */
 export const DEV_DEFAULT_MODEL = "gpt-5";
 

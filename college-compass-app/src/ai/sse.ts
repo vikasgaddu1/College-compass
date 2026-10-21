@@ -1,3 +1,5 @@
+import type { AiUsage } from "../types";
+
 /**
  * Server-Sent Events parsing for the Responses API stream (fetch ReadableStream), plus an
  * accumulator that turns Responses events into text + function calls + a terminal outcome.
@@ -116,9 +118,27 @@ export interface StreamOutcome {
   model: string;
   error: StreamError | null;
   incomplete_reason: string | null;
+  /** `response.usage` + web searches run, when the completed response reported them. */
+  usage: AiUsage | null;
 }
 
 interface CallState { key: string; name: string; namespace?: string; arguments: string; order: number }
+
+const tok = (v: unknown): number | null => (typeof v === "number" && Number.isFinite(v) ? v : null);
+
+/** Usage from a completed response (null when it reported neither token counts nor web searches). */
+function usageFrom(resp: any, output: any[] | null): AiUsage | null {
+  const u = resp?.usage && typeof resp.usage === "object" ? resp.usage : null;
+  const web = output ? output.filter((i: any) => i?.type === "web_search_call").length : 0;
+  if (!u && !web) return null;
+  return {
+    input_tokens: tok(u?.input_tokens),
+    output_tokens: tok(u?.output_tokens),
+    reasoning_tokens: tok(u?.output_tokens_details?.reasoning_tokens),
+    total_tokens: tok(u?.total_tokens),
+    web_searches: web,
+  };
+}
 
 function errFrom(obj: any): StreamError {
   const e = obj && typeof obj === "object" ? obj : {};
@@ -140,6 +160,7 @@ export class ResponseAccumulator {
   private incomplete: string | null = null;
   private finalCalls: CallState[] | null = null;
   private finalText: string | null = null;
+  private usage: AiUsage | null = null;
 
   constructor(private onDelta?: (t: string) => void) {}
 
@@ -200,6 +221,7 @@ export class ResponseAccumulator {
       case "response.completed": {
         this.status = "completed";
         const out = Array.isArray(resp?.output) ? resp.output : null;
+        this.usage = usageFrom(resp, out);
         if (out) {
           const fc = out.filter((i: any) => i?.type === "function_call" && typeof i.name === "string");
           if (fc.length) {
@@ -248,6 +270,7 @@ export class ResponseAccumulator {
       model: this.model,
       error: this.error,
       incomplete_reason: this.incomplete,
+      usage: this.usage,
     };
   }
 }

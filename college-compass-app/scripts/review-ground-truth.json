@@ -1,0 +1,56 @@
+{
+  "about": "Fallback ground truth for scripts/review-compare.ts, used when the shared Supabase database can't be reached (and always in --dry runs). `scorecard` = federal College Scorecard figures exactly as stored in the shared DB table college_stats (source=scorecard, 'College Scorecard (fetched 2026-10)'), read through its public REST API on 2026-10-21 by unitid. Scorecard cost_of_attendance uses IN-STATE tuition at public universities (basis in_state). Federal admissions figures lag the newest Common Data Set by 1-2 years. `test_policy` is NOT federal: a short curated list for the Fall 2027 cycle from the colleges' admissions sites, only where the policy is well established; null = no ground truth (human check).",
+  "fetched": "2026-10-21",
+  "colleges": {
+    "Georgia Institute of Technology": {
+      "unitid": "139755", "federal_name": "Georgia Institute of Technology-Main Campus", "state": "GA",
+      "scorecard": { "admit_rate": 0.1407, "sat_25": 1370, "sat_75": 1540, "act_25": 30, "act_75": 34, "tuition_in_state": 12008, "tuition_out_of_state": 35092, "cost_of_attendance": 29041, "cost_of_attendance_basis": "in_state" },
+      "test_policy": null
+    },
+    "University of California, San Diego": {
+      "unitid": "110680", "federal_name": "University of California-San Diego", "state": "CA",
+      "scorecard": { "admit_rate": 0.2671, "sat_25": null, "sat_75": null, "act_25": null, "act_75": null, "tuition_in_state": 17337, "tuition_out_of_state": 54939, "cost_of_attendance": 41664, "cost_of_attendance_basis": "in_state" },
+      "test_policy": { "value": "blind", "source": "https://admissions.ucsd.edu/", "note": "University of California campuses do not consider SAT/ACT (test-free)." }
+    },
+    "Worcester Polytechnic Institute": {
+      "unitid": "168421", "federal_name": "Worcester Polytechnic Institute", "state": "MA",
+      "scorecard": { "admit_rate": 0.6016, "sat_25": null, "sat_75": null, "act_25": null, "act_75": null, "tuition_in_state": 63246, "tuition_out_of_state": 63246, "cost_of_attendance": 80569, "cost_of_attendance_basis": "same" },
+      "test_policy": null
+    },
+    "Purdue University": {
+      "unitid": "243780", "federal_name": "Purdue University-Main Campus", "state": "IN",
+      "scorecard": { "admit_rate": 0.4987, "sat_25": 1200, "sat_75": 1480, "act_25": 27, "act_75": 34, "tuition_in_state": 9992, "tuition_out_of_state": 28794, "cost_of_attendance": 25610, "cost_of_attendance_basis": "in_state" },
+      "test_policy": { "value": "required", "source": "https://admissions.purdue.edu/", "note": "Purdue reinstated the SAT/ACT requirement after its test-optional period." }
+    },
+    "Harvey Mudd College": {
+      "unitid": "115409", "federal_name": "Harvey Mudd College", "state": "CA",
+      "scorecard": { "admit_rate": 0.1266, "sat_25": 1500, "sat_75": 1570, "act_25": 34, "act_75": 36, "tuition_in_state": 73100, "tuition_out_of_state": 73100, "cost_of_attendance": 93131, "cost_of_attendance_basis": "same" },
+      "test_policy": null
+    },
+    "North Carolina A&T State University": {
+      "unitid": "199102", "federal_name": "North Carolina A & T State University", "state": "NC",
+      "scorecard": { "admit_rate": 0.499, "sat_25": 1020, "sat_75": 1190, "act_25": 17, "act_75": 23, "tuition_in_state": 6813, "tuition_out_of_state": 20873, "cost_of_attendance": 21376, "cost_of_attendance_basis": "in_state" },
+      "test_policy": null
+    },
+    "University of Pittsburgh": {
+      "unitid": "215293", "federal_name": "University of Pittsburgh-Pittsburgh Campus", "state": "PA",
+      "scorecard": { "admit_rate": 0.5808, "sat_25": 1280, "sat_75": 1460, "act_25": 29, "act_75": 33, "tuition_in_state": 22736, "tuition_out_of_state": 43432, "cost_of_attendance": 38719, "cost_of_attendance_basis": "in_state" },
+      "test_policy": null
+    },
+    "Massachusetts Institute of Technology": {
+      "unitid": "166683", "federal_name": "Massachusetts Institute of Technology", "state": "MA",
+      "scorecard": { "admit_rate": 0.0455, "sat_25": 1520, "sat_75": 1580, "act_25": 34, "act_75": 36, "tuition_in_state": 64730, "tuition_out_of_state": 64730, "cost_of_attendance": 85960, "cost_of_attendance_basis": "same" },
+      "test_policy": { "value": "required", "source": "https://mitadmissions.org/", "note": "MIT reinstated its SAT/ACT requirement." }
+    },
+    "Virginia Tech": {
+      "unitid": "233921", "federal_name": "Virginia Polytechnic Institute and State University", "state": "VA",
+      "scorecard": { "admit_rate": 0.5478, "sat_25": 1280, "sat_75": 1450, "act_25": 28, "act_75": 32, "tuition_in_state": 16450, "tuition_out_of_state": 38914, "cost_of_attendance": 39324, "cost_of_attendance_basis": "in_state" },
+      "test_policy": null
+    },
+    "California Institute of Technology": {
+      "unitid": "110404", "federal_name": "California Institute of Technology", "state": "CA",
+      "scorecard": { "admit_rate": 0.0257, "sat_25": null, "sat_75": null, "act_25": null, "act_75": null, "tuition_in_state": 68208, "tuition_out_of_state": 68208, "cost_of_attendance": 90822, "cost_of_attendance_basis": "same" },
+      "test_policy": { "value": "required", "source": "https://www.admissions.caltech.edu/", "note": "Caltech ended its test-blind moratorium; SAT/ACT required again." }
+    }
+  }
+}
