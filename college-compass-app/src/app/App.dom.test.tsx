@@ -2,6 +2,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { App } from "./App";
+import { LISTS_KEY, listKey, type ListPart, type ListsIndex } from "@/state/lists";
+
+/** The active list's stored part (lists moved the flat `cc2:profile` etc. under `cc2:list:<id>:…`). */
+function activeStored(part: ListPart): string | null {
+  const idx = JSON.parse(localStorage.getItem("cc2:" + LISTS_KEY) || "null") as ListsIndex | null;
+  return idx ? localStorage.getItem("cc2:" + listKey(idx.active, part)) : null;
+}
 
 function setHash(h: string) {
   window.location.hash = h;
@@ -27,26 +34,27 @@ describe("App", () => {
   it("enters demo mode and renders the balanced list grouped by tier", async () => {
     render(<App />);
     fireEvent.click(screen.getByText("Try demo"));
-    await waitFor(() => expect(screen.getAllByText("Your list").length).toBeGreaterThan(0));
+    await waitFor(() => expect(screen.getAllByText("Demo").length).toBeGreaterThan(0));
     expect(screen.getByRole("region", { name: "High reach" }) || screen.getByText("High reach")).toBeTruthy();
     expect(screen.getByText("Duke University")).toBeTruthy();
-    // Persisted under cc2:
+    // Persisted under cc2: as a list of its own, flagged as the demo
     await waitFor(() => {
-      expect(localStorage.getItem("cc2:colleges")).toBeTruthy();
-      expect(JSON.parse(localStorage.getItem("cc2:prefs") || "{}").demo).toBe(true);
+      expect(activeStored("colleges")).toBeTruthy();
+      const idx = JSON.parse(localStorage.getItem("cc2:lists") || "null") as ListsIndex;
+      expect(idx.items.find((l) => l.id === idx.active)?.demo).toBe(true);
     });
   });
 
   it("opens a college detail with the odds breakdown and toggles the shortlist", async () => {
     render(<App />);
     fireEvent.click(screen.getByText("Try demo"));
-    await waitFor(() => expect(screen.getAllByText("Your list").length).toBeGreaterThan(0));
+    await waitFor(() => expect(screen.getAllByText("Demo").length).toBeGreaterThan(0));
     setHash("#/college/139755");
     await waitFor(() => expect(screen.getByText("Georgia Institute of Technology")).toBeTruthy());
     expect(screen.getByText("Why these odds")).toBeTruthy();
     expect(screen.getByText("You vs. them")).toBeTruthy();
     fireEvent.click(screen.getAllByRole("button", { name: "Add to shortlist" })[0]);
-    await waitFor(() => expect(JSON.parse(localStorage.getItem("cc2:shortlist") || "[]")).toContain("139755"));
+    await waitFor(() => expect(JSON.parse(activeStored("shortlist") || "[]")).toContain("139755"));
   });
 
   it("gates research behind sign-in or demo", async () => {
@@ -63,7 +71,7 @@ describe("App", () => {
     fireEvent.click(await screen.findByText("North Carolina"));
     fireEvent.click(screen.getByText("Continue"));
     await waitFor(() => {
-      const p = JSON.parse(localStorage.getItem("cc2:profile") || "null");
+      const p = JSON.parse(activeStored("profile") || "null");
       expect(p?.home_state).toBe("NC");
       expect(p?.version).toBe(1);
     });

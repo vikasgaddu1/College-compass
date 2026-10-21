@@ -6,7 +6,7 @@ import { Banner, Button, Spinner } from "@/components/ui";
 
 export function AuthCallback() {
   const route = useRoute();
-  const { hasProfile, prefs, refreshAuth } = useStore();
+  const { hasProfile, onboardingDone, refreshAuth } = useStore();
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function AuthCallback() {
         refreshAuth();
         // Where sign-in was started from (e.g. "/research" from the session-ended card), else the usual landing.
         const returnTo = params.get("return_to") ?? auth.takeReturnTo?.() ?? null;
-        navigate(returnTo && returnTo.startsWith("/") ? returnTo : hasProfile && prefs.onboardingDone ? "/list" : "/onboarding/1", { replace: true });
+        navigate(returnTo && returnTo.startsWith("/") ? returnTo : hasProfile && onboardingDone ? "/list" : "/onboarding/1", { replace: true });
       })
       .catch((e) => {
         if (!cancelled) setErr(describeError(e).detail);

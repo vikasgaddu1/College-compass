@@ -40,6 +40,28 @@ export function remove(key: string): void {
   }
 }
 
+/** True when the key is stored (even if its value is `null`). */
+export function has(key: string): boolean {
+  try {
+    return store()?.getItem(NS + key) != null;
+  } catch {
+    return false;
+  }
+}
+
+/** Stored keys (without the `cc2:` prefix) that start with `prefix`. */
+export function keysWithPrefix(prefix: string): string[] {
+  try {
+    const s = store();
+    if (!s) return [];
+    return nsKeys(s)
+      .map((k) => k.slice(NS.length))
+      .filter((k) => k.startsWith(prefix));
+  } catch {
+    return [];
+  }
+}
+
 function nsKeys(s: Storage): string[] {
   const keys: string[] = [];
   for (let i = 0; i < s.length; i++) {

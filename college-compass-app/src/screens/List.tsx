@@ -9,7 +9,8 @@ import { Sheet } from "@/components/Sheet";
 import { CollegeCard } from "@/components/CollegeCard";
 import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, CardSkeleton, Chip, Empty, Segmented } from "@/components/ui";
-import { IconFilter, IconPlus, IconSearch, IconClose } from "@/components/icons";
+import { IconChevronDown, IconFilter, IconPlus, IconSearch, IconClose } from "@/components/icons";
+import { ListsSheet } from "@/components/ListsSheet";
 
 interface Filters {
   tiers: Tier[];
@@ -20,8 +21,9 @@ interface Filters {
 const NO_FILTERS: Filters = { tiers: [], maxPrice: null, ownership: "any", savedOnly: false };
 
 export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: ReactNode }) {
-  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertCollege, demo, connected, hasProfile, enterDemo } = useStore();
+  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertCollege, demo, connected, hasProfile, enterDemo, activeList } = useStore();
   const [q, setQ] = useState("");
+  const [listsOpen, setListsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>(NO_FILTERS);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -87,7 +89,14 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
   return (
     <>
       <Screen
-        title="Your list"
+        title={activeList.name}
+        largeTitle={
+          <button type="button" className="inline-flex max-w-full items-end gap-1.5 text-left cc-press" aria-haspopup="dialog" aria-expanded={listsOpen} onClick={() => setListsOpen(true)}>
+            <span className="line-clamp-2 break-words">{activeList.name}</span>
+            <span className="sr-only">, your lists</span>
+            <IconChevronDown size={24} className="mb-[9px] shrink-0 text-accent" />
+          </button>
+        }
         subtitle={
           ranked.length ? (
             <span className="tnum">
@@ -209,6 +218,8 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
         )}
         {demo && colleges.length > 0 && <p className="mt-6 text-center text-footnote text-text-muted">Demo mode: sample research with approximate figures.</p>}
       </Screen>
+
+      <ListsSheet open={listsOpen} onClose={() => setListsOpen(false)} />
 
       {/* Filters sheet */}
       <Sheet

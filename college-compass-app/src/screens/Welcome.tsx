@@ -12,7 +12,7 @@ const POINTS = [
 ];
 
 export function Welcome() {
-  const { enterDemo, connected, hasProfile, prefs } = useStore();
+  const { enterDemo, connected, hasProfile, onboardingDone } = useStore();
   const configured = auth.configured();
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -21,14 +21,14 @@ export function Welcome() {
     setBusy(true);
     setErr(null);
     try {
-      await auth.signIn(hasProfile && prefs.onboardingDone ? "/list" : "/onboarding/1");
+      await auth.signIn(hasProfile && onboardingDone ? "/list" : "/onboarding/1");
     } catch (e) {
       setErr(describeError(e).detail);
       setBusy(false);
     }
   };
 
-  const continueExisting = () => navigate(prefs.onboardingDone ? "/list" : "/onboarding/1", { replace: true });
+  const continueExisting = () => navigate(onboardingDone ? "/list" : "/onboarding/1", { replace: true });
 
   return (
     <div className="cc-shell">

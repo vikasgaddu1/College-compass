@@ -79,6 +79,8 @@ CORS = {
 
 ACCOUNT = {"sub": "user-e2e-0001", "name": "Avery Student", "email": "avery.e2e@example.com"}
 WANTED = "University of North Carolina at Chapel Hill"
+# The list is named from the answers once the questions finish (primary major · regions).
+LIST_TITLE = re.compile(r"^Nursing · South Atlantic \+1")
 QUESTION = "Which of these should I apply Early Action to for pediatric nursing?"
 CHAT_REPLY = (
     "For pediatric nursing, apply Early Action to UNC Chapel Hill (Oct 15) and to your in-state likely schools "
@@ -649,7 +651,8 @@ class Flow:
         await expect(page.get_by_role("button", name=f"Remove {WANTED}")).to_be_visible()
         await self.shot("onboarding-wanted")
 
-        profile = await page.evaluate("JSON.parse(localStorage.getItem('cc2:profile'))")
+        # Answers live under the active list (`cc2:list:<id>:profile`); the index is `cc2:lists`.
+        profile = await page.evaluate("(() => { const i = JSON.parse(localStorage.getItem('cc2:lists')); return JSON.parse(localStorage.getItem(`cc2:list:${i.active}:profile`)); })()")
         expect_profile = {"home_state": "NC", "name": "Avery", "grad_year": 2027, "gpa_unweighted": 3.8, "gpa_weighted": 4.35, "sat": 1420,
                           "rigor": "very", "activities_strength": "school_leader", "majors": ["nursing", "public_health"],
                           "interests_text": "pediatrics", "budget_per_year": 30000, "income_band": "75_110k",
@@ -675,7 +678,7 @@ class Flow:
         await page.get_by_role("button", name="See my list").click()
 
         # 4) List — tiers, odds bands, the student's own pick
-        await expect(page.get_by_role("heading", name="Your list", level=2)).to_be_visible()
+        await expect(page.get_by_role("heading", name=LIST_TITLE, level=2)).to_be_visible()
         cards = page.locator("article.cc-card")
         await expect(cards).to_have_count(total)
         tiers = ["High reach", "Reach", "Target", "Likely", "Safety"]
@@ -706,7 +709,7 @@ class Flow:
         await self.shot("detail-you-vs-them")
         self.detail_factors = factor_text
         await page.get_by_role("button", name="Back").click()
-        await expect(page.get_by_role("heading", name="Your list", level=2)).to_be_visible()
+        await expect(page.get_by_role("heading", name=LIST_TITLE, level=2)).to_be_visible()
 
         # 6) Ask — streamed reply
         await page.get_by_role("button", name="Ask", exact=True).click()
@@ -729,7 +732,7 @@ class Flow:
         await expect(page.get_by_text(ACCOUNT["email"])).to_be_visible()
         await self.shot("settings-signed-in")
         await page.goto(BASE_URL)  # the start page sends a signed-in, onboarded user straight to the list
-        await expect(page.get_by_role("heading", name="Your list", level=2)).to_be_visible()
+        await expect(page.get_by_role("heading", name=LIST_TITLE, level=2)).to_be_visible()
         assert "#/list" in page.url, page.url
         self.ok()
 

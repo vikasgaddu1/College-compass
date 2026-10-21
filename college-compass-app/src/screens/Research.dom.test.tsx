@@ -37,7 +37,15 @@ vi.mock("@/state/services", async () => {
 });
 
 import { StoreProvider } from "@/state/store";
+import { LISTS_KEY, listKey, type ListsIndex } from "@/state/lists";
 import { Research } from "./Research";
+
+/** Ids of the colleges stored for the active list (the flat `cc2:profile`/`cc2:prefs` seeded below are migrated into it). */
+function storedCollegeIds(): string[] {
+  const idx = JSON.parse(localStorage.getItem("cc2:" + LISTS_KEY) || "null") as ListsIndex | null;
+  const raw = idx ? localStorage.getItem("cc2:" + listKey(idx.active, "colleges")) : null;
+  return (JSON.parse(raw || "[]") as { id: string }[]).map((c) => c.id);
+}
 
 const emit = () => act(() => { for (const fn of mocks.listeners) fn(); });
 
@@ -110,7 +118,7 @@ describe("Research sign-in gate", () => {
     // The college researched before the session ended is still on screen and in the store.
     expect(screen.getByText(first.name)).toBeTruthy();
     // Saved to storage by an effect after the render, so wait for it (slower CI machines).
-    await waitFor(() => expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id));
+    await waitFor(() => expect(storedCollegeIds()).toContain(first.id));
 
     // Signed in again (the auth module notifies subscribers): research resumes by itself.
     mocks.run.mockImplementationOnce(() => new Promise(() => {}));
@@ -121,7 +129,7 @@ describe("Research sign-in gate", () => {
     const opts = mocks.run.mock.calls[1]![0];
     expect(opts.cache?.map((c) => c.id)).toContain(first.id);
     // Saved to storage by an effect after the render, so wait for it (slower CI machines).
-    await waitFor(() => expect(JSON.parse(localStorage.getItem("cc2:colleges") || "[]").map((c: { id: string }) => c.id)).toContain(first.id));
+    await waitFor(() => expect(storedCollegeIds()).toContain(first.id));
   });
 
   it("does not resume on a failed sign-in attempt", async () => {
