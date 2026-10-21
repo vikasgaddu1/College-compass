@@ -43,7 +43,9 @@ interface Lane {
 }
 
 export function Research() {
-  const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, isSaved, toggleSaved } = useStore();
+  const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, markResearched, isSaved, toggleSaved, activeList, lists } = useStore();
+  // Mention which list is being researched once there is more than one.
+  const listName = lists.length > 1 ? activeList.name : null;
   const [status, setStatus] = useState<Status>("planning");
   const [candidates, setCandidates] = useState<CollegeCandidate[]>([]);
   const [lanes, setLanes] = useState<Lane[]>([]);
@@ -109,7 +111,7 @@ export function Research() {
           break;
         case "done":
           setStatus("done");
-          setPrefs({ researchedAt: new Date().toISOString() });
+          markResearched();
           break;
         case "error":
           if (needsSignIn(e.code)) {
@@ -121,7 +123,7 @@ export function Research() {
           break;
       }
     },
-    [upsertCollege, setPrefs, askToSignIn],
+    [upsertCollege, markResearched, askToSignIn],
   );
 
   /**
@@ -281,11 +283,11 @@ export function Research() {
       return;
     }
     const n = candidates.length;
-    await notifyWhenResearchDone("Your college list is ready", `${n} ${n === 1 ? "college" : "colleges"} researched — open College Compass to see your odds.`);
+    await notifyWhenResearchDone(listName ? `${listName} is ready` : "Your college list is ready", `${n} ${n === 1 ? "college" : "colleges"} researched — open College Compass to see your odds.`);
     armed.current = true;
     setNotify("armed");
     setPrefs({ notifyWhenReady: true });
-  }, [candidates.length, setPrefs]);
+  }, [candidates.length, setPrefs, listName]);
 
   // Pre-armed from a previous run: arm as soon as phase 2 starts (permission resolves at once once granted).
   useEffect(() => {
@@ -326,7 +328,7 @@ export function Research() {
       : status === "researching"
         ? demo
           ? "Demo mode: loading sample research."
-          : "Agents are reading each college's Common Data Set, costs and deadlines. This usually takes 2–4 minutes."
+          : `${listName ? `For ${listName}. ` : ""}Agents are reading each college's Common Data Set, costs and deadlines. This usually takes 2–4 minutes.`
         : status === "signin"
           ? signInReason === "expired"
             ? `${done.length ? `${done.length} ${done.length === 1 ? "college is" : "colleges are"} saved. ` : ""}Sign in to pick up where you left off.`

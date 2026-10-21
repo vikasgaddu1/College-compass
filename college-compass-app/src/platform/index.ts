@@ -445,3 +445,83 @@ export function onAuthBrowserFinished(cb: () => void): () => void {
     remove = null;
   };
 }
+
+// ───────────────────────────── Share my list as a PDF ─────────────────────────────
+//
+// The report HTML (src/share/report.ts) is turned into a PDF natively by the in-app `SharePdf`
+// Capacitor plugin (ios/App/App/SharePdfPlugin.swift: UIMarkupTextPrintFormatter → paginated US
+// Letter PDF → UIActivityViewController, so Mail, Messages, WhatsApp, AirDrop and Save to Files
+// all work and nothing is uploaded anywhere). On the web the browser's print dialog offers
+// "Save as PDF" instead.
+
+/** JS face of the native `SharePdf` plugin. */
+export interface SharePdfPlugin {
+  /** Render `html` to a PDF named `fileName` and present the iOS share sheet. */
+  share(opts: { html: string; fileName: string }): Promise<{ completed: boolean; activity?: string | null }>;
+  /** Render only (tests / diagnostics): page count and PDF size in bytes. */
+  render(opts: { html: string }): Promise<{ pages: number; bytes: number }>;
+}
+
+let sharePdfPlugin: SharePdfPlugin | null = null;
+function getSharePdfPlugin(): SharePdfPlugin {
+  sharePdfPlugin ??= registerPlugin<SharePdfPlugin>("SharePdf");
+  return sharePdfPlugin;
+}
+
+export interface SharePdfResult {
+  /** True when the student picked an app / saved the file; false when they cancelled the share sheet. */
+  completed: boolean;
+}
+
+/**
+ * Share a print-ready HTML document as a PDF.
+ * Native: the `SharePdf` plugin (rejects with a readable message when rendering fails).
+ * Web: the document is loaded into a hidden iframe and printed, so the browser offers "Save as PDF";
+ * resolves `completed: true` once the print dialog has been shown. Never throws off-device
+ * (node / jsdom): resolves `completed: false`.
+ */
+export async function sharePdf(html: string, fileName: string): Promise<SharePdfResult> {
+  if (isNative()) {
+    const res = await getSharePdfPlugin().share({ html, fileName });
+    return { completed: res?.completed === true };
+  }
+  return webPrintHtml(html, fileName);
+}
+
+/** Exported for tests: the web fallback of `sharePdf`. */
+export async function webPrintHtml(html: string, fileName: string): Promise<SharePdfResult> {
+  if (typeof document === "undefined" || !document.body) return { completed: false };
+  const frame = document.createElement("iframe");
+  frame.setAttribute("aria-hidden", "true");
+  frame.setAttribute("title", "Print preview");
+  frame.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0;pointer-events:none;";
+  document.body.appendChild(frame);
+  const cleanup = () => {
+    try { frame.remove(); } catch { /* already gone */ }
+  };
+  try {
+    const win = frame.contentWindow;
+    const doc = frame.contentDocument ?? win?.document;
+    if (!win || !doc) return { completed: false };
+    doc.open();
+    doc.write(html);
+    doc.close();
+    // Browsers name the saved PDF after the document title.
+    try { doc.title = fileName.replace(/\.pdf$/i, ""); } catch { /* ignore */ }
+    if (typeof win.print !== "function") return { completed: false };
+    // Give the frame a tick to lay out, then print (blocks until the dialog closes in most browsers).
+    await new Promise<void>((resolve) => setTimeout(resolve, 50));
+    let printed = false;
+    try {
+      win.focus();
+      win.print();
+      printed = true;
+    } catch {
+      printed = false;
+    }
+    return { completed: printed };
+  } finally {
+    // Keep the frame alive briefly: some browsers print asynchronously after print() returns.
+    setTimeout(cleanup, 5_000);
+  }
+}

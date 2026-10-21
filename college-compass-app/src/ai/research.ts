@@ -13,7 +13,7 @@ import { AiError, type AiCallResult, type AiClient, type College, type CollegeCa
 import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
 import { APP_VERSION, contributionPayload, createSharedLookup, installId, mergeShared, sharedResearchRecord, type SharedCollege, type SharedLookup } from "../data/shared";
-import { researchCache as defaultCache, findFresh, type ResearchCache } from "./cache";
+import { researchCache as defaultCache, findFresh, fitsStudent, type ResearchCache } from "./cache";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
 import {
@@ -303,8 +303,10 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       const results = new Map<CollegeCandidate, College>();
       const toResearch: CollegeCandidate[] = [];
       const nowMs = now().getTime();
+      const cycle = `${entryTerm(profile)} entry`;
+      const usable = (c: College | null) => (c && fitsStudent(c, profile.majors, cycle) ? c : null);
       for (const c of candidates) {
-        const hit = findFresh(opts.cache, c.name, nowMs) ?? cache.get(c.name);
+        const hit = usable(findFresh(opts.cache, c.name, nowMs)) ?? usable(cache.get(c.name));
         if (hit) {
           results.set(c, hit);
           emit({ type: "college_done", college: hit });
@@ -313,7 +315,6 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
 
       // 2b) Shared database: federal figures for everything we research, and verified research other
       // students already did for this cycle — those colleges need no ChatGPT call at all.
-      const cycle = `${entryTerm(profile)} entry`;
       let sharedMap = new Map<string, SharedCollege>();
       if (shared && toResearch.length) {
         try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }

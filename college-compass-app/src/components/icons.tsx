@@ -160,3 +160,10 @@ export const IconPerson = ({ size, ...r }: P) => (
     <path d="M4 20c0-3.5 3.6-6 8-6s8 2.5 8 6" />
   </svg>
 );
+export const IconMore = ({ size, ...r }: P) => (
+  <svg {...base(size, r)} fill="currentColor" stroke="none">
+    <circle cx="5" cy="12" r="1.9" />
+    <circle cx="12" cy="12" r="1.9" />
+    <circle cx="19" cy="12" r="1.9" />
+  </svg>
+);

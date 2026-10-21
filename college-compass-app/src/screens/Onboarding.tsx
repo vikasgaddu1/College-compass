@@ -6,7 +6,7 @@ import { ACTIVITIES, INCOME_BANDS, MAJORS, OWNERSHIPS, PLANS, PRIORITIES, REGION
 import { Screen, StickyActions } from "@/components/Screen";
 import { Button, Chip, OptionRow, ProgressBar } from "@/components/ui";
 import { IconChevronLeft, IconClose, IconSearch } from "@/components/icons";
-import { Sheet } from "@/components/Sheet";
+import { ConfirmSheet, Sheet } from "@/components/Sheet";
 
 type Update = (patch: Partial<StudentProfile>) => void;
 
@@ -464,12 +464,20 @@ export const ONBOARDING_STEPS = STEPS.length;
 
 export function Onboarding() {
   const route = useRoute();
-  const { profile, updateProfile, setPrefs, hasProfile } = useStore();
+  const { profile, updateProfile, finishOnboarding, hasProfile, onboardingDone, lists, activeList, deleteList } = useStore();
   const idx = Math.min(STEPS.length, Math.max(1, Number(route.params.step) || 1)) - 1;
   const step = STEPS[idx];
   const last = idx === STEPS.length - 1;
   const ok = step.valid(profile);
   const [showSkipHint, setShowSkipHint] = useState(false);
+  const [confirmCancel, setConfirmCancel] = useState(false);
+  // A new list that hasn't finished the questions, with another list to go back to: it can be abandoned.
+  const abandonable = !onboardingDone && lists.length > 1;
+  const previous = abandonable ? lists.find((l) => l.id === activeList.from) ?? lists.find((l) => l.id !== activeList.id) : undefined;
+  const abandon = () => {
+    deleteList(activeList.id);
+    navigate("/list", { replace: true });
+  };
 
   const go = (i: number) => {
     setShowSkipHint(false);
@@ -478,7 +486,7 @@ export function Onboarding() {
   const next = () => {
     if (!hasProfile) updateProfile({});
     if (last) {
-      setPrefs({ onboardingDone: true });
+      finishOnboarding();
       navigate("/research", { replace: true });
     } else go(idx + 1);
   };
@@ -488,9 +496,15 @@ export function Onboarding() {
       title={`${idx + 1} of ${STEPS.length}`}
       largeTitle={false}
       left={
-        <button type="button" className="-ml-2 flex min-h-tap items-center pr-2 text-accent" aria-label={idx === 0 ? "Back to start" : "Previous question"} onClick={() => (idx === 0 ? navigate("/", { replace: true }) : go(idx - 1))}>
-          <IconChevronLeft size={26} />
-        </button>
+        idx === 0 && abandonable ? (
+          <button type="button" className="cc-link min-h-tap px-1 text-body" onClick={() => setConfirmCancel(true)}>
+            Cancel
+          </button>
+        ) : (
+          <button type="button" className="-ml-2 flex min-h-tap items-center pr-2 text-accent" aria-label={idx === 0 ? "Back to start" : "Previous question"} onClick={() => (idx === 0 ? navigate("/", { replace: true }) : go(idx - 1))}>
+            <IconChevronLeft size={26} />
+          </button>
+        )
       }
       right={
         step.optional ? (
@@ -515,6 +529,11 @@ export function Onboarding() {
           >
             {last ? "Find my colleges" : "Continue"}
           </Button>
+          {abandonable && idx > 0 && (
+            <button type="button" className="cc-link min-h-tap text-center text-subhead" onClick={() => setConfirmCancel(true)}>
+              Cancel new list
+            </button>
+          )}
         </StickyActions>
       }
     >
@@ -528,6 +547,16 @@ export function Onboarding() {
         )}
         <div className="mt-5">{step.render(profile, updateProfile)}</div>
       </div>
+      <ConfirmSheet
+        open={confirmCancel}
+        onClose={() => setConfirmCancel(false)}
+        title={`Cancel ${activeList.name}?`}
+        message={`Its answers so far are removed from this phone${previous ? `, and you go back to ${previous.name}` : ""}.`}
+        confirmLabel="Cancel new list"
+        cancelLabel="Keep going"
+        destructive
+        onConfirm={abandon}
+      />
     </Screen>
   );
 }

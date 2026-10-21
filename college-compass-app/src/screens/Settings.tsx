@@ -7,12 +7,17 @@ import { Screen } from "@/components/Screen";
 import { ConfirmSheet, Sheet } from "@/components/Sheet";
 import { Banner, Button, Group, Row, Segmented, Switch } from "@/components/ui";
 import { IconCheck, IconChat, IconExternal, IconPerson } from "@/components/icons";
+import { DeleteListSheet, ListsSheet, NewListSheet, RenameListSheet, describeList } from "@/components/ListsSheet";
 
 const APP_VERSION = "0.1.0";
 
 export function Settings({ tabBar }: { tabBar?: ReactNode }) {
   const route = useRoute();
-  const { account, connected, hasDevKey, demo, exitDemo, prefs, setPrefs, profile, hasProfile, resetAll, exportJson, importJson, refreshAuth, colleges } = useStore();
+  const { account, connected, hasDevKey, demo, exitDemo, prefs, setPrefs, profile, hasProfile, onboardingDone, researchedAt, resetAll, exportJson, importJson, refreshAuth, colleges, lists, activeList, deleteList } = useStore();
+  const [listsOpen, setListsOpen] = useState(false);
+  const [newListOpen, setNewListOpen] = useState(false);
+  const [renameOpen, setRenameOpen] = useState(false);
+  const [deleteListOpen, setDeleteListOpen] = useState(false);
   const [devOpen, setDevOpen] = useState(() => route.query.dev === "1" || hasDevKey);
   const [taps, setTaps] = useState(0);
   const [modelsOpen, setModelsOpen] = useState(false);
@@ -32,7 +37,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
     if (signingIn) return;
     setSigningIn(true);
     try {
-      await auth.signIn(hasProfile && prefs.onboardingDone ? "/settings" : "/onboarding/1");
+      await auth.signIn(hasProfile && onboardingDone ? "/settings" : "/onboarding/1");
     } catch (e) {
       setToast(describeError(e).detail);
     } finally {
@@ -157,7 +162,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
             {demo && (
               <Row
                 label="Exit demo"
-                hint="Clears the sample profile and colleges"
+                hint="Removes the sample list; your own lists are untouched"
                 onClick={() => {
                   exitDemo();
                   navigate("/", { replace: true });
@@ -166,6 +171,14 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
             )}
           </>
         )}
+      </Group>
+
+      {/* Lists */}
+      <Group label="Lists" foot="Each list has its own answers, colleges, shortlist, notes and chat. Start a new one to try a different major or region.">
+        <Row label="List name" hint={describeList(activeList, colleges.length, hasProfile)} value={activeList.name} chevron onClick={() => setRenameOpen(true)} />
+        <Row label="Your lists" value={`${lists.length}`} chevron onClick={() => setListsOpen(true)} />
+        <Row label="New list" onClick={() => setNewListOpen(true)} />
+        <Row label="Delete this list" danger onClick={() => setDeleteListOpen(true)} />
       </Group>
 
       {/* Your answers */}
@@ -188,7 +201,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
               />
               <div className="text-[13px] text-[color:var(--text-muted)] mt-2">More colleges take longer and use more of your ChatGPT plan.</div>
             </div>
-            <Row label="Re-run research" hint={prefs.researchedAt ? `Last run ${new Date(prefs.researchedAt).toLocaleDateString()} · ${colleges.length} colleges` : "Not run yet"} chevron onClick={() => navigate("/research")} disabled={!connected && !demo} />
+            <Row label="Re-run research" hint={researchedAt ? `Last run ${new Date(researchedAt).toLocaleDateString()} · ${colleges.length} colleges` : "Not run yet"} chevron onClick={() => navigate("/research")} disabled={!connected && !demo} />
           </>
         ) : (
           <Row label="Answer the questions" hint="About 3 minutes" chevron onClick={() => navigate("/onboarding/1")} />
@@ -211,10 +224,10 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
 
       {/* Data */}
       <Group label="Your data" foot="Everything lives in this app on this phone. Export a backup before switching devices.">
-        <Row label="Export backup" hint="JSON file with answers, colleges, notes and chat" onClick={doExport} />
+        <Row label="Export backup" hint="JSON file with every list: answers, colleges, notes and chat" onClick={doExport} />
         <Row label="Import backup" hint="Replaces what's on this phone" onClick={() => fileRef.current?.click()} />
         <input ref={fileRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => onImport(e.target.files?.[0])} aria-label="Import backup file" />
-        <Row label="Delete everything" danger onClick={() => setConfirmDelete(true)} />
+        <Row label="Delete everything" hint="All lists" danger onClick={() => setConfirmDelete(true)} />
       </Group>
 
       {/* About */}
@@ -301,11 +314,16 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
         </div>
       </Sheet>
 
+      <ListsSheet open={listsOpen} onClose={() => setListsOpen(false)} />
+      <NewListSheet open={newListOpen} onClose={() => setNewListOpen(false)} />
+      <RenameListSheet list={renameOpen ? activeList : null} onClose={() => setRenameOpen(false)} />
+      <DeleteListSheet list={deleteListOpen ? activeList : null} onClose={() => setDeleteListOpen(false)} onDeleted={() => deleteList(activeList.id)} />
+
       <ConfirmSheet
         open={confirmDelete}
         onClose={() => setConfirmDelete(false)}
         title="Delete everything?"
-        message="Your answers, researched colleges, shortlist, notes and chat are removed from this phone. This can't be undone."
+        message="Every list — answers, researched colleges, shortlists, notes and chat — is removed from this phone. This can't be undone."
         confirmLabel="Delete everything"
         destructive
         onConfirm={() => {

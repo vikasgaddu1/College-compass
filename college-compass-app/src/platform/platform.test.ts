@@ -14,6 +14,8 @@ import {
   isNative,
   onAuthRedirect,
   parseAuthCallback,
+  sharePdf,
+  webPrintHtml,
 } from "./index";
 
 describe("platform (node / web fallbacks)", () => {
@@ -32,6 +34,11 @@ describe("platform (node / web fallbacks)", () => {
 
   it("closeAuthBrowser resolves off-device", async () => {
     await expect(closeAuthBrowser()).resolves.toBeUndefined();
+  });
+
+  it("sharePdf never throws without a DOM: resolves completed=false", async () => {
+    await expect(sharePdf("<!doctype html><p>x</p>", "College list - 2026-10-20.pdf")).resolves.toEqual({ completed: false });
+    await expect(webPrintHtml("<p>x</p>", "x.pdf")).resolves.toEqual({ completed: false });
   });
 });
 

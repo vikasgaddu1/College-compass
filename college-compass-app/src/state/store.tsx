@@ -1,10 +1,16 @@
-/** App state: profile, colleges, shortlist, notes, chat and prefs — persisted under `cc2:`. */
+/**
+ * App state, persisted under `cc2:`. Global: prefs and the lists index. Per list (the active one is
+ * loaded): profile, colleges, shortlist, notes and chat — see ./lists for the storage layout.
+ */
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { AiMessage, ChatGPTAccount, College, RankedCollege, StudentProfile } from "@/types";
 import { clearAll, exportAll, importAll, load, save } from "@/lib/storage";
 import { auth, balance, devKey, isConnected, rankColleges, type BalancedListResult } from "./services";
 import { DEMO_COLLEGES, DEMO_PROFILE } from "./fixtures";
 import { defaultProfile } from "./catalog";
+import { DEFAULT_LIST_NAME, DEMO_LIST_NAME, LISTS_KEY, autoListName, copyProfile, listKey, newListMeta, nextListName, reconcileLists, removeListData, uniqueName, type ListMeta, type ListsIndex } from "./lists";
+
+export type { ListMeta } from "./lists";
 
 export type SortKey = "fit" | "odds" | "price";
 
@@ -12,9 +18,6 @@ export interface Prefs {
   model: string | null;
   sort: SortKey;
   seenPlanSheet: boolean;
-  demo: boolean;
-  onboardingDone: boolean;
-  researchedAt: string | null;
   theme: "system";
   /** How many colleges a research run aims for (planner tops up to this). */
   researchCount: 6 | 12 | 18;
@@ -24,7 +27,7 @@ export interface Prefs {
   shareResearch: boolean;
 }
 
-const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, demo: false, onboardingDone: false, researchedAt: null, theme: "system", researchCount: 12, notifyWhenReady: false, shareResearch: true };
+const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, theme: "system", researchCount: 12, notifyWhenReady: false, shareResearch: true };
 
 export interface Store {
   profile: StudentProfile;
@@ -50,9 +53,27 @@ export interface Store {
   setChat: (m: AiMessage[] | ((prev: AiMessage[]) => AiMessage[])) => void;
   prefs: Prefs;
   setPrefs: (patch: Partial<Prefs>) => void;
+  /** The active list finished the questions (per list). */
+  onboardingDone: boolean;
+  /** Mark the questions finished; a list the student never named is named from its answers. */
+  finishOnboarding: () => void;
+  /** When research last ran for the active list (per list). */
+  researchedAt: string | null;
+  markResearched: () => void;
+  // Lists
+  lists: ListMeta[];
+  activeListId: string;
+  activeList: ListMeta;
+  /** Create a list and make it active. Returns its id. `name` empty → "List N" (auto-named later from the answers). */
+  createList: (opts?: { name?: string; copyAnswersFrom?: string }) => string;
+  switchList: (id: string) => void;
+  renameList: (id: string, name: string) => void;
+  /** Delete a list and its data. Deleting the active one returns to the list it was created from (or the nearest); deleting the last leaves an empty "My list". */
+  deleteList: (id: string) => void;
   account: ChatGPTAccount | null;
   connected: boolean;
   hasDevKey: boolean;
+  /** The active list is the sample-data "Demo" list. */
   demo: boolean;
   enterDemo: () => void;
   exitDemo: () => void;
@@ -63,8 +84,6 @@ export interface Store {
 }
 
 const Ctx = createContext<Store | null>(null);
-
-const K = { profile: "profile", colleges: "colleges", shortlist: "shortlist", notes: "notes", chat: "chat", prefs: "prefs" } as const;
 
 function usePersisted<T>(key: string, fallback: T): [T, (v: T | ((p: T) => T)) => void] {
   const [v, setV] = useState<T>(() => load<T>(key, fallback));
@@ -79,14 +98,39 @@ function usePersisted<T>(key: string, fallback: T): [T, (v: T | ((p: T) => T)) =
   return [v, setV];
 }
 
+/** Everything that is not per list: the lists index, prefs and the ChatGPT session. */
+interface Shared {
+  index: ListsIndex;
+  setIndex: (f: (i: ListsIndex) => ListsIndex) => void;
+  /** Bumped to reload the active list from storage (after an import or a full reset). */
+  reload: () => void;
+  prefs: Prefs;
+  setPrefs: (patch: Partial<Prefs>) => void;
+  setPrefsRaw: (p: Partial<Prefs>) => void;
+  account: ChatGPTAccount | null;
+  connected: boolean;
+  hasDevKey: boolean;
+  refreshAuth: () => void;
+}
+
 export function StoreProvider({ children }: { children: ReactNode }) {
-  const [profile, setProfile] = usePersisted<StudentProfile | null>(K.profile, null);
-  const [colleges, setCollegesRaw] = usePersisted<College[]>(K.colleges, []);
-  const [shortlist, setShortlist] = usePersisted<string[]>(K.shortlist, []);
-  const [notes, setNotes] = usePersisted<Record<string, string>>(K.notes, {});
-  const [chat, setChatRaw] = usePersisted<AiMessage[]>(K.chat, []);
-  const [prefsRaw, setPrefsRaw] = usePersisted<Partial<Prefs>>(K.prefs, {});
+  // Runs the flat-keys → lists migration before anything else reads storage.
+  const [index, setIndexRaw] = useState<ListsIndex>(reconcileLists);
+  const firstIndex = useRef(true);
+  useEffect(() => {
+    if (firstIndex.current) {
+      firstIndex.current = false;
+      return;
+    }
+    save(LISTS_KEY, index);
+  }, [index]);
+  const setIndex = useCallback((f: (i: ListsIndex) => ListsIndex) => setIndexRaw((i) => f(i)), []);
+  const [epoch, setEpoch] = useState(0);
+  const reload = useCallback(() => setEpoch((e) => e + 1), []);
+
+  const [prefsRaw, setPrefsRaw] = usePersisted<Partial<Prefs>>("prefs", {});
   const prefs = useMemo<Prefs>(() => ({ ...DEFAULT_PREFS, ...prefsRaw }), [prefsRaw]);
+  const setPrefs = useCallback((patch: Partial<Prefs>) => setPrefsRaw((p) => ({ ...p, ...patch })), [setPrefsRaw]);
 
   const [authTick, setAuthTick] = useState(0);
   useEffect(() => auth.subscribe(() => setAuthTick((t) => t + 1)), []);
@@ -105,6 +149,26 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const account = useMemo(() => auth.account(), [authTick]);
   const hasDevKey = useMemo(() => !!devKey(), [authTick]);
   const connected = useMemo(() => isConnected(), [authTick]);
+
+  const shared: Shared = { index, setIndex, reload, prefs, setPrefs, setPrefsRaw, account, connected, hasDevKey, refreshAuth };
+  // Keyed by the active list: switching lists remounts the per-list state so it loads from storage.
+  return (
+    <ActiveList key={`${index.active}:${epoch}`} shared={shared}>
+      {children}
+    </ActiveList>
+  );
+}
+
+function ActiveList({ shared, children }: { shared: Shared; children: ReactNode }) {
+  const { index, setIndex, reload, prefs, setPrefs, setPrefsRaw, account, connected, hasDevKey, refreshAuth } = shared;
+  const id = index.active;
+  const activeList = index.items.find((it) => it.id === id) ?? index.items[0]!;
+
+  const [profile, setProfile] = usePersisted<StudentProfile | null>(listKey(id, "profile"), null);
+  const [colleges, setCollegesRaw] = usePersisted<College[]>(listKey(id, "colleges"), []);
+  const [shortlist, setShortlist] = usePersisted<string[]>(listKey(id, "shortlist"), []);
+  const [notes, setNotes] = usePersisted<Record<string, string>>(listKey(id, "notes"), {});
+  const [chat, setChatRaw] = usePersisted<AiMessage[]>(listKey(id, "chat"), []);
 
   const effectiveProfile = useMemo(() => profile ?? defaultProfile(), [profile]);
   const ranked = useMemo(() => (profile ? rankColleges(colleges, profile) : []), [colleges, profile]);
@@ -159,48 +223,97 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     [setNotes],
   );
   const setChat = useCallback((m: AiMessage[] | ((prev: AiMessage[]) => AiMessage[])) => setChatRaw(m), [setChatRaw]);
-  const setPrefs = useCallback((patch: Partial<Prefs>) => setPrefsRaw((p) => ({ ...p, ...patch })), [setPrefsRaw]);
 
+  // ── Lists ──
+  const updateList = useCallback((listId: string, patch: Partial<ListMeta>) => setIndex((i) => ({ ...i, items: i.items.map((it) => (it.id === listId ? { ...it, ...patch } : it)) })), [setIndex]);
+
+  const finishOnboarding = useCallback(() => {
+    const p = profile ?? defaultProfile();
+    setIndex((i) => ({
+      ...i,
+      items: i.items.map((it) => (it.id === id ? { ...it, onboardingDone: true, name: it.named ? it.name : uniqueName(autoListName(p), i.items, id) } : it)),
+    }));
+  }, [setIndex, id, profile]);
+  const markResearched = useCallback(() => updateList(id, { researchedAt: new Date().toISOString() }), [updateList, id]);
+
+  const createList = useCallback(
+    (opts: { name?: string; copyAnswersFrom?: string } = {}) => {
+      const typed = opts.name?.trim() ?? "";
+      const meta = newListMeta(typed ? uniqueName(typed, index.items) : nextListName(index.items), { from: id, ...(typed ? { named: true } : {}) });
+      // Data first, then the index: the new list mounts from storage.
+      if (opts.copyAnswersFrom) copyProfile(opts.copyAnswersFrom, meta.id);
+      setIndex((i) => ({ ...i, active: meta.id, items: [...i.items, meta] }));
+      return meta.id;
+    },
+    [setIndex, index.items, id],
+  );
+  const switchList = useCallback((listId: string) => setIndex((i) => (i.items.some((it) => it.id === listId) ? { ...i, active: listId } : i)), [setIndex]);
+  const renameList = useCallback(
+    (listId: string, name: string) => {
+      const n = name.trim();
+      if (n) updateList(listId, { name: n, named: true });
+    },
+    [updateList],
+  );
+  const deleteList = useCallback(
+    (listId: string) => {
+      removeListData(listId);
+      setIndex((i) => {
+        const gone = i.items.find((it) => it.id === listId);
+        const at = i.items.findIndex((it) => it.id === listId);
+        const items = i.items.filter((it) => it.id !== listId);
+        if (!items.length) items.push(newListMeta(DEFAULT_LIST_NAME));
+        let active = i.active;
+        if (active === listId || !items.some((it) => it.id === active)) {
+          const back = gone?.from && items.find((it) => it.id === gone.from);
+          active = (back || items[Math.max(0, Math.min(at, items.length - 1))] || items[0])!.id;
+        }
+        return { ...i, active, items };
+      });
+    },
+    [setIndex],
+  );
+
+  // ── Demo: its own temporary list, so the student's real lists are untouched. ──
   const enterDemo = useCallback(() => {
-    setProfile(DEMO_PROFILE);
-    setCollegesRaw(DEMO_COLLEGES);
-    setPrefsRaw((p) => ({ ...p, demo: true, onboardingDone: true, researchedAt: new Date().toISOString() }));
-  }, [setProfile, setCollegesRaw, setPrefsRaw]);
+    const existing = index.items.find((it) => it.demo);
+    if (existing) {
+      if (existing.id !== id) switchList(existing.id);
+      return;
+    }
+    const meta = newListMeta(uniqueName(DEMO_LIST_NAME, index.items), { demo: true, named: true, onboardingDone: true, researchedAt: new Date().toISOString(), from: id });
+    save(listKey(meta.id, "profile"), DEMO_PROFILE);
+    save(listKey(meta.id, "colleges"), DEMO_COLLEGES);
+    setIndex((i) => ({ ...i, active: meta.id, items: [...i.items, meta] }));
+  }, [index.items, id, switchList, setIndex]);
   const exitDemo = useCallback(() => {
-    setProfile(null);
-    setCollegesRaw([]);
-    setShortlist([]);
-    setNotes({});
-    setChatRaw([]);
-    setPrefsRaw({});
-  }, [setProfile, setCollegesRaw, setShortlist, setNotes, setChatRaw, setPrefsRaw]);
+    for (const it of index.items) if (it.demo) deleteList(it.id);
+  }, [index.items, deleteList]);
 
   const resetAll = useCallback(() => {
     const key = devKey();
     clearAll();
     if (key) save("dev_openai_key", key);
-    setProfile(null);
-    setCollegesRaw([]);
-    setShortlist([]);
-    setNotes({});
-    setChatRaw([]);
     setPrefsRaw({});
-  }, [setProfile, setCollegesRaw, setShortlist, setNotes, setChatRaw, setPrefsRaw]);
+    setIndex(() => {
+      const meta = newListMeta(DEFAULT_LIST_NAME);
+      return { v: 1, active: meta.id, items: [meta] };
+    });
+    reload();
+  }, [setPrefsRaw, setIndex, reload]);
 
   const importJson = useCallback(
     (json: string) => {
       const n = importAll(json);
       if (n > 0) {
-        setProfile(load<StudentProfile | null>(K.profile, null));
-        setCollegesRaw(load<College[]>(K.colleges, []));
-        setShortlist(load<string[]>(K.shortlist, []));
-        setNotes(load<Record<string, string>>(K.notes, {}));
-        setChatRaw(load<AiMessage[]>(K.chat, []));
-        setPrefsRaw(load<Partial<Prefs>>(K.prefs, {}));
+        const next = reconcileLists();
+        setPrefsRaw(load<Partial<Prefs>>("prefs", {}));
+        setIndex(() => next);
+        reload();
       }
       return n;
     },
-    [setProfile, setCollegesRaw, setShortlist, setNotes, setChatRaw, setPrefsRaw],
+    [setPrefsRaw, setIndex, reload],
   );
 
   const value: Store = {
@@ -226,10 +339,21 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setChat,
     prefs,
     setPrefs,
+    onboardingDone: !!activeList.onboardingDone,
+    finishOnboarding,
+    researchedAt: activeList.researchedAt ?? null,
+    markResearched,
+    lists: index.items,
+    activeListId: id,
+    activeList,
+    createList,
+    switchList,
+    renameList,
+    deleteList,
     account,
     connected,
     hasDevKey,
-    demo: prefs.demo,
+    demo: !!activeList.demo,
     enterDemo,
     exitDemo,
     resetAll,

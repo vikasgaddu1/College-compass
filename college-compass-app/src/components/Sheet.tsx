@@ -74,6 +74,7 @@ export function ConfirmSheet({
   title,
   message,
   confirmLabel,
+  cancelLabel,
   destructive,
   onConfirm,
 }: {
@@ -82,6 +83,8 @@ export function ConfirmSheet({
   title: string;
   message: string;
   confirmLabel: string;
+  /** Label of the dismiss button (default "Cancel"). */
+  cancelLabel?: string;
   destructive?: boolean;
   onConfirm: () => void;
 }) {
@@ -103,7 +106,7 @@ export function ConfirmSheet({
           {confirmLabel}
         </button>
         <button type="button" className="cc-btn cc-btn-quiet cc-press" onClick={onClose}>
-          Cancel
+          {cancelLabel ?? "Cancel"}
         </button>
       </div>
     </Sheet>

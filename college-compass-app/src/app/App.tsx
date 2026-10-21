@@ -38,7 +38,7 @@ function useWide() {
 
 function Router() {
   const route = useRoute();
-  const { connected, demo, hasProfile, prefs, enterDemo, shortlist } = useStore();
+  const { connected, demo, hasProfile, onboardingDone, lists, enterDemo, shortlist } = useStore();
   const wide = useWide();
 
   // `#/?demo=1` loads the sample data (used by App Review and screenshots).
@@ -56,9 +56,16 @@ function Router() {
   const path = route.path;
   if (path === "/auth/callback") return <AuthCallback />;
   if (path === "/") {
-    if (gated && hasProfile && prefs.onboardingDone && !route.query.demo) {
-      navigate("/list", { replace: true });
-      return null;
+    if (gated && !route.query.demo) {
+      if (hasProfile && onboardingDone) {
+        navigate("/list", { replace: true });
+        return null;
+      }
+      // A new list whose questions aren't finished yet: carry on with them, never back to sign-in.
+      if (lists.length > 1) {
+        navigate("/onboarding/1", { replace: true });
+        return null;
+      }
     }
     return <Welcome />;
   }

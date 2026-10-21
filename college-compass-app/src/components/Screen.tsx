@@ -5,8 +5,8 @@ import { IconChevronLeft } from "./icons";
 
 interface ScreenProps {
   title: string;
-  /** Large title shown at the top of the content (defaults to `title`). */
-  largeTitle?: string | false;
+  /** Large title shown at the top of the content (defaults to `title`); a node for a tappable title. */
+  largeTitle?: ReactNode | false;
   subtitle?: ReactNode;
   back?: boolean | string; // true = history back; string = fallback route
   backLabel?: string;
