@@ -23,6 +23,8 @@ export interface ListMeta {
   demo?: boolean;
   /** The list that was active when this one was created; deleting this one returns there. */
   from?: string;
+  /** iPhone app: schedule local notifications 7 days and 1 day before this list's deadlines. */
+  remind?: boolean;
 }
 
 export interface ListsIndex {

@@ -12,6 +12,7 @@ import { Banner, Button, CardSkeleton, Chip, Empty, Segmented } from "@/componen
 import { IconChevronDown, IconFilter, IconPlus, IconSearch, IconClose, IconShare } from "@/components/icons";
 import { ShareListSheet } from "@/components/ShareListSheet";
 import { ListsSheet } from "@/components/ListsSheet";
+import { DeadlineBanner } from "@/components/DeadlineBanner";
 
 interface Filters {
   tiers: Tier[];
@@ -145,6 +146,7 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
         }
         footer={tabBar}
       >
+        {hasProfile && colleges.length > 0 && !q && filterCount === 0 && <DeadlineBanner />}
         {!hasProfile ? (
           <Empty icon="🧭" title="Let's build your list" message="Answer a few questions and we'll research colleges that fit you." action={<Button onClick={() => navigate("/onboarding/1")}>Start</Button>} />
         ) : colleges.length === 0 && !connected && !demo ? (

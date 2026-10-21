@@ -17,6 +17,7 @@ export const ROUTE_PATTERNS = [
   "/list",
   "/college/:id",
   "/shortlist",
+  "/deadlines",
   "/ask",
   "/settings",
   "/research",

@@ -9,6 +9,7 @@ import { auth, balance, devKey, isConnected, rankColleges, type BalancedListResu
 import { DEMO_COLLEGES, DEMO_PROFILE } from "./fixtures";
 import { defaultProfile } from "./catalog";
 import { DEFAULT_LIST_NAME, DEMO_LIST_NAME, LISTS_KEY, autoListName, copyProfile, listKey, newListMeta, nextListName, reconcileLists, removeListData, uniqueName, type ListMeta, type ListsIndex } from "./lists";
+import { syncDeadlineReminders } from "@/deadlines/schedule";
 
 export type { ListMeta } from "./lists";
 
@@ -70,6 +71,8 @@ export interface Store {
   renameList: (id: string, name: string) => void;
   /** Delete a list and its data. Deleting the active one returns to the list it was created from (or the nearest); deleting the last leaves an empty "My list". */
   deleteList: (id: string) => void;
+  /** Turn deadline reminders on or off for a list (iPhone app; stored with the list). */
+  setListRemind: (id: string, on: boolean) => void;
   account: ChatGPTAccount | null;
   connected: boolean;
   hasDevKey: boolean;
@@ -235,6 +238,21 @@ function ActiveList({ shared, children }: { shared: Shared; children: ReactNode 
     }));
   }, [setIndex, id, profile]);
   const markResearched = useCallback(() => updateList(id, { researchedAt: new Date().toISOString() }), [updateList, id]);
+  const setListRemind = useCallback((listId: string, on: boolean) => updateList(listId, { remind: on }), [updateList]);
+
+  // Deadline reminders (iPhone app): rebuild the pending notifications whenever a list's colleges,
+  // shortlist, answers or reminder setting change, and once at launch. Debounced; no-op on web.
+  useEffect(() => {
+    if (!index.items.some((it) => it.remind)) {
+      // Nothing asked for reminders: clear whatever an earlier setting left pending.
+      void syncDeadlineReminders(index.items);
+      return;
+    }
+    const t = setTimeout(() => {
+      void syncDeadlineReminders(index.items, { id, data: { colleges, shortlist, profile } });
+    }, 400);
+    return () => clearTimeout(t);
+  }, [index.items, id, colleges, shortlist, profile]);
 
   const createList = useCallback(
     (opts: { name?: string; copyAnswersFrom?: string } = {}) => {
@@ -350,6 +368,7 @@ function ActiveList({ shared, children }: { shared: Shared; children: ReactNode 
     switchList,
     renameList,
     deleteList,
+    setListRemind,
     account,
     connected,
     hasDevKey,

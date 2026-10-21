@@ -14,6 +14,7 @@
 		A1C0FFEE0000000000000001 /* NativeHttpPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */; };
 		A1C0FFEE0000000000000003 /* BackgroundTransfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */; };
 		A1C0FFEE0000000000000005 /* SharePdfPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */; };
+		A1C0FFEE0000000000000007 /* DeadlineRemindersPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000008 /* DeadlineRemindersPlugin.swift */; };
 		E1E7EA05C8476E0917241336 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F2362714778127FB4FA21B /* MainViewController.swift */; };
 		504EC30D1FED79650016851F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30B1FED79650016851F /* Main.storyboard */; };
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeHttpPlugin.swift; sourceTree = "<group>"; };
 		A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTransfers.swift; sourceTree = "<group>"; };
 		A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePdfPlugin.swift; sourceTree = "<group>"; };
+		A1C0FFEE0000000000000008 /* DeadlineRemindersPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineRemindersPlugin.swift; sourceTree = "<group>"; };
 		E9F2362714778127FB4FA21B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		504EC30C1FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		504EC30E1FED79650016851F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				A1C0FFEE0000000000000002 /* NativeHttpPlugin.swift */,
 				A1C0FFEE0000000000000004 /* BackgroundTransfers.swift */,
 				A1C0FFEE0000000000000006 /* SharePdfPlugin.swift */,
+				A1C0FFEE0000000000000008 /* DeadlineRemindersPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -234,6 +237,7 @@
 				A1C0FFEE0000000000000001 /* NativeHttpPlugin.swift in Sources */,
 				A1C0FFEE0000000000000003 /* BackgroundTransfers.swift in Sources */,
 				A1C0FFEE0000000000000005 /* SharePdfPlugin.swift in Sources */,
+				A1C0FFEE0000000000000007 /* DeadlineRemindersPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
