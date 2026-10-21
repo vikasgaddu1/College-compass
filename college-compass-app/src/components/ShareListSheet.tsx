@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { BalancedList, RankedCollege, StudentProfile } from "@/types";
 import { load, save } from "@/lib/storage";
+import { navigate } from "@/lib/router";
 import { sharePdf } from "@/platform";
 import { DEFAULT_REPORT_OPTIONS, buildReportHtml, reportFileName, type ReportOptions } from "@/share/report";
 import { Sheet } from "./Sheet";
@@ -120,6 +121,19 @@ export function ShareListSheet({ open, onClose, listName, profile, balanced, oth
           {busy ? "Creating PDF…" : "Create PDF"}
         </Button>
         {count === 0 && <p className="mt-2 text-center text-footnote text-text-muted">Add colleges to the list first.</p>}
+        <p className="mt-4 text-center text-footnote text-text-muted">
+          Need a counselor?{" "}
+          <button
+            type="button"
+            className="cc-link min-h-tap"
+            onClick={() => {
+              onClose();
+              navigate("/counselors");
+            }}
+          >
+            Find one near you
+          </button>
+        </p>
       </div>
     </Sheet>
   );

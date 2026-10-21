@@ -19,6 +19,7 @@ export const ROUTE_PATTERNS = [
   "/shortlist",
   "/ask",
   "/settings",
+  "/counselors",
   "/research",
   "/auth/callback",
 ] as const;

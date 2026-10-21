@@ -222,6 +222,11 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
         </div>
       </Group>
 
+      {/* Counselor directory (read-only; counselors join on the website, never from the app) */}
+      <Group label="Expert help" foot="Independent counselors who pay to be listed. Listings never affect your college list, and nothing about you is shared with them.">
+        <Row label="Get expert help" hint="Find a college counselor near you" chevron onClick={() => navigate("/counselors")} />
+      </Group>
+
       {/* Data */}
       <Group label="Your data" foot="Everything lives in this app on this phone. Export a backup before switching devices.">
         <Row label="Export backup" hint="JSON file with every list: answers, colleges, notes and chat" onClick={doExport} />

@@ -1,3 +1,20 @@
 # Minimal Supabase CLI config for `supabase db push` from CI (.github/workflows/supabase.yml).
 # The project itself is created in the Supabase dashboard; migrations live in supabase/migrations.
 project_id = "college-compass"
+
+# ── Counselor directory Edge Functions (docs/COUNSELORS.md) ──
+# Portal functions: the gateway requires a Supabase JWT, and each function also verifies the user itself.
+[functions.counselor-checkout]
+verify_jwt = true
+
+[functions.counselor-billing]
+verify_jwt = true
+
+# Called by Stripe (no Supabase JWT); every request must carry a valid Stripe-Signature.
+[functions.stripe-webhook]
+verify_jwt = false
+
+# Called daily by .github/workflows/counselor-reconcile.yml with the service key (checked in the function by
+# calling a service-role-only database function, so it works with legacy and new secret keys).
+[functions.counselor-reconcile]
+verify_jwt = false

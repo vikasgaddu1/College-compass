@@ -21,7 +21,7 @@
 <body>
 <main>
   <h1>Privacy policy</h1>
-  <p class="muted">College Compass · Last updated October 16, 2026</p>
+  <p class="muted">College Compass · Last updated October 21, 2026</p>
 
   <p>College Compass helps high-school students build a balanced college list. It is designed so that we, the developer, never see your data.</p>
 
@@ -42,6 +42,16 @@
     <li><strong>Shared research</strong> (Settings → "Share research to help other students", on by default). After researching a college, the app sends the researched college facts listed above to the shared database, so later students can skip that research. It sends nothing about you: no answers, grades, scores, interests, notes, name, email, ChatGPT account or device identifiers. To recognize that two results came from different installs, the app includes a random ID created on first use; the database stores it only as a one-way hash, and it is not linked to you, your account or your device. To prevent abuse, the database also counts requests per network address for up to two days, stored only as a one-way hash. Shared facts are published only after independent research from another install agrees. You can turn sharing off at any time in Settings.</li>
   </ul>
 
+  <h2>Counselor listings</h2>
+  <p>"Get expert help" in the app shows a directory of independent college counselors who pay to be listed. It works like this:</p>
+  <ul>
+    <li><strong>Browsing sends nothing about you.</strong> When you open the directory, the app sends only the filters you choose (a state and specialties) to the shared database, with the same publishable key used for college facts. No answers, grades, notes, name, account or device identifiers are sent, and counselors never learn who viewed their listing.</li>
+    <li><strong>Students' data is never shared with counselors.</strong> There is no messaging in the app. If you choose to contact a counselor, you do it yourself through their website, phone or email, outside the app.</li>
+    <li><strong>What we store about counselors.</strong> For each counselor: the listing they write (name, title, photo, bio, credentials, states, specialties, contact details), their account email, review notes and Stripe billing identifiers. Counselor listings are reviewed by us before they appear.</li>
+    <li><strong>Reports.</strong> If you report a listing, the report (reason and any text you type) is stored without your identity. To prevent abuse, requests are counted per network address for a short time, stored only as a one-way hash.</li>
+    <li>Listings are advertising. They never influence which colleges the app recommends.</li>
+  </ul>
+
   <h2>What is sent to OpenAI</h2>
   <p>Research and chat are powered by ChatGPT. When you run research or ask a question, the app sends your profile answers, the names of colleges being researched and your question directly from your device to OpenAI's API, under your own ChatGPT account and subject to <a href="https://openai.com/policies/" target="_blank" rel="noopener">OpenAI's terms and privacy policy</a>. Requests are made with the "do not store" option. The developer of College Compass does not receive, relay or see these requests.</p>
   <p>Usage counts toward your ChatGPT plan. You can review it at <a href="https://chatgpt.com/#settings" target="_blank" rel="noopener">chatgpt.com</a>.</p>
@@ -49,7 +59,7 @@
   <h2>What we don't do</h2>
   <ul>
     <li>No analytics, tracking, advertising or crash-reporting SDKs</li>
-    <li>No third-party services other than OpenAI, which you connect yourself, and the shared college database described above</li>
+    <li>No third-party services other than OpenAI, which you connect yourself, and the shared database described above (college facts and counselor listings)</li>
     <li>No sale or sharing of personal data — we never collect it</li>
   </ul>
 
