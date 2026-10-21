@@ -209,7 +209,7 @@ export function hiddenPlansNote(willingness: PlanWillingness, hidden: number): s
 export interface UpcomingOptions {
   colleges: College[];
   shortlist?: string[];
-  profile?: Pick<StudentProfile, "plan"> | null;
+  profile?: (Pick<StudentProfile, "plan"> & Partial<Pick<StudentProfile, "grad_year">>) | null;
   now?: Date;
   /** Include plans the student's willingness would hide. */
   showAll?: boolean;
@@ -222,6 +222,20 @@ export interface Upcoming {
   hidden: number;
   /** True when at least one college has researched application plans at all. */
   researched: boolean;
+  /**
+   * Upcoming dates outside the student's own application season (research fills in last cycle's
+   * dates when theirs aren't published yet) — left out of the list and of reminders.
+   */
+  otherCycle: number;
+}
+
+/**
+ * The application season for a Fall `gradYear` entry: July 1 of the year before through June 30 of
+ * the entry year (EA/ED in the fall, RD in winter, rolling into spring). Null without a grad year.
+ */
+export function applicationSeason(gradYear: number | null | undefined): { from: string; to: string } | null {
+  if (!gradYear || !Number.isFinite(gradYear)) return null;
+  return { from: `${gradYear - 1}-07-01`, to: `${gradYear}-06-30` };
 }
 
 export function upcomingDeadlines(opts: UpcomingOptions): Upcoming {
@@ -231,6 +245,8 @@ export function upcomingDeadlines(opts: UpcomingOptions): Upcoming {
   const willingness = opts.profile?.plan ?? "ed_ok";
   const all: Deadline[] = [];
   let researched = false;
+  let otherCycle = 0;
+  const season = applicationSeason(opts.profile?.grad_year);
   for (const c of opts.colleges) {
     const plans = c.application?.plans ?? [];
     if (plans.length) researched = true;
@@ -238,6 +254,10 @@ export function upcomingDeadlines(opts: UpcomingOptions): Upcoming {
       if (!p || !p.plan || !(p.plan in PLAN_LABEL)) continue;
       const date = parseDeadline(p.deadline, now);
       if (!date || date < today) continue;
+      if (season && (date < season.from || date > season.to)) {
+        otherCycle++;
+        continue;
+      }
       all.push({
         collegeId: c.id,
         collegeName: c.name,
@@ -260,7 +280,7 @@ export function upcomingDeadlines(opts: UpcomingOptions): Upcoming {
   });
   const kept = opts.showAll ? unique : unique.filter((d) => planFits(d.plan, willingness));
   kept.sort(compareDeadlines);
-  return { items: kept, hidden: unique.length - kept.length, researched };
+  return { items: kept, hidden: unique.length - kept.length, researched, otherCycle };
 }
 
 /** Identity of a deadline across lists: the same college, plan and day is one deadline. */

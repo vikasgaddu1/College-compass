@@ -237,3 +237,18 @@ describe("reminders", () => {
     expect(buildReminders(merged, NOW)).toHaveLength(4);
   });
 });
+
+describe("deadlines outside the student's application season", () => {
+  it("leaves out last-cycle fallback dates for a younger student, keeps them for a senior", async () => {
+    const { upcomingDeadlines, applicationSeason } = await import("./deadlines");
+    const college = { id: "c1", name: "Test College", short: "Test", url: null, application: { cycle: "Fall 2029 entry", plans: [{ plan: "EA", deadline: "2026-11-01", notes: "Based on last cycle — confirm" }, { plan: "RD", deadline: "2029-01-05" }], test_policy_note: null, essays_note: null, fee: null } } as never;
+    const now = new Date("2026-10-21T12:00:00");
+    const junior = upcomingDeadlines({ colleges: [college], profile: { plan: "ed_ok", grad_year: 2029 }, now });
+    expect(junior.items.map((d) => d.date)).toEqual(["2029-01-05"]);
+    expect(junior.otherCycle).toBe(1);
+    const senior = upcomingDeadlines({ colleges: [college], profile: { plan: "ed_ok", grad_year: 2027 }, now });
+    expect(senior.items.map((d) => d.date)).toEqual(["2026-11-01"]);
+    expect(senior.otherCycle).toBe(1);
+    expect(applicationSeason(2027)).toEqual({ from: "2026-07-01", to: "2027-06-30" });
+  });
+});

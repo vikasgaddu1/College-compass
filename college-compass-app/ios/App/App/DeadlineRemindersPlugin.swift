@@ -50,8 +50,11 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
             call.reject("A reminder prefix is required.", "INVALID")
             return
         }
-        Self.removePending(prefix: prefix) { removed in
-            call.resolve(["removed": removed])
+        Self.serialized { done in
+            Self.removePending(prefix: prefix) { removed in
+                call.resolve(["removed": removed])
+                done()
+            }
         }
     }
 
@@ -128,10 +131,48 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
 
     /// Remove every pending request whose identifier has `prefix`, then add `reminders` (calendar
     /// triggers in the current time zone). Completion gets the number added.
+    /// Replacements run one at a time: a newer schedule (e.g. reminders turned off) must never be
+    /// overtaken by an older one that was still adding its requests.
+    static let serial = DispatchQueue(label: "cc.deadline-reminders")
+
+    /// Runs `work` on the serial queue and waits for it to call `done` before starting the next one.
+    static func serialized(_ work: @escaping (@escaping () -> Void) -> Void) {
+        serial.async {
+            let finished = DispatchSemaphore(value: 0)
+            work { finished.signal() }
+            finished.wait()
+        }
+    }
+
     static func schedule(prefix: String, reminders: [Reminder], completion: @escaping (Int) -> Void) {
+        serialized { done in
+            replace(prefix: prefix, reminders: reminders) { added in
+                completion(added)
+                done()
+            }
+        }
+    }
+
+    /// True when iOS will actually deliver local notifications (adding a request without permission
+    /// "succeeds" but nothing is scheduled).
+    static func notificationsAllowed(_ completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .authorized, .provisional, .ephemeral: completion(true)
+            default: completion(false)
+            }
+        }
+    }
+
+    private static func replace(prefix: String, reminders: [Reminder], completion: @escaping (Int) -> Void) {
         removePending(prefix: prefix) { _ in
             let center = UNUserNotificationCenter.current()
             guard !reminders.isEmpty else {
+                completion(0)
+                return
+            }
+            notificationsAllowed { allowed in
+            guard allowed else {
                 completion(0)
                 return
             }
@@ -157,6 +198,7 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
                 }
             }
             group.notify(queue: .global()) { completion(added) }
+            }
         }
     }
 
@@ -205,6 +247,7 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
             Reminder(id: prefix + "a", title: "Test · Early Action due in 7 days — Nov 1", body: "Self-test", fireAt: soon),
             Reminder(id: prefix + "b", title: "Test · Early Action due tomorrow — Nov 1", body: "Self-test", fireAt: soon.addingTimeInterval(60))
         ]
+        notificationsAllowed { allowed in
         schedule(prefix: prefix, reminders: reminders) { added in
             UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
                 let pending = requests.filter { $0.identifier.hasPrefix(prefix) }.count
@@ -214,7 +257,7 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
                         let line: String
                         if added == 2 && pending == 2 && left == 0 {
                             line = "reminders_pending=\(pending) cleared=\(left)"
-                        } else if added == 0 && pending == 0 && left == 0 {
+                        } else if !allowed && added == 0 && pending == 0 && left == 0 {
                             line = "reminders_skipped=not-allowed"
                         } else {
                             line = "reminders_error=added:\(added) pending:\(pending) left:\(left)"
@@ -224,6 +267,7 @@ public class DeadlineRemindersPlugin: CAPPlugin, CAPBridgedPlugin {
                     }
                 }
             }
+        }
         }
     }
 }

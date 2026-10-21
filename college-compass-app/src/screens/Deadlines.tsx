@@ -128,8 +128,15 @@ export function Deadlines() {
             </div>
           )}
 
+          {/* Dates from last cycle, filled in because the student's own cycle isn't published yet */}
+          {upcoming.otherCycle > 0 && (
+            <p className="mt-4 rounded-control bg-surface-2 px-4 py-2.5 text-footnote text-text-muted">
+              {upcoming.otherCycle === 1 ? "1 date is" : `${upcoming.otherCycle} dates are`} from an earlier application year — Fall {profile.grad_year} deadlines usually come out the summer before you apply. Refresh research then.
+            </p>
+          )}
+
           {count === 0 ? (
-            <Empty icon="🌤️" title="Nothing coming up" message={upcoming.hidden ? "Every upcoming deadline on this list is for a plan you said you'd skip." : "Every researched deadline on this list has passed."} />
+            <Empty icon="🌤️" title="Nothing coming up" message={upcoming.otherCycle ? `Deadlines for Fall ${profile.grad_year} aren't published yet.` : upcoming.hidden ? "Every upcoming deadline on this list is for a plan you said you'd skip." : "Every researched deadline on this list has passed."} />
           ) : (
             groups.map((g) => (
               <section key={g.date} className="mt-5" aria-label={`${formatDay(g.date, now)}, ${formatRelative(g.daysUntil)}`}>
