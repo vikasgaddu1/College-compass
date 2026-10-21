@@ -20,14 +20,23 @@ class MainViewController: CAPBridgeViewController {
         bridge?.registerPluginInstance(sharePdf)
         // Apple App Attest for shared-research contributions (AppAttestPlugin.swift).
         bridge?.registerPluginInstance(AppAttestPlugin())
+        // Application-deadline reminders (local notifications) + "Add to Calendar" (.ics share):
+        // DeadlineRemindersPlugin.swift.
+        let deadlineReminders = DeadlineRemindersPlugin()
+        bridge?.registerPluginInstance(deadlineReminders)
         if ProcessInfo.processInfo.arguments.contains("-ccNativeHttpSelfTest") {
-            // The HTTP checks plus one PDF render of a sample report (`pdf_pages=N pdf_bytes=M`), all
+            // The HTTP checks plus one PDF render of a sample report (`pdf_pages=N pdf_bytes=M`) and a
+            // schedule/clear round trip of two deadline reminders (`reminders_pending=2 cleared=0`, or
+            // `reminders_skipped=not-allowed` where the Simulator can't grant notifications), all
             // written to Documents/cc_nativehttp_selftest.txt for the simulator smoke test.
             http.runSelfTest { record, done in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     record(SharePdfPlugin.selfTestLine())
                     record(AppAttestPlugin.selfTestLine())
-                    done()
+                    DeadlineRemindersPlugin.selfTest { line in
+                        record(line)
+                        done()
+                    }
                 }
             }
         }

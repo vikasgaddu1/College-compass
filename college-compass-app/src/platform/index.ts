@@ -554,3 +554,119 @@ export function getAppAttestPlugin(): AppAttestPlugin | null {
   appAttestPlugin ??= registerPlugin<AppAttestPlugin>("AppAttest");
   return appAttestPlugin;
 }
+
+// ───────────────────────────── Deadline reminders + Add to Calendar ─────────────────────────────
+//
+// Application-deadline reminders are local notifications scheduled by the in-app `DeadlineReminders`
+// Capacitor plugin (ios/App/App/DeadlineRemindersPlugin.swift) with calendar triggers, identified by
+// a common prefix so re-scheduling is idempotent (remove the prefix, add the new set). The same plugin
+// shares an .ics file through the share sheet ("Add to Calendar"). Web: no notifications; the .ics is
+// downloaded (or shared through the Web Share API where files are supported).
+
+/** One scheduled reminder, as the native side takes it. */
+export interface NativeReminder {
+  id: string;
+  title: string;
+  body: string;
+  /** Epoch milliseconds, local 9:00 on the lead day. */
+  fireAt: number;
+}
+
+/** JS face of the native `DeadlineReminders` plugin. */
+export interface DeadlineRemindersPlugin {
+  /** Remove pending requests whose identifier starts with `prefix`, then add `reminders`. */
+  schedule(opts: { prefix: string; reminders: NativeReminder[] }): Promise<{ scheduled: number }>;
+  clear(opts: { prefix: string }): Promise<{ removed: number }>;
+  pending(opts: { prefix: string }): Promise<{ ids: string[] }>;
+  /** Write `ics` to a temporary file named `fileName` and present the share sheet. */
+  shareCalendar(opts: { ics: string; fileName: string }): Promise<{ completed: boolean }>;
+}
+
+let deadlineRemindersPlugin: DeadlineRemindersPlugin | null = null;
+function getDeadlineRemindersPlugin(): DeadlineRemindersPlugin {
+  deadlineRemindersPlugin ??= registerPlugin<DeadlineRemindersPlugin>("DeadlineReminders");
+  return deadlineRemindersPlugin;
+}
+
+/** True when deadline reminders can be scheduled (the iPhone app). */
+export function supportsDeadlineReminders(): boolean {
+  return isNative();
+}
+
+/**
+ * Replace every pending deadline reminder with `prefix` by `reminders`. Resolves the number scheduled;
+ * 0 on web or when the plugin is unavailable. Never throws.
+ */
+export async function scheduleDeadlineReminders(prefix: string, reminders: NativeReminder[]): Promise<number> {
+  if (!isNative()) return 0;
+  try {
+    const res = await getDeadlineRemindersPlugin().schedule({ prefix, reminders });
+    return typeof res?.scheduled === "number" ? res.scheduled : reminders.length;
+  } catch {
+    return 0;
+  }
+}
+
+/** Remove every pending deadline reminder with `prefix`. No-op on web. */
+export async function clearDeadlineReminders(prefix: string): Promise<void> {
+  if (!isNative()) return;
+  try { await getDeadlineRemindersPlugin().clear({ prefix }); } catch { /* best-effort */ }
+}
+
+/** Identifiers of the pending deadline reminders with `prefix` (diagnostics). Empty on web. */
+export async function pendingDeadlineReminders(prefix: string): Promise<string[]> {
+  if (!isNative()) return [];
+  try { return (await getDeadlineRemindersPlugin().pending({ prefix })).ids ?? []; } catch { return []; }
+}
+
+/**
+ * Hand an .ics calendar file to the student. Native: the share sheet (Calendar, Mail, Files…).
+ * Web: the Web Share API with files when available, otherwise a download. Resolves `completed: false`
+ * when the share sheet was cancelled or nothing could be offered (node / jsdom).
+ */
+export async function shareCalendarFile(ics: string, fileName: string): Promise<{ completed: boolean }> {
+  if (isNative()) {
+    try {
+      const res = await getDeadlineRemindersPlugin().shareCalendar({ ics, fileName });
+      return { completed: res?.completed === true };
+    } catch {
+      return { completed: false };
+    }
+  }
+  return webDownloadText(ics, fileName, "text/calendar;charset=utf-8");
+}
+
+/** Exported for tests: the web fallback of `shareCalendarFile`. */
+export async function webDownloadText(text: string, fileName: string, type: string): Promise<{ completed: boolean }> {
+  if (typeof document === "undefined" || !document.body || typeof URL.createObjectURL !== "function") return { completed: false };
+  const blob = new Blob([text], { type });
+  try {
+    const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
+    if (typeof File === "function" && nav.share && nav.canShare) {
+      const file = new File([blob], fileName, { type });
+      if (nav.canShare({ files: [file] })) {
+        try {
+          await nav.share({ files: [file], title: fileName });
+          return { completed: true };
+        } catch {
+          return { completed: false }; // cancelled
+        }
+      }
+    }
+  } catch {
+    /* fall through to a download */
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  a.rel = "noopener";
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    a.remove();
+    try { URL.revokeObjectURL(url); } catch { /* ignore */ }
+  }, 1_000);
+  return { completed: true };
+}
