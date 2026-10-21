@@ -8,6 +8,8 @@
  */
 import type { College, IncomeNetPrice, MajorArea, ProgramNote } from "../types";
 import { load, save } from "../lib/storage";
+import { getAppAttestPlugin } from "../platform";
+import { createAttestor, type Attestor } from "./attest";
 
 const DEFAULT_URL = "https://nspbxlnocelknibrajkv.supabase.co";
 /** Publishable key: designed to ship in apps; Row Level Security limits it to reading published rows. */
@@ -79,14 +81,31 @@ export interface Contribution {
 export interface SharedLookup {
   /** Best match per requested name (keyed by the name exactly as passed). Never throws. */
   lookup(targets: { name: string; state: string | null }[], signal?: AbortSignal): Promise<Map<string, SharedCollege>>;
-  /** Send researched college facts to the shared database (fire-and-forget; never throws). */
+  /** Send researched college facts to the shared database (fire-and-forget; never throws). Attested with App Attest on iOS when possible. */
   contribute?(c: Contribution): Promise<void>;
 }
 
 type Fetch = typeof fetch;
 
-export function createSharedLookup(cfg = sharedConfig(), doFetch: Fetch = (...a) => globalThis.fetch(...a), timeoutMs = 6000): SharedLookup | null {
+/**
+ * The App Attest path for contributions in the iOS app (src/data/attest.ts); null on the web, in tests,
+ * or when turned off for a build with VITE_CC_APP_ATTEST=off.
+ */
+export function defaultAttestor(cfg: { url: string; key: string }, doFetch: Fetch): Attestor | null {
+  if (env("VITE_CC_APP_ATTEST") === "off") return null;
+  const native = getAppAttestPlugin();
+  if (!native) return null;
+  return createAttestor({ endpoint: `${cfg.url}/functions/v1/attest`, apiKey: cfg.key, native, fetch: doFetch });
+}
+
+export function createSharedLookup(
+  cfg = sharedConfig(),
+  doFetch: Fetch = (...a) => globalThis.fetch(...a),
+  timeoutMs = 6000,
+  attestor?: Attestor | null,
+): SharedLookup | null {
   if (!cfg) return null;
+  const attested = attestor === undefined ? defaultAttestor(cfg, doFetch) : attestor;
   const headers = { apikey: cfg.key, "Content-Type": "application/json", Accept: "application/json" };
   return {
     async lookup(targets, signal) {
@@ -125,6 +144,12 @@ export function createSharedLookup(cfg = sharedConfig(), doFetch: Fetch = (...a)
       }
     },
     async contribute(c) {
+      // iOS: try the App Attest path first (time-boxed); on any failure send it unattested as before.
+      try {
+        if (attested && (await attested.contribute(c))) return;
+      } catch {
+        /* fall back */
+      }
       try {
         await doFetch(`${cfg.url}/rest/v1/rpc/contribute_research`, { method: "POST", headers, body: JSON.stringify({ payload: c }) });
       } catch {

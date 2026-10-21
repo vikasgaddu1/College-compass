@@ -13,6 +13,7 @@ import { Research } from "@/screens/Research";
 import { List } from "@/screens/List";
 import { CollegeDetail } from "@/screens/CollegeDetail";
 import { Shortlist } from "@/screens/Shortlist";
+import { Deadlines } from "@/screens/Deadlines";
 import { Ask } from "@/screens/Ask";
 import { Settings } from "@/screens/Settings";
 import { Counselors } from "@/screens/Counselors";
@@ -92,6 +93,7 @@ function Router() {
     return <List tabBar={tab("list")} />;
   }
   if (path === "/shortlist") return <Shortlist tabBar={tab("shortlist")} />;
+  if (path === "/deadlines") return <Deadlines />;
   if (path === "/ask") return <Ask tabBar={tab("ask")} />;
   if (path === "/settings") return <Settings tabBar={tab("settings")} />;
   if (path === "/counselors") return <Counselors />;

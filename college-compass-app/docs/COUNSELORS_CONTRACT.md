@@ -101,7 +101,7 @@ include `https://vikasgaddu1.github.io/College-compass/app/counselors/**`), `#/p
 first 30 counselors until 3 months after the public App Store launch (admin sets `founding_until`; the
 cap is enforced manually by the owner).
 
-## Backend notes (implemented — `supabase/migrations/20261021000000_counselors.sql`)
+## Backend notes (implemented — `supabase/migrations/20261021020000_counselors.sql`)
 - **Errors from RPCs** are raised with a short code as the message (PostgREST `{ code, message, hint,
   details }`): `not_signed_in, no_profile, terms_not_accepted, incomplete_profile` (hint `Missing: name, bio,
   states, specialties, modes, contact`; details = comma list), `no_changes, suspended, not_authorized` (42501

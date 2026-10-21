@@ -32,7 +32,7 @@ The iOS project was generated on Linux. It has **never been opened in Xcode or b
 
 ## 2. Create the App ID and the App Store Connect record
 
-1. <https://developer.apple.com/account> → Certificates, Identifiers & Profiles → **Identifiers** → `+` → App IDs → App → Description `College Compass`, Bundle ID **Explicit** `com.gaddu.collegecompass`. No capabilities are needed (no push, no Sign in with Apple, no associated domains).
+1. <https://developer.apple.com/account> → Certificates, Identifiers & Profiles → **Identifiers** → `+` → App IDs → App → Description `College Compass`, Bundle ID **Explicit** `com.gaddu.collegecompass`. No capabilities are needed (no push, no Sign in with Apple, no associated domains). App Attest (below) needs no capability either.
 2. <https://appstoreconnect.apple.com> → Apps → `+` → New App:
    - Platforms: iOS · Name: `College Compass` (must be unique store-wide; if taken use e.g. `College Compass: Find Your Fit`, 30 chars max) · Primary language: English (U.S.)
    - Bundle ID: `com.gaddu.collegecompass` · SKU: `college-compass-ios` · User access: Full Access
@@ -108,6 +108,21 @@ Workflow: `.github/workflows/ios.yml`.
 - The build number is `github.run_number`, so every upload is unique and increasing. Bump `MARKETING_VERSION` (currently `1.0.0`, in the Xcode project) for each store release.
 - After upload, App Store Connect processes the build (usually 5-30 minutes) and emails you. Then: TestFlight → the build → add **Internal Testing** testers (App Store Connect users, no review). **External** testers need a short Beta App Review. Export compliance is pre-answered by `ITSAppUsesNonExemptEncryption = false` (the app only uses HTTPS/standard OS encryption, which is exempt).
 - **Xcode / SDK requirement.** Apple raises the minimum SDK for uploads every spring (iOS 18 SDK / Xcode 16 from April 2025; Xcode 26 / iOS 26 SDK was announced for April 2026). Check <https://developer.apple.com/news/upcoming-requirements/>. That is why the compile job pins Xcode 16 (as specified) while the TestFlight job takes an `xcode_version` input defaulting to `latest-stable`. Capacitor 6.2 was written for Xcode 15/16; if a newer Xcode breaks the build, upgrade Capacitor (7+ adds SPM and newer Xcode support; the platform seam in `src/platform` does not change).
+
+### App Attest: nothing to enable for TestFlight / App Store builds
+
+The app uses Apple App Attest (`ios/App/App/AppAttestPlugin.swift`) to protect the shared college database. **No portal step is needed and the TestFlight upload is unaffected:**
+
+- Apple: *"After distributing your app through TestFlight, the App Store, or the Apple Developer Enterprise Program, your app ignores the entitlement you set and uses the production environment."* Without the entitlement, apps run from Xcode use the App Attest *sandbox*. So release builds need no `com.apple.developer.devicecheck.appattest-environment` entitlement, and the App ID needs no "App Attest" capability.
+- Therefore the default build carries **no entitlements file**. `CODE_SIGN_ENTITLEMENTS` is `$(CC_APP_ATTEST_ENTITLEMENTS)`, empty unless you set it. This matters for the CI: the archive is built unsigned (`CODE_SIGNING_ALLOWED=NO`) and signed at export by cloud-managed signing. The signed app's entitlements must be in its provisioning profile (otherwise: "Provisioning profile … doesn't include the … entitlement"), and whether `-allowProvisioningUpdates` with an API key would switch on the App Attest capability on the App ID by itself — and whether an unsigned archive even carries the entitlement to the export step — is not documented. Leaving it out removes that risk entirely and costs nothing.
+- The CI simulator smoke test logs `appattest_supported=false` (the Simulator has no App Attest) — informational only.
+- Before TestFlight users can attest, the database migration and the `attest` Edge Function must be deployed (Actions → *Shared college data (Supabase)*: jobs **migrate** and **functions**). Until then, contributions are simply sent unattested.
+
+**Optional — only to test the *production* App Attest environment from a build you run from Xcode:**
+1. <https://developer.apple.com/account> → Certificates, Identifiers & Profiles → **Identifiers** → `com.gaddu.collegecompass` → **Capabilities** tab → tick **App Attest** → **Save** → confirm (existing profiles become invalid; automatic signing regenerates them).
+2. Build with the setting `CC_APP_ATTEST_ENTITLEMENTS=App/AppAttest.entitlements` (Xcode: target App → Build Settings → `+` → Add User-Defined Setting, or on the `xcodebuild` command line). That file sets the environment to `production`.
+
+Without step 2, Xcode builds attest in the sandbox; the server refuses sandbox keys unless `attest_allow_development` is on (`docs/SHARED_DATA.md`), and the app then just contributes unattested. Don't add the setting to the TestFlight job — it isn't needed there.
 
 ## 6. App Store listing draft
 
@@ -186,6 +201,8 @@ App Store Connect → App Privacy. Facts to answer from:
 - No analytics, no advertising SDKs, no tracking, no third-party SDKs that collect data.
 - **Shared college database (Supabase, developer-operated).** The app looks up college names there, and — when "Share research to help other students" is on (default) — sends researched **college facts** (admit rates, costs, deadlines, programs, sources) to it. Nothing about the student is sent. A random per-install ID (stored server-side only as a salted hash) and a salted hash of the network address (kept up to two days, for rate limiting) are processed. See `docs/SHARED_DATA.md`.
 
+- **Apple App Attest** (iPhone app only, `docs/SHARED_DATA.md` → "Security: Apple App Attest"). When sharing research, the app proves the contribution comes from the genuine app: it creates a key in the device's Secure Enclave that only this app can use, has Apple attest it once, and signs each contribution with it. The server receives the key's public key and identifier (a hash of that public key), Apple's attestation certificates and receipt, and a signature per contribution. None of it identifies the student or the device (App Attest exposes no device identifier; a reinstall makes a new key). **This changes no App Privacy answer** — it is part of the same college-facts contribution, not linked to the user, not used for tracking. If you took the conservative position on the install ID below, the same reasoning (and answer) covers the App Attest key.
+
 Recommended answers (updated for the shared database):
 
 1. *Do you or your third-party partners collect data from this app?* → **Yes.** Declare:
@@ -260,6 +277,7 @@ Users need **ChatGPT Plus or Pro** for research (plan usage). Free accounts can 
 - [ ] Settings → export, import, sign out, delete everything
 - [ ] Airplane mode shows stored data and a clear message for AI actions
 - [ ] Privacy policy and support pages open from inside the app
+- [ ] App Attest (after the Supabase **migrate** + **functions** jobs ran): research one college with sharing on, then in the Supabase SQL editor `select attested, count(*) from public.contributions where created_at > now() - interval '1 hour' group by 1;` shows `attested = true`. If it shows only `false`, the app silently fell back — check the `attest` function's logs.
 
 ## 11. Submit
 
@@ -274,6 +292,7 @@ App Store Connect → the app → the 1.0 version: upload screenshots, descripti
 | `ios/App/App/Info.plist` | display name, `collegecompass` URL scheme, portrait (iPad: all), ATS (arbitrary loads off, `NSAllowsLocalNetworking` on for the 127.0.0.1 sign-in listener), encryption flag |
 | `ios/App/App/LoopbackAuthPlugin.swift`, `ios/App/App/MainViewController.swift` | in-app Capacitor plugin: 127.0.0.1 loopback listener for ChatGPT sign-in; bridge view controller that registers it (Main.storyboard) |
 | `ios/App/App/PrivacyInfo.xcprivacy` | app privacy manifest |
+| `ios/App/App/AppAttestPlugin.swift`, `ios/App/App/AppAttest.entitlements` | Apple App Attest for shared-research contributions (`DCAppAttestService`); the entitlements file is opt-in only (see "App Attest" in section 5) |
 | `ios/App/App/Assets.xcassets` | AppIcon (1024 single-size), LaunchLogo, LaunchBackground (light/dark) |
 | `ios/App/App/Base.lproj/LaunchScreen.storyboard` | launch screen: centered mark on the app background colour |
 | `ios/tools/make_icons.py` | regenerates the icon and launch logo (Pillow) |

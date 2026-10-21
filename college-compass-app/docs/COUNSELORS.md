@@ -39,7 +39,7 @@ opens it.
 
 ## Pieces
 
-**Database** — `supabase/migrations/20261021000000_counselors.sql` (+ `…000100_counselor_admins.sql`, the owner's email).
+**Database** — `supabase/migrations/20261021020000_counselors.sql` (+ `…000100_counselor_admins.sql`, the owner's email).
 
 | Object | Purpose | Who can use it |
 |---|---|---|

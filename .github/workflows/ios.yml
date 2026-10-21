@@ -128,7 +128,15 @@ jobs:
           echo "PDF self-test: pages=$pdf_pages bytes=$pdf_bytes"
           test "$pdf_pages" -ge 1
           test "$pdf_bytes" -gt 1000
-          xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK" OR eventMessage CONTAINS "CC_SHAREPDF"' || true
+          # App Attest (AppAttestPlugin.swift): the Simulator has no App Attest, so this only shows the plugin
+          # is compiled in and DeviceCheck links (expect appattest_supported=false). Informational, never fails.
+          grep -Ex "appattest_supported=(true|false)" "$OUT" || echo "::warning title=App Attest self-test::no appattest_supported line in $OUT"
+          # Deadline reminders: two test reminders are scheduled, counted, cleared and counted again
+          # (DeadlineRemindersPlugin.swift). The Simulator can't grant notification permission
+          # unattended, in which case iOS refuses to add them and the plugin reports that instead.
+          grep -Eqx "reminders_pending=2 cleared=0|reminders_skipped=not-allowed" "$OUT"
+          echo "Deadline reminders self-test: $(grep '^reminders_' "$OUT")"
+          xcrun simctl spawn "$UDID" log show --last 3m --style compact --predicate 'eventMessage CONTAINS "CC_LOOPBACK" OR eventMessage CONTAINS "CC_SHAREPDF" OR eventMessage CONTAINS "CC_DEADLINES"' || true
           xcrun simctl io "$UDID" screenshot "$RUNNER_TEMP/launch.png" || true
 
       - name: Upload smoke-test screenshot

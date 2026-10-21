@@ -18,3 +18,8 @@ verify_jwt = false
 # calling a service-role-only database function, so it works with legacy and new secret keys).
 [functions.counselor-reconcile]
 verify_jwt = false
+
+# App Attest verifier (supabase/functions/attest). The app calls it with the publishable key, which
+# is not a JWT, so the gateway's JWT check is off; App Attest itself authenticates every request.
+[functions.attest]
+verify_jwt = false
