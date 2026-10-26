@@ -9,7 +9,7 @@ import { CollegeCard } from "@/components/CollegeCard";
 import { Banner, Button, ProgressBar } from "@/components/ui";
 import { CollegeStateGlyph, KeepTabOpenNote, LeaveAppCard, PhaseSteps, WaitTips, useNow, type NotifyState } from "@/components/ResearchStatus";
 import { SignInAgain, needsSignIn, reasonFor, type SignInReason } from "@/components/SignInAgain";
-import { IconCheck, IconRefresh, IconWarning } from "@/components/icons";
+import { IconCheck, IconRefresh, IconStop, IconWarning } from "@/components/icons";
 
 /** "signin": the ChatGPT session ended (or there is none) — the sign-in card is shown instead of a run. */
 type Status = "planning" | "researching" | "done" | "cancelled" | "error" | "signin";
@@ -147,8 +147,12 @@ export function Research() {
         setColleges([]);
       }
       researchApi(demo)
-        .run({ profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache, model: prefs.model ?? undefined, share_research: prefs.shareResearch !== false, signal: c.signal, onEvent })
-        .then(() => setStatus((s) => (s === "error" || s === "signin" ? s : "done")))
+        .run({
+          profile, wanted: profile.wanted_colleges, target_count: Math.max(prefs.researchCount ?? 12, profile.wanted_colleges.length), cache, model: prefs.model ?? undefined, share_research: prefs.shareResearch !== false, signal: c.signal,
+          // Once cancelled, late events from requests already in flight must not move the screen again.
+          onEvent: (e) => { if (!c.signal.aborted) onEvent(e); },
+        })
+        .then(() => { if (!c.signal.aborted) setStatus((s) => (s === "error" || s === "signin" ? s : "done")); })
         .catch((err) => {
           if (c.signal.aborted) {
             setStatus((s) => (s === "signin" ? s : "cancelled"));
@@ -349,16 +353,23 @@ export function Research() {
               {done.length > 0 || colleges.length > 0 ? "See my list" : "Not now"}
             </Button>
           ) : finished ? (
-            <>
+            status === "done" ? (
               <Button onClick={() => navigate("/list", { replace: true })} disabled={done.length === 0}>
                 See my list
               </Button>
-              {(status === "cancelled" || status === "error") && (
-                <Button variant="secondary" onClick={() => start()}>
-                  <IconRefresh size={20} /> Start over
+            ) : (
+              // Cancelled or failed: never a dead end — back to the list (where lists can be switched
+              // or a new one started), change the answers, or run it again.
+              <>
+                <Button onClick={() => navigate("/list", { replace: true })}>{done.length > 0 ? `See the ${done.length} researched` : "Back to my list"}</Button>
+                <Button variant="secondary" onClick={() => void begin()}>
+                  <IconRefresh size={20} /> Try again
                 </Button>
-              )}
-            </>
+                <Button variant="quiet" onClick={() => navigate("/onboarding/1")}>
+                  Change my answers
+                </Button>
+              </>
+            )
           ) : (
             <>
               {done.length >= 3 && (
@@ -410,16 +421,19 @@ export function Research() {
               .sort((a, b) => a.batch - b.batch)
               .map((l) => {
                 const anyFailed = l.failed.length > 0;
+                // A lane that never finished because the run was cancelled / failed shows as stopped.
+                const stopped = finished && !l.finished;
                 return (
                   <div key={l.batch} className="cc-row-static" data-lane={l.batch + 1}>
                     <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full ${l.finished ? (anyFailed ? "text-warn" : "bg-accent-soft text-accent") : "bg-surface-2 text-text-muted"}`} style={l.finished && anyFailed ? { background: "color-mix(in srgb, var(--warn) 14%, transparent)" } : undefined}>
-                      {l.finished ? anyFailed ? <IconWarning size={16} /> : <IconCheck size={16} /> : <span className="cc-spinner !h-4 !w-4 !border-2" aria-hidden />}
+                      {l.finished ? anyFailed ? <IconWarning size={16} /> : <IconCheck size={16} /> : stopped ? <IconStop size={14} /> : <span className="cc-spinner !h-4 !w-4 !border-2" aria-hidden />}
                     </span>
                     <p className="min-w-0 flex-1 text-subhead leading-[22px]">
                       <span className="font-semibold">Agent {l.batch + 1}</span>
+                      {stopped && <span className="text-text-muted"> · stopped</span>}
                       <span className="text-text-muted"> · </span>
                       {l.names.map((n, i) => {
-                        const state = l.done.some((d) => sameName(d, n)) ? "done" : l.failed.includes(n) ? "failed" : "pending";
+                        const state = l.done.some((d) => sameName(d, n)) ? "done" : l.failed.includes(n) ? "failed" : stopped ? "stopped" : "pending";
                         const space = n.indexOf(" ");
                         const head = space < 0 ? n : n.slice(0, space);
                         const tail = space < 0 ? "" : n.slice(space);

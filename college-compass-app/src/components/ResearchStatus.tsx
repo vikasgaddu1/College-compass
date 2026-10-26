@@ -226,7 +226,9 @@ export function WaitTips({ intervalMs = 8000 }: { intervalMs?: number }) {
 }
 
 /** Small inline glyph for one college inside an agent lane. */
-export function CollegeStateGlyph({ state }: { state: "pending" | "done" | "failed" }) {
+export function CollegeStateGlyph({ state }: { state: "pending" | "done" | "failed" | "stopped" }) {
+  // Not researched because the run stopped: a still, muted dash (no pulsing "in progress" dot).
+  if (state === "stopped") return <span className="mr-1.5 inline-block h-[2px] w-2 align-[3px] rounded-full bg-text-muted" aria-hidden />;
   if (state === "done") return <IconCheck size={13} className="mr-1 inline-block align-[-1px] text-good" />;
   if (state === "failed") return <IconClose size={13} className="mr-1 inline-block align-[-1px] text-bad" />;
   return <span className="cc-dot-pulse mr-1.5 inline-block h-1.5 w-1.5 align-[1px] rounded-full bg-text-muted" aria-hidden />;

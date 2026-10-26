@@ -54,6 +54,8 @@ final class BackgroundTransfers: NSObject, URLSessionDataDelegate {
     private var state: State
     /// In-memory only: JavaScript callers and response bytes for tasks of this process.
     private var completions: [Int: Completion] = [:]
+    /// Ids cancelled before their task was registered (cancel raced the request's start).
+    private var cancelledEarly = Set<String>()
     private var buffers: [Int: Data] = [:]
     /// Set by AppDelegate when iOS wakes the app for this session's events.
     var systemCompletionHandler: (() -> Void)?
@@ -113,6 +115,13 @@ final class BackgroundTransfers: NSObject, URLSessionDataDelegate {
             task = session.downloadTask(with: req)
         }
         lock.lock()
+        if cancelledEarly.remove(id) != nil {
+            // Cancelled while the request was being prepared: never start it.
+            lock.unlock()
+            if let path = bodyFile?.path { try? FileManager.default.removeItem(atPath: path) }
+            completion(.failure(.init(code: "ABORTED", message: "Aborted")))
+            return
+        }
         state.tasks[task.taskIdentifier] = TaskMeta(id: id, tag: tag, bodyFile: bodyFile?.path)
         completions[task.taskIdentifier] = completion
         persist()
@@ -125,6 +134,11 @@ final class BackgroundTransfers: NSObject, URLSessionDataDelegate {
     func cancel(id: String) -> Bool {
         lock.lock()
         let tid = state.tasks.first { $0.value.id == id }?.key
+        if tid == nil, !id.isEmpty {
+            // Not registered yet: remember it so `perform` doesn't start it (ids are unique per request).
+            cancelledEarly.insert(id)
+            if cancelledEarly.count > 256 { cancelledEarly.removeAll() }
+        }
         lock.unlock()
         guard let tid else { return false }
         session.getAllTasks { tasks in tasks.first { $0.taskIdentifier == tid }?.cancel() }
