@@ -167,3 +167,58 @@ describe("Research review fixes", () => {
     expect(sessionStorage.getItem("cc2:research_resume")).toBeNull();
   });
 });
+
+describe("Cancel", () => {
+  it("stops the run, ignores late results, and never leaves the student stuck", async () => {
+    let opts!: ResearchOptions;
+    mocks.run.mockImplementation((o) => {
+      opts = o;
+      o.onEvent({ type: "planned", candidates: [{ name: "Duke University", state: "NC", why: "", expected_tier: null, user_added: false }, { name: "Rice University", state: "TX", why: "", expected_tier: null, user_added: false }] });
+      o.onEvent({ type: "batch_started", batch: 0, names: ["Duke University", "Rice University"] });
+      return new Promise((_, reject) => o.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError"))));
+    });
+    const { container } = renderResearch();
+    const cancel = await screen.findByRole("button", { name: "Cancel" });
+    expect(container.querySelector(".cc-spinner")).not.toBeNull();
+
+    await act(async () => { cancel.click(); });
+    expect(opts.signal?.aborted).toBe(true);
+    expect(await screen.findByText("Research stopped")).toBeTruthy();
+    // No "still working" spinners once stopped.
+    expect(container.querySelector(".cc-spinner")).toBeNull();
+    expect(screen.getByText(/stopped$/, { selector: "span" })).toBeTruthy();
+
+    // A response that was already on its way is ignored.
+    await act(async () => { opts.onEvent({ type: "college_done", college: DEMO_COLLEGES[0]! }); });
+    expect(screen.getByText("Research stopped")).toBeTruthy();
+    expect(screen.queryByText(DEMO_COLLEGES[0]!.name)).toBeNull();
+
+    // Ways out: back to the list (enabled even with nothing researched), try again, change answers.
+    const back = screen.getByRole("button", { name: "Back to my list" }) as HTMLButtonElement;
+    expect(back.disabled).toBe(false);
+    expect(screen.getByRole("button", { name: /Try again/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Change my answers" })).toBeTruthy();
+    await act(async () => { back.click(); });
+    expect(window.location.hash).toBe("#/list");
+  });
+
+  it("Try again starts one run at a time while the session renews", async () => {
+    mocks.run.mockImplementation((o) => new Promise((_, reject) => o.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")))));
+    renderResearch();
+    await act(async () => { (await screen.findByRole("button", { name: "Cancel" })).click(); });
+    expect(mocks.run).toHaveBeenCalledTimes(1);
+
+    let renew!: () => void;
+    mocks.ensureFresh.mockImplementation(() => new Promise<void>((r) => { renew = r; }));
+    const again = screen.getByRole("button", { name: /Try again/ }) as HTMLButtonElement;
+    await act(async () => { again.click(); });
+    const busy = screen.getByRole("button", { name: /Starting/ }) as HTMLButtonElement;
+    expect(busy.disabled).toBe(true);
+    await act(async () => { busy.click(); busy.click(); });
+    await act(async () => { renew(); });
+    await waitFor(() => expect(mocks.run).toHaveBeenCalledTimes(2));
+    await new Promise((r) => setTimeout(r, 20));
+    expect(mocks.run).toHaveBeenCalledTimes(2);
+    expect(screen.queryByText("Research stopped")).toBeNull();
+  });
+});
