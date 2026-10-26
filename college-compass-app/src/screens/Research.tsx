@@ -54,6 +54,9 @@ export function Research() {
   const [error, setError] = useState<{ title: string; detail: string } | null>(null);
   const [signInReason, setSignInReason] = useState<SignInReason>("expired");
   const [retrying, setRetrying] = useState<string | null>(null);
+  // A start is in progress (e.g. waiting for the session to renew): one at a time.
+  const [starting, setStarting] = useState(false);
+  const startingRef = useRef(false);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [notify, setNotify] = useState<NotifyState>("idle");
   const ctrl = useRef<AbortController | null>(null);
@@ -154,6 +157,8 @@ export function Research() {
         })
         .then(() => { if (!c.signal.aborted) setStatus((s) => (s === "error" || s === "signin" ? s : "done")); })
         .catch((err) => {
+          // A run replaced by a newer one (Try again) must not touch the screen.
+          if (ctrl.current !== c) return;
           if (c.signal.aborted) {
             setStatus((s) => (s === "signin" ? s : "cancelled"));
             return;
@@ -177,6 +182,22 @@ export function Research() {
    * token) starts the run, which reports its own errors.
    */
   const begin = useCallback(
+    async (resume = false) => {
+      if (startingRef.current) return;
+      startingRef.current = true;
+      setStarting(true);
+      try {
+        await beginOnce(resume);
+      } finally {
+        startingRef.current = false;
+        if (alive.current) setStarting(false);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [demo, start, askToSignIn],
+  );
+
+  const beginOnce = useCallback(
     async (resume = false) => {
       if (!demo) {
         if (!isConnected()) {
@@ -362,8 +383,8 @@ export function Research() {
               // or a new one started), change the answers, or run it again.
               <>
                 <Button onClick={() => navigate("/list", { replace: true })}>{done.length > 0 ? `See the ${done.length} researched` : "Back to my list"}</Button>
-                <Button variant="secondary" onClick={() => void begin()}>
-                  <IconRefresh size={20} /> Try again
+                <Button variant="secondary" onClick={() => void begin()} disabled={starting} aria-busy={starting}>
+                  <IconRefresh size={20} /> {starting ? "Starting…" : "Try again"}
                 </Button>
                 <Button variant="quiet" onClick={() => navigate("/onboarding/1")}>
                   Change my answers

@@ -201,4 +201,24 @@ describe("Cancel", () => {
     await act(async () => { back.click(); });
     expect(window.location.hash).toBe("#/list");
   });
+
+  it("Try again starts one run at a time while the session renews", async () => {
+    mocks.run.mockImplementation((o) => new Promise((_, reject) => o.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")))));
+    renderResearch();
+    await act(async () => { (await screen.findByRole("button", { name: "Cancel" })).click(); });
+    expect(mocks.run).toHaveBeenCalledTimes(1);
+
+    let renew!: () => void;
+    mocks.ensureFresh.mockImplementation(() => new Promise<void>((r) => { renew = r; }));
+    const again = screen.getByRole("button", { name: /Try again/ }) as HTMLButtonElement;
+    await act(async () => { again.click(); });
+    const busy = screen.getByRole("button", { name: /Starting/ }) as HTMLButtonElement;
+    expect(busy.disabled).toBe(true);
+    await act(async () => { busy.click(); busy.click(); });
+    await act(async () => { renew(); });
+    await waitFor(() => expect(mocks.run).toHaveBeenCalledTimes(2));
+    await new Promise((r) => setTimeout(r, 20));
+    expect(mocks.run).toHaveBeenCalledTimes(2);
+    expect(screen.queryByText("Research stopped")).toBeNull();
+  });
 });
