@@ -10,6 +10,7 @@ import { NoteTextarea } from "@/components/NoteSheet";
 import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, ConfidenceDot, EffectIcon, Empty, Group, Row, Stat, TierPill } from "@/components/ui";
 import { IconExternal, IconRefresh, IconStar } from "@/components/icons";
+import { CounselorPrompt, collegePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
 
 export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean }) {
   const { byId, profile, isSaved, toggleSaved, notes, setNote, upsertCollege, removeCollege, demo, prefs } = useStore();
@@ -51,6 +52,7 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
   }
   const { college: c, odds, fit } = item;
   const t = tierInfo(odds.tier);
+  const counselors = useCounselorAvailability();
   const saved = isSaved(c.id);
   const inState = c.ownership === "public" && c.state === profile.home_state;
 
@@ -129,6 +131,13 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
           )}
         </div>
       </header>
+
+      {/* Below the odds: people who help with exactly this kind of application (only when the directory has someone). */}
+      {counselors.eligible && counselors.count > 0 && (
+        <CounselorPrompt kind="college" specialty={counselors.matching > 0 ? counselors.interest : null} className="mt-4">
+          {collegePromptText(c.short, counselors)}
+        </CounselorPrompt>
+      )}
 
       {err && needsSignIn(err.code) && (
         <div className="mt-4">

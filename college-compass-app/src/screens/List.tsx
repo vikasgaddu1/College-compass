@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Ownership, RankedCollege, Tier } from "@/types";
 import { navigate } from "@/lib/router";
 import { useStore, type SortKey } from "@/state/store";
@@ -187,10 +187,11 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
             }
           />
         ) : (
-          groups.map((g) => {
+          groups.map((g, gi) => {
             const t = g.tier === "others" ? null : tierInfo(g.tier);
             return (
-              <section key={g.tier} aria-label={t ? t.label : "Also researched"}>
+              <Fragment key={g.tier}>
+              <section aria-label={t ? t.label : "Also researched"}>
                 <header className="cc-section-head">
                   {t && <span className="h-2.5 w-2.5 rounded-full" style={{ background: t.cssVar }} aria-hidden />}
                   <h2 className="text-headline">{t ? t.label : "Also researched"}</h2>
@@ -207,6 +208,9 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
                   })}
                 </div>
               </section>
+              {/* After the first group, so it's seen without scrolling to the end but never above the colleges. */}
+              {gi === 0 && !q && filterCount === 0 && <CounselorsNudge show={!demo && colleges.length > 0 && shown > 0} />}
+              </Fragment>
             );
           })
         )}
@@ -226,7 +230,6 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
             </div>
           </section>
         )}
-        <CounselorsNudge show={!demo && colleges.length > 0 && shown > 0} />
         {demo && colleges.length > 0 && <p className="mt-6 text-center text-footnote text-text-muted">Demo mode: sample research with approximate figures.</p>}
       </Screen>
 

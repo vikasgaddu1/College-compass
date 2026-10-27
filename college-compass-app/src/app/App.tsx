@@ -96,7 +96,7 @@ function Router() {
   if (path === "/deadlines") return <Deadlines />;
   if (path === "/ask") return <Ask tabBar={tab("ask")} />;
   if (path === "/settings") return <Settings tabBar={tab("settings")} />;
-  if (path === "/counselors") return <Counselors />;
+  if (path === "/counselors") return <Counselors tabBar={tab("counselors")} />;
   navigate("/", { replace: true });
   return null;
 }

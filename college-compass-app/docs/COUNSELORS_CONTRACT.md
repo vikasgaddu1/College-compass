@@ -1,8 +1,12 @@
 # Counselor directory — shared contract (backend ↔ frontend)
 
 Owner decisions: counselors pay **$29/month or $290/year** (Stripe, Gaddu LLC is the merchant). The owner
-(Vikas) **approves every counselor** before they appear. Families see the directory in the iPhone app via
-Settings ("Get expert help"), a dismissible card on the list screen, and a link in the PDF share sheet.
+(Vikas) **approves every counselor** before they appear. Families see the directory in the iPhone app as the
+**Counselors tab** ("Get expert help"), plus a Settings row, a link in the PDF share sheet and contextual prompts
+(list card after the first tier group, college page, deadlines within 14 days, research done for reach-heavy
+lists, an Ask chip after essay/early-plan/strategy questions). Prompts (`src/components/CounselorPrompt.tsx`)
+show only when `counselor_directory` lists someone for the student's state — one request per session, state
+only — never in the demo, at most one per screen, dismissible for 30 days, and never imply a recommendation.
 Payment and sign-up happen ONLY on the website (counselor portal) — the iOS app never shows a purchase
 flow or a "list your practice" link (Apple payment rules). Most app users are minors: no in-app
 messaging; families contact counselors via website/phone/email; every listing is labelled "Paid listing";
