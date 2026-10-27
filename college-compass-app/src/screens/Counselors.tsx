@@ -15,7 +15,7 @@ import { Sheet } from "@/components/Sheet";
 import { Banner, Button, CardSkeleton, Chip, Empty } from "@/components/ui";
 import { IconCheck, IconChevronDown, IconSearch } from "@/components/icons";
 import { CounselorCard } from "@/components/CounselorCard";
-import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason } from "@/data/counselors";
+import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason, COUNSELOR_INFO_URL } from "@/data/counselors";
 
 /** "Virtual – anywhere" in the state picker: no state filter, so nationwide counselors show. */
 const ANYWHERE = "";
@@ -143,6 +143,11 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
 
         <p className="mt-8 text-center text-caption text-text-muted">
           College Compass lists counselors for a fee and does not vet or endorse their services. Admission outcomes are never guaranteed. Students under 18: involve a parent or guardian before contacting anyone.
+        </p>
+        <p className="mt-4 pb-2 text-center text-footnote">
+          <a className="cc-link inline-flex min-h-tap items-center" href={COUNSELOR_INFO_URL} target="_blank" rel="noopener noreferrer">
+            Are you a counselor? Learn about being listed →
+          </a>
         </p>
       </Screen>
 

@@ -243,3 +243,10 @@ export function createDirectoryApi(cfg = sharedConfig(), doFetch: Fetch = (...a)
     },
   };
 }
+
+/**
+ * The counselor website's public landing page (what a listing is, pricing, sign-up). Linked once from
+ * the Counselors tab; the app itself never shows prices or a purchase flow. The app is released in the
+ * US App Store only, where linking to purchases outside the app is currently permitted.
+ */
+export const COUNSELOR_INFO_URL = "https://vikasgaddu1.github.io/College-compass/app/counselors/";
