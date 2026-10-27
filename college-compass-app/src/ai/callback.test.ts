@@ -43,7 +43,7 @@ describe("callback routing", () => {
     expect(html).not.toMatch(/<script[^>]+src=/i);
     expect(html).not.toMatch(/<link[^>]+href=/i);
     expect(html).toContain('name="referrer" content="no-referrer"');
-    expect(html).toContain("Open College Compass");
+    expect(html).toContain("Open Tierwise");
     expect(html).toContain("location.replace(target)");
   });
 });

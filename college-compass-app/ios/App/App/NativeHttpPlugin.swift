@@ -124,7 +124,7 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func notifyWhenDone(_ call: CAPPluginCall) {
         BackgroundTransfers.shared.arm(
             title: call.getString("title") ?? "Your college list is ready",
-            body: call.getString("body") ?? "Open College Compass to see your colleges and odds."
+            body: call.getString("body") ?? "Open Tierwise to see your colleges and odds."
         )
         call.resolve()
     }

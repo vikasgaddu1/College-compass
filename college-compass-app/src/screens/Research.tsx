@@ -11,9 +11,13 @@ import { CollegeStateGlyph, KeepTabOpenNote, LeaveAppCard, PhaseSteps, WaitTips,
 import { SignInAgain, needsSignIn, reasonFor, type SignInReason } from "@/components/SignInAgain";
 import { IconCheck, IconRefresh, IconStop, IconWarning } from "@/components/icons";
 import { CounselorPrompt, researchPromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
+import { AiNoticeGate, AiNoticeLine } from "@/components/AiNotice";
 
-/** "signin": the ChatGPT session ended (or there is none) — the sign-in card is shown instead of a run. */
-type Status = "planning" | "researching" | "done" | "cancelled" | "error" | "signin";
+/**
+ * "notice": the one-time AI-assistance acknowledgement is up; nothing runs until it's accepted.
+ * "signin": the ChatGPT session ended (or there is none) — the sign-in card is shown instead of a run.
+ */
+type Status = "notice" | "planning" | "researching" | "done" | "cancelled" | "error" | "signin";
 
 /** Renew the session for the whole run up front: research takes minutes and may run while the app is in the background. */
 const RUN_SESSION_MS = 25 * 60_000;
@@ -47,7 +51,8 @@ export function Research() {
   const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, markResearched, isSaved, toggleSaved, activeList, lists } = useStore();
   // Mention which list is being researched once there is more than one.
   const listName = lists.length > 1 ? activeList.name : null;
-  const [status, setStatus] = useState<Status>("planning");
+  // First research run on this install: the AI-assistance notice comes first (Settings → About keeps it available).
+  const [status, setStatus] = useState<Status>(() => (prefs.aiNoticeAcceptedAt ? "planning" : "notice"));
   const [candidates, setCandidates] = useState<CollegeCandidate[]>([]);
   const [lanes, setLanes] = useState<Lane[]>([]);
   const [done, setDone] = useState<College[]>([]);
@@ -230,9 +235,11 @@ export function Research() {
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-    // Web: sign-in is a full-page redirect, so coming back here is a remount — resume, don't start over.
     alive.current = true;
-    void begin(takeResumeFlag());
+    // Web: sign-in is a full-page redirect, so coming back here is a remount — resume, don't start over.
+    const resume = takeResumeFlag();
+    // Not acknowledged yet: the notice sheet starts the run (or sends the student back) instead.
+    if (statusRef.current !== "notice") void begin(resume);
     return () => {
       alive.current = false;
       // Web sign-in leaves the page without running this, so the flag survives only a real redirect.
@@ -270,6 +277,17 @@ export function Research() {
     setStatus("cancelled");
   };
 
+  // ── One-time AI-assistance acknowledgement (per install) ──
+  const acceptNotice = () => {
+    setPrefs({ aiNoticeAcceptedAt: new Date().toISOString() });
+    setStatus("planning");
+    void begin();
+  };
+  const declineNotice = () => {
+    // Back to the list (its "Research colleges" button comes back here); nothing has run.
+    navigate("/list", { replace: true });
+  };
+
   const retry = async (name: string) => {
     setRetrying(name);
     try {
@@ -284,6 +302,7 @@ export function Research() {
   };
 
   const total = Math.max(candidates.length, done.length + failures.length, 1);
+  const notice = status === "notice";
   const finished = status === "done" || status === "cancelled" || status === "error" || status === "signin";
   const signIn = status === "signin";
   const progress = status === "done" ? 1 : status === "planning" ? 0.02 : (done.length + failures.length) / total;
@@ -300,7 +319,7 @@ export function Research() {
   }, [status, counselors.eligible, counselors.count, ranked, done]);
 
   // Elapsed-time clock (ticks only while the run is active).
-  const now = useNow(!finished);
+  const now = useNow(!finished && !notice);
   const elapsedMs = Math.max(0, now - startedAt);
 
   // ── "Notify me when it's ready" (iOS app) ──
@@ -319,7 +338,7 @@ export function Research() {
       return;
     }
     const n = candidates.length;
-    await notifyWhenResearchDone(listName ? `${listName} is ready` : "Your college list is ready", `${n} ${n === 1 ? "college" : "colleges"} researched — open College Compass to see your odds.`);
+    await notifyWhenResearchDone(listName ? `${listName} is ready` : "Your college list is ready", `${n} ${n === 1 ? "college" : "colleges"} researched — open Tierwise to see your odds.`);
     armed.current = true;
     setNotify("armed");
     setPrefs({ notifyWhenReady: true });
@@ -340,7 +359,9 @@ export function Research() {
   }, [finished]);
 
   const largeTitle =
-    status === "planning"
+    status === "notice"
+      ? "Let's research colleges"
+      : status === "planning"
       ? "Picking colleges for you"
       : status === "researching"
         ? `Researching ${candidates.length} ${candidates.length === 1 ? "college" : "colleges"}`
@@ -355,7 +376,9 @@ export function Research() {
               : "Research failed";
 
   const subtitle =
-    status === "planning"
+    status === "notice"
+      ? "One quick note first, then Tierwise picks colleges that match your answers."
+      : status === "planning"
       ? demo
         ? "Demo mode: loading sample research."
         : profile.wanted_colleges.length
@@ -379,7 +402,12 @@ export function Research() {
       bar={<ProgressBar value={progress} label="Research progress" />}
       footer={
         <StickyActions>
-          {signIn ? (
+          {notice ? (
+            // The sheet holds the real actions; this stays usable if it was dismissed.
+            <Button variant="quiet" onClick={declineNotice}>
+              Not now
+            </Button>
+          ) : signIn ? (
             // The sign-in card above holds the primary action; this only offers a way out.
             <Button variant="quiet" onClick={() => navigate("/list", { replace: true })}>
               {done.length > 0 || colleges.length > 0 ? "See my list" : "Not now"}
@@ -426,8 +454,8 @@ export function Research() {
         </div>
       )}
 
-      {/* Phases (nothing to show when a run never started for want of a session) */}
-      {!(signIn && candidates.length === 0) && (
+      {/* Phases (nothing to show before the notice is accepted, or when a run never started for want of a session) */}
+      {!notice && !(signIn && candidates.length === 0) && (
         <PhaseSteps
           phase={status === "planning" ? "planning" : status === "researching" ? "researching" : status === "done" ? "done" : "stopped"}
           total={candidates.length}
@@ -437,7 +465,7 @@ export function Research() {
           demo={demo}
         />
       )}
-      {!finished && !demo && <WaitTips />}
+      {!finished && !notice && !demo && <WaitTips />}
       {counselorLine && (
         <CounselorPrompt kind="research" className="mt-4">
           {counselorLine}
@@ -524,6 +552,9 @@ export function Research() {
           ))}
         </div>
       </section>
+      {status === "done" && <AiNoticeLine className="mt-6" />}
+
+      <AiNoticeGate open={notice} onAccept={acceptNotice} onDecline={declineNotice} />
     </Screen>
   );
 }

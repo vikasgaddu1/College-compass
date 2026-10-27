@@ -1,4 +1,4 @@
-/** Public API of the College Compass engine (pure TS, no I/O). */
+/** Public API of the Tierwise engine (pure TS, no I/O). */
 export { ACT_TO_SAT_2018, actToSat, bestSat, schoolSatRange } from "./concordance";
 export {
   estimateOdds,

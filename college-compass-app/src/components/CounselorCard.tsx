@@ -105,7 +105,7 @@ export function CounselorCard({ counselor: c, onReport, preview }: { counselor: 
       )}
 
       <div className="mt-3 flex items-center justify-between gap-2 border-t border-border pt-3 text-caption text-text-muted">
-        <span>Contact happens outside the app. College Compass never shares your answers.</span>
+        <span>Contact happens outside the app. Tierwise never shares your answers.</span>
         <button type="button" className="inline-flex min-h-tap shrink-0 items-center gap-1 text-caption font-medium text-text-muted" onClick={() => onReport?.(c)} disabled={preview || !onReport} aria-label={`Report ${c.name}`}>
           <IconWarning size={14} />
           Report

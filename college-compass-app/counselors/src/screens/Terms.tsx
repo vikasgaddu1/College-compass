@@ -11,10 +11,10 @@ export function Terms() {
       </p>
       <h1 className="cp-h2 mt-3">Counselor listing terms</h1>
       <p className="text-subhead text-text-muted">{TERMS_VERSION}</p>
-      <p>These terms are between you (the counselor or practice creating a listing) and {OPERATOR}, the operator of College Compass (“we”). By creating or submitting a listing you agree to them.</p>
+      <p>These terms are between you (the counselor or practice creating a listing) and {OPERATOR}, the operator of Tierwise (“we”). By creating or submitting a listing you agree to them.</p>
 
       <h2>1. What a listing is</h2>
-      <p>College Compass is an iPhone app that helps high-school students and their parents build a college list. The “Get expert help” directory shows paid listings from independent counselors. A listing is advertising: it does not make you our employee, partner or agent, and we do not refer, match, vet or endorse counselors beyond the review described below.</p>
+      <p>Tierwise is an iPhone app that helps high-school students and their parents build a college list. The “Get expert help” directory shows paid listings from independent counselors. A listing is advertising: it does not make you our employee, partner or agent, and we do not refer, match, vet or endorse counselors beyond the review described below. Listed counselors are independent and are not affiliated with any college or university, the College Board, ACT, or the Common Application; your listing must not state or imply otherwise.</p>
 
       <h2>2. Who can list</h2>
       <ul>
@@ -50,7 +50,7 @@ export function Terms() {
       <p>Families can report a listing from the app. We may hide, suspend or remove a listing at any time if we receive credible reports, if a listing breaks these terms or the law, or if it could harm users or the app's reputation. We'll normally tell you why by email. Removal for a violation does not entitle you to a refund.</p>
 
       <h2>10. Your content and our use of it</h2>
-      <p>You keep ownership of the text and photo you provide and grant us a non-exclusive licence to show them in College Compass, on the counselor website and in material that describes the directory, for as long as you are listed. You confirm you have the right to use the photo and any marks you include.</p>
+      <p>You keep ownership of the text and photo you provide and grant us a non-exclusive licence to show them in Tierwise, on the counselor website and in material that describes the directory, for as long as you are listed. You confirm you have the right to use the photo and any marks you include.</p>
 
       <h2>11. Privacy</h2>
       <p>We store the information you enter, your account email and Stripe billing identifiers. We never share student data with counselors, and the app sends no information about a student when it shows the directory. See the <a href="../privacy.html">privacy policy</a>.</p>

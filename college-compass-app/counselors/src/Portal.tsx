@@ -96,12 +96,12 @@ function Shell() {
     <>
       <header className="cp-header">
         <div className="cp-header-inner">
-          <a href="#/" className="flex items-center gap-2 text-headline no-underline text-text" aria-label="College Compass for Counselors — home">
+          <a href="#/" className="flex items-center gap-2 text-headline no-underline text-text" aria-label="Tierwise for Counselors — home">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-contrast">
               <IconCompass size={18} />
             </span>
             <span className="whitespace-nowrap">
-              College Compass <span className="cp-brand-sub font-normal text-text-muted">for Counselors</span>
+              Tierwise <span className="cp-brand-sub font-normal text-text-muted">for Counselors</span>
             </span>
           </a>
           <nav className="cp-nav" aria-label="Portal">
@@ -128,7 +128,7 @@ function Shell() {
       </main>
       <footer className="cp-page">
         <div className="cp-footer">
-          <span>© {new Date().getFullYear()} {OPERATOR} · College Compass</span>
+          <span>© {new Date().getFullYear()} {OPERATOR} · Tierwise</span>
           <span className="flex flex-wrap gap-x-4 gap-y-1">
             <a href="#/terms">Counselor terms</a>
             <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer">Privacy</a>
@@ -152,7 +152,7 @@ function NotAdmin() {
   return (
     <div className="cp-narrow py-16 text-center">
       <h1 className="cp-h2">Admin only</h1>
-      <p className="text-subhead text-text-muted">This page is for the College Compass team.</p>
+      <p className="text-subhead text-text-muted">This page is for the Tierwise team.</p>
     </div>
   );
 }

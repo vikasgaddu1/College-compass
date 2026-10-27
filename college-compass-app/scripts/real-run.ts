@@ -1,5 +1,5 @@
 /**
- * Real end-to-end run of College Compass's AI research + ranking with a real ChatGPT account,
+ * Real end-to-end run of Tierwise's AI research + ranking with a real ChatGPT account,
  * outside a browser (no CORS). Uses the app's own modules: src/ai (auth, client, research) and
  * src/engine (odds, fit, ranking) — the same code the iPhone app runs.
  *
@@ -51,7 +51,7 @@ function login() {
   const q = new URLSearchParams({
     response_type: "code",
     client_id: issued ?? "dynamic_agent_client",
-    ...(issued ? {} : { agent_name_hint: "College Compass" }),
+    ...(issued ? {} : { agent_name_hint: "Tierwise" }),
     ext_agent_host_id: host,
     redirect_uri: REDIRECT,
     scope: "openid profile email offline_access resource.invoke chatgpt.tokens.use.direct",

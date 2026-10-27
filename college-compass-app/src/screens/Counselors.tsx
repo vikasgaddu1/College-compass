@@ -11,6 +11,7 @@ import { useRoute } from "@/lib/router";
 import { useStore } from "@/state/store";
 import { STATES, stateName } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
+import { COUNSELOR_INDEPENDENCE } from "@/legal/notice";
 import { Sheet } from "@/components/Sheet";
 import { Banner, Button, CardSkeleton, Chip, Empty } from "@/components/ui";
 import { IconCheck, IconChevronDown, IconSearch } from "@/components/icons";
@@ -20,7 +21,7 @@ import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, special
 /** "Virtual – anywhere" in the state picker: no state filter, so nationwide counselors show. */
 const ANYWHERE = "";
 
-export const COUNSELORS_INTRO = "Independent counselors who help families with applications. Counselors pay to be listed — listings never affect your college list, and College Compass never shares your answers with them.";
+export const COUNSELORS_INTRO = "Independent counselors who help families with applications. Counselors pay to be listed — listings never affect your college list, and Tierwise never shares your answers with them.";
 
 export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked API. */ api?: DirectoryApi | null; tabBar?: ReactNode }) {
   const { profile, hasProfile } = useStore();
@@ -142,7 +143,7 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
         </div>
 
         <p className="mt-8 text-center text-caption text-text-muted">
-          College Compass lists counselors for a fee and does not vet or endorse their services. Admission outcomes are never guaranteed. Students under 18: involve a parent or guardian before contacting anyone.
+          Tierwise lists counselors for a fee and does not vet or endorse their services. {COUNSELOR_INDEPENDENCE} Admission outcomes are never guaranteed. Students under 18: involve a parent or guardian before contacting anyone.
         </p>
         <p className="mt-4 pb-2 text-center text-footnote">
           <a className="cc-link inline-flex min-h-tap items-center" href={COUNSELOR_INFO_URL} target="_blank" rel="noopener noreferrer">

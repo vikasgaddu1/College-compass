@@ -11,6 +11,7 @@ import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Button, ConfidenceDot, EffectIcon, Empty, Group, Row, Stat, TierPill } from "@/components/ui";
 import { IconExternal, IconRefresh, IconStar } from "@/components/icons";
 import { CounselorPrompt, collegePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
+import { AiNoticeLine } from "@/components/AiNotice";
 
 export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean }) {
   const { byId, profile, isSaved, toggleSaved, notes, setNote, upsertCollege, removeCollege, demo, prefs } = useStore();
@@ -279,6 +280,7 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
           Remove from my list
         </Button>
       </div>
+      <AiNoticeLine className="pb-4" />
       <ConfirmSheet
         open={confirmRemove}
         onClose={() => setConfirmRemove(false)}

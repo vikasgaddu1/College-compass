@@ -133,7 +133,7 @@ public class SharePdfPlugin: CAPPlugin, CAPBridgedPlugin {
         let data = NSMutableData()
         UIGraphicsBeginPDFContextToData(data, paper, [
             kCGPDFContextTitle as String: "College list",
-            kCGPDFContextCreator as String: "College Compass"
+            kCGPDFContextCreator as String: "Tierwise"
         ])
         renderer.prepare(forDrawingPages: NSRange(location: 0, length: pages))
         let bounds = UIGraphicsGetPDFContextBounds()
@@ -193,7 +193,7 @@ public class SharePdfPlugin: CAPPlugin, CAPBridgedPlugin {
     <html lang="en">
     <head>
     <meta charset="utf-8">
-    <title>Sample list — College Compass</title>
+    <title>Sample list — Tierwise</title>
     <style>
     body { color: #111; font: 10.5pt/1.4 -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; }
     h1 { font-size: 20pt; margin: 0; }

@@ -119,7 +119,7 @@ describe("Deadlines screen", () => {
     expect(screen.getByText(/deadlines for Early Decision hidden/)).toBeTruthy();
     // "Confirm on the site" links.
     expect(nov1.getByRole("link", { name: "Confirm on MIT's website" }).getAttribute("href")).toBe("https://web.mit.edu");
-    expect(screen.getByText(/Confirm each one on the college's admissions site/)).toBeTruthy();
+    expect(screen.getByTestId("ai-notice-line").textContent).toContain("Deadlines come from AI-assisted research and may be out of date — verify each one with the college before you apply.");
     fireEvent.click(mitRow);
     await waitFor(() => expect(window.location.hash).toBe("#/college/166683"));
   });
@@ -219,7 +219,7 @@ describe("Reminders toggle (iPhone)", () => {
     render(<App />);
     await screen.findByText("Robotics · NC · 19 upcoming");
     fireEvent.click(screen.getByRole("switch", { name: "Remind me before deadlines" }));
-    expect(await screen.findByText(/Notifications are off for College Compass/)).toBeTruthy();
+    expect(await screen.findByText(/Notifications are off for Tierwise/)).toBeTruthy();
     expect(screen.getByRole("switch", { name: "Remind me before deadlines" }).getAttribute("aria-checked")).toBe("false");
     await waitFor(() => expect(active().remind).toBeFalsy());
   });

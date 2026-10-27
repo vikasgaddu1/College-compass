@@ -13,6 +13,7 @@ import { IconChevronDown, IconFilter, IconPlus, IconSearch, IconClose, IconShare
 import { ShareListSheet } from "@/components/ShareListSheet";
 import { ListsSheet } from "@/components/ListsSheet";
 import { CounselorsNudge } from "@/components/CounselorsNudge";
+import { AiNoticeLine } from "@/components/AiNotice";
 import { DeadlineBanner } from "@/components/DeadlineBanner";
 
 interface Filters {
@@ -230,7 +231,8 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
             </div>
           </section>
         )}
-        {demo && colleges.length > 0 && <p className="mt-6 text-center text-footnote text-text-muted">Demo mode: sample research with approximate figures.</p>}
+        {colleges.length > 0 && shown > 0 && <AiNoticeLine className="mt-6" />}
+        {demo && colleges.length > 0 && <p className="mt-3 text-center text-footnote text-text-muted">Demo mode: sample research with approximate figures.</p>}
       </Screen>
 
       <ListsSheet open={listsOpen} onClose={() => setListsOpen(false)} />

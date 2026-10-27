@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-College Compass — browser end-to-end test of the REAL production web build.
+Tierwise — browser end-to-end test of the REAL production web build.
 
 Drives the whole product flow on an iPhone 13 viewport (Chromium, light mode):
 
@@ -536,7 +536,7 @@ class Flow:
 
         # 1) Welcome → Continue with ChatGPT → authorize → callback.html → token → JWKS
         await page.goto(BASE_URL)
-        await expect(page.get_by_role("heading", name="College Compass")).to_be_visible()
+        await expect(page.get_by_role("heading", name="Tierwise")).to_be_visible()
         await self.shot("welcome")
         # Sign in with the production service worker in control (a returning visitor): it must not
         # replace the OAuth redirect page (callback.html) with the cached SPA shell.
@@ -663,7 +663,17 @@ class Flow:
         assert profile["priorities"] == {"academics_fit": 4, "affordability": 5, "outcomes": 3, "odds": 4, "location": 1}, profile["priorities"]
         await page.get_by_role("button", name="Find my colleges").click()
 
-        # 3) Research — planner, then parallel agents
+        # 3) Research — the one-time AI-assistance acknowledgement first, then planner + parallel agents
+        notice = page.get_by_role("dialog", name="Before you start")
+        await expect(notice).to_be_visible()
+        await expect(notice).to_contain_text("About Tierwise.")
+        await expect(notice).to_contain_text("the College Board, ACT, or the Common Application.")
+        assert not self.mock.planner_calls and not self.mock.research_calls, "research started before the notice was acknowledged"
+        await self.shot("ai-notice")
+        await notice.get_by_role("button", name="I understand").click()
+        await expect(notice).to_be_hidden()
+        prefs = await page.evaluate("JSON.parse(localStorage.getItem('cc2:prefs'))")
+        assert prefs.get("aiNoticeAcceptedAt"), "acknowledgement not stored in prefs"
         await expect(page.get_by_text("Agent 4", exact=True)).to_be_visible(timeout=20_000)
         await self.shot("research-in-progress")
         await expect(page.get_by_text("Research complete")).to_be_visible(timeout=60_000)
@@ -674,6 +684,7 @@ class Flow:
         await expect(page.get_by_text("Couldn't research")).to_have_count(0)
         lanes = page.locator("[data-lane]", has=page.get_by_text(re.compile(r"^Agent \d+$")))
         await expect(lanes).to_have_count(total)  # one agent (lane) per college
+        await expect(page.get_by_test_id("ai-notice-line")).to_contain_text("AI-assisted estimates — verify with each college.")
         await self.shot("research-complete")
         await page.get_by_role("button", name="See my list").click()
 
@@ -810,7 +821,7 @@ def planner_before_research(mock: MockOpenAI) -> bool:
 
 def report(mock: MockOpenAI, flow: Flow | None, page_errors: list[str], console_errors: list[str], status: int) -> None:
     rc = sorted(mock.research_calls, key=lambda c: c["start"])
-    print("\n── College Compass e2e ─────────────────────────────────────────────")
+    print("\n── Tierwise e2e ─────────────────────────────────────────────")
     print(f"auth: token exchanges={mock.token_calls} jwks fetches={mock.jwks_calls} models fetches={mock.models_calls} "
           f"CORS preflights seen={mock.preflights}")
     print(f"planner calls={len(mock.planner_calls)} research calls={len(rc)} chat calls={len(mock.chat_calls)}")

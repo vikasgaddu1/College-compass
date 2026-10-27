@@ -6,12 +6,12 @@ import type { CapacitorConfig } from "@capacitor/cli";
  */
 const config: CapacitorConfig = {
   appId: "com.gaddu.collegecompass",
-  appName: "College Compass",
+  appName: "Tierwise",
   webDir: "dist",
   ios: {
     contentInset: "never",
     // Xcode scheme used by `cap build ios` (the generated project's scheme is "App"; the
-    // user-visible name "College Compass" comes from CFBundleDisplayName).
+    // user-visible name "Tierwise" comes from CFBundleDisplayName).
     scheme: "App",
   },
   plugins: {

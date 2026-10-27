@@ -1,6 +1,6 @@
 {
-  "name": "College Compass",
-  "short_name": "Compass",
+  "name": "Tierwise",
+  "short_name": "Tierwise",
   "description": "Find colleges that fit you, with honest admission-odds bands.",
   "start_url": "./",
   "scope": "./",

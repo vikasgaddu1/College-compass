@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the College Compass iOS app icon + launch logo (original compass-needle mark).
+"""Generate the Tierwise iOS app icon + launch logo (original compass-needle mark).
 
 Usage: python3 ios/tools/make_icons.py   (needs Pillow). Run from college-compass-app/.
 Outputs:

@@ -117,7 +117,7 @@ export async function handleCheckout(req: Request, deps: Deps): Promise<Response
   const price = priceForPlan(plan, { monthly: deps.config.priceMonthly, yearly: deps.config.priceYearly });
   if (!deps.stripe || !price) return fail(503, "billing_not_configured", "Payments aren't set up yet. Please try again later.", cors);
   if (!ctx!.terms_accepted_at) return fail(409, "terms_not_accepted", "Accept the counselor terms first.", cors);
-  if (ctx!.status === "suspended") return fail(403, "suspended", "This listing is suspended; contact College Compass.", cors);
+  if (ctx!.status === "suspended") return fail(403, "suspended", "This listing is suspended; contact Tierwise.", cors);
   if (["active", "trialing", "past_due", "unpaid"].includes(ctx!.subscription_status)) {
     return fail(409, "already_subscribed", "You already have a subscription. Use Manage billing to change or fix it.", cors);
   }

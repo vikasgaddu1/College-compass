@@ -1,5 +1,5 @@
 /**
- * The prompts and structured-output tools that power College Compass.
+ * The prompts and structured-output tools that power Tierwise.
  *
  * - PLANNER   → `propose_colleges`        (picks a balanced candidate list when the student named too few)
  * - RESEARCHER → `submit_college_research` (one call per batch of 2–3 colleges; schema mirrors `College`)
@@ -368,7 +368,7 @@ export function researcherInput(targets: ResearchTarget[], profile: StudentProfi
 
 /** Instructions for the Ask tab chat. `summary` is the engine's plain-text summary of the list. */
 export function chatInstructions(profile: StudentProfile, summary: string, now: Date = new Date()): string {
-  return `You are College Compass, a warm, honest college-search guide talking with a high-school student (and sometimes their parents) on a phone. Today is ${today(now)}.
+  return `You are Tierwise, a warm, honest college-search guide talking with a high-school student (and sometimes their parents) on a phone. Today is ${today(now)}.
 
 What you know about the student (no names or contact details are shared with you):
 ${profileBrief(profile)}

@@ -67,6 +67,8 @@ function seed(colleges: College[] = DEMO_COLLEGES, over: Partial<ListMeta> = {},
   const items: ListMeta[] = [{ id: "a", name: "My list", createdAt: "2026-10-01T00:00:00.000Z", onboardingDone: true, researchedAt: "2026-10-02T00:00:00.000Z", ...over }];
   localStorage.setItem("cc2:" + LISTS_KEY, JSON.stringify({ v: 1, active: "a", items } satisfies ListsIndex));
   localStorage.setItem("cc2:" + listKey("a", "profile"), JSON.stringify(DEMO_PROFILE));
+  // The AI-assistance notice was acknowledged on this install (it gates the first research run).
+  localStorage.setItem("cc2:prefs", JSON.stringify({ aiNoticeAcceptedAt: "2026-10-01T00:00:00.000Z" }));
   if (colleges.length) localStorage.setItem("cc2:" + listKey("a", "colleges"), JSON.stringify(colleges));
   if (chat.length) localStorage.setItem("cc2:" + listKey("a", "chat"), JSON.stringify(chat));
 }

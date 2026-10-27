@@ -1,6 +1,6 @@
 # Shared college data (Supabase)
 
-College Compass keeps **college facts** in one shared Supabase database so every student benefits from data loaded or researched once. **No student or user data is ever stored there**: no profiles, answers, searches, names, devices or ChatGPT tokens.
+Tierwise keeps **college facts** in one shared Supabase database so every student benefits from data loaded or researched once. **No student or user data is ever stored there**: no profiles, answers, searches, names, devices or ChatGPT tokens.
 
 Project: `college-compass` (Gaddu LLC) — `https://nspbxlnocelknibrajkv.supabase.co`, East US (Ohio).
 
@@ -53,7 +53,7 @@ A reviewer-model pass to break ties is planned with the adversarial-review featu
 
 ## Security: Apple App Attest (genuine-app check)
 
-The weak spot of the flywheel was that anyone could call `contribute_research` with made-up install IDs and pose as "two independent students". **Apple App Attest** closes it: the iPhone app proves each contribution comes from the genuine, unmodified College Compass app (App ID `C544LPNJ2S.com.gaddu.collegecompass`) on a real Apple device, and that the payload wasn't altered.
+The weak spot of the flywheel was that anyone could call `contribute_research` with made-up install IDs and pose as "two independent students". **Apple App Attest** closes it: the iPhone app proves each contribution comes from the genuine, unmodified Tierwise app (App ID `C544LPNJ2S.com.gaddu.collegecompass`) on a real Apple device, and that the payload wasn't altered.
 
 **Pieces.** `ios/App/App/AppAttestPlugin.swift` (`DCAppAttestService`; key in the Secure Enclave, identifier in UserDefaults) · `src/data/attest.ts` (client protocol; wired into `createSharedLookup().contribute`) · `supabase/functions/attest/` (Edge Function: `handler.ts`, verifier in `appattest/` — CBOR, DER/X.509, ECDSA P-256/P-384, no dependencies, Apple's App Attestation Root CA pinned) · `supabase/migrations/20261021010000_app_attest.sql` (tables + service-role-only functions).
 

@@ -26,7 +26,7 @@ export function realDeps(): Deps {
         // Deno: use fetch instead of Node's http module.
         httpClient: Stripe.createFetchHttpClient(),
         maxNetworkRetries: 2,
-        appInfo: { name: "college-compass-counselors" },
+        appInfo: { name: "tierwise-counselors" },
       })
     : null;
 

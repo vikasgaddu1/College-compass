@@ -1,4 +1,4 @@
-/* College Compass service worker — minimal offline shell + data cache.
+/* Tierwise service worker — minimal offline shell + data cache.
  * Bump VERSION to invalidate old caches on deploy-breaking changes.
  * Strategy:
  *   - cache-first (with background refresh) for the app shell and data/colleges.json

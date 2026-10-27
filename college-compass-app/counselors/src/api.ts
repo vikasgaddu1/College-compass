@@ -108,7 +108,7 @@ export function describeError(e: unknown): string {
     terms_not_accepted: "Please accept the counselor terms first.",
     incomplete_profile: `Your profile is missing something${err.hint ? ` — ${err.hint.replace(/^Missing: /, "")}` : ""}.`,
     no_changes: "Your published listing already matches your profile.",
-    suspended: "This listing is suspended. Contact College Compass.",
+    suspended: "This listing is suspended. Contact Tierwise.",
     not_authorized: "You don't have access to that.",
     changed_since_viewed: "This profile changed after you opened it. Reload and review again.",
     photo_url_invalid: "Please upload the photo here rather than linking to one.",

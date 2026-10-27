@@ -39,7 +39,7 @@ export function Welcome() {
               <IconCompass size={34} />
             </span>
             <div>
-              <h1 className="text-title1">College Compass</h1>
+              <h1 className="text-title1">Tierwise</h1>
               <p className="text-subhead text-text-muted">Find colleges that fit you</p>
             </div>
           </div>
@@ -63,7 +63,7 @@ export function Welcome() {
           <div className="cc-sticky-actions mt-6">
             {err && <Banner tone="error">{err}</Banner>}
             {!configured && (
-              <Banner>Continue with ChatGPT works in the College Compass iPhone app. On the web it is waiting on OpenAI approval for this site — try the demo here in the meantime.</Banner>
+              <Banner>Continue with ChatGPT works in the Tierwise iPhone app. On the web it is waiting on OpenAI approval for this site — try the demo here in the meantime.</Banner>
             )}
             {connected && hasProfile ? (
               <Button onClick={continueExisting}>Continue</Button>

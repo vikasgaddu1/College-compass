@@ -1,4 +1,4 @@
--- College Compass — shared college data (no student or user data, ever).
+-- Tierwise — shared college data (no student or user data, ever).
 --
 -- What lives here:
 --   colleges          one row per institution (IPEDS UNITID), names/aliases and descriptive facts

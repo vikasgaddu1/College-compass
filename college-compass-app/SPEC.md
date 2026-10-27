@@ -1,4 +1,4 @@
-# College Compass App — build spec (v2)
+# Tierwise App — build spec (v2)
 
 A general-purpose, **iPhone-first** college-search app for **any interest** (the student picks their own majors/interests — nothing is robotics-specific), shipped to the **Apple App Store** as a native iOS app (Capacitor) and also as a web/PWA build. A high-school student signs in with their **ChatGPT account** (required — AI is the product), answers a short set of questions, and the app **researches colleges with parallel AI agents** (2–3 colleges per agent call, several calls in flight), then **ranks** them and gives honest **admission-odds bands** computed on-device from the researched Common Data Set figures plus documented heuristics.
 
@@ -18,7 +18,7 @@ college-compass-app/
 ```
 
 ## Native iOS / App Store (packaging)
-- Capacitor 6 wraps the same React build: `ios/` Xcode project (bundle id `com.gaddu.collegecompass`, display name "College Compass"), app icons + launch screen, `NSAppTransportSecurity` defaults, portrait + iPad support, status-bar/safe-area handled by CSS.
+- Capacitor 6 wraps the same React build: `ios/` Xcode project (bundle id `com.gaddu.collegecompass`, display name "Tierwise"), app icons + launch screen, `NSAppTransportSecurity` defaults, portrait + iPad support, status-bar/safe-area handled by CSS.
 - Platform detection via `Capacitor.isNativePlatform()`. In the native app the Vite `base` is `./` (web build keeps `/College-compass/app/`) — controlled by `BUILD_TARGET=ios`.
 - ChatGPT sign-in in the native app: open the authorize URL with `@capacitor/browser` (SFSafariViewController); the registered HTTPS redirect `https://vikasgaddu1.github.io/College-compass/app/callback.html` detects a `.n` suffix on `state` and forwards to the custom scheme `collegecompass://auth/callback?...`; the app listens with `@capacitor/app` `appUrlOpen`, closes the browser and completes sign-in. Token exchange/refresh and every api.openai.com request in native go through native HTTP via `platform.httpFetch` (token calls: CapacitorHttp; API calls: the cancellable in-app `NativeHttp` plugin) (api.openai.com rejects CORS for authenticated calls; SSE bodies are buffered then parsed). Tokens are stored in localStorage on both platforms (a Keychain/Preferences adapter is a possible follow-up); credentials are excluded from export/import files.
 - CI: GitHub Actions `macos-latest` workflow builds the web app, `npx cap sync ios`, and `xcodebuild` for the simulator on every push (compile check). A TestFlight job (fastlane) runs only when App Store secrets exist (APP_STORE_CONNECT_API_KEY_ID / ISSUER_ID / KEY_P8, signing via fastlane match or manual certs).
@@ -30,7 +30,7 @@ Vite 5 + React 18 + TS strict + Tailwind 3, hand-built components, vitest, a Pla
 ## Sign in with ChatGPT (no database)
 
 Two modes:
-- **iOS app — self-serve open-source path (works today, no OpenAI approval):** `client_id=dynamic_agent_client` + `agent_name_hint=College Compass` + a per-device `ext_agent_host_id` (urn:uuid) on first sign-in; OpenAI returns the issued `client_id` (oaiapp_…) with the code, which the app saves and reuses. Redirect is an HTTP loopback `http://127.0.0.1:<port>/auth/callback` served by the in-app `LoopbackAuth` Capacitor plugin (NWListener bound to 127.0.0.1, port 1455 preferred). Verified: OpenAI's authorize page accepts these parameters ("Use ChatGPT to sign in to College Compass"); CI launches the app in the iOS Simulator and checks the callback listener. ChatGPT Plus/Pro is required for plan usage.
+- **iOS app — self-serve open-source path (works today, no OpenAI approval):** `client_id=dynamic_agent_client` + `agent_name_hint=Tierwise` + a per-device `ext_agent_host_id` (urn:uuid) on first sign-in; OpenAI returns the issued `client_id` (oaiapp_…) with the code, which the app saves and reuses. Redirect is an HTTP loopback `http://127.0.0.1:<port>/auth/callback` served by the in-app `LoopbackAuth` Capacitor plugin (NWListener bound to 127.0.0.1, port 1455 preferred). Verified: OpenAI's authorize page accepts these parameters ("Use ChatGPT to sign in to Tierwise"); CI launches the app in the iOS Simulator and checks the callback listener. ChatGPT Plus/Pro is required for plan usage.
 - **Web/PWA — partner path:** needs a client ID from OpenAI's interest form (below).
 
 ### Partner path details

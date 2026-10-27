@@ -164,7 +164,7 @@ export function LeaveAppCard({ state, onArm }: { state: NotifyState; onArm: () =
           {state !== "declined" && (
             <p className="mt-1 text-subhead text-text-muted">
               {state === "armed"
-                ? "Research keeps running in the background. Open College Compass from the notification to see your list."
+                ? "Research keeps running in the background. Open Tierwise from the notification to see your list."
                 : "Leave the app and we'll send a notification when your list is ready."}
             </p>
           )}
@@ -179,7 +179,7 @@ export function LeaveAppCard({ state, onArm }: { state: NotifyState; onArm: () =
       )}
       {state === "declined" && (
         <div className="mt-3">
-          <Banner tone="warn">Notifications are off, so keep the app open while we finish. You can turn them on anytime in iOS Settings → College Compass → Notifications.</Banner>
+          <Banner tone="warn">Notifications are off, so keep the app open while we finish. You can turn them on anytime in iOS Settings → Tierwise → Notifications.</Banner>
         </div>
       )}
     </section>

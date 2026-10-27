@@ -74,7 +74,7 @@ export const NATIVE_STATE_SUFFIX = ".n";
  */
 export const SELF_SERVE_CLIENT_ID = "dynamic_agent_client";
 /** `agent_name_hint` — display metadata, identical across installs. Sent on first registration only. */
-export const AGENT_NAME_HINT = "College Compass";
+export const AGENT_NAME_HINT = "Tierwise";
 
 /** Storage keys (all under the `cc2:` namespace, written via src/lib/storage). */
 export const KEYS = {

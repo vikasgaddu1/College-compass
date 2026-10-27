@@ -1,4 +1,4 @@
-# Optional stateless token relay for the College Compass web/PWA build. See README.md.
+# Optional stateless token relay for the Tierwise web/PWA build. See README.md.
 name = "college-compass-token-relay"
 main = "worker.js"
 compatibility_date = "2026-09-01"

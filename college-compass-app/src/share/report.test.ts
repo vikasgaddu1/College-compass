@@ -3,6 +3,7 @@ import type { BalancedList, College, RankedCollege, StudentProfile } from "@/typ
 import { rankColleges, rankOne, buildBalancedList, TIER_ORDER } from "@/engine";
 import { DEMO_COLLEGES, DEMO_PROFILE } from "@/state/fixtures";
 import { DEFAULT_REPORT_OPTIONS, REPORT_DISCLAIMER, buildReportHtml, esc, reportFileName, ymd } from "./report";
+import { AI_NOTICE_FULL, AI_NOTICE_SHORT } from "@/legal/notice";
 
 const DATE = new Date(2026, 9, 20, 15, 30); // Oct 20, 2026, local time
 
@@ -67,17 +68,31 @@ describe("buildReportHtml: document", () => {
   it("is a complete self-contained document with the list name, student, date and disclaimer", () => {
     const html = buildReportHtml({ listName: "Robotics Northeast", profile: DEMO_PROFILE, balanced: picks, others, generatedAt: DATE });
     expect(html.startsWith("<!doctype html>")).toBe(true);
-    expect(html).toContain("<title>Robotics Northeast — College Compass</title>");
+    expect(html).toContain("<title>Robotics Northeast — Tierwise</title>");
     expect(html).toContain("<h1>Robotics Northeast</h1>");
     expect(html).toContain("Prepared for Demo");
     expect(html).toContain("Fall 2027 entry");
-    expect(html).toContain("Prepared October 20, 2026 with College Compass");
+    expect(html).toContain("Prepared October 20, 2026 with Tierwise");
     expect(html).toContain(esc(REPORT_DISCLAIMER));
     // Self-contained: no external resources or scripts.
     expect(html).not.toMatch(/<script/i);
     expect(html).not.toMatch(/<link/i);
     expect(html).not.toMatch(/https?:\/\//);
     expect(html).not.toMatch(/@import|url\(/);
+  });
+
+  it("closes with the AI-assistance notice in full, and the short line as the footer", () => {
+    const html = buildReportHtml({ listName: "Robotics Northeast", profile: DEMO_PROFILE, balanced: picks, others, generatedAt: DATE });
+    const about = html.slice(html.indexOf('<section class="about">'), html.indexOf("</section>", html.indexOf('<section class="about">')));
+    expect(about).toContain("<b>About Tierwise.</b> " + esc(AI_NOTICE_FULL));
+    expect(about).toContain("College Board, ACT, or the Common Application.");
+    // Once in full, not repeated; the explanatory paragraphs stay.
+    expect(about.split("AI can make mistakes.").length).toBe(2);
+    expect(about).toContain("<b>How to read this.</b>");
+    expect(about).toContain("<b>Costs.</b>");
+    expect(about).toContain("<b>Sources.</b>");
+    expect(REPORT_DISCLAIMER).toBe(AI_NOTICE_SHORT);
+    expect(html).toContain(`<footer class="end">${esc(AI_NOTICE_SHORT)}</footer>`);
     // Prints well: college blocks never split across pages.
     expect(html).toContain("break-inside: avoid");
   });
@@ -255,7 +270,7 @@ describe("buildReportHtml: escaping", () => {
     expect(html).not.toContain("<Ann>");
     expect(html).not.toContain("<list>");
     expect(html).toContain("Evil &lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt; &amp; Sons");
-    expect(html).toContain("<title>My &lt;list&gt; &amp; &quot;stuff&quot; — College Compass</title>");
+    expect(html).toContain("<title>My &lt;list&gt; &amp; &quot;stuff&quot; — Tierwise</title>");
     expect(html).toContain("Prepared for &lt;Ann&gt;");
     expect(html).toContain("B.S. &lt;CS&gt; — declare &amp; go");
     expect(html).toContain("&lt;watch&gt; &amp; out");

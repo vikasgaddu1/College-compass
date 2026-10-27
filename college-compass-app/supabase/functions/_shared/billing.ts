@@ -1,4 +1,4 @@
-// Stripe → College Compass billing logic that doesn't need the network. Pure (no Deno/npm imports) so it
+// Stripe → Tierwise billing logic that doesn't need the network. Pure (no Deno/npm imports) so it
 // runs under Vitest. The status → listing rules themselves live in SQL (billing_apply_subscription) so the
 // webhook and the daily reconcile apply exactly the same rules; this module only extracts the facts.
 import { isUuid } from "./http.ts";

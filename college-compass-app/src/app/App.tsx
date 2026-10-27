@@ -119,7 +119,7 @@ function PlanSheet() {
       <div className="px-1 pb-2 pt-3">
         <h2 className="text-title2">You're using your ChatGPT plan</h2>
         <p className="mt-2 text-subhead text-text-muted">
-          Research and chat in College Compass run on your own ChatGPT account, so they count toward your plan's usage limits. Nothing is billed by this app, and your answers and results stay on this phone.
+          Research and chat in Tierwise run on your own ChatGPT account, so they count toward your plan's usage limits. Nothing is billed by this app, and your answers and results stay on this phone.
         </p>
         <div className="mt-5 flex flex-col gap-2">
           <Button onClick={close}>Got it</Button>

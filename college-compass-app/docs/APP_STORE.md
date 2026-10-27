@@ -1,11 +1,11 @@
-# College Compass — App Store owner checklist
+# Tierwise — App Store owner checklist
 
-Everything the owner (Vikas / Gaddu LLC) must do to get **College Compass** from this repo into TestFlight and the App Store. Engineering work is done in the repo; the steps below need an Apple account, a Mac (optional) and your judgment.
+Everything the owner (Vikas / Gaddu LLC) must do to get **Tierwise** from this repo into TestFlight and the App Store. Engineering work is done in the repo; the steps below need an Apple account, a Mac (optional) and your judgment.
 
-- Bundle ID: `com.gaddu.collegecompass` · Display name: **College Compass** · Version `1.0.0` (build number = GitHub run number in CI) · iOS 15+ · iPhone + iPad
+- Bundle ID: `com.gaddu.collegecompass` · Display name: **Tierwise** · Version `1.0.0` (build number = GitHub run number in CI) · iOS 15+ · iPhone + iPad
 - Stack: Capacitor 6 wrapping the same Vite/React build as the web app (`npm run build:ios` uses relative asset paths; the web build is unchanged)
 - ChatGPT sign-in: OpenAI's **self-serve path for open-source, locally run apps** (no client ID or approval needed). The app runs a loopback listener on `127.0.0.1` for the sign-in redirect; see [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md)
-- Custom URL scheme: `collegecompass://` (return path for the partner client-ID flow and the "Return to College Compass" button on the sign-in page)
+- Custom URL scheme: `collegecompass://` (return path for the partner client-ID flow and the "Return to Tierwise" button on the sign-in page)
 - CocoaPods is used for native dependencies (Capacitor 6 has no Swift Package Manager mode; SPM arrived in Capacitor 7). GitHub's macOS runners and any Mac with Xcode can run it.
 
 ---
@@ -32,9 +32,9 @@ The iOS project was generated on Linux. It has **never been opened in Xcode or b
 
 ## 2. Create the App ID and the App Store Connect record
 
-1. <https://developer.apple.com/account> → Certificates, Identifiers & Profiles → **Identifiers** → `+` → App IDs → App → Description `College Compass`, Bundle ID **Explicit** `com.gaddu.collegecompass`. No capabilities are needed (no push, no Sign in with Apple, no associated domains). App Attest (below) needs no capability either.
+1. <https://developer.apple.com/account> → Certificates, Identifiers & Profiles → **Identifiers** → `+` → App IDs → App → Description `Tierwise`, Bundle ID **Explicit** `com.gaddu.collegecompass`. No capabilities are needed (no push, no Sign in with Apple, no associated domains). App Attest (below) needs no capability either.
 2. <https://appstoreconnect.apple.com> → Apps → `+` → New App:
-   - Platforms: iOS · Name: `College Compass` (must be unique store-wide; if taken use e.g. `College Compass: Find Your Fit`, 30 chars max) · Primary language: English (U.S.)
+   - Platforms: iOS · Name: `Tierwise: College List & Odds` (the App Store name, 29 of 30 chars; the name under the icon stays **Tierwise** via `CFBundleDisplayName`) · Primary language: English (U.S.)
    - Bundle ID: `com.gaddu.collegecompass` · SKU: `college-compass-ios` · User access: Full Access
 3. The record must exist **before** the first upload, or the upload is rejected.
 
@@ -55,7 +55,7 @@ In Xcode: target **App** → Signing & Capabilities → tick *Automatically mana
 
 You only need an **App Store Connect API key with the Admin role** and your **Team ID**. The workflow runs Xcode with `-allowProvisioningUpdates` and the key, so Xcode creates/uses a cloud-managed distribution certificate and the App Store profile in your account, then uploads the build straight to App Store Connect.
 
-**API key** — App Store Connect → Users and Access → Integrations → App Store Connect API → Team Keys → `+`, name `College Compass CI`, access **Admin** (cloud signing needs Admin). Note the *Key ID* and the *Issuer ID* (shown above the key list); download the `.p8` once (it cannot be downloaded again).
+**API key** — App Store Connect → Users and Access → Integrations → App Store Connect API → Team Keys → `+`, name `Tierwise CI`, access **Admin** (cloud signing needs Admin). Note the *Key ID* and the *Issuer ID* (shown above the key list); download the `.p8` once (it cannot be downloaded again).
 
 **Team ID** — developer.apple.com → Account → Membership details → *Team ID* (10 characters). Save it as the repository **variable** `APPLE_TEAM_ID` (not secret).
 
@@ -77,7 +77,7 @@ base64 -w0 dist.p12 > dist.p12.b64     # macOS: base64 -i dist.p12 -o dist.p12.b
 
 (On a Mac you can instead create the CSR in Keychain Access, then export the certificate + key as `.p12`.) Keep `dist.key` and `dist.p12` private; an organization can have only a few distribution certificates.
 
-**Provisioning profile** — Profiles → `+` → *App Store Connect* (distribution) → App ID `com.gaddu.collegecompass` → select the certificate above → name it e.g. `College Compass App Store` → download `.mobileprovision` → `base64 -w0 College_Compass_App_Store.mobileprovision`.
+**Provisioning profile** — Profiles → `+` → *App Store Connect* (distribution) → App ID `com.gaddu.collegecompass` → select the certificate above → name it e.g. `Tierwise App Store` → download `.mobileprovision` → `base64 -w0 Tierwise_App_Store.mobileprovision`.
 
 The workflow reads the team ID and profile name from the profile itself and fails early if the profile is for a different bundle ID.
 
@@ -128,7 +128,7 @@ Without step 2, Xcode builds attest in the sandbox; the server refuses sandbox k
 
 | Field | Value | Limit |
 | --- | --- | --- |
-| Name | College Compass | 30 |
+| Name | Tierwise: College List & Odds | 30 (29 used) |
 | Subtitle | AI college search & odds bands | 30 (exactly 30) |
 | Promotional text | Build a balanced college list with honest odds bands, net-price estimates and sources. Your data stays on your phone. | 170 |
 | Keywords | college search,college list,admissions,odds,net price,financial aid,SAT,ACT,GPA,reach,safety | 100 (92 used) |
@@ -141,14 +141,14 @@ Without step 2, Xcode builds attest in the sandbox; the server refuses sandbox k
 
 **The support and privacy pages must be live before you submit.** They are static files in `public/` of the web app; verify both URLs open in a browser. The privacy policy must say what section 7 says.
 
-### Description (about 2,500 of 4,000 characters)
+### Description (about 3,200 of 4,000 characters)
 
 ```text
-College Compass helps high school students and their families build a smart, balanced college list without spending weeks in spreadsheets.
+Tierwise helps high school students and their families build a smart, balanced college list without spending weeks in spreadsheets.
 
 Tell the app about yourself in a few quick questions: your state, GPA, test scores (or none), the rigor of your courses, activities, intended majors or interests, budget, and preferences for region, size and setting. Any interest works, from engineering and nursing to business, art, education or "still deciding."
 
-Then College Compass researches colleges for you using your own ChatGPT account. Several AI research agents work in parallel, so cards appear as each college finishes. You can also name colleges you already like and the app will research those first.
+Then Tierwise researches colleges for you using your own ChatGPT account. Several AI research agents work in parallel, so cards appear as each college finishes. You can also name colleges you already like and the app will research those first.
 
 WHAT YOU GET
 - A balanced list: high reach, reach, target, likely and safety schools
@@ -163,16 +163,19 @@ WHAT YOU GET
 BUILT FOR HONESTY
 Admission odds are estimates computed on your device from published figures such as Common Data Set data, plus documented heuristics. They are not predictions or guarantees. The app shows its sources, flags uncertain data and says "unknown" instead of guessing. Always confirm deadlines, costs and requirements on each college's official website.
 
+ABOUT TIERWISE
+Tierwise uses artificial intelligence and public data, including the U.S. Department of Education's College Scorecard, to help you research colleges. AI can make mistakes. Admission chances, costs, deadlines and program details are estimates that may be incomplete or out of date. Always verify important information with each college's official sources before you make decisions. Tierwise is an independent research aid: it does not make or predict admission decisions, and it is not affiliated with or endorsed by any college or university, the College Board, ACT, or the Common Application.
+
 PRIVATE BY DESIGN
-There is no College Compass account and no developer server. Your profile, research, shortlist and notes stay on your device. You can export or delete everything in Settings at any time. AI requests go directly from your phone to OpenAI under your own ChatGPT account; the app's developer never sees them.
+There is no Tierwise account and no developer server. Your profile, research, shortlist and notes stay on your device. You can export or delete everything in Settings at any time. AI requests go directly from your phone to OpenAI under your own ChatGPT account; the app's developer never sees them.
 
 WHAT YOU NEED
-A ChatGPT Plus or Pro account is required for the AI research, which is the heart of the app. College Compass uses your plan's usage allowance, so no extra subscription is sold in the app. (A free ChatGPT account can sign in, but research needs a paid plan.)
+A ChatGPT Plus or Pro account is required for the AI research, which is the heart of the app. Tierwise uses your plan's usage allowance, so no extra subscription is sold in the app. (A free ChatGPT account can sign in, but research needs a paid plan.)
 
-College Compass is an independent app. It is not affiliated with, endorsed by or sponsored by OpenAI or any college or university listed.
+Tierwise is an independent app. It is not affiliated with, endorsed by or sponsored by OpenAI, any college or university listed, the College Board, ACT, or the Common Application.
 ```
 
-Notes on the copy: it says "estimates", names the ChatGPT requirement up front, and carries the non-affiliation line. Do not add rankings, "guaranteed" or "get into your dream school" claims; they conflict with the app's honesty rules and with App Review guideline 2.3.
+Notes on the copy: it says "estimates", names the ChatGPT requirement up front, carries the AI-assistance notice (the same text the app shows before the first research run and under Settings → About Tierwise) and the non-affiliation line. Do not add rankings, "guaranteed" or "get into your dream school" claims; they conflict with the app's honesty rules and with App Review guideline 2.3.
 
 ### Screenshots (required)
 
@@ -225,15 +228,17 @@ Provide, under App Review Information:
 - **Notes** (paste and adjust):
 
 ```text
-College Compass helps high school students build a balanced college list. The student answers a short questionnaire; the app then uses AI (the user's own ChatGPT account) to research colleges and computes admission-odds bands on-device.
+Tierwise helps high school students build a balanced college list. The student answers a short questionnaire; the app then uses AI (the user's own ChatGPT account) to research colleges and computes admission-odds bands on-device.
 
 HOW TO REVIEW WITHOUT A ChatGPT ACCOUNT: on the Welcome screen choose "Try the demo" (demo mode). It loads sample research data so every screen can be explored offline: the questions, the balanced list with odds bands, college details, shortlist and Settings. [Confirm this label matches the final UI before submitting.]
 
-HOW TO REVIEW THE LIVE AI FLOW: tap "Continue with ChatGPT" and sign in with the reviewer account below (a ChatGPT Plus account; any ChatGPT Plus or Pro account works). Sign-in opens an in-app browser with OpenAI's login page. After login, OpenAI redirects to a sign-in listener that runs inside the app on the phone itself (127.0.0.1, OpenAI's sign-in method for open-source apps that run locally); the browser then closes and the app continues. Research then runs against that ChatGPT account's own usage allowance; the developer has no server in the loop. College Compass is free and open source: <public GitHub repo URL>.
+HOW TO REVIEW THE LIVE AI FLOW: tap "Continue with ChatGPT" and sign in with the reviewer account below (a ChatGPT Plus account; any ChatGPT Plus or Pro account works). Sign-in opens an in-app browser with OpenAI's login page. After login, OpenAI redirects to a sign-in listener that runs inside the app on the phone itself (127.0.0.1, OpenAI's sign-in method for open-source apps that run locally); the browser then closes and the app continues. Research then runs against that ChatGPT account's own usage allowance; the developer has no server in the loop. Tierwise is free and open source: <public GitHub repo URL>.
 Reviewer account: <email>  Password: <password>
 (If a verification code is requested, please use the attached screen recording; the code goes to an inbox the developer monitors: <contact>.)
 
-There is no College Compass account, no in-app purchase and no data collected by the developer. All profile and research data stays on the device and can be exported or deleted in Settings > Delete everything. Admission odds are estimates and are labelled as such.
+There is no Tierwise account, no in-app purchase and no data collected by the developer. All profile and research data stays on the device and can be exported or deleted in Settings > Delete everything. Admission odds are estimates and are labelled as such.
+
+AI DISCLOSURE: before the first research run the app shows a one-time "Before you start" notice (AI can make mistakes; chances, costs, deadlines and program details are estimates to verify with each college; Tierwise does not make or predict admission decisions and is not affiliated with any college, the College Board, ACT or the Common Application) that the user acknowledges with "I understand". The same notice is under Settings > About Tierwise, in the shared PDF report and on the privacy policy page, and a one-line reminder appears under the list, each college page, research results and the Ask tab.
 ```
 
 **Reviewer-account plan (do before submitting):**
@@ -250,7 +255,7 @@ Reviewers also test: sign-out, **Settings → Delete everything** (this satisfie
 
 - **2.1 App completeness / 2.3 accurate metadata.** Demo mode plus a working reviewer account (section 8) avoid the most common rejection: "could not sign in". Screenshots must show the real UI.
 - **4.2 Minimum functionality (not a repackaged website).** The binary contains the whole app and works without a network for stored data (nothing is loaded from a remote URL: `capacitor.config.ts` has no `server.url`, and the service worker is disabled in the native app). Native integration in use: SFSafariViewController sign-in via `@capacitor/browser` with an in-app Network.framework loopback listener (`LoopbackAuthPlugin.swift`), custom URL scheme deep link and cold-start handling via `@capacitor/app`, native HTTP (`CapacitorHttp`), native launch screen and status-bar/safe-area handling, on-device odds/fit/ranking engine, on-device persistence with export/import/delete, light/dark mode. Haptics (`@capacitor/haptics`) is bundled and can be used by the UI for feedback; only list it in review notes if the UI actually calls it. Keep the in-app experience clearly app-like (tab bar, sheets, no browser chrome).
-- **4.8 Login services.** Sign in with Apple is required for apps that use a third-party login to set up or authenticate the user's *primary account in the app*. College Compass has **no first-party account**; "Continue with ChatGPT" only connects the user's own existing third-party ChatGPT plan so the app can act as a client of that service (guideline 4.8 exempts apps that are a client for a specific third-party service where the user signs in to that third-party account directly to access their content). We therefore do not offer Sign in with Apple. **This is a judgment call.** If App Review disagrees, answer in the Resolution Center with the facts above first; the fallbacks are adding Sign in with Apple or another login that meets 4.8's privacy criteria (which would add little here since the app has no account to log into).
+- **4.8 Login services.** Sign in with Apple is required for apps that use a third-party login to set up or authenticate the user's *primary account in the app*. Tierwise has **no first-party account**; "Continue with ChatGPT" only connects the user's own existing third-party ChatGPT plan so the app can act as a client of that service (guideline 4.8 exempts apps that are a client for a specific third-party service where the user signs in to that third-party account directly to access their content). We therefore do not offer Sign in with Apple. **This is a judgment call.** If App Review disagrees, answer in the Resolution Center with the facts above first; the fallbacks are adding Sign in with Apple or another login that meets 4.8's privacy criteria (which would add little here since the app has no account to log into).
 - **5.1.1 / 5.1.2 Privacy and third-party AI.** Apple's updated 5.1.2(i) (late 2025; re-read the current wording) expects an app to **clearly disclose where personal data is shared with third parties, including third-party AI, and to get explicit permission first**. The student's profile (state, GPA, scores, income band, interests) is sent to OpenAI to run the research. Strong recommendation for the UI owner: the first-run "You're using your ChatGPT plan" sheet should also state plainly that the answers are sent to OpenAI under the user's ChatGPT account, link to the privacy policy, and require an explicit "Agree and continue" before the first research request. Also link the privacy policy inside Settings.
 - **5.2 Intellectual property.** Use "Continue with ChatGPT" wording per OpenAI's branding rules, do not use OpenAI logos beyond what their guidelines permit, keep the non-affiliation sentence. College names are used descriptively.
 - **1.4 / 5.1.4 Minors.** The audience includes teenagers. No third-party ad networks, no tracking, no social features, no contact collection. The counselor directory is a paid listing of independent counselors, labelled "Paid listing" on every card, with no in-app messaging. Do not enable the Kids Category.
@@ -261,7 +266,7 @@ Reviewers also test: sign-out, **Settings → Delete everything** (this satisfie
 
 The iOS app signs in through OpenAI's **self-serve path for open-source, locally run apps**: the first sign-in registers the install with `client_id=dynamic_agent_client`, OpenAI issues a per-device client ID (`oaiapp_…`), and the redirect goes to a loopback listener on `127.0.0.1` inside the app. No client ID, partner approval or secret is needed, so TestFlight builds can sign in today. Leave `VITE_CC_CHATGPT_CLIENT_ID` empty for the iOS build.
 
-Eligibility caveat, stated factually: OpenAI documents this self-serve path for **open-source, locally run** apps. College Compass qualifies because it is free, its source is public on GitHub, and it runs entirely on the phone. A **paid** app or one whose AI calls run on a **remotely hosted** server would need OpenAI's partner interest form and a client ID instead. Keep the repository public and the app free while using this path.
+Eligibility caveat, stated factually: OpenAI documents this self-serve path for **open-source, locally run** apps. Tierwise qualifies because it is free, its source is public on GitHub, and it runs entirely on the phone. A **paid** app or one whose AI calls run on a **remotely hosted** server would need OpenAI's partner interest form and a client ID instead. Keep the repository public and the app free while using this path.
 
 Users need **ChatGPT Plus or Pro** for research (plan usage). Free accounts can sign in but research won't run. Do not submit for review until a TestFlight build has completed sign-in and a research run on a physical iPhone with the reviewer account. Details: [CHATGPT_SIGNIN.md](./CHATGPT_SIGNIN.md).
 

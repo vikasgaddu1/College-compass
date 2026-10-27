@@ -1,4 +1,4 @@
--- College Compass — Apple App Attest for shared-research contributions (monitor mode first).
+-- Tierwise — Apple App Attest for shared-research contributions (monitor mode first).
 --
 -- The `attest` Edge Function (supabase/functions/attest) verifies App Attest attestations and
 -- assertions (CBOR + X.509 chain to Apple's App Attestation Root CA — not practical in SQL) and then
