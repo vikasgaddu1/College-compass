@@ -6,7 +6,8 @@
  * student's majors. The only data sent is those filters. No sign-up or payment lives here: counselors
  * join on the website, never from the app.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useRoute } from "@/lib/router";
 import { useStore } from "@/state/store";
 import { STATES, stateName } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
@@ -14,24 +15,35 @@ import { Sheet } from "@/components/Sheet";
 import { Banner, Button, CardSkeleton, Chip, Empty } from "@/components/ui";
 import { IconCheck, IconChevronDown, IconSearch } from "@/components/icons";
 import { CounselorCard } from "@/components/CounselorCard";
-import { REPORT_REASONS, SPECIALTIES, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason } from "@/data/counselors";
+import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason } from "@/data/counselors";
 
 /** "Virtual – anywhere" in the state picker: no state filter, so nationwide counselors show. */
 const ANYWHERE = "";
 
 export const COUNSELORS_INTRO = "Independent counselors who help families with applications. Counselors pay to be listed — listings never affect your college list, and College Compass never shares your answers with them.";
 
-export function Counselors({ api: apiProp }: { /** Tests inject a mocked API. */ api?: DirectoryApi | null }) {
+export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked API. */ api?: DirectoryApi | null; tabBar?: ReactNode }) {
   const { profile, hasProfile } = useStore();
+  // `#/counselors?specialty=essays` (from a contextual prompt) preselects that chip instead of the majors.
+  const wanted = useRoute().query.specialty;
   const api = useMemo(() => (apiProp !== undefined ? apiProp : createDirectoryApi()), [apiProp]);
   const home = hasProfile && profile.home_state && STATES.some((s) => s.code === profile.home_state && s.code !== "XX") ? profile.home_state : ANYWHERE;
   const [state, setState] = useState<string>(home);
-  const [specialties, setSpecialties] = useState<string[]>(() => (hasProfile ? specialtiesForMajors(profile.majors) : []));
+  const [specialties, setSpecialties] = useState<string[]>(() => (wanted && SPECIALTY_IDS.includes(wanted) ? [wanted] : hasProfile ? specialtiesForMajors(profile.majors) : []));
   const [pickerOpen, setPickerOpen] = useState(false);
   const [items, setItems] = useState<Counselor[] | null>(null);
   const [error, setError] = useState<DirectoryError | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [reporting, setReporting] = useState<Counselor | null>(null);
+  const chipsRef = useRef<HTMLDivElement>(null);
+
+  // Arriving with a preselected specialty: bring that chip into view so the selection is visible.
+  useEffect(() => {
+    if (!wanted) return;
+    const el = chipsRef.current?.querySelector<HTMLElement>('[aria-pressed="true"]');
+    el?.scrollIntoView?.({ inline: "center", block: "nearest" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!api) {
@@ -61,7 +73,7 @@ export function Counselors({ api: apiProp }: { /** Tests inject a mocked API. */
 
   return (
     <>
-      <Screen title="Get expert help" back="/settings" backLabel="Back">
+      <Screen title="Get expert help" footer={tabBar}>
         <p className="pb-3 text-subhead text-text-muted">{COUNSELORS_INTRO}</p>
 
         <button type="button" className="cc-input cc-press flex items-center justify-between text-left" onClick={() => setPickerOpen(true)} aria-haspopup="dialog" aria-label={`Where: ${whereLabel}`}>
@@ -72,7 +84,7 @@ export function Counselors({ api: apiProp }: { /** Tests inject a mocked API. */
           <IconChevronDown size={20} className="shrink-0 text-text-muted" />
         </button>
 
-        <div className="-mx-4 mt-3 overflow-x-auto px-4 pb-1" role="group" aria-label="Specialty">
+        <div ref={chipsRef} className="-mx-4 mt-3 overflow-x-auto px-4 pb-1" role="group" aria-label="Specialty">
           <div className="flex w-max gap-2">
             <Chip selected={specialties.length === 0} onClick={() => setSpecialties([])}>
               All
@@ -103,8 +115,8 @@ export function Counselors({ api: apiProp }: { /** Tests inject a mocked API. */
           ) : items.length === 0 ? (
             <Empty
               icon="🧑‍🏫"
-              title={state ? `No counselors listed for ${state} yet` : "No counselors listed yet"}
-              message={state ? "Try “Virtual – anywhere” to see counselors who work with families in every state." : specialties.length ? "Try clearing the specialty filter." : "Check back soon."}
+              title={state ? `No counselors listed in ${stateName(state)} yet` : "No counselors listed yet"}
+              message={state ? "We're adding counselors — check back soon. Meanwhile, counselors who work virtually help families in every state." : specialties.length ? "Try clearing the specialty filter." : "We're adding counselors — check back soon."}
               action={
                 state ? (
                   <Button variant="secondary" onClick={() => setState(ANYWHERE)}>

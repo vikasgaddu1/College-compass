@@ -7,6 +7,7 @@ import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Chip, Empty } from "@/components/ui";
 import { IconSend, IconStop, IconTrash } from "@/components/icons";
 import { Screen } from "@/components/Screen";
+import { ASK_PROMPT_TEXT, CounselorPrompt, askWantsCounselor, useCounselorAvailability } from "@/components/CounselorPrompt";
 
 const SUGGESTIONS = ["Which of these should I apply early to?", "Where will I likely get the most merit aid?", "What's missing from my list?", "Compare my top two targets", "What should I do this semester to improve my odds?"];
 
@@ -116,6 +117,20 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
 
   const canChat = connected || demo;
 
+  // After an answer about essays, recommendations, early plans or "which should I…": offer a person.
+  // A chip under the bubble, never words inside the AI's answer; only when the directory lists someone.
+  const counselors = useCounselorAvailability();
+  const askPrompt = useMemo(() => {
+    if (busy || !counselors.eligible || counselors.count === 0) return null;
+    const last = chat[chat.length - 1];
+    const lastUser = [...chat].reverse().find((m) => m.role === "user");
+    if (!last || last.role !== "assistant" || !lastUser) return null;
+    const want = askWantsCounselor(lastUser.content);
+    if (!want.match) return null;
+    // Open the specialty's filter only when someone lists it; otherwise the whole directory.
+    return want.specialty && !counselors.bySpecialty[want.specialty] ? { ...want, specialty: null } : want;
+  }, [chat, busy, counselors.eligible, counselors.count, counselors.bySpecialty]);
+
   return (
     <Screen
       title="Ask"
@@ -216,6 +231,11 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
             </li>
           )}
         </ol>
+      )}
+      {askPrompt && (
+        <CounselorPrompt kind="ask" compact specialty={askPrompt.specialty} className="mt-2">
+          {ASK_PROMPT_TEXT.question} <span className="whitespace-nowrap text-accent">{ASK_PROMPT_TEXT.action}</span>
+        </CounselorPrompt>
       )}
       {canChat && err && needsSignIn(err.code) && (
         <div className="mt-3">

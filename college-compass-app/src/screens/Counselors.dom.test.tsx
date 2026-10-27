@@ -7,6 +7,7 @@ import { LISTS_KEY, listKey, type ListMeta, type ListsIndex } from "@/state/list
 import { NS } from "@/lib/storage";
 import { StoreProvider } from "@/state/store";
 import { toCounselor, type Counselor, type DirectoryApi } from "@/data/counselors";
+import { setCounselorDirectoryForMatches } from "@/data/counselorMatches";
 import { COUNSELORS_NUDGE_KEY } from "@/components/CounselorsNudge";
 import { Counselors } from "./Counselors";
 import { App } from "@/app/App";
@@ -44,6 +45,7 @@ const mount = (api: DirectoryApi | null) =>
 
 beforeEach(() => {
   localStorage.clear();
+  setCounselorDirectoryForMatches(null);
   window.location.hash = "#/counselors";
   window.matchMedia = vi.fn().mockImplementation((q: string) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, onchange: null, dispatchEvent: () => false })) as any;
   Element.prototype.scrollTo = vi.fn() as any;
@@ -177,7 +179,7 @@ describe("Counselors directory", () => {
     seedProfile();
     const { api, list } = mockApi([]);
     mount(api);
-    expect(await screen.findByText("No counselors listed for NC yet")).toBeTruthy();
+    expect(await screen.findByText("No counselors listed in North Carolina yet")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Show virtual counselors" }));
     await waitFor(() => expect(list).toHaveBeenLastCalledWith(null, expect.anything(), expect.anything()));
     expect(await screen.findByText("No counselors listed yet")).toBeTruthy();
@@ -223,15 +225,19 @@ describe("Entry points", () => {
     expect(await screen.findByText(/Counselors pay to be listed/)).toBeTruthy();
   });
 
-  it("List tab: dismissible card below the colleges, remembered in localStorage; not in demo or empty lists", async () => {
+  it("List tab: dismissible card after the first tier group, remembered in localStorage; not in demo, empty lists or an empty directory", async () => {
+    setCounselorDirectoryForMatches(mockApi().api);
     seedList();
     window.location.hash = "#/list";
     render(<App />);
     await screen.findByText(DEMO_COLLEGES[0]!.name);
-    const card = screen.getByRole("region", { name: "Get expert help" });
-    // Below the colleges: the card comes after the last college card in document order.
-    const lastCollege = screen.getAllByText(/University|Institute|College/).pop()!;
-    expect(lastCollege.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const card = await screen.findByRole("region", { name: "Get expert help" });
+    expect(card.textContent).toContain("3 counselors in North Carolina can review your list and essays");
+    // After the first tier group (never above the first colleges), before the second group's heading.
+    const firstGroup = screen.getByRole("region", { name: "High reach" });
+    const secondGroup = screen.getByRole("region", { name: "Reach" });
+    expect(firstGroup.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(card.compareDocumentPosition(secondGroup) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(within(card).getByRole("button", { name: "Dismiss" }));
     expect(screen.queryByRole("region", { name: "Get expert help" })).toBeNull();
     await waitFor(() => expect(JSON.parse(localStorage.getItem(NS + COUNSELORS_NUDGE_KEY)!)).toBe(true));
@@ -258,14 +264,25 @@ describe("Entry points", () => {
     render(<App />);
     await screen.findByText(/Sign in to research colleges/);
     expect(screen.queryByRole("region", { name: "Get expert help" })).toBeNull();
+    cleanup();
+
+    // Nobody listed for the student's state: hidden (no dead ends).
+    localStorage.clear();
+    setCounselorDirectoryForMatches(mockApi([]).api);
+    seedList();
+    render(<App />);
+    await screen.findByText(DEMO_COLLEGES[0]!.name);
+    await new Promise((r) => setTimeout(r, 20));
+    expect(screen.queryByRole("region", { name: "Get expert help" })).toBeNull();
   });
 
   it("the list card's link opens the directory", async () => {
+    setCounselorDirectoryForMatches(mockApi().api);
     seedList();
     window.location.hash = "#/list";
     render(<App />);
     await screen.findByText(DEMO_COLLEGES[0]!.name);
-    fireEvent.click(within(screen.getByRole("region", { name: "Get expert help" })).getByRole("button", { name: "Get expert help" }));
+    fireEvent.click(within(await screen.findByRole("region", { name: "Get expert help" })).getByRole("button", { name: "Get expert help" }));
     await waitFor(() => expect(window.location.hash).toBe("#/counselors"));
     expect(await screen.findByRole("heading", { name: "Get expert help", level: 1 })).toBeTruthy();
   });

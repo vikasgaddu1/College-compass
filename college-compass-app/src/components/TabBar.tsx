@@ -1,11 +1,13 @@
 import { navigate } from "@/lib/router";
-import { IconChat, IconGear, IconList, IconStar } from "./icons";
+import { IconChat, IconGear, IconLifebuoy, IconList, IconStar } from "./icons";
 
-export type TabId = "list" | "shortlist" | "ask" | "settings";
+export type TabId = "list" | "shortlist" | "counselors" | "ask" | "settings";
 
 const TABS: { id: TabId; label: string; path: string; Icon: typeof IconList }[] = [
   { id: "list", label: "List", path: "/list", Icon: IconList },
   { id: "shortlist", label: "Shortlist", path: "/shortlist", Icon: IconStar },
+  // The paid directory ("Get expert help") sits where students look for help, not buried in Settings.
+  { id: "counselors", label: "Counselors", path: "/counselors", Icon: IconLifebuoy },
   { id: "ask", label: "Ask", path: "/ask", Icon: IconChat },
   { id: "settings", label: "Settings", path: "/settings", Icon: IconGear },
 ];

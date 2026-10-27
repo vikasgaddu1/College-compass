@@ -9,6 +9,7 @@ import { useStore } from "@/state/store";
 import { Screen } from "@/components/Screen";
 import { Banner, Button, Empty, Group, Row, Switch } from "@/components/ui";
 import { IconExternal, IconStar } from "@/components/icons";
+import { CounselorPrompt, deadlinePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
 import { formatDay, formatRelative, formatWeekday, groupByDate, hiddenPlansNote, upcomingDeadlines, type Deadline } from "@/deadlines/deadlines";
 import { deadlinesToIcs, icsFileName } from "@/deadlines/ics";
 import { requestNotificationPermission, shareCalendarFile, supportsDeadlineReminders } from "@/platform";
@@ -26,6 +27,9 @@ function useNow(): Date {
   return now;
 }
 
+/** Show the counselor line only when the next deadline is this close (days). */
+const COUNSELOR_PROMPT_DAYS = 14;
+
 export function Deadlines() {
   const { colleges, shortlist, profile, hasProfile, activeList, setListRemind, demo } = useStore();
   const now = useNow();
@@ -40,6 +44,10 @@ export function Deadlines() {
   const hiddenNote = showAll ? null : hiddenPlansNote(profile.plan, upcoming.hidden);
   const anyStarred = upcoming.items.some((d) => d.starred);
   const remind = !!activeList.remind;
+  // A deadline inside two weeks is when a second pair of eyes helps most; shown only when someone is listed.
+  const counselors = useCounselorAvailability();
+  const soon = groups[0] && groups[0].daysUntil <= COUNSELOR_PROMPT_DAYS ? groups[0] : null;
+  const soonPlan = soon ? [...new Set(soon.items.map((d) => d.planLabel))] : [];
 
   useEffect(() => {
     if (!toast) return;
@@ -133,6 +141,13 @@ export function Deadlines() {
             <p className="mt-4 rounded-control bg-surface-2 px-4 py-2.5 text-footnote text-text-muted">
               {upcoming.otherCycle === 1 ? "1 date is" : `${upcoming.otherCycle} dates are`} from an earlier application year — Fall {profile.grad_year} deadlines usually come out the summer before you apply. Refresh research then.
             </p>
+          )}
+
+          {/* Right above the day it talks about; only when the directory lists someone for the student's state. */}
+          {soon && counselors.eligible && counselors.count > 0 && (
+            <CounselorPrompt kind="deadline" className="mt-5">
+              {deadlinePromptText(soonPlan, soon.daysUntil, soon.items.length)}
+            </CounselorPrompt>
           )}
 
           {count === 0 ? (

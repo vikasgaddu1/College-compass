@@ -10,6 +10,7 @@ import { Banner, Button, ProgressBar } from "@/components/ui";
 import { CollegeStateGlyph, KeepTabOpenNote, LeaveAppCard, PhaseSteps, WaitTips, useNow, type NotifyState } from "@/components/ResearchStatus";
 import { SignInAgain, needsSignIn, reasonFor, type SignInReason } from "@/components/SignInAgain";
 import { IconCheck, IconRefresh, IconStop, IconWarning } from "@/components/icons";
+import { CounselorPrompt, researchPromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
 
 /** "signin": the ChatGPT session ended (or there is none) — the sign-in card is shown instead of a run. */
 type Status = "planning" | "researching" | "done" | "cancelled" | "error" | "signin";
@@ -288,6 +289,16 @@ export function Research() {
   const progress = status === "done" ? 1 : status === "planning" ? 0.02 : (done.length + failures.length) / total;
   const ranked = useMemo(() => rankColleges(done, profile), [done, profile]);
 
+  // Once the list is in: a reach-heavy list (or one with Early Decision options) is where a person helps
+  // most with the "where to apply early" call. Never while research runs, never in the demo.
+  const counselors = useCounselorAvailability();
+  const counselorLine = useMemo(() => {
+    if (status !== "done" || !counselors.eligible || counselors.count === 0) return null;
+    const reaches = ranked.filter((r) => r.odds.tier === "reach" || r.odds.tier === "high_reach").length;
+    const hasEd = done.some((c) => c.application?.plans.some((p) => p.plan === "ED" || p.plan === "ED2"));
+    return researchPromptText(reaches, ranked.length, hasEd);
+  }, [status, counselors.eligible, counselors.count, ranked, done]);
+
   // Elapsed-time clock (ticks only while the run is active).
   const now = useNow(!finished);
   const elapsedMs = Math.max(0, now - startedAt);
@@ -427,6 +438,11 @@ export function Research() {
         />
       )}
       {!finished && !demo && <WaitTips />}
+      {counselorLine && (
+        <CounselorPrompt kind="research" className="mt-4">
+          {counselorLine}
+        </CounselorPrompt>
+      )}
 
       {/* Leave the app (iOS) / keep the tab open (web) */}
       {status === "researching" && canNotify && <LeaveAppCard state={notify} onArm={() => void arm()} />}

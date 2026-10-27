@@ -111,9 +111,17 @@
   min-height: 44px;
   border: 0;
   background: transparent;
-  padding: 4px 0 2px;
+  padding: 4px 2px 2px;
+  min-width: 0;
   cursor: pointer;
   position: relative;
+}
+/* Five labels at 375pt: 75pt each; "Counselors" at 10px is ~52pt, so no label ever wraps. */
+.cc-tab > span:not(.cc-tab-badge) {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cc-tab[aria-current="page"] {
   color: var(--accent);
