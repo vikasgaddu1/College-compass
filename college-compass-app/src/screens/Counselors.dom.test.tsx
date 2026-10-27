@@ -206,12 +206,17 @@ describe("Counselors directory", () => {
     expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
   });
 
-  it("never shows a sign-up, subscribe or 'list your practice' link in the app", async () => {
+  it("offers counselors one informational link to the website, never prices or a purchase flow in the app", async () => {
     const { api } = mockApi();
     mount(api);
     await screen.findByText("Priya Raman");
-    expect(document.body.textContent).not.toMatch(/list your practice|subscribe|\$29|sign up/i);
-    for (const a of Array.from(document.querySelectorAll("a"))) expect(a.getAttribute("href")).not.toMatch(/counselors\//);
+    expect(document.body.textContent).not.toMatch(/list your practice|subscribe|\$29|\$290|sign up|buy/i);
+    const info = screen.getByRole("link", { name: /Are you a counselor\? Learn about being listed/ });
+    // The landing page (opens in the browser), not a sign-in, billing or checkout page.
+    expect(info.getAttribute("href")).toBe("https://vikasgaddu1.github.io/College-compass/app/counselors/");
+    expect(info.getAttribute("target")).toBe("_blank");
+    const portalLinks = Array.from(document.querySelectorAll("a")).filter((a) => /counselors\//.test(a.getAttribute("href") ?? ""));
+    expect(portalLinks).toHaveLength(1);
   });
 });
 
