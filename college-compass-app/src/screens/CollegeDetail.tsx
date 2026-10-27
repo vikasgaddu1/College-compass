@@ -134,7 +134,7 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
 
       {/* Below the odds: people who help with exactly this kind of application (only when the directory has someone). */}
       {counselors.eligible && counselors.count > 0 && (
-        <CounselorPrompt kind="college" specialty={counselors.matching > 0 ? counselors.interest : null} className="mt-4">
+        <CounselorPrompt kind="college" specialty={counselors.interestCount > 0 && counselors.interestLabel ? counselors.interest : null} className="mt-4">
           {collegePromptText(c.short, counselors)}
         </CounselorPrompt>
       )}

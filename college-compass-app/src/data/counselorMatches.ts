@@ -19,11 +19,15 @@ export interface CounselorMatches {
   interest: Specialty | null;
   /** Human label for `interest`, phrased for "… help with {interest} applications". */
   interestLabel: string | null;
+  /** How many counselors list `interest` (what a filtered directory for it will show). */
+  interestCount: number;
+  /** Counselors per specialty, so a prompt never links to a filter that would come up empty. */
+  bySpecialty: Partial<Record<Specialty, number>>;
   /** How many of `count` are tied to the state itself (the rest are nationwide/virtual). */
   local: number;
 }
 
-export const NO_MATCHES: CounselorMatches = { count: 0, matching: 0, interest: null, interestLabel: null, local: 0 };
+export const NO_MATCHES: CounselorMatches = { count: 0, matching: 0, interest: null, interestLabel: null, interestCount: 0, bySpecialty: {}, local: 0 };
 
 /** Plain-English phrasing for "help with … applications". */
 const INTEREST_PHRASE: Partial<Record<Specialty, string>> = {
@@ -46,9 +50,11 @@ export function summarizeMatches(rows: Counselor[], state: string | null, specia
   if (!pool.length) return NO_MATCHES;
   let best: Specialty | null = null;
   let bestN = 0;
+  const bySpecialty: Partial<Record<Specialty, number>> = {};
   for (const s of SPECIALTIES) {
-    if (!specialties.includes(s.id)) continue;
     const n = pool.filter((c) => c.specialties.includes(s.id)).length;
+    if (n) bySpecialty[s.id] = n;
+    if (!specialties.includes(s.id)) continue;
     if (n > bestN) {
       best = s.id;
       bestN = n;
@@ -60,6 +66,8 @@ export function summarizeMatches(rows: Counselor[], state: string | null, specia
     matching,
     interest: best,
     interestLabel: best ? INTEREST_PHRASE[best] ?? null : null,
+    interestCount: bestN,
+    bySpecialty,
     local: state ? pool.filter((c) => c.states.includes(state) && !c.states.includes(NATIONWIDE)).length : 0,
   };
 }

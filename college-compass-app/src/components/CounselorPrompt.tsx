@@ -94,10 +94,13 @@ export function counselorsPhrase(count: number, stateName: string | null): strin
 // Facts about the directory, in plain words. Never "we recommend", never a name.
 
 /** College page: "Applying to Duke? 3 counselors in North Carolina help with STEM applications." */
-export function collegePromptText(short: string, a: Pick<CounselorMatches, "count" | "matching" | "interestLabel"> & { stateName: string | null }): string {
-  const who = counselorsPhrase(a.count, a.stateName);
-  const tail = a.matching > 0 && a.interestLabel ? `${a.count === 1 ? "helps" : "help"} with ${a.interestLabel} applications` : "can help with your application";
-  return `Applying to ${short}? ${who} ${tail}.`;
+export function collegePromptText(short: string, a: Pick<CounselorMatches, "count" | "interestLabel" | "interestCount"> & { stateName: string | null }): string {
+  // The number is exactly what the destination shows: the specialty's count when the copy names it
+  // (the tap opens that filter), the whole state's count otherwise.
+  if (a.interestCount > 0 && a.interestLabel) {
+    return `Applying to ${short}? ${counselorsPhrase(a.interestCount, a.stateName)} ${a.interestCount === 1 ? "helps" : "help"} with ${a.interestLabel} applications.`;
+  }
+  return `Applying to ${short}? ${counselorsPhrase(a.count, a.stateName)} can help with your application.`;
 }
 
 /**

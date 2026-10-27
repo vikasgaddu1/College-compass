@@ -126,8 +126,10 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
     const lastUser = [...chat].reverse().find((m) => m.role === "user");
     if (!last || last.role !== "assistant" || !lastUser) return null;
     const want = askWantsCounselor(lastUser.content);
-    return want.match ? want : null;
-  }, [chat, busy, counselors.eligible, counselors.count]);
+    if (!want.match) return null;
+    // Open the specialty's filter only when someone lists it; otherwise the whole directory.
+    return want.specialty && !counselors.bySpecialty[want.specialty] ? { ...want, specialty: null } : want;
+  }, [chat, busy, counselors.eligible, counselors.count, counselors.bySpecialty]);
 
   return (
     <Screen

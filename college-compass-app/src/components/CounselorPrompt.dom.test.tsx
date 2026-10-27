@@ -147,7 +147,8 @@ describe("Availability hook", () => {
 
   it("summarizes a state's listings against the student's specialties", () => {
     const m = summarizeMatches(SAMPLE, "NC", ["stem", "arts"]);
-    expect(m).toMatchObject({ count: 3, matching: 2, interest: "stem", interestLabel: "STEM", local: 2 });
+    expect(m).toMatchObject({ count: 3, matching: 2, interest: "stem", interestLabel: "STEM", interestCount: 1, local: 2 });
+    expect(m.bySpecialty.stem).toBe(1);
     expect(summarizeMatches(GENERAL_ONLY, "NC", ["stem"])).toMatchObject({ count: 1, matching: 0, interest: null });
     // No home state: only counselors who work virtually count.
     expect(summarizeMatches(SAMPLE, null, [])).toMatchObject({ count: 2, local: 0 });
@@ -167,7 +168,8 @@ describe("College page prompt", () => {
     seed();
     await open();
     const p = await screen.findByRole("group", { name: "Get expert help" });
-    expect(p.textContent).toContain("Applying to Georgia Tech? 3 counselors in North Carolina help with STEM applications.");
+    // Only one of the three sample counselors lists STEM — the count matches the STEM-filtered directory.
+    expect(p.textContent).toContain("Applying to Georgia Tech? 1 counselor in North Carolina helps with STEM applications.");
     // Sits below the odds card, above the notes.
     const odds = screen.getByText("Estimated odds");
     const notes = screen.getByText("Your notes");
@@ -373,6 +375,17 @@ describe("Ask chip", () => {
     expect(screen.getByRole("button", { name: "Essays" }).getAttribute("aria-pressed")).toBe("true");
   });
 
+  it("opens the whole directory when nobody lists essays (never an empty filtered page)", async () => {
+    signedIn();
+    mockApi([toCounselor({ id: "g1", name: "Gen Counselor", title: "Counselor", states: ["NC"], specialties: ["general"], modes: ["virtual"] })!]);
+    seed(DEMO_COLLEGES, {}, [{ role: "user", content: "How do I start my personal essay?" }, { role: "assistant", content: "Start with a moment." }]);
+    window.location.hash = "#/ask";
+    render(<App />);
+    const p = await screen.findByRole("group", { name: "Get expert help" });
+    fireEvent.click(within(p).getByRole("button", { name: /Prefer to talk to a person/ }));
+    await waitFor(() => expect(window.location.hash).toBe("#/counselors"));
+  });
+
   it("appears for early-decision / strategy / which-should-I questions, not for others", async () => {
     signedIn();
     mockApi();
@@ -439,10 +452,11 @@ describe("Ask chip", () => {
 
 describe("Copy never implies a recommendation", () => {
   it("states counts and facts only", () => {
-    const line = collegePromptText("Duke", { count: 2, matching: 1, interestLabel: "engineering", stateName: "North Carolina" });
+    const line = collegePromptText("Duke", { count: 5, interestCount: 2, interestLabel: "engineering", stateName: "North Carolina" });
+    // The number is the specialty's own count (what the filtered directory shows), not the state total.
     expect(line).toBe("Applying to Duke? 2 counselors in North Carolina help with engineering applications.");
-    expect(collegePromptText("Duke", { count: 1, matching: 1, interestLabel: "STEM", stateName: "North Carolina" })).toBe("Applying to Duke? 1 counselor in North Carolina helps with STEM applications.");
-    expect(collegePromptText("Duke", { count: 2, matching: 0, interestLabel: null, stateName: null })).toBe("Applying to Duke? 2 counselors can help with your application.");
+    expect(collegePromptText("Duke", { count: 3, interestCount: 1, interestLabel: "STEM", stateName: "North Carolina" })).toBe("Applying to Duke? 1 counselor in North Carolina helps with STEM applications.");
+    expect(collegePromptText("Duke", { count: 2, interestCount: 0, interestLabel: null, stateName: null })).toBe("Applying to Duke? 2 counselors can help with your application.");
     for (const t of [line, deadlinePromptText(["Early Action"], 3), researchPromptText(3, 10, true)!]) expect(t).not.toMatch(/recommend|best|top-rated|we suggest/i);
   });
 });
