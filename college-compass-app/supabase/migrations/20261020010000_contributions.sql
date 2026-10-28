@@ -1,4 +1,4 @@
--- College Compass — research contributions and consensus publishing.
+-- Tierwise — research contributions and consensus publishing.
 --
 -- After a student's research finishes, the app calls public.contribute_research(payload) with the
 -- structured college fields only (no profile, notes, names or ChatGPT data). This function:

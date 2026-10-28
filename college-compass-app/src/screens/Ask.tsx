@@ -8,6 +8,8 @@ import { Banner, Chip, Empty } from "@/components/ui";
 import { IconSend, IconStop, IconTrash } from "@/components/icons";
 import { Screen } from "@/components/Screen";
 import { ASK_PROMPT_TEXT, CounselorPrompt, askWantsCounselor, useCounselorAvailability } from "@/components/CounselorPrompt";
+import { AiNoticeLine } from "@/components/AiNotice";
+import { AI_NOTICE_CHAT } from "@/legal/notice";
 
 const SUGGESTIONS = ["Which of these should I apply early to?", "Where will I likely get the most merit aid?", "What's missing from my list?", "Compare my top two targets", "What should I do this semester to improve my odds?"];
 
@@ -195,6 +197,7 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
                   </button>
                 )}
               </form>
+              <AiNoticeLine className="mt-1.5 !text-caption" text={AI_NOTICE_CHAT} />
             </div>
           </div>
         )}

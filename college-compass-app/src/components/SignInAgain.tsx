@@ -93,7 +93,7 @@ export function SignInAgain({ returnTo, reason = "expired", line, className = ""
       )}
       {!configured && (
         <div className="mt-3">
-          <Banner>Continue with ChatGPT works in the College Compass iPhone app. On the web it is waiting on OpenAI approval for this site.</Banner>
+          <Banner>Continue with ChatGPT works in the Tierwise iPhone app. On the web it is waiting on OpenAI approval for this site.</Banner>
         </div>
       )}
       <div className="mt-3">

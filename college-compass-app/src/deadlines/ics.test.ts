@@ -37,7 +37,7 @@ describe("ics", () => {
     const unfolded = ics.replace(/\r\n /g, "");
     expect(unfolded).toContain("Portfolio optional");
     expect(unfolded).toContain("Confirm the date on the college's admissions site");
-    expect(unfolded).toContain("DESCRIPTION:Duke University\\nFrom College Compass research.");
+    expect(unfolded).toContain("DESCRIPTION:Duke University\\nFrom Tierwise research.");
     expect(ics.match(/BEGIN:VALARM\r\nACTION:DISPLAY\r\n/g)).toHaveLength(2);
     expect(ics.match(/TRIGGER:-PT15H/g)).toHaveLength(2);
     // Every physical line fits the 75-octet limit and lines end with CRLF only.

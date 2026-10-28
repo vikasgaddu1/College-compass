@@ -179,3 +179,9 @@ export const IconLifebuoy = ({ size, ...r }: P) => (
     <path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5" />
   </svg>
 );
+export const IconInfo = ({ size, ...r }: P) => (
+  <svg {...base(size, r)}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 11v5.5M12 7.5v.5" />
+  </svg>
+);

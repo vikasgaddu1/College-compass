@@ -1,5 +1,5 @@
 /**
- * College Compass — stateless token relay (Cloudflare Worker).
+ * Tierwise — stateless token relay (Cloudflare Worker).
  *
  * Only needed by the WEB/PWA build, and only if https://auth.openai.com/api/accounts/oauth/token
  * refuses cross-origin requests from the browser. The native iOS app never uses it.

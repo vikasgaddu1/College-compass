@@ -528,7 +528,7 @@ export async function webPrintHtml(html: string, fileName: string): Promise<Shar
 
 // ───────────────────────────── Apple App Attest ─────────────────────────────
 //
-// Proves a shared-research contribution comes from the genuine College Compass app on a real
+// Proves a shared-research contribution comes from the genuine Tierwise app on a real
 // Apple device (ios/App/App/AppAttestPlugin.swift → DCAppAttestService). The protocol lives in
 // src/data/attest.ts. Unavailable on the web and in the Simulator (`supported: false`); then
 // contributions are simply sent unattested.

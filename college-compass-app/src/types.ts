@@ -1,5 +1,5 @@
 /**
- * Shared contracts for the College Compass app.
+ * Shared contracts for the Tierwise app.
  * Every module (data pipeline, engine, AI layer, UI) builds against these types.
  * Change them only in coordination — they are the seams between parallel work.
  */

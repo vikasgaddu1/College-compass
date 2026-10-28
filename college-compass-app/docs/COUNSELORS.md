@@ -92,7 +92,7 @@ Do everything in **Stripe test mode** first, check the flow end-to-end, then rep
    Gaddu LLC's EIN and bank account. Public business name / statement descriptor: `COLLEGE COMPASS` (what
    counselors see on their card statement). Support email and website (the portal URL). Decide with your
    accountant whether to enable **Stripe Tax** (Settings → Tax); the functions work either way.
-2. **Product and prices** — Product catalog → Add product **"College Compass counselor listing"**:
+2. **Product and prices** — Product catalog → Add product **"Tierwise counselor listing"**:
    - price 1: **$29.00 USD, recurring, monthly**
    - price 2: **$290.00 USD, recurring, yearly**
 
@@ -136,7 +136,7 @@ Do everything in **Stripe test mode** first, check the flow end-to-end, then rep
      organization and a few emails per hour, so counselors would never get their sign-in link. Authentication →
      Emails → SMTP Settings: use a provider (Resend, Postmark, SendGrid, Amazon SES) with a sender such as
      `no-reply@<your domain>`; then raise Authentication → Rate Limits → emails per hour (e.g. 30).
-   - Optional: edit the *Magic Link* email template to mention College Compass.
+   - Optional: edit the *Magic Link* email template to mention Tierwise.
 8. **Deploy** — merge to `main` (or Actions → *Shared college data (Supabase)* → Run workflow). Check the
    **counselor-functions** job: no "Counselor billing not configured" warning means the secrets are in place.
 9. **Test (test mode)** — sign in on the portal with a non-admin email, fill the profile, accept terms,

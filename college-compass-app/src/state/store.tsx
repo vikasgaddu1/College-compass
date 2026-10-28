@@ -26,9 +26,11 @@ export interface Prefs {
   notifyWhenReady: boolean;
   /** Share researched college facts (never personal data) so other students skip research. */
   shareResearch: boolean;
+  /** When the AI-assistance notice was acknowledged (ISO date); null until the first research run. Per install, not per list. */
+  aiNoticeAcceptedAt: string | null;
 }
 
-const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, theme: "system", researchCount: 12, notifyWhenReady: false, shareResearch: true };
+const DEFAULT_PREFS: Prefs = { model: null, sort: "fit", seenPlanSheet: false, theme: "system", researchCount: 12, notifyWhenReady: false, shareResearch: true, aiNoticeAcceptedAt: null };
 
 export interface Store {
   profile: StudentProfile;

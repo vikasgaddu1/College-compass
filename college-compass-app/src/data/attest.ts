@@ -1,7 +1,7 @@
 /**
  * Apple App Attest for shared-research contributions (iOS app only).
  *
- * Proves to the shared database that a contribution comes from the genuine College Compass app on a
+ * Proves to the shared database that a contribution comes from the genuine Tierwise app on a
  * real Apple device, so nobody can fake "independent students" by calling the database with made-up
  * install IDs. Server: supabase/functions/attest (verification) + the `contribute_research_attested`
  * database function. Sequence for one contribution:

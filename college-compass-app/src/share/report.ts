@@ -8,13 +8,14 @@
  * - Every piece of student / AI text goes through `esc()` — names, notes and reasons can contain
  *   `<`, `&` and quotes.
  * - Honest wording: chances are estimate bands, costs are estimates, figures come from public data
- *   and AI research.
+ *   and AI research; the AI-assistance notice (src/legal/notice.ts) closes the document.
  *
  * Formatting helpers are copied from `store.tsx` (`fmt`) rather than imported, so this module never
  * pulls React or the store into tests or the native bundle.
  */
 import type { ApplicationFacts, BalancedList, College, MajorArea, RankedCollege, StudentProfile, Tier } from "@/types";
 import { INCOME_BANDS, TIER_ORDER, majorLabel, regionLabel, stateName, tierInfo } from "@/state/catalog";
+import { AI_NOTICE_FULL, AI_NOTICE_SHORT, AI_NOTICE_TITLE, APP_NAME } from "@/legal/notice";
 
 export interface ReportOptions {
   /** GPA, SAT/ACT, AP/IB count and class rank in the student snapshot. Default true. */
@@ -45,8 +46,7 @@ export interface ReportInput {
   generatedAt?: Date | string | number;
 }
 
-export const REPORT_DISCLAIMER = "Estimates from public data and AI research — confirm details with each college.";
-const APP_NAME = "College Compass";
+export const REPORT_DISCLAIMER = AI_NOTICE_SHORT;
 
 // ───────────────────────────── small helpers ─────────────────────────────
 
@@ -432,11 +432,12 @@ export function buildReportHtml(input: ReportInput, options: Partial<ReportOptio
   const others = opts.others ? othersHtml(input.others ?? [], opts, starred) : "";
 
   const aboutBits = [
-    `<p><b>How to read this.</b> "Estimated chance" is a band from ${APP_NAME}'s admissions model (admit rate, test scores, GPA, rigor, residency and application plan). It is an estimate for planning, not a prediction or a promise — real decisions depend on essays, recommendations, the applicant pool and institutional priorities.</p>`,
+    `<p><b>${esc(AI_NOTICE_TITLE)}.</b> ${esc(AI_NOTICE_FULL)}</p>`,
+    `<p><b>How to read this.</b> "Estimated chance" is a band from ${APP_NAME}'s admissions model (admit rate, test scores, GPA, rigor, residency and application plan). It is an estimate for planning — real decisions depend on essays, recommendations, the applicant pool and institutional priorities.</p>`,
     opts.budget
       ? `<p><b>Costs.</b> "Est. net price" is what this family might pay per year after grants, estimated from each college's reported average for the family's income band and residency. Published cost of attendance is the sticker price before aid. Use each college's net price calculator for a real figure.</p>`
       : `<p><b>Costs.</b> "Avg. net price" is the federal average for all aided families and may be far from this family's figure; published cost of attendance is the sticker price before aid. Use each college's net price calculator for a real figure.</p>`,
-    `<p><b>Sources.</b> Admission, cost and outcome figures come from public data (Common Data Set, IPEDS / College Scorecard) and AI-assisted research of college websites, as of the data year shown on each college. Deadlines and policies change — confirm with each college before applying.</p>`,
+    `<p><b>Sources.</b> Admission, cost and outcome figures come from public data (Common Data Set, IPEDS / College Scorecard) and AI-assisted research of college websites, as of the data year shown on each college.</p>`,
   ].join("");
 
   return `<!doctype html>

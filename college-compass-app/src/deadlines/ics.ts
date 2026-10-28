@@ -5,7 +5,7 @@
 import type { Deadline } from "./deadlines";
 import { REMINDER_HOUR, shiftDay } from "./deadlines";
 
-export const ICS_PRODID = "-//College Compass//Deadlines//EN";
+export const ICS_PRODID = "-//Tierwise//Deadlines//EN";
 
 function pad(n: number): string {
   return String(n).padStart(2, "0");
@@ -69,7 +69,7 @@ export function deadlineUid(d: Pick<Deadline, "collegeId" | "plan" | "date">): s
 export function deadlinesToIcs(items: Deadline[], opts: IcsOptions = {}): string {
   const now = opts.now ?? new Date();
   const stamp = icsStamp(now);
-  const disclaimer = opts.disclaimer ?? "From College Compass research. Confirm the date on the college's admissions site.";
+  const disclaimer = opts.disclaimer ?? "From Tierwise research. Confirm the date on the college's admissions site.";
   const lines: string[] = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:${ICS_PRODID}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
   if (opts.calendarName) lines.push(`X-WR-CALNAME:${icsText(opts.calendarName)}`);
   for (const d of items) {

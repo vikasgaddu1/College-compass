@@ -14,7 +14,7 @@ import UserNotifications
 /// the app is in the background:
 /// - all expected requests finished OK → "Your college list is ready";
 /// - otherwise (JavaScript still has requests to start or retry, and it is suspended) →
-///   "Open College Compass to finish your research".
+///   "Open Tierwise to finish your research".
 ///
 /// iOS may terminate the suspended process and relaunch it in the background to deliver results.
 /// Task metadata, the run and the armed notification are persisted (UserDefaults), so a relaunched
@@ -214,7 +214,7 @@ final class BackgroundTransfers: NSObject, URLSessionDataDelegate {
                 content.title = armed.title
                 content.body = armed.body
             } else {
-                content.title = "Open College Compass to finish"
+                content.title = "Open Tierwise to finish"
                 content.body = "Most of your research is back. Open the app to finish the last few colleges."
             }
             content.sound = .default

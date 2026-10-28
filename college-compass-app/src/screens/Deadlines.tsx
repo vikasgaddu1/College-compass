@@ -10,6 +10,7 @@ import { Screen } from "@/components/Screen";
 import { Banner, Button, Empty, Group, Row, Switch } from "@/components/ui";
 import { IconExternal, IconStar } from "@/components/icons";
 import { CounselorPrompt, deadlinePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
+import { AiNoticeLine } from "@/components/AiNotice";
 import { formatDay, formatRelative, formatWeekday, groupByDate, hiddenPlansNote, upcomingDeadlines, type Deadline } from "@/deadlines/deadlines";
 import { deadlinesToIcs, icsFileName } from "@/deadlines/ics";
 import { requestNotificationPermission, shareCalendarFile, supportsDeadlineReminders } from "@/platform";
@@ -65,7 +66,7 @@ export function Deadlines() {
     try {
       const granted = await requestNotificationPermission();
       if (!granted) {
-        setNote("Notifications are off for College Compass. Allow them in the iPhone Settings app, then turn this on again.");
+        setNote("Notifications are off for Tierwise. Allow them in the iPhone Settings app, then turn this on again.");
         return;
       }
       setListRemind(activeList.id, true);
@@ -170,9 +171,7 @@ export function Deadlines() {
             ))
           )}
 
-          <p className="mt-6 text-center text-footnote text-text-muted">
-            Deadlines come from {demo ? "sample" : "AI"} research and can be out of date. Confirm each one on the college's admissions site before you apply.
-          </p>
+          <AiNoticeLine className="mt-6" text={`Deadlines come from ${demo ? "sample" : "AI-assisted"} research and may be out of date — verify each one with the college before you apply.`} />
         </>
       )}
     </Screen>

@@ -106,7 +106,7 @@ jobs:
           code=$(curl -s -o "$RUNNER_TEMP/body.html" -w '%{http_code}' 'http://127.0.0.1:1455/auth/callback?code=ci-test&state=ci-state&client_id=oaiapp_ci')
           echo "GET /auth/callback -> $code"
           test "$code" = "200"
-          grep -q "Signed in to College Compass" "$RUNNER_TEMP/body.html"
+          grep -q "Signed in to Tierwise" "$RUNNER_TEMP/body.html"
           # Native HTTP (OpenAI calls bypass WebView CORS): unauthenticated GET /v1/models must come
           # back 401 from api.openai.com, a cancelled request must abort, and a POST through the background
           # URLSession must reach api.openai.com too.

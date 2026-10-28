@@ -6,6 +6,7 @@ import { Screen } from "@/components/Screen";
 import { Button, Empty, OddsChip, TierPill } from "@/components/ui";
 import { IconNote, NoteSheet, notePreview } from "@/components/NoteSheet";
 import { IconArrowDown, IconArrowUp, IconChevronRight, IconShare, IconStar } from "@/components/icons";
+import { AI_NOTICE_SHORT } from "@/legal/notice";
 
 export function Shortlist({ tabBar }: { tabBar?: ReactNode }) {
   const { shortlist, byId, moveSaved, toggleSaved, notes, profile } = useStore();
@@ -23,7 +24,7 @@ export function Shortlist({ tabBar }: { tabBar?: ReactNode }) {
         return `${i + 1}. ${r.college.name} (${r.college.city}, ${r.college.state}) — ${t.label}, odds ${fmt.band(r.odds.low, r.odds.high)}, fit ${Math.round(r.fit.total)}/100, est. ${r.est_net_price != null ? `${fmt.usd(r.est_net_price)}/yr` : "price unknown"}${note ? `\n   Notes: ${note}` : ""}`;
       }),
       "",
-      "Odds are estimates from College Compass, not predictions.",
+      `From Tierwise. ${AI_NOTICE_SHORT}`,
     ];
     return lines.join("\n");
   };

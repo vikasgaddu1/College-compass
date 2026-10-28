@@ -8,6 +8,8 @@ import { ConfirmSheet, Sheet } from "@/components/Sheet";
 import { Banner, Button, Group, Row, Segmented, Switch } from "@/components/ui";
 import { IconCheck, IconChat, IconExternal, IconPerson } from "@/components/icons";
 import { DeleteListSheet, ListsSheet, NewListSheet, RenameListSheet, describeList } from "@/components/ListsSheet";
+import { AiNoticeSheet } from "@/components/AiNotice";
+import { AI_NOTICE_TITLE } from "@/legal/notice";
 
 const APP_VERSION = "0.1.0";
 
@@ -24,6 +26,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
   const [models, setModels] = useState<{ slug: string; display_name: string }[] | null>(null);
   const [modelsErr, setModelsErr] = useState<string | null>(null);
   const [oddsOpen, setOddsOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmSignOut, setConfirmSignOut] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -70,10 +73,10 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
 
   const doExport = async () => {
     const json = exportJson();
-    const file = new File([json], `college-compass-${new Date().toISOString().slice(0, 10)}.json`, { type: "application/json" });
+    const file = new File([json], `tierwise-${new Date().toISOString().slice(0, 10)}.json`, { type: "application/json" });
     try {
       if (navigator.canShare?.({ files: [file] }) && navigator.share) {
-        await navigator.share({ files: [file], title: "College Compass export" });
+        await navigator.share({ files: [file], title: "Tierwise export" });
         return;
       }
     } catch {
@@ -90,7 +93,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
   const onImport = async (f: File | undefined) => {
     if (!f) return;
     const n = importJson(await f.text());
-    setToast(n > 0 ? `Imported ${n} items` : "That file isn't a College Compass export");
+    setToast(n > 0 ? `Imported ${n} items` : "That file isn't a Tierwise export");
     if (fileRef.current) fileRef.current.value = "";
   };
 
@@ -238,6 +241,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
 
       {/* About */}
       <Group label="About">
+        <Row label={AI_NOTICE_TITLE} hint="AI assistance, estimates and independence" chevron onClick={() => setAboutOpen(true)} />
         <Row label="How odds work" chevron onClick={() => setOddsOpen(true)} />
         <Row label="Privacy policy" onClick={() => open("./privacy.html")} right={<IconExternal size={18} className="text-text-muted" />} />
         <Row label="Support" onClick={() => open("./support.html")} right={<IconExternal size={18} className="text-text-muted" />} />
@@ -275,7 +279,7 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
         </Group>
       )}
 
-      <p className="mt-8 text-center text-footnote text-text-muted">College Compass {APP_VERSION}</p>
+      <p className="mt-8 text-center text-footnote text-text-muted">Tierwise {APP_VERSION}</p>
 
       {/* Model picker */}
       <Sheet open={modelsOpen} onClose={() => setModelsOpen(false)} title="Model">
@@ -300,6 +304,13 @@ export function Settings({ tabBar }: { tabBar?: ReactNode }) {
           </div>
         )}
       </Sheet>
+
+      {/* About Tierwise: the AI-assistance notice in full */}
+      <AiNoticeSheet open={aboutOpen} onClose={() => setAboutOpen(false)}>
+        <p className="mt-4 text-footnote text-text-muted">
+          Tierwise {APP_VERSION} · Gaddu LLC
+        </p>
+      </AiNoticeSheet>
 
       {/* How odds work */}
       <Sheet open={oddsOpen} onClose={() => setOddsOpen(false)} title="How odds work">

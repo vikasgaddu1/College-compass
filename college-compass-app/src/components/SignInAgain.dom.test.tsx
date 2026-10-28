@@ -114,6 +114,6 @@ describe("SignInAgain", () => {
     mocks.configured.mockReturnValue(false);
     render(<SignInAgain returnTo="/research" />);
     expect((button() as HTMLButtonElement).disabled).toBe(true);
-    expect(screen.getByText(/works in the College Compass iPhone app/)).toBeTruthy();
+    expect(screen.getByText(/works in the Tierwise iPhone app/)).toBeTruthy();
   });
 });

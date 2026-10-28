@@ -160,7 +160,7 @@ function stripNamespace(name: string): string {
 
 /** api.openai.com blocks browser (CORS) calls made with ChatGPT tokens; only the app can make them. */
 function webPlanError(): AiCallError {
-  return new AiCallError("unsupported", "OpenAI only accepts ChatGPT-plan requests from the College Compass iPhone app, not from a web page. Open the app to run research, or try the demo here.");
+  return new AiCallError("unsupported", "OpenAI only accepts ChatGPT-plan requests from the Tierwise iPhone app, not from a web page. Open the app to run research, or try the demo here.");
 }
 
 /**
@@ -233,7 +233,7 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
     if (acct) {
       throw new AiCallError(
         "unsupported",
-        "ChatGPT plan usage wasn't allowed for College Compass. Sign out, sign in again and allow the app to use your ChatGPT plan.",
+        "ChatGPT plan usage wasn't allowed for Tierwise. Sign out, sign in again and allow the app to use your ChatGPT plan.",
       );
     }
     throw new AiCallError("not_connected", "Sign in with ChatGPT to use AI research.");
@@ -285,7 +285,7 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
     const tools: unknown[] = [];
     if (fns.length) {
       if (mode === "namespace") {
-        tools.push({ type: "namespace", name: NAMESPACE, description: "College Compass structured outputs. Call these to return results.", tools: fns });
+        tools.push({ type: "namespace", name: NAMESPACE, description: "Tierwise structured outputs. Call these to return results.", tools: fns });
       } else {
         tools.push(...fns);
       }
@@ -393,7 +393,7 @@ export function createAiClient(auth: ChatGPTAuth, overrides: Partial<ClientDeps>
 
       if (code === "subscription_sharing_usage_limit_exceeded") throw err("usage_limit", USAGE_LIMIT_MESSAGE);
       if (code === "subscription_sharing_user_not_eligible") {
-        throw err("unsupported", "ChatGPT plan usage isn't available for this account or workspace, so College Compass can't run AI requests with it.");
+        throw err("unsupported", "ChatGPT plan usage isn't available for this account or workspace, so Tierwise can't run AI requests with it.");
       }
       if (code === "subscription_sharing_route_not_supported" || code.startsWith("chatpass_v2_")) {
         throw err("unsupported", `This app's ChatGPT access is misconfigured (${code}). Please update the app.`);

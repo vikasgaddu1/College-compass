@@ -124,7 +124,7 @@ describe("self-serve sign-in (native, no partner client ID)", () => {
 
     expect(url.origin + url.pathname).toBe("https://auth.openai.com/api/accounts/authorize");
     expect(q.get("client_id")).toBe("dynamic_agent_client");
-    expect(q.get("agent_name_hint")).toBe("College Compass");
+    expect(q.get("agent_name_hint")).toBe("Tierwise");
     expect(q.get("ext_agent_host_id")).toBe(HOST);
     expect(q.get("response_type")).toBe("code");
     expect(q.get("redirect_uri")).toBe("http://127.0.0.1:1455/auth/callback");
@@ -260,7 +260,7 @@ describe("self-serve sign-in (native, no partner client ID)", () => {
     h.sessions[1]!.deliver(new URLSearchParams({ error: "invalid_client", state: a2.state }));
     const a3 = await h.authorizeOpened(3);
     expect(a3.q.get("client_id")).toBe("dynamic_agent_client");
-    expect(a3.q.get("agent_name_hint")).toBe("College Compass");
+    expect(a3.q.get("agent_name_hint")).toBe("Tierwise");
     expect(a3.q.get("ext_agent_host_id")).toBe(HOST);
     h.replyTokens("oaiapp_new", a3.nonce);
     h.sessions[2]!.deliver(new URLSearchParams({ code: "c3", state: a3.state, client_id: "oaiapp_new" }));

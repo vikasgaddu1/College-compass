@@ -1,6 +1,6 @@
 # Sign in with ChatGPT: setup guide for the owner
 
-College Compass has no backend and no database. Each student signs in with **their own ChatGPT
+Tierwise has no backend and no database. Each student signs in with **their own ChatGPT
 account**, and every AI request (planner, research agents, Ask tab) goes **from their device straight
 to OpenAI**, billed to **their ChatGPT plan**. This guide covers the two sign-in modes, what you need to
 set up, what it costs you (nothing per user), and what still isn't certain.
@@ -30,7 +30,7 @@ native app then uses it automatically).
 
 ## Verified with a real ChatGPT account (2026-10-17)
 
-- **Self-serve sign-in works end to end.** `client_id=dynamic_agent_client` + `agent_name_hint` + `ext_agent_host_id` → account chooser → "Connect College Compass to ChatGPT" (agent name, then profile + "Use your ChatGPT plan" consent) → redirect to `http://127.0.0.1:1455/auth/callback?code=…&state=…&client_id=oaiapp_…`. The code exchange at the token endpoint returned 200 with `access_token` (1 h), a `refresh_token`, an `id_token` whose `nonce`/`aud` matched, and the scope `chatgpt.tokens.use.direct email offline_access openid profile resource.invoke`.
+- **Self-serve sign-in works end to end.** `client_id=dynamic_agent_client` + `agent_name_hint` + `ext_agent_host_id` → account chooser → "Connect Tierwise to ChatGPT" (agent name, then profile + "Use your ChatGPT plan" consent) → redirect to `http://127.0.0.1:1455/auth/callback?code=…&state=…&client_id=oaiapp_…`. The code exchange at the token endpoint returned 200 with `access_token` (1 h), a `refresh_token`, an `id_token` whose `nonce`/`aud` matched, and the scope `chatgpt.tokens.use.direct email offline_access openid profile resource.invoke`.
 - **The token endpoint allows browser CORS** (the exchange ran with `fetch` from the github.io origin).
 - **api.openai.com does not.** Authenticated calls (`GET /v1/models` with a ChatGPT token, any `POST /v1/responses`) fail CORS from a web origin. So the native app sends every OpenAI request through `platform.httpFetch` → the in-app `NativeHttp` plugin (URLSession, no CORS; `ios/App/App/NativeHttpPlugin.swift`). Stopping research or chat cancels the URLSession task, so OpenAI stops generating. Streaming responses are buffered and parsed once complete. CI launches the app in the iOS Simulator and checks that a native request reaches api.openai.com (401 without a token) and that cancel aborts it. The web build can sign in but cannot run plan-usage requests; it says so and points to the iPhone app.
 
@@ -51,10 +51,10 @@ Nothing to configure: leave `VITE_CC_CHATGPT_CLIENT_ID` empty for the iOS build.
 
 ```
 App: LoopbackAuth.start()  → NWListener on 127.0.0.1:1455 (or any free port if 1455 is busy)
-     open SFSafariViewController(authorize?client_id=dynamic_agent_client&agent_name_hint=College Compass
+     open SFSafariViewController(authorize?client_id=dynamic_agent_client&agent_name_hint=Tierwise
                                   &ext_agent_host_id=urn:uuid:…&redirect_uri=http://127.0.0.1:1455/auth/callback…)
 OpenAI login ──redirect──▶ http://127.0.0.1:1455/auth/callback?code&state&client_id=oaiapp_…
-     plugin answers with a "Signed in to College Compass" page and emits `callback` to JS
+     plugin answers with a "Signed in to Tierwise" page and emits `callback` to JS
 App: stop listener, close browser, check state, POST /oauth/token with client_id=oaiapp_…
 ```
 
@@ -66,7 +66,7 @@ App: stop listener, close browser, check state, POST /oauth/token with client_id
   `NSAllowsLocalNetworking` (arbitrary loads stay off).
 - **Per-device host ID.** `ext_agent_host_id` is `urn:uuid:<uuid>`, created once with
   `crypto.randomUUID()` and kept in `cc2:host_id`. It is sent on every sign-in from this device.
-- **First registration** sends `client_id=dynamic_agent_client` and `agent_name_hint=College Compass`
+- **First registration** sends `client_id=dynamic_agent_client` and `agent_name_hint=Tierwise`
   (same on every install; display metadata only). The redirect returns `code`, `state` and the
   **issued `client_id`** (`oaiapp_…`).
 - **Issued client ID.** It is used for the token exchange, as the expected ID-token `aud`, for every
@@ -107,7 +107,7 @@ from <https://developers.openai.com/siwc/request-client-id>
 
 What to tell them (copy and adapt):
 
-> **App:** College Compass, a free college-search assistant for US high-school students
+> **App:** Tierwise, a free college-search assistant for US high-school students
 > (any field of study). It ships as a hosted web app/PWA at
 > `https://vikasgaddu1.github.io/College-compass/app/` and as a native iOS app on the App Store
 > (bundle id `com.gaddu.collegecompass`).
@@ -175,7 +175,7 @@ iOS:    App → SFSafariViewController(authorize) ──▶ /app/callback.html?c
 ```
 
 - `state` ends with `.n` when sign-in started in the native app. That suffix is how
-  `callback.html` knows to hand off to the app. The page also shows an **Open College Compass**
+  `callback.html` knows to hand off to the app. The page also shows an **Open Tierwise**
   button in case Safari asks before opening the app.
 - The pending attempt (`state`, `nonce`, PKCE verifier, return route, timestamp) is stored in
   `localStorage` under `cc2:oauth_pending`, because session storage doesn't survive the

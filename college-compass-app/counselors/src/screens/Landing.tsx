@@ -148,6 +148,7 @@ export function Landing() {
             ["Can I list in several states, or virtually?", "Yes. Choose every state you serve, or “Nationwide (virtual)” to appear for families anywhere. Mark whether you meet virtually, in person or both."],
             ["What happens if I cancel?", "Your listing stays live until the end of the period you've paid for, then it's hidden. Your profile is kept so you can come back later."],
             ["Is my information public?", "Only what you put on your listing: your name, title, photo, bio, credentials, states, specialties and the contact details you choose to show. Your account email and billing details are never shown."],
+            ["Are you affiliated with colleges or the Common App?", "No. Tierwise is an independent research aid, and listed counselors are independent professionals who are not affiliated with any college or university, the College Board, ACT or the Common Application. The app says so to families, and listings must not suggest otherwise."],
           ].map(([q, a]) => (
             <details key={q}>
               <summary>{q}</summary>

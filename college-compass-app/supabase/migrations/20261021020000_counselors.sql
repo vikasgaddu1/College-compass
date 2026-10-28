@@ -1,4 +1,4 @@
--- College Compass — counselor directory (paid listings, approved by the owner).
+-- Tierwise — counselor directory (paid listings, approved by the owner).
 -- Contract: docs/COUNSELORS_CONTRACT.md · Operations: docs/COUNSELORS.md
 --
 -- Counselors sign in on the website portal (Supabase Auth magic link), edit a DRAFT profile, accept the
@@ -360,7 +360,7 @@ begin
   select * into c from public.counselors where user_id = uid for update;
   if not found then raise exception 'no_profile' using hint = 'Save your profile first.'; end if;
   if c.terms_accepted_at is null then raise exception 'terms_not_accepted' using hint = 'Accept the counselor terms first.'; end if;
-  if c.status = 'suspended' then raise exception 'suspended' using hint = 'This listing is suspended; contact College Compass.'; end if;
+  if c.status = 'suspended' then raise exception 'suspended' using hint = 'This listing is suspended; contact Tierwise.'; end if;
   missing := cc_private.counselor_missing(c);
   if cardinality(missing) > 0 then
     raise exception 'incomplete_profile' using detail = array_to_string(missing, ','), hint = 'Missing: ' || array_to_string(missing, ', ');

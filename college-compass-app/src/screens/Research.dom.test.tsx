@@ -53,7 +53,8 @@ beforeEach(() => {
   localStorage.clear();
   sessionStorage.clear();
   localStorage.setItem("cc2:profile", JSON.stringify(DEMO_PROFILE));
-  localStorage.setItem("cc2:prefs", JSON.stringify({ onboardingDone: true }));
+  // The AI-assistance notice was acknowledged on this install; the "first run" suite below clears it.
+  localStorage.setItem("cc2:prefs", JSON.stringify({ onboardingDone: true, aiNoticeAcceptedAt: "2026-10-01T00:00:00.000Z" }));
   window.location.hash = "#/research";
   window.matchMedia = vi.fn().mockImplementation((q: string) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {}, onchange: null, dispatchEvent: () => false })) as any;
   Element.prototype.scrollTo = vi.fn() as any;
@@ -220,5 +221,80 @@ describe("Cancel", () => {
     await new Promise((r) => setTimeout(r, 20));
     expect(mocks.run).toHaveBeenCalledTimes(2);
     expect(screen.queryByText("Research stopped")).toBeNull();
+  });
+});
+
+describe("AI-assistance notice (first research run on this install)", () => {
+  const firstRun = () => localStorage.setItem("cc2:prefs", JSON.stringify({ onboardingDone: true }));
+  const accepted = () => (JSON.parse(localStorage.getItem("cc2:prefs") || "{}") as { aiNoticeAcceptedAt?: string }).aiNoticeAcceptedAt;
+
+  it("shows 'Before you start' with the full notice and runs nothing until it's accepted", async () => {
+    firstRun();
+    renderResearch();
+    const sheet = await screen.findByRole("dialog", { name: "Before you start" });
+    expect(sheet.textContent).toContain("About Tierwise.");
+    expect(sheet.textContent).toContain("AI can make mistakes.");
+    expect(sheet.textContent).toContain("not affiliated with or endorsed by any college or university, the College Board, ACT, or the Common Application.");
+    await new Promise((r) => setTimeout(r, 20));
+    expect(mocks.run).not.toHaveBeenCalled();
+    expect(mocks.ensureFresh).not.toHaveBeenCalledWith(25 * 60_000);
+    // No research chrome behind the sheet.
+    expect(screen.queryByText("Picking colleges for you")).toBeNull();
+    expect(screen.getByText("Let's research colleges")).toBeTruthy();
+
+    await act(async () => { screen.getByRole("button", { name: "I understand" }).click(); });
+    await waitFor(() => expect(mocks.run).toHaveBeenCalledTimes(1));
+    expect(screen.queryByRole("dialog", { name: "Before you start" })).toBeNull();
+    expect(accepted()).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+  });
+
+  it("is shown once per install: a later visit starts research straight away", async () => {
+    firstRun();
+    const view = renderResearch();
+    await act(async () => { (await screen.findByRole("button", { name: "I understand" })).click(); });
+    await waitFor(() => expect(mocks.run).toHaveBeenCalledTimes(1));
+    view.unmount();
+
+    renderResearch();
+    await waitFor(() => expect(mocks.run).toHaveBeenCalledTimes(2));
+    expect(screen.queryByRole("dialog", { name: "Before you start" })).toBeNull();
+  });
+
+  it("'Not now' starts nothing, records nothing and goes back to the list", async () => {
+    firstRun();
+    renderResearch();
+    const sheet = await screen.findByRole("dialog", { name: "Before you start" });
+    await act(async () => { sheet.querySelector<HTMLButtonElement>("button.cc-btn-quiet")!.click(); });
+    expect(window.location.hash).toBe("#/list");
+    await new Promise((r) => setTimeout(r, 20));
+    expect(mocks.run).not.toHaveBeenCalled();
+    expect(accepted()).toBeUndefined();
+  });
+
+  it("comes before the sign-in gate, so a signed-out student sees the notice first and the card after accepting", async () => {
+    firstRun();
+    mocks.account.mockReturnValue(null);
+    renderResearch();
+    await screen.findByRole("dialog", { name: "Before you start" });
+    expect(screen.queryByText("Sign in with ChatGPT")).toBeNull();
+    await act(async () => { screen.getByRole("button", { name: "I understand" }).click(); });
+    expect(await screen.findByText("Sign in with ChatGPT")).toBeTruthy();
+    expect(mocks.run).not.toHaveBeenCalled();
+  });
+
+  it("the short line sits under finished results", async () => {
+    mocks.run.mockImplementationOnce(async (o) => {
+      o.onEvent({ type: "planned", candidates: [{ name: DEMO_COLLEGES[0]!.name, state: DEMO_COLLEGES[0]!.state, why: "", expected_tier: null, user_added: false }] });
+      o.onEvent({ type: "college_done", college: DEMO_COLLEGES[0]! });
+      o.onEvent({ type: "done", colleges: [DEMO_COLLEGES[0]!] });
+      return [DEMO_COLLEGES[0]!];
+    });
+    renderResearch();
+    expect(await screen.findByText("Research complete")).toBeTruthy();
+    const line = screen.getByTestId("ai-notice-line");
+    expect(line.textContent).toContain("AI-assisted estimates — verify with each college. Not an admission decision.");
+    // The "i" opens the full text.
+    await act(async () => { screen.getByRole("button", { name: "Learn more: About Tierwise" }).click(); });
+    expect((await screen.findByRole("dialog", { name: "About Tierwise" })).textContent).toContain("AI can make mistakes.");
   });
 });

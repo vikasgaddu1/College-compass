@@ -289,7 +289,7 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="light dark">
-    <title>Signed in - College Compass</title>
+    <title>Signed in - Tierwise</title>
     <style>
     :root { color-scheme: light dark; --bg: #f6f7fb; --card: #ffffff; --text: #111827; --muted: #4b5563; --accent: #2457d6; --on-accent: #ffffff; }
     @media (prefers-color-scheme: dark) { :root { --bg: #0b0f19; --card: #151b2b; --text: #f3f4f6; --muted: #9ca3af; --accent: #6b93ff; --on-accent: #0b0f19; } }
@@ -304,9 +304,9 @@ public class LoopbackAuthPlugin: CAPPlugin, CAPBridgedPlugin {
     <body>
     <main>
     <div class="card">
-    <h1>Signed in to College Compass</h1>
+    <h1>Signed in to Tierwise</h1>
     <p>You can return to the app.</p>
-    <a class="button" href="collegecompass://auth/done">Return to College Compass</a>
+    <a class="button" href="collegecompass://auth/done">Return to Tierwise</a>
     </div>
     </main>
     </body>

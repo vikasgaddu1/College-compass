@@ -11,7 +11,7 @@ import { decodeCbor, decodeCborExact, isBytes, isMap, type CborValue } from "./c
 import { DerError, OID, TAG, canSignCertificates, children, expectTag, isCa, parseCertificate, pemToDer, readExact, type Certificate } from "./der.ts";
 import { curveFor, verifyDigest } from "./ecdsa.ts";
 
-/** College Compass: Team ID C544LPNJ2S + bundle ID (the App ID App Attest hashes into rpIdHash). */
+/** Tierwise: Team ID C544LPNJ2S + bundle ID (the App ID App Attest hashes into rpIdHash). */
 export const COLLEGE_COMPASS_APP_ID = "C544LPNJ2S.com.gaddu.collegecompass";
 
 /**
