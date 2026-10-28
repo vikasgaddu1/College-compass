@@ -1,7 +1,7 @@
 /** Portal copy constants. */
 
-// TODO(owner): confirm the support address before launch.
-export const SUPPORT_EMAIL = "support@collegecompass.app";
+// Public contact address for counselors and families (owner-chosen for now).
+export const SUPPORT_EMAIL = "anovagroups@gmail.com";
 export const OPERATOR = "Gaddu LLC";
 export const PRICE_MONTHLY = 29;
 export const PRICE_YEARLY = 290;

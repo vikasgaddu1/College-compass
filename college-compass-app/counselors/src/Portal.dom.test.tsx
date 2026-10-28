@@ -70,7 +70,7 @@ describe("Landing", () => {
     expect(screen.getByText("Who can list?")).toBeTruthy();
     expect(screen.getByText("What happens if I cancel?")).toBeTruthy();
     expect(screen.getByText(/Gaddu LLC/)).toBeTruthy();
-    expect(screen.getByRole("link", { name: "support@collegecompass.app" }).getAttribute("href")).toBe("mailto:support@collegecompass.app");
+    expect(screen.getByRole("link", { name: "anovagroups@gmail.com" }).getAttribute("href")).toBe("mailto:anovagroups@gmail.com");
     expect(screen.getByRole("link", { name: "Counselor terms" }).getAttribute("href")).toBe("#/terms");
     fireEvent.click(screen.getAllByRole("button", { name: "Get your free founding listing" })[0]!);
     await waitFor(() => expect(window.location.hash).toBe("#/signin"));
