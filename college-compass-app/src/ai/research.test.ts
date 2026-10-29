@@ -389,6 +389,25 @@ describe("shared research flywheel", () => {
     expect("check" in sent.college.application.plans[0]!).toBe(false);
   });
 
+  it("re-checks a local-cache hit whose check timed out more than a day ago, but not one already verified", async () => {
+    const m = mockClient();
+    const page = "https://example.edu/deadlines";
+    const dayAgo = new Date(NOW.getTime() - 25 * 3600_000).toISOString();
+    const stale = { ...fakeCollege("College A", "2026-10-10T00:00:00Z"), application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA" as const, deadline: "2026-11-01", source_url: page, check: { status: "unchecked" as const, reason: "timeout", url: page, host: "example.edu", checkedAt: dayAgo } }], test_policy_note: null, essays_note: null, fee: null } };
+    const fine = { ...fakeCollege("College B", "2026-10-10T00:00:00Z"), id: "ai-college-b", application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA" as const, deadline: "2026-11-01", source_url: page, check: { status: "verified" as const, url: page, host: "example.edu", checkedAt: dayAgo } }], test_policy_note: null, essays_note: null, fee: null } };
+    const verify = vi.fn(async (c: import("../types").College) => ({ ...c, application: { ...c.application!, plans: c.application!.plans.map((p) => ({ ...p, check: { status: "verified" as const, url: page, host: "example.edu", checkedAt: NOW.toISOString() } })) } }));
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_check4" }), now: () => NOW, shared: null, verify });
+    const events: ResearchEvent[] = [];
+    const out = await r.run({ profile: baseProfile(), wanted: ["College A", "College B"], target_count: 2, cache: [stale, fine], onEvent: (e) => events.push(e) });
+    expect(m.calls.length).toBe(0); // both served from the list's own cache
+    expect(verify).toHaveBeenCalledTimes(1);
+    expect(verify.mock.calls[0]![0].name).toBe("College A");
+    const checked = events.filter((e) => e.type === "college_checked") as Extract<ResearchEvent, { type: "college_checked" }>[];
+    expect(checked.map((e) => e.college.name)).toEqual(["College A"]);
+    expect(out.find((c) => c.name === "College A")!.application!.plans[0]!.check).toMatchObject({ status: "verified", checkedAt: NOW.toISOString() });
+    expect(out.find((c) => c.name === "College B")!.application!.plans[0]!.check!.checkedAt).toBe(dayAgo);
+  });
+
   it("never trusts a check result from the shared database: the plan is checked on this device", async () => {
     const m = mockClient();
     const page = "https://a.edu/deadlines";

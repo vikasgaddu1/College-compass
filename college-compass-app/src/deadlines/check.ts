@@ -10,10 +10,10 @@ import { needsDeadlineCheck, verifyCollegeDeadlines } from "./verify";
 export { needsDeadlineCheck };
 
 /** Check a college's deadlines against its own pages. Resolves to the college itself when there is nothing to check; never throws. */
-export async function checkCollegeDeadlines(college: College, signal?: AbortSignal): Promise<College> {
-  if (!needsDeadlineCheck(college)) return college;
+export async function checkCollegeDeadlines(college: College, signal?: AbortSignal, now: Date = new Date()): Promise<College> {
+  if (!needsDeadlineCheck(college, now)) return college;
   try {
-    return await verifyCollegeDeadlines(college, { fetch: (url, init) => httpFetch(url, init), signal });
+    return await verifyCollegeDeadlines(college, { fetch: (url, init) => httpFetch(url, init), signal, now: () => now });
   } catch {
     return college;
   }

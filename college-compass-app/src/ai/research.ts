@@ -311,29 +311,16 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       const nowMs = now().getTime();
       const cycle = `${entryTerm(profile)} entry`;
       const usable = (c: College | null) => (c && fitsStudent(c, profile.majors, cycle) ? c : null);
-      for (const c of candidates) {
-        const hit = usable(findFresh(opts.cache, c.name, nowMs)) ?? usable(cache.get(c.name));
-        if (hit) {
-          results.set(c, hit);
-          emit({ type: "college_done", college: hit });
-        } else toResearch.push(c);
-      }
-
-      // 2b) Shared database: federal figures for everything we research, and verified research other
-      // students already did for this cycle — those colleges need no ChatGPT call at all.
-      let sharedMap = new Map<string, SharedCollege>();
-      if (shared && toResearch.length) {
-        try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }
-      }
-      if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
 
       // Deadline proof checks run in the background after a college is reported, so the list never
       // waits on a college website. The result replaces the college (`college_checked`) and stays on
-      // this device: it is never contributed, and a shared record's own is dropped on read. Awaited before `done`.
+      // this device: it is never contributed, and a shared record's own is dropped on read. Awaited
+      // before `done`. `needsDeadlineCheck` skips plans this device already checked (a transient
+      // failure is retried after a day), so cached colleges are covered too.
       const share = opts.share_research !== false && !!shared?.contribute;
       const pendingChecks: Promise<void>[] = [];
       const proofCheck = (cand: CollegeCandidate, college: College) => {
-        if (!verify || !needsDeadlineCheck(college)) return;
+        if (!verify || !needsDeadlineCheck(college, now())) return;
         const task = async () => {
           let checked = college;
           try { checked = applyChecks(college, await verify(college, signal)); } catch { /* stays unchecked */ }
@@ -345,6 +332,24 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         };
         pendingChecks.push(task().catch(() => {}));
       };
+
+      for (const c of candidates) {
+        const hit = usable(findFresh(opts.cache, c.name, nowMs)) ?? usable(cache.get(c.name));
+        if (hit) {
+          results.set(c, hit);
+          emit({ type: "college_done", college: hit });
+          proofCheck(c, hit); // only what is still unchecked, or a stale transient failure
+        } else toResearch.push(c);
+      }
+
+      // 2b) Shared database: federal figures for everything we research, and verified research other
+      // students already did for this cycle — those colleges need no ChatGPT call at all.
+      let sharedMap = new Map<string, SharedCollege>();
+      if (shared && toResearch.length) {
+        try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }
+      }
+      if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
+
 
       for (const c of [...toResearch]) {
         const facts = sharedMap.get(c.name);

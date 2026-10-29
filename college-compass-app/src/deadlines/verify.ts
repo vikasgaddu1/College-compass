@@ -319,23 +319,36 @@ export function findQuote(text: string, quote: string): { start: number; end: nu
 
 export type Judgement = { status: "verified" } | { status: "mismatch"; reason: "no_date" | "not_near_plan" };
 
+/** How far (characters) outside the matched quote the date may still count as "in the quote". */
+export const QUOTE_SLACK_CHARS = 40;
+
 /**
- * Given a page's text: verified when the plan's month + day appears within `NEAR_CHARS` of the quote
- * (when the quote is found) or of the plan's name; otherwise mismatch.
+ * Given a page's text, verified when the plan's month + day is on it in the plan's own context:
+ * - inside the matched quote (± a few words) AND the nearest plan label to that date is this plan —
+ *   or no plan label at all within `NEAR_CHARS` (a page that doesn't use the standard labels); a
+ *   fuzzy quote match alone never decides, since a quote can loosely match a neighbouring table row;
+ * - or within `NEAR_CHARS` of this plan's name and nearer to it than to any other plan's name.
+ * Otherwise mismatch.
  */
 export function judgePage(text: string, plan: Pick<ApplicationPlan, "plan" | "deadline" | "quote">, now: Date): Judgement | null {
   const md = monthDay(plan.deadline, now);
   if (!md) return null;
   const dates = findDates(text, md.month, md.day);
   if (!dates.length) return { status: "mismatch", reason: "no_date" };
-  const q = plan.quote ? findQuote(text, plan.quote) : null;
-  if (q && dates.some((p) => p >= q.start - NEAR_CHARS && p <= q.end + NEAR_CHARS)) return { status: "verified" };
-  // No usable quote: the date must sit next to this plan's name — and nearer to it than to any other plan's.
   const mentions = (Object.keys(PLAN_PATTERNS) as PlanKind[]).flatMap((k) => planMentions(text, k));
-  for (const p of dates) {
+  const claimedBy = (p: number) => {
     const near = nearestPlan(text, p, mentions);
-    if (near && near.plan === plan.plan && near.distance <= NEAR_CHARS) return { status: "verified" };
+    return !near || near.distance > NEAR_CHARS ? null : near.plan; // which plan's label the date sits next to
+  };
+  const q = plan.quote ? findQuote(text, plan.quote) : null;
+  if (q) {
+    for (const p of dates) {
+      if (p < q.start - QUOTE_SLACK_CHARS || p > q.end + QUOTE_SLACK_CHARS) continue;
+      const owner = claimedBy(p);
+      if (owner === null || owner === plan.plan) return { status: "verified" };
+    }
   }
+  for (const p of dates) if (claimedBy(p) === plan.plan) return { status: "verified" };
   return { status: "mismatch", reason: "not_near_plan" };
 }
 
@@ -364,7 +377,8 @@ async function fetchPage(url: string, domain: string, opts: VerifyOptions): Prom
       if (opts.signal?.aborted) return { ok: false, reason: "aborted" };
       return { ok: false, reason: timedOut ? "timeout" : "fetch_failed" };
     }
-    // Followed a redirect off the college's domain (web fetch reports the final URL).
+    // Followed a redirect off the college's domain. Web fetch reports the final URL; the iOS NativeHttp
+    // plugin returns it too (nativeFetch sets Response.url). An empty url means no redirect was reported.
     if (res.url && res.url !== url && !onSite(res.url, domain)) return { ok: false, reason: "off_site" };
     if (res.status === 401 || res.status === 403 || res.status === 429 || res.status === 451) return { ok: false, reason: "blocked" };
     if (!res.ok) return { ok: false, reason: "fetch_failed" };

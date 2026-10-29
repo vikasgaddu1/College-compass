@@ -207,6 +207,17 @@ describe("judgePage", () => {
 
   it("does not let a plan claim a date that sits next to another plan's name (WPI's EA notification Jan. 15 is not an RD deadline)", () => {
     expect(judgePage(wpi, plan({ plan: "RD", deadline: "2027-01-15" }), NOW)).toEqual({ status: "mismatch", reason: "not_near_plan" });
+    // Even with a quote: "Regular Decision Jan. 15" fuzzily matches the neighbouring table words, but the
+    // only "Jan. 15" on the page sits next to Early Action Round I, so it is not this plan's date.
+    expect(judgePage(wpi, plan({ plan: "RD", deadline: "2027-01-15", quote: "Regular Decision Jan. 15" }), NOW)).toEqual({ status: "mismatch", reason: "not_near_plan" });
+    // Positive control: the same shape of quote for the real RD date.
+    expect(judgePage(wpi, plan({ plan: "RD", deadline: "2027-02-01", quote: "Regular Decision Feb. 1" }), NOW)).toEqual({ status: "verified" });
+    // A date far from the quote doesn't count as "in the quote" even if the quote is found.
+    expect(judgePage(gt, plan({ plan: "RD", deadline: "2026-10-15", quote: "Regular Decision All students January 6" }), NOW)).toEqual({ status: "mismatch", reason: "not_near_plan" });
+    // The quote alone decides only where the page uses no plan labels near the date.
+    const unlabeled = `${"Campus life is great. ".repeat(20)}First-year applications and all materials are due November 1 at 11:59 p.m. ${"More about the campus. ".repeat(20)}`;
+    expect(judgePage(unlabeled, plan({ plan: "EA", deadline: "2026-11-01", quote: "First-year applications and all materials are due November 1" }), NOW)).toEqual({ status: "verified" });
+    expect(judgePage(unlabeled, plan({ plan: "EA", deadline: "2026-11-01" }), NOW)).toEqual({ status: "mismatch", reason: "not_near_plan" });
     // WPI EA given as Jan 5 (that is Round II) is a date on the page next to "Early Action", so it passes — the
     // prompt asks for the earliest round; the verifier only proves the date is really the college's.
     expect(judgePage(wpi, plan({ plan: "EA", deadline: "2027-01-05" }), NOW)).toEqual({ status: "verified" });
@@ -290,6 +301,22 @@ describe("verifyCollegeDeadlines", () => {
     const fetch = fetchOf({ [WPI]: WPI_HTML });
     expect((await verifyCollegeDeadlines(noSite, opts(fetch))).application!.plans[0]!.check).toMatchObject({ status: "unchecked", reason: "no_site" });
     expect(fetch.calls).toEqual([]);
+  });
+
+  it("is unchecked when the page redirected off the college's domain (final URL from web fetch or the iOS plugin)", async () => {
+    const redirected: FetchLike = async () => {
+      const r = new Response(WPI_HTML, { status: 200, headers: { "Content-Type": "text/html" } });
+      Object.defineProperty(r, "url", { value: "https://www.commonapp.org/explore/wpi", configurable: true });
+      return r;
+    };
+    const c = college("https://www.wpi.edu", [plan({ plan: "EA", deadline: "2026-11-01", source_url: WPI })]);
+    expect((await verifyCollegeDeadlines(c, opts(redirected))).application!.plans[0]!.check).toMatchObject({ status: "unchecked", reason: "off_site" });
+    const sameSite: FetchLike = async () => {
+      const r = new Response(WPI_HTML, { status: 200, headers: { "Content-Type": "text/html" } });
+      Object.defineProperty(r, "url", { value: "https://admissions.wpi.edu/deadlines", configurable: true });
+      return r;
+    };
+    expect((await verifyCollegeDeadlines(c, opts(sameSite))).application!.plans[0]!.check).toMatchObject({ status: "verified" });
   });
 
   it("leaves plans alone when the caller aborts", async () => {

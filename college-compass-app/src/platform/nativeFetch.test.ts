@@ -39,6 +39,25 @@ describe("nativeFetch (NativeHttp-backed fetch)", () => {
     expect(await res.json()).toEqual({ error: { code: "rate_limit_exceeded" } });
   });
 
+  it("exposes the final URL after redirects as Response.url, so an off-site redirect is detectable", async () => {
+    const { http } = plugin(async () => ({ status: 200, headers: { "Content-Type": "text/html" }, data: "<p>hi</p>", url: "https://www.commonapp.org/explore/wpi" }));
+    const res = await nativeFetch("https://www.wpi.edu/admissions/deadlines", {}, http);
+    expect(res.url).toBe("https://www.commonapp.org/explore/wpi");
+    expect(await res.text()).toBe("<p>hi</p>");
+    // Older plugin builds without `url`: stays empty like a constructed Response.
+    const old = plugin(async () => ({ status: 200, headers: {}, data: "x" }));
+    expect((await nativeFetch("https://www.wpi.edu/", {}, old.http)).url).toBe("");
+  });
+
+  it("the deadline proof check marks a natively fetched page that redirected off-site as unchecked", async () => {
+    const { verifyCollegeDeadlines } = await import("@/deadlines/verify");
+    const { DEMO_COLLEGES } = await import("@/state/fixtures");
+    const { http } = plugin(async () => ({ status: 200, headers: { "Content-Type": "text/html" }, data: `<html><body>${"Early Action: November 1. ".repeat(20)}</body></html>`, url: "https://www.commonapp.org/explore/wpi" }));
+    const c = { ...DEMO_COLLEGES[0]!, url: "https://www.wpi.edu", application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA" as const, deadline: "2026-11-01", source_url: "https://www.wpi.edu/admissions/deadlines" }], test_policy_note: null, essays_note: null, fee: null } };
+    const out = await verifyCollegeDeadlines(c, { fetch: (url, init) => nativeFetch(url, init, http), now: () => new Date(2026, 9, 21) });
+    expect(out.application!.plans[0]!.check).toMatchObject({ status: "unchecked", reason: "off_site" });
+  });
+
   it("cancels the native request on abort", async () => {
     const ctl = new AbortController();
     const { http, cancel } = plugin(() => new Promise<never>(() => {}));
