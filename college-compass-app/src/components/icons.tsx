@@ -129,7 +129,15 @@ export const IconCompass = ({ size, ...r }: P) => (
     <path d="M15.5 8.5l-2 5-5 2 2-5 5-2z" fill="currentColor" stroke="none" />
   </svg>
 );
-export const IconWarning = ({ size, ...r }: P) => (
+/** The Tierwise "stepped T" mark (matches the app icon). */
+export const IconTierwise = ({ size, ...r }: P) => (
+  <svg {...base(size, r)} stroke="none" fill="currentColor">
+    <rect x="4" y="3.9" width="16" height="3.1" rx="1.55" />
+    <rect x="6.6" y="7.55" width="10.8" height="3.1" rx="1.55" />
+    <rect x="9.2" y="11.2" width="5.6" height="8.9" rx="1.55" />
+  </svg>
+);
+export const IconWarning =({ size, ...r }: P) => (
   <svg {...base(size, r)}>
     <path d="M12 4l9 16H3l9-16zM12 10v4M12 17.5v.5" />
   </svg>

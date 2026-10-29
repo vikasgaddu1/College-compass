@@ -2,7 +2,7 @@ import { useState } from "react";
 import { navigate } from "@/lib/router";
 import { useStore } from "@/state/store";
 import { auth, describeError } from "@/state/services";
-import { IconChat, IconCompass, IconList, IconStar } from "@/components/icons";
+import { IconChat, IconList, IconStar, IconTierwise } from "@/components/icons";
 import { Banner, Button } from "@/components/ui";
 
 const POINTS = [
@@ -36,7 +36,7 @@ export function Welcome() {
         <div className="cc-column flex min-h-full flex-col pt-[calc(var(--sat)+28px)]">
           <div className="flex items-center gap-3">
             <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-contrast shadow-card">
-              <IconCompass size={34} />
+              <IconTierwise size={34} />
             </span>
             <div>
               <h1 className="text-title1">Tierwise</h1>
