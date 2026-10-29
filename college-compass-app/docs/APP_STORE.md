@@ -234,7 +234,7 @@ HOW TO REVIEW WITHOUT A ChatGPT ACCOUNT: on the Welcome screen choose "Try the d
 
 HOW TO REVIEW THE LIVE AI FLOW: tap "Continue with ChatGPT" and sign in with the reviewer account below (a ChatGPT Plus account; any ChatGPT Plus or Pro account works). Sign-in opens an in-app browser with OpenAI's login page. After login, OpenAI redirects to a sign-in listener that runs inside the app on the phone itself (127.0.0.1, OpenAI's sign-in method for open-source apps that run locally); the browser then closes and the app continues. Research then runs against that ChatGPT account's own usage allowance; the developer has no server in the loop. Tierwise is free and open source: <public GitHub repo URL>.
 Reviewer account: <email>  Password: <password>
-(If a verification code is requested, please use the attached screen recording; the code goes to an inbox the developer monitors: <contact>.)
+(If a verification code is requested, please use the attached screen recording; the code goes to an inbox the developer monitors: anovagroups@gmail.com.)
 
 There is no Tierwise account, no in-app purchase and no data collected by the developer. All profile and research data stays on the device and can be exported or deleted in Settings > Delete everything. Admission odds are estimates and are labelled as such.
 
