@@ -38,7 +38,7 @@ function login() {
   const q = new URLSearchParams({
     response_type: "code",
     client_id: issued ?? "dynamic_agent_client",
-    ...(issued ? {} : { agent_name_hint: "College Compass" }),
+    ...(issued ? {} : { agent_name_hint: "Tierwise" }),
     ext_agent_host_id: host,
     redirect_uri: REDIRECT,
     scope: "openid profile email offline_access resource.invoke chatgpt.tokens.use.direct",
