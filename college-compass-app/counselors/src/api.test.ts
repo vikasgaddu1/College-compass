@@ -70,6 +70,14 @@ describe("createPortalApi", () => {
     expect((calls.fn![1] as unknown[])[0]).toBe("counselor-billing");
   });
 
+  it("adminReview hands back the RPC's saved state (null when the server returns nothing usable)", async () => {
+    const saved = { ok: true, id: "c1", status: "approved", listed: true, has_changes: false, plan: "founding", founding_until: "2027-06-30", updated_at: "2026-10-22T00:00:00Z" };
+    const rpc = vi.fn(async () => ({ data: saved, error: null }));
+    const api = createPortalApi(fakeClient({ rpc }).sb);
+    expect(await api.adminReview("c1", "founding", null, "2027-06-30", "2026-10-21T00:00:00Z")).toEqual(saved);
+    expect(await createPortalApi(fakeClient().sb).adminReview("c1", "suspend", null, null)).toBeNull();
+  });
+
   it("uploads photos under the user's folder in counselor-photos and returns the public URL", async () => {
     const { sb, calls } = fakeClient();
     const api = createPortalApi(sb);
