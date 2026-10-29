@@ -12,9 +12,10 @@ import { Banner, Button, ConfidenceDot, EffectIcon, Empty, Group, Row, Stat, Tie
 import { IconExternal, IconRefresh, IconStar } from "@/components/icons";
 import { CounselorPrompt, collegePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
 import { AiNoticeLine } from "@/components/AiNotice";
+import { DeadlineCheckMark } from "@/components/DeadlineCheckMark";
 
 export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean }) {
-  const { byId, profile, isSaved, toggleSaved, notes, setNote, upsertCollege, removeCollege, demo, prefs } = useStore();
+  const { byId, profile, isSaved, toggleSaved, notes, setNote, upsertResearched, removeCollege, demo, prefs } = useStore();
   const item = byId.get(id);
   const [refreshing, setRefreshing] = useState(false);
   const [err, setErr] = useState<{ detail: string; code?: string } | null>(null);
@@ -62,7 +63,7 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
     setErr(null);
     try {
       const fresh = await researchApi(demo).researchOne(c.name, profile, prefs.model ?? undefined);
-      upsertCollege({ ...fresh, id: c.id });
+      upsertResearched({ ...fresh, id: c.id });
     } catch (e) {
       setErr(describeError(e));
     } finally {
@@ -198,7 +199,20 @@ export function CollegeDetail({ id, embedded }: { id: string; embedded?: boolean
       {c.application && (
         <Group label={`Plans & deadlines · ${c.application.cycle}`} foot={[c.application.essays_note, c.application.fee ? `Fee: ${c.application.fee}` : null].filter(Boolean).join(" · ") || undefined}>
           {c.application.plans.map((p, i) => (
-            <Row key={i} label={PLAN_LABEL[p.plan] ?? p.plan} hint={p.notes} value={p.deadline ?? "No fixed deadline"} />
+            <Row
+              key={i}
+              label={PLAN_LABEL[p.plan] ?? p.plan}
+              hint={
+                p.notes || p.deadline ? (
+                  <>
+                    {p.notes}
+                    {p.notes && p.deadline ? <br /> : null}
+                    <DeadlineCheckMark plan={p} />
+                  </>
+                ) : undefined
+              }
+              value={p.deadline ?? "No fixed deadline"}
+            />
           ))}
           {c.application.plans.length === 0 && <Row label="No plan details found" />}
         </Group>

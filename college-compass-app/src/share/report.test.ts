@@ -135,12 +135,30 @@ describe("buildReportHtml: document", () => {
     expect(t).toContain("1520–1580");
     expect(t).toContain("Tests required");
     expect(t).toContain("$85,960");
-    expect(t).toContain("Early Action Nov 1, 2026");
+    expect(t).toContain("Early Action Nov 1, 2026 not checked — confirm");
     expect(t).toContain("Regular Decision Jan 6, 2027");
     expect(t).toContain("S.B. in Computer Science and Engineering (6-3)");
     expect(t).toContain("Declare any major in spring of first year");
     expect(t).toContain("Why it's here");
     expect(t).toContain("Watch out");
+  });
+
+  it("marks each deadline as checked on the college's page, not found there, or not checked", () => {
+    const first = picks.target[0] ?? picks.reach[0];
+    const page = "https://admissions.example.edu/deadlines";
+    const at = "2026-10-20T00:00:00.000Z";
+    const plans = [
+      { plan: "EA" as const, deadline: "2026-11-01", check: { status: "verified" as const, url: page, host: "admissions.example.edu", checkedAt: at } },
+      { plan: "ED" as const, deadline: "2026-11-01", check: { status: "mismatch" as const, url: page, checkedAt: at } },
+      { plan: "RD" as const, deadline: "2027-01-15" },
+    ];
+    const c = { ...first.college, application: { cycle: "Fall 2027 entry", plans, test_policy_note: null, essays_note: null, fee: null } };
+    const balanced = emptyList();
+    balanced[first.odds.tier].push({ ...first, college: c });
+    const t = text(buildReportHtml({ listName: "L", profile: DEMO_PROFILE, balanced, generatedAt: DATE }));
+    expect(t).toContain("Early Action 2026-11-01 ✓ checked on admissions.example.edu");
+    expect(t).toContain("Early Decision 2026-11-01 not found on admissions.example.edu — confirm");
+    expect(t).toContain("Regular Decision 2027-01-15 not checked — confirm");
   });
 
   it("marks shortlisted colleges and nothing else", () => {

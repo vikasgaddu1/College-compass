@@ -7,7 +7,7 @@
  * notifications. Dates are calendar days in the phone's local time zone; a deadline "Nov 1" means the day,
  * never a moment.
  */
-import type { ApplicationFacts, College, PlanWillingness, StudentProfile } from "@/types";
+import type { ApplicationFacts, College, DeadlineCheck, PlanWillingness, StudentProfile } from "@/types";
 
 export type Plan = ApplicationFacts["plans"][number]["plan"];
 
@@ -37,6 +37,10 @@ export interface Deadline {
   notes: string | null;
   /** On the list's shortlist. */
   starred: boolean;
+  /** The college page research read the date from, if any. */
+  source_url?: string | null;
+  /** Proof check result (src/deadlines/verify.ts); absent until it has run. */
+  check?: DeadlineCheck | null;
 }
 
 export interface DeadlineGroup {
@@ -268,6 +272,8 @@ export function upcomingDeadlines(opts: UpcomingOptions): Upcoming {
         date,
         notes: p.notes?.trim() || null,
         starred: starred.has(c.id),
+        source_url: p.source_url ?? null,
+        check: p.check ?? null,
       });
     }
   }
@@ -336,7 +342,7 @@ export function formatWeekday(day: DayKey): string {
 /**
  * The List tab banner: the next deadline day and what's due. "Nov 1 · in 11 days" / "4 colleges · Early Action".
  */
-export function nextDeadlineSummary(items: Deadline[], now: Date = new Date()): { when: string; what: string; count: number; date: DayKey } | null {
+export function nextDeadlineSummary(items: Deadline[], now: Date = new Date()): { when: string; what: string; count: number; date: DayKey; doubtful: number } | null {
   const groups = groupByDate(items, now);
   const g = groups[0];
   if (!g) return null;
@@ -348,6 +354,8 @@ export function nextDeadlineSummary(items: Deadline[], now: Date = new Date()): 
     what: `${colleges === 1 ? g.items[0]!.short : `${colleges} colleges`} · ${what}`,
     count: colleges,
     date: g.date,
+    // Dates on that day the proof check could not find on the college's own page.
+    doubtful: g.items.filter((d) => d.check?.status === "mismatch").length,
   };
 }
 
@@ -392,14 +400,22 @@ export function reminderText(group: DeadlineGroup, lead: number, now: Date = new
   if (items.length === 1) {
     const d = items[0]!;
     const tail = d.notes ? ` ${d.notes}` : "";
-    return { title: `${d.short} · ${d.planLabel} ${dueIn} — ${day}`, body: `Confirm the date on the college's site before you submit.${tail}`.trim() };
+    // A date the proof check couldn't find on the college's own page may be wrong: say so plainly.
+    const confirm = d.check?.status === "mismatch"
+      ? "This date wasn't found on the college's site — confirm it before you submit."
+      : "Confirm the date on the college's site before you submit.";
+    return { title: `${d.short} · ${d.planLabel} ${dueIn} — ${day}`, body: `${confirm}${tail}`.trim() };
   }
   const labels = new Set(items.map((d) => d.planLabel));
   const kind = labels.size === 1 ? `${[...labels][0]} deadlines` : "application deadlines";
   const colleges = [...new Set(items.map((d) => d.short))];
+  const doubtful = [...new Set(items.filter((d) => d.check?.status === "mismatch").map((d) => d.short))];
+  const confirm = doubtful.length
+    ? `${joinNames(doubtful)}: this date wasn't found on the college's site — confirm it. Confirm the others too.`
+    : "Confirm the dates on each college's site.";
   return {
     title: `${items.length} ${kind} ${dueIn.replace("due ", "")} — ${day}`,
-    body: `${joinNames(colleges)}. Confirm the dates on each college's site.`,
+    body: `${joinNames(colleges)}. ${confirm}`,
   };
 }
 

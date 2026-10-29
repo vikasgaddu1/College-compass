@@ -360,6 +360,46 @@ describe("shared research flywheel", () => {
     expect(sent.every((p) => !("data_notes" in p.college))).toBe(true);
   });
 
+  it("checks deadlines in the background after reporting a college, and the contribution carries the result", async () => {
+    const plans = [{ plan: "EA", deadline: "2026-11-01", source_url: "https://example.edu/deadlines", quote: "Early Action: November 1" }];
+    const m = mockClient({ research: (ns) => ({ text: "", model: "m", tool_calls: [{ name: RESEARCH_TOOL_NAME, arguments: JSON.stringify({ colleges: ns.map((n) => rawCollege(n, "NC", { application: { cycle: "Fall 2027 entry", plans, test_policy_note: null, essays_note: null, fee: null } })) }) }] }) });
+    const contribute = vi.fn(async () => {});
+    let resolveCheck: (() => void) | null = null;
+    const verify = vi.fn(async (c: import("../types").College) => {
+      await new Promise<void>((r) => { resolveCheck = r; });
+      return { ...c, application: { ...c.application!, plans: c.application!.plans.map((p) => ({ ...p, check: { status: "verified" as const, url: p.source_url!, host: "example.edu", checkedAt: NOW.toISOString() } })) } };
+    });
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_check" }), now: () => NOW, shared: { lookup: async () => new Map(), contribute }, verify });
+    const events: ResearchEvent[] = [];
+    const run = r.run({ profile: baseProfile(), wanted: ["College A"], target_count: 1, onEvent: (e) => events.push(e) });
+    // The college is on the list before the check finishes; the contribution waits for the check.
+    await vi.waitFor(() => expect(events.some((e) => e.type === "college_done")).toBe(true));
+    expect(events.some((e) => e.type === "college_checked")).toBe(false);
+    expect(contribute).not.toHaveBeenCalled();
+    await vi.waitFor(() => expect(resolveCheck).not.toBeNull());
+    resolveCheck!();
+    const out = await run;
+    const checked = events.find((e) => e.type === "college_checked") as Extract<ResearchEvent, { type: "college_checked" }>;
+    expect(checked.college.application!.plans[0]!.check).toMatchObject({ status: "verified", host: "example.edu" });
+    expect(out[0]!.application!.plans[0]!.check).toMatchObject({ status: "verified" });
+    expect(events.at(-1)!.type).toBe("done");
+    expect(contribute).toHaveBeenCalledTimes(1);
+    const sent = (contribute.mock.calls as unknown as [{ college: { application: { plans: { check?: unknown }[] } } }][])[0]![0];
+    expect(sent.college.application.plans[0]!.check).toMatchObject({ status: "verified" });
+  });
+
+  it("still contributes and finishes when the deadline check fails", async () => {
+    const plans = [{ plan: "EA", deadline: "2026-11-01", source_url: "https://example.edu/deadlines" }];
+    const m = mockClient({ research: (ns) => ({ text: "", model: "m", tool_calls: [{ name: RESEARCH_TOOL_NAME, arguments: JSON.stringify({ colleges: ns.map((n) => rawCollege(n, "NC", { application: { cycle: "Fall 2027 entry", plans, test_policy_note: null, essays_note: null, fee: null } })) }) }] }) });
+    const contribute = vi.fn(async () => {});
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_check2" }), now: () => NOW, shared: { lookup: async () => new Map(), contribute }, verify: async () => { throw new Error("boom"); } });
+    const events: ResearchEvent[] = [];
+    const out = await r.run({ profile: baseProfile(), wanted: ["College A"], target_count: 1, onEvent: (e) => events.push(e) });
+    expect(out[0]!.application!.plans[0]!.check).toBeUndefined();
+    expect(events.some((e) => e.type === "college_checked")).toBe(false);
+    expect(contribute).toHaveBeenCalledTimes(1);
+  });
+
   it("does not contribute when the student turned sharing off", async () => {
     const m = mockClient();
     const contribute = vi.fn(async () => {});

@@ -16,6 +16,7 @@
 import type { ApplicationFacts, BalancedList, College, MajorArea, RankedCollege, StudentProfile, Tier } from "@/types";
 import { INCOME_BANDS, TIER_ORDER, majorLabel, regionLabel, stateName, tierInfo } from "@/state/catalog";
 import { AI_NOTICE_FULL, AI_NOTICE_SHORT, AI_NOTICE_TITLE, APP_NAME } from "@/legal/notice";
+import { checkText } from "@/deadlines/verify";
 
 export interface ReportOptions {
   /** GPA, SAT/ACT, AP/IB count and class rank in the student snapshot. Default true. */
@@ -218,9 +219,18 @@ function plansText(c: College): string | null {
       const label = PLAN_LABEL[p.plan] ?? p.plan;
       const when = p.deadline ? ` ${esc(p.deadline)}` : p.plan === "Rolling" ? "" : ' <span class="muted">(deadline not found)</span>';
       const note = p.notes ? ` <span class="muted">(${esc(p.notes)})</span>` : "";
-      return `<span class="plan"><b>${esc(label)}</b>${when}${note}</span>`;
+      return `<span class="plan"><b>${esc(label)}</b>${when}${proofText(p)}${note}</span>`;
     })
     .join('<span class="sep"> · </span>');
+}
+
+/** The proof-check marker after a deadline: checked on the college's page, not found there, or not checked. */
+function proofText(p: ApplicationFacts["plans"][number]): string {
+  if (!p.deadline) return "";
+  const t = checkText(p);
+  if (t.status === "verified") return ` <span class="ok">✓ checked on ${esc(t.host ?? "the college's site")}</span>`;
+  if (t.status === "mismatch") return ` <span class="warn">not found on ${esc(t.host ?? "the college's site")} — confirm</span>`;
+  return ' <span class="muted">not checked — confirm</span>';
 }
 
 // ───────────────────────────── sections ─────────────────────────────
@@ -355,6 +365,8 @@ const CSS = `
   .doc { max-width: 7.4in; margin: 0 auto; }
   h1, h2, h3, p, table { margin: 0; }
   .muted { color: #666; }
+  .ok { color: #2d7a4a; }
+  .warn { color: #9a6b0e; }
   .num { text-align: right; white-space: nowrap; }
   .pre { white-space: pre-wrap; }
 

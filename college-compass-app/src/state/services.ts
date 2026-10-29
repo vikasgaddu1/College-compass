@@ -13,10 +13,10 @@ import { rankColleges, buildBalancedList, summarizeListForAi, type BalancedListR
 import { auth } from "@/ai/auth";
 import { aiClient, getDevApiKey, setDevApiKey, getPreferredModel, setPreferredModel } from "@/ai/client";
 import { research as liveResearch } from "@/ai/research";
-import { chatInstructions } from "@/ai/prompts";
+import { chatInstructions, deadlinesBrief } from "@/ai/prompts";
 import { MANAGE_USAGE_URL } from "@/ai/config";
 
-export { rankColleges, summarizeListForAi, auth, aiClient, chatInstructions, MANAGE_USAGE_URL, setDevApiKey, getPreferredModel, setPreferredModel };
+export { rankColleges, summarizeListForAi, auth, aiClient, chatInstructions, deadlinesBrief, MANAGE_USAGE_URL, setDevApiKey, getPreferredModel, setPreferredModel };
 export type { BalancedListResult };
 
 export function devKey(): string | null {

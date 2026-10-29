@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractJsonObject, namesMatch, normalizeCollege, normalizeName, shortName, toDeadline, toNumber, toPlanKind, toRate } from "./normalize";
+import { extractJsonObject, namesMatch, normalizeCollege, normalizeName, shortName, toCheck, toDeadline, toNumber, toPlanKind, toProofUrl, toRate } from "./normalize";
 import { rawCollege } from "./test-helpers";
 
 const NOW = new Date("2026-10-16T12:00:00Z");
@@ -184,6 +184,43 @@ describe("normalizeCollege", () => {
     expect(c.cds?.offers_ed).toBe(true);
     expect(c.ownership).toBe("private_nonprofit");
     expect(c.tuition_in_state).toBe(9000); // copied from model output, both present
+  });
+
+  it("keeps each plan's proof page and quote (https only, trimmed) and a well-formed stored check", () => {
+    const long = "x".repeat(300);
+    const c = normalizeCollege(rawCollege("Georgia Institute of Technology", "GA", {
+      application: {
+        cycle: "Fall 2027 entry",
+        plans: [
+          { plan: "EA", deadline: "2026-11-02", notes: "EA2 (non-Georgia)", source_url: "https://admission.gatech.edu/first-year/deadlines", quote: "  Early Action 2 | Non-Georgia students |\n November 2 " },
+          { plan: "RD", deadline: "2027-01-06", source_url: "http://admission.gatech.edu/deadlines", quote: long },
+          { plan: "ED", deadline: "2026-11-01", source_url: "https://gatech.edu/" + long, quote: null, check: { status: "verified", url: "https://admission.gatech.edu/d", checkedAt: "2026-10-20T10:00:00.000Z" } },
+          { plan: "Priority", deadline: "2026-12-01", source_url: "javascript:alert(1)", check: { status: "bogus", checkedAt: "2026-10-20T10:00:00.000Z" } },
+        ],
+        test_policy_note: null, essays_note: null, fee: null,
+      },
+    }), { now: NOW })!;
+    const [ea, rd, ed, pr] = c.application!.plans;
+    expect(ea).toEqual({ plan: "EA", deadline: "2026-11-02", notes: "EA2 (non-Georgia)", source_url: "https://admission.gatech.edu/first-year/deadlines", quote: "Early Action 2 | Non-Georgia students | November 2" });
+    expect(rd!.source_url).toBeUndefined(); // http is not proof
+    expect(rd!.quote).toHaveLength(240);
+    expect(ed!.source_url).toBeUndefined(); // too long
+    expect(ed!.check).toEqual({ status: "verified", url: "https://admission.gatech.edu/d", host: "admission.gatech.edu", checkedAt: "2026-10-20T10:00:00.000Z" });
+    expect(pr!.source_url).toBeUndefined();
+    expect(pr!.check).toBeUndefined();
+    expect("source_url" in rd!).toBe(false);
+  });
+
+  it("validates proof URLs and stored checks", () => {
+    expect(toProofUrl("https://www.wpi.edu/admissions/deadlines")).toBe("https://www.wpi.edu/admissions/deadlines");
+    expect(toProofUrl("wpi.edu/admissions")).toBe("https://wpi.edu/admissions");
+    expect(toProofUrl("http://wpi.edu/")).toBeNull();
+    expect(toProofUrl(42)).toBeNull();
+    expect(toCheck({ status: "mismatch", reason: "no_date", url: "https://a.edu/p", host: "A.EDU", checkedAt: "2026-10-20T10:00:00Z" })).toEqual({ status: "mismatch", reason: "no_date", url: "https://a.edu/p", host: "a.edu", checkedAt: "2026-10-20T10:00:00.000Z" });
+    expect(toCheck({ status: "unchecked", reason: "off_site", checkedAt: "2026-10-20T10:00:00Z" })).toEqual({ status: "unchecked", reason: "off_site", checkedAt: "2026-10-20T10:00:00.000Z" });
+    expect(toCheck({ status: "verified", checkedAt: "2026-10-20T10:00:00Z" })).toBeNull(); // verified needs its page
+    expect(toCheck({ status: "verified", url: "https://a.edu/p", checkedAt: "yesterday" })).toBeNull();
+    expect(toCheck(null)).toBeNull();
   });
 
   it("caps confidence when the data doesn't support it and fills missing fields", () => {

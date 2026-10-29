@@ -8,7 +8,7 @@
  * Student data is kept minimal: no name, email or other identifiers ever go into a prompt.
  * Everything here is pure (no I/O) so it can be unit-tested and reviewed like copy.
  */
-import type { AiFunctionTool, AiMessage, IncomeNetPrice, MajorArea, StudentProfile, Tier } from "../types";
+import type { AiFunctionTool, AiMessage, College, IncomeNetPrice, MajorArea, StudentProfile, Tier } from "../types";
 import { REGION_LABELS, REGION_STATES, stateName } from "./geo";
 
 // ───────────────────────────── enums (runtime copies of the type unions) ─────────────────────────────
@@ -273,8 +273,11 @@ const collegeSchema = obj({
       obj({
         plan: enm(PLAN_KINDS),
         deadline: nstr("Deadline as 'YYYY-MM-DD' for this cycle; null if unknown."),
-        notes: nstr("Binding? Notification date? 'Based on last cycle — confirm' when this cycle's date isn't published."),
+        notes: nstr("Binding? Notification date? Which round / residency this date is for? 'Based on last cycle — confirm' when this cycle's date isn't published."),
+        source_url: nstr("The official college page this date appears on — a URL on the college's own domain (e.g. admission.gatech.edu), never a third-party site. null if you didn't read one."),
+        quote: nstr("The exact sentence or table row from that page that contains the date, copied verbatim, ≤ 200 characters. null if none."),
       }),
+      "One entry per plan the college offers. For each, the page and the quote are how the app checks the date against the college's site.",
     ),
     test_policy_note: nstr("Plain-English policy for this cycle, incl. score-reporting rules."),
     essays_note: nstr("Supplemental essays / portfolio / audition / interview requirements."),
@@ -328,6 +331,8 @@ Rules — never break these:
 - Make sure you research the exact institution: use the state to disambiguate (e.g. Miami University in Ohio vs. University of Miami in Florida; the main campus unless another campus is named). Return the official name.
 - Formats: rates as decimals 0–1 (0.27, not 27); dollars as whole numbers without symbols; SAT composite 400–1600 (EBRW + Math; if only section percentiles exist, add the section 25ths and the 75ths and note that it is an approximation); ACT composite 1–36; dates as YYYY-MM-DD.
 - Application plans and deadlines must be for the student's entry term. If that cycle's dates aren't published yet, give last cycle's dates and put "Based on last cycle — confirm" in that plan's notes. Only list plans the college actually offers (ED, ED2, EA, REA, RD, Rolling, Priority). Set offers_ed / offers_ea accordingly.
+- Deadlines must come from the college's OWN admissions pages (its own domain), not from aggregators, rankings sites or memory. For every plan give source_url (that page) and quote (the exact sentence or table row with the date, verbatim). A wrong deadline is the most harmful mistake you can make: if you could not read the college's page, still return your best date but leave source_url and quote null so the app marks it unchecked.
+- When a college has different deadlines for different students — in-state vs. out-of-state (e.g. Georgia Tech's Early Action 1 is for Georgia residents only; everyone else uses Early Action 2), Round I vs. Round II, by major or school — give the date that applies to THIS student (their home state is given) and say which one it is in notes. When the same plan has two rounds, give the earliest round this student can use and mention the later round's date in notes (e.g. "EA Round I; Round II is Jan 5").
 - Programs: for each of the student's major areas (and their free-text interests), say whether a bachelor's program exists, its exact degree name, and how students get in: direct admission to the major, admission to a college/school within the university, a competitive internal application after enrollment (give the bar if published), declaring later, or a required audition/portfolio. List any of the student's areas that are capacity-limited or hard to switch into in cds.gated_majors.
 - Costs: published tuition and fees and cost of attendance for the most recent year; for public universities give both in-state and out-of-state. Net price by income from College Scorecard.
 - Scholarships: only named merit or program scholarships you found on THIS college's own official pages that this student could plausibly be considered for (note automatic vs competitive, separate applications and deadlines). Never list another institution's scholarship (e.g. a scholarship named after a different university). Empty list if none.
@@ -366,15 +371,48 @@ export function researcherInput(targets: ResearchTarget[], profile: StudentProfi
 
 // ───────────────────────────── Ask tab ─────────────────────────────
 
-/** Instructions for the Ask tab chat. `summary` is the engine's plain-text summary of the list. */
-export function chatInstructions(profile: StudentProfile, summary: string, now: Date = new Date()): string {
+export const DEADLINES_BRIEF_MAX_CHARS = 1200;
+
+/**
+ * The list's researched deadlines for the chat, each with the app's proof-check result, so the
+ * assistant never presents an unproven date as fact:
+ *   ✓ found on the college's own page · ✗ not found there (likely wrong) · ? not checked
+ */
+export function deadlinesBrief(colleges: College[], maxChars = DEADLINES_BRIEF_MAX_CHARS): string {
+  const lines: string[] = [];
+  for (const c of colleges) {
+    const plans = (c.application?.plans ?? []).filter((p) => p.deadline);
+    if (!plans.length) continue;
+    const parts = plans.map((p) => {
+      const mark = p.check?.status === "verified" ? "✓" : p.check?.status === "mismatch" ? "✗" : "?";
+      return `${p.plan} ${p.deadline} ${mark}`;
+    });
+    lines.push(`${(c.short || c.name).slice(0, 28)}: ${parts.join(", ")}`);
+  }
+  if (!lines.length) return "";
+  let out = "";
+  for (const l of lines) {
+    if (out.length + l.length + 1 > maxChars) { out += "\n…"; break; }
+    out += (out ? "\n" : "") + l;
+  }
+  return out;
+}
+
+/** Instructions for the Ask tab chat. `summary` is the engine's plain-text summary of the list; `deadlines` is `deadlinesBrief()`. */
+export function chatInstructions(profile: StudentProfile, summary: string, now: Date = new Date(), deadlines: string | null = null): string {
+  const deadlineBlock = deadlines?.trim()
+    ? `
+
+Researched application deadlines on their list, each with the app's check against the college's OWN page (✓ = the date was found on the college's page; ✗ = NOT found there, so it is likely wrong; ? = not checked). Treat ✓ dates as reliable but still worth confirming; never state a ✗ or ? date as fact — give it as "research says … but confirm on the college's site", and for ✗ say plainly that the app couldn't find it on the college's page:
+${deadlines.trim()}`
+    : "";
   return `You are Tierwise, a warm, honest college-search guide talking with a high-school student (and sometimes their parents) on a phone. Today is ${today(now)}.
 
 What you know about the student (no names or contact details are shared with you):
 ${profileBrief(profile)}
 
 Their current college list, as computed by the app (admission odds are heuristic estimate bands from published data, not predictions):
-${summary.trim() || "(The list is empty so far.)"}
+${summary.trim() || "(The list is empty so far.)"}${deadlineBlock}
 
 How to answer:
 - Be concise: usually under 150 words, short paragraphs or a few bullets. Plain language a 16-year-old understands. Offer to go deeper instead of writing an essay.
@@ -387,9 +425,9 @@ How to answer:
 }
 
 /** A complete call spec for "Review my list" (use with aiClient.call({...listAdvicePrompt(p, s), onDelta})). */
-export function listAdvicePrompt(profile: StudentProfile, summary: string, now: Date = new Date()): { instructions: string; input: AiMessage[] } {
+export function listAdvicePrompt(profile: StudentProfile, summary: string, now: Date = new Date(), deadlines: string | null = null): { instructions: string; input: AiMessage[] } {
   return {
-    instructions: chatInstructions(profile, summary, now),
+    instructions: chatInstructions(profile, summary, now, deadlines),
     input: [
       {
         role: "user",
