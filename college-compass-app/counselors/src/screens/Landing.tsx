@@ -2,7 +2,7 @@
 import { CounselorCard } from "@/components/CounselorCard";
 import { toCounselor } from "@/data/counselors";
 import { APP_NAME, FOUNDING_COUNT, PRICE_MONTHLY, PRICE_YEARLY, REVIEW_SLA } from "../constants";
-import { go } from "../router";
+import { go, usePortalRoute } from "../router";
 
 /** A made-up counselor for the preview (not a real person). */
 export const SAMPLE_COUNSELOR = toCounselor({
@@ -34,10 +34,19 @@ export function PhonePreview({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** Shown at the top when a student shared the invite link from the app (`#/?invited=1`). */
+export const INVITED_BANNER = "A student invited you to list your practice on Tierwise. Here's how it works.";
+
 export function Landing() {
   const pricing = () => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const invited = usePortalRoute().query.invited === "1";
   return (
     <div>
+      {invited && (
+        <p role="status" className="mt-6 rounded-control bg-accent-soft px-4 py-3 text-center text-subhead text-accent">
+          {INVITED_BANNER}
+        </p>
+      )}
       <section className="cp-hero">
         <h1 className="cp-h1">Be the counselor families find</h1>
         <p className="cp-lede">

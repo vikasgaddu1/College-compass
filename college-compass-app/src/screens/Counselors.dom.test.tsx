@@ -9,7 +9,8 @@ import { StoreProvider } from "@/state/store";
 import { toCounselor, type Counselor, type DirectoryApi } from "@/data/counselors";
 import { setCounselorDirectoryForMatches } from "@/data/counselorMatches";
 import { COUNSELORS_NUDGE_KEY } from "@/components/CounselorsNudge";
-import { Counselors } from "./Counselors";
+import { COUNSELOR_INVITE_MESSAGE, COUNSELOR_INVITE_URL } from "@/data/counselors";
+import { Counselors, INVITE_COPIED } from "./Counselors";
 import { App } from "@/app/App";
 
 const SAMPLE: Counselor[] = [
@@ -217,6 +218,122 @@ describe("Counselors directory", () => {
     expect(info.getAttribute("target")).toBe("_blank");
     const portalLinks = Array.from(document.querySelectorAll("a")).filter((a) => /counselors\//.test(a.getAttribute("href") ?? ""));
     expect(portalLinks).toHaveLength(1);
+  });
+});
+
+describe("Invite your counselor", () => {
+  const INVITE_LINK = "https://vikasgaddu1.github.io/College-compass/app/counselors/#/?invited=1";
+  let share: ReturnType<typeof vi.fn>;
+  let writeText: ReturnType<typeof vi.fn>;
+  beforeEach(() => {
+    share = vi.fn(async () => {});
+    writeText = vi.fn(async () => {});
+    Object.defineProperty(navigator, "share", { value: share, configurable: true });
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+  });
+  afterEach(() => {
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true });
+  });
+
+  it("the link carries the invite marker and the message carries no student data or price", () => {
+    expect(COUNSELOR_INVITE_URL).toBe(INVITE_LINK);
+    expect(COUNSELOR_INVITE_MESSAGE).toMatch(/Tierwise/);
+    expect(COUNSELOR_INVITE_MESSAGE).not.toMatch(/\$|\bmonth\b|price|free/i);
+    expect(COUNSELOR_INVITE_MESSAGE).not.toMatch(new RegExp(DEMO_PROFILE.home_state!));
+  });
+
+  it("empty directory, nothing filtered: 'Invite your counselor' is the one action and opens the share sheet", async () => {
+    const { api } = mockApi([]); // no profile → anywhere + all specialties
+    mount(api);
+    await screen.findByText("No counselors listed yet");
+    expect(screen.getByText(/Invite them to get listed/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Show virtual counselors" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Invite your counselor" }));
+    await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
+    const data = share.mock.calls[0]![0] as ShareData;
+    expect(data.url).toBe(INVITE_LINK);
+    expect(data.text).toBe(COUNSELOR_INVITE_MESSAGE);
+    expect(`${data.text}\n${data.url}`).toContain("counselors/#/?invited=1");
+    // Only the share sheet: nothing copied, no toast, no new link to the portal in the page.
+    expect(writeText).not.toHaveBeenCalled();
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(Array.from(document.querySelectorAll("a")).filter((a) => /counselors\//.test(a.getAttribute("href") ?? ""))).toHaveLength(1);
+  });
+
+  it("empty directory with a state filter: the filter button leads and the invite is a link under it", async () => {
+    seedProfile(); // NC
+    const { api } = mockApi([]);
+    mount(api);
+    await screen.findByText("No counselors listed in North Carolina yet");
+    expect(screen.getByRole("button", { name: "Show virtual counselors" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Invite your counselor" })).toBeNull();
+    expect(screen.getByText(/Don't see your counselor\?/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Invite them" }));
+    await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
+    expect((share.mock.calls[0]![0] as ShareData).url).toContain("#/?invited=1");
+  });
+
+  it("empty directory with only a specialty filter: 'Show all specialties' plus the invite link", async () => {
+    window.location.hash = "#/counselors?specialty=essays";
+    const { api } = mockApi([]);
+    mount(api);
+    await screen.findByText("Try clearing the specialty filter.");
+    expect(screen.getByRole("button", { name: "Show all specialties" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Invite them" })).toBeTruthy();
+  });
+
+  it("with counselors listed: a quiet 'Don't see your counselor? Invite them' row after the cards", async () => {
+    seedProfile();
+    const { api } = mockApi();
+    mount(api);
+    const lastCard = await screen.findByRole("article", { name: "Cher" });
+    expect(screen.queryByRole("button", { name: "Invite your counselor" })).toBeNull();
+    const row = screen.getByText(/Don't see your counselor\?/);
+    expect(lastCard.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const learn = screen.getByRole("link", { name: /Learn about being listed/ });
+    expect(row.compareDocumentPosition(learn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    fireEvent.click(within(row).getByRole("button", { name: "Invite them" }));
+    await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
+    expect(share.mock.calls[0]![0]).toEqual({ title: "Get listed on Tierwise", text: COUNSELOR_INVITE_MESSAGE, url: INVITE_LINK });
+  });
+
+  it("cancelling the share sheet is silent", async () => {
+    share.mockRejectedValueOnce(new DOMException("The user cancelled", "AbortError"));
+    const { api } = mockApi([]);
+    mount(api);
+    fireEvent.click(await screen.findByRole("button", { name: "Invite your counselor" }));
+    await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
+    await new Promise((r) => setTimeout(r, 10));
+    expect(writeText).not.toHaveBeenCalled();
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(screen.queryByText(/isn't available|try again/i)).toBeNull();
+  });
+
+  it("without a share sheet (desktop web): copies message + link and says so", async () => {
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+    const { api } = mockApi([]);
+    mount(api);
+    fireEvent.click(await screen.findByRole("button", { name: "Invite your counselor" }));
+    await waitFor(() => expect(writeText).toHaveBeenCalledTimes(1));
+    const copied = writeText.mock.calls[0]![0] as string;
+    expect(copied).toBe(`${COUNSELOR_INVITE_MESSAGE}\n${INVITE_LINK}`);
+    expect((await screen.findByRole("status")).textContent).toBe(INVITE_COPIED);
+  });
+
+  it("with counselors listed, the 'copied' note replaces the invite row in place (it is at the bottom of the page)", async () => {
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+    seedProfile();
+    const { api } = mockApi();
+    mount(api);
+    await screen.findByRole("article", { name: "Cher" });
+    fireEvent.click(screen.getByRole("button", { name: "Invite them" }));
+    const note = await screen.findByRole("status");
+    expect(note.textContent).toBe(INVITE_COPIED);
+    expect(screen.queryByRole("button", { name: "Invite them" })).toBeNull();
+    const lastCard = screen.getByRole("article", { name: "Cher" });
+    expect(lastCard.compareDocumentPosition(note) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(note.compareDocumentPosition(screen.getByRole("link", { name: /Learn about being listed/ })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 });
 

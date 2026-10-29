@@ -250,3 +250,18 @@ export function createDirectoryApi(cfg = sharedConfig(), doFetch: Fetch = (...a)
  * US App Store only, where linking to purchases outside the app is currently permitted.
  */
 export const COUNSELOR_INFO_URL = "https://vikasgaddu1.github.io/College-compass/app/counselors/";
+
+/**
+ * The landing page with the invite marker (`#/?invited=1`): the portal's landing route reads it and
+ * greets the counselor as invited by a student. Nothing identifies the student.
+ */
+export const COUNSELOR_INVITE_URL = `${COUNSELOR_INFO_URL}#/?invited=1`;
+
+/**
+ * "Invite your counselor": the ready-made message a student shares with their own counselor (share
+ * sheet, or clipboard on the web). Student voice, no student data, no price — the link follows it.
+ */
+export const COUNSELOR_INVITE_MESSAGE = "Hi! I'm using Tierwise to build my college list. Counselors can get listed there so students and families can find them — here's how:";
+
+/** Share-sheet title (Mail uses it as the subject). */
+export const COUNSELOR_INVITE_TITLE = "Get listed on Tierwise";
