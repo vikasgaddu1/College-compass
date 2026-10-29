@@ -4,10 +4,12 @@
  * Read-only in the app. Filters are a state (defaults to the student's home state; "Virtual –
  * anywhere" lists counselors who serve students nationwide) and specialty chips preselected from the
  * student's majors. The only data sent is those filters. No sign-up or payment lives here: counselors
- * join on the website, never from the app.
+ * join on the website, never from the app. "Invite your counselor" hands a fixed message + the website
+ * link to the share sheet (src/platform shareText): nothing about the student, nothing stored or sent.
  */
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useRoute } from "@/lib/router";
+import { shareText } from "@/platform";
 import { useStore } from "@/state/store";
 import { STATES, stateName } from "@/state/catalog";
 import { Screen } from "@/components/Screen";
@@ -16,12 +18,29 @@ import { Sheet } from "@/components/Sheet";
 import { Banner, Button, CardSkeleton, Chip, Empty } from "@/components/ui";
 import { IconCheck, IconChevronDown, IconSearch } from "@/components/icons";
 import { CounselorCard } from "@/components/CounselorCard";
-import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason, COUNSELOR_INFO_URL } from "@/data/counselors";
+import { REPORT_REASONS, SPECIALTIES, SPECIALTY_IDS, createDirectoryApi, specialtiesForMajors, type Counselor, type DirectoryApi, type DirectoryError, type ReportReason, COUNSELOR_INFO_URL, COUNSELOR_INVITE_MESSAGE, COUNSELOR_INVITE_TITLE, COUNSELOR_INVITE_URL } from "@/data/counselors";
 
 /** "Virtual – anywhere" in the state picker: no state filter, so nationwide counselors show. */
 const ANYWHERE = "";
 
 export const COUNSELORS_INTRO = "Independent counselors who help families with applications. Counselors pay to be listed — listings never affect your college list, and Tierwise never shares your answers with them.";
+
+/** Shown after the invite was copied instead of shared (no share sheet on this platform). */
+export const INVITE_COPIED = "Invite copied — paste it in a message";
+
+/** The full invite as shared: message, then the link on its own line. */
+export const COUNSELOR_INVITE_TEXT = `${COUNSELOR_INVITE_MESSAGE}\n${COUNSELOR_INVITE_URL}`;
+
+/**
+ * "Invite your counselor": hand the ready-made message + link to the share sheet. The link travels
+ * inside `text` (no separate `url`): some iOS targets, WhatsApp among them, keep only the url when
+ * both are given, so this way every target gets one message with the link once. Returns what the
+ * platform did; a dismissed sheet is "cancelled" and callers say nothing. No student data leaves the
+ * phone — the message is the same for everyone.
+ */
+export function shareCounselorInvite() {
+  return shareText({ title: COUNSELOR_INVITE_TITLE, text: COUNSELOR_INVITE_TEXT });
+}
 
 export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked API. */ api?: DirectoryApi | null; tabBar?: ReactNode }) {
   const { profile, hasProfile } = useStore();
@@ -36,7 +55,20 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
   const [error, setError] = useState<DirectoryError | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [reporting, setReporting] = useState<Counselor | null>(null);
+  // "Invite copied" shown in place of the invite control (web fallback); a dismissed share sheet shows nothing.
+  const [inviteNote, setInviteNote] = useState<string | null>(null);
   const chipsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!inviteNote) return;
+    const t = setTimeout(() => setInviteNote(null), 2500);
+    return () => clearTimeout(t);
+  }, [inviteNote]);
+
+  const invite = async () => {
+    const outcome = await shareCounselorInvite();
+    if (outcome === "copied") setInviteNote(INVITE_COPIED);
+  };
 
   // Arriving with a preselected specialty: bring that chip into view so the selection is visible.
   useEffect(() => {
@@ -117,17 +149,34 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
             <Empty
               icon="🧑‍🏫"
               title={state ? `No counselors listed in ${stateName(state)} yet` : "No counselors listed yet"}
-              message={state ? "We're adding counselors — check back soon. Meanwhile, counselors who work virtually help families in every state." : specialties.length ? "Try clearing the specialty filter." : "We're adding counselors — check back soon."}
+              message={state ? "We're adding counselors — check back soon. Meanwhile, counselors who work virtually help families in every state." : specialties.length ? "Try clearing the specialty filter." : "We're adding counselors — check back soon. Already working with one? Invite them to get listed."}
               action={
+                // A filter button keeps the lead when a filter hides counselors; the invite sits under it as a link.
+                // With nothing filtered there is nothing else to do, so the invite is the button.
                 state ? (
-                  <Button variant="secondary" onClick={() => setState(ANYWHERE)}>
-                    Show virtual counselors
-                  </Button>
+                  <>
+                    <Button variant="secondary" onClick={() => setState(ANYWHERE)}>
+                      Show virtual counselors
+                    </Button>
+                    <InviteLink onClick={invite} note={inviteNote} className="mt-1" />
+                  </>
                 ) : specialties.length ? (
-                  <Button variant="secondary" onClick={() => setSpecialties([])}>
-                    Show all specialties
-                  </Button>
-                ) : undefined
+                  <>
+                    <Button variant="secondary" onClick={() => setSpecialties([])}>
+                      Show all specialties
+                    </Button>
+                    <InviteLink onClick={invite} note={inviteNote} className="mt-1" />
+                  </>
+                ) : (
+                  <>
+                    <Button onClick={invite}>Invite your counselor</Button>
+                    {inviteNote && (
+                      <p role="status" className="mt-3 text-center text-footnote text-accent">
+                        {inviteNote}
+                      </p>
+                    )}
+                  </>
+                )
               }
             />
           ) : (
@@ -138,6 +187,7 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
               {items.map((c) => (
                 <CounselorCard key={c.id} counselor={c} onReport={setReporting} />
               ))}
+              <InviteLink onClick={invite} note={inviteNote} className="pt-2" />
             </>
           )}
         </div>
@@ -155,6 +205,27 @@ export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked
       <StateSheet open={pickerOpen} value={state} onClose={() => setPickerOpen(false)} onChange={(v) => { setState(v); setPickerOpen(false); }} />
       <ReportSheet counselor={reporting} api={api} onClose={() => setReporting(null)} />
     </>
+  );
+}
+
+/**
+ * "Don't see your counselor? Invite them" — quiet, so it never competes with the listings or the
+ * filter button. While `note` is set (invite copied on the web) it shows that instead, in place.
+ */
+function InviteLink({ onClick, note, className = "" }: { onClick: () => void; note?: string | null; className?: string }) {
+  if (note)
+    return (
+      <p role="status" className={`inline-flex min-h-tap w-full items-center justify-center text-center text-footnote text-accent ${className}`}>
+        {note}
+      </p>
+    );
+  return (
+    <p className={`text-center text-footnote text-text-muted ${className}`}>
+      Don't see your counselor?{" "}
+      <button type="button" className="cc-link inline-flex min-h-tap items-center" onClick={onClick}>
+        Invite them
+      </button>
+    </p>
   );
 }
 

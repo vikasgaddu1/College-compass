@@ -3,7 +3,7 @@
  * public; profile/billing need a session; admin needs `is_admin()`.
  */
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { IconCompass } from "@/components/icons";
+import { IconTierwise } from "@/components/icons";
 import type { PortalApi, Session } from "./api";
 import { createLivePortalApi } from "./client";
 import { go, usePortalRoute, type PortalPath } from "./router";
@@ -97,8 +97,9 @@ function Shell() {
       <header className="cp-header">
         <div className="cp-header-inner">
           <a href="#/" className="flex items-center gap-2 text-headline no-underline text-text" aria-label="Tierwise for Counselors — home">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-contrast">
-              <IconCompass size={18} />
+            {/* The app icon: off-white stepped T on a spruce tile. */}
+            <span className="grid h-8 w-8 place-items-center rounded-[9px]" style={{ background: "linear-gradient(180deg, #236b58, #17493c)", color: "#f1f2ee" }} aria-hidden>
+              <IconTierwise size={20} />
             </span>
             <span className="whitespace-nowrap">
               Tierwise <span className="cp-brand-sub font-normal text-text-muted">for Counselors</span>

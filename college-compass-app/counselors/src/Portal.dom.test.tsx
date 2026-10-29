@@ -75,6 +75,32 @@ describe("Landing", () => {
     fireEvent.click(screen.getAllByRole("button", { name: "Get your free founding listing" })[0]!);
     await waitFor(() => expect(window.location.hash).toBe("#/signin"));
   });
+
+  it("greets a counselor a student invited from the app (#/?invited=1), and only then", async () => {
+    render(<Portal api={fakeApi()} />);
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(screen.queryByText(/A student invited you/)).toBeNull();
+    cleanup();
+
+    window.location.hash = "#/?invited=1";
+    render(<Portal api={fakeApi()} />);
+    const banner = screen.getByRole("status");
+    expect(banner.textContent).toBe("A student invited you to list your practice on Tierwise. Here's how it works.");
+    // The rest of the landing page is unchanged and the banner comes first.
+    const h1 = screen.getByRole("heading", { level: 1, name: "Be the counselor families find" });
+    expect(banner.compareDocumentPosition(h1) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByText("$29")).toBeTruthy();
+    cleanup();
+
+    // Other values and other routes: no banner.
+    window.location.hash = "#/?invited=0";
+    render(<Portal api={fakeApi()} />);
+    expect(screen.queryByText(/A student invited you/)).toBeNull();
+    cleanup();
+    window.location.hash = "#/terms?invited=1";
+    render(<Portal api={fakeApi()} />);
+    expect(screen.queryByText(/A student invited you/)).toBeNull();
+  });
 });
 
 describe("Sign in", () => {

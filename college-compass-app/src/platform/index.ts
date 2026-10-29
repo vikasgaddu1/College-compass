@@ -526,6 +526,72 @@ export async function webPrintHtml(html: string, fileName: string): Promise<Shar
   }
 }
 
+// ───────────────────────────── Share a short message + link ─────────────────────────────
+//
+// Text-only sharing ("Invite your counselor") needs no native code: WKWebView implements the Web
+// Share API, so `navigator.share` presents the iOS share sheet (Messages, Mail, WhatsApp, Copy…).
+// Browsers without it (desktop web) get the message copied to the clipboard, and failing that a
+// mailto: draft. Nothing is uploaded anywhere.
+
+export type ShareTextOutcome =
+  /** The share sheet closed after the student picked an app (or Copy). */
+  | "shared"
+  /** The student dismissed the share sheet. Not an error: callers stay silent. */
+  | "cancelled"
+  /** No share sheet here; the message and link are on the clipboard. */
+  | "copied"
+  /** No share sheet or clipboard; a mail draft was opened instead. */
+  | "mailto"
+  /** Nothing could be offered (node / jsdom without any of the above). */
+  | "unavailable";
+
+/** `text` followed by `url` on its own line: what the clipboard / mail fallbacks carry. */
+export function shareTextBody(text: string, url?: string): string {
+  return url ? `${text}\n${url}` : text;
+}
+
+/**
+ * Share a short message (and a link) through the platform share sheet.
+ * `navigator.share({ title, text, url })` → "shared", or "cancelled" when the student dismissed the
+ * sheet (AbortError — never surfaced as an error). Without `navigator.share` (or when it failed for
+ * another reason): clipboard → "copied", else a mailto: draft → "mailto", else "unavailable". Never throws.
+ */
+export async function shareText(opts: { title?: string; text: string; url?: string }): Promise<ShareTextOutcome> {
+  const nav = typeof navigator === "undefined" ? undefined : (navigator as Navigator & { share?: (d: ShareData) => Promise<void> });
+  if (nav && typeof nav.share === "function") {
+    try {
+      const data: ShareData = { text: opts.text };
+      if (opts.title) data.title = opts.title;
+      if (opts.url) data.url = opts.url;
+      await nav.share(data);
+      return "shared";
+    } catch (e) {
+      // The student dismissed the sheet (AbortError): quiet. Anything else (NotAllowedError when a
+      // sheet is already open, DataError…) falls through to the clipboard so the invite still goes out.
+      if ((e as { name?: string })?.name === "AbortError") return "cancelled";
+    }
+  }
+  const body = shareTextBody(opts.text, opts.url);
+  try {
+    if (nav?.clipboard && typeof nav.clipboard.writeText === "function") {
+      await nav.clipboard.writeText(body);
+      return "copied";
+    }
+  } catch {
+    /* clipboard refused: fall through to mail */
+  }
+  if (typeof window !== "undefined" && typeof window.location?.assign === "function") {
+    try {
+      const subject = encodeURIComponent(opts.title ?? "");
+      window.location.assign(`mailto:?subject=${subject}&body=${encodeURIComponent(body)}`);
+      return "mailto";
+    } catch {
+      /* no navigation available */
+    }
+  }
+  return "unavailable";
+}
+
 // ───────────────────────────── Apple App Attest ─────────────────────────────
 //
 // Proves a shared-research contribution comes from the genuine Tierwise app on a real
