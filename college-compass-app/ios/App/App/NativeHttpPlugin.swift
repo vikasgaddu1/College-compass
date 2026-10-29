@@ -10,7 +10,8 @@ import UserNotifications
 /// URLSession task, which closes the connection so OpenAI stops generating (and stops counting
 /// against the user's ChatGPT plan) when the student stops research or chat.
 ///
-/// JS: `request({ id, url, method?, headers?, body?, timeoutMs?, background? }) -> { status, headers, data }`
+/// JS: `request({ id, url, method?, headers?, body?, timeoutMs?, background? }) -> { status, headers, data, url? }`
+/// (`url` is the final URL after redirects; absent on the background path)
 /// (rejects with code `ABORTED` after `cancel`, `NETWORK` on transport errors), `cancel({ id })`.
 /// The response body is returned whole as UTF-8 text. `background: true` sends the request through
 /// `BackgroundTransfers` so it keeps running after the student leaves the app.
@@ -181,7 +182,9 @@ public class NativeHttpPlugin: CAPPlugin, CAPBridgedPlugin {
                 headers[String(describing: key)] = String(describing: value)
             }
             let text = data.map { String(decoding: $0, as: UTF8.self) } ?? ""
-            completion(.success(["status": http.statusCode, "headers": headers, "data": text]))
+            // Final URL after redirects, so JS can tell when a page redirected elsewhere (deadline proof check).
+            let finalUrl = http.url?.absoluteString ?? ""
+            completion(.success(["status": http.statusCode, "headers": headers, "data": text, "url": finalUrl]))
         }
 
         lock.lock()

@@ -10,6 +10,7 @@ import { DEMO_COLLEGES, DEMO_PROFILE } from "./fixtures";
 import { defaultProfile } from "./catalog";
 import { DEFAULT_LIST_NAME, DEMO_LIST_NAME, LISTS_KEY, autoListName, copyProfile, listKey, newListMeta, nextListName, reconcileLists, removeListData, uniqueName, type ListMeta, type ListsIndex } from "./lists";
 import { syncDeadlineReminders } from "@/deadlines/schedule";
+import { applyChecks, checkCollegeDeadlines, needsDeadlineCheck } from "@/deadlines/check";
 
 export type { ListMeta } from "./lists";
 
@@ -40,6 +41,11 @@ export interface Store {
   colleges: College[];
   setColleges: (c: College[]) => void;
   upsertCollege: (c: College) => void;
+  /**
+   * Add or replace a freshly researched college, then check its deadlines against the college's own
+   * pages in the background (never in demo mode) and store the result when it arrives.
+   */
+  upsertResearched: (c: College) => void;
   removeCollege: (id: string) => void;
   ranked: RankedCollege[];
   balanced: BalancedListResult;
@@ -202,6 +208,18 @@ function ActiveList({ shared, children }: { shared: Shared; children: ReactNode 
     },
     [setCollegesRaw, setShortlist],
   );
+  const upsertResearched = useCallback(
+    (c: College) => {
+      upsertCollege(c);
+      if (activeList.demo || !needsDeadlineCheck(c)) return;
+      void checkCollegeDeadlines(c).then((checked) => {
+        if (checked === c) return;
+        // Apply to whatever the list holds now (plan by plan), so a newer refresh keeps its own facts.
+        setCollegesRaw((prev) => prev.map((x) => (x.id === c.id ? applyChecks(x, checked) : x)));
+      });
+    },
+    [upsertCollege, setCollegesRaw, activeList.demo],
+  );
 
   const isSaved = useCallback((id: string) => shortlist.includes(id), [shortlist]);
   const toggleSaved = useCallback((id: string) => setShortlist((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id])), [setShortlist]);
@@ -344,6 +362,7 @@ function ActiveList({ shared, children }: { shared: Shared; children: ReactNode 
     colleges,
     setColleges,
     upsertCollege,
+    upsertResearched,
     removeCollege,
     ranked,
     balanced,

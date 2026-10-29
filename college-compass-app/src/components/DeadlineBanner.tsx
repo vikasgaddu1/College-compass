@@ -16,7 +16,7 @@ export function DeadlineBanner({ now: fixedNow }: { now?: Date } = {}) {
       type="button"
       className="cc-card cc-press mb-4 flex w-full items-center gap-3 px-4 py-3 text-left"
       onClick={() => navigate("/deadlines")}
-      aria-label={`Deadlines. Next: ${summary.when}, ${summary.what}`}
+      aria-label={`Deadlines. Next: ${summary.when}, ${summary.what}${summary.doubtful > 0 ? `, ${summary.doubtful} ${summary.doubtful === 1 ? "date" : "dates"} to confirm` : ""}`}
     >
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent-soft text-accent" aria-hidden>
         <IconBell size={20} />
@@ -24,7 +24,10 @@ export function DeadlineBanner({ now: fixedNow }: { now?: Date } = {}) {
       <span className="min-w-0 flex-1">
         <span className="block text-caption uppercase tracking-wide text-text-muted">Next deadline</span>
         <span className="tnum block truncate text-subhead font-semibold">{summary.when}</span>
-        <span className="block truncate text-footnote text-text-muted">{summary.what}</span>
+        <span className="block truncate text-footnote text-text-muted">
+          {summary.what}
+          {summary.doubtful > 0 && <span className="text-warn"> · {summary.doubtful === 1 ? "1 date to confirm" : `${summary.doubtful} dates to confirm`}</span>}
+        </span>
       </span>
       <IconChevronRight size={18} className="shrink-0 text-text-muted opacity-70" />
     </button>

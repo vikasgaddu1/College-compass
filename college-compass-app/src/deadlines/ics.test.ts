@@ -37,8 +37,13 @@ describe("ics", () => {
     const unfolded = ics.replace(/\r\n /g, "");
     expect(unfolded).toContain("Portfolio optional");
     expect(unfolded).toContain("Confirm the date on the college's admissions site");
-    expect(unfolded).toContain("DESCRIPTION:Duke University\\nFrom Tierwise research.");
+    expect(unfolded).toContain("DESCRIPTION:Duke University\\nNot checked — confirm on the college's site\\nFrom Tierwise research.");
     expect(ics.match(/BEGIN:VALARM\r\nACTION:DISPLAY\r\n/g)).toHaveLength(2);
+    // The proof check's verdict and page travel with the event.
+    const checked = deadlinesToIcs([d({ check: { status: "verified", url: "https://admissions.duke.edu/deadlines", host: "admissions.duke.edu", checkedAt: "2026-10-20T00:00:00.000Z" } })], { now: NOW }).replace(/\r\n /g, "");
+    expect(checked).toContain("Checked on admissions.duke.edu — https://admissions.duke.edu/deadlines");
+    const doubtful = deadlinesToIcs([d({ check: { status: "mismatch", url: "https://admissions.duke.edu/deadlines", checkedAt: "2026-10-20T00:00:00.000Z" } })], { now: NOW }).replace(/\r\n /g, "");
+    expect(doubtful).toContain("Couldn't find this date on admissions.duke.edu — confirm");
     expect(ics.match(/TRIGGER:-PT15H/g)).toHaveLength(2);
     // Every physical line fits the 75-octet limit and lines end with CRLF only.
     for (const line of ics.split("\r\n")) {

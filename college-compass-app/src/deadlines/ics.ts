@@ -4,6 +4,7 @@
  */
 import type { Deadline } from "./deadlines";
 import { REMINDER_HOUR, shiftDay } from "./deadlines";
+import { checkText } from "./verify";
 
 export const ICS_PRODID = "-//Tierwise//Deadlines//EN";
 
@@ -74,7 +75,8 @@ export function deadlinesToIcs(items: Deadline[], opts: IcsOptions = {}): string
   if (opts.calendarName) lines.push(`X-WR-CALNAME:${icsText(opts.calendarName)}`);
   for (const d of items) {
     const summary = `${d.short} · ${d.planLabel} deadline`;
-    const desc = [d.collegeName, d.notes, disclaimer].filter(Boolean).join("\n");
+    const proof = checkText(d);
+    const desc = [d.collegeName, d.notes, `${proof.label}${proof.url ? ` — ${proof.url}` : ""}`, disclaimer].filter(Boolean).join("\n");
     lines.push("BEGIN:VEVENT");
     lines.push(`UID:${deadlineUid(d)}`);
     lines.push(`DTSTAMP:${stamp}`);

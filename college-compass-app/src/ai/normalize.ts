@@ -160,6 +160,13 @@ function toUrl(v: unknown): string | null {
   }
 }
 
+/** A deadline proof page: https only, ≤ 300 chars (the verifier later insists it is on the college's own domain). */
+export function toProofUrl(v: unknown): string | null {
+  const u = toUrl(v);
+  if (!u || !/^https:\/\//i.test(u) || u.length > 300) return null;
+  return u;
+}
+
 function arrOf(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
 }
@@ -318,7 +325,17 @@ export function normalizeCollege(raw: unknown, context: NormalizeContext = {}): 
     if (!plan || seenPlan.has(plan)) continue;
     seenPlan.add(plan);
     const notes = toStr(pr.notes, 200);
-    plans.push({ plan, deadline: toDeadline(pr.deadline), ...(notes ? { notes } : {}) });
+    // Never a `check`: proof-check results are device-local — only src/deadlines/verify.ts on this
+    // device writes them, never the model and never the shared database.
+    const source_url = toProofUrl(pr.source_url);
+    const quote = toStr(pr.quote, 240);
+    plans.push({
+      plan,
+      deadline: toDeadline(pr.deadline),
+      ...(notes ? { notes } : {}),
+      ...(source_url ? { source_url } : {}),
+      ...(quote ? { quote } : {}),
+    });
   }
   const application: ApplicationFacts | undefined =
     plans.length || toStr(appRaw.test_policy_note) || toStr(appRaw.essays_note) || toStr(appRaw.fee)

@@ -5,6 +5,8 @@
  * - Batches of `batch_size` (default 1) colleges per agent call, `concurrency` (default 12) in flight.
  * - Per batch: one retry (for whatever is still missing), then split into single-college calls.
  * - Fresh cache hits (< 30 days, normalized name) are reused without a call.
+ * - After a college is reported, its deadlines are checked against the college's own pages in the
+ *   background (src/deadlines/verify.ts) and reported again as `college_checked`.
  * - Fatal errors (usage limit, sign-in, unsupported) stop everything: an `error` event is emitted and
  *   run() rejects. Aborting rejects with the AbortError. Per-college failures are reported as
  *   `college_failed` and run() still resolves with everything that succeeded.
@@ -14,6 +16,7 @@ import { aiClient, parseResponsesText } from "./client";
 import { beginResearchRun, endResearchRun, takeOrphanedResearch } from "../platform";
 import { APP_VERSION, contributionPayload, createSharedLookup, installId, mergeShared, sharedResearchRecord, type SharedCollege, type SharedLookup } from "../data/shared";
 import { researchCache as defaultCache, findFresh, fitsStudent, type ResearchCache } from "./cache";
+import { applyChecks, checkCollegeDeadlines, needsDeadlineCheck } from "../deadlines/check";
 import { stateCode } from "./geo";
 import { extractJsonObject, namesMatch, normalizeCollege, normalizeName } from "./normalize";
 import {
@@ -101,6 +104,8 @@ export interface ResearchDeps {
     end(runId: string): Promise<void> | void;
     takeOrphans(): Promise<{ tag: string; data: string }[]>;
   };
+  /** Deadline proof check (src/deadlines/verify.ts); defaults to the app's HTTP. Null = off. */
+  verify?: ((college: College, signal?: AbortSignal) => Promise<College>) | null;
 }
 
 const RUN_TAG = "research:";
@@ -133,6 +138,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
   const now = deps.now ?? (() => new Date());
   const native = deps.native ?? { begin: beginResearchRun, end: endResearchRun, takeOrphans: takeOrphanedResearch };
   const shared = deps.shared === undefined ? createSharedLookup() : deps.shared;
+  const verify = deps.verify === undefined ? checkCollegeDeadlines : deps.verify;
 
   async function plan(profile: StudentProfile, existing: string[], count: number, model?: string, signal?: AbortSignal, onDelta?: (t: string) => void, effort?: Effort): Promise<CollegeCandidate[]> {
     if (count <= 0) return [];
@@ -305,11 +311,34 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       const nowMs = now().getTime();
       const cycle = `${entryTerm(profile)} entry`;
       const usable = (c: College | null) => (c && fitsStudent(c, profile.majors, cycle) ? c : null);
+
+      // Deadline proof checks run in the background after a college is reported, so the list never
+      // waits on a college website. The result replaces the college (`college_checked`) and stays on
+      // this device: it is never contributed, and a shared record's own is dropped on read. Awaited
+      // before `done`. `needsDeadlineCheck` skips plans this device already checked (a transient
+      // failure is retried after a day), so cached colleges are covered too.
+      const share = opts.share_research !== false && !!shared?.contribute;
+      const pendingChecks: Promise<void>[] = [];
+      const proofCheck = (cand: CollegeCandidate, college: College) => {
+        if (!verify || !needsDeadlineCheck(college, now())) return;
+        const task = async () => {
+          let checked = college;
+          try { checked = applyChecks(college, await verify(college, signal)); } catch { /* stays unchecked */ }
+          if (checked !== college && !fatal && !signal.aborted) {
+            results.set(cand, checked);
+            try { cache.put(checked, [cand.name]); } catch { /* cache is best-effort */ }
+            emit({ type: "college_checked", college: checked });
+          }
+        };
+        pendingChecks.push(task().catch(() => {}));
+      };
+
       for (const c of candidates) {
         const hit = usable(findFresh(opts.cache, c.name, nowMs)) ?? usable(cache.get(c.name));
         if (hit) {
           results.set(c, hit);
           emit({ type: "college_done", college: hit });
+          proofCheck(c, hit); // only what is still unchecked, or a stale transient failure
         } else toResearch.push(c);
       }
 
@@ -320,6 +349,8 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         try { sharedMap = await shared.lookup(toResearch.map((c) => ({ name: c.name, state: c.state })), signal); } catch { /* research proceeds */ }
       }
       if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
+
+
       for (const c of [...toResearch]) {
         const facts = sharedMap.get(c.name);
         const rec = facts ? sharedResearchRecord(facts, cycle, profile.majors, now().getTime()) : null;
@@ -334,6 +365,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         try { cache.put(college, [c.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
         toResearch.splice(toResearch.indexOf(c), 1);
+        proofCheck(c, college); // shared research is checked on this device like fresh research (a shared check is never trusted)
       }
 
       // 3) Parallel batches.
@@ -344,7 +376,6 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         endRun = () => native.end(runId);
         try { await native.begin(runId, batches.length); } catch { /* best-effort */ }
       }
-      const share = opts.share_research !== false && !!shared?.contribute;
       const record = async (cand: CollegeCandidate, researched: College) => {
         let facts = sharedMap.get(cand.name);
         // Planner/student names ("UNC Chapel Hill") may not match; research returns the official name.
@@ -352,11 +383,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
           try { facts = (await shared.lookup([{ name: researched.name, state: researched.state || null }], signal)).get(researched.name); } catch { /* optional */ }
         }
         const college = facts ? mergeShared(researched, facts) : researched;
-        // Give back: the researched facts only (before federal gap-filling), never profile or notes.
+        // Give back: the researched facts only (before federal gap-filling), never profile, notes or check results.
         if (share) void shared!.contribute!(contributionPayload(researched, cycle, installId(), APP_VERSION));
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
+        proofCheck(cand, college);
       };
       const byTarget = (t: ResearchTarget) => toResearch.find((c) => c.name === t.name)!;
 
@@ -406,6 +438,10 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         ),
       );
 
+      if (fatal) throw fatal;
+      if (outer?.aborted) throw outer.reason ?? new DOMException("Aborted", "AbortError");
+      // Proof checks are bounded (≤ 8 s a page, 3 pages a college) and the colleges are already on the list.
+      await Promise.all(pendingChecks);
       if (fatal) throw fatal;
       if (outer?.aborted) throw outer.reason ?? new DOMException("Aborted", "AbortError");
       const colleges = candidates.map((c) => results.get(c)).filter((c): c is College => !!c);

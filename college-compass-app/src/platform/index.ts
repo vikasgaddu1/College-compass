@@ -149,7 +149,7 @@ export interface NativeHttpPlugin {
     background?: boolean;
     /** Research tracking label (see beginResearchRun). */
     tag?: string;
-  }): Promise<{ status: number; headers?: Record<string, string>; data?: string }>;
+  }): Promise<{ status: number; headers?: Record<string, string>; data?: string; /** Final URL after redirects. */ url?: string }>;
   cancel(opts: { id: string }): Promise<void>;
   requestNotificationPermission(): Promise<{ granted: boolean }>;
   notifyWhenDone(opts: { title: string; body: string }): Promise<void>;
@@ -191,7 +191,7 @@ export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, h
     signal.addEventListener("abort", onAbort, { once: true });
   });
 
-  let res: { status: number; headers?: Record<string, string>; data?: string };
+  let res: { status: number; headers?: Record<string, string>; data?: string; url?: string };
   try {
     const req = http.request({
       id,
@@ -219,7 +219,13 @@ export async function nativeFetch(input: RequestInfo | URL, init: RequestInit, h
     try { outHeaders.set(k, String(v)); } catch { /* skip invalid header names */ }
   }
   const body = typeof res.data === "string" ? res.data : "";
-  return new Response(res.status === 204 || res.status === 304 ? null : body, { status: res.status, headers: outHeaders });
+  const out = new Response(res.status === 204 || res.status === 304 ? null : body, { status: res.status, headers: outHeaders });
+  // `Response.url` is read-only and empty on a constructed Response; expose the final URL after
+  // redirects like a web fetch does (the deadline proof check rejects pages that redirected off-site).
+  if (typeof res.url === "string" && res.url) {
+    try { Object.defineProperty(out, "url", { value: res.url, configurable: true }); } catch { /* keep "" */ }
+  }
+  return out;
 }
 
 // ───────────────────────────── "you can leave the app" notifications ─────────────────────────────

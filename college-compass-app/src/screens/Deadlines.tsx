@@ -11,6 +11,8 @@ import { Banner, Button, Empty, Group, Row, Switch } from "@/components/ui";
 import { IconExternal, IconStar } from "@/components/icons";
 import { CounselorPrompt, deadlinePromptText, useCounselorAvailability } from "@/components/CounselorPrompt";
 import { AiNoticeLine } from "@/components/AiNotice";
+import { DeadlineCheckMark } from "@/components/DeadlineCheckMark";
+import { checkText } from "@/deadlines/verify";
 import { formatDay, formatRelative, formatWeekday, groupByDate, hiddenPlansNote, upcomingDeadlines, type Deadline } from "@/deadlines/deadlines";
 import { deadlinesToIcs, icsFileName } from "@/deadlines/ics";
 import { requestNotificationPermission, shareCalendarFile, supportsDeadlineReminders } from "@/platform";
@@ -178,12 +180,18 @@ export function Deadlines() {
   );
 }
 
-/** `starColumn` reserves the star's space on every row so names line up once any college is starred. */
+/**
+ * `starColumn` reserves the star's space on every row so names line up once any college is starred.
+ * The proof marker is plain text inside the row's button; the external-link icon opens the page it
+ * refers to (the checked page, else the researcher's page, else the college's site).
+ */
 function DeadlineRow({ d, starColumn }: { d: Deadline; starColumn: boolean }) {
-  const site = d.url ? safeUrl(d.url) : null;
+  const proof = checkText(d);
+  const site = (proof.url ? safeUrl(proof.url) : null) ?? (d.url ? safeUrl(d.url) : null);
+  const linkLabel = proof.status === "verified" ? `Open the ${d.short} page this date was checked on` : `Confirm on ${d.short}'s website`;
   return (
     <div className="cc-row-static !py-0 !pr-1">
-      <button type="button" className="cc-press flex min-h-tap min-w-0 flex-1 items-center gap-3 py-2.5 text-left" onClick={() => navigate(`/college/${encodeURIComponent(d.collegeId)}`)} aria-label={`${d.collegeName}, ${d.planLabel}${d.starred ? ", on your shortlist" : ""}${d.notes ? `, ${d.notes}` : ""}`}>
+      <button type="button" className="cc-press flex min-h-tap min-w-0 flex-1 items-center gap-3 py-2.5 text-left" onClick={() => navigate(`/college/${encodeURIComponent(d.collegeId)}`)} aria-label={`${d.collegeName}, ${d.planLabel}${d.starred ? ", on your shortlist" : ""}${d.notes ? `, ${d.notes}` : ""}, ${proof.label}`}>
         {d.starred ? <IconStar size={18} filled className="shrink-0 text-warn" /> : starColumn ? <span className="h-[18px] w-[18px] shrink-0" aria-hidden /> : null}
         <span className="min-w-0 flex-1">
           <span className="block text-body">{d.collegeName}</span>
@@ -191,10 +199,11 @@ function DeadlineRow({ d, starColumn }: { d: Deadline; starColumn: boolean }) {
             {d.planLabel}
             {d.notes ? ` · ${d.notes}` : ""}
           </span>
+          <DeadlineCheckMark plan={{ deadline: d.date, check: d.check, source_url: d.source_url }} link={false} className="block" />
         </span>
       </button>
       {site && (
-        <a className="grid h-11 w-11 shrink-0 place-items-center text-text-muted" href={site} target="_blank" rel="noopener noreferrer" aria-label={`Confirm on ${d.short}'s website`}>
+        <a className="grid h-11 w-11 shrink-0 place-items-center text-text-muted" href={site} target="_blank" rel="noopener noreferrer" aria-label={linkLabel}>
           <IconExternal size={18} />
         </a>
       )}

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { AiMessage } from "@/types";
 import { useStore } from "@/state/store";
-import { MANAGE_USAGE_URL, aiClient, auth, chatInstructions, describeError, summarizeListForAi } from "@/state/services";
+import { MANAGE_USAGE_URL, aiClient, auth, chatInstructions, deadlinesBrief, describeError, summarizeListForAi } from "@/state/services";
 import { ConfirmSheet } from "@/components/Sheet";
 import { SignInAgain, needsSignIn, reasonFor } from "@/components/SignInAgain";
 import { Banner, Chip, Empty } from "@/components/ui";
@@ -45,6 +45,7 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
   useKeyboardInset();
 
   const summary = useMemo(() => summarizeListForAi(ranked), [ranked]);
+  const deadlines = useMemo(() => deadlinesBrief(colleges), [colleges]);
   const busy = streaming != null;
 
   useEffect(() => {
@@ -92,7 +93,7 @@ export function Ask({ tabBar }: { tabBar?: ReactNode }) {
     let acc = "";
     try {
       const res = await aiClient.call({
-        instructions: chatInstructions(profile, summary),
+        instructions: chatInstructions(profile, summary, new Date(), deadlines),
         input: history.slice(-20),
         model: prefs.model ?? undefined,
         signal: c.signal,

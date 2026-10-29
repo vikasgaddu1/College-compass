@@ -297,7 +297,8 @@ final class BackgroundTransfers: NSObject, URLSessionDataDelegate {
                 for (key, value) in http.allHeaderFields {
                     headers[String(describing: key)] = String(describing: value)
                 }
-                completion(.success(["status": http.statusCode, "headers": headers, "data": String(decoding: data, as: UTF8.self)]))
+                let finalUrl = http.url?.absoluteString ?? ""
+                completion(.success(["status": http.statusCode, "headers": headers, "data": String(decoding: data, as: UTF8.self), "url": finalUrl]))
             } else {
                 completion(.failure(.init(code: "NETWORK", message: "No HTTP response")))
             }

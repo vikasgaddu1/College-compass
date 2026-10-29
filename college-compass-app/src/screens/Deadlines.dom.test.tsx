@@ -108,7 +108,7 @@ describe("Deadlines screen", () => {
     expect(await screen.findByText("Robotics · NC · 19 upcoming")).toBeTruthy();
     const nov1 = within(screen.getByRole("region", { name: "Nov 1, in 11 days" }));
     expect(nov1.getByText("Sunday")).toBeTruthy();
-    const mitRow = nov1.getByRole("button", { name: "Massachusetts Institute of Technology, Early Action, on your shortlist" });
+    const mitRow = nov1.getByRole("button", { name: /^Massachusetts Institute of Technology, Early Action, on your shortlist, Not checked — confirm on the college's site$/ });
     expect(mitRow).toBeTruthy();
     // Starred first within the day.
     expect(nov1.getAllByRole("button")[0]).toBe(mitRow);
@@ -124,6 +124,40 @@ describe("Deadlines screen", () => {
     await waitFor(() => expect(window.location.hash).toBe("#/college/166683"));
   });
 
+  it("marks each deadline as checked on the college's page, not found there, or not checked — on the Deadlines screen and the college", async () => {
+    const gt = DEMO_COLLEGES.find((c) => c.short === "Georgia Tech")!;
+    const page = "https://admission.gatech.edu/first-year/deadlines";
+    const at = "2026-10-20T00:00:00.000Z";
+    const plans = [
+      { plan: "EA" as const, deadline: "Nov 1, 2026", notes: "EA2 for non-residents", source_url: page, check: { status: "verified" as const, url: page, host: "admission.gatech.edu", checkedAt: at } },
+      { plan: "RD" as const, deadline: "Jan 4, 2027", source_url: page, check: { status: "mismatch" as const, reason: "no_date", url: page, host: "admission.gatech.edu", checkedAt: at } },
+      { plan: "Priority" as const, deadline: "Dec 1, 2026", notes: "Scholarships" },
+    ];
+    seed([{ ...gt, application: { ...gt.application!, plans } }]);
+    window.location.hash = "#/deadlines";
+    render(<App />);
+    await screen.findByText("Robotics · NC · 3 upcoming");
+    const nov1 = within(screen.getByRole("region", { name: "Nov 1, in 11 days" }));
+    expect(nov1.getByRole("button", { name: /Georgia Institute of Technology, Early Action, EA2 for non-residents, Checked on admission.gatech.edu$/ })).toBeTruthy();
+    expect(nov1.getByText("Checked on admission.gatech.edu").getAttribute("data-check")).toBe("verified");
+    expect(nov1.getByText("Checked on admission.gatech.edu").textContent).toBe("✓ Checked on admission.gatech.edu");
+    expect(nov1.getByRole("link", { name: "Open the Georgia Tech page this date was checked on" }).getAttribute("href")).toBe(page);
+    const jan4 = within(screen.getByRole("region", { name: /^Jan 4, 2027/ }));
+    expect(jan4.getByText("Couldn't find this date on admission.gatech.edu — confirm").getAttribute("data-check")).toBe("mismatch");
+    expect(jan4.getByRole("link", { name: "Confirm on Georgia Tech's website" }).getAttribute("href")).toBe(page);
+    const dec1 = within(screen.getByRole("region", { name: /^Dec 1/ }));
+    expect(dec1.getByText("Not checked — confirm on the college's site").getAttribute("data-check")).toBe("unchecked");
+    expect(dec1.getByRole("link", { name: "Confirm on Georgia Tech's website" }).getAttribute("href")).toBe("https://gatech.edu");
+
+    // The college's own "Plans & deadlines" rows carry the same markers, as links to the page.
+    window.location.hash = `#/college/${gt.id}`;
+    const ok = await screen.findByRole("link", { name: "Checked on admission.gatech.edu" });
+    expect(ok.getAttribute("href")).toBe(page);
+    expect(screen.getByRole("link", { name: "Couldn't find this date on admission.gatech.edu — confirm" }).getAttribute("href")).toBe(page);
+    const none = screen.getByText("Not checked — confirm on the college's site");
+    expect(none.tagName).toBe("SPAN"); // no page to point at
+  });
+
   it("'Show all' reveals the plans the student said they'd skip", async () => {
     seed();
     window.location.hash = "#/deadlines";
@@ -132,7 +166,7 @@ describe("Deadlines screen", () => {
     fireEvent.click(screen.getByRole("button", { name: "Show all" }));
     expect(await screen.findByText("Robotics · NC · 26 upcoming")).toBeTruthy();
     expect(screen.getByRole("region", { name: "Nov 3, in 13 days" })).toBeTruthy();
-    expect(screen.getByRole("button", { name: "Duke University, Early Decision" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /^Duke University, Early Decision, / })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Show mine" }));
     expect(await screen.findByText("Robotics · NC · 19 upcoming")).toBeTruthy();
   });

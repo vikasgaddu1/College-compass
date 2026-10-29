@@ -112,10 +112,40 @@ export interface College {
 
 export interface ApplicationFacts {
   cycle: string;                      // e.g. "Fall 2027 entry"
-  plans: { plan: "ED" | "ED2" | "EA" | "REA" | "RD" | "Rolling" | "Priority"; deadline: string | null; notes?: string }[];
+  plans: ApplicationPlan[];
   test_policy_note: string | null;
   essays_note: string | null;
   fee: string | null;
+}
+
+export type PlanKind = "ED" | "ED2" | "EA" | "REA" | "RD" | "Rolling" | "Priority";
+
+export interface ApplicationPlan {
+  plan: PlanKind;
+  deadline: string | null;
+  notes?: string;
+  /** The college's own page the deadline was read from (https, the college's domain). */
+  source_url?: string;
+  /** The sentence or table row on that page that states the date, copied verbatim (≤ 240 chars). */
+  quote?: string;
+  /** Result of the deadline proof check (src/deadlines/verify.ts). Absent until it has run. */
+  check?: DeadlineCheck;
+}
+
+/**
+ * Whether a deadline was found on the college's own page.
+ * - verified:  the page at `url` (on the college's domain) states this month/day next to the quote or plan name.
+ * - mismatch:  the page loaded but the date isn't on it — the deadline is likely wrong.
+ * - unchecked: no proof page, an off-site page, or the page couldn't be read (blocked, timed out, JS-only).
+ */
+export interface DeadlineCheck {
+  status: "verified" | "mismatch" | "unchecked";
+  /** Why it couldn't be checked: no_source, off_site, no_site, fetch_failed, timeout, blocked, not_html, empty_page, no_date, unsupported. */
+  reason?: string;
+  url?: string;
+  /** Host of `url` without "www.", e.g. "admission.gatech.edu" — shown to the student. */
+  host?: string;
+  checkedAt: string;                  // ISO timestamp
 }
 
 export interface ProgramNote {
@@ -338,6 +368,8 @@ export type ResearchEvent =
   | { type: "planned"; candidates: CollegeCandidate[] }
   | { type: "batch_started"; batch: number; names: string[] }
   | { type: "college_done"; college: College }
+  /** The deadline proof check finished for a college already reported with `college_done` (same id; replaces it). */
+  | { type: "college_checked"; college: College }
   | { type: "college_failed"; name: string; error: string }
   | { type: "batch_done"; batch: number }
   | { type: "summary_delta"; text: string }

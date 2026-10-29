@@ -199,6 +199,27 @@ describe("reminders", () => {
     expect(mixed.title).toBe("2 application deadlines tomorrow — Nov 1");
   });
 
+  it("says plainly when the proof check could not find the date on the college's site", () => {
+    const mismatch = { status: "mismatch" as const, url: "https://admissions.duke.edu/deadlines", host: "admissions.duke.edu", checkedAt: "2026-10-20T00:00:00.000Z" };
+    const verified = { ...mismatch, status: "verified" as const };
+    const one = reminderText({ date: "2026-11-01", daysUntil: 11, items: [d({ check: mismatch, notes: "Binding." })] }, 7, NOW);
+    expect(one.body).toBe("This date wasn't found on the college's site — confirm it before you submit. Binding.");
+    const fine = reminderText({ date: "2026-11-01", daysUntil: 11, items: [d({ check: verified })] }, 7, NOW);
+    expect(fine.body).toBe("Confirm the date on the college's site before you submit.");
+    const many = reminderText({ date: "2026-11-01", daysUntil: 11, items: [d({ collegeId: "a", short: "MIT", check: verified }), d({ collegeId: "b", short: "Purdue", check: mismatch }), d({ collegeId: "c", short: "Michigan" })] }, 1, NOW);
+    expect(many.body).toBe("MIT, Purdue and Michigan. Purdue: this date wasn't found on the college's site — confirm it. Confirm the others too.");
+  });
+
+  it("carries each plan's proof page and check into the deadline", () => {
+    const check = { status: "verified" as const, url: "https://admission.gatech.edu/first-year/deadlines", host: "admission.gatech.edu", checkedAt: "2026-10-20T00:00:00.000Z" };
+    const plans = gt.application!.plans.map((p, i) => (i === 1 ? { ...p, source_url: check.url, check } : p));
+    const up = upcomingDeadlines({ colleges: [{ ...gt, application: { ...gt.application!, plans } }], profile: { plan: "ea_only" }, now: NOW });
+    const ea2 = up.items.find((x) => x.plan === "EA" && x.date === "2026-11-01")!;
+    expect(ea2.check).toEqual(check);
+    expect(ea2.source_url).toBe(check.url);
+    expect(up.items.find((x) => x.plan === "RD")!.check).toBeNull();
+  });
+
   it("schedules 7 days and 1 day before at 9:00 local, with stable prefixed ids, skipping lead days already past", () => {
     const items = [d({}), d({ collegeId: "2", short: "MIT", plan: "EA", planLabel: "Early Action" }), d({ collegeId: "3", short: "Later", plan: "RD", planLabel: "Regular Decision", date: "2027-01-02" })];
     const r = buildReminders(items, NOW);

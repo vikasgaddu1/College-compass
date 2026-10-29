@@ -25,7 +25,7 @@ interface Filters {
 const NO_FILTERS: Filters = { tiers: [], maxPrice: null, ownership: "any", savedOnly: false };
 
 export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: ReactNode }) {
-  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertCollege, demo, connected, hasProfile, enterDemo, activeList, shortlist, notes } = useStore();
+  const { ranked, balanced, others, colleges, profile, prefs, setPrefs, isSaved, toggleSaved, upsertResearched, demo, connected, hasProfile, enterDemo, activeList, shortlist, notes } = useStore();
   const [shareOpen, setShareOpen] = useState(false);
   const [q, setQ] = useState("");
   const [listsOpen, setListsOpen] = useState(false);
@@ -70,7 +70,7 @@ export function List({ selectedId, tabBar }: { selectedId?: string; tabBar?: Rea
     setAddError(null);
     try {
       const college = await researchApi(demo).researchOne(name, profile, prefs.model ?? undefined);
-      upsertCollege(college);
+      upsertResearched(college);
       setAddOpen(false);
       setAddName("");
     } catch (e) {

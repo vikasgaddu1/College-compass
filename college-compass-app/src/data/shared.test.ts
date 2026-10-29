@@ -105,6 +105,26 @@ describe("shared research (the flywheel)", () => {
     expect(p.programs).toEqual([{ major: "nursing", offered: true, degree: "BSN", how_to_enter: "competitive", notes: null }]);
   });
 
+  it("keeps deadline proof-check results on the device: dropped on read, never contributed", () => {
+    const page = "https://admissions.ecu.edu/deadlines";
+    const check = { status: "verified", url: page, host: "admissions.ecu.edu", checkedAt: "2026-10-19T00:00:00.000Z" };
+    const row: SharedCollege = {
+      ...withResearch,
+      research: [{ ...withResearch.research[0]!, data: { ...withResearch.research[0]!.data, application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA", deadline: "2026-11-01", source_url: page, quote: "Early Action November 1", check }, { plan: "RD", deadline: "2027-01-15", check: { status: "verified" } }] } } }],
+    };
+    const hit = sharedResearchRecord(row, "Fall 2027 entry", ["nursing"], now)!;
+    const plans = (hit.raw.application as { plans: Record<string, unknown>[] }).plans;
+    expect(plans).toEqual([{ plan: "EA", deadline: "2026-11-01", source_url: page, quote: "Early Action November 1" }, { plan: "RD", deadline: "2027-01-15" }]);
+
+    const c = withC("East Carolina University", {
+      application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA", deadline: "2026-11-01", source_url: page, quote: "Early Action November 1", check: { ...check, status: "verified" } }], test_policy_note: null, essays_note: null, fee: null },
+    });
+    const p = contributionPayload(c, "Fall 2027 entry", "11111111-1111-4111-8111-111111111111", "1.0.0");
+    expect((p.college.application as { plans: Record<string, unknown>[] }).plans).toEqual([{ plan: "EA", deadline: "2026-11-01", source_url: page, quote: "Early Action November 1" }]);
+    expect(JSON.stringify(p)).not.toContain("check");
+    expect(c.application!.plans[0]!.check).toBeDefined(); // the local copy keeps its own result
+  });
+
   it("contribute posts to the database function and never throws", async () => {
     const doFetch = vi.fn(async () => new Response("{}"));
     const l = createSharedLookup({ url: "https://x.supabase.co", key: "pk" }, doFetch as unknown as typeof fetch)!;

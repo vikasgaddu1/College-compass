@@ -48,7 +48,7 @@ interface Lane {
 }
 
 export function Research() {
-  const { profile, colleges, setColleges, upsertCollege, demo, prefs, setPrefs, markResearched, isSaved, toggleSaved, activeList, lists } = useStore();
+  const { profile, colleges, setColleges, upsertCollege, upsertResearched, demo, prefs, setPrefs, markResearched, isSaved, toggleSaved, activeList, lists } = useStore();
   // Mention which list is being researched once there is more than one.
   const listName = lists.length > 1 ? activeList.name : null;
   // First research run on this install: the AI-assistance notice comes first (Settings → About keeps it available).
@@ -102,6 +102,11 @@ export function Research() {
           setDone((d) => [...d.filter((c) => c.id !== e.college.id), e.college]);
           upsertCollege(e.college);
           setLanes((ls) => ls.map((l) => (l.names.some((n) => sameName(n, e.college.name)) ? { ...l, done: [...l.done, e.college.name] } : l)));
+          break;
+        case "college_checked":
+          // The deadline proof check finished for a college already on the list: same id, replaces it.
+          setDone((d) => d.map((c) => (c.id === e.college.id ? e.college : c)));
+          upsertCollege(e.college);
           break;
         case "college_failed":
           setFailures((f) => [...f.filter((x) => x.name !== e.name), { name: e.name, error: e.error }]);
@@ -293,6 +298,7 @@ export function Research() {
     try {
       const college = await researchApi(demo).researchOne(name, profile, prefs.model ?? undefined);
       onEvent({ type: "college_done", college });
+      upsertResearched(college); // the event above stored it; this also runs the deadline proof check
       setFailures((f) => f.filter((x) => x.name !== name));
     } catch (err) {
       setFailures((f) => f.map((x) => (x.name === name ? { ...x, error: describeError(err).detail } : x)));
