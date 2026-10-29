@@ -28,13 +28,18 @@ export const COUNSELORS_INTRO = "Independent counselors who help families with a
 /** Shown after the invite was copied instead of shared (no share sheet on this platform). */
 export const INVITE_COPIED = "Invite copied — paste it in a message";
 
+/** The full invite as shared: message, then the link on its own line. */
+export const COUNSELOR_INVITE_TEXT = `${COUNSELOR_INVITE_MESSAGE}\n${COUNSELOR_INVITE_URL}`;
+
 /**
- * "Invite your counselor": hand the ready-made message + link to the share sheet. Returns what the
+ * "Invite your counselor": hand the ready-made message + link to the share sheet. The link travels
+ * inside `text` (no separate `url`): some iOS targets, WhatsApp among them, keep only the url when
+ * both are given, so this way every target gets one message with the link once. Returns what the
  * platform did; a dismissed sheet is "cancelled" and callers say nothing. No student data leaves the
  * phone — the message is the same for everyone.
  */
 export function shareCounselorInvite() {
-  return shareText({ title: COUNSELOR_INVITE_TITLE, text: COUNSELOR_INVITE_MESSAGE, url: COUNSELOR_INVITE_URL });
+  return shareText({ title: COUNSELOR_INVITE_TITLE, text: COUNSELOR_INVITE_TEXT });
 }
 
 export function Counselors({ api: apiProp, tabBar }: { /** Tests inject a mocked API. */ api?: DirectoryApi | null; tabBar?: ReactNode }) {

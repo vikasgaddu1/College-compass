@@ -10,7 +10,7 @@ import { toCounselor, type Counselor, type DirectoryApi } from "@/data/counselor
 import { setCounselorDirectoryForMatches } from "@/data/counselorMatches";
 import { COUNSELORS_NUDGE_KEY } from "@/components/CounselorsNudge";
 import { COUNSELOR_INVITE_MESSAGE, COUNSELOR_INVITE_URL } from "@/data/counselors";
-import { Counselors, INVITE_COPIED } from "./Counselors";
+import { COUNSELOR_INVITE_TEXT, Counselors, INVITE_COPIED } from "./Counselors";
 import { App } from "@/app/App";
 
 const SAMPLE: Counselor[] = [
@@ -251,10 +251,13 @@ describe("Invite your counselor", () => {
     expect(screen.queryByRole("button", { name: "Show virtual counselors" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Invite your counselor" }));
     await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
+    // The link rides inside `text` (no `url`): targets that keep only one of the two still get both.
     const data = share.mock.calls[0]![0] as ShareData;
-    expect(data.url).toBe(INVITE_LINK);
-    expect(data.text).toBe(COUNSELOR_INVITE_MESSAGE);
-    expect(`${data.text}\n${data.url}`).toContain("counselors/#/?invited=1");
+    expect(data).toEqual({ title: "Get listed on Tierwise", text: COUNSELOR_INVITE_TEXT });
+    expect(data.text).toBe(`${COUNSELOR_INVITE_MESSAGE}\n${INVITE_LINK}`);
+    expect(data.text).toContain("counselors/#/?invited=1");
+    expect(data.text!.split(INVITE_LINK).length - 1).toBe(1); // the link once
+    expect("url" in data).toBe(false);
     // Only the share sheet: nothing copied, no toast, no new link to the portal in the page.
     expect(writeText).not.toHaveBeenCalled();
     expect(screen.queryByRole("status")).toBeNull();
@@ -271,7 +274,7 @@ describe("Invite your counselor", () => {
     expect(screen.getByText(/Don't see your counselor\?/)).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Invite them" }));
     await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
-    expect((share.mock.calls[0]![0] as ShareData).url).toContain("#/?invited=1");
+    expect((share.mock.calls[0]![0] as ShareData).text).toContain("#/?invited=1");
   });
 
   it("empty directory with only a specialty filter: 'Show all specialties' plus the invite link", async () => {
@@ -295,7 +298,7 @@ describe("Invite your counselor", () => {
     expect(row.compareDocumentPosition(learn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(within(row).getByRole("button", { name: "Invite them" }));
     await waitFor(() => expect(share).toHaveBeenCalledTimes(1));
-    expect(share.mock.calls[0]![0]).toEqual({ title: "Get listed on Tierwise", text: COUNSELOR_INVITE_MESSAGE, url: INVITE_LINK });
+    expect(share.mock.calls[0]![0]).toEqual({ title: "Get listed on Tierwise", text: COUNSELOR_INVITE_TEXT });
   });
 
   it("cancelling the share sheet is silent", async () => {
@@ -317,6 +320,7 @@ describe("Invite your counselor", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Invite your counselor" }));
     await waitFor(() => expect(writeText).toHaveBeenCalledTimes(1));
     const copied = writeText.mock.calls[0]![0] as string;
+    expect(copied).toBe(COUNSELOR_INVITE_TEXT);
     expect(copied).toBe(`${COUNSELOR_INVITE_MESSAGE}\n${INVITE_LINK}`);
     expect((await screen.findByRole("status")).textContent).toBe(INVITE_COPIED);
   });
