@@ -6,6 +6,8 @@
 import { describe, expect, it, vi } from "vitest";
 import type { ApplicationPlan, College } from "@/types";
 import { DEMO_COLLEGES } from "@/state/fixtures";
+import { normalizeCollege } from "@/ai/normalize";
+import { sharedResearchRecord, type SharedCollege } from "@/data/shared";
 import {
   checkText, createLimiter, dateRegex, decodeEntities, findDates, findPlanName, findQuote, htmlToText, judgePage, looksEmpty, monthDay,
   needsDeadlineCheck, onSite, shouldCheck, siteDomain, verifyCollegeDeadlines, type FetchLike,
@@ -352,6 +354,28 @@ describe("verifyCollegeDeadlines", () => {
     const spy = vi.fn();
     await verifyCollegeDeadlines(c, opts(weird)).then(spy);
     expect(spy).toHaveBeenCalled();
+  });
+});
+
+describe("shared research → local check", () => {
+  it("re-checks a shared row's deadline on this device: a bogus shared 'verified' for a date not on the page ends up mismatch", async () => {
+    const page = WPI;
+    const row: SharedCollege = {
+      unitid: "1", name: "Worcester Polytechnic Institute", city: "Worcester", state: "MA", lat: null, lon: null, locale: null, url: "https://www.wpi.edu", undergrad_size: 5000,
+      hbcu: false, women_only: false, religious: false, stats: null,
+      research: [{ cycle: "Fall 2027", data: { application: { cycle: "Fall 2027 entry", plans: [
+        { plan: "EA", deadline: "2027-01-05", source_url: page, quote: "Early Action Round II Jan. 5", check: { status: "verified", url: page, host: "wpi.edu", checkedAt: "2026-10-01T00:00:00.000Z" } }, // on the page (Round II) → verifies here too
+        { plan: "RD", deadline: "2027-01-20", source_url: page, quote: "Regular Decision Jan. 20", check: { status: "verified", url: page, host: "wpi.edu", checkedAt: "2026-10-01T00:00:00.000Z" } }, // tampered: not on the page
+      ], test_policy_note: null, essays_note: null, fee: null } }, verified_count: 1, researched_at: "2026-10-01T00:00:00Z", stale_after: "2099-01-01T00:00:00Z" }],
+      programs: [],
+    };
+    const rec = sharedResearchRecord(row, "Fall 2027 entry", [], Date.parse("2026-10-21T00:00:00Z"))!;
+    const c = normalizeCollege(rec.raw, { cycle: "Fall 2027 entry", now: NOW })!;
+    expect(c.application!.plans.every((p) => p.check === undefined)).toBe(true);
+    expect(needsDeadlineCheck(c, NOW)).toBe(true);
+    const out = await verifyCollegeDeadlines(c, { fetch: fetchOf({ [page]: WPI_HTML }), now: () => NOW, limit: createLimiter(4) });
+    expect(out.application!.plans[0]!.check).toMatchObject({ status: "verified", host: "wpi.edu" });
+    expect(out.application!.plans[1]!.check).toMatchObject({ status: "mismatch", reason: "no_date", host: "wpi.edu" });
   });
 });
 

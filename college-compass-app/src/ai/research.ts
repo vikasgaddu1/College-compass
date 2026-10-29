@@ -328,23 +328,20 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
       if (signal.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
 
       // Deadline proof checks run in the background after a college is reported, so the list never
-      // waits on a college website. The result replaces the college (`college_checked`) and rides
-      // along with the contribution to the shared database. Awaited before `done`.
+      // waits on a college website. The result replaces the college (`college_checked`) and stays on
+      // this device: it is never contributed, and a shared record's own is dropped on read. Awaited before `done`.
       const share = opts.share_research !== false && !!shared?.contribute;
       const pendingChecks: Promise<void>[] = [];
-      const proofCheck = (cand: CollegeCandidate, college: College, researched: College | null) => {
+      const proofCheck = (cand: CollegeCandidate, college: College) => {
+        if (!verify || !needsDeadlineCheck(college)) return;
         const task = async () => {
           let checked = college;
-          if (verify && needsDeadlineCheck(college)) {
-            try { checked = applyChecks(college, await verify(college, signal)); } catch { /* stays unchecked */ }
-            if (checked !== college && !fatal && !signal.aborted) {
-              results.set(cand, checked);
-              try { cache.put(checked, [cand.name]); } catch { /* cache is best-effort */ }
-              emit({ type: "college_checked", college: checked });
-            }
+          try { checked = applyChecks(college, await verify(college, signal)); } catch { /* stays unchecked */ }
+          if (checked !== college && !fatal && !signal.aborted) {
+            results.set(cand, checked);
+            try { cache.put(checked, [cand.name]); } catch { /* cache is best-effort */ }
+            emit({ type: "college_checked", college: checked });
           }
-          // Give back: the researched facts only (before federal gap-filling), never profile or notes.
-          if (researched && share && !fatal) void shared!.contribute!(contributionPayload(applyChecks(researched, checked), cycle, installId(), APP_VERSION));
         };
         pendingChecks.push(task().catch(() => {}));
       };
@@ -363,7 +360,7 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
         try { cache.put(college, [c.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
         toResearch.splice(toResearch.indexOf(c), 1);
-        proofCheck(c, college, null); // shared research that already carries check results is left as is
+        proofCheck(c, college); // shared research is checked on this device like fresh research (a shared check is never trusted)
       }
 
       // 3) Parallel batches.
@@ -381,10 +378,12 @@ export function createResearch(deps: ResearchDeps): ResearchApi & {
           try { facts = (await shared.lookup([{ name: researched.name, state: researched.state || null }], signal)).get(researched.name); } catch { /* optional */ }
         }
         const college = facts ? mergeShared(researched, facts) : researched;
+        // Give back: the researched facts only (before federal gap-filling), never profile, notes or check results.
+        if (share) void shared!.contribute!(contributionPayload(researched, cycle, installId(), APP_VERSION));
         results.set(cand, college);
         try { cache.put(college, [cand.name]); } catch { /* cache is best-effort */ }
         emit({ type: "college_done", college });
-        proofCheck(cand, college, researched);
+        proofCheck(cand, college);
       };
       const byTarget = (t: ResearchTarget) => toResearch.find((c) => c.name === t.name)!;
 

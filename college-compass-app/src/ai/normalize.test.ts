@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractJsonObject, namesMatch, normalizeCollege, normalizeName, shortName, toCheck, toDeadline, toNumber, toPlanKind, toProofUrl, toRate } from "./normalize";
+import { extractJsonObject, namesMatch, normalizeCollege, normalizeName, shortName, toDeadline, toNumber, toPlanKind, toProofUrl, toRate } from "./normalize";
 import { rawCollege } from "./test-helpers";
 
 const NOW = new Date("2026-10-16T12:00:00Z");
@@ -186,7 +186,7 @@ describe("normalizeCollege", () => {
     expect(c.tuition_in_state).toBe(9000); // copied from model output, both present
   });
 
-  it("keeps each plan's proof page and quote (https only, trimmed) and a well-formed stored check", () => {
+  it("keeps each plan's proof page and quote (https only, trimmed) but never a check result", () => {
     const long = "x".repeat(300);
     const c = normalizeCollege(rawCollege("Georgia Institute of Technology", "GA", {
       application: {
@@ -205,22 +205,17 @@ describe("normalizeCollege", () => {
     expect(rd!.source_url).toBeUndefined(); // http is not proof
     expect(rd!.quote).toHaveLength(240);
     expect(ed!.source_url).toBeUndefined(); // too long
-    expect(ed!.check).toEqual({ status: "verified", url: "https://admission.gatech.edu/d", host: "admission.gatech.edu", checkedAt: "2026-10-20T10:00:00.000Z" });
+    expect(ed!.check).toBeUndefined(); // a check is only ever written by this device's own verifier
     expect(pr!.source_url).toBeUndefined();
     expect(pr!.check).toBeUndefined();
     expect("source_url" in rd!).toBe(false);
   });
 
-  it("validates proof URLs and stored checks", () => {
+  it("validates proof URLs", () => {
     expect(toProofUrl("https://www.wpi.edu/admissions/deadlines")).toBe("https://www.wpi.edu/admissions/deadlines");
     expect(toProofUrl("wpi.edu/admissions")).toBe("https://wpi.edu/admissions");
     expect(toProofUrl("http://wpi.edu/")).toBeNull();
     expect(toProofUrl(42)).toBeNull();
-    expect(toCheck({ status: "mismatch", reason: "no_date", url: "https://a.edu/p", host: "A.EDU", checkedAt: "2026-10-20T10:00:00Z" })).toEqual({ status: "mismatch", reason: "no_date", url: "https://a.edu/p", host: "a.edu", checkedAt: "2026-10-20T10:00:00.000Z" });
-    expect(toCheck({ status: "unchecked", reason: "off_site", checkedAt: "2026-10-20T10:00:00Z" })).toEqual({ status: "unchecked", reason: "off_site", checkedAt: "2026-10-20T10:00:00.000Z" });
-    expect(toCheck({ status: "verified", checkedAt: "2026-10-20T10:00:00Z" })).toBeNull(); // verified needs its page
-    expect(toCheck({ status: "verified", url: "https://a.edu/p", checkedAt: "yesterday" })).toBeNull();
-    expect(toCheck(null)).toBeNull();
   });
 
   it("caps confidence when the data doesn't support it and fills missing fields", () => {

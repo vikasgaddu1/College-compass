@@ -1,25 +1,15 @@
--- Tierwise — deadline proof check: let a plan's proof page, quote and check result through the
--- contribution whitelist (src/deadlines/verify.ts), so shared research carries "checked on the
--- college's own page" / "not found there" along with each deadline. Everything else in
--- cc_private.sanitize_college is unchanged from 20261020010000_contributions.sql.
+-- Tierwise — deadline proof check: let a plan's proof page and quote through the contribution
+-- whitelist (src/deadlines/verify.ts), so shared research carries where each deadline was read
+-- from. Everything else in cc_private.sanitize_college is unchanged from 20261020010000_contributions.sql.
 --
 -- Per plan, besides plan / deadline / notes:
 --   source_url  https URL, ≤ 300 chars (the app only trusts it when it is on the college's own domain)
 --   quote       ≤ 240 chars of page text
---   check       { status: verified | mismatch | unchecked, reason?, url? (https, ≤ 300), host?, checkedAt? }
-
-create or replace function cc_private.plan_check(c jsonb)
-returns jsonb language sql immutable as $$
-  select case
-    when jsonb_typeof(c) = 'object' and (c ->> 'status') in ('verified', 'mismatch', 'unchecked') then
-      jsonb_strip_nulls(jsonb_build_object(
-        'status', c ->> 'status',
-        'reason', case when (c ->> 'reason') ~ '^[a-z_]{1,40}$' then c ->> 'reason' end,
-        'url', case when (c ->> 'url') ~ '^https://' then left(c ->> 'url', 300) end,
-        'host', case when (c ->> 'host') ~ '^[a-z0-9.-]{1,120}$' then c ->> 'host' end,
-        'checkedAt', case when (c ->> 'checkedAt') ~ '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}' then left(c ->> 'checkedAt', 40) end))
-  end
-$$;
+-- Deliberately NOT the check result (`check`): a proof check is device-local by design — it means
+-- the student's own device fetched the college's page and found the date there. A contribution is
+-- published as soon as one install sends it, so a tampered client could otherwise label a wrong date
+-- "checked" for every other student. The app also strips `check` before contributing and on read;
+-- each device re-runs the check from source_url / quote itself.
 
 create or replace function cc_private.sanitize_college(c jsonb)
 returns jsonb language plpgsql immutable as $$
@@ -89,8 +79,7 @@ begin
              'deadline', case when (p ->> 'deadline') ~ '^\d{4}-\d{2}-\d{2}$' then p ->> 'deadline' end,
              'notes', left(p ->> 'notes', 300),
              'source_url', case when (p ->> 'source_url') ~ '^https://' then left(p ->> 'source_url', 300) end,
-             'quote', left(p ->> 'quote', 240),
-             'check', cc_private.plan_check(p -> 'check')))), '[]'::jsonb)
+             'quote', left(p ->> 'quote', 240)))), '[]'::jsonb)
       into plans
       from (select p from jsonb_array_elements(case when jsonb_typeof(app -> 'plans') = 'array' then app -> 'plans' else '[]' end) p
             where p ->> 'plan' in ('ED', 'ED2', 'EA', 'REA', 'RD', 'Rolling', 'Priority') limit 8) t;

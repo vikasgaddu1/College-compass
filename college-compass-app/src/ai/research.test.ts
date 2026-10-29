@@ -360,7 +360,7 @@ describe("shared research flywheel", () => {
     expect(sent.every((p) => !("data_notes" in p.college))).toBe(true);
   });
 
-  it("checks deadlines in the background after reporting a college, and the contribution carries the result", async () => {
+  it("checks deadlines in the background after reporting a college; the result never goes into the contribution", async () => {
     const plans = [{ plan: "EA", deadline: "2026-11-01", source_url: "https://example.edu/deadlines", quote: "Early Action: November 1" }];
     const m = mockClient({ research: (ns) => ({ text: "", model: "m", tool_calls: [{ name: RESEARCH_TOOL_NAME, arguments: JSON.stringify({ colleges: ns.map((n) => rawCollege(n, "NC", { application: { cycle: "Fall 2027 entry", plans, test_policy_note: null, essays_note: null, fee: null } })) }) }] }) });
     const contribute = vi.fn(async () => {});
@@ -372,10 +372,10 @@ describe("shared research flywheel", () => {
     const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_check" }), now: () => NOW, shared: { lookup: async () => new Map(), contribute }, verify });
     const events: ResearchEvent[] = [];
     const run = r.run({ profile: baseProfile(), wanted: ["College A"], target_count: 1, onEvent: (e) => events.push(e) });
-    // The college is on the list before the check finishes; the contribution waits for the check.
+    // The college is on the list (and contributed) before the check finishes.
     await vi.waitFor(() => expect(events.some((e) => e.type === "college_done")).toBe(true));
     expect(events.some((e) => e.type === "college_checked")).toBe(false);
-    expect(contribute).not.toHaveBeenCalled();
+    expect(contribute).toHaveBeenCalledTimes(1);
     await vi.waitFor(() => expect(resolveCheck).not.toBeNull());
     resolveCheck!();
     const out = await run;
@@ -384,8 +384,31 @@ describe("shared research flywheel", () => {
     expect(out[0]!.application!.plans[0]!.check).toMatchObject({ status: "verified" });
     expect(events.at(-1)!.type).toBe("done");
     expect(contribute).toHaveBeenCalledTimes(1);
-    const sent = (contribute.mock.calls as unknown as [{ college: { application: { plans: { check?: unknown }[] } } }][])[0]![0];
-    expect(sent.college.application.plans[0]!.check).toMatchObject({ status: "verified" });
+    const sent = (contribute.mock.calls as unknown as [{ college: { application: { plans: Record<string, unknown>[] } } }][])[0]![0];
+    expect(sent.college.application.plans[0]).toEqual({ plan: "EA", deadline: "2026-11-01", source_url: "https://example.edu/deadlines", quote: "Early Action: November 1" });
+    expect("check" in sent.college.application.plans[0]!).toBe(false);
+  });
+
+  it("never trusts a check result from the shared database: the plan is checked on this device", async () => {
+    const m = mockClient();
+    const page = "https://a.edu/deadlines";
+    const bogus = { status: "verified", url: page, host: "a.edu", checkedAt: NOW.toISOString() };
+    const hit = sharedHit("College A");
+    (hit.research[0] as { data: Record<string, unknown> }).data = { ...hit.research[0]!.data, application: { cycle: "Fall 2027 entry", plans: [{ plan: "EA", deadline: "2026-11-01", source_url: page, quote: "Early Action November 1", check: bogus }], test_policy_note: null, essays_note: null, fee: null } };
+    const verify = vi.fn(async (c: import("../types").College) => {
+      // What the verifier sees must carry no check at all; it then finds the date is NOT on the page.
+      expect(c.application!.plans[0]!.check).toBeUndefined();
+      return { ...c, application: { ...c.application!, plans: c.application!.plans.map((p) => ({ ...p, check: { status: "mismatch" as const, reason: "no_date", url: page, host: "a.edu", checkedAt: NOW.toISOString() } })) } };
+    });
+    const r = createResearch({ client: m.client, cache: createResearchCache({ key: "t_check3" }), now: () => NOW, shared: { lookup: async () => new Map([["College A", hit]]) }, verify });
+    const events: ResearchEvent[] = [];
+    const out = await r.run({ profile: baseProfile(), wanted: ["College A"], target_count: 1, onEvent: (e) => events.push(e) });
+    expect(m.calls.length).toBe(0); // served from the shared database
+    expect(verify).toHaveBeenCalledTimes(1);
+    const done = events.find((e) => e.type === "college_done") as Extract<ResearchEvent, { type: "college_done" }>;
+    expect(done.college.application!.plans[0]!.check).toBeUndefined();
+    expect(out[0]!.application!.plans[0]!.check).toMatchObject({ status: "mismatch", reason: "no_date" });
+    expect(out[0]!.application!.plans[0]!.source_url).toBe(page); // the page and quote are kept for the local check
   });
 
   it("still contributes and finishes when the deadline check fails", async () => {

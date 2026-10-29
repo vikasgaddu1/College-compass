@@ -262,7 +262,21 @@ export function sharedResearchRecord(shared: SharedCollege, cycle: string, major
     ...r.data,
     programs,
   };
+  raw.application = withoutChecks(raw.application);
   return { raw, verified: Math.max(r.verified_count, 2), researchedAt: r.researched_at };
+}
+
+/**
+ * Deadline proof-check results are device-local by design: a check means THIS device fetched the
+ * college's page and found the date. Anything the shared database (written by any app install) says
+ * about a check is dropped, and the app never sends its own; each device re-validates a plan's
+ * `source_url` / `quote` with its own fetch (src/deadlines/verify.ts).
+ */
+export function withoutChecks(application: unknown): unknown {
+  if (!application || typeof application !== "object" || Array.isArray(application)) return application;
+  const app = application as Record<string, unknown>;
+  if (!Array.isArray(app.plans)) return application;
+  return { ...app, plans: app.plans.map((p) => (p && typeof p === "object" && !Array.isArray(p) ? (({ check: _check, ...rest }) => rest)(p as Record<string, unknown>) : p)) };
 }
 
 const COLLEGE_FIELDS = [
@@ -287,6 +301,7 @@ export function contributionPayload(college: College, cycle: string, installId: 
     const { notes: _notes, ...cds } = c.cds as Record<string, unknown>; // free-text notes can echo the student
     c.cds = cds;
   }
+  if (c.application) c.application = withoutChecks(c.application); // check results never leave the device
   const programs = (college.programs ?? []).map((p) => ({ major: p.major, offered: p.offered, degree: p.degree, how_to_enter: p.how_to_enter, notes: p.notes }));
   return { install_id: installId, app_version: appVersion, cycle: cycleKey(cycle), college: c, programs };
 }

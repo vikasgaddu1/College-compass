@@ -3,7 +3,7 @@
  * Coerces strings to numbers, percentages to 0–1, clamps ranges, drops impossible values (with a
  * data note), fills enums with safe defaults and derives id / short name / region.
  */
-import type { ApplicationFacts, College, CuratedCds, DeadlineCheck, IncomeNetPrice, Locale, MajorArea, Ownership, ProgramNote } from "../types";
+import type { ApplicationFacts, College, CuratedCds, IncomeNetPrice, Locale, MajorArea, Ownership, ProgramNote } from "../types";
 import { regionFromState, stateCode } from "./geo";
 import { CONFIDENCE, MAJOR_AREAS, PLAN_KINDS } from "./prompts";
 
@@ -167,27 +167,6 @@ export function toProofUrl(v: unknown): string | null {
   return u;
 }
 
-const CHECK_STATUSES = new Set(["verified", "mismatch", "unchecked"]);
-/** A stored proof-check result (from this app or the shared database); null unless it has the expected shape. */
-export function toCheck(v: unknown): DeadlineCheck | null {
-  const c = rec(v);
-  if (typeof c.status !== "string" || !CHECK_STATUSES.has(c.status)) return null;
-  const checkedAt = typeof c.checkedAt === "string" && Number.isFinite(Date.parse(c.checkedAt)) ? new Date(c.checkedAt).toISOString() : null;
-  if (!checkedAt) return null;
-  const url = toProofUrl(c.url);
-  const host = toStr(c.host, 120)?.toLowerCase().replace(/[^a-z0-9.-]/g, "") || null;
-  const reason = toStr(c.reason, 40)?.replace(/[^a-z0-9_]/gi, "") || null;
-  const out: DeadlineCheck = { status: c.status as DeadlineCheck["status"], checkedAt };
-  if (reason) out.reason = reason;
-  if (url) {
-    out.url = url;
-    out.host = host ?? new URL(url).hostname.replace(/^www\./, "");
-  }
-  // A "verified" without the page it was verified on proves nothing.
-  if (out.status === "verified" && !out.url) return null;
-  return out;
-}
-
 function arrOf(v: unknown): unknown[] {
   return Array.isArray(v) ? v : [];
 }
@@ -346,16 +325,16 @@ export function normalizeCollege(raw: unknown, context: NormalizeContext = {}): 
     if (!plan || seenPlan.has(plan)) continue;
     seenPlan.add(plan);
     const notes = toStr(pr.notes, 200);
+    // Never a `check`: proof-check results are device-local — only src/deadlines/verify.ts on this
+    // device writes them, never the model and never the shared database.
     const source_url = toProofUrl(pr.source_url);
     const quote = toStr(pr.quote, 240);
-    const check = toCheck(pr.check);
     plans.push({
       plan,
       deadline: toDeadline(pr.deadline),
       ...(notes ? { notes } : {}),
       ...(source_url ? { source_url } : {}),
       ...(quote ? { quote } : {}),
-      ...(check ? { check } : {}),
     });
   }
   const application: ApplicationFacts | undefined =
