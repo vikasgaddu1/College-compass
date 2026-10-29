@@ -75,6 +75,19 @@ export interface Session {
 
 export type Decision = "approve" | "reject" | "suspend" | "unsuspend" | "founding";
 
+/** What `admin_review_counselor` returns: the row as saved, so the admin screen can say what actually happened. */
+export interface ReviewResult {
+  ok: boolean;
+  id: string;
+  status: Status;
+  /** Server truth: visible in the app's directory right now. */
+  listed: boolean;
+  has_changes: boolean;
+  plan: Plan;
+  founding_until: string | null;
+  updated_at: string;
+}
+
 export interface PortalApi {
   session(): Promise<Session | null>;
   onAuthChange(cb: (s: Session | null) => void): () => void;
@@ -92,7 +105,8 @@ export interface PortalApi {
   billingPortal(): Promise<string>;
   isAdmin(): Promise<boolean>;
   adminCounselors(): Promise<AdminRow[]>;
-  adminReview(id: string, decision: Decision, note: string | null, foundingUntil: string | null, expectedUpdatedAt?: string): Promise<void>;
+  /** Resolves with the saved row's status/listed/founding_until (null only if the server sent nothing back). */
+  adminReview(id: string, decision: Decision, note: string | null, foundingUntil: string | null, expectedUpdatedAt?: string): Promise<ReviewResult | null>;
   adminReports(): Promise<Report[]>;
 }
 
@@ -199,8 +213,9 @@ export function createPortalApi(sb: SupabaseClient): PortalApi {
       return ((data as AdminRow[] | null) ?? []).map((r) => ({ ...r, report_count: Number(r.report_count ?? 0), recent_report_count: Number(r.recent_report_count ?? 0) }));
     },
     async adminReview(id, decision, note, foundingUntil, expectedUpdatedAt) {
-      const { error } = await sb.rpc("admin_review_counselor", { p_id: id, p_decision: decision, p_note: note, p_founding_until: foundingUntil, p_expected_updated_at: expectedUpdatedAt ?? null });
+      const { data, error } = await sb.rpc("admin_review_counselor", { p_id: id, p_decision: decision, p_note: note, p_founding_until: foundingUntil, p_expected_updated_at: expectedUpdatedAt ?? null });
       throwIf(error);
+      return data && typeof data === "object" && !Array.isArray(data) ? (data as ReviewResult) : null;
     },
     async adminReports() {
       const { data, error } = await sb.rpc("admin_counselor_reports");
