@@ -7543,6 +7543,436 @@
     "fit_basis": "Qualitative robotics-first curriculum/access assessment for the recommended degree. Separate from admissions difficulty, personal fit, financial aid and historical career metrics."
   },
   {
+    "slug": "nyu",
+    "name": "New York University",
+    "short": "NYU",
+    "city_state": "Brooklyn, New York",
+    "state": "NY",
+    "region": "Northeast",
+    "institution_type": "Private research university",
+    "is_public": false,
+    "undergrad_enrollment": 29046,
+    "undergrad_enrollment_asof": "Fall 2025",
+    "undergrad_enrollment_cite": "NYU CDS 2025-26 B1 degree-seeking undergraduates (full-time 11,700+16,380; part-time 450+516).",
+    "undergrad_enrollment_note": "University-wide New York campus degree-seeking count, not Tandon-only. Tandon is the Brooklyn engineering school; Courant CS is in CAS at Washington Square.",
+    "size_bucket": "large",
+    "degree_name": "BS Computer Engineering (Tandon) + Robotics minor",
+    "degree_type": "BS Computer Engineering or BS Computer Science at Tandon, plus the 14-credit Robotics minor; no undergraduate robotics major is listed. Courant offers a separate BA in Computer Science in CAS.",
+    "program_archetype": "ECE / computer engineering robotics route with supporting AI",
+    "archetypes": [
+      "B",
+      "D",
+      "E"
+    ],
+    "major_access_status": "DIRECT",
+    "major_access_full": "Applicants choose campus and program on the NYU Common App page, so Tandon Computer Engineering, Tandon Computer Science, or Tandon Mechanical Engineering can be selected as the first-year program. The Robotics minor is added later (about four semesters; 2.00 minor GPA; at least 7 credits at Tandon). CAS/Courant is a different school choice; CAS students may not take Tandon CS courses. Internal transfer rules between NYU schools were not verified on official pages this review.",
+    "recommended_major_route": "Apply to NYU Tandon School of Engineering for the B.S. in Computer Engineering, then complete the Robotics minor. ROB-UY robotics courses count as ECE/CS electives in Computer Engineering.",
+    "alternative_route": "Tandon B.S. in Computer Science + Robotics minor, or Tandon B.S. in Mechanical Engineering + Robotics minor. Courant (CAS) B.A. in Computer Science is a strong theoretical CS option in Manhattan but is not the Tandon robotics-engineering route.",
+    "primary_structural_risk": "The robotics path depends on applying to Tandon, not only to NYU generally. Choosing CAS/Courant instead is a different school and blocks Tandon CS coursework. The Robotics minor needs programming, linear algebra and differential equations, and mechanics prerequisites and is designed to take four semesters. Binding Early Decision I has already passed for this cycle; Early Decision II is binding and only realistic if Carnegie Mellon releases him.",
+    "notable_ai_institute": "NYU Center for Robotics and Embodied Intelligence (CREO): over 70 faculty, Ph.D. students and postdoctoral researchers in 10,000 square feet of shared robotics facilities, including a 6,800-square-foot flagship lab at 370 Jay Street in Downtown Brooklyn, a 2,200-square-foot Tandon multirobot facility, and a 1,000-square-foot manipulation lab at the Courant Institute.",
+    "notable_undergraduate_research_program": "Tandon CS describes undergraduate research alongside faculty. CREO is a research center; a named, guaranteed first-year research program and undergraduate access rules for the flagship lab were not verified this review.",
+    "fourplusone_available": "Yes",
+    "fourplusone_name": "Tandon B.S./M.S. accelerated program (including B.S. Computer Science or Computer Engineering with M.S. Computer Science); official pages say both degrees can be completed in as little as four to five years. Courant also offers an accelerated five-year master's path, which is a different school.",
+    "cost_total_instate": 100998,
+    "cost_total_outofstate": 100998,
+    "cost_for_nc_resident": 100998,
+    "cost_asof": "2026-27",
+    "cost_precision": "published_total",
+    "cost_cite": null,
+    "cost_note": "NYU has no in-state discount; the NC-resident cost is the published sticker. The official 2026-27 Tandon School of Engineering estimated cost of attendance is $100,998: tuition and fees $68,576, food and housing $26,438, books and supplies $1,492, transportation $2,438, personal expenses $2,054. NYU states these amounts are not officially approved until July 2026; financial-aid awards for 2026-27 are based on these estimated expenses. Health insurance is not included. Food and housing assume a double-occupancy room and a 225-meal-per-semester flex plan.",
+    "cost_source_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+    "cost_verified_on": "2026-11-23",
+    "fit_classification": "STRONG FIT",
+    "shortlist_group": "alternative",
+    "distance_from_rdu": "~8–9h drive / ~1h 30m–2h nonstop RDU–LGA, JFK or EWR",
+    "housing_guarantee": "On-campus housing is optional, not required, except during study-away programs. First-years who choose on-campus housing and are Tandon students must be assigned to Brooklyn residence halls (Othmer or Clark); there are no exceptions. A $1,000 housing reservation payment is required with the housing application. 85% of Fall 2025 first-years chose to live on campus. No upper-year housing guarantee is published on the first-year housing page.",
+    "greek_participation": "CDS 2025-26 F1: first-time first-year 1% of men join fraternities and 8% of women join sororities; all undergraduates 2% and 6%.",
+    "sports_influence": "UNVERIFIED (athletics influence not assessed from official pages this review)",
+    "recreation_center": "UNVERIFIED as a single official recreation-center name this review; Tandon publicizes the 10,000-square-foot MakerSpace on the visit and CS program pages.",
+    "evidence_confidence": "Official admissions, aid, cost, catalog, CREO, housing and visit pages plus the NYU Common Data Set 2025-26 were reviewed November 23, 2026. Recommendations and 1–5 scores are analyst assessments. Tandon-specific admit rates, C7 factor checkboxes (PDF layout could not be mapped reliably), undergraduate access rules for CREO labs, internal NYU school-transfer standards, and merit-award amounts remain unresolved.",
+    "evidence_reviewed_on": "2026-11-23",
+    "verified_on": "2026-11-23",
+    "fit_basis": "Qualitative robotics-first curriculum/access assessment for the recommended Tandon degree. Separate from admissions difficulty, personal fit, financial aid and historical career metrics.",
+    "recommended_admission_door": "engineering",
+    "scores": {
+      "cs_foundations": 5,
+      "math_foundations": 4,
+      "ai_curriculum_breadth": 3,
+      "ai_curriculum_depth": 3,
+      "emerging_ai_topics": 3,
+      "curricular_flexibility": 4,
+      "course_availability": null,
+      "undergraduate_research_access": 3,
+      "faculty_mentorship": 3,
+      "project_based_learning": 4,
+      "robotics_autonomy_options": 4.0,
+      "computing_resources": null,
+      "industry_preparation": 4,
+      "graduate_school_preparation": 4,
+      "fourplusone_quality": 4,
+      "intellectual_energy": 4,
+      "healthy_ambition": 3,
+      "student_agency": 4,
+      "community_within_scale": 3,
+      "technical_club_ecosystem": null,
+      "nonacademic_club_variety": 4,
+      "non_greek_social_life": 4,
+      "campus_engagement": 3,
+      "recreation_facilities": null,
+      "daily_life": 4
+    },
+    "score_notes": {
+      "cs_foundations": "Assessed on the recommended Tandon BS Computer Engineering (and alternative Tandon BS CS) cores: CS-UY 1114, 1134, 2124, architecture, and for CmpE embedded systems. Courant BA CS is a separate school and is not the scored route.",
+      "math_foundations": "Computer Engineering requires Calculus I–III, Linear Algebra and Differential Equations, Discrete Mathematics, and Probability and Statistics. Tandon CS requires calculus, discrete math and probability and only recommends linear algebra, which is a prerequisite for the Robotics minor.",
+      "ai_curriculum_breadth": "Verified undergraduate robotics/perception courses are ROB-UY 3203 Robot Vision, ROB-UY 3303 Robot Motion and Planning, and the other Robotics minor courses. A complete Tandon CS elective catalog for machine learning and AI was not independently listed on the BS CS bulletin page this review, so breadth is scored conservatively.",
+      "ai_curriculum_depth": "Supporting AI is elective, mainly through the Robotics minor and free/CS-ECE electives, not a required AI core. Depth is not equivalent to a dedicated AI major.",
+      "emerging_ai_topics": "CREO is explicitly organized around robotics and embodied intelligence research. That is graduate/faculty research capacity; it is not by itself a verified undergraduate course sequence.",
+      "curricular_flexibility": "Computer Engineering has ECE/CS electives that may be ROB-UY courses plus 15 free-elective credits. Tandon CS has 18 CS-elective credits and 26 free-elective credits. The Robotics minor is 14 credits over about four semesters.",
+      "course_availability": "Future seats, term offerings and permissions were not verified.",
+      "undergraduate_research_access": "CS program pages mention research with faculty and CREO is a large shared facility, but a published, guaranteed undergraduate placement process was not verified.",
+      "faculty_mentorship": "Not quantified on official undergraduate pages this review.",
+      "project_based_learning": "Computer Engineering and Tandon CS both require design projects; Tandon also advertises the MakerSpace. Robotics minor courses include manipulation, vision, planning and medical haptics labs/topics.",
+      "robotics_autonomy_options": "The official Robotics minor lists ROB-UY 2004 Robotic Manipulation and Locomotion, ROB-UY 3203 Robot Vision, ROB-UY 3303 Robot Motion and Planning, ROB-UY 3404 Introduction to Haptics and Telerobotics in Medicine, and a special-topics option.",
+      "computing_resources": "Not independently scored; MakerSpace and CSE labs are advertised but capacity was not measured.",
+      "industry_preparation": "Tandon emphasizes New York City internships and industry proximity. A required co-op and a robotics placement rate were not verified.",
+      "graduate_school_preparation": "Official Tandon B.S./M.S. pathways and Courant's accelerated master's exist; they are optional, not guaranteed admission to a specific robotics master's.",
+      "fourplusone_quality": "Tandon publishes a B.S./M.S. option that can be finished in as little as four to five years, including CS and Computer Engineering combinations.",
+      "intellectual_energy": "Analyst assessment of a large research university with Tandon engineering and Courant CS; not a student-survey result.",
+      "healthy_ambition": "Not established from official sources; scored in the middle of the range.",
+      "student_agency": "Students choose a school and program on the Common App and can add the Robotics minor if prerequisites are met.",
+      "community_within_scale": "University-wide undergraduate enrollment is about 29,000; Tandon is a smaller Brooklyn campus within that system, but official Tandon undergraduate headcount was not separately verified.",
+      "technical_club_ecosystem": "Not independently verified this review.",
+      "nonacademic_club_variety": "CDS 2025-26 lists a wide range of university activities; this is university-wide, not Tandon-specific.",
+      "non_greek_social_life": "Greek participation is low in CDS F1, and NYC social life is not fraternity-centered, but this is context rather than a measured student-life outcome.",
+      "campus_engagement": "Housing is optional; many students live off campus after the first year (CDS: 38% of all undergraduates live in college housing).",
+      "recreation_facilities": "Not independently scored this review.",
+      "daily_life": "Downtown Brooklyn campus with official NYU shuttle and subway access to Washington Square; first-year Tandon residents must live in Brooklyn halls if they choose on-campus housing."
+    },
+    "admissions": {
+      "cds_year": "2025-26",
+      "snapshot_date": "2026-11-23",
+      "overall_admit_rate": 0.09060240963855422,
+      "admit_rate_note": "University-wide New York campus first-year rate from CDS 2025-26 C1 (Fall 2025 entering cohort). NYU does not publish a separate official Tandon admit rate in that CDS. School-level selectivity can differ.",
+      "admit_rate_note_reason": "No Tandon- or major-specific admit rate, and no state-residency split, is published in CDS Section C.",
+      "major_admit_context": "DIRECT for the recommended Tandon program if that program is selected on the Common App. University-wide rates are not major-specific admission probabilities and are not a Tandon engineering rate.",
+      "ed_admit_rate": null,
+      "ed2_admit_rate": null,
+      "ea_admit_rate": null,
+      "sat_mid50": [
+        1480,
+        1550
+      ],
+      "act_mid50": [
+        34,
+        35
+      ],
+      "pct_submitting_sat": 0.27,
+      "pct_submitting_act": 0.1,
+      "pct_submitting_act_note": "10% of enrolled first-years (562) submitted ACT scores; 27% (1,524) submitted SAT scores (CDS 2025-26 C9). Testing remains optional.",
+      "gpa_note": null,
+      "gpa_note_reason": "CDS 2025-26 C12 publishes a GPA-distribution table for enrolled first-years but an average high school GPA was not clearly reported in the extracted text, so no average is recorded.",
+      "test_policy_2027_cycle": "test-optional",
+      "c7_factors": null,
+      "c7_cite": "CDS 2025-26 C7 table was published, but the extracted PDF layout does not reliably show which column each checkbox falls in. Factors are left unverified rather than guessed.",
+      "demonstrated_interest_tracked": null,
+      "interview": {
+        "availability": "not_advertised",
+        "mechanism": "No institutional interview is described on the official first-year applicants page reviewed November 23, 2026.",
+        "dates_window": null,
+        "cite": "[NYU-S2]"
+      },
+      "first_frc_scholarship": {
+        "exists": false,
+        "verification": "No FIRST-specific scholarship was found on the official NYU undergraduate aid and types-of-aid pages reviewed November 23, 2026. This is not a claim that no external FIRST award could ever apply.",
+        "cite": "[NYU-S7]"
+      },
+      "decision_dates": {
+        "cycle_label": "Fall 2027 entry (2026-27 application cycle)",
+        "cycle_inferred": true,
+        "verified_on": "2026-11-23",
+        "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+        "verification_status": "verified_month_day_cycle_inferred",
+        "notification_note": "Official pages publish month/day (and decision dates of December 15, February 15 and April 1) without an explicit entry year. ISO years are inferred for the 2026-27 cycle. These are published notification dates, not independently confirmed release-day guarantees.",
+        "ed1_deadline_iso": "2026-11-01",
+        "ed1_deadline": "2026-11-01",
+        "ed1_notify_iso": "2026-12-15",
+        "ed1_notify": "December 15",
+        "ed1_notify_is_bound": false,
+        "ed2_deadline_iso": "2027-01-01",
+        "ed2_deadline": "2027-01-01",
+        "ed2_notify_iso": "2027-02-15",
+        "ed2_notify": "February 15",
+        "ed2_notify_is_bound": false,
+        "ea_deadline_iso": null,
+        "ea_deadline": null,
+        "ea_notify_iso": null,
+        "ea_notify": null,
+        "ea_notify_is_bound": null,
+        "rd_deadline_iso": "2027-01-05",
+        "rd_deadline": "2027-01-05",
+        "rd_notify_iso": "2027-04-01",
+        "rd_notify": "April 1",
+        "rd_notify_is_bound": false,
+        "deposit_deadline_iso": null,
+        "deposit_deadline": "Not verified on the first-year applicants page this review; check the admitted-student portal before paying a deposit."
+      },
+      "supplemental_essays": null,
+      "why_us_ammunition": [
+        "Apply to Tandon, not only to NYU generally. Computer Engineering officially counts ROB-UY robotics courses as ECE electives, and the Robotics minor is 14 credits in manipulation, vision, motion planning and medical haptics.",
+        "CREO provides a dedicated robotics and embodied-intelligence research home in Downtown Brooklyn, with an additional manipulation lab at Courant.",
+        "Courant BA CS is a separate, well-known theoretical CS program in CAS; CAS students cannot take Tandon CS courses, so the school choice on the Common App matters."
+      ],
+      "_raw": {
+        "overall_admit_rate": {
+          "value_pct": 9.06,
+          "applied": 114125,
+          "admitted": 10340,
+          "enrolled": 5662,
+          "cite": "[NYU-S1]"
+        },
+        "ed_admit_rate": null,
+        "sat_mid50": [
+          1480,
+          1550
+        ],
+        "act_mid50": [
+          34,
+          35
+        ],
+        "pct_submitting_sat": 27,
+        "pct_submitting_act": 10
+      },
+      "_normalized": true,
+      "in_state_admit_rate": null,
+      "oos_admit_rate": null,
+      "is_home_state_nc": false,
+      "cs_gate": "unpublished",
+      "cs_gate_basis": "Applicants select a school and program on the Common App. Official CAS bulletin policy: CAS students may not take Tandon CS courses. Internal transfer requirements between Tandon programs or from CAS to Tandon were not verified this review.",
+      "admission_unit": "school",
+      "unit_admit_rates": [],
+      "unit_admit_note": "No official Tandon- or major-specific first-year admit rate was found in CDS 2025-26. Early Decision counts were also not found in the extracted CDS text.",
+      "admission_structure": {
+        "applies_to": "school",
+        "applies_to_note": "The Common Application NYU page is used to choose campus(es) and program(s). Tandon and CAS/Courant are different school choices.",
+        "units_named": [
+          "Tandon School of Engineering",
+          "College of Arts and Science (Courant CS)"
+        ]
+      },
+      "gate_by_door": {
+        "engineering": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "Recommended Tandon Computer Engineering (or Tandon CS / Mechanical Engineering) can be selected on admission. Later Robotics-minor enrollment requires listed prerequisites. School-to-school transfer rules are unpublished in this review."
+        },
+        "computing": {
+          "available": true,
+          "severity": "unpublished",
+          "basis": "Tandon BS CS is a first-year Tandon program. Courant BA CS is a CAS program and is not a substitute Tandon robotics route."
+        }
+      },
+      "cds_cohort_year": "Fall2025",
+      "cds_source_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+      "overall_admit_rate_scope": "University/campus first-year admission, not Tandon or robotics-program admission or personal odds.",
+      "overall_admit_rate_note": "Fall 2025: 114,125 applied / 10,340 admitted / 5,662 enrolled (CDS 2025-26 C1).",
+      "school_state": "NY"
+    },
+    "ece": {
+      "department_name": "Department of Electrical and Computer Engineering, NYU Tandon School of Engineering",
+      "structure": "computer_engineering",
+      "degrees": [
+        "BS Computer Engineering",
+        "BS Electrical and Computer Engineering (combined, minimum 142 credits, departmental permission)"
+      ],
+      "exists": true,
+      "abet": {
+        "commission": "EAC",
+        "eac_accredited": true,
+        "quote": "Our BS program in Computer Engineering is accredited by the Engineering Accreditation Commission of ABET.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+        "pending_or_absent": false
+      },
+      "robotics_ai": {
+        "concentration_name": "No named robotics concentration inside Computer Engineering; ROB-UY courses count as ECE electives, and the school offers a 14-credit Minor in Robotics.",
+        "course_count": 4,
+        "courses": [
+          {
+            "code": "ROB-UY 2004",
+            "title": "Robotic Manipulation and Locomotion",
+            "cite": "NYU-E1"
+          },
+          {
+            "code": "ROB-UY 3203",
+            "title": "Robot Vision",
+            "cite": "NYU-E1"
+          },
+          {
+            "code": "ROB-UY 3303",
+            "title": "Robot Motion and Planning",
+            "cite": "NYU-E1"
+          },
+          {
+            "code": "ROB-UY 3404",
+            "title": "Introduction To Haptics and Telerobotics in Medicine",
+            "cite": "NYU-E1"
+          }
+        ]
+      },
+      "door": "Apply to Tandon Computer Engineering on the Common App.",
+      "vs_cs": "Computer Engineering is the recommended hardware/embedded route and officially lists ROB-UY courses as ECE electives. Tandon CS is a strong software alternative that can also add the Robotics minor if math and physics prerequisites are met. Courant BA CS is a different school.",
+      "notable": "Computer Engineering requires 128 credits, including ECE-UY 4144 Introduction to Embedded Systems Design and a two-course design project. A GPA (Technical) of at least 2.0 is required in ECE-UY, CS-UY, ECE-GY and ROB-UY courses."
+    },
+    "axes": {
+      "program_depth": 4.0,
+      "foundations": 4.0,
+      "hands_on": 4.0,
+      "research_access": 3.5,
+      "campus_life": 3.8,
+      "ambition_healthy": 3.5,
+      "outcomes": 4.0,
+      "robotics_curriculum": 4,
+      "robotics_access": 4.0
+    },
+    "ai_electives": [
+      {
+        "code": "ROB-UY 3203",
+        "title": "Robot Vision",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+        "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective. Prerequisites include programming and, as applicable, the minor's math and physics prerequisites."
+      },
+      {
+        "code": "ROB-UY 3303",
+        "title": "Robot Motion and Planning",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+        "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective."
+      },
+      {
+        "code": "ROB-UY 2004",
+        "title": "Robotic Manipulation and Locomotion",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+        "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective."
+      }
+    ],
+    "robotics_domains": {
+      "humanoid_legged": {
+        "coverage": "present",
+        "lab_or_course": "ROB-UY 2004 Robotic Manipulation and Locomotion (official minor / CmpE elective). Broader humanoid-lab coverage was not independently inventoried this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "swarm_multirobot": {
+        "coverage": "present",
+        "lab_or_course": "CREO describes a 2,200-square-foot Tandon facility for large-scale multirobot experiments. Undergraduate access was not verified.",
+        "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo"
+      },
+      "autonomous_vehicles": {
+        "coverage": "none",
+        "lab_or_course": "No official undergraduate autonomous-vehicle course or lab was verified this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "manipulation_grasping": {
+        "coverage": "strong",
+        "lab_or_course": "ROB-UY 2004 Robotic Manipulation and Locomotion; CREO also lists a 1,000-square-foot manipulation research lab at Courant.",
+        "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo"
+      },
+      "aerial_uav": {
+        "coverage": "none",
+        "lab_or_course": "No official undergraduate UAV course or lab was verified this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "medical_surgical": {
+        "coverage": "present",
+        "lab_or_course": "ROB-UY 3404 Introduction To Haptics and Telerobotics in Medicine is an official Robotics minor / CmpE elective course.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "soft_robotics": {
+        "coverage": "none",
+        "lab_or_course": "No official undergraduate soft-robotics course was verified this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "hri": {
+        "coverage": "present",
+        "lab_or_course": "ROB-UY 3404 covers haptics and telerobotics; CREO's published mission is human-centered embodied intelligence. A dedicated undergraduate HRI major track was not found.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "industrial_automation": {
+        "coverage": "none",
+        "lab_or_course": "No official undergraduate industrial-automation concentration was verified this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "space_field": {
+        "coverage": "none",
+        "lab_or_course": "No official undergraduate space-robotics program was verified this review.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      }
+    },
+    "robotics_credential": "Minor in Robotics (at least 14 credits), Tandon School of Engineering",
+    "robotics_access_detail": {
+      "score_basis": "CREO is a dedicated robotics and embodied-intelligence center with published shared facilities in Brooklyn and a Courant manipulation lab. The Robotics minor is open to Tandon and other NYU students who meet prerequisites. Undergraduate access to the flagship 6,800-square-foot lab, first-year research seats and club inventories were not fully verified, so access is scored below a primary robotics-degree campus.",
+      "labs": "CREO 10,000 square feet of shared facilities, including 6,800 square feet at 370 Jay Street, 2,200 square feet for multirobot experiments, and 1,000 square feet at Courant; Tandon MakerSpace (10,000 square feet) is advertised on visit pages.",
+      "teams_or_clubs": "Not independently inventoried this review."
+    },
+    "robotics_curriculum_detail": {
+      "parent_degree": "BS Computer Engineering (Tandon) + Robotics minor",
+      "score_basis": "4/5: a structured engineering route with official robotics courses, a 14-credit minor and design work, subject to prerequisites. It is not a primary robotics bachelor's degree.",
+      "course_count_undergrad": 4,
+      "count_note": "Count is the official Robotics minor / CmpE elective ROB-UY list, not an exhaustive inventory or a guarantee of enrollment.",
+      "dedicated_degree": null,
+      "minor_or_concentration": "Robotics, Minor",
+      "capstone": "Computer Engineering requires Design Project I and II; Tandon CS requires CS-UY 4523 Design Project. Robotics topics in those capstones are not guaranteed.",
+      "undergrad_courses": [
+        {
+          "code": "ROB-UY 2004",
+          "title": "Robotic Manipulation and Locomotion"
+        },
+        {
+          "code": "ROB-UY 3203",
+          "title": "Robot Vision"
+        },
+        {
+          "code": "ROB-UY 3303",
+          "title": "Robot Motion and Planning"
+        },
+        {
+          "code": "ROB-UY 3404",
+          "title": "Introduction To Haptics and Telerobotics in Medicine"
+        }
+      ]
+    },
+    "best_fit_reason": "Tandon offers an ABET-accredited Computer Engineering degree that officially counts robotics courses as electives, a 14-credit Robotics minor, a Tandon CS alternative, and CREO's dedicated Brooklyn robotics facilities, with Courant CS available as a separate theoretical option.",
+    "biggest_concern": "The estimated 2026-27 Tandon cost of attendance is $100,998 with no in-state rate and limited non-need merit aid. Early Decision is binding. There is no undergraduate robotics major, and applying to CAS/Courant instead of Tandon is a different, not interchangeable, school choice.",
+    "source_log": {
+      "NYU-S1": "NYU Common Data Set 2025-2026 — https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+      "NYU-S2": "First-Year Applicants (deadlines, materials, $85 fee, recommendations) — https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+      "NYU-S3": "Cost of Attendance 2026-27 Tandon estimate — https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+      "NYU-S4": "How to Apply for Financial Aid (CSS Profile dates; NYU Promise) — https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+      "NYU-S5": "Standardized Tests (test-optional through 2027-28) — https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html",
+      "NYU-S6": "Computer Engineering, BS bulletin — https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+      "NYU-S7": "Types of Aid — https://www.nyu.edu/admissions/financial-aid-and-scholarships/types-of-aid.html",
+      "NYU-S8": "New First-Year Housing — https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/application-and-assignments/applying-for-housing/fyre-assignment-process.html",
+      "NYU-S9": "Computer Science, BA (Courant / CAS) — https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+      "NYU-S10": "Visit NYU Tandon — https://engineering.nyu.edu/about/visit-nyu-tandon"
+    },
+    "source_urls": [
+      "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+      "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+      "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+      "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html",
+      "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+      "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+      "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-science-bs/",
+      "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+      "https://engineering.nyu.edu/academics/programs/mechanical-engineering-bs",
+      "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo",
+      "https://engineering.nyu.edu/impact/embodied-intelligence",
+      "https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+      "https://engineering.nyu.edu/about/visit-nyu-tandon",
+      "https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/application-and-assignments/applying-for-housing/fyre-assignment-process.html",
+      "https://www.nyu.edu/admissions/financial-aid-and-scholarships/types-of-aid.html",
+      "https://engineering.nyu.edu/academics/programs/computer-science-bs",
+      "https://www.weather.gov/media/okx/Climate/CentralPark/nycnormals.pdf"
+    ]
+  },
+  {
     "slug": "ohio-state",
     "name": "The Ohio State University",
     "short": "Ohio State",

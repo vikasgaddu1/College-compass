@@ -2666,6 +2666,56 @@
       "evidence_quotations": []
     }
   },
+  "nyu": {
+    "NYU-R1": {
+      "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+      "title": "Robotics (Minor) | NYU Bulletins",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R2": {
+      "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+      "title": "Computer Engineering (BS) | NYU Bulletins",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R3": {
+      "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-science-bs/",
+      "title": "Computer Science (BS) | NYU Bulletins",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R4": {
+      "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo",
+      "title": "NYU Center for Robotics and Embodied Intelligence (CREO)",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R5": {
+      "url": "https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+      "title": "Computer Science (BA) | NYU Courant / CAS Bulletin",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R6": {
+      "url": "https://engineering.nyu.edu/academics/programs/mechanical-engineering-bs",
+      "title": "Mechanical Engineering, B.S. | NYU Tandon",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R7": {
+      "url": "https://engineering.nyu.edu/academics/programs/computer-science-bs",
+      "title": "Computer Science, B.S. | NYU Tandon",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    },
+    "NYU-R8": {
+      "url": "https://engineering.nyu.edu/impact/embodied-intelligence",
+      "title": "Robotics & Embodied Intelligence | NYU Tandon",
+      "fetched": "2026-11-23",
+      "verification_status": "reviewed_official_source"
+    }
+  },
   "ohio-state": {
     "OSU-R1": {
       "url": "https://mae.osu.edu/robotics-and-autonomous-systems-minor",

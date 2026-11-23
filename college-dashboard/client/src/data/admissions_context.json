@@ -130,6 +130,18 @@
       "verified_on": "2026-10-14",
       "verification_status": "testing_verified_other_context_historical"
     },
+    "nyu": {
+      "testing": "Test-optional through the 2027-2028 application cycle",
+      "testing_source": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html",
+      "intl_pct": null,
+      "intl_year": null,
+      "study_abroad_pct": null,
+      "housing_req": "Optional (required only for study-away programs)",
+      "housing_years": "Not required; Tandon first-year residents, if they choose housing, must live in Brooklyn halls",
+      "housing_note": "Official first-year housing page: applying for on-campus housing is optional. School location rule: Brooklyn residence halls are required for Tandon School residents, with no exceptions. Fall 2025: 85% of first-years chose to live on campus.",
+      "verified_on": "2026-11-23",
+      "verification_status": "testing_and_housing_verified_intl_share_unverified"
+    },
     "ohio-state": {
       "testing": "Required",
       "testing_source": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
@@ -206,6 +218,6 @@
       "verification_status": "testing_verified_other_context_historical"
     }
   },
-  "selection_updated_on": "2026-10-14",
+  "selection_updated_on": "2026-11-23",
   "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }

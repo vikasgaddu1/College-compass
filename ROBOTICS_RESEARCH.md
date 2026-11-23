@@ -174,3 +174,8 @@ IPEDS net prices are historical federal-aid-recipient averages, not a personalis
 - `schools.json`, `robotics_routes.json`, `robotics_paths.json`: reconciled recommendations and access conditions.
 
 Validation commands from `college-dashboard`: `npm test`, `npm run check`, `npm run build`. Calendar tests cover New York day boundaries, signed past-date differences and multiple rounds; data tests cover all 15 schools, route/credential separation, admission-source scope and retained application choices. Browser validation covers every route plus filters, notes, calendars and responsive rendering. Source links should be checked again before decisions; future course seats and advisor approvals are not secured by this research.
+
+
+## NYU (added November 23, 2026)
+
+NYU was added to the selected set as a 16th school. The recommended undergraduate robotics route is the Tandon School of Engineering B.S. in Computer Engineering plus the 14-credit Robotics minor. Tandon B.S. Computer Science or B.S. Mechanical Engineering plus the same minor are alternatives. The Courant Institute B.A. in Computer Science (CAS, Washington Square) is a separate theoretical CS program; official CAS policy does not allow CAS students to take Tandon CS courses. There is no undergraduate robotics major. See DATA_VERIFICATION.md for dates, costs, CDS figures and remaining gaps.

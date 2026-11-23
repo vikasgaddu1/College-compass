@@ -1,7 +1,7 @@
 {
   "student": "Anurag",
   "cycle": "2026-27 (Fall 2027 entry)",
-  "note": "Selected 15 schools. Existing ED1/EA/EA2/RD plans are kept; Cornell and Johns Hopkins return with their earlier RD plans. Rose-Hulman and Michigan-Dearborn have verified Fall 2027 dates but no round chosen yet.",
+  "note": "Selected 16 schools. Existing ED1/EA/EA2/RD plans are kept. Rose-Hulman, Michigan-Dearborn and NYU have verified Fall 2027 dates but no round chosen yet. NYU ED I has passed; ED II is binding and only realistic if CMU releases him.",
   "applications": [
     {
       "slug": "carnegie-mellon",
@@ -44,6 +44,20 @@
       "verified_on": "2026-10-14",
       "year_inferred": true,
       "note": "Month/day is published; cycle year is inferred from the current Fall 2027 application plan."
+    },
+    {
+      "slug": "nyu",
+      "plan": "PENDING",
+      "plan_short": "Pending",
+      "plan_label": "Round not yet chosen",
+      "round": "pending",
+      "deadline": "2027-01-01",
+      "deadline_label": "ED II Jan 1 or RD Jan 5",
+      "binding": false,
+      "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+      "verified_on": "2026-11-23",
+      "year_inferred": true,
+      "note": "Round not chosen yet. Early Decision I (Nov 1) has already passed. Early Decision II (Jan 1, 2027, decision Feb 15) is binding and is only an option if Carnegie Mellon Early Decision releases him (deferral or denial, expected by Dec 15). Regular Decision is non-binding and due Jan 5, 2027 (decision April 1). CSS Profile (and recommended FAFSA) dates are Jan 10 for ED II and Feb 1 for Regular Decision."
     },
     {
       "slug": "purdue",
@@ -214,5 +228,5 @@
       "note": null
     }
   ],
-  "updated_on": "2026-10-14"
+  "updated_on": "2026-11-23"
 }

@@ -160,6 +160,14 @@
       "vibe": "Career-focused; Boston-loving; co-op-first identity.",
       "robotics_scope_note": "Historical anecdotal subreddit summaries compiled 2026-08-16 from indexed snippets. Original posts, membership counts and individual claims have not been reverified for this refresh. CS-specific comments do not establish the culture of a robotics or ECE route, and sentiment is not independent evidence of robotics fit."
     },
+    "nyu": {
+      "sub": "r/nyu",
+      "members": null,
+      "praises": [],
+      "complaints": [],
+      "vibe": "No anecdotal subreddit scan was compiled for NYU on November 23, 2026.",
+      "robotics_scope_note": "Unlike the August 2026 historical scans for the original schools, NYU has no compiled thread-level sentiment in this dataset. Empty lists are intentional and are not evidence of student culture."
+    },
     "ohio-state": {
       "sub": "r/OSU",
       "members": "~62k",

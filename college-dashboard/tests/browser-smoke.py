@@ -6,7 +6,7 @@ paths=re.findall(r'<Route path="([^"]+)"', (repo/'client/src/App.tsx').read_text
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
  context=b.new_context(viewport={'width':1440,'height':1000})
- # Older saved exclusions must not narrow the new 15-school default.
+ # Older saved exclusions must not narrow the new 16-school default.
  legacy_hidden=[s['slug'] for s in json.loads((repo/'client/src/data/schools.json').read_text())[:4]]
  context.add_init_script('localStorage.setItem("cc_hidden_schools_v1",'+json.dumps(json.dumps(legacy_hidden))+');')
  page=context.new_page();errors=[];failed=[]
@@ -23,10 +23,10 @@ with sync_playwright() as p:
   result.append({'path':path,'headings':page.get_by_role('heading').all_text_contents()[:3]})
  assert not errors,errors
  page.goto('http://127.0.0.1:5000/#/routes',wait_until='networkidle')
- expect(page.locator('tbody tr')).to_have_count(15)
+ expect(page.locator('tbody tr')).to_have_count(16)
  page.get_by_role('button',name='BS in Robotics (5)',exact=True).click();expect(page.locator('tbody tr')).to_have_count(5)
- page.get_by_role('button',name='ECE route (10)',exact=True).click();expect(page.locator('tbody tr')).to_have_count(10)
- page.get_by_role('button',name='All (15)',exact=True).click()
+ page.get_by_role('button',name='ECE route (11)',exact=True).click();expect(page.locator('tbody tr')).to_have_count(11)
+ page.get_by_role('button',name='All (16)',exact=True).click()
  expect(page.get_by_text('AI course choices',exact=False).first).to_be_visible()
  expect(page.locator('tbody tr').filter(has_text='Rose-Hulman')).to_have_count(1)
  expect(page.locator('tbody tr').filter(has_text='Michigan-Dearborn')).to_have_count(1)
@@ -42,35 +42,35 @@ with sync_playwright() as p:
  page.screenshot(path='/tmp/robotics-routes-desktop.png')
  page.goto('http://127.0.0.1:5000/#/robotics-degrees',wait_until='networkidle')
  text=page.locator('body').inner_text()
- assert '15 visible schools' in text and 'Arizona State' not in text and 'Purdue University Northwest' not in text
+ assert '16 visible schools' in text and 'Arizona State' not in text and 'Purdue University Northwest' not in text
  page.goto('http://127.0.0.1:5000/#/timeline',wait_until='networkidle')
  text=page.locator('body').inner_text();assert '2026-11-02' in text and '2027-01-05' in text
  assert 'Applying ED1' in text and 'Applying EA2' in text
- assert len(json.loads((repo/'client/src/data/applications.json').read_text())['applications'])==15
+ assert len(json.loads((repo/'client/src/data/applications.json').read_text())['applications'])==16
  assert 'Round not chosen yet' in text
- assert 'Rose-Hulman' in text and 'Michigan-Dearborn' in text
+ assert 'Rose-Hulman' in text and 'Michigan-Dearborn' in text and 'NYU' in text
  assert 'Invalid Date' not in text and 'NaN' not in text
  page.goto('http://127.0.0.1:5000/#/sequencing',wait_until='networkidle')
  expect(page).to_have_url('http://127.0.0.1:5000/#/timeline')
  expect(page.get_by_role('heading',name='Application timeline',exact=True)).to_be_visible()
  expect(page.locator('a[href="#/sequencing"]')).to_have_count(0)
  page.goto('http://127.0.0.1:5000/#/odds',wait_until='networkidle')
- expect(page.locator('tbody tr')).to_have_count(15)
+ expect(page.locator('tbody tr')).to_have_count(16)
  page.goto('http://127.0.0.1:5000/#/hidden',wait_until='networkidle')
  expect(page.get_by_text('partial ratings are less certain',exact=False)).to_be_visible()
  page.get_by_title('Hide this school from every view',exact=True).first.click()
  page.goto('http://127.0.0.1:5000/#/odds',wait_until='networkidle')
- expect(page.locator('tbody tr')).to_have_count(14)
+ expect(page.locator('tbody tr')).to_have_count(15)
  page.reload(wait_until='networkidle')
- expect(page.locator('tbody tr')).to_have_count(14)
+ expect(page.locator('tbody tr')).to_have_count(15)
  page.get_by_role('button',name='Restore all 1 hidden',exact=True).click()
- expect(page.locator('tbody tr')).to_have_count(15)
+ expect(page.locator('tbody tr')).to_have_count(16)
  page.reload(wait_until='networkidle')
- expect(page.locator('tbody tr')).to_have_count(15)
+ expect(page.locator('tbody tr')).to_have_count(16)
  for path in ['/why','/drawbacks','/curriculum','/cost','/scholarships','/outcomes','/checklist','/culture','/culture-signals','/visits']:
   page.goto('http://127.0.0.1:5000/#'+path,wait_until='networkidle')
   text=page.locator('body').inner_text()
-  assert 'Rose-Hulman' in text and 'Michigan-Dearborn' in text,path
+  assert 'Rose-Hulman' in text and 'Michigan-Dearborn' in text and 'NYU' in text,path
   assert '100% commuter' not in text and 'commuter-oriented' not in text,path
  page.goto('http://127.0.0.1:5000/#/cmu-plan',wait_until='networkidle')
  assert '360' in page.locator('body').inner_text();assert 'Stats & ML core' not in page.locator('body').inner_text()
@@ -94,7 +94,7 @@ with sync_playwright() as p:
  assert not errors,errors
  unexpected=[r for r in failed if not r['url'].startswith(('https://fonts.googleapis.com/','https://fonts.gstatic.com/'))]
  assert not unexpected,unexpected
- summary={'pages_rendered':len(result),'pages':result,'interactive_checks':['robotics filters5/10/15','fifteen-school roster','new colleges across comparison pages','unchosen rounds with verified dates','AI elective/access notes','note persistence','selected15degreeexplorer','timeline multiple rounds','sequencing redirects to timeline','legacy hidden preferences reset','new hide and restore persist','CMU360units','career statistic labels','scholarship deadlines/income','mobile robotics rendering'],'javascript_errors':errors,'external_font_failures':failed}
+ summary={'pages_rendered':len(result),'pages':result,'interactive_checks':['robotics filters5/10/15','sixteen-school roster','new colleges across comparison pages','unchosen rounds with verified dates','AI elective/access notes','note persistence','selected16degreeexplorer','timeline multiple rounds','sequencing redirects to timeline','legacy hidden preferences reset','new hide and restore persist','CMU360units','career statistic labels','scholarship deadlines/income','mobile robotics rendering'],'javascript_errors':errors,'external_font_failures':failed}
  Path('/tmp/college-compass-browser-result.json').write_text(json.dumps(summary,indent=2))
  print(json.dumps(summary))
  b.close()

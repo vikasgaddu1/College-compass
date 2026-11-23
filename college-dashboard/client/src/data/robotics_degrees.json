@@ -282,18 +282,33 @@
       "size": "Not verified for this major",
       "notes": "BS Computer Engineering has the same ECE electronics/signals/design core as EE plus required intermediate programming and data structures. Both have an optional Robotics study focus area and a two-term ECE capstone. Add selectable controls, robot sensors/mechatronics, machine perception, embedded AI and sensor-based robotics; the interdisciplinary minor gives transcript recognition. EE is the controls/sensing alternative and CS is the software/planning alternative. Primary ordering is analyst judgment, not an admissions advantage.",
       "in_dataset_slug": "johns-hopkins"
+    },
+    {
+      "institution": "New York University (Tandon School of Engineering)",
+      "state": "NY",
+      "control": "private",
+      "degree_name": "BS Computer Engineering + Robotics minor",
+      "bucket": "ece_robotics_route",
+      "home_unit": "NYU Tandon School of Engineering, Department of Electrical and Computer Engineering",
+      "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+      "launched": "See current programme source",
+      "route": "DIRECT: select Tandon Computer Engineering on the Common App. The Robotics minor is added later and requires programming, linear algebra and differential equations, and mechanics; 2.00 minor GPA.",
+      "gate": "DIRECT to the Tandon program chosen on the application. CAS/Courant is a different school; CAS students may not take Tandon CS courses. Confirm minor prerequisites, four-semester pacing and course seats.",
+      "size": "Not verified for this major",
+      "notes": "No undergraduate robotics major. ROB-UY courses count as Computer Engineering ECE electives. Tandon CS or Mechanical Engineering plus the same minor are alternatives. CREO is the research home.",
+      "in_dataset_slug": "nyu"
     }
   ],
   "excluded": [],
   "counts": {
-    "total": 16,
-    "selected_schools": 15,
+    "total": 17,
+    "selected_schools": 16,
     "by_bucket": {
       "robotics_engineering": 5,
-      "ece_robotics_route": 10,
+      "ece_robotics_route": 11,
       "robotics_engineering_technology": 1
     },
     "new_to_user": 2
   },
-  "selection_updated_on": "2026-10-16"
+  "selection_updated_on": "2026-11-23"
 }

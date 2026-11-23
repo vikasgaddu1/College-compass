@@ -213,6 +213,29 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
+    "nyu": {
+      "cycle": "2026-27",
+      "platform": "Common App",
+      "supp_essay_count": "Not independently verified this review; recheck the NYU Common App questions before submitting.",
+      "prompts": "n.a.",
+      "teacher_recs": "One letter required, from a teacher, counselor, coach, supervisor, or anyone else in a position of authority (up to three optional).",
+      "counselor_rec": "Counselor or school representative completes the Common App School Report (transcript and optional recommendation).",
+      "interview": "Not described on the official first-year applicants page reviewed November 23, 2026.",
+      "fee": "$85 (fee waiver available)",
+      "special": "Choose campus(es) and program(s) on the NYU Common App page — apply to Tandon for the recommended robotics route. Testing is optional through the 2027-28 cycle. After submitting, complete STARS and any portal checklist items (often due within 1–2 weeks). Mid-year report if mid-year grades are available. Artistic portfolio/audition rules apply only to specified Steinhardt and Tisch programs, not Tandon engineering.",
+      "sources": [
+        {
+          "label": "NYU first-year applicants",
+          "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html"
+        },
+        {
+          "label": "NYU standardized tests",
+          "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html"
+        }
+      ],
+      "verified_on": "2026-11-23",
+      "verification_status": "verified_official_page"
+    },
     "ohio-state": {
       "cycle": "2026-27",
       "platform": "Common App",
@@ -319,6 +342,6 @@
       "verification_status": "verified_official_page"
     }
   },
-  "selection_updated_on": "2026-10-14",
+  "selection_updated_on": "2026-11-23",
   "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }
