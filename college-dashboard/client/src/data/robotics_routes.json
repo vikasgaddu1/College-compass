@@ -2735,6 +2735,174 @@
         }
       ]
     },
+    "nyu": {
+      "slug": "nyu",
+      "name": "New York University",
+      "recommended_route": "ece",
+      "recommended_summary": "Apply to NYU Tandon for the B.S. in Computer Engineering and complete the 14-credit Robotics minor. The official Computer Engineering bulletin lists ROB-UY manipulation, vision, motion-planning and medical-haptics courses as ECE electives. Tandon Computer Science is a strong software alternative; Courant BA CS is a different school in CAS and is not interchangeable with the Tandon route.",
+      "bs_robotics": {
+        "offered": false,
+        "degree_name": null,
+        "kind": "none",
+        "home_unit": null,
+        "entry": null,
+        "first_year_direct_admit": null,
+        "notes": "The reviewed Tandon undergraduate program list and Robotics minor bulletin describe no undergraduate robotics major. Robotics is a minor; CREO is a research center. Mechanical Engineering highlights robotics as a focus area but is not a dedicated robotics B.S.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "ece": {
+        "degree_names": [
+          "BS Computer Engineering",
+          "Electrical and Computer Engineering, B.S. (combined, minimum 142 credits, departmental permission)"
+        ],
+        "home_unit": "NYU Tandon School of Engineering, Department of Electrical and Computer Engineering",
+        "robotics_track": null,
+        "key_courses": [
+          {
+            "code": "ECE-UY 4144",
+            "title": "Introduction to Embedded Systems Design"
+          },
+          {
+            "code": "ROB-UY 2004",
+            "title": "Robotic Manipulation and Locomotion"
+          },
+          {
+            "code": "ROB-UY 3203",
+            "title": "Robot Vision"
+          },
+          {
+            "code": "ROB-UY 3303",
+            "title": "Robot Motion and Planning"
+          },
+          {
+            "code": "ROB-UY 3404",
+            "title": "Introduction To Haptics and Telerobotics in Medicine"
+          }
+        ],
+        "entry": "Select the Tandon Computer Engineering program on the NYU Common App page. The Robotics minor is declared later and requires introduction to programming, linear algebra and differential equations, and mechanics.",
+        "first_year_direct_admit": true,
+        "notes": "The BS Computer Engineering is ABET EAC accredited and requires 128 credits, including a two-course design project and a 2.0 technical GPA in ECE-UY, CS-UY, ECE-GY and ROB-UY courses. ROB-UY courses listed above count as ECE electives. Admissions does not publish a Tandon-specific admit rate in the 2025-26 CDS.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/"
+      },
+      "cs": {
+        "degree_names": [
+          "BS Computer Science (Tandon)",
+          "BA Computer Science (Courant Institute, College of Arts and Science)"
+        ],
+        "home_unit": "Tandon Department of Computer Science and Engineering; Courant Institute / CAS is a separate school",
+        "robotics_track": null,
+        "key_courses": [
+          {
+            "code": "CS-UY 1114",
+            "title": "Intro To Programming & Problem Solving"
+          },
+          {
+            "code": "CS-UY 1134",
+            "title": "Data Structures and Algorithms"
+          },
+          {
+            "code": "CS-UY 2413",
+            "title": "Design & Analysis of Algorithms"
+          },
+          {
+            "code": "CS-UY 4523",
+            "title": "Design Project"
+          }
+        ],
+        "entry": "Tandon BS CS is selected as a Tandon program on the Common App. Courant BA CS is a CAS program. Official CAS policy: CAS students are not permitted to take computer science courses in the Tandon School of Engineering. Courant students who meet prerequisites may take ROB-UY courses.",
+        "first_year_direct_admit": true,
+        "notes": "Tandon BS CS is 128 credits with 18 credits of CS electives and 26 free electives; linear algebra is recommended because some electives and the Robotics minor need it. Courant offers a BA in Computer Science and joint majors, plus an honors thesis track, at Washington Square. The recommended robotics route remains Tandon, not Courant alone.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-science-bs/"
+      },
+      "robotics_minor": {
+        "name": "Robotics, Minor",
+        "kind": "minor",
+        "open_to": "Students at NYU Tandon and other NYU schools who meet prerequisites (introduction to programming; linear algebra and differential equations; mechanics). At least 14 credits from the official ROB-UY list; only one special-topics course may count; at least 7 credits must be taken at Tandon; 2.00 minor GPA. Interested students should allow four semesters.",
+        "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/"
+      },
+      "ecosystem": "The NYU Center for Robotics and Embodied Intelligence (CREO) brings together over 70 faculty, Ph.D. students and postdoctoral researchers in 10,000 square feet of shared facilities, including a 6,800-square-foot flagship lab at 370 Jay Street in Downtown Brooklyn, a 2,200-square-foot Tandon multirobot facility, and a 1,000-square-foot manipulation lab at Courant. Tandon also advertises a 10,000-square-foot MakerSpace. Undergraduate access rules for those labs were not verified.",
+      "tradeoff": "There is no undergraduate robotics major. The Tandon engineering route is more hardware- and lab-oriented; Courant CS is a separate theoretical CS school in Manhattan and cannot be combined casually with Tandon CS coursework. NYU's published Tandon sticker COA is $100,998 for 2026-27 with limited non-need merit aid.",
+      "corrections_to_existing": [
+        "NYU was not previously in this dataset; no inherited claims to correct."
+      ],
+      "sources": [
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+          "supports": "Computer Engineering BS, ABET, ROB-UY as ECE electives, 128 credits, design project",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-science-bs/",
+          "supports": "Tandon Computer Science BS requirements and electives",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+          "supports": "Robotics minor credits, courses, prerequisites, 2.00 GPA, four-semester pacing",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://engineering.nyu.edu/academics/programs/mechanical-engineering-bs",
+          "supports": "Mechanical Engineering BS lists robotics as a focus and offers the Robotics minor",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo",
+          "supports": "CREO facilities, faculty scale, Courant manipulation lab",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+          "supports": "Courant BA CS; CAS students may not take Tandon CS courses",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "supports": "Common App school/program choice; ED I / ED II / RD dates",
+          "verified_on": "2026-11-23"
+        },
+        {
+          "url": "https://engineering.nyu.edu/academics/programs/computer-science-bs",
+          "supports": "Tandon CS page also lists Nov 1 / Jan 1 / Jan 5 deadlines and B.S./M.S. option",
+          "verified_on": "2026-11-23"
+        }
+      ],
+      "site_degree": "BS Computer Engineering (Tandon) + Robotics minor",
+      "alternative": "Tandon BS Computer Science + Robotics minor, or Tandon BS Mechanical Engineering + Robotics minor. Courant BA CS is a separate school option, not the recommended first-year robotics door.",
+      "fresh_findings": [
+        "Official Computer Engineering bulletin lists four ROB-UY courses as ECE electives.",
+        "CAS bulletin states CAS students may not take Tandon computer science courses.",
+        "CREO publishes a 6,800-square-foot flagship facility at 370 Jay Street plus a Courant manipulation lab.",
+        "A Tandon FAQ has listed Regular Decision as January 6; the university first-year applicants page and the Tandon CS program page list January 5."
+      ],
+      "verified_on": "2026-11-23",
+      "verification_note": "Official Tandon, Courant, CREO and undergraduate admissions sources reviewed November 23, 2026.",
+      "unresolved": [
+        "Tandon- or major-specific first-year admit rate",
+        "Undergraduate access rules and first-year research seats in CREO labs",
+        "Internal transfer requirements between Tandon and CAS"
+      ],
+      "ai_electives": [
+        {
+          "code": "ROB-UY 3203",
+          "title": "Robot Vision",
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+          "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective. Prerequisites include programming and, as applicable, the minor's math and physics prerequisites."
+        },
+        {
+          "code": "ROB-UY 3303",
+          "title": "Robot Motion and Planning",
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+          "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective."
+        },
+        {
+          "code": "ROB-UY 2004",
+          "title": "Robotic Manipulation and Locomotion",
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+          "access_note": "Official Robotics minor course; also listed as a Computer Engineering ECE elective."
+        }
+      ]
+    },
     "ohio-state": {
       "slug": "ohio-state",
       "name": "The Ohio State University",
@@ -3906,6 +4074,6 @@
       ]
     }
   },
-  "selection_updated_on": "2026-10-16",
+  "selection_updated_on": "2026-11-23",
   "source_date_note": "Rose-Hulman and Michigan-Dearborn were re-researched from current official sources on October 16, 2026. Cornell and Johns Hopkins carry their October 14, 2026 review."
 }

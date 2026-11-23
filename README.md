@@ -30,7 +30,7 @@ The development server defaults to port 5000. `npm run build` builds the static 
 
 Notes, ratings, priorities, hidden schools and rankings stay in browser localStorage. Use the Notebook export/import controls to move notes between devices. The selected plans are CMU ED1; EA at NC State, Northeastern, Purdue, Ohio State, UMD, RPI, Michigan and WPI (EA1); Georgia Tech EA2; and Cornell, Johns Hopkins and Duke RD. Rose-Hulman (EA Nov 1 or RD Feb 1) and Michigan-Dearborn (rolling admission) have verified Fall 2027 dates; their rounds are not chosen yet.
 
-All 15 schools start visible. Older hidden-school preferences from the larger list are retired; new manual hiding choices are saved for the current college set. Use Application Timeline and Application Checklist to plan submissions. The former `#/sequencing` URL redirects to `#/timeline`.
+All 16 schools start visible. Older hidden-school preferences from the larger list are retired; new manual hiding choices are saved for the current college set. Use Application Timeline and Application Checklist to plan submissions. The former `#/sequencing` URL redirects to `#/timeline`.
 
 Supabase sync and counselor sharing are optional; see [SUPABASE_SETUP.md](SUPABASE_SETUP.md). The dashboard works signed out without credentials. Do not put service-role keys or other secrets in the client.
 

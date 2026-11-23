@@ -113,6 +113,17 @@
       "drive_hours_from_rdu": 12.5,
       "robotics_scope_note": "Historical location context, compiled 2026-07-29 using 1991–2020 climate normals and July 2026 travel samples. Weather and travel estimates do not establish robotics-program quality. Flight bands are not live fares; check current routes, prices and campus transport before booking."
     },
+    "nyu": {
+      "campus_city": "Brooklyn, NY (Tandon / Downtown Brooklyn); Washington Square / Courant is in Manhattan",
+      "nearest_airport": "LGA / JFK / EWR",
+      "temp_low_jan_f": 27.9,
+      "temp_high_jul_f": 84.9,
+      "snow_inches_annual": 29.8,
+      "days_below_freezing": null,
+      "flight_from_rdu_band": "check current fares (nonstop RDU–LGA/JFK/EWR)",
+      "drive_hours_from_rdu": 8.5,
+      "robotics_scope_note": "Climate figures are NWS Central Park, NY 1991–2020 normals (Jan average min 27.9°F, Jul average max 84.9°F, annual snowfall 29.8 inches), used as the official NYC station series. Days-below-freezing and a sampled July 2026 airfare band were not independently retrieved this review. Drive time is a routing estimate from the Cary/RDU area, not a university-published figure. Weather and travel estimates do not establish robotics-program quality."
+    },
     "ohio-state": {
       "campus_city": "Columbus, OH",
       "nearest_airport": "CMH",

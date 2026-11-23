@@ -9,9 +9,9 @@ const data = (name: string): any => JSON.parse(readFileSync(new URL(`../client/s
 const schools = data("schools") as School[];
 const selected = schools.map(s => s.slug).sort();
 
-test("all school comparison datasets cover exactly the selected fifteen", () => {
-  assert.equal(selected.length, 15);
-  assert.equal(new Set(selected).size, 15);
+test("all school comparison datasets cover exactly the selected sixteen", () => {
+  assert.equal(selected.length, 16);
+  assert.equal(new Set(selected).size, 16);
   for (const name of ["robotics_routes", "robotics_paths", "scholarships", "checklists", "admissions_context", "reddit", "alumni"]) {
     assert.deepEqual(Object.keys(data(name).schools).sort(), selected, name);
   }
@@ -45,7 +45,7 @@ test("new schools carry current verified facts, not historical placeholders", ()
   assert.doesNotMatch(JSON.stringify(dearborn), /100% commuter|commuter-oriented|campus (?:gets|is) (?:very )?quiet|95% of graduates stay/i);
   assert.equal(routes["rose-hulman"].recommended_route, "ece");
   assert.equal(routes["michigan-dearborn"].recommended_route, "bs_robotics");
-  for (const slug of ["rose-hulman", "michigan-dearborn"]) {
+  for (const slug of ["rose-hulman", "michigan-dearborn", "nyu"]) {
     assert.doesNotMatch(routes[slug].verification_status ?? "", /historical|pending/i, slug);
     assert.equal(data("place_context").cities[slug].temp_low_jan_f != null, true, slug);
   }
@@ -136,15 +136,15 @@ test("published current-cycle deadline events have real dates and source provena
   assert.ok(gt.events.some((e: any) => e.round === "ea" && e.date === "2026-11-02"), "NC applicant needs EA2");
 });
 
-test("all fifteen applications match the user's selected rounds", () => {
+test("all sixteen applications match the user's selected rounds", () => {
   const plans = data("applications").applications;
-  assert.equal(plans.length, 15);
-  const expected = {"carnegie-mellon":"ED1","nc-state":"EA","northeastern":"EA","purdue":"EA","ohio-state":"EA","maryland":"EA","rpi":"EA","michigan":"EA","wpi":"EA1","georgia-tech":"EA2","rose-hulman":"Pending","michigan-dearborn":"Pending","duke":"RD","cornell":"RD","johns-hopkins":"RD"};
+  assert.equal(plans.length, 16);
+  const expected = {"carnegie-mellon":"ED1","nc-state":"EA","northeastern":"EA","purdue":"EA","ohio-state":"EA","maryland":"EA","rpi":"EA","michigan":"EA","wpi":"EA1","georgia-tech":"EA2","rose-hulman":"Pending","michigan-dearborn":"Pending","duke":"RD","cornell":"RD","johns-hopkins":"RD","nyu":"Pending"};
   assert.deepEqual(Object.fromEntries(plans.map((a: any) => [a.slug,a.plan_short])), expected);
   assert.deepEqual(plans.filter((a: any) => a.binding).map((a: any) => a.slug), ["carnegie-mellon"]);
   assert.equal(plans.find((a: any) => a.slug === "georgia-tech").deadline, "2026-11-02");
   assert.equal(plans.find((a: any) => a.slug === "rpi").deadline, "2026-12-01");
-  for (const slug of ["rose-hulman", "michigan-dearborn"]) {
+  for (const slug of ["rose-hulman", "michigan-dearborn", "nyu"]) {
     const plan = plans.find((a: any) => a.slug === slug);
     assert.equal(plan.plan, "PENDING");
     assert.match(plan.deadline, /^202[67]-\d\d-\d\d$/);

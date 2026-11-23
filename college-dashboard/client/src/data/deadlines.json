@@ -574,6 +574,83 @@
       "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window"
     },
     {
+      "slug": "nyu",
+      "cycle_label": "2026-27",
+      "ed1": "Nov 1",
+      "ed2": "Jan 1",
+      "ea": null,
+      "rea_scea": null,
+      "rd": "Jan 5",
+      "rolling": "no",
+      "notify_ed1": "Dec 15",
+      "notify_ed2": "Feb 15",
+      "notify_ea": "—",
+      "notify_rd": "April 1",
+      "aid_priority": "Nov 10 (ED I CSS; FAFSA recommended same date); Jan 10 (ED II CSS); Feb 1 (RD CSS)",
+      "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+      "verified_on": "2026-11-23",
+      "verification_status": "verified_month_day_cycle_inferred",
+      "cycle_inferred": true,
+      "events": [
+        {
+          "round": "ed1",
+          "label": "Early Decision I application",
+          "date": "2026-11-01",
+          "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "ed2",
+          "label": "Early Decision II application",
+          "date": "2027-01-01",
+          "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "rd",
+          "label": "Regular Decision application",
+          "date": "2027-01-05",
+          "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED I CSS Profile (FAFSA recommended same date)",
+          "date": "2026-11-10",
+          "source_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "ED II CSS Profile (FAFSA recommended same date)",
+          "date": "2027-01-10",
+          "source_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        },
+        {
+          "round": "aid_priority",
+          "label": "Regular Decision CSS Profile (FAFSA recommended same date)",
+          "date": "2027-02-01",
+          "source_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+          "verified_on": "2026-11-23",
+          "cycle": "2026-27",
+          "year_inferred": true
+        }
+      ],
+      "notification_precision": "exact only where the university publishes an exact date; otherwise retain the published window",
+      "notes": "Official first-year and Tandon CS program pages list Regular Decision as January 5. A Tandon FAQ on join.nyu.edu has said January 6; the university first-year applicants page is used here. Month/day values are published; the 2026-27 cycle year is inferred."
+    },
+    {
       "slug": "ohio-state",
       "cycle_label": "2026-27",
       "ed1": null,

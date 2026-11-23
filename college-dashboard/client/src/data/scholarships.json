@@ -299,6 +299,36 @@
       "verified_on": "2026-10-14",
       "verification_status": "verified_official_page"
     },
+    "nyu": {
+      "offers_merit": "Very limited",
+      "flagship": "NYU Promise (need-based: families with income under $100,000 and typical assets pay no tuition; NYU says it meets 100% demonstrated need for eligible New York-campus first-years)",
+      "flagship_amount": "Need-based; not a merit scholarship. Tuition covered under the published income/assets conditions; full need met as stated on the official aid page.",
+      "ed_specific": null,
+      "auto_criteria": "Official types-of-aid guidance: students must be reviewed for scholarship as entering students, not later as returning students, and must complete aid applications before admission. No separate general merit application or published automatic merit grid was found.",
+      "oos_specific": null,
+      "named_awards": [],
+      "generosity": "Minimal",
+      "note": "CDS 2025-26 shows only 126 first-time full-time first-years with no financial need received institutional non-need grants (average $38,420). Need-based aid is the main published story. Named merit programs were not independently inventoried beyond the official types-of-aid and prospective-aid pages.",
+      "sources": [
+        {
+          "label": "NYU How to Apply for Financial Aid (NYU Promise)",
+          "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html"
+        },
+        {
+          "label": "NYU Types of Aid",
+          "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/types-of-aid.html"
+        },
+        {
+          "label": "NYU CDS 2025-26 H2/H2A",
+          "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf"
+        }
+      ],
+      "application_deadline": "2027-02-01",
+      "deadline_note": "CSS Profile is due Nov 10 for ED I, Jan 10 for ED II, and Feb 1 for Regular Decision. NYU recommends filing the FAFSA by the same CSS deadline so federal aid can appear with the scholarship decision. The Feb 1 date is the Regular Decision CSS deadline, not a separate merit-form deadline.",
+      "eligibility": "Need-based institutional aid requires the CSS Profile (all first-years, regardless of citizenship) and the FAFSA for federal aid if eligible. NC residency does not create a special NYU scholarship category.",
+      "verified_on": "2026-11-23",
+      "verification_status": "verified_official_page"
+    },
     "ohio-state": {
       "offers_merit": "Yes",
       "flagship": "Stamps Eminence Scholarship",
@@ -477,6 +507,6 @@
       "verification_status": "partially_verified"
     }
   },
-  "selection_updated_on": "2026-10-14",
+  "selection_updated_on": "2026-11-23",
   "source_date_note": "Rose-Hulman and Michigan-Dearborn use corrected inherited August 2026 evidence. Their current-cycle checks remain pending; source notes distinguish historical evidence from fresh verification."
 }

@@ -174,6 +174,20 @@
       "note": "Amazon/Google/Microsoft/Apple each 500+ alumni; Meta 200-500",
       "robotics_scope_note": "Historical CS and general company-alumni context, compiled 2026-08-16 from mixed sources and an earlier comparison population. Qualitative bands do not identify robotics jobs, undergraduate major, internship access, or a robotics placement rate. No robotics employer outcomes were measured."
     },
+    "nyu": {
+      "bands": {
+        "Google": "n.a.",
+        "Meta": "n.a.",
+        "Amazon": "n.a.",
+        "Microsoft": "n.a.",
+        "Apple": "n.a.",
+        "Nvidia": "n.a.",
+        "OpenAI": "n.a.",
+        "Anthropic": "n.a."
+      },
+      "note": "No verified company-alumni counts were compiled for NYU on November 23, 2026. Bands are left as n.a. rather than guessed.",
+      "robotics_scope_note": "No robotics employer outcomes were measured. Qualitative tech-feeder bands from the August 2026 alumni compilation do not include NYU."
+    },
     "ohio-state": {
       "bands": {
         "Google": "High",

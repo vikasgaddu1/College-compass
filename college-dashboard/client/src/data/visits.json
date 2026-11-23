@@ -647,6 +647,148 @@
       "temporal_audit_on": "2026-10-14",
       "booking_verification_status": "live_registration_not_verified"
     },
+    "nyu": {
+      "visited": false,
+      "deadline": {
+        "date": "2027-01-01",
+        "label": "ED II Jan 1 or RD Jan 5",
+        "source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+        "year_inferred": true
+      },
+      "interest": {
+        "level": "unknown",
+        "quote": "CDS 2025-26 C7 includes level of applicant's interest, but the extracted checkbox layout could not be mapped reliably.",
+        "basis": "Do not assume a visit helps or hurts admission. Confirm with admissions."
+      },
+      "book_by": {
+        "when": "If a visit will inform a possible ED II choice, book before the CMU decision window around Dec 15 and well before Jan 1. For Regular Decision only, a visit can still help the family decide before Jan 5, or later if the application is already in.",
+        "why": "ED I has passed. ED II is binding. Official Tandon pages advertise in-person Brooklyn campus tours led by a student ambassador; live slot inventory was not checked this review."
+      },
+      "visit_home_url": "https://engineering.nyu.edu/about/visit-nyu-tandon",
+      "registration_url": "https://engineering.nyu.edu/about/visit-nyu-tandon",
+      "registration_required": true,
+      "booking_lead_time": "NOT PUBLISHED on the Tandon visit page reviewed November 23, 2026.",
+      "tours": [
+        {
+          "name": "Undergraduate Brooklyn Campus Tour",
+          "days_offered": "NOT PUBLISHED on the Tandon visit page (sign-up is through the Brooklyn Campus Tour link).",
+          "times": "NOT PUBLISHED on the visit page text reviewed November 23, 2026.",
+          "duration": "NOT PUBLISHED",
+          "audience": "general / undergraduate",
+          "notes": "Official page: in-person tour of NYU Tandon in Downtown Brooklyn, led by an NYU student ambassador, including an overview of the full NYU community and what the Brooklyn campus offers.",
+          "cite": "NYU-V01"
+        },
+        {
+          "name": "Virtual / interactive map and MakerSpace virtual tour",
+          "days_offered": "On demand",
+          "times": "n.a.",
+          "duration": "NOT PUBLISHED",
+          "audience": "general",
+          "notes": "The visit page links an interactive Brooklyn campus map, a graduate virtual tour, and a virtual tour of the 10,000-square-foot MakerSpace.",
+          "cite": "NYU-V01"
+        }
+      ],
+      "engineering_specific": "The published undergraduate offering is a Brooklyn campus tour that highlights Tandon. The page also offers school-group tours and a case-by-case Community Engagement Visit for groups of 10+ that may include a lab visit, with no guarantee every request can be accommodated. A standing public robotics-lab tour was not published.",
+      "robotics_lab_access": "NOT PUBLISHED as a standard prospective-student robotics-lab tour. Group lab visits are assessed case by case and are not guaranteed.",
+      "class_visit_possible": "NOT PUBLISHED on the Tandon visit page reviewed November 23, 2026.",
+      "calendar": {
+        "term_start": "NOT PUBLISHED on the Tandon visit page this review",
+        "fall_break": "NOT PUBLISHED on the Tandon visit page this review",
+        "thanksgiving_break": "NOT PUBLISHED on the Tandon visit page this review",
+        "term_end": "NOT PUBLISHED on the Tandon visit page this review",
+        "blackouts": [
+          "No tour blackout dates were published on the Tandon visit page reviewed November 23, 2026."
+        ],
+        "cite": "NYU-V01"
+      },
+      "football": [
+        "Not listed on the Tandon visit page. Confirm current varsity offerings on NYU Athletics; do not assume a football visit day."
+      ],
+      "travel": {
+        "airport": "LaGuardia (LGA), JFK, or Newark (EWR). Tandon's published main address for visits is 1 MetroTech Center, 19th Floor, Brooklyn, NY 11201.",
+        "airport_to_campus": "Official directions emphasize subway (A/C/F/R to Jay Street/MetroTech, Myrtle Promenade exit) and the NYU shuttle. Paid parking is listed at the Marriott Hotel. No official airport-to-campus shuttle time was published on the visit page.",
+        "drive_from_cary": "ROUTING ESTIMATE roughly 8–9 hours plus stops from the Cary/RDU area. NYU publishes no drive time from North Carolina.",
+        "suggested_stay": "No official family-hotel list was published on the Tandon visit page.",
+        "pair_with": null
+      },
+      "cost_notes": "Campus tours themselves are not described as ticketed on the visit page. Budget separately for NYC lodging, food, transit and flights. Flight bands were not sampled this review.",
+      "questions": {
+        "read_first": [
+          {
+            "q": "Which NYU school is the robotics route?",
+            "a": "Tandon in Brooklyn, typically Computer Engineering (or Tandon CS / Mechanical Engineering) plus the Robotics minor. Courant CS is a CAS program at Washington Square; CAS students may not take Tandon CS courses.",
+            "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/"
+          },
+          {
+            "q": "Is Early Decision still available?",
+            "a": "Early Decision I (Nov 1) has passed. Early Decision II (Jan 1) is binding and only makes sense if Carnegie Mellon has released him. Regular Decision (Jan 5) is non-binding.",
+            "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html"
+          }
+        ],
+        "ask": [
+          {
+            "who": "Admissions counselor",
+            "priority": "high",
+            "q": "If we apply to Tandon Computer Engineering, how hard is it later to add the Robotics minor or to switch to Tandon CS, and what are the current internal-transfer rules to or from CAS?",
+            "why": "School choice on the Common App is consequential, and transfer rules were not published clearly in this review."
+          },
+          {
+            "who": "Admissions or Tandon tour guide",
+            "priority": "high",
+            "q": "Can a prospective first-year see CREO at 370 Jay Street or the MakerSpace in person, and do undergraduates routinely get lab access in the first year?",
+            "why": "Standard tours do not advertise a robotics-lab stop; group lab visits are case by case."
+          },
+          {
+            "who": "Financial aid counselor",
+            "priority": "high",
+            "q": "For an NC family, what would a typical need-based package look like at the $100,998 Tandon estimate, and how limited is non-need merit aid?",
+            "why": "NYU meets need on official policy but publishes very little merit; ED II would be a binding affordability decision."
+          },
+          {
+            "who": "Current Tandon student",
+            "priority": "medium",
+            "q": "What is daily life like living in Othmer or Clark versus using the shuttle to Washington Square, and how split is the social campus?",
+            "why": "Tandon first-year residents must live in Brooklyn halls if they choose housing."
+          },
+          {
+            "who": "Faculty or student in robotics",
+            "priority": "medium",
+            "q": "Which official ROB-UY courses are offered this year, and can Computer Engineering students actually get seats as first- and second-years?",
+            "why": "The minor is designed to take four semesters; course availability is unresolved."
+          }
+        ],
+        "dont_ask": [
+          {
+            "q": "Questions that treat Courant admission as automatic access to Tandon CS or robotics labs.",
+            "why": "Official CAS policy separates the two CS faculties."
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "NYU-V01",
+          "url": "https://engineering.nyu.edu/about/visit-nyu-tandon",
+          "fetched": "2026-11-23"
+        },
+        {
+          "id": "NYU-V02",
+          "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "fetched": "2026-11-23"
+        },
+        {
+          "id": "NYU-V03",
+          "url": "https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/application-and-assignments/applying-for-housing/fyre-assignment-process.html",
+          "fetched": "2026-11-23"
+        },
+        {
+          "id": "NYU-V04",
+          "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo",
+          "fetched": "2026-11-23"
+        }
+      ],
+      "temporal_audit_on": "2026-11-23",
+      "booking_verification_status": "live_registration_not_verified"
+    },
     "wpi": {
       "visited": false,
       "deadline": {

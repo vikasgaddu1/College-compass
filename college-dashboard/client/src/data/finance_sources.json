@@ -2023,6 +2023,78 @@
       "verified_on": "2026-10-16",
       "note": "Scorecard web page failed to load; API used instead.",
       "error": "Fetch error (page did not load)"
+    },
+    {
+      "school": "nyu",
+      "id": "NYU-S1",
+      "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched_via_document_extractor",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf"
+    },
+    {
+      "school": "nyu",
+      "id": "NYU-S3",
+      "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html"
+    },
+    {
+      "school": "nyu",
+      "id": "NYU-S4",
+      "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html"
+    },
+    {
+      "school": "nyu",
+      "id": "FIN-NYU-COST",
+      "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html"
+    },
+    {
+      "school": "nyu",
+      "id": "FIN-NYU-CDS",
+      "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched_via_document_extractor",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf"
+    },
+    {
+      "school": "nyu",
+      "id": "FIN-NYU-AID",
+      "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+      "checked_at_utc": "2026-11-23T07:00:00Z",
+      "tls_verified": true,
+      "status": "fetched",
+      "source_type": "official_university_or_university-linked",
+      "verified_on": "2026-11-23",
+      "http_status": 200,
+      "final_url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html"
     }
   ],
   "note": "Source access does not itself verify every field. Facts requiring query-only or inaccessible data remain explicitly unresolved."

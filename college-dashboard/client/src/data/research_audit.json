@@ -2395,6 +2395,99 @@
         "Major-specific admit rate; no causal ease claim justified"
       ]
     },
+    "nyu": {
+      "recommended_degree": "BS Computer Engineering (Tandon) + Robotics minor",
+      "recommended_route": "ece",
+      "sources": [
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+          "title": "Computer Engineering (BS) | NYU Bulletins",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "Our BS program in Computer Engineering is accredited by the Engineering Accreditation Commission of ABET.",
+            "The following ROB-UY courses count as ECE Electives: ROB-UY 2004 Robotic Manipulation and Locomotion; ROB-UY 3203 Robot Vision; ROB-UY 3303 Robot Motion and Planning; ROB-UY 3404 Introduction To Haptics and Telerobotics in Medicine"
+          ]
+        },
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/robotics-minor/",
+          "title": "Robotics (Minor) | NYU Bulletins",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "The minor requires the completion of at least 14 credits from the list below.",
+            "Interested students should allow 4 semesters (two years) to complete the four courses for the Minor in robotics."
+          ]
+        },
+        {
+          "url": "https://engineering.nyu.edu/research/centers/nyu-center-robotics-and-embodied-intelligence-creo",
+          "title": "NYU Center for Robotics and Embodied Intelligence (CREO)",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "Over 70 NYU faculty, Ph.D. students and post-doctoral researchers collaborate in 10,000 square feet of shared robotics research facilities, including the Center’s new 6,800-square-foot flagship facility on the ground floor of 370 Jay Street in Downtown Brooklyn."
+          ]
+        },
+        {
+          "url": "https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+          "title": "Computer Science (BA) | NYU Bulletins",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "CAS students (in any major or minor) are not permitted to take computer science courses in the Tandon School of Engineering."
+          ]
+        },
+        {
+          "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+          "title": "First-Year Applicants | NYU Undergraduate Admissions",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "Early Decision I November 1 December 15",
+            "Early Decision II January 1 February 15",
+            "Regular Decision January 5 April 1"
+          ]
+        },
+        {
+          "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+          "title": "Cost of Attendance | NYU",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "Tandon School of Engineering",
+            "Tuition and Fees: $68,576",
+            "Total Cost of Attendance: $100,998"
+          ]
+        },
+        {
+          "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+          "title": "How to Apply for Financial Aid | NYU",
+          "status": "reviewed_official_source",
+          "retrieved_on": "2026-11-23",
+          "http_status": 200,
+          "quotations": [
+            "First-Years: Early Decision I: November 10 for CSS Profile",
+            "First-Years: Early Decision II: January 10 for CSS Profile",
+            "First-Years: Regular Decision: February 1 for CSS Profile",
+            "NYU will meet 100% demonstrated need"
+          ]
+        }
+      ],
+      "unresolved": [
+        "Tandon- or major-specific first-year admit rate",
+        "Undergraduate access rules and first-year seats in CREO labs",
+        "Internal transfer requirements between Tandon and CAS",
+        "CDS C7 factor checkboxes (PDF layout not reliably mapped)",
+        "Official College Scorecard/IPEDS net-price income bands (left null this review)",
+        "International undergraduate share (CDS B2 table not cleanly extracted)"
+      ]
+    },
     "ohio-state": {
       "recommended_degree": "BS Electrical and Computer Engineering (direct admit), Control electives + Robotics and Autonomous Systems minor",
       "recommended_route": "ece",

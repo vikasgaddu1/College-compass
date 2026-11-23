@@ -1001,5 +1001,55 @@
     "fetched": null,
     "status": "inherited_reference_not_freshly_retrieved",
     "note": "The older admission record cited this source ID without a retained source-log record; counts are historical and current verification is pending."
+  },
+  "NYU-S1": {
+    "url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL(including%20G%20July_2026).pdf",
+    "title": "NYU Common Data Set 2025-2026",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S2": {
+    "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
+    "title": "NYU First-Year Applicants",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S3": {
+    "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/cost-of-attendance.html",
+    "title": "NYU Cost of Attendance 2026-2027",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S4": {
+    "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/applying-as-a-prospective-undergraduate-student.html",
+    "title": "NYU How to Apply for Financial Aid",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S5": {
+    "url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/standardized-tests.html",
+    "title": "NYU Standardized Tests",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S6": {
+    "url": "https://bulletins.nyu.edu/undergraduate/engineering/programs/computer-engineering-bs/",
+    "title": "Computer Engineering (BS) | NYU Bulletins",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S7": {
+    "url": "https://www.nyu.edu/admissions/financial-aid-and-scholarships/types-of-aid.html",
+    "title": "NYU Types of Aid",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S8": {
+    "url": "https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/application-and-assignments/applying-for-housing/fyre-assignment-process.html",
+    "title": "NYU New First-Year Housing",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S9": {
+    "url": "https://bulletins.nyu.edu/undergraduate/arts-science/programs/computer-science-ba/",
+    "title": "Computer Science (BA) | NYU Bulletins",
+    "fetched": "2026-11-23"
+  },
+  "NYU-S10": {
+    "url": "https://engineering.nyu.edu/about/visit-nyu-tandon",
+    "title": "Visit NYU Tandon",
+    "fetched": "2026-11-23"
   }
 }
